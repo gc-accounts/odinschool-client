@@ -14,11 +14,30 @@ import {
   Shield, 
   Award, 
   BarChart, 
-  CheckCircle2
+  CheckCircle2,
+  X,
+  ChevronDown,
+  ChevronRight,
+  LockIcon,
+  Play
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogClose
+} from "@/components/ui/dialog";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from "@/components/ui/collapsible";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // This would be fetched from an API in a real application
 const coursesData = [
@@ -388,12 +407,40 @@ const coursesData = [
   },
 ];
 
+// Mock lesson content for previews
+const lessonContent = {
+  video: "https://player.vimeo.com/video/174002812",
+  overview: `
+    <p>In this lesson, you'll learn the fundamental concepts that form the foundation of this subject.</p>
+    <p>We'll cover the core principles, essential terminology, and practical applications that you'll need to understand before moving on to more complex topics.</p>
+    <p>By the end of this lesson, you'll have a solid grasp of the basics and be ready to tackle more advanced material.</p>
+  `,
+  transcript: `
+    <p><strong>00:00</strong> - Hello and welcome to this lesson. Today we're going to explore the fundamental concepts of this subject.</p>
+    <p><strong>00:15</strong> - First, let's define what we mean by the term. This concept refers to the basic building blocks that make up our understanding.</p>
+    <p><strong>01:30</strong> - Now let's look at some practical examples of these principles in action.</p>
+    <p><strong>03:45</strong> - As you can see, these concepts apply to a wide variety of situations and scenarios.</p>
+    <p><strong>05:20</strong> - Let's recap what we've covered so far and discuss how these ideas connect to the broader framework.</p>
+    <p><strong>07:10</strong> - In our next lesson, we'll build upon these foundations to explore more advanced techniques and applications.</p>
+    <p><strong>08:30</strong> - Thank you for joining me today. Remember to complete the exercises to reinforce your understanding.</p>
+  `,
+  resources: [
+    { name: "Lesson Slides", type: "PDF", size: "2.4 MB" },
+    { name: "Exercise Workbook", type: "PDF", size: "1.8 MB" },
+    { name: "Code Examples", type: "ZIP", size: "4.5 MB" },
+    { name: "Supplementary Reading", type: "Link", url: "#" }
+  ]
+};
+
 const CourseDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [course, setCourse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
+  const [activeLessonTab, setActiveLessonTab] = useState("overview");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -414,6 +461,10 @@ const CourseDetail = () => {
 
   const handleEnrollClick = () => {
     toast.success(`Enrolled in ${course?.title}`);
+  };
+
+  const handleTryPreview = () => {
+    setPreviewOpen(true);
   };
 
   if (loading) {
@@ -497,7 +548,10 @@ const CourseDetail = () => {
                       className="w-full h-full object-cover" 
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <div className="rounded-full bg-white/20 backdrop-blur-sm p-3 cursor-pointer hover:bg-white/30 transition-colors">
+                      <div 
+                        className="rounded-full bg-white/20 backdrop-blur-sm p-3 cursor-pointer hover:bg-white/30 transition-colors"
+                        onClick={handleTryPreview}
+                      >
                         <PlayCircle size={36} className="text-white" />
                       </div>
                     </div>
@@ -523,6 +577,7 @@ const CourseDetail = () => {
                       size="lg" 
                       fullWidth 
                       className="mb-6"
+                      onClick={handleTryPreview}
                     >
                       Try Free Preview
                     </Button>
@@ -629,20 +684,79 @@ const CourseDetail = () => {
                       
                       <div className="space-y-4">
                         {course.curriculum.map((section, index) => (
-                          <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                            <div className="bg-gray-50 px-4 py-3 flex justify-between items-center">
-                              <div>
-                                <h3 className="font-medium">{section.title}</h3>
-                                <p className="text-sm text-gray-500">{section.lessons} lessons • {section.duration}</p>
+                          <Collapsible 
+                            key={index} 
+                            open={expandedSection === index}
+                            onOpenChange={() => setExpandedSection(expandedSection === index ? null : index)}
+                            className="border border-gray-200 rounded-lg overflow-hidden"
+                          >
+                            <CollapsibleTrigger className="w-full">
+                              <div className="bg-gray-50 px-4 py-3 flex justify-between items-center">
+                                <div className="text-left">
+                                  <h3 className="font-medium">{section.title}</h3>
+                                  <p className="text-sm text-gray-500">{section.lessons} lessons • {section.duration}</p>
+                                </div>
+                                <div className="flex items-center">
+                                  <button className="text-primary-600 text-sm font-medium mr-3" onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleTryPreview();
+                                  }}>
+                                    Preview
+                                  </button>
+                                  <ChevronDown 
+                                    size={18} 
+                                    className={cn(
+                                      "text-gray-500 transition-transform duration-200",
+                                      expandedSection === index ? "transform rotate-180" : ""
+                                    )}
+                                  />
+                                </div>
                               </div>
-                              <button className="text-primary-600 text-sm font-medium">Preview</button>
-                            </div>
-                            <div className="p-4 bg-white">
-                              <p className="text-gray-600 text-sm">
-                                This section includes lectures on key concepts, practical demonstrations, and hands-on exercises.
-                              </p>
-                            </div>
-                          </div>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <div className="divide-y divide-gray-100">
+                                {/* Generate mock lessons for each section */}
+                                {Array.from({ length: Math.min(5, section.lessons) }, (_, i) => (
+                                  <div key={i} className="p-4 flex justify-between items-center hover:bg-gray-50">
+                                    <div className="flex items-center">
+                                      <div className="mr-3">
+                                        {i === 0 ? (
+                                          <Play size={16} className="text-primary-600" />
+                                        ) : (
+                                          <LockIcon size={16} className="text-gray-400" />
+                                        )}
+                                      </div>
+                                      <div>
+                                        <h4 className="text-sm font-medium">
+                                          {i + 1}. {section.title} - Lesson {i + 1}
+                                        </h4>
+                                        <p className="text-xs text-gray-500 mt-1">
+                                          {Math.floor(10 + Math.random() * 20)}:{Math.floor(10 + Math.random() * 50)} min
+                                        </p>
+                                      </div>
+                                    </div>
+                                    {i === 0 && (
+                                      <button 
+                                        className="text-xs text-primary-600 font-medium"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleTryPreview();
+                                        }}
+                                      >
+                                        Preview
+                                      </button>
+                                    )}
+                                  </div>
+                                ))}
+                                
+                                {section.lessons > 5 && (
+                                  <div className="p-4 text-center text-sm text-gray-500">
+                                    + {section.lessons - 5} more lessons
+                                  </div>
+                                )}
+                              </div>
+                            </CollapsibleContent>
+                          </Collapsible>
                         ))}
                       </div>
                     </div>
@@ -807,6 +921,100 @@ const CourseDetail = () => {
       </main>
       
       <Footer />
+
+      {/* Course Preview Modal */}
+      <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden">
+          <div className="relative">
+            <DialogClose className="absolute right-4 top-4 z-10 rounded-full bg-black/20 p-1 hover:bg-black/40 transition-colors">
+              <X className="h-5 w-5 text-white" />
+            </DialogClose>
+          </div>
+          
+          <div className="w-full">
+            <div className="aspect-video bg-black">
+              <iframe 
+                src={lessonContent.video}
+                className="w-full h-full" 
+                frameBorder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowFullScreen
+                title="Course Preview"
+              ></iframe>
+            </div>
+            
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-1">{course.curriculum[0].title} - Introduction</h2>
+              <p className="text-gray-500 text-sm mb-6">10:25 min • Free preview</p>
+              
+              <Tabs value={activeLessonTab} onValueChange={setActiveLessonTab} className="w-full">
+                <TabsList className="w-full justify-start border-b rounded-none bg-transparent h-auto p-0 mb-6">
+                  {["overview", "transcript", "resources"].map((tab) => (
+                    <TabsTrigger 
+                      key={tab}
+                      value={tab}
+                      className={cn(
+                        "data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary-600 data-[state=active]:text-primary-600 rounded-none bg-transparent font-medium capitalize"
+                      )}
+                    >
+                      {tab}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                
+                <TabsContent value="overview" className="mt-0">
+                  <div 
+                    className="prose prose-gray max-w-none"
+                    dangerouslySetInnerHTML={{ __html: lessonContent.overview }}
+                  />
+                </TabsContent>
+                
+                <TabsContent value="transcript" className="mt-0">
+                  <div 
+                    className="prose prose-gray max-w-none"
+                    dangerouslySetInnerHTML={{ __html: lessonContent.transcript }}
+                  />
+                </TabsContent>
+                
+                <TabsContent value="resources" className="mt-0">
+                  <div className="space-y-4">
+                    <p className="mb-4">Download these resources to support your learning:</p>
+                    
+                    <div className="space-y-2">
+                      {lessonContent.resources.map((resource, index) => (
+                        <div 
+                          key={index}
+                          className="flex items-center border border-gray-200 rounded-md p-3 hover:bg-gray-50 transition-colors cursor-pointer"
+                        >
+                          <div className="mr-3 text-gray-500">
+                            {resource.type === 'PDF' ? 
+                              <BookOpen size={18} /> : 
+                              resource.type === 'ZIP' ? 
+                              <BarChart size={18} /> : 
+                              <ChevronRight size={18} />
+                            }
+                          </div>
+                          <div className="flex-grow">
+                            <p className="font-medium text-sm">{resource.name}</p>
+                            <p className="text-xs text-gray-500">{resource.type} {resource.size && `• ${resource.size}`}</p>
+                          </div>
+                          <Button 
+                            variant="ghost" 
+                            size="sm"
+                            className="text-primary-600"
+                          >
+                            Download
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
