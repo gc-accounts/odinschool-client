@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -15,6 +15,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
     { name: 'Webinars', path: '/webinars' },
+    { name: 'Salary Calculator', path: '/salary-calculator', icon: <Calculator className="h-4 w-4 mr-1" /> },
     { name: 'About', path: '/about' },
   ];
   
@@ -41,6 +42,7 @@ const Navbar = () => {
                       : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
                   )}
                 >
+                  {link.icon && link.icon}
                   {link.name}
                 </Link>
               ))}
@@ -81,7 +83,10 @@ const Navbar = () => {
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.name}
+                <div className="flex items-center">
+                  {link.icon && link.icon}
+                  {link.name}
+                </div>
               </Link>
             ))}
           </div>
