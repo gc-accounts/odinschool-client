@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -652,4 +653,162 @@ const CourseDetail = () => {
                     <div>
                       <h2 className="heading-sm mb-4">Instructor</h2>
                       <div className="flex flex-col md:flex-row gap-6">
-                        <div className="
+                        <div className="flex-shrink-0">
+                          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                            <span className="text-2xl font-medium text-gray-500">
+                              {course.instructor.charAt(0)}
+                            </span>
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-medium">{course.instructor}</h3>
+                          <p className="text-gray-500">Course Instructor</p>
+                          <div className="mt-2 space-y-2">
+                            <p>
+                              An experienced educator with expertise in {course.category} 
+                              and a passion for teaching practical, job-ready skills.
+                            </p>
+                            <p>
+                              With over 10 years of industry experience, {course.instructor.split(' ')[0]} 
+                              has helped thousands of students master complex technical concepts.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Reviews */}
+                  {activeTab === 'reviews' && (
+                    <div>
+                      <div className="flex items-center justify-between mb-8">
+                        <h2 className="heading-sm">Student Reviews</h2>
+                        <div className="flex items-center">
+                          <div className="flex mr-2">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <Star 
+                                key={star}
+                                size={18} 
+                                className={star <= Math.round(course.rating) 
+                                  ? "fill-yellow-400 text-yellow-400" 
+                                  : "text-gray-300"} 
+                              />
+                            ))}
+                          </div>
+                          <span className="font-medium">{course.rating.toFixed(1)}</span>
+                          <span className="text-gray-500 ml-1">({course.students.toLocaleString()} students)</span>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        {[
+                          { 
+                            name: "Alex Johnson", 
+                            rating: 5, 
+                            date: "3 months ago",
+                            comment: "Excellent course! The instructor explains complex concepts in a way that's easy to understand. I've learned so much and feel confident in my skills now."
+                          },
+                          { 
+                            name: "Samantha Lee", 
+                            rating: 4, 
+                            date: "1 month ago",
+                            comment: "Very informative and well-structured course. The projects were challenging but rewarding. Would recommend to anyone looking to improve their skills."
+                          },
+                          { 
+                            name: "Michael Brown", 
+                            rating: 5, 
+                            date: "2 weeks ago",
+                            comment: "This course exceeded my expectations. The instructor is knowledgeable and responsive to questions. The content is up-to-date and relevant to the industry."
+                          }
+                        ].map((review, index) => (
+                          <div key={index} className="border-b border-gray-200 pb-6 last:border-0">
+                            <div className="flex justify-between items-start mb-2">
+                              <div className="font-medium">{review.name}</div>
+                              <div className="text-gray-500 text-sm">{review.date}</div>
+                            </div>
+                            <div className="flex mb-2">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Star 
+                                  key={star}
+                                  size={14} 
+                                  className={star <= review.rating 
+                                    ? "fill-yellow-400 text-yellow-400" 
+                                    : "text-gray-300"} 
+                                />
+                              ))}
+                            </div>
+                            <p className="text-gray-700">{review.comment}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              <div className="lg:col-span-1">
+                <div className="sticky top-24 space-y-6">
+                  <Card>
+                    <CardContent className="p-6">
+                      <h3 className="font-medium text-lg mb-3">Related Courses</h3>
+                      <div className="space-y-4">
+                        {coursesData
+                          .filter(c => c.id !== course.id && c.category === course.category)
+                          .slice(0, 3)
+                          .map(relatedCourse => (
+                            <Link 
+                              key={relatedCourse.id} 
+                              to={`/courses/${relatedCourse.id}`}
+                              className="flex gap-3 group"
+                            >
+                              <div className="w-16 h-12 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
+                                <img 
+                                  src={relatedCourse.image} 
+                                  alt={relatedCourse.title}
+                                  className="w-full h-full object-cover" 
+                                />
+                              </div>
+                              <div>
+                                <h4 className="font-medium text-sm group-hover:text-primary-600 transition-colors line-clamp-2">
+                                  {relatedCourse.title}
+                                </h4>
+                                <div className="flex items-center mt-1">
+                                  <Star size={12} className="fill-yellow-400 text-yellow-400" />
+                                  <span className="text-xs ml-1">{relatedCourse.rating.toFixed(1)}</span>
+                                </div>
+                              </div>
+                            </Link>
+                          ))
+                        }
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardContent className="p-6">
+                      <h3 className="font-medium text-lg mb-3">Course Tags</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {course.skills.map((skill, index) => (
+                          <span 
+                            key={index} 
+                            className="bg-gray-100 text-gray-800 text-xs px-2.5 py-1 rounded-full"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default CourseDetail;
