@@ -10,6 +10,11 @@ import CourseDetail from "./pages/CourseDetail";
 import CourseLesson from "./pages/CourseLesson";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Webinars from "./pages/Webinars";
+import WebinarDetail from "./pages/WebinarDetail";
+import WebinarRegistration from "./pages/WebinarRegistration";
+import WebinarCheckout from "./pages/WebinarCheckout";
+import WebinarConfirmation from "./pages/WebinarConfirmation";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +32,14 @@ function App() {
             <Route path="/courses/:id" element={<CourseDetail />} />
             <Route path="/courses/:id/lessons/:lessonId" element={<CourseLesson />} />
             <Route path="/about" element={<About />} />
+            
+            {/* Webinar Routes */}
+            <Route path="/webinars" element={<Webinars />} />
+            <Route path="/webinars/:id" element={<WebinarDetail />} />
+            <Route path="/webinar-registration/:id" element={<WebinarRegistration />} />
+            <Route path="/webinar-checkout/:id" element={<WebinarCheckout />} />
+            <Route path="/webinar-confirmation/:id" element={<WebinarConfirmation />} />
+            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
