@@ -26,6 +26,11 @@ import BecomeAMentor from "./pages/BecomeAMentor";
 import NewsRoom from "./pages/NewsRoom";
 import ReferralProgram from "./pages/ReferralProgram";
 import ThankYou from "./pages/ThankYou";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
+import FreeResources from "./pages/FreeResources";
+import CourseCheckout from "./pages/CourseCheckout";
+import CourseCheckoutCertificate from "./pages/CourseCheckoutCertificate";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +47,8 @@ function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:id" element={<CourseDetail />} />
             <Route path="/courses/:id/lessons/:lessonId" element={<CourseLesson />} />
+            <Route path="/course-checkout/:id" element={<CourseCheckout />} />
+            <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
             
             {/* Webinar Routes */}
@@ -54,6 +61,11 @@ function App() {
             {/* Tools Routes */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
+            
+            {/* Blog and Resources */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/free-resources" element={<FreeResources />} />
             
             {/* New Pages */}
             <Route path="/contact" element={<Contact />} />
