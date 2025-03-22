@@ -5,11 +5,23 @@ import { Menu, X, Calculator, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
+// Create a utility function to safely check if we're in a Router context
+const useRouterPath = () => {
+  try {
+    // Try to use the router hook
+    const location = useLocation();
+    return location.pathname;
+  } catch (error) {
+    // Return '/' if we're outside a Router context
+    return '/';
+  }
+};
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const currentPath = useRouterPath();
   
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => currentPath === path;
   
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -19,6 +31,30 @@ const Navbar = () => {
     { name: 'Resume Builder', path: '/resume-builder', icon: <FileText className="h-4 w-4 mr-1" /> },
     { name: 'About', path: '/about' },
   ];
+
+  // Use a utility function to render links based on whether we're in a Router context
+  const NavLinkOrAnchor = ({ to, className, children, onClick }: { 
+    to: string; 
+    className?: string; 
+    children: React.ReactNode;
+    onClick?: () => void;
+  }) => {
+    try {
+      // Try to use the Link component
+      return (
+        <Link to={to} className={className} onClick={onClick}>
+          {children}
+        </Link>
+      );
+    } catch (error) {
+      // Fallback to using an anchor tag
+      return (
+        <a href={to} className={className} onClick={onClick}>
+          {children}
+        </a>
+      );
+    }
+  };
   
   return (
     <nav className="bg-white border-b sticky top-0 z-30">
@@ -26,14 +62,14 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="text-xl font-bold text-primary-600">
+              <NavLinkOrAnchor to="/" className="text-xl font-bold text-primary-600">
                 EduPlatform
-              </Link>
+              </NavLinkOrAnchor>
             </div>
             
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {navLinks.map((link) => (
-                <Link
+                <NavLinkOrAnchor
                   key={link.path}
                   to={link.path}
                   className={cn(
@@ -45,7 +81,7 @@ const Navbar = () => {
                 >
                   {link.icon && link.icon}
                   {link.name}
-                </Link>
+                </NavLinkOrAnchor>
               ))}
             </div>
           </div>
@@ -73,7 +109,7 @@ const Navbar = () => {
         <div className="sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
-              <Link
+              <NavLinkOrAnchor
                 key={link.path}
                 to={link.path}
                 className={cn(
@@ -88,7 +124,7 @@ const Navbar = () => {
                   {link.icon && link.icon}
                   {link.name}
                 </div>
-              </Link>
+              </NavLinkOrAnchor>
             ))}
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
