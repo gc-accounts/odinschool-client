@@ -1,3 +1,4 @@
+
 export const coursesData = [
   {
     id: '1',
@@ -364,3 +365,6 @@ export const coursesData = [
     ]
   },
 ];
+
+// Add an alias export to fix the import errors
+export const courses = coursesData;

@@ -1,24 +1,81 @@
 
-export const lessonContent = {
-  video: "https://player.vimeo.com/video/174002812",
-  overview: `
-    <p>In this lesson, you'll learn the fundamental concepts that form the foundation of this subject.</p>
-    <p>We'll cover the core principles, essential terminology, and practical applications that you'll need to understand before moving on to more complex topics.</p>
-    <p>By the end of this lesson, you'll have a solid grasp of the basics and be ready to tackle more advanced material.</p>
-  `,
-  transcript: `
-    <p><strong>00:00</strong> - Hello and welcome to this lesson. Today we're going to explore the fundamental concepts of this subject.</p>
-    <p><strong>00:15</strong> - First, let's define what we mean by the term. This concept refers to the basic building blocks that make up our understanding.</p>
-    <p><strong>01:30</strong> - Now let's look at some practical examples of these principles in action.</p>
-    <p><strong>03:45</strong> - As you can see, these concepts apply to a wide variety of situations and scenarios.</p>
-    <p><strong>05:20</strong> - Let's recap what we've covered so far and discuss how these ideas connect to the broader framework.</p>
-    <p><strong>07:10</strong> - In our next lesson, we'll build upon these foundations to explore more advanced techniques and applications.</p>
-    <p><strong>08:30</strong> - Thank you for joining me today. Remember to complete the exercises to reinforce your understanding.</p>
-  `,
-  resources: [
-    { name: "Lesson Slides", type: "PDF", size: "2.4 MB" },
-    { name: "Exercise Workbook", type: "PDF", size: "1.8 MB" },
-    { name: "Code Examples", type: "ZIP", size: "4.5 MB" },
-    { name: "Supplementary Reading", type: "Link", url: "#" }
-  ]
-};
+export const lessonsData = [
+  {
+    id: "1",
+    courseId: "1",
+    title: "Introduction to JavaScript",
+    description: "Learn the basics of JavaScript programming language",
+    duration: "45 minutes",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "2",
+    courseId: "1",
+    title: "Variables and Data Types",
+    description: "Understanding variables, constants, and data types in JavaScript",
+    duration: "1 hour",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "3",
+    courseId: "1",
+    title: "Functions and Scope",
+    description: "Working with functions and understanding variable scope",
+    duration: "1.5 hours",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "4",
+    courseId: "2",
+    title: "Introduction to React",
+    description: "Getting started with React and component-based architecture",
+    duration: "1 hour",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "5",
+    courseId: "2",
+    title: "Components and Props",
+    description: "Creating components and passing data with props",
+    duration: "1.5 hours",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "6",
+    courseId: "2",
+    title: "State and Lifecycle",
+    description: "Managing component state and lifecycle methods",
+    duration: "2 hours",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "7",
+    courseId: "3",
+    title: "Python Basics",
+    description: "Introduction to Python programming language",
+    duration: "1 hour",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "8",
+    courseId: "3",
+    title: "Working with NumPy",
+    description: "Numerical computing with NumPy library",
+    duration: "1.5 hours",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  },
+  {
+    id: "9",
+    courseId: "3",
+    title: "Data Analysis with Pandas",
+    description: "Analyzing data using Pandas dataframes",
+    duration: "2 hours",
+    videoUrl: "https://player.vimeo.com/video/174002812"
+  }
+];
+
+// Add an alias export to fix import errors
+export const lessons = lessonsData;
+
+// Export the lesson content from the existing file
+export { lessonContent } from './lessonContent';
