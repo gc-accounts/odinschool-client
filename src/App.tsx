@@ -16,6 +16,7 @@ import WebinarRegistration from "./pages/WebinarRegistration";
 import WebinarCheckout from "./pages/WebinarCheckout";
 import WebinarConfirmation from "./pages/WebinarConfirmation";
 import SalaryCalculator from "./pages/SalaryCalculator";
+import ResumeBuilder from "./pages/ResumeBuilder";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,9 @@ function App() {
             
             {/* Salary Calculator Route */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
+            
+            {/* Resume Builder Route */}
+            <Route path="/resume-builder" element={<ResumeBuilder />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
