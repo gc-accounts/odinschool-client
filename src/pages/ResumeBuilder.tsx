@@ -60,41 +60,43 @@ const ResumeBuilder = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="flex justify-between items-center p-4 border-b">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full max-w-md grid-cols-2">
-                  <TabsTrigger value="edit">Edit</TabsTrigger>
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
-                </TabsList>
+              <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
+                <div className="flex justify-between items-center w-full">
+                  <TabsList className="grid w-full max-w-md grid-cols-2">
+                    <TabsTrigger value="edit">Edit</TabsTrigger>
+                    <TabsTrigger value="preview">Preview</TabsTrigger>
+                  </TabsList>
+                  <div className="flex space-x-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={handleSaveResume} 
+                      className="flex items-center"
+                    >
+                      <Save className="h-4 w-4 mr-2" />
+                      Save
+                    </Button>
+                    <Button 
+                      variant="default" 
+                      size="sm" 
+                      onClick={handleDownloadResume} 
+                      className="flex items-center"
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      Download PDF
+                    </Button>
+                  </div>
+                </div>
+                
+                <TabsContent value="edit" className="p-0 m-0">
+                  <ResumeForm resumeData={resumeData} updateResume={handleUpdateResume} />
+                </TabsContent>
+                
+                <TabsContent value="preview" className="p-0 m-0">
+                  <ResumePreview resumeData={resumeData} />
+                </TabsContent>
               </Tabs>
-              <div className="flex space-x-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleSaveResume} 
-                  className="flex items-center"
-                >
-                  <Save className="h-4 w-4 mr-2" />
-                  Save
-                </Button>
-                <Button 
-                  variant="default" 
-                  size="sm" 
-                  onClick={handleDownloadResume} 
-                  className="flex items-center"
-                >
-                  <Download className="h-4 w-4 mr-2" />
-                  Download PDF
-                </Button>
-              </div>
             </div>
-            
-            <TabsContent value="edit" className="p-0 m-0">
-              <ResumeForm resumeData={resumeData} updateResume={handleUpdateResume} />
-            </TabsContent>
-            
-            <TabsContent value="preview" className="p-0 m-0">
-              <ResumePreview resumeData={resumeData} />
-            </TabsContent>
           </div>
         </div>
       </main>
