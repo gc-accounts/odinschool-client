@@ -17,6 +17,15 @@ import WebinarCheckout from "./pages/WebinarCheckout";
 import WebinarConfirmation from "./pages/WebinarConfirmation";
 import SalaryCalculator from "./pages/SalaryCalculator";
 import ResumeBuilder from "./pages/ResumeBuilder";
+import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import TermsOfUse from "./pages/TermsOfUse";
+import SuccessStories from "./pages/SuccessStories";
+import HireTalent from "./pages/HireTalent";
+import BecomeAMentor from "./pages/BecomeAMentor";
+import NewsRoom from "./pages/NewsRoom";
+import ReferralProgram from "./pages/ReferralProgram";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
@@ -42,11 +51,20 @@ function App() {
             <Route path="/webinar-checkout/:id" element={<WebinarCheckout />} />
             <Route path="/webinar-confirmation/:id" element={<WebinarConfirmation />} />
             
-            {/* Salary Calculator Route */}
+            {/* Tools Routes */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
-            
-            {/* Resume Builder Route */}
             <Route path="/resume-builder" element={<ResumeBuilder />} />
+            
+            {/* New Pages */}
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/terms" element={<TermsOfUse />} />
+            <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/hire-talent" element={<HireTalent />} />
+            <Route path="/become-a-mentor" element={<BecomeAMentor />} />
+            <Route path="/news" element={<NewsRoom />} />
+            <Route path="/referral-program" element={<ReferralProgram />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

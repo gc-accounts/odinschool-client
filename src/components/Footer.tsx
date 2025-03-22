@@ -33,6 +33,7 @@ const Footer = () => {
         { name: 'Home', href: '/' },
         { name: 'Courses', href: '/courses' },
         { name: 'Webinars', href: '/webinars' },
+        { name: 'Success Stories', href: '/success-stories' },
         { name: 'Pricing', href: '/#pricing' },
       ],
     },
@@ -41,21 +42,25 @@ const Footer = () => {
       links: [
         { name: 'Salary Calculator', href: '/salary-calculator' },
         { name: 'Resume Builder', href: '/resume-builder' },
+        { name: 'Hire Talent', href: '/hire-talent' },
+        { name: 'Become a Mentor', href: '/become-a-mentor' },
+        { name: 'Referral Program', href: '/referral-program' },
       ],
     },
     {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/about' },
+        { name: 'News Room', href: '/news' },
         { name: 'Careers', href: '/careers' },
-        { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
+        { name: 'FAQ', href: '/faq' },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Terms of Use', href: '/terms' },
         { name: 'Privacy Policy', href: '/privacy' },
         { name: 'Cookie Policy', href: '/cookies' },
       ],
