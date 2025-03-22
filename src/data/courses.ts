@@ -1,4 +1,3 @@
-
 export const coursesData = [
   {
     id: '1',
@@ -9,6 +8,7 @@ export const coursesData = [
     duration: '10 hours',
     lessons: 45,
     rating: 4.8,
+    reviews: 230,
     students: 12450,
     image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=2000',
     category: 'Web Development',
@@ -36,6 +36,22 @@ export const coursesData = [
       'Error Handling', 
       'ES6+ Features', 
       'Browser APIs'
+    ],
+    learningOutcomes: [
+      'Understand core JavaScript concepts and syntax',
+      'Create dynamic web pages with JavaScript',
+      'Build interactive user interfaces',
+      'Handle events and user interactions',
+      'Work with APIs and fetch data asynchronously',
+      'Debug JavaScript applications effectively',
+      'Implement modern ES6+ features in your code',
+      'Structure your code following best practices'
+    ],
+    prerequisites: [
+      'Basic HTML and CSS knowledge',
+      'No prior JavaScript experience required',
+      'A computer with internet access',
+      'Willingness to practice coding regularly'
     ]
   },
   {
@@ -366,5 +382,5 @@ export const coursesData = [
   },
 ];
 
-// Add an alias export to fix the import errors
+// Add an alias export to fix import errors
 export const courses = coursesData;

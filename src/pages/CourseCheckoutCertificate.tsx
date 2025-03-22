@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen, Award } from 'lucide-react';
@@ -233,7 +232,7 @@ const CourseCheckoutCertificate = () => {
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <BookOpen className="h-4 w-4 mr-2" />
-                      {course.lessons?.length || 0} lessons
+                      {typeof course.lessons === 'number' ? course.lessons : course.lessons?.length || 0} lessons
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <User className="h-4 w-4 mr-2" />

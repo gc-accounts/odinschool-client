@@ -34,6 +34,11 @@ const CourseDetail = () => {
     );
   }
   
+  // Default values for properties that might be missing
+  const reviews = course.reviews || 0;
+  const learningOutcomes = course.learningOutcomes || [];
+  const prerequisites = course.prerequisites || [];
+  
   return (
     <>
       <Navbar />
@@ -51,7 +56,7 @@ const CourseDetail = () => {
                     <Star className="h-5 w-5 text-yellow-400 fill-current" />
                     <Star className="h-5 w-5 text-yellow-400 fill-current" />
                     <StarHalf className="h-5 w-5 text-yellow-400 fill-current" />
-                    <span className="ml-2 text-white">{course.rating} ({course.reviews} reviews)</span>
+                    <span className="ml-2 text-white">{course.rating} ({reviews} reviews)</span>
                   </div>
                   <div className="flex items-center">
                     <Users className="h-5 w-5 mr-2" />
@@ -160,7 +165,7 @@ const CourseDetail = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-4">What You'll Learn</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {course.learningOutcomes.map((outcome, index) => (
+                  {learningOutcomes.map((outcome, index) => (
                     <div key={index} className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>{outcome}</span>
@@ -172,7 +177,7 @@ const CourseDetail = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-4">Prerequisites</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                  {course.prerequisites.map((prerequisite, index) => (
+                  {prerequisites.map((prerequisite, index) => (
                     <li key={index}>{prerequisite}</li>
                   ))}
                 </ul>
@@ -252,7 +257,7 @@ const CourseDetail = () => {
                   </div>
                   <div>
                     <span className="font-bold text-xl">{course.rating}</span>
-                    <span className="text-gray-600 ml-1">({course.reviews} reviews)</span>
+                    <span className="text-gray-600 ml-1">({reviews} reviews)</span>
                   </div>
                 </div>
               </div>
