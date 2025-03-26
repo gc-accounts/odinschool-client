@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
-import { Github, Linkedin, Twitter, BookOpen, Users, Star } from 'lucide-react';
+import { Github, Linkedin, Twitter, BookOpen, Users, Star, Briefcase } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import Button from './Button';
 import { cn } from '@/lib/utils';
 
@@ -107,7 +108,7 @@ const InstructorProfile = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-primary-50">
       <div className="container mx-auto px-4 md:px-6">
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">
@@ -125,85 +126,78 @@ const InstructorProfile = () => {
               ref={(el) => addToCardRefs(el, index)}
               className="opacity-0"
             >
-              <div className={cn(
-                "bg-white rounded-xl overflow-hidden h-full flex flex-col border shadow-sm",
-                "hover:shadow-lg transition-all duration-300"
-              )}>
-                <div className="relative">
-                  <div className="bg-gradient-to-r from-primary-500 to-primary-700 h-32"></div>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-                    <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden">
-                      <img
-                        src={instructor.avatar}
-                        alt={instructor.name}
-                        className="w-full h-full object-cover"
-                      />
+              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <div className="bg-gradient-to-r from-primary-500/90 to-primary-700 p-6 flex items-center gap-5">
+                  <div className="w-16 h-16 rounded-full border-4 border-white overflow-hidden flex-shrink-0">
+                    <img
+                      src={instructor.avatar}
+                      alt={instructor.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="text-white">
+                    <h3 className="text-xl font-display font-semibold line-clamp-1">{instructor.name}</h3>
+                    <div className="flex items-center gap-2 text-primary-100">
+                      <Briefcase size={14} />
+                      <p className="text-sm line-clamp-1">{instructor.title}</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="pt-16 p-6 flex-grow flex flex-col">
-                  <div className="text-center mb-4">
-                    <h3 className="text-xl font-display font-semibold">{instructor.name}</h3>
-                    <p className="text-sm text-gray-600">{instructor.title}</p>
-                  </div>
+                <CardContent className="p-6 flex-grow flex flex-col">
+                  <p className="text-gray-600 text-sm mb-6">{instructor.bio}</p>
                   
-                  <p className="text-gray-600 text-sm mb-6 text-center">{instructor.bio}</p>
-                  
-                  <div className="flex justify-center space-x-4 mb-6">
-                    {instructor.social?.twitter && (
-                      <a href={instructor.social.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-600 transition-colors">
-                        <Twitter size={18} />
-                        <span className="sr-only">Twitter</span>
-                      </a>
-                    )}
-                    {instructor.social?.linkedin && (
-                      <a href={instructor.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-600 transition-colors">
-                        <Linkedin size={18} />
-                        <span className="sr-only">LinkedIn</span>
-                      </a>
-                    )}
-                    {instructor.social?.github && (
-                      <a href={instructor.social.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary-600 transition-colors">
-                        <Github size={18} />
-                        <span className="sr-only">GitHub</span>
-                      </a>
-                    )}
-                  </div>
-                  
-                  <div className="mt-auto">
-                    <div className="grid grid-cols-3 gap-2 text-center py-4 border-t border-b border-gray-100">
-                      <div>
-                        <div className="flex justify-center mb-1">
-                          <BookOpen size={16} className="text-primary-600" />
-                        </div>
+                  <div className="mt-auto space-y-5">
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="bg-gray-50 p-3 rounded-md text-center">
+                        <BookOpen size={18} className="text-primary-600 mx-auto mb-1" />
                         <p className="text-sm font-medium">{instructor.courses}</p>
                         <p className="text-xs text-gray-500">Courses</p>
                       </div>
-                      <div>
-                        <div className="flex justify-center mb-1">
-                          <Users size={16} className="text-primary-600" />
-                        </div>
+                      <div className="bg-gray-50 p-3 rounded-md text-center">
+                        <Users size={18} className="text-primary-600 mx-auto mb-1" />
                         <p className="text-sm font-medium">{(instructor.students / 1000).toFixed(1)}K</p>
                         <p className="text-xs text-gray-500">Students</p>
                       </div>
-                      <div>
-                        <div className="flex justify-center mb-1">
-                          <Star size={16} className="text-primary-600" />
-                        </div>
+                      <div className="bg-gray-50 p-3 rounded-md text-center">
+                        <Star size={18} className="text-primary-600 mx-auto mb-1" />
                         <p className="text-sm font-medium">{instructor.rating.toFixed(1)}</p>
                         <p className="text-xs text-gray-500">Rating</p>
                       </div>
                     </div>
                     
-                    <div className="mt-6">
-                      <Button variant="secondary" fullWidth>
+                    <div className="flex items-center justify-between">
+                      <div className="flex space-x-3">
+                        {instructor.social?.twitter && (
+                          <a href={instructor.social.twitter} target="_blank" rel="noopener noreferrer" 
+                             className="text-gray-400 hover:text-primary-600 transition-colors w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full">
+                            <Twitter size={16} />
+                            <span className="sr-only">Twitter</span>
+                          </a>
+                        )}
+                        {instructor.social?.linkedin && (
+                          <a href={instructor.social.linkedin} target="_blank" rel="noopener noreferrer" 
+                             className="text-gray-400 hover:text-primary-600 transition-colors w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full">
+                            <Linkedin size={16} />
+                            <span className="sr-only">LinkedIn</span>
+                          </a>
+                        )}
+                        {instructor.social?.github && (
+                          <a href={instructor.social.github} target="_blank" rel="noopener noreferrer" 
+                             className="text-gray-400 hover:text-primary-600 transition-colors w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full">
+                            <Github size={16} />
+                            <span className="sr-only">GitHub</span>
+                          </a>
+                        )}
+                      </div>
+                      
+                      <Button variant="outline" className="text-sm px-3 py-1 h-auto">
                         View Courses
                       </Button>
                     </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </div>
           ))}
         </div>
