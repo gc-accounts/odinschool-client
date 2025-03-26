@@ -8,10 +8,10 @@ export const coursesData = [
     duration: '10 hours',
     lessons: 45,
     rating: 4.8,
-    reviews: 230,
     students: 12450,
     image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=2000',
     category: 'Web Development',
+    company: 'Google',
     popular: true,
     price: 49.99,
     fullDescription: `
@@ -66,6 +66,7 @@ export const coursesData = [
     students: 8325,
     image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2000',
     category: 'Frontend',
+    company: 'Microsoft',
     popular: true,
     price: 69.99,
     fullDescription: `
@@ -107,6 +108,7 @@ export const coursesData = [
     students: 9840,
     image: 'https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2000',
     category: 'Data Science',
+    company: 'Amazon',
     price: 59.99,
     fullDescription: `
       <p>Dive into the world of data science with Python in this comprehensive course. You'll learn how to work with data using Python's powerful libraries and tools, gaining practical skills that are in high demand across industries.</p>
