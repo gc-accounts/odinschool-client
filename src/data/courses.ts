@@ -1,3 +1,4 @@
+
 export const coursesData = [
   {
     id: '1',
@@ -386,3 +387,8 @@ export const coursesData = [
 
 // Add an alias export to fix import errors
 export const courses = coursesData;
+
+// Add the getCourseById function that was missing
+export const getCourseById = (id: string) => {
+  return coursesData.find(course => course.id === id) || null;
+};
