@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen } from 'lucide-react';
@@ -52,6 +51,10 @@ const CourseCheckout = () => {
       </>
     );
   }
+  
+  const lessonCount = Array.isArray(course.lessons) 
+    ? course.lessons.length 
+    : (typeof course.lessons === 'number' ? course.lessons : 0);
   
   return (
     <>
@@ -216,11 +219,7 @@ const CourseCheckout = () => {
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <BookOpen className="h-4 w-4 mr-2" />
-                      {typeof course.lessons === 'number' 
-                        ? course.lessons 
-                        : Array.isArray(course.lessons) 
-                          ? course.lessons.length 
-                          : 0} lessons
+                      {lessonCount} lessons
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <User className="h-4 w-4 mr-2" />
