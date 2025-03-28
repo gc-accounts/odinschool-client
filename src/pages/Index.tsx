@@ -5,7 +5,6 @@ import FeaturedCourses from '@/components/FeaturedCourses';
 import InstructorProfile from '@/components/InstructorProfile';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
-import Media from '@/components/Media';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
@@ -26,7 +25,6 @@ const Index = () => {
         <FeaturedCourses />
         <InstructorProfile />
         <Testimonials />
-        <Media />
         <Pricing />
       </main>
       <Footer />
