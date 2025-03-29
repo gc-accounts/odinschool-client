@@ -5,9 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BriefcaseIcon, GraduationCapIcon, StarIcon, UsersIcon, BookOpenIcon, ClockIcon } from 'lucide-react';
+import { BookOpenIcon, UsersIcon } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { InstructorProps } from '@/components/InstructorProfile';
@@ -27,18 +26,7 @@ interface ExpertDetail extends InstructorProps {
     rating: number;
     students: number;
   }[];
-  achievements: string[];
-  socialLinks: {
-    platform: string;
-    url: string;
-  }[];
   about: string;
-  experience: {
-    role: string;
-    company: string;
-    duration: string;
-    description: string;
-  }[];
 }
 
 // Sample expert details data
@@ -100,47 +88,7 @@ const expertsData: ExpertDetail[] = [
         students: 6540
       }
     ],
-    achievements: [
-      'Google Developer Expert (GDE) for Web Technologies',
-      'Author of "Modern JavaScript Patterns" with 50,000+ copies sold',
-      'Speaker at 20+ international tech conferences',
-      'Open source contributor to React and Node.js'
-    ],
-    socialLinks: [
-      {
-        platform: 'LinkedIn',
-        url: 'https://linkedin.com/in/sarahjohnson'
-      },
-      {
-        platform: 'GitHub',
-        url: 'https://github.com/sarahjohnson'
-      },
-      {
-        platform: 'Twitter',
-        url: 'https://twitter.com/sarahjohnson'
-      }
-    ],
-    about: 'Sarah Johnson is a seasoned software engineer with over a decade of experience building scalable web applications. After graduating from Stanford University, she joined Google where she worked on critical projects for Google Cloud Platform. Later, she moved to Microsoft to lead frontend architecture for Office 365 before joining Amazon as a Principal Engineer. Throughout her career, Sarah has maintained a passion for education, regularly mentoring junior developers and creating online courses that have helped thousands of students worldwide. Her teaching philosophy emphasizes practical knowledge and real-world applications over theory, helping students build job-ready skills quickly.',
-    experience: [
-      {
-        role: 'Principal Engineer',
-        company: 'Amazon',
-        duration: '2018 - Present',
-        description: 'Leading architecture decisions for AWS developer tools and mentoring engineering teams across multiple departments.'
-      },
-      {
-        role: 'Senior Frontend Architect',
-        company: 'Microsoft',
-        duration: '2013 - 2018',
-        description: 'Redesigned architecture for Office 365 web applications, improving performance by 40% and implementing React-based component system.'
-      },
-      {
-        role: 'Software Engineer',
-        company: 'Google',
-        duration: '2010 - 2013',
-        description: 'Developed backend services for Google Cloud Platform using Node.js and built internal tools used by hundreds of engineers.'
-      }
-    ]
+    about: 'Sarah Johnson is a seasoned software engineer with over a decade of experience building scalable web applications. After graduating from Stanford University, she joined Google where she worked on critical projects for Google Cloud Platform. Later, she moved to Microsoft to lead frontend architecture for Office 365 before joining Amazon as a Principal Engineer.'
   },
   {
     id: '2',
@@ -190,56 +138,9 @@ const expertsData: ExpertDetail[] = [
         category: 'Frontend',
         rating: 4.7,
         students: 6210
-      },
-      {
-        id: '9',
-        title: 'Advanced Component Architecture',
-        category: 'Frontend',
-        rating: 4.8,
-        students: 5430
       }
     ],
-    achievements: [
-      'Facebook Open Source Contributor Award for React contributions',
-      'Created UI component libraries used by over 200 companies',
-      'Technical reviewer for 5 bestselling frontend development books',
-      'Mentor for React developer community with 15,000+ members'
-    ],
-    socialLinks: [
-      {
-        platform: 'LinkedIn',
-        url: 'https://linkedin.com/in/michaelchen'
-      },
-      {
-        platform: 'GitHub',
-        url: 'https://github.com/michaelchen'
-      },
-      {
-        platform: 'Twitter',
-        url: 'https://twitter.com/michaelchen'
-      }
-    ],
-    about: 'Michael Chen is a frontend architecture specialist who has shaped the way modern web interfaces are built. His career began at Facebook where he contributed to the React core team, helping develop and promote component-based architecture patterns that are now industry standards. At Airbnb, Michael led the development of their design system that unified the UI experience across web and mobile platforms. Currently at Dropbox, he oversees frontend infrastructure and leads initiatives to improve developer experience and application performance. Michael is passionate about sharing knowledge and has taught thousands of developers through his courses, workshops, and conference talks.',
-    experience: [
-      {
-        role: 'Frontend Architect',
-        company: 'Dropbox',
-        duration: '2017 - Present',
-        description: 'Oversee frontend infrastructure, develop componentization strategy, and implement performance optimizations that reduced bundle size by 35%.'
-      },
-      {
-        role: 'Senior Frontend Engineer',
-        company: 'Airbnb',
-        duration: '2014 - 2017',
-        description: 'Led development of Airbnb's design system and component library that unified UI across platform for millions of users.'
-      },
-      {
-        role: 'Software Engineer',
-        company: 'Facebook',
-        duration: '2012 - 2014',
-        description: 'Contributed to React core team and helped develop internal tools and frameworks used by Facebook engineering teams.'
-      }
-    ]
+    about: 'Michael Chen is a frontend architecture specialist who has shaped the way modern web interfaces are built. His career began at Facebook where he contributed to the React core team, helping develop and promote component-based architecture patterns that are now industry standards.'
   },
   {
     id: '3',
@@ -262,7 +163,7 @@ const expertsData: ExpertDetail[] = [
       }
     ],
     featured: true,
-    expertise: ['Python', 'TensorFlow', 'PyTorch', 'Natural Language Processing', 'Computer Vision'],
+    expertise: ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'Computer Vision'],
     education: [
       {
         degree: 'PhD in Computer Science',
@@ -273,11 +174,6 @@ const expertsData: ExpertDetail[] = [
         degree: 'Master of Science in AI',
         institution: 'Stanford University',
         year: '2010'
-      },
-      {
-        degree: 'Bachelor of Computer Engineering',
-        institution: 'MIT',
-        year: '2008'
       }
     ],
     courses: [
@@ -290,60 +186,13 @@ const expertsData: ExpertDetail[] = [
       },
       {
         id: '10',
-        title: 'Natural Language Processing Fundamentals',
-        category: 'Artificial Intelligence',
+        title: 'Natural Language Processing',
+        category: 'AI',
         rating: 4.8,
         students: 4520
-      },
-      {
-        id: '11',
-        title: 'Deep Learning for Computer Vision',
-        category: 'Artificial Intelligence',
-        rating: 4.9,
-        students: 5680
       }
     ],
-    achievements: [
-      'Research published in top AI conferences including NeurIPS and ICML',
-      'Developed recommendation algorithm used by Netflix that improved user engagement by 15%',
-      'IBM Distinguished Technical Leader award recipient',
-      'Led team that won international computer vision challenge for medical imaging'
-    ],
-    socialLinks: [
-      {
-        platform: 'LinkedIn',
-        url: 'https://linkedin.com/in/emilyrodriguez'
-      },
-      {
-        platform: 'GitHub',
-        url: 'https://github.com/emilyrodriguez'
-      },
-      {
-        platform: 'Twitter',
-        url: 'https://twitter.com/emilyrodriguez'
-      }
-    ],
-    about: 'Emily Rodriguez is a leading researcher and practitioner in the field of artificial intelligence and data science. With a PhD from UC Berkeley focusing on machine learning applications, she has pioneered techniques that have become fundamental to modern AI systems. Emily began her industry career at IBM Research, where she worked on natural language processing systems that power IBM Watson. At Netflix, she led the data science team responsible for content recommendation algorithms used by millions worldwide. Currently at Intel, she drives research in computer vision systems for autonomous vehicles and smart infrastructure. Emily is passionate about making AI accessible through education and has created courses that break down complex concepts for learners at all levels.',
-    experience: [
-      {
-        role: 'Principal AI Research Scientist',
-        company: 'Intel',
-        duration: '2018 - Present',
-        description: 'Lead research team focused on computer vision systems for autonomous vehicles and edge computing applications.'
-      },
-      {
-        role: 'Senior Data Scientist',
-        company: 'Netflix',
-        duration: '2015 - 2018',
-        description: 'Developed and optimized recommendation algorithms that improved content discovery and user engagement metrics across the platform.'
-      },
-      {
-        role: 'Research Scientist',
-        company: 'IBM',
-        duration: '2013 - 2015',
-        description: 'Worked on natural language processing systems for IBM Watson, focusing on question-answering capabilities and sentiment analysis.'
-      }
-    ]
+    about: 'Emily Rodriguez is a leading researcher and practitioner in the field of artificial intelligence and data science. With a PhD from UC Berkeley focusing on machine learning applications, she has pioneered techniques that have become fundamental to modern AI systems.'
   }
 ];
 
@@ -410,20 +259,6 @@ const ExpertDetail = () => {
                 </div>
                 
                 <p className="text-lg max-w-3xl">{expert.bio}</p>
-                
-                <div className="flex items-center space-x-4 justify-center md:justify-start">
-                  {expert.socialLinks.map((social, index) => (
-                    <a 
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary-200 transition-colors"
-                    >
-                      {social.platform}
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
@@ -433,12 +268,10 @@ const ExpertDetail = () => {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <Tabs defaultValue="about" className="w-full">
-              <TabsList className="grid w-full md:w-auto grid-cols-3 md:grid-cols-5 mb-8">
+              <TabsList className="grid w-full md:w-auto grid-cols-3 mb-8">
                 <TabsTrigger value="about">About</TabsTrigger>
-                <TabsTrigger value="experience">Experience</TabsTrigger>
                 <TabsTrigger value="education">Education</TabsTrigger>
                 <TabsTrigger value="courses">Courses</TabsTrigger>
-                <TabsTrigger value="achievements">Achievements</TabsTrigger>
               </TabsList>
               
               <TabsContent value="about" className="space-y-6">
@@ -451,7 +284,7 @@ const ExpertDetail = () => {
                   </CardContent>
                 </Card>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center gap-2 mb-4">
@@ -477,63 +310,6 @@ const ExpertDetail = () => {
                       <p className="text-sm text-gray-500">Specialized training programs</p>
                     </CardContent>
                   </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <ClockIcon className="h-5 w-5 text-primary-600" />
-                        <h3 className="text-lg font-semibold">Years of Experience</h3>
-                      </div>
-                      <p className="text-3xl font-bold text-primary-600">
-                        {new Date().getFullYear() - parseInt(expert.education[expert.education.length - 1].year)}+
-                      </p>
-                      <p className="text-sm text-gray-500">In the tech industry</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="experience">
-                <Card>
-                  <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-6">Professional Experience</h2>
-                    <div className="space-y-8">
-                      {expert.experience.map((exp, index) => (
-                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-primary-100 last:border-0 last:pb-0">
-                          <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center">
-                            <BriefcaseIcon className="h-3 w-3 text-white" />
-                          </div>
-                          <div className="mb-2">
-                            <h3 className="text-xl font-bold">{exp.role}</h3>
-                            <div className="flex items-center gap-2 text-gray-600">
-                              <span className="font-medium">{exp.company}</span>
-                              <span>•</span>
-                              <span>{exp.duration}</span>
-                            </div>
-                          </div>
-                          <p className="text-gray-700">{exp.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-                
-                <div className="mt-8">
-                  <h3 className="text-lg font-semibold mb-4">Companies Worked With</h3>
-                  <div className="flex flex-wrap gap-4">
-                    {expert.companies.map((company, index) => (
-                      <div key={index} className="bg-white rounded-lg shadow p-4 flex items-center gap-3">
-                        <div className="h-12 w-12 rounded overflow-hidden">
-                          <img 
-                            src={company.logo} 
-                            alt={company.name} 
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                        <span className="font-medium">{company.name}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </TabsContent>
               
@@ -541,19 +317,13 @@ const ExpertDetail = () => {
                 <Card>
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-6">Education</h2>
-                    <div className="space-y-8">
+                    <div className="space-y-6">
                       {expert.education.map((edu, index) => (
-                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-primary-100 last:border-0 last:pb-0">
-                          <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center">
-                            <GraduationCapIcon className="h-3 w-3 text-white" />
-                          </div>
-                          <div className="mb-2">
-                            <h3 className="text-xl font-bold">{edu.degree}</h3>
-                            <div className="flex items-center gap-2 text-gray-600">
-                              <span className="font-medium">{edu.institution}</span>
-                              <span>•</span>
-                              <span>Graduated {edu.year}</span>
-                            </div>
+                        <div key={index} className="p-4 border-l-4 border-primary-600 bg-white shadow rounded">
+                          <h3 className="text-xl font-bold">{edu.degree}</h3>
+                          <div className="text-gray-600">
+                            <span className="font-medium">{edu.institution}</span>
+                            <span> • Graduated {edu.year}</span>
                           </div>
                         </div>
                       ))}
@@ -577,7 +347,7 @@ const ExpertDetail = () => {
                           
                           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
                             <div className="flex items-center">
-                              <StarIcon className="h-4 w-4 text-yellow-500 mr-1" />
+                              <span>★</span>
                               <span>{course.rating}</span>
                             </div>
                             <span>•</span>
@@ -591,24 +361,6 @@ const ExpertDetail = () => {
                   ))}
                 </div>
               </TabsContent>
-              
-              <TabsContent value="achievements">
-                <Card>
-                  <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-6">Key Achievements</h2>
-                    <div className="space-y-4">
-                      {expert.achievements.map((achievement, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <div className="mt-1 min-w-6">
-                            <div className="h-5 w-5 text-yellow-500">🏆</div>
-                          </div>
-                          <p className="text-gray-700">{achievement}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
             </Tabs>
           </div>
         </section>
@@ -618,18 +370,11 @@ const ExpertDetail = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">Start Learning with {expert.name}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Enhance your skills and advance your career with expert-led courses designed to provide practical, real-world knowledge.
+              Enhance your skills and advance your career with expert-led courses.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to={`/courses`}>
-                <Button size="lg">Browse All Courses</Button>
-              </Link>
-              <Link to={`/courses/${expert.courses[0]?.id || ''}`}>
-                <Button variant="outline" size="lg">
-                  View Featured Course
-                </Button>
-              </Link>
-            </div>
+            <Link to={`/courses`}>
+              <Button size="lg">Browse All Courses</Button>
+            </Link>
           </div>
         </section>
       </main>
