@@ -33,7 +33,8 @@ import CourseCheckout from "./pages/CourseCheckout";
 import CourseCheckoutCertificate from "./pages/CourseCheckoutCertificate";
 import LearningHub from "./pages/LearningHub";
 import FreeCourseDetail from "./pages/FreeCourseDetail";
-import CoursesInCities from "./pages/CoursesInCities"; // Add the new import
+import CoursesInCities from "./pages/CoursesInCities";
+import ExpertDetail from "./pages/ExpertDetail";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,9 @@ function App() {
             <Route path="/course-checkout/:id" element={<CourseCheckout />} />
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
+            
+            {/* Expert Detail Route */}
+            <Route path="/expert/:id" element={<ExpertDetail />} />
             
             {/* Learning Hub Routes */}
             <Route path="/learning-hub" element={<LearningHub />} />

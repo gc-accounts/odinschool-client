@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { BriefcaseIcon, GraduationCapIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export interface InstructorProps {
   id: string;
@@ -140,57 +141,59 @@ const InstructorProfile = () => {
               ref={(el) => addToCardRefs(el, index)}
               className="opacity-0"
             >
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col border-none bg-white rounded-xl shadow-md">
-                <div className="p-6 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
-                  <div className="flex items-center gap-4 mb-2">
-                    <Avatar className="h-16 w-16 border-2 border-white shadow-sm">
-                      <AvatarImage src={instructor.avatar} alt={instructor.name} />
-                      <AvatarFallback>{instructor.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="text-xl font-display font-semibold">{instructor.name}</h3>
-                      <div className="flex items-center mt-1 text-primary-100">
-                        <GraduationCapIcon className="h-4 w-4 mr-1" />
-                        <p className="text-sm">{instructor.title}</p>
+              <Link to={`/expert/${instructor.id}`} className="block h-full">
+                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col border-none bg-white rounded-xl shadow-md">
+                  <div className="p-6 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
+                    <div className="flex items-center gap-4 mb-2">
+                      <Avatar className="h-16 w-16 border-2 border-white shadow-sm">
+                        <AvatarImage src={instructor.avatar} alt={instructor.name} />
+                        <AvatarFallback>{instructor.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h3 className="text-xl font-display font-semibold">{instructor.name}</h3>
+                        <div className="flex items-center mt-1 text-primary-100">
+                          <GraduationCapIcon className="h-4 w-4 mr-1" />
+                          <p className="text-sm">{instructor.title}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <CardContent className="p-6 flex-grow flex flex-col">
-                  <p className="text-gray-600 mb-6 text-sm">{instructor.bio}</p>
                   
-                  <div className="mt-auto">
-                    <div className="flex items-center text-sm text-gray-700 mb-3">
-                      <BriefcaseIcon className="h-4 w-4 mr-2 text-primary-500" />
-                      <span className="font-medium">Work Experience</span>
-                    </div>
+                  <CardContent className="p-6 flex-grow flex flex-col">
+                    <p className="text-gray-600 mb-6 text-sm">{instructor.bio}</p>
                     
-                    <div className="flex items-center gap-3 mb-6">
-                      {instructor.companies.map((company, idx) => (
-                        <div 
-                          key={idx} 
-                          className="h-10 w-10 rounded-md overflow-hidden shadow-sm border border-gray-100 bg-white"
-                          title={company.name}
-                        >
-                          <img 
-                            src={company.logo} 
-                            alt={company.name}
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                      ))}
+                    <div className="mt-auto">
+                      <div className="flex items-center text-sm text-gray-700 mb-3">
+                        <BriefcaseIcon className="h-4 w-4 mr-2 text-primary-500" />
+                        <span className="font-medium">Work Experience</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3 mb-6">
+                        {instructor.companies.map((company, idx) => (
+                          <div 
+                            key={idx} 
+                            className="h-10 w-10 rounded-md overflow-hidden shadow-sm border border-gray-100 bg-white"
+                            title={company.name}
+                          >
+                            <img 
+                              src={company.logo} 
+                              alt={company.name}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <Button 
+                        className="w-full bg-primary-50 text-primary-700 hover:bg-primary-100 transition-colors"
+                        variant="outline"
+                      >
+                        View Profile
+                      </Button>
                     </div>
-                    
-                    <Button 
-                      className="w-full bg-primary-50 text-primary-700 hover:bg-primary-100 transition-colors"
-                      variant="outline"
-                    >
-                      View Courses
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           ))}
         </div>
