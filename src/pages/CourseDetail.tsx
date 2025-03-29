@@ -1,474 +1,317 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { 
-  ArrowLeft, Clock, BarChart, Award, CheckCircle2, 
-  Download, FileText, Users, Zap, Gift, BookOpen, 
-  Briefcase, Star, PlayCircle, MessageSquare
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { getCourseById } from '@/data/courses';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { getCourseById } from '@/data/courses';
+import JobOpportunities from '@/components/JobOpportunities';
 
 const CourseDetail = () => {
-  const [course, setCourse] = useState(null);
-  const { id } = useParams();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = "CodeMaster - Course Detail";
-
-    const fetchCourse = async () => {
-      const courseData = getCourseById(id);
-      setCourse(courseData);
-    };
-
-    fetchCourse();
-  }, [id]);
+  const { id } = useParams<{ id: string }>();
+  const course = getCourseById(id || '');
 
   if (!course) {
     return (
-      <>
+      <div>
         <Navbar />
-        <main className="min-h-screen flex items-center justify-center">
-          <div>Loading course details...</div>
-        </main>
+        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl font-bold">Course not found</h1>
+        </div>
         <Footer />
-      </>
+      </div>
     );
   }
 
-  const courseHighlights = [
-    { icon: <PlayCircle className="h-5 w-5 text-primary-600" />, text: "Live Online Classes" },
-    { icon: <MessageSquare className="h-5 w-5 text-primary-600" />, text: "Live Doubt Clearing Sessions" },
-    { icon: <FileText className="h-5 w-5 text-primary-600" />, text: "10+ Projects" },
-    { icon: <CheckCircle2 className="h-5 w-5 text-primary-600" />, text: "230+ Assignments" },
-    { icon: <Users className="h-5 w-5 text-primary-600" />, text: "Community Access" },
-    { icon: <Award className="h-5 w-5 text-primary-600" />, text: "Industry Recognized Certificate" },
-  ];
-
-  const courseProjects = [
-    {
-      title: "E-commerce Dashboard",
-      description: "Build a fully functional admin dashboard for an e-commerce platform.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Social Media App",
-      description: "Create a responsive social networking application with real-time features.",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A simple weather application consuming API data with beautiful visualizations.",
-      image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?crop=entropy&w=800",
-      free: true
-    }
-  ];
-
-  const jobListings = [
-    {
-      title: "Frontend Developer",
-      company: "TechCorp Inc.",
-      location: "Remote",
-      salary: "$80,000 - $100,000",
-      skills: ["JavaScript", "React", "CSS"]
-    },
-    {
-      title: "Full Stack Engineer",
-      company: "InnovateSoft",
-      location: "New York, NY",
-      salary: "$95,000 - $120,000",
-      skills: ["JavaScript", "Node.js", "MongoDB"]
-    },
-    {
-      title: "JavaScript Developer",
-      company: "WebSolutions",
-      location: "San Francisco, CA",
-      salary: "$90,000 - $110,000",
-      skills: ["JavaScript", "Vue.js", "REST APIs"]
-    }
-  ];
-
   return (
-    <>
+    <div>
       <Navbar />
-      <main className="min-h-screen pb-16">
-        <div className="bg-primary-100 py-20">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center mb-4">
-              <Link to="/courses" className="text-primary-600 hover:underline flex items-center">
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                Back to Courses
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h1 className="heading-xl mb-4">{course.title}</h1>
-                <p className="text-gray-700 body-lg mb-6">{course.description}</p>
-                <div className="flex items-center space-x-4">
-                  <Badge variant="secondary">{course.level}</Badge>
-                  {course.sale && <Badge className="bg-green-600">Sale</Badge>}
-                  {course.certificate && <Badge className="bg-blue-600">Certificate</Badge>}
+      <div className="bg-gradient-to-r from-primary-50 to-primary-100">
+        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">{course.title}</h1>
+              <p className="mt-4 text-lg text-gray-600">{course.description}</p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <div>
+                  <span className="text-sm text-gray-500">Instructor</span>
+                  <p className="font-medium">{course.instructor}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Level</span>
+                  <p className="font-medium">{course.level}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Duration</span>
+                  <p className="font-medium">{course.duration}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Lessons</span>
+                  <p className="font-medium">{course.lessons} lessons</p>
                 </div>
               </div>
-              <img src={course.image} alt={course.title} className="rounded-lg shadow-md" />
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button size="lg">Enroll Now</Button>
+                <Button variant="outline" size="lg">Watch Preview</Button>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-xl">
+              <img 
+                src={course.image} 
+                alt={course.title} 
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
-
-        {/* Course Highlights Section */}
-        <div className="bg-gray-50 py-12">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-center mb-10">Course Highlights</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {courseHighlights.map((highlight, index) => (
-                <div key={index} className="bg-white rounded-lg p-6 shadow-sm flex items-start">
-                  <div className="mr-4">{highlight.icon}</div>
-                  <span className="font-medium">{highlight.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <Tabs defaultValue="overview" className="w-full">
-                <TabsList className="w-full justify-start mb-6 bg-gray-100">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                  <TabsTrigger value="projects">Projects</TabsTrigger>
-                  <TabsTrigger value="instructor">Instructor</TabsTrigger>
-                  <TabsTrigger value="certificate">Certificate</TabsTrigger>
-                  <TabsTrigger value="jobs">Jobs</TabsTrigger>
-                  <TabsTrigger value="reviews">Reviews</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="overview" className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-bold mb-3">About This Course</h3>
-                    <p className="text-gray-700">
-                      {course?.description}
-                    </p>
-                  </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <Tabs defaultValue="overview">
+          <TabsList className="mb-8">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
+            <TabsTrigger value="instructor">Instructor</TabsTrigger>
+            <TabsTrigger value="reviews">Reviews</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="overview">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">About This Course</h2>
+                <div className="prose max-w-none">
+                  <p>{course.fullDescription || course.description}</p>
                   
-                  <div>
-                    <h3 className="text-xl font-bold mb-3">What You'll Learn</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {course?.learningObjectives?.map((objective, index) => (
-                        <div key={index} className="flex items-start gap-2">
-                          <CheckCircle2 className="text-primary-600 mt-1 flex-shrink-0" size={18} />
-                          <p className="text-gray-700">{objective}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-bold mb-3">Prerequisites</h3>
-                    <ul className="list-disc pl-5 text-gray-700">
-                      {course?.prerequisites?.map((prerequisite, index) => (
-                        <li key={index}>{prerequisite}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="curriculum">
-                  <h3 className="text-xl font-bold mb-4">Course Curriculum</h3>
-                  <ul className="space-y-4">
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <li key={i} className="bg-white rounded-lg shadow-md p-4">
-                        <h4 className="font-semibold">Lesson {i + 1}: Introduction to ...</h4>
-                        <p className="text-gray-600">Brief description of the lesson content.</p>
-                        <div className="flex justify-between items-center mt-2">
-                          <div className="flex items-center text-gray-500">
-                            <Clock className="h-4 w-4 mr-1" />
-                            <span>15 minutes</span>
-                          </div>
-                          <Button variant="outline">Start Lesson</Button>
-                        </div>
+                  <h3 className="text-xl font-semibold mt-8 mb-4">What You'll Learn</h3>
+                  <ul className="space-y-2">
+                    {course.learningObjectives?.map((objective, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{objective}</span>
                       </li>
-                    ))}
+                    )) || (
+                      <li className="flex items-start">
+                        <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>Master {course.title} concepts and techniques</span>
+                      </li>
+                    )}
                   </ul>
-                </TabsContent>
-
-                <TabsContent value="projects">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold mb-4">Course Projects</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {courseProjects.map((project, index) => (
-                        <Card key={index} className="overflow-hidden">
-                          <div className="h-48 overflow-hidden">
-                            <img 
-                              src={project.image} 
-                              alt={project.title} 
-                              className="w-full h-full object-cover transition-transform hover:scale-105"
-                            />
-                          </div>
-                          <CardHeader className="pb-2">
-                            <div className="flex justify-between items-center">
-                              <CardTitle className="text-lg">{project.title}</CardTitle>
-                              {project.free && (
-                                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                                  <Gift className="h-3 w-3 mr-1" />
-                                  Free
-                                </Badge>
-                              )}
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-sm text-gray-600">{project.description}</p>
-                          </CardContent>
-                          <CardFooter>
-                            <Button 
-                              variant={project.free ? "default" : "outline"} 
-                              className="w-full"
-                              size="sm"
-                            >
-                              <Download className="h-4 w-4 mr-2" />
-                              {project.free ? 'Download Now' : 'Access with Course'}
-                            </Button>
-                          </CardFooter>
-                        </Card>
+                  
+                  <h3 className="text-xl font-semibold mt-8 mb-4">Prerequisites</h3>
+                  <ul className="space-y-2">
+                    {course.prerequisites?.map((prerequisite, index) => (
+                      <li key={index} className="flex items-start">
+                        <svg className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{prerequisite}</span>
+                      </li>
+                    )) || (
+                      <li className="flex items-start">
+                        <svg className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Basic understanding of the subject</span>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Course Details</h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-500">Price</h4>
+                    <div className="flex items-baseline mt-1">
+                      {course.sale ? (
+                        <>
+                          <span className="text-2xl font-bold text-gray-900">${course.salePrice}</span>
+                          <span className="ml-2 text-lg text-gray-500 line-through">${course.price}</span>
+                        </>
+                      ) : (
+                        <span className="text-2xl font-bold text-gray-900">${course.price}</span>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-500">Category</h4>
+                    <p className="mt-1">{course.category}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-500">Skills You'll Gain</h4>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {course.skills?.map((skill, index) => (
+                        <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          {skill}
+                        </span>
+                      )) || course.tags?.map((tag, index) => (
+                        <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          {tag}
+                        </span>
                       ))}
                     </div>
-
-                    <div className="mt-10">
-                      <h3 className="text-xl font-bold mb-4">Free Resources</h3>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Starter Project Templates</CardTitle>
-                          <CardDescription>
-                            Download these free project templates to jump-start your learning
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="flex p-3 border rounded-lg">
-                            <FileText className="h-10 w-10 text-primary-600 mr-3" />
-                            <div>
-                              <h4 className="font-medium">HTML/CSS Template</h4>
-                              <Button variant="link" className="h-auto p-0 text-primary-600">
-                                <Download className="h-4 w-4 mr-1" />
-                                Download
-                              </Button>
-                            </div>
-                          </div>
-                          <div className="flex p-3 border rounded-lg">
-                            <FileText className="h-10 w-10 text-primary-600 mr-3" />
-                            <div>
-                              <h4 className="font-medium">JavaScript Starter</h4>
-                              <Button variant="link" className="h-auto p-0 text-primary-600">
-                                <Download className="h-4 w-4 mr-1" />
-                                Download
-                              </Button>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-500">Certificate</h4>
+                    <p className="mt-1">{course.certificate ? 'Yes, upon completion' : 'Not included'}</p>
+                  </div>
+                  
+                  <div className="pt-4">
+                    <Button className="w-full">Enroll Now</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="curriculum">
+            <h2 className="text-2xl font-bold mb-6">Course Curriculum</h2>
+            <div className="space-y-4">
+              {course.curriculum?.map((section, index) => (
+                <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="bg-gray-50 px-4 py-3 flex justify-between items-center">
+                    <h3 className="font-medium">{section.title}</h3>
+                    <div className="text-sm text-gray-500">
+                      {section.lessons} lessons • {section.duration}
                     </div>
                   </div>
-                </TabsContent>
-
-                <TabsContent value="instructor">
-                  <div className="flex items-center gap-6">
-                    <Avatar className="h-24 w-24">
-                      <AvatarImage src="https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&w=800" alt={course.instructor} />
-                      <AvatarFallback>{course.instructor.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="text-xl font-bold">{course.instructor}</h3>
-                      <p className="text-gray-600">Senior Developer at {course.company}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mt-6">
-                    {course.instructor} is a senior developer with over 10 years of experience. She has worked at {course.company} for the past 5 years and is passionate about teaching others how to code.
-                  </p>
-                </TabsContent>
-
-                <TabsContent value="certificate">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold mb-4">Course Certificate</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div>
-                        <div className="relative aspect-[16/12] mb-4">
-                          <img
-                            src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?crop=entropy&w=800"
-                            alt="Certificate Sample"
-                            className="rounded-lg border-4 border-gray-200 shadow-lg w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent rounded-lg"></div>
-                        </div>
-                        <Button className="w-full">Preview Certificate</Button>
-                      </div>
-                      <div className="space-y-4">
-                        <h4 className="font-bold text-lg">Industry-Recognized Certification</h4>
-                        <p className="text-gray-700">
-                          Upon successful completion of the course, you'll receive a verified certificate that you can share with potential employers and on your LinkedIn profile.
-                        </p>
-                        <div className="space-y-2">
-                          <div className="flex items-start gap-2">
-                            <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                            <p>Accredited by leading industry partners</p>
-                          </div>
-                          <div className="flex items-start gap-2">
-                            <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                            <p>Verifiable through unique certificate ID</p>
-                          </div>
-                          <div className="flex items-start gap-2">
-                            <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                            <p>Showcase your skills to potential employers</p>
-                          </div>
-                          <div className="flex items-start gap-2">
-                            <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                            <p>Lifetime access to your certificate</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="jobs">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold mb-4">Job Opportunities</h3>
-                    <p className="text-gray-700 mb-6">
-                      After completing this course, you'll be qualified for the following job positions:
+                  <div className="p-4">
+                    <p className="text-gray-600">
+                      This section covers key concepts and practical applications related to {section.title.toLowerCase()}.
                     </p>
-                    <div className="space-y-4">
-                      {jobListings.map((job, index) => (
-                        <Card key={index} className="hover:shadow-md transition-shadow">
-                          <CardHeader className="pb-2">
-                            <div className="flex justify-between">
-                              <div>
-                                <CardTitle className="text-lg">{job.title}</CardTitle>
-                                <CardDescription className="mt-1">{job.company} · {job.location}</CardDescription>
-                              </div>
-                              <Button variant="outline" size="sm" className="h-8">
-                                <Briefcase className="h-4 w-4 mr-2" />
-                                Apply
-                              </Button>
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="flex justify-between items-center">
-                              <div className="flex items-center text-gray-600">
-                                <Star className="h-4 w-4 mr-1 text-amber-500" />
-                                <span className="mr-4">Salary: {job.salary}</span>
-                              </div>
-                              <div>
-                                <div className="flex flex-wrap gap-2">
-                                  {job.skills.map((skill, skillIndex) => (
-                                    <Badge key={skillIndex} variant="outline" className="font-normal">
-                                      {skill}
-                                    </Badge>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                    <div className="flex justify-center mt-6">
-                      <Button variant="default">
-                        <Briefcase className="h-4 w-4 mr-2" />
-                        View More Job Opportunities
-                      </Button>
-                    </div>
                   </div>
-                </TabsContent>
-
-                <TabsContent value="reviews">
-                  <h3 className="text-xl font-bold mb-4">Student Reviews</h3>
-                  {Array.from({ length: 3 }, (_, i) => (
-                    <div key={i} className="bg-white rounded-lg shadow-md p-4 mb-4">
+                </div>
+              )) || (
+                <div className="text-gray-600">
+                  <p>This course includes {course.lessons} comprehensive lessons covering all aspects of {course.title}.</p>
+                  <p className="mt-4">Total course duration: {course.duration}</p>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="instructor">
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="md:w-1/4">
+                <div className="bg-gray-100 rounded-full w-32 h-32 flex items-center justify-center">
+                  <span className="text-4xl font-bold text-gray-400">{course.instructor.charAt(0)}</span>
+                </div>
+              </div>
+              <div className="md:w-3/4">
+                <h2 className="text-2xl font-bold mb-4">{course.instructor}</h2>
+                <p className="text-gray-600 mb-4">
+                  Expert instructor with years of experience in {course.category}
+                </p>
+                <p className="text-gray-600">
+                  {course.instructor} is a passionate educator and industry professional who specializes in {course.category}. 
+                  With extensive experience and a talent for making complex concepts accessible, 
+                  they have helped thousands of students master {course.title.toLowerCase()}.
+                </p>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="reviews">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="mr-4">
+                  <div className="text-5xl font-bold">{course.rating.toFixed(1)}</div>
+                  <div className="flex mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg 
+                        key={i} 
+                        className={`w-5 h-5 ${i < Math.floor(course.rating) ? 'text-yellow-400' : 'text-gray-300'}`} 
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <div className="text-sm text-gray-500 mt-1">{course.students.toLocaleString()} students</div>
+                </div>
+                <div className="flex-1">
+                  <div className="space-y-2">
+                    {[5, 4, 3, 2, 1].map(star => (
+                      <div key={star} className="flex items-center">
+                        <div className="w-16 text-sm text-gray-600">{star} stars</div>
+                        <div className="w-full h-2 bg-gray-200 rounded-full mx-2">
+                          <div 
+                            className="h-2 bg-yellow-400 rounded-full" 
+                            style={{ 
+                              width: `${star === Math.round(course.rating) ? '70%' : 
+                                      star === Math.round(course.rating) + 1 || star === Math.round(course.rating) - 1 ? '20%' : '5%'}` 
+                            }}
+                          ></div>
+                        </div>
+                        <div className="w-10 text-sm text-gray-600">
+                          {star === Math.round(course.rating) ? '70%' : 
+                           star === Math.round(course.rating) + 1 || star === Math.round(course.rating) - 1 ? '20%' : '5%'}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="border-t pt-6">
+                <h3 className="text-xl font-bold mb-4">Student Feedback</h3>
+                <div className="space-y-6">
+                  {[1, 2, 3].map(index => (
+                    <div key={index} className="border-b pb-6">
                       <div className="flex items-center mb-2">
-                        <Avatar className="h-8 w-8 mr-2">
-                          <AvatarImage src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&w=800" alt="Student" />
-                          <AvatarFallback>S</AvatarFallback>
-                        </Avatar>
-                        <div className="text-sm">
-                          <p className="font-semibold">Student Name</p>
-                          <div className="flex items-center text-amber-400">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <Star key={i} className="h-4 w-4 fill-current" />
+                        <div className="bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                          <span className="font-medium text-gray-600">
+                            {['J', 'S', 'M'][index - 1]}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-medium">
+                            {['John D.', 'Sarah M.', 'Michael K.'][index - 1]}
+                          </div>
+                          <div className="flex text-yellow-400">
+                            {[...Array(5)].map((_, i) => (
+                              <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
                             ))}
                           </div>
                         </div>
                       </div>
-                      <p className="text-gray-700">
-                        This course was amazing! I learned so much and would highly recommend it to anyone looking to learn more about web development.
+                      <p className="text-gray-600">
+                        {[
+                          `This course exceeded my expectations. The instructor explains complex topics in a way that's easy to understand, and the practical exercises really helped solidify my knowledge.`,
+                          `Great content and well-structured curriculum. I've already started applying what I learned in my current job. Highly recommended!`,
+                          `Comprehensive coverage of the subject matter. The instructor is clearly knowledgeable and passionate about teaching. Worth every penny.`
+                        ][index - 1]}
                       </p>
                     </div>
                   ))}
-                </TabsContent>
-              </Tabs>
-            </div>
-            
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-4">Course Statistics</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Clock className="h-5 w-5 mr-2 text-gray-500" />
-                      <span>Duration</span>
-                    </div>
-                    <span>{course.duration}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <BarChart className="h-5 w-5 mr-2 text-gray-500" />
-                      <span>Lessons</span>
-                    </div>
-                    <span>{course.lessons}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Award className="h-5 w-5 mr-2 text-gray-500" />
-                      <span>Rating</span>
-                    </div>
-                    <span>{course.rating}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Users className="h-5 w-5 mr-2 text-gray-500" />
-                      <span>Students</span>
-                    </div>
-                    <span>{course.students}</span>
-                  </div>
                 </div>
-                <Progress value={75} className="mt-4" />
-                <p className="text-sm text-gray-500 mt-2">75% completed</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-md p-6 mt-8">
-                <h3 className="text-xl font-bold mb-4">Enroll Now</h3>
-                <div className="mb-4">
-                  <span className="text-2xl font-bold">${course.price}</span>
-                  {course.sale && <span className="text-gray-500 line-through ml-2">${course.salePrice}</span>}
-                </div>
-                <Button className="w-full">Enroll Now</Button>
-                <Button variant="link" className="w-full mt-2">Add to Wishlist</Button>
               </div>
             </div>
-          </div>
-        </div>
-      </main>
+          </TabsContent>
+        </Tabs>
+      </div>
+      
+      {/* Add the JobOpportunities component */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <JobOpportunities 
+          courseCategory={course.category} 
+          courseTitle={course.title}
+        />
+      </div>
+      
       <Footer />
-    </>
+    </div>
   );
 };
 

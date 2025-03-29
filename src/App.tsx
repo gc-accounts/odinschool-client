@@ -33,6 +33,7 @@ import CourseCheckout from "./pages/CourseCheckout";
 import CourseCheckoutCertificate from "./pages/CourseCheckoutCertificate";
 import LearningHub from "./pages/LearningHub";
 import FreeCourseDetail from "./pages/FreeCourseDetail";
+import CoursesInCities from "./pages/CoursesInCities"; // Add the new import
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,9 @@ function App() {
             {/* Learning Hub Routes */}
             <Route path="/learning-hub" element={<LearningHub />} />
             <Route path="/learning-hub/:courseId" element={<FreeCourseDetail />} />
+            
+            {/* Courses in Cities Route */}
+            <Route path="/courses-in-cities" element={<CoursesInCities />} />
             
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
