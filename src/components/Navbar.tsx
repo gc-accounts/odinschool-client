@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Calculator, FileText, Book, Download } from 'lucide-react';
+import { Menu, X, Calculator, FileText, Book, Download, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -26,6 +26,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
+    { name: 'Learning Hub', path: '/learning-hub', icon: <BookOpen className="h-4 w-4 mr-1" /> },
     { name: 'Webinars', path: '/webinars' },
     { name: 'Blog', path: '/blog', icon: <Book className="h-4 w-4 mr-1" /> },
     { name: 'Free Resources', path: '/free-resources', icon: <Download className="h-4 w-4 mr-1" /> },
