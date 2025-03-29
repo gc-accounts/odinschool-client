@@ -600,7 +600,7 @@ const ExpertDetail = () => {
                       {expert.achievements.map((achievement, index) => (
                         <div key={index} className="flex items-start gap-3">
                           <div className="mt-1 min-w-6">
-                            <Trophy className="h-5 w-5 text-yellow-500" />
+                            <div className="h-5 w-5 text-yellow-500">🏆</div>
                           </div>
                           <p className="text-gray-700">{achievement}</p>
                         </div>
