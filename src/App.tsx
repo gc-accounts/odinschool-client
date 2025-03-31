@@ -35,6 +35,7 @@ import LearningHub from "./pages/LearningHub";
 import FreeCourseDetail from "./pages/FreeCourseDetail";
 import CoursesInCities from "./pages/CoursesInCities";
 import ExpertDetail from "./pages/ExpertDetail";
+import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
 
@@ -81,7 +82,8 @@ function App() {
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/free-resources" element={<FreeResources />} />
             
-            {/* New Pages */}
+            {/* Career and Company Pages */}
+            <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/terms" element={<TermsOfUse />} />
