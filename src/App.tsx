@@ -36,6 +36,7 @@ import FreeCourseDetail from "./pages/FreeCourseDetail";
 import CoursesInCities from "./pages/CoursesInCities";
 import ExpertDetail from "./pages/ExpertDetail";
 import Careers from "./pages/Careers";
+import VirtualInterview from "./pages/VirtualInterview";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ function App() {
             {/* Tools Routes */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
+            <Route path="/virtual-interview" element={<VirtualInterview />} />
             
             {/* Blog and Resources */}
             <Route path="/blog" element={<Blog />} />
