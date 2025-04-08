@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { Check, X, Trophy, ThumbsUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -14,9 +13,7 @@ import {
 interface ComparisonFeature {
   name: string;
   codemaster: boolean;
-  competitor1: boolean;
-  competitor2: boolean;
-  competitor3: boolean;
+  others: boolean;
   highlight?: boolean;
 }
 
@@ -27,61 +24,45 @@ const PlatformComparison = () => {
     { 
       name: 'Expert-led live instruction', 
       codemaster: true, 
-      competitor1: false, 
-      competitor2: true, 
-      competitor3: false,
+      others: false,
       highlight: true
     },
     { 
       name: 'Personalized learning paths', 
       codemaster: true, 
-      competitor1: true, 
-      competitor2: false, 
-      competitor3: false 
+      others: false
     },
     { 
       name: 'Industry-recognized certificates', 
       codemaster: true, 
-      competitor1: true, 
-      competitor2: true, 
-      competitor3: true 
+      others: true
     },
     { 
       name: '24/7 mentor support', 
       codemaster: true, 
-      competitor1: false, 
-      competitor2: false, 
-      competitor3: false,
+      others: false,
       highlight: true
     },
     { 
       name: 'Real-world project assessments', 
       codemaster: true, 
-      competitor1: true, 
-      competitor2: false, 
-      competitor3: true 
+      others: false
     },
     { 
       name: 'Job placement assistance', 
       codemaster: true, 
-      competitor1: false, 
-      competitor2: false, 
-      competitor3: true 
+      others: false
     },
     { 
       name: 'Unlimited project reviews', 
       codemaster: true, 
-      competitor1: false, 
-      competitor2: false, 
-      competitor3: false,
+      others: false,
       highlight: true
     },
     { 
       name: 'Corporate training options', 
       codemaster: true, 
-      competitor1: false, 
-      competitor2: true, 
-      competitor3: false 
+      others: false
     }
   ];
 
@@ -165,19 +146,13 @@ const PlatformComparison = () => {
           <Card className="overflow-hidden border shadow-lg">
             <CardContent className="p-0">
               {/* Table header */}
-              <div className="grid grid-cols-5 border-b">
+              <div className="grid grid-cols-3 border-b">
                 <div className="col-span-1 p-4 bg-gray-50 font-medium">Features</div>
                 <div className="col-span-1 p-4 bg-primary-50 text-center font-bold text-primary-800">
                   CodeMaster
                 </div>
                 <div className="col-span-1 p-4 text-center font-medium text-gray-500">
-                  Competitor A
-                </div>
-                <div className="col-span-1 p-4 text-center font-medium text-gray-500">
-                  Competitor B
-                </div>
-                <div className="col-span-1 p-4 text-center font-medium text-gray-500">
-                  Competitor C
+                  Others
                 </div>
               </div>
 
@@ -187,7 +162,7 @@ const PlatformComparison = () => {
                   <div 
                     key={index} 
                     className={cn(
-                      "grid grid-cols-5",
+                      "grid grid-cols-3",
                       feature.highlight ? "bg-primary-50" : "bg-white"
                     )}
                   >
@@ -212,27 +187,7 @@ const PlatformComparison = () => {
                       }
                     </div>
                     <div className="col-span-1 p-4 flex justify-center items-center">
-                      {feature.competitor1 ? 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <Check className="h-5 w-5 text-gray-600" />
-                        </div> : 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <X className="h-5 w-5 text-gray-400" />
-                        </div>
-                      }
-                    </div>
-                    <div className="col-span-1 p-4 flex justify-center items-center">
-                      {feature.competitor2 ? 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <Check className="h-5 w-5 text-gray-600" />
-                        </div> : 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <X className="h-5 w-5 text-gray-400" />
-                        </div>
-                      }
-                    </div>
-                    <div className="col-span-1 p-4 flex justify-center items-center">
-                      {feature.competitor3 ? 
+                      {feature.others ? 
                         <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
                           <Check className="h-5 w-5 text-gray-600" />
                         </div> : 
