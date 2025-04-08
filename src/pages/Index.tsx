@@ -10,6 +10,7 @@ import CallbackForm from '@/components/CallbackForm';
 import OrganizationLogos from '@/components/OrganizationLogos';
 import NewsSection from '@/components/NewsSection';
 import PlatformComparison from '@/components/PlatformComparison';
+import JobsSection from '@/components/JobsSection';
 
 const Index = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const Index = () => {
         </section>
         <Testimonials />
         <PlatformComparison />
+        <JobsSection />
       </main>
       <Footer />
     </div>

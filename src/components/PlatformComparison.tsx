@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { Check, X, Trophy, ThumbsUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -201,15 +202,6 @@ const PlatformComparison = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        <div className="mt-12 text-center animate-on-scroll opacity-0" style={{ animationDelay: '400ms' }}>
-          <p className="text-gray-600 mb-6">
-            Join thousands of satisfied students who've accelerated their careers with CodeMaster
-          </p>
-          <a href="/courses" className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 bg-primary-600 text-white hover:bg-primary-700 shadow-md text-base px-8 py-3 gap-2">
-            Browse Our Courses
-          </a>
         </div>
       </div>
     </section>
