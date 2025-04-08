@@ -12,6 +12,7 @@ import NewsSection from '@/components/NewsSection';
 import PlatformComparison from '@/components/PlatformComparison';
 import JobsSection from '@/components/JobsSection';
 import CertificationSection from '@/components/CertificationSection';
+import ToolsSection from '@/components/ToolsSection';
 
 const Index = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const Index = () => {
         <PlatformComparison />
         <JobsSection />
         <CertificationSection />
+        <ToolsSection />
       </main>
       <Footer />
     </div>
