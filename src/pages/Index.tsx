@@ -104,15 +104,15 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Success Stories/Reviews */}
-              <Link to="/success-stories" className="group">
+              {/* Reviews Page - NEW */}
+              <Link to="/reviews" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
                     <svg className="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600">Success Stories</h3>
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600">Student Reviews</h3>
                   <p className="text-gray-600 text-sm">Read reviews from our successful students</p>
                 </div>
               </Link>
@@ -140,6 +140,32 @@ const Index = () => {
                   </div>
                   <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600">Hire Talent</h3>
                   <p className="text-gray-600 text-sm">Connect with our skilled graduates</p>
+                </div>
+              </Link>
+              
+              {/* News Page - NEW */}
+              <Link to="/news" className="group">
+                <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600">Tech News</h3>
+                  <p className="text-gray-600 text-sm">Stay updated with the latest industry news</p>
+                </div>
+              </Link>
+              
+              {/* Blog Page */}
+              <Link to="/blog" className="group">
+                <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600">Blog</h3>
+                  <p className="text-gray-600 text-sm">Coding tutorials and industry insights</p>
                 </div>
               </Link>
             </div>

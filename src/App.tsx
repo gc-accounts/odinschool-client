@@ -39,6 +39,8 @@ import Careers from "./pages/Careers";
 import VirtualInterview from "./pages/VirtualInterview";
 import Resources from "./pages/Resources";
 import TrainYourTeam from "./pages/TrainYourTeam";
+import News from "./pages/News";
+import Reviews from "./pages/Reviews";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +74,10 @@ function App() {
             {/* Resources Route */}
             <Route path="/resources" element={<Resources />} />
             <Route path="/train-your-team" element={<TrainYourTeam />} />
+            
+            {/* New Routes for News and Reviews */}
+            <Route path="/news" element={<News />} />
+            <Route path="/reviews" element={<Reviews />} />
             
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
