@@ -118,7 +118,7 @@ const Index = () => {
               </Link>
               
               {/* Train Your Team */}
-              <Link to="/resources" className="group">
+              <Link to="/train-your-team" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
                     <svg className="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

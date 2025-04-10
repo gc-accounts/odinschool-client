@@ -38,6 +38,7 @@ import ExpertDetail from "./pages/ExpertDetail";
 import Careers from "./pages/Careers";
 import VirtualInterview from "./pages/VirtualInterview";
 import Resources from "./pages/Resources";
+import TrainYourTeam from "./pages/TrainYourTeam";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ function App() {
             
             {/* Resources Route */}
             <Route path="/resources" element={<Resources />} />
+            <Route path="/train-your-team" element={<TrainYourTeam />} />
             
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
