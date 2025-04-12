@@ -1,36 +1,43 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users } from 'lucide-react';
+import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain } from 'lucide-react';
 
 const CollegeStudents = () => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
-        {/* Hero Section - Vibrant gradient background with large text */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-purple-400 via-pink-300 to-blue-300">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-5xl mx-auto text-center">
-              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-white/30 backdrop-blur-sm text-gray-900">
-                Made for students, by students
+      <main className="min-h-screen overflow-x-hidden">
+        {/* Hero Section - Abstract geometric shapes */}
+        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 animate-float"></div>
+            <div className="absolute bottom-10 right-20 w-40 h-40 bg-blue-400 rounded-full opacity-20 animate-float"></div>
+            <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-pink-400 rounded-full opacity-20 animate-float"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-28 h-28 bg-green-400 rounded-full opacity-20 animate-float"></div>
+          </div>
+          
+          <div className="container relative mx-auto px-4 md:px-6 z-10">
+            <div className="max-w-4xl mx-auto">
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-white/30 backdrop-blur-sm text-white">
+                Future-proof your education
               </span>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-white drop-shadow-sm">
-                Level Up Your <span className="text-primary-800">College</span> Experience
+              <h1 className="text-4xl md:text-7xl font-bold mb-6 text-white leading-tight drop-shadow-md">
+                Level Up Your <span className="bg-gradient-to-r from-yellow-200 to-yellow-50 bg-clip-text text-transparent">College Experience</span>
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-                Get the coding skills you need for internships, projects, and your future career — all designed for your busy college life.
+              <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl">
+                Tech skills that make your resume stand out — designed specifically for busy students.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="text-lg py-6 bg-white text-purple-700 hover:bg-white/90 hover:text-purple-800">
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <Button size="lg" className="text-lg py-6 px-8 bg-white text-purple-700 hover:bg-white/90 hover:text-purple-800 shadow-lg">
                   <GraduationCap className="mr-2 h-5 w-5" /> Student Discount
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg py-6 bg-white/20 backdrop-blur-sm border-white/40 text-white hover:bg-white/30">
+                <Button size="lg" variant="outline" className="text-lg py-6 px-8 bg-white/20 backdrop-blur-sm border-white/40 text-white hover:bg-white/30 shadow-lg">
                   <BookOpen className="mr-2 h-5 w-5" /> Explore Courses
                 </Button>
               </div>
@@ -38,185 +45,348 @@ const CollegeStudents = () => {
           </div>
         </section>
 
-        {/* Student Benefits Section */}
+        {/* Asymmetric Feature Grid */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Why <span className="text-primary-600">College Students</span> Choose Us
+              <span className="px-3 py-1 text-sm font-medium rounded-full bg-purple-100 text-purple-800 mb-4 inline-block">DESIGNED FOR STUDENTS</span>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Why Choose Us
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Designed with your needs, schedule, and budget in mind
+                Built with your schedule, needs, and future in mind
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-slate-50 to-slate-100">
-                <CardHeader className="pb-2">
-                  <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
-                    <Clock className="h-6 w-6 text-purple-600" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <Card className="md:col-span-2 border-none shadow-xl bg-gradient-to-br from-purple-50 to-indigo-50 transform transition-all hover:scale-[1.02] duration-300">
+                <div className="flex flex-col md:flex-row items-center">
+                  <div className="p-6 md:p-8 md:w-1/2">
+                    <div className="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center mb-4">
+                      <Sparkles className="h-8 w-8 text-purple-600" />
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl mb-4">Designed for Gen Z</CardTitle>
+                    <CardDescription className="text-base text-gray-700">
+                      Modern curriculum that focuses on the latest technologies and practical skills employers actually want. Learn through projects, not just lectures.
+                    </CardDescription>
                   </div>
-                  <CardTitle>Flexible Schedule</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">Learn at your own pace between classes, work, and social life.</p>
-                </CardContent>
+                  <div className="w-full md:w-1/2 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-b-lg md:rounded-r-lg md:rounded-bl-none p-8">
+                    <ul className="text-white space-y-3">
+                      <li className="flex items-center">
+                        <Star className="mr-2 h-5 w-5 text-yellow-300" /> 
+                        <span>Project-based learning</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Star className="mr-2 h-5 w-5 text-yellow-300" /> 
+                        <span>Portfolio building</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Star className="mr-2 h-5 w-5 text-yellow-300" /> 
+                        <span>Modern tech stack</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Star className="mr-2 h-5 w-5 text-yellow-300" /> 
+                        <span>Industry mentors</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </Card>
               
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-slate-50 to-slate-100">
+              <Card className="border-none shadow-xl bg-gradient-to-br from-pink-50 to-rose-50 transform transition-all hover:scale-[1.02] duration-300">
                 <CardHeader className="pb-2">
-                  <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-2">
-                    <CreditCard className="h-6 w-6 text-pink-600" />
+                  <div className="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center mb-4">
+                    <Clock className="h-7 w-7 text-pink-600" />
                   </div>
-                  <CardTitle>Student Pricing</CardTitle>
+                  <CardTitle className="text-2xl">Flexible Schedule</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Special discounts for students with valid .edu email addresses.</p>
+                  <p className="text-gray-700">Learn between classes, work, and social life with bite-sized modules and mobile access.</p>
+                  <div className="mt-6 grid grid-cols-2 gap-2">
+                    <div className="bg-white p-2 rounded-lg shadow-sm text-center">
+                      <p className="text-xs text-gray-600">Average module</p>
+                      <p className="font-bold text-pink-600">15 min</p>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg shadow-sm text-center">
+                      <p className="text-xs text-gray-600">Weekly commitment</p>
+                      <p className="font-bold text-pink-600">3-5 hrs</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-              
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-slate-50 to-slate-100">
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+              <Card className="md:col-span-4 border-none shadow-xl bg-gradient-to-br from-blue-50 to-cyan-50 transform transition-all hover:scale-[1.02] duration-300">
                 <CardHeader className="pb-2">
-                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                    <Users className="h-6 w-6 text-blue-600" />
+                  <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-4">
+                    <CreditCard className="h-7 w-7 text-blue-600" />
                   </div>
-                  <CardTitle>Study Groups</CardTitle>
+                  <CardTitle className="text-2xl">Student Pricing</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Connect with other students and form virtual study groups.</p>
+                  <p className="text-gray-700 mb-4">Special discounts with valid .edu email addresses.</p>
+                  <div className="bg-white p-4 rounded-xl shadow-sm">
+                    <p className="text-sm text-gray-600 mb-1">Regular price</p>
+                    <p className="text-xl font-bold text-gray-400 line-through">$49/month</p>
+                    <p className="text-sm text-gray-600 mt-4 mb-1">Student price</p>
+                    <p className="text-3xl font-bold text-blue-600">$19/month</p>
+                  </div>
                 </CardContent>
+                <CardFooter>
+                  <Button variant="outline" className="w-full">Verify Student Status</Button>
+                </CardFooter>
               </Card>
               
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-slate-50 to-slate-100">
-                <CardHeader className="pb-2">
-                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
-                    <Medal className="h-6 w-6 text-green-600" />
+              <Card className="md:col-span-8 border-none shadow-xl bg-gradient-to-br from-amber-50 to-yellow-50 transform transition-all hover:scale-[1.02] duration-300">
+                <div className="flex flex-col md:flex-row">
+                  <div className="p-6 md:p-8 md:w-1/2">
+                    <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mb-4">
+                      <Brain className="h-7 w-7 text-amber-600" />
+                    </div>
+                    <CardTitle className="text-2xl mb-4">Learn Skills That Matter</CardTitle>
+                    <CardDescription className="text-base text-gray-700 mb-6">
+                      Our curriculum is designed with input from top tech companies to ensure you're learning what employers actually want.
+                    </CardDescription>
+                    <Button className="bg-amber-600 hover:bg-amber-700">Explore Skills</Button>
                   </div>
-                  <CardTitle>Resume Boost</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">Add industry-recognized certifications to your resume.</p>
-                </CardContent>
+                  <div className="w-full md:w-1/2 p-6 md:p-8 grid grid-cols-2 gap-3">
+                    {['React', 'Python', 'AWS', 'Node.js', 'UI/UX', 'Data Science', 'DevOps', 'AI/ML'].map((skill) => (
+                      <div key={skill} className="bg-white p-3 rounded-lg shadow-sm text-center">
+                        <p className="font-medium text-amber-800">{skill}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </Card>
             </div>
           </div>
         </section>
 
-        {/* Special Programs Section */}
-        <section className="py-16 bg-gray-50">
+        {/* Staggered Program Cards */}
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Special Programs for <span className="text-primary-600">College Students</span>
+              <span className="px-3 py-1 text-sm font-medium rounded-full bg-blue-100 text-blue-800 mb-4 inline-block">SPECIAL OPPORTUNITIES</span>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
+                <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Programs</span> for Students
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Exclusive opportunities to enhance your college experience
+                Exclusive opportunities designed specifically for college students
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-                <div className="bg-purple-100 p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-4">
-                  <Laptop className="h-7 w-7 text-purple-600" />
+            <div className="flex flex-col space-y-8">
+              <div className="relative">
+                <div className="hidden md:block absolute left-1/2 h-full w-1 bg-gradient-to-b from-blue-200 to-purple-200 transform -translate-x-1/2"></div>
+                
+                {/* Program 1 - Left */}
+                <div className="md:w-1/2 md:pr-12 md:mr-auto">
+                  <Card className="border-none shadow-xl overflow-hidden bg-white transform transition hover:scale-[1.02] duration-300">
+                    <div className="h-48 bg-gradient-to-r from-blue-400 to-blue-600 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Laptop className="h-20 w-20 text-white opacity-50" />
+                      </div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                        Quarterly
+                      </div>
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-2xl">Coding Hackathons</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">Join our quarterly hackathons with other college students and build impressive portfolio projects in just 48 hours.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Cash prizes</span>
+                        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Networking</span>
+                        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Portfolio projects</span>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="outline" className="w-full">Register for Next Hackathon</Button>
+                    </CardFooter>
+                  </Card>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Hackathons</h3>
-                <p className="text-gray-600 mb-4 flex-grow">Join our quarterly hackathons with other college students and build impressive portfolio projects.</p>
-                <Button variant="outline" className="mt-2 w-full">Learn More</Button>
+                
+                {/* Timeline dot */}
+                <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white border-4 border-blue-400 z-10"></div>
+                
+                {/* Program 2 - Right */}
+                <div className="mt-8 md:mt-32 md:w-1/2 md:pl-12 md:ml-auto">
+                  <Card className="border-none shadow-xl overflow-hidden bg-white transform transition hover:scale-[1.02] duration-300">
+                    <div className="h-48 bg-gradient-to-r from-purple-400 to-purple-600 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Lightbulb className="h-20 w-20 text-white opacity-50" />
+                      </div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
+                        4-Week Program
+                      </div>
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-2xl">Internship Bootcamp</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">Intensive 4-week program to prepare you for tech internship interviews at top companies. Includes algorithm training and mock interviews.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Mock interviews</span>
+                        <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Algorithm training</span>
+                        <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Resume review</span>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="outline" className="w-full">Apply for Next Cohort</Button>
+                    </CardFooter>
+                  </Card>
+                </div>
               </div>
-              
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-                <div className="bg-pink-100 p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-4">
-                  <Lightbulb className="h-7 w-7 text-pink-600" />
+
+              {/* Program 3 - Left */}
+              <div className="relative">
+                <div className="hidden md:block absolute left-1/2 h-full w-1 bg-gradient-to-b from-purple-200 to-pink-200 transform -translate-x-1/2"></div>
+                
+                <div className="md:w-1/2 md:pr-12 md:mr-auto">
+                  <Card className="border-none shadow-xl overflow-hidden bg-white transform transition hover:scale-[1.02] duration-300">
+                    <div className="h-48 bg-gradient-to-r from-pink-400 to-pink-600 relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <GraduationCap className="h-20 w-20 text-white opacity-50" />
+                      </div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-pink-600 px-3 py-1 rounded-full text-sm font-medium">
+                        Academic Year
+                      </div>
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-2xl">Campus Ambassador</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">Represent us on your campus, organize events, and earn exclusive benefits including free courses and commission on referrals.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Free access</span>
+                        <span className="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Commission</span>
+                        <span className="px-2 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Leadership experience</span>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="outline" className="w-full">Apply to Program</Button>
+                    </CardFooter>
+                  </Card>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Internship Preparation</h3>
-                <p className="text-gray-600 mb-4 flex-grow">Get interview coaching and technical preparation for top tech companies.</p>
-                <Button variant="outline" className="mt-2 w-full">Learn More</Button>
-              </div>
-              
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-                <div className="bg-blue-100 p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-4">
-                  <GraduationCap className="h-7 w-7 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">Campus Ambassador</h3>
-                <p className="text-gray-600 mb-4 flex-grow">Represent us on your campus, gain leadership experience, and earn exclusive benefits.</p>
-                <Button variant="outline" className="mt-2 w-full">Apply Now</Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Stories Section with TikTok/Insta style cards */}
-        <section className="py-16 bg-white">
+        {/* Animated Success Stories Carousel */}
+        <section className="py-16 bg-white overflow-x-hidden">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Success <span className="text-primary-600">Stories</span>
+              <span className="px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-800 mb-4 inline-block">SUCCESS STORIES</span>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
+                <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Student</span> Success
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                See what other students have achieved
+                See what other college students like you have achieved
               </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 -mx-4 px-4 pb-8 overflow-visible">
               {/* Story Card 1 */}
-              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 bg-white hover:scale-[1.02] duration-300">
-                <div className="h-60 bg-gradient-to-br from-purple-400 to-blue-500 relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent text-white">
-                    <h3 className="text-lg font-bold">Sophia J.</h3>
-                    <p className="text-sm">Computer Science, Stanford</p>
+              <div className="group">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 bg-white transform transition group-hover:scale-[1.02] duration-300">
+                  <div className="h-60 bg-gradient-to-br from-purple-400 to-blue-500 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full border-2 border-white bg-gradient-to-br from-purple-200 to-purple-400"></div>
+                        <div className="ml-3">
+                          <h3 className="text-lg font-bold text-white">Sophia J.</h3>
+                          <p className="text-sm text-white/80">Computer Science, Stanford</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-gray-700 mb-4">"Thanks to the web development bootcamp, I landed my dream internship at Google during my junior year!"</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span className="flex items-center mr-4">
-                      <Laptop className="h-4 w-4 mr-1" /> Web Development
-                    </span>
-                    <span className="flex items-center">
-                      <Medal className="h-4 w-4 mr-1" /> Internship at Google
-                    </span>
+                  <div className="p-6">
+                    <div className="flex mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 text-yellow-400" fill="currentColor" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 mb-4 italic">"The web development bootcamp helped me land my dream internship at Google during my junior year. The projects I built became the highlight of my portfolio!"</p>
+                    <div className="flex items-center text-sm text-gray-500 pt-4 border-t">
+                      <span className="flex items-center mr-4">
+                        <Laptop className="h-4 w-4 mr-1 text-purple-500" /> Web Development
+                      </span>
+                      <span className="flex items-center">
+                        <Medal className="h-4 w-4 mr-1 text-purple-500" /> Google Internship
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
               
               {/* Story Card 2 */}
-              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 bg-white hover:scale-[1.02] duration-300">
-                <div className="h-60 bg-gradient-to-br from-pink-400 to-orange-400 relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent text-white">
-                    <h3 className="text-lg font-bold">Marcus T.</h3>
-                    <p className="text-sm">Business & CS, NYU</p>
+              <div className="group lg:mt-12">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 bg-white transform transition group-hover:scale-[1.02] duration-300">
+                  <div className="h-60 bg-gradient-to-br from-pink-400 to-orange-400 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full border-2 border-white bg-gradient-to-br from-orange-200 to-orange-400"></div>
+                        <div className="ml-3">
+                          <h3 className="text-lg font-bold text-white">Marcus T.</h3>
+                          <p className="text-sm text-white/80">Business & CS, NYU</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-gray-700 mb-4">"I built my startup's MVP during the summer program. We just closed our first pre-seed round!"</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span className="flex items-center mr-4">
-                      <Laptop className="h-4 w-4 mr-1" /> Full Stack
-                    </span>
-                    <span className="flex items-center">
-                      <Medal className="h-4 w-4 mr-1" /> Founded Startup
-                    </span>
+                  <div className="p-6">
+                    <div className="flex mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 text-yellow-400" fill="currentColor" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 mb-4 italic">"I built my startup's MVP during the summer program. We just closed our first pre-seed round of $500K thanks to the skills I learned here!"</p>
+                    <div className="flex items-center text-sm text-gray-500 pt-4 border-t">
+                      <span className="flex items-center mr-4">
+                        <Laptop className="h-4 w-4 mr-1 text-pink-500" /> Full Stack
+                      </span>
+                      <span className="flex items-center">
+                        <Medal className="h-4 w-4 mr-1 text-pink-500" /> Startup Founder
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
               
               {/* Story Card 3 */}
-              <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 bg-white hover:scale-[1.02] duration-300">
-                <div className="h-60 bg-gradient-to-br from-blue-400 to-green-400 relative overflow-hidden">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent text-white">
-                    <h3 className="text-lg font-bold">Aisha K.</h3>
-                    <p className="text-sm">Data Science, UC Berkeley</p>
+              <div className="group">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 bg-white transform transition group-hover:scale-[1.02] duration-300">
+                  <div className="h-60 bg-gradient-to-br from-blue-400 to-green-400 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full border-2 border-white bg-gradient-to-br from-green-200 to-green-400"></div>
+                        <div className="ml-3">
+                          <h3 className="text-lg font-bold text-white">Aisha K.</h3>
+                          <p className="text-sm text-white/80">Data Science, UC Berkeley</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-gray-700 mb-4">"The AI course helped me understand complex concepts that my college classes only touched on superficially."</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span className="flex items-center mr-4">
-                      <Laptop className="h-4 w-4 mr-1" /> AI & Machine Learning
-                    </span>
-                    <span className="flex items-center">
-                      <Medal className="h-4 w-4 mr-1" /> Research Publication
-                    </span>
+                  <div className="p-6">
+                    <div className="flex mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 text-yellow-400" fill="currentColor" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 mb-4 italic">"The AI course helped me understand complex concepts that my college classes only touched on. I published my first research paper as an undergrad!"</p>
+                    <div className="flex items-center text-sm text-gray-500 pt-4 border-t">
+                      <span className="flex items-center mr-4">
+                        <Laptop className="h-4 w-4 mr-1 text-green-500" /> AI & ML
+                      </span>
+                      <span className="flex items-center">
+                        <Medal className="h-4 w-4 mr-1 text-green-500" /> Research Publication
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -224,61 +394,116 @@ const CollegeStudents = () => {
           </div>
         </section>
 
-        {/* Call-to-action - Vibrant design */}
-        <section className="py-16 bg-gradient-to-br from-primary-600 to-purple-600 text-white">
-          <div className="container mx-auto px-4 md:px-6">
+        {/* Call-to-action - Bold and Interactive */}
+        <section className="py-16 md:py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 z-0"></div>
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00LTEuNzktNC00LTR6TTI0IDMwYy0yLjIxIDAtNCAxLjc5LTQgNHMxLjc5IDQgNCA0IDQtMS43OSA0LTQtMS43OS00LTQtNHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9Ii4yNSIvPjwvZz48L3N2Zz4=')]"></div>
+          </div>
+          
+          <div className="container relative z-10 mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Ready to boost your tech skills?</h2>
-                <p className="text-xl text-white/90">Start learning today with our special student discount</p>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white leading-tight">Ready to boost your career prospects?</h2>
+                <p className="text-xl text-white/90">Start learning with our special student discount</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg py-6 bg-white text-primary-700 hover:bg-white/90">
+              <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <Button size="lg" className="text-lg py-6 px-8 bg-white text-violet-700 hover:bg-white/90 shadow-lg">
                   <GraduationCap className="mr-2 h-5 w-5" /> Get Student Discount
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg py-6 bg-transparent border-white/40 text-white hover:bg-white/10">
-                  <BookOpen className="mr-2 h-5 w-5" /> Browse Courses
+                <Button size="lg" variant="outline" className="text-lg py-6 px-8 bg-transparent border-white/40 text-white hover:bg-white/10 shadow-lg">
+                  <Calendar className="mr-2 h-5 w-5" /> Schedule Demo
                 </Button>
+              </div>
+            </div>
+            
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white">15K+</p>
+                <p className="text-white/80">Students</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white">94%</p>
+                <p className="text-white/80">Completion Rate</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white">250+</p>
+                <p className="text-white/80">Universities</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white">89%</p>
+                <p className="text-white/80">Job Placement</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Frequently Asked <span className="text-primary-600">Questions</span>
+              <span className="px-3 py-1 text-sm font-medium rounded-full bg-gray-200 text-gray-800 mb-4 inline-block">GOT QUESTIONS?</span>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
+                <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">FAQs</span>
               </h2>
             </div>
             
             <div className="max-w-3xl mx-auto">
-              {/* FAQ Item */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-2">How do I verify my student status?</h3>
-                <p className="text-gray-600">Simply sign up with your .edu email address or upload a valid student ID through our verification portal.</p>
+              <div className="space-y-6">
+                <Card className="border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-xl flex items-center">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">Q</span>
+                      How do I verify my student status?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">Simply sign up with your .edu email address or upload a valid student ID through our verification portal. Verification usually takes less than 24 hours.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-xl flex items-center">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">Q</span>
+                      Can I get college credit for these courses?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">We partner with several universities for credit transfer. Check with your academic advisor to see if your school accepts our certificates for credit or internship requirements.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-xl flex items-center">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">Q</span>
+                      How long do I have access to the courses?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">With a student subscription, you have unlimited access to all courses as long as your subscription is active and your student status is verified (generally up to 4 years or until graduation).</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border border-gray-200">
+                  <CardHeader>
+                    <CardTitle className="text-xl flex items-center">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">Q</span>
+                      Can I access the courses offline?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">Yes, our mobile app allows you to download lessons for offline viewing, perfect for commuting or studying in areas with limited internet access.</p>
+                  </CardContent>
+                </Card>
               </div>
-              <Separator className="my-6" />
               
-              {/* FAQ Item */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-2">Can I get college credit for these courses?</h3>
-                <p className="text-gray-600">We partner with several universities for credit transfer. Check with your academic advisor to see if your school accepts our certificates.</p>
-              </div>
-              <Separator className="my-6" />
-              
-              {/* FAQ Item */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-2">How long do I have access to the courses?</h3>
-                <p className="text-gray-600">With a student subscription, you have unlimited access to all courses as long as your subscription is active and your student status is verified.</p>
-              </div>
-              <Separator className="my-6" />
-              
-              {/* FAQ Item */}
-              <div>
-                <h3 className="text-xl font-bold mb-2">Can I access the courses offline?</h3>
-                <p className="text-gray-600">Yes, our mobile app allows you to download lessons for offline viewing, perfect for commuting or studying in areas with limited internet.</p>
+              <div className="mt-10 text-center">
+                <p className="text-gray-600 mb-4">Still have questions? We're happy to help!</p>
+                <Button variant="outline" className="mx-auto">
+                  Contact Student Support
+                </Button>
               </div>
             </div>
           </div>
@@ -290,3 +515,4 @@ const CollegeStudents = () => {
 };
 
 export default CollegeStudents;
+
