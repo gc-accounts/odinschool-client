@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -13,8 +12,8 @@ const CollegeStudents = () => {
     <>
       <Navbar />
       <main className="min-h-screen overflow-x-hidden">
-        {/* Hero Section - Abstract geometric shapes */}
-        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+        {/* Hero Section - Updated Gradient Background */}
+        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#c1ecf6] via-[#e5aef5] to-[#ff6b9e]">
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 animate-float"></div>
             <div className="absolute bottom-10 right-20 w-40 h-40 bg-blue-400 rounded-full opacity-20 animate-float"></div>
@@ -515,4 +514,3 @@ const CollegeStudents = () => {
 };
 
 export default CollegeStudents;
-
