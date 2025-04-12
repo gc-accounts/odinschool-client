@@ -41,6 +41,7 @@ import Resources from "./pages/Resources";
 import TrainYourTeam from "./pages/TrainYourTeam";
 import News from "./pages/News";
 import Reviews from "./pages/Reviews";
+import CollegeStudents from "./pages/CollegeStudents";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,7 @@ function App() {
             {/* Resources Route */}
             <Route path="/resources" element={<Resources />} />
             <Route path="/train-your-team" element={<TrainYourTeam />} />
+            <Route path="/college-students" element={<CollegeStudents />} />
             
             {/* New Routes for News and Reviews */}
             <Route path="/news" element={<News />} />
