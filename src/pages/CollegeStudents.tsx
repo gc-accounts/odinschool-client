@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -5,33 +6,46 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Separator } from '@/components/ui/separator';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain } from 'lucide-react';
+import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain, Image, Circle, Triangle } from 'lucide-react';
 
 const CollegeStudents = () => {
   return (
     <>
       <Navbar />
       <main className="min-h-screen overflow-x-hidden">
-        {/* Hero Section - More Dynamic & Aesthetic Banner */}
+        {/* Hero Section - Non-rectangular, Dynamic & Aesthetic Banner */}
         <section className="relative py-20 md:py-28 overflow-hidden">
-          {/* Dynamic Background with animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 z-0">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80')] bg-cover bg-center mix-blend-overlay opacity-30"></div>
+          {/* Dynamic Background with unique shape */}
+          <div className="absolute inset-0 z-0">
+            {/* Base gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-indigo-600 to-pink-600"></div>
             
-            {/* Animated Glass Morphism Shapes */}
-            <div className="absolute w-full h-full overflow-hidden">
-              <div className="absolute top-[10%] left-[5%] w-40 h-40 rounded-full bg-pink-400 opacity-20 blur-3xl animate-float"></div>
-              <div className="absolute bottom-[20%] right-[15%] w-64 h-64 rounded-full bg-blue-400 opacity-20 blur-3xl animate-float"></div>
-              <div className="absolute top-[40%] right-[25%] w-32 h-32 rounded-full bg-purple-400 opacity-20 blur-3xl animate-float"></div>
-              <div className="absolute bottom-[40%] left-[20%] w-52 h-52 rounded-full bg-indigo-400 opacity-20 blur-3xl animate-float"></div>
+            {/* Image on the left */}
+            <div className="absolute left-0 top-0 h-full w-1/2 md:w-2/5 overflow-hidden">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80')] bg-cover bg-center mix-blend-overlay opacity-70"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-indigo-600"></div>
             </div>
+            
+            {/* Non-rectangular shape overlays */}
+            <div className="absolute top-0 right-0 w-3/5 h-full overflow-hidden">
+              {/* Diagonal shape */}
+              <div className="absolute -left-1/4 top-0 w-full h-full bg-gradient-to-br from-blue-700 to-purple-800 transform -skew-x-12 opacity-80"></div>
+              
+              {/* Curved shape at the bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 md:h-1/2 bg-gradient-to-t from-purple-900 to-transparent rounded-tl-[50%] rounded-tr-[20%]"></div>
+            </div>
+            
+            {/* Abstract shape decorations */}
+            <div className="absolute top-[10%] right-[10%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 blur-lg opacity-40 animate-float"></div>
+            <div className="absolute bottom-[20%] right-[25%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-yellow-300 to-pink-400 blur-lg opacity-30 animate-float"></div>
+            <div className="absolute top-[40%] left-1/2 w-24 h-24 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-indigo-300 to-blue-500 blur-lg opacity-20 animate-float"></div>
             
             {/* Mesh Grid Overlay */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00LTEuNzktNC00LTR6TTI0IDMwYy0yLjIxIDAtNCAxLjc5LTQgNHMxLjc5IDQgNCA0IDQtMS43OSA0LTQtMS43OS00LTQtNHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9Ii4yNSIvPjwvZz48L3N2Zz4=')] opacity-15"></div>
           </div>
           
           <div className="container relative mx-auto px-4 md:px-6 z-10">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl md:ml-auto md:mr-12 md:w-3/5">
               {/* Aesthetic Badge */}
               <div className="inline-block mb-6 backdrop-blur-md">
                 <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/30 shadow-lg">
@@ -57,8 +71,15 @@ const CollegeStudents = () => {
                   <BookOpen className="mr-2 h-5 w-5" /> Explore Courses
                 </Button>
               </div>
+              
+              {/* Abstract decorative elements */}
+              <div className="hidden md:block absolute -bottom-10 -left-24 w-32 h-32 border-2 border-white/20 rounded-full"></div>
+              <div className="hidden md:block absolute -top-10 right-10 w-16 h-16 border-2 border-white/20 rounded-full"></div>
             </div>
           </div>
+          
+          {/* Diagonal cut at the bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 md:h-24 bg-white transform -skew-y-2 z-0"></div>
         </section>
 
         {/* Asymmetric Feature Grid - Updated with Aesthetic Design */}
