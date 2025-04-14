@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -377,4 +378,50 @@ const CollegeStudents = () => {
                   <div className="p-6">
                     <p className="text-purple-100/70 mb-4">Intensive 4-week program to prepare you for tech internship interviews at top companies. Includes algorithm training and mock interviews.</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">Mock interviews</span>
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">Algorithm training</span>
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">Resume review</span>
+                    </div>
+                    <Button variant="outline" className="w-full bg-purple-500/20 border-purple-500/40 text-white hover:bg-purple-500/30 backdrop-blur-sm">
+                      Apply for Next Cohort
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Program 3 */}
+              <div className="md:col-span-12 lg:col-span-4">
+                <div className="rounded-2xl overflow-hidden h-full bg-gradient-to-br from-rose-600/40 to-orange-700/40 backdrop-blur-sm border border-rose-500/20 transform hover:scale-[1.02] transition-all duration-300 relative group">
+                  <div className="h-48 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
+                      By Application
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-rose-900/80 to-transparent h-24"></div>
+                    <div className="absolute bottom-4 left-4">
+                      <h3 className="text-2xl font-bold text-white">Mentorship Program</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-rose-100/70 mb-4">Get paired with an industry professional who will guide you through your career journey and provide personalized advice.</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">1:1 sessions</span>
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">Career planning</span>
+                      <span className="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10">Industry insights</span>
+                    </div>
+                    <Button variant="outline" className="w-full bg-rose-500/20 border-rose-500/40 text-white hover:bg-rose-500/30 backdrop-blur-sm">
+                      Apply for Mentorship
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+};
+
+export default CollegeStudents;
