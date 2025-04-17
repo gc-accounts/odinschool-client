@@ -16,7 +16,6 @@ export interface CourseProps {
   students: number;
   image: string;
   category: string;
-  company?: string; // Add optional company property
   popular?: boolean;
   className?: string;
 }
@@ -33,7 +32,6 @@ const CourseCard = ({
   students,
   image,
   category,
-  company, // Add company to destructured props
   popular = false,
   className,
 }: CourseProps) => {
@@ -51,13 +49,6 @@ const CourseCard = ({
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
             Popular
           </span>
-        </div>
-      )}
-      
-      {/* Add company logo or name */}
-      {company && (
-        <div className="absolute top-3 left-3 z-10 bg-white/80 rounded-full px-2.5 py-1 text-xs font-medium text-gray-700">
-          {company}
         </div>
       )}
       
