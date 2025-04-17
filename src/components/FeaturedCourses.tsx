@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import CourseCard, { CourseProps } from './CourseCard';
 import Button from './Button';
@@ -18,6 +17,7 @@ const courseData: CourseProps[] = [
     students: 12450,
     image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=2000',
     category: 'Web Development',
+    company: 'Google',
     popular: true,
   },
   {
@@ -32,6 +32,7 @@ const courseData: CourseProps[] = [
     students: 8325,
     image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2000',
     category: 'Frontend',
+    company: 'Microsoft',
     popular: true,
   },
   {
@@ -81,7 +82,6 @@ const FeaturedCourses = () => {
     
     cardRefs.current.forEach((card, i) => {
       if (card) {
-        // Add increasing delay based on index
         card.style.animationDelay = `${i * 100}ms`;
         observer.observe(card);
       }
