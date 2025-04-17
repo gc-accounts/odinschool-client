@@ -31,17 +31,6 @@ import BlogDetail from "./pages/BlogDetail";
 import FreeResources from "./pages/FreeResources";
 import CourseCheckout from "./pages/CourseCheckout";
 import CourseCheckoutCertificate from "./pages/CourseCheckoutCertificate";
-import LearningHub from "./pages/LearningHub";
-import FreeCourseDetail from "./pages/FreeCourseDetail";
-import CoursesInCities from "./pages/CoursesInCities";
-import ExpertDetail from "./pages/ExpertDetail";
-import Careers from "./pages/Careers";
-import VirtualInterview from "./pages/VirtualInterview";
-import Resources from "./pages/Resources";
-import TrainYourTeam from "./pages/TrainYourTeam";
-import News from "./pages/News";
-import Reviews from "./pages/Reviews";
-import CollegeStudents from "./pages/CollegeStudents";
 
 const queryClient = new QueryClient();
 
@@ -62,25 +51,6 @@ function App() {
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
             
-            {/* Expert Detail Route */}
-            <Route path="/expert/:id" element={<ExpertDetail />} />
-            
-            {/* Learning Hub Routes */}
-            <Route path="/learning-hub" element={<LearningHub />} />
-            <Route path="/learning-hub/:courseId" element={<FreeCourseDetail />} />
-            
-            {/* Courses in Cities Route */}
-            <Route path="/courses-in-cities" element={<CoursesInCities />} />
-            
-            {/* Resources Route */}
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/train-your-team" element={<TrainYourTeam />} />
-            <Route path="/college-students" element={<CollegeStudents />} />
-            
-            {/* New Routes for News and Reviews */}
-            <Route path="/news" element={<News />} />
-            <Route path="/reviews" element={<Reviews />} />
-            
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/webinars/:id" element={<WebinarDetail />} />
@@ -91,15 +61,13 @@ function App() {
             {/* Tools Routes */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
-            <Route path="/virtual-interview" element={<VirtualInterview />} />
             
             {/* Blog and Resources */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/free-resources" element={<FreeResources />} />
             
-            {/* Career and Company Pages */}
-            <Route path="/careers" element={<Careers />} />
+            {/* New Pages */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/terms" element={<TermsOfUse />} />
