@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Button from '@/components/Button';
@@ -654,36 +654,25 @@ const CourseDetail = () => {
                       <h2 className="heading-sm mb-4">Instructor</h2>
                       <div className="flex flex-col md:flex-row gap-6">
                         <div className="flex-shrink-0">
-                          <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                            <img
-                              src={`https://randomuser.me/api/portraits/${course.instructor.includes('Sarah') || course.instructor.includes('Emily') || course.instructor.includes('Priya') || course.instructor.includes('Olivia') ? 'women' : 'men'}/${Number(course.id) + 10}.jpg`}
-                              alt={course.instructor}
-                              className="w-full h-full object-cover"
-                            />
+                          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                            <span className="text-2xl font-medium text-gray-500">
+                              {course.instructor.charAt(0)}
+                            </span>
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold mb-2">{course.instructor}</h3>
-                          <p className="text-gray-600 mb-3">{course.category} Specialist</p>
-                          <div className="flex items-center gap-4 mb-4">
-                            <div className="flex items-center">
-                              <Star size={14} className="text-yellow-400 mr-1" />
-                              <span className="text-sm">4.8 Instructor Rating</span>
-                            </div>
-                            <div className="flex items-center">
-                              <Users size={14} className="text-gray-500 mr-1" />
-                              <span className="text-sm">12,350+ Students</span>
-                            </div>
-                            <div className="flex items-center">
-                              <BookOpen size={14} className="text-gray-500 mr-1" />
-                              <span className="text-sm">15 Courses</span>
-                            </div>
+                          <h3 className="text-xl font-medium">{course.instructor}</h3>
+                          <p className="text-gray-500">Course Instructor</p>
+                          <div className="mt-2 space-y-2">
+                            <p>
+                              An experienced educator with expertise in {course.category} 
+                              and a passion for teaching practical, job-ready skills.
+                            </p>
+                            <p>
+                              With over 10 years of industry experience, {course.instructor.split(' ')[0]} 
+                              has helped thousands of students master complex technical concepts.
+                            </p>
                           </div>
-                          <p className="text-gray-700">
-                            {course.instructor} is a professional {course.category.toLowerCase()} instructor with over 10 years of industry experience. 
-                            Specializing in {course.category.toLowerCase()}, {course.instructor.split(' ')[0]} has helped thousands of students 
-                            master complex technical skills through clear, practical teaching methods.
-                          </p>
                         </div>
                       </div>
                     </div>
@@ -692,97 +681,65 @@ const CourseDetail = () => {
                   {/* Reviews */}
                   {activeTab === 'reviews' && (
                     <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <h2 className="heading-sm">Student Feedback</h2>
-                        <Button>Write a Review</Button>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg">
-                          <div className="text-5xl font-bold mb-2">{course.rating.toFixed(1)}</div>
-                          <div className="flex mb-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} size={18} className={i < Math.round(course.rating) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"} />
+                      <div className="flex items-center justify-between mb-8">
+                        <h2 className="heading-sm">Student Reviews</h2>
+                        <div className="flex items-center">
+                          <div className="flex mr-2">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <Star 
+                                key={star}
+                                size={18} 
+                                className={star <= Math.round(course.rating) 
+                                  ? "fill-yellow-400 text-yellow-400" 
+                                  : "text-gray-300"} 
+                              />
                             ))}
                           </div>
-                          <p className="text-gray-600">{course.students.toLocaleString()} students</p>
-                        </div>
-                        <div className="md:col-span-2">
-                          <div className="space-y-2">
-                            {[5, 4, 3, 2, 1].map((rating) => {
-                              // Calculate fake percentages based on the course rating
-                              let percentage = 0;
-                              if (rating === Math.round(course.rating)) percentage = 65;
-                              else if (rating === Math.round(course.rating) - 1) percentage = 25;
-                              else if (rating === Math.round(course.rating) + 1) percentage = 8;
-                              else percentage = 1;
-                              
-                              return (
-                                <div key={rating} className="flex items-center">
-                                  <div className="flex items-center w-16">
-                                    <span className="text-sm mr-1">{rating}</span>
-                                    <Star size={14} className="text-yellow-400 fill-yellow-400" />
-                                  </div>
-                                  <div className="w-full bg-gray-200 rounded-full h-2 mx-3">
-                                    <div 
-                                      className="bg-primary-600 h-2 rounded-full" 
-                                      style={{ width: `${percentage}%` }}
-                                    ></div>
-                                  </div>
-                                  <span className="text-sm text-gray-600 w-12">{percentage}%</span>
-                                </div>
-                              );
-                            })}
-                          </div>
+                          <span className="font-medium">{course.rating.toFixed(1)}</span>
+                          <span className="text-gray-500 ml-1">({course.students.toLocaleString()} students)</span>
                         </div>
                       </div>
                       
                       <div className="space-y-6">
-                        {[...Array(3)].map((_, index) => (
-                          <div key={index} className="border-b border-gray-100 pb-6">
-                            <div className="flex items-start mb-3">
-                              <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 mr-4">
-                                <img
-                                  src={`https://randomuser.me/api/portraits/${index % 2 === 0 ? 'men' : 'women'}/${index + 50}.jpg`}
-                                  alt="Student"
-                                  className="w-full h-full object-cover"
-                                />
-                              </div>
-                              <div>
-                                <h4 className="font-medium">
-                                  {["John D.", "Maria S.", "Robert K."][index]}
-                                </h4>
-                                <div className="flex items-center">
-                                  <div className="flex mr-2">
-                                    {[...Array(5)].map((_, i) => (
-                                      <Star 
-                                        key={i} 
-                                        size={14} 
-                                        className={i < (5 - index * 0.5) ? "text-yellow-400 fill-yellow-400" : "text-gray-300"} 
-                                      />
-                                    ))}
-                                  </div>
-                                  <span className="text-sm text-gray-500">
-                                    {["2 weeks ago", "1 month ago", "3 months ago"][index]}
-                                  </span>
-                                </div>
-                              </div>
+                        {[
+                          { 
+                            name: "Alex Johnson", 
+                            rating: 5, 
+                            date: "3 months ago",
+                            comment: "Excellent course! The instructor explains complex concepts in a way that's easy to understand. I've learned so much and feel confident in my skills now."
+                          },
+                          { 
+                            name: "Samantha Lee", 
+                            rating: 4, 
+                            date: "1 month ago",
+                            comment: "Very informative and well-structured course. The projects were challenging but rewarding. Would recommend to anyone looking to improve their skills."
+                          },
+                          { 
+                            name: "Michael Brown", 
+                            rating: 5, 
+                            date: "2 weeks ago",
+                            comment: "This course exceeded my expectations. The instructor is knowledgeable and responsive to questions. The content is up-to-date and relevant to the industry."
+                          }
+                        ].map((review, index) => (
+                          <div key={index} className="border-b border-gray-200 pb-6 last:border-0">
+                            <div className="flex justify-between items-start mb-2">
+                              <div className="font-medium">{review.name}</div>
+                              <div className="text-gray-500 text-sm">{review.date}</div>
                             </div>
-                            <p className="text-gray-700">
-                              {[
-                                "This course exceeded my expectations! The instructor explains complex concepts in an easy-to-understand way, and the projects really helped reinforce what I learned.",
-                                "Great content and well-structured curriculum. I appreciated the hands-on approach and practical examples throughout the course.",
-                                "Solid course with good information. Some sections could be more in-depth, but overall I learned a lot and feel more confident in my skills."
-                              ][index]}
-                            </p>
+                            <div className="flex mb-2">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Star 
+                                  key={star}
+                                  size={14} 
+                                  className={star <= review.rating 
+                                    ? "fill-yellow-400 text-yellow-400" 
+                                    : "text-gray-300"} 
+                                />
+                              ))}
+                            </div>
+                            <p className="text-gray-700">{review.comment}</p>
                           </div>
                         ))}
-                        
-                        <div className="text-center">
-                          <Button variant="outline">
-                            See More Reviews
-                          </Button>
-                        </div>
                       </div>
                     </div>
                   )}
@@ -790,17 +747,21 @@ const CourseDetail = () => {
               </div>
               
               <div className="lg:col-span-1">
-                <div className="sticky top-24">
-                  <Card className="mb-6">
+                <div className="sticky top-24 space-y-6">
+                  <Card>
                     <CardContent className="p-6">
-                      <h3 className="font-semibold text-lg mb-4">Related Courses</h3>
+                      <h3 className="font-medium text-lg mb-3">Related Courses</h3>
                       <div className="space-y-4">
                         {coursesData
                           .filter(c => c.id !== course.id && c.category === course.category)
                           .slice(0, 3)
                           .map(relatedCourse => (
-                            <div key={relatedCourse.id} className="flex gap-3">
-                              <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden">
+                            <Link 
+                              key={relatedCourse.id} 
+                              to={`/courses/${relatedCourse.id}`}
+                              className="flex gap-3 group"
+                            >
+                              <div className="w-16 h-12 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
                                 <img 
                                   src={relatedCourse.image} 
                                   alt={relatedCourse.title}
@@ -808,81 +769,33 @@ const CourseDetail = () => {
                                 />
                               </div>
                               <div>
-                                <h4 className="font-medium text-sm line-clamp-2">
-                                  <Link 
-                                    to={`/courses/${relatedCourse.id}`} 
-                                    className="hover:text-primary-600 transition-colors"
-                                  >
-                                    {relatedCourse.title}
-                                  </Link>
+                                <h4 className="font-medium text-sm group-hover:text-primary-600 transition-colors line-clamp-2">
+                                  {relatedCourse.title}
                                 </h4>
                                 <div className="flex items-center mt-1">
-                                  <Star size={12} className="text-yellow-400 fill-yellow-400" />
+                                  <Star size={12} className="fill-yellow-400 text-yellow-400" />
                                   <span className="text-xs ml-1">{relatedCourse.rating.toFixed(1)}</span>
-                                  <span className="text-xs text-gray-500 ml-2">
-                                    ({relatedCourse.students.toLocaleString()})
-                                  </span>
                                 </div>
-                                <p className="text-sm font-medium mt-1">${relatedCourse.price}</p>
                               </div>
-                            </div>
-                          ))}
+                            </Link>
+                          ))
+                        }
                       </div>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardContent className="p-6">
-                      <h3 className="font-semibold text-lg mb-4">Course Statistics</h3>
-                      <div className="space-y-4">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Skill Level</span>
-                          <span className="font-medium">{course.level}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Students</span>
-                          <span className="font-medium">{course.students.toLocaleString()}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Languages</span>
-                          <span className="font-medium">English</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Certificate</span>
-                          <span className="font-medium">Yes</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-600">Last Updated</span>
-                          <span className="font-medium">March 2023</span>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6 pt-6 border-t border-gray-100">
-                        <h4 className="font-medium mb-2">Share This Course</h4>
-                        <div className="flex gap-2">
-                          {['Twitter', 'Facebook', 'LinkedIn'].map(platform => (
-                            <button 
-                              key={platform}
-                              className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors"
-                            >
-                              <span className="sr-only">Share on {platform}</span>
-                              <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                width="16" 
-                                height="16" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
-                              >
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                              </svg>
-                            </button>
-                          ))}
-                        </div>
+                      <h3 className="font-medium text-lg mb-3">Course Tags</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {course.skills.map((skill, index) => (
+                          <span 
+                            key={index} 
+                            className="bg-gray-100 text-gray-800 text-xs px-2.5 py-1 rounded-full"
+                          >
+                            {skill}
+                          </span>
+                        ))}
                       </div>
                     </CardContent>
                   </Card>
