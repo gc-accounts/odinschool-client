@@ -14,6 +14,7 @@ import PlatformComparison from '@/components/PlatformComparison';
 import JobsSection from '@/components/JobsSection';
 import CertificationSection from '@/components/CertificationSection';
 import ToolsSection from '@/components/ToolsSection';
+import CollegeSpotlight from '@/components/CollegeSpotlight';
 
 const Index = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const Index = () => {
         <OrganizationLogos />
         <FeaturedCourses />
         <InstructorProfile />
+        <CollegeSpotlight />
         <NewsSection />
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="container mx-auto px-4 md:px-6">
