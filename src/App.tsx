@@ -37,12 +37,6 @@ import CoursesInCities from "./pages/CoursesInCities";
 import ExpertDetail from "./pages/ExpertDetail";
 import Careers from "./pages/Careers";
 import VirtualInterview from "./pages/VirtualInterview";
-import Resources from "./pages/Resources";
-import TrainYourTeam from "./pages/TrainYourTeam";
-import News from "./pages/News";
-import Reviews from "./pages/Reviews";
-import CollegeStudents from "./pages/CollegeStudents";
-import SpecializedCourses from "./pages/SpecializedCourses";
 
 const queryClient = new QueryClient();
 
@@ -63,9 +57,6 @@ function App() {
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
             
-            {/* Specialized Courses Route */}
-            <Route path="/specialized-courses" element={<SpecializedCourses />} />
-            
             {/* Expert Detail Route */}
             <Route path="/expert/:id" element={<ExpertDetail />} />
             
@@ -75,15 +66,6 @@ function App() {
             
             {/* Courses in Cities Route */}
             <Route path="/courses-in-cities" element={<CoursesInCities />} />
-            
-            {/* Resources Route */}
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/train-your-team" element={<TrainYourTeam />} />
-            <Route path="/college-students" element={<CollegeStudents />} />
-            
-            {/* New Routes for News and Reviews */}
-            <Route path="/news" element={<News />} />
-            <Route path="/reviews" element={<Reviews />} />
             
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
