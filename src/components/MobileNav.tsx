@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -98,6 +97,13 @@ const MobileNav = () => {
                       onClick={closeSheet}
                     >
                       Courses in Cities
+                    </Link>
+                    <Link 
+                      to="/specialized-courses" 
+                      className="py-2 text-sm" 
+                      onClick={closeSheet}
+                    >
+                      Specialized Courses
                     </Link>
                   </div>
                 </AccordionContent>

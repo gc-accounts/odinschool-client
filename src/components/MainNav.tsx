@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -158,6 +157,11 @@ const learningLinks = [
     title: "Courses in Cities",
     href: "/courses-in-cities",
     description: "Find in-person courses in your location.",
+  },
+  {
+    title: "Specialized Courses",
+    href: "/specialized-courses",
+    description: "Curated courses from top institutions like Microsoft, IITG, and OIDInSchool.",
   },
 ];
 
