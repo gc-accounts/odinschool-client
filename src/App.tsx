@@ -37,6 +37,7 @@ import CoursesInCities from "./pages/CoursesInCities";
 import ExpertDetail from "./pages/ExpertDetail";
 import Careers from "./pages/Careers";
 import VirtualInterview from "./pages/VirtualInterview";
+import Resources from "./pages/Resources";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,9 @@ function App() {
             
             {/* Courses in Cities Route */}
             <Route path="/courses-in-cities" element={<CoursesInCities />} />
+            
+            {/* Resources Route */}
+            <Route path="/resources" element={<Resources />} />
             
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
