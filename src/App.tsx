@@ -42,6 +42,7 @@ import TrainYourTeam from "./pages/TrainYourTeam";
 import News from "./pages/News";
 import Reviews from "./pages/Reviews";
 import CollegeStudents from "./pages/CollegeStudents";
+import SpecializedCourses from "./pages/SpecializedCourses";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,9 @@ function App() {
             <Route path="/course-checkout/:id" element={<CourseCheckout />} />
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
+            
+            {/* Specialized Courses Route */}
+            <Route path="/specialized-courses" element={<SpecializedCourses />} />
             
             {/* Expert Detail Route */}
             <Route path="/expert/:id" element={<ExpertDetail />} />

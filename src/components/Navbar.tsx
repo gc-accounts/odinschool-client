@@ -3,6 +3,7 @@ import React from 'react';
 import MainNav from './MainNav';
 import MobileNav from './MobileNav';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -13,6 +14,11 @@ const Navbar = () => {
           <MainNav />
         </div>
         <div className="flex items-center gap-2">
+          <Link to="/specialized-courses">
+            <Button variant="outline" className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-none hover:opacity-90">
+              Specialized Courses
+            </Button>
+          </Link>
           <Button variant="ghost" className="text-white hover:bg-white/10">Sign In</Button>
           <Button className="bg-primary text-white hover:bg-primary/90">Sign Up</Button>
         </div>
