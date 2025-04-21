@@ -69,6 +69,10 @@
   .glass-panel {
     @apply bg-white/40 backdrop-blur-lg border border-white/20 shadow-md;
   }
+
+  .glass-dark {
+    @apply bg-gray-900/70 backdrop-blur-lg border border-gray-700/30 shadow-lg;
+  }
   
   .text-balance {
     text-wrap: balance;
@@ -106,6 +110,39 @@
     @apply relative text-primary-600 transition-all duration-200 
       after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-600 
       after:transition-all after:duration-300 hover:text-primary-700 hover:after:w-full;
+  }
+  
+  /* Mosaic theme components */
+  .mosaic-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02];
+  }
+
+  .mosaic-gradient-purple {
+    @apply bg-gradient-to-br from-purple-600/40 to-indigo-700/40;
+  }
+  
+  .mosaic-gradient-blue {
+    @apply bg-gradient-to-br from-blue-600/40 to-indigo-700/40;
+  }
+  
+  .mosaic-gradient-pink {
+    @apply bg-gradient-to-br from-pink-600/40 to-rose-700/40;
+  }
+  
+  .mosaic-gradient-amber {
+    @apply bg-gradient-to-br from-amber-600/40 to-yellow-700/40;
+  }
+  
+  .mosaic-gradient-green {
+    @apply bg-gradient-to-br from-green-600/40 to-emerald-700/40;
+  }
+  
+  .mosaic-icon-container {
+    @apply w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-lg;
+  }
+  
+  .mosaic-tag {
+    @apply px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm text-white/90 text-xs border border-white/10;
   }
 }
 

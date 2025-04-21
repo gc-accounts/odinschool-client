@@ -1,40 +1,29 @@
 export const coursesData = [
   {
     id: '1',
-    title: 'JavaScript Fundamentals',
-    description: 'Master the core concepts of JavaScript programming from basics to advanced topics.',
+    title: 'Complete JavaScript: From Fundamentals to Full-Stack Development',
+    description: 'Master JavaScript from the ground up. Learn fundamentals, ES6+, DOM manipulation, and build full-stack applications with Node.js, Express, and MongoDB.',
     instructor: 'Sarah Johnson',
-    level: 'Beginner',
-    duration: '10 hours',
-    lessons: 45,
+    level: 'Beginner to Advanced',
+    duration: '32 hours',
+    lessons: 85,
     rating: 4.8,
-    students: 12450,
-    image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=2000',
+    students: 15420,
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&w=800',
     category: 'Web Development',
-    popular: true,
-    price: 49.99,
-    fullDescription: `
-      <p>This comprehensive JavaScript course takes you from the very basics to advanced programming concepts. Whether you're new to programming or looking to strengthen your JavaScript skills, this course provides everything you need to become proficient in one of the world's most popular programming languages.</p>
-      
-      <p>You'll start with JavaScript fundamentals - variables, data types, and basic operations - before moving on to more complex topics like functions, objects, arrays, and DOM manipulation. As the course progresses, you'll dive into advanced concepts including closures, asynchronous programming with Promises, async/await, and the latest ES6+ features.</p>
-      
-      <p>Throughout the course, you'll build practical projects that reinforce your learning, including interactive websites, form validators, and small web applications. By the end, you'll have both the theoretical knowledge and hands-on experience to confidently use JavaScript in real-world scenarios.</p>
-    `,
-    curriculum: [
-      { title: 'JavaScript Basics', lessons: 8, duration: '2 hours' },
-      { title: 'Functions and Objects', lessons: 10, duration: '2.5 hours' },
-      { title: 'DOM Manipulation', lessons: 7, duration: '1.5 hours' },
-      { title: 'Events and Event Handling', lessons: 6, duration: '1 hour' },
-      { title: 'Asynchronous JavaScript', lessons: 8, duration: '2 hours' },
-      { title: 'ES6+ Features', lessons: 6, duration: '1 hour' },
-    ],
-    skills: [
-      'JavaScript Fundamentals', 
-      'DOM Manipulation', 
-      'Asynchronous Programming', 
-      'Error Handling', 
-      'ES6+ Features', 
-      'Browser APIs'
+    company: 'Google',
+    price: 149.99,
+    sale: true,
+    salePrice: 89.99,
+    certificate: true,
+    tags: ['JavaScript', 'Web Development', 'Front-end', 'Back-end', 'MERN Stack'],
+    prerequisites: ['Basic HTML and CSS knowledge'],
+    learningObjectives: [
+      'Understand JavaScript fundamentals and core concepts',
+      'Build interactive web applications with modern JavaScript',
+      'Master asynchronous programming with Promises and async/await',
+      'Create server-side applications with Node.js and Express',
+      'Develop full-stack applications with MongoDB integration'
     ]
   },
   {
@@ -49,7 +38,7 @@ export const coursesData = [
     students: 8325,
     image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2000',
     category: 'Frontend',
-    popular: true,
+    company: 'Microsoft',
     price: 69.99,
     fullDescription: `
       <p>Take your frontend development skills to the next level with this comprehensive React course. Designed for developers who already understand JavaScript basics, this course will teach you everything you need to know about building professional applications with React.</p>
@@ -90,6 +79,7 @@ export const coursesData = [
     students: 9840,
     image: 'https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2000',
     category: 'Data Science',
+    company: 'Amazon',
     price: 59.99,
     fullDescription: `
       <p>Dive into the world of data science with Python in this comprehensive course. You'll learn how to work with data using Python's powerful libraries and tools, gaining practical skills that are in high demand across industries.</p>
@@ -364,3 +354,11 @@ export const coursesData = [
     ]
   },
 ];
+
+// Add an alias export to fix import errors
+export const courses = coursesData;
+
+// Add the getCourseById function that was missing
+export const getCourseById = (id: string) => {
+  return coursesData.find(course => course.id === id) || null;
+};
