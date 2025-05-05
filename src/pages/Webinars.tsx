@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import WebinarCard from '@/components/webinar/WebinarCard';
 import { Webinar, getUpcomingWebinars, getPastWebinars, getFreeWebinars, getPaidWebinars } from '@/data/webinars';
 import { Search } from 'lucide-react';
+import Navbar from '@/components/Navbar';
 
 const Webinars = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,48 +35,37 @@ const Webinars = () => {
   );
   
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="text-center mb-12">
-        <h1 className="heading-xl mb-4">Live Webinars</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Join our expert-led webinars to enhance your skills and stay ahead in your field.
-        </p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 text-gray-900">
+              Learn and grow with OdinSchool's Events
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 ">
+              Whether you're just getting started or are looking to stay current in the industry, 
+              there's something for everyone in OdinSchool's events! Interact with industry experts and thought leaders,
+              who will walk you through the most in-demand tools and technologies, and concepts.
+              </p>
+            </div>
+          </div>
+        </section>
       
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-          <Input
-            type="text"
-            placeholder="Search webinars..."
-            className="pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-        
-        <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-          <SelectTrigger className="w-full md:w-[180px]">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            {uniqueCategories.map(category => (
-              <SelectItem key={category} value={category}>
-                {category}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-      
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="mb-10">
       <Tabs defaultValue="upcoming" className="mb-16">
+      <div className="flex justify-center mb-8">
         <TabsList className="mb-8 mx-auto flex justify-center">
           <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
           <TabsTrigger value="past">Past</TabsTrigger>
           <TabsTrigger value="free">Free</TabsTrigger>
           <TabsTrigger value="paid">Paid</TabsTrigger>
         </TabsList>
+        </div>
         
         <TabsContent value="upcoming">
           {filterWebinars(upcomingWebinars).length > 0 ? (
@@ -117,9 +107,9 @@ const Webinars = () => {
               <p className="text-lg text-muted-foreground">No free webinars match your search criteria.</p>
             </div>
           )}
-        </TabsContent>
-        
-        <TabsContent value="paid">
+          </TabsContent>
+          
+          <TabsContent value="paid">
           {filterWebinars(paidWebinars).length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filterWebinars(paidWebinars).map((webinar) => (
@@ -131,8 +121,12 @@ const Webinars = () => {
               <p className="text-lg text-muted-foreground">No paid webinars match your search criteria.</p>
             </div>
           )}
-        </TabsContent>
-      </Tabs>
+          </TabsContent>
+        </Tabs>
+        </div>
+        </div>
+        </section>
+      </main>
     </div>
   );
 };

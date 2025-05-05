@@ -4,7 +4,8 @@ export interface Resource {
   title: string;
   description: string;
   category: ResourceCategory;
-  image: string;
+  video: string;
+  poster?: string;
   downloadUrl: string;
   fileSize: string;
   fileFormat: string;
@@ -27,7 +28,7 @@ export const resources: Resource[] = [
     title: "React E-commerce Starter Template",
     description: "A fully responsive e-commerce template built with React, Redux, and Tailwind CSS. Includes product listings, cart functionality, checkout process, and user authentication.",
     category: "Project Template",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+    video: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
     downloadUrl: "/downloads/react-ecommerce-template.zip",
     fileSize: "4.2 MB",
     fileFormat: "ZIP",
@@ -40,7 +41,7 @@ export const resources: Resource[] = [
     title: "Web Development Cheat Sheet Bundle",
     description: "A comprehensive collection of cheat sheets covering HTML5, CSS3, JavaScript, React, Node.js, and Git. Perfect for quick reference during development or interviews.",
     category: "Cheat Sheet",
-    image: "https://images.unsplash.com/photo-1517842645767-c639042777db",
+    video: "https://images.unsplash.com/photo-1517842645767-c639042777db",
     downloadUrl: "/downloads/web-dev-cheatsheets.pdf",
     fileSize: "2.8 MB",
     fileFormat: "PDF",
@@ -53,7 +54,7 @@ export const resources: Resource[] = [
     title: "Portfolio Website Template",
     description: "A clean, modern portfolio template designed for developers and designers. Features a responsive layout, dark/light mode, project showcase section, and contact form.",
     category: "Project Template",
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8",
+    video: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8",
     downloadUrl: "/downloads/portfolio-template.zip",
     fileSize: "3.5 MB",
     fileFormat: "ZIP",
@@ -66,7 +67,7 @@ export const resources: Resource[] = [
     title: "UI Component Library",
     description: "A collection of 50+ reusable UI components built with HTML, CSS, and vanilla JavaScript. Includes buttons, cards, modals, tabs, accordions, and more.",
     category: "Design Asset",
-    image: "https://images.unsplash.com/photo-1585435421671-0c16737a421a",
+    video: "https://images.unsplash.com/photo-1585435421671-0c16737a421a",
     downloadUrl: "/downloads/ui-component-library.zip",
     fileSize: "6.7 MB",
     fileFormat: "ZIP",
@@ -79,7 +80,7 @@ export const resources: Resource[] = [
     title: "MongoDB CRUD Operations Snippet Pack",
     description: "A collection of code snippets for common MongoDB CRUD operations, including queries, aggregations, and data modeling patterns.",
     category: "Code Snippet",
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb",
+    video: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb",
     downloadUrl: "/downloads/mongodb-snippets.js",
     fileSize: "1.2 MB",
     fileFormat: "JS",
@@ -92,7 +93,7 @@ export const resources: Resource[] = [
     title: "Full-Stack Web App Starter Kit",
     description: "A complete starter kit for building full-stack web applications with React, Node.js, Express, and MongoDB. Includes authentication, database setup, and API integration.",
     category: "Starter Kit",
-    image: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3",
+    video: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3",
     downloadUrl: "/downloads/fullstack-starter-kit.zip",
     fileSize: "8.3 MB",
     fileFormat: "ZIP",
@@ -105,7 +106,7 @@ export const resources: Resource[] = [
     title: "Responsive CSS Grid Layouts",
     description: "A collection of 20 responsive layout templates built with CSS Grid. Perfect for building modern, flexible web layouts without frameworks.",
     category: "Design Asset",
-    image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2",
+    video: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2",
     downloadUrl: "/downloads/css-grid-layouts.zip",
     fileSize: "2.5 MB",
     fileFormat: "ZIP",
@@ -118,7 +119,7 @@ export const resources: Resource[] = [
     title: "Interactive JavaScript Tutorial: Building a To-Do App",
     description: "A step-by-step tutorial for building a to-do application with vanilla JavaScript. Covers DOM manipulation, event handling, local storage, and more.",
     category: "Tutorial",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    video: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     downloadUrl: "/downloads/javascript-todo-tutorial.zip",
     fileSize: "3.8 MB",
     fileFormat: "ZIP",

@@ -56,7 +56,7 @@ const CallbackForm = () => {
   }
 
   return (
-    <div className="w-full max-w-lg mx-auto glass-card rounded-xl p-6 md:p-8 shadow-lg">
+    <div className=" w-full max-w-lg mx-auto my-12 glass-card rounded-xl p-6 md:p-8 shadow-lg">
       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Request a Callback</h3>
       <p className="text-gray-600 mb-6">Fill in your details and our team will get back to you</p>
       

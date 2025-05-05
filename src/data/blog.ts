@@ -9,6 +9,7 @@ export interface BlogPost {
     name: string;
     avatar: string;
     title: string;
+    about: string;
   };
   category: string;
   coverImage: string;
@@ -62,7 +63,8 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: "Sarah Johnson",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      title: "Senior Developer Advocate"
+      title: "Senior Developer Advocate",
+      about: "A part-time writer and a full-time human. Indulges in art, poetry, dance, tech... but identifies with none. Flowing through life's rhythm, becoming one with the cosmic hum. I strongly believe, trying to know a person reading a three-line bio is just not done!",
     },
     category: "Programming",
     coverImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
@@ -143,7 +145,8 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: "Michael Chen",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-      title: "Technical Interview Coach"
+      title: "Technical Interview Coach",
+      about: "A part-time writer and a full-time human. Indulges in art, poetry, dance, tech... but identifies with none. Flowing through life's rhythm, becoming one with the cosmic hum. I strongly believe, trying to know a person reading a three-line bio is just not done!",
     },
     category: "Career",
     coverImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
@@ -230,7 +233,8 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: "Rebecca Wong",
       avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-      title: "AI Research Scientist"
+      title: "AI Research Scientist",
+      about: "A part-time writer and a full-time human. Indulges in art, poetry, dance, tech... but identifies with none. Flowing through life's rhythm, becoming one with the cosmic hum. I strongly believe, trying to know a person reading a three-line bio is just not done!",
     },
     category: "Machine Learning",
     coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
@@ -422,7 +426,8 @@ body {
     author: {
       name: "Jordan Lee",
       avatar: "https://randomuser.me/api/portraits/men/55.jpg",
-      title: "Frontend Developer"
+      title: "Frontend Developer",
+      about: "A part-time writer and a full-time human. Indulges in art, poetry, dance, tech... but identifies with none. Flowing through life's rhythm, becoming one with the cosmic hum. I strongly believe, trying to know a person reading a three-line bio is just not done!",
     },
     category: "Web Development",
     coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",

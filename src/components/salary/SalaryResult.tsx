@@ -45,53 +45,6 @@ const SalaryResult = ({ formData, result, onRecalculate }: SalaryResultProps) =>
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Salary Breakdown</CardTitle>
-          <CardDescription>How we calculated your estimated salary</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex justify-between py-2 border-b">
-            <span className="text-gray-600">Base Salary for {jobRole}</span>
-            <span className="font-medium">{formatCurrency(result.breakdown.baseSalary)}</span>
-          </div>
-          
-          <div className="flex justify-between py-2 border-b">
-            <div className="flex items-center">
-              <TrendingUp className="h-4 w-4 text-blue-500 mr-2" />
-              <span className="text-gray-600">Experience ({experienceLevel})</span>
-            </div>
-            <span className={result.breakdown.experienceAdjustment >= 0 ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
-              {result.breakdown.experienceAdjustment >= 0 ? "+" : ""}{formatCurrency(result.breakdown.experienceAdjustment)}
-            </span>
-          </div>
-          
-          <div className="flex justify-between py-2 border-b">
-            <div className="flex items-center">
-              <GraduationCap className="h-4 w-4 text-purple-500 mr-2" />
-              <span className="text-gray-600">Education ({educationLevel})</span>
-            </div>
-            <span className={result.breakdown.educationAdjustment >= 0 ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
-              {result.breakdown.educationAdjustment >= 0 ? "+" : ""}{formatCurrency(result.breakdown.educationAdjustment)}
-            </span>
-          </div>
-          
-          <div className="flex justify-between py-2 border-b">
-            <div className="flex items-center">
-              <MapPin className="h-4 w-4 text-red-500 mr-2" />
-              <span className="text-gray-600">Location ({location})</span>
-            </div>
-            <span className={result.breakdown.locationAdjustment >= 0 ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
-              {result.breakdown.locationAdjustment >= 0 ? "+" : ""}{formatCurrency(result.breakdown.locationAdjustment)}
-            </span>
-          </div>
-          
-          <div className="flex justify-between pt-4 font-semibold">
-            <span>Total Estimated Salary</span>
-            <span>{formatCurrency(result.adjusted)}</span>
-          </div>
-        </CardContent>
-      </Card>
 
       <div className="mt-6 text-center">
         <Button variant="outline" onClick={onRecalculate}>

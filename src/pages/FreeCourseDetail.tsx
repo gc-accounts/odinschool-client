@@ -377,14 +377,11 @@ const FreeCourseDetail = () => {
         </section>
 
         {/* Course Content */}
-        <section className="py-12">
+        <section className="py-8">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <Tabs defaultValue="content" className="space-y-4">
-                <TabsList>
-                  <TabsTrigger value="content">Lesson Content</TabsTrigger>
-                  <TabsTrigger value="resources">Resources</TabsTrigger>
-                </TabsList>
+               
                 
                 <TabsContent value="content" className="space-y-6">
                   {/* Lesson Selection */}
@@ -419,7 +416,7 @@ const FreeCourseDetail = () => {
 
                   {/* Lesson Content */}
                   {currentLesson && (
-                    <div className="bg-white rounded-lg border p-6">
+                    <div>
                       <h2 className="text-2xl font-bold mb-6">{currentLesson.title}</h2>
                       <div 
                         className="prose max-w-none"
@@ -448,37 +445,7 @@ const FreeCourseDetail = () => {
                   )}
                 </TabsContent>
                 
-                <TabsContent value="resources">
-                  <Card>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-semibold mb-6">Course Resources</h3>
-                      
-                      {course.resources && course.resources.length > 0 ? (
-                        <div className="space-y-4">
-                          {course.resources.map((resource: any, index: number) => (
-                            <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
-                              <div className="flex items-center">
-                                <div className="h-10 w-10 flex items-center justify-center bg-primary-50 text-primary-600 rounded">
-                                  <Download className="h-5 w-5" />
-                                </div>
-                                <div className="ml-4">
-                                  <p className="font-medium">{resource.name}</p>
-                                  <p className="text-sm text-gray-500">{resource.type} • {resource.size}</p>
-                                </div>
-                              </div>
-                              <Button variant="outline" size="sm">
-                                <Download className="h-4 w-4 mr-2" />
-                                Download
-                              </Button>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="text-gray-500">No resources available for this course.</p>
-                      )}
-                    </CardContent>
-                  </Card>
-                </TabsContent>
+               
               </Tabs>
             </div>
           </div>

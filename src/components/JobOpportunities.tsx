@@ -11,7 +11,7 @@ interface JobOpportunitiesProps {
 const JobOpportunities = ({ courseCategory, courseTitle }: JobOpportunitiesProps) => {
   // Sample job data based on course category
   const getJobsByCategory = (category: string) => {
-    const jobsByCategory: Record<string, any[]> = {
+    const jobsByCategory: Record<string, unknown> = {
       'Web Development': [
         {
           title: 'Frontend Developer',

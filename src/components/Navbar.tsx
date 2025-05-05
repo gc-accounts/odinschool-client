@@ -7,20 +7,14 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-black/70 backdrop-blur supports-[backdrop-filter]:bg-black/40">
+    <header className="sticky top-0 z-40 w-full bg-white backdrop-blur supports-[backdrop-filter]:bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <MobileNav />
           <MainNav />
         </div>
         <div className="flex items-center gap-2">
-          <Link to="/specialized-courses">
-            <Button variant="outline" className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-none hover:opacity-90">
-              Specialized Courses
-            </Button>
-          </Link>
-          <Button variant="ghost" className="text-white hover:bg-white/10">Sign In</Button>
-          <Button className="bg-primary text-white hover:bg-primary/90">Sign Up</Button>
+          <Button className="bg-primary text-white hover:bg-primary/90">Log In</Button>
         </div>
       </div>
     </header>

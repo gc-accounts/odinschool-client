@@ -32,28 +32,11 @@ const Index = () => {
         <HeroSection />
         <OrganizationLogos />
         <FeaturedCourses />
-        <InstructorProfile />
-        <CollegeSpotlight />
-        <NewsSection />
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-                Ready to <span className="text-primary-600">Get Started?</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Request a callback from our team and start your coding journey today
-              </p>
-            </div>
-            <CallbackForm />
-          </div>
-        </section>
         <Testimonials />
-        <PlatformComparison />
+        <InstructorProfile />
         <JobsSection />
-        <CertificationSection />
-        <ToolsSection />
-        
+        <CollegeSpotlight />
+      
         {/* Additional Pages Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -67,7 +50,7 @@ const Index = () => {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {/* Checkout Page */}
+        
               <Link to="/course-checkout/1" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -80,7 +63,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Referral Program */}
+         
               <Link to="/referral-program" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -93,7 +76,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Thank You Page */}
+           
               <Link to="/thank-you" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -106,7 +89,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Reviews Page */}
+         
               <Link to="/reviews" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -119,7 +102,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Train Your Team */}
+             
               <Link to="/train-your-team" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -132,7 +115,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Hire Talent */}
+          
               <Link to="/hire-talent" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -145,7 +128,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* News Page */}
+            
               <Link to="/news" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -158,7 +141,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* College Students - NEW */}
+              
               <Link to="/college-students" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -171,7 +154,7 @@ const Index = () => {
                 </div>
               </Link>
               
-              {/* Blog Page */}
+             
               <Link to="/blog" className="group">
                 <div className="bg-gray-100 rounded-lg p-6 h-full transition-all duration-300 group-hover:shadow-lg group-hover:bg-primary-50">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
@@ -187,6 +170,20 @@ const Index = () => {
           </div>
         </section>
       </main>
+      <NewsSection />
+      <section className="py-16 md:py-24 bg-gray-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+                Ready to <span className="text-primary-600">Get Started?</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Request a callback from our team and start your coding journey today
+              </p>
+            </div>
+            <CallbackForm />
+          </div>
+        </section>
       <Footer />
     </div>
   );

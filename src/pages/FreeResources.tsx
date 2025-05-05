@@ -39,7 +39,7 @@ const FreeResources = () => {
                 <Download className="h-8 w-8" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-center mb-4">Free Resources</h1>
+            <h1 className="text-4xl font-bold text-center mb-4">Project Page</h1>
             <p className="text-xl text-center max-w-2xl mx-auto mb-8">
               Download free templates, code snippets, and learning materials to accelerate your development journey
             </p>
@@ -57,7 +57,7 @@ const FreeResources = () => {
         </div>
         
         <div className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div className=" mb-8 flex flex-wrap gap-2">
             {categories.map(category => (
               <Button
                 key={category}
@@ -75,7 +75,7 @@ const FreeResources = () => {
               <Card key={resource.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="aspect-video overflow-hidden bg-gray-100">
                   <img 
-                    src={resource.image} 
+                    src={resource.video} 
                     alt={resource.title} 
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />

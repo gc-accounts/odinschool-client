@@ -33,18 +33,21 @@ const CertificationSection = () => {
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-primary-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-on-scroll opacity-0">
+          <div className="space-y-6 animate-on-scroll ">
             <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm">
               Microsoft Certification
             </Badge>
             
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-gray-900">
-              Why Get <span className="text-primary-600">PL-300 Certified</span> with CodeMaster?
+              Empower yourself with <span className="text-primary-600">PL-300 Certified</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8">
-              The Microsoft PL-300 certification validates your ability to analyze data with Power BI. Our specialized training program prepares you for success on the exam while building practical skills employers demand.
-            </p>
+            With Microsoft's® PL-300 certification, you can excel in delivering actionable insights through compelling visualizations, perform top-notch analytics, and deploy seamless Power BI solutions. You'll provide business value, empower self-service analytics, create powerful yet easy-to-comprehend visualizations, and more.            </p>
+            
+            <p className="text-lg text-gray-600 mb-8">
+              Let your expertise in data modeling, Power Query, and Data Analysis Expressions set you apart and make you a highly sought-after candidate.
+              Here are some of the top job roles you can land with the PL-300 Certificate            </p>
             
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2">
@@ -59,7 +62,7 @@ const CertificationSection = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="border border-primary-100 bg-white hover:shadow-lg transition-shadow duration-300 animate-on-scroll opacity-0" style={{ animationDelay: `${index * 100}ms` }}>
+              <Card key={index} className="border border-primary-100 bg-white hover:shadow-lg transition-shadow duration-300 animate-on-scroll " style={{ animationDelay: `${index * 100}ms` }}>
                 <CardContent className="p-6">
                   <div className="mb-4">
                     {benefit.icon}
@@ -72,9 +75,9 @@ const CertificationSection = () => {
           </div>
         </div>
         
-        <div className="mt-16 bg-white p-6 md:p-10 rounded-xl border border-gray-200 shadow-sm animate-on-scroll opacity-0">
+        <div className="mt-16 bg-white p-6 md:p-10 rounded-xl border border-gray-200 shadow-sm animate-on-scroll ">
           <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold mb-4">PL-300 Certification Journey</h3>
+            <h3 className="text-2xl font-bold mb-4">How do I enroll in this program?</h3>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Our structured learning path takes you from beginner to certified professional
             </p>
@@ -82,20 +85,19 @@ const CertificationSection = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[
-              { step: "1", title: "Foundations", description: "Learn Power BI basics and data concepts" },
-              { step: "2", title: "Data Modeling", description: "Master relationships and DAX formulas" },
-              { step: "3", title: "Visualization", description: "Create impactful reports and dashboards" },
-              { step: "4", title: "Certification", description: "Pass your exam with confidence" }
+              { step: "1", title: "Apply", },
+              { step: "2", title: "Data Talk to A Counsellor", },
+              { step: "3", title: "Review Your Eligibility",  },
+              { step: "4", title: "Get Started", }
             ].map((step, index) => (
               <div key={index} className="relative flex flex-col items-center">
                 <div className="w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center text-lg font-bold mb-4">
                   {step.step}
                 </div>
                 {index < 3 && (
-                  <div className="absolute top-6 left-[50%] w-full h-0.5 bg-primary-200 hidden md:block"></div>
+                  <div className="absolute top-6 left-[50%] w-auto h-0.5 bg-primary-200 hidden md:block"></div>
                 )}
                 <h4 className="text-lg font-bold mb-2">{step.title}</h4>
-                <p className="text-sm text-gray-600 text-center">{step.description}</p>
               </div>
             ))}
           </div>

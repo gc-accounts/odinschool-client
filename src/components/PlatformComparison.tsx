@@ -83,23 +83,6 @@ const PlatformComparison = () => {
     return () => observer.disconnect();
   }, []);
 
-  const codeMasterAdvantages = [
-    {
-      title: "Live Expert Instruction",
-      description: "Learn directly from industry professionals with real-world experience",
-      icon: <Trophy className="h-8 w-8 text-white" />
-    },
-    {
-      title: "24/7 Mentor Support",
-      description: "Get help whenever you need it with our always-available mentors",
-      icon: <ThumbsUp className="h-8 w-8 text-white" />
-    },
-    {
-      title: "Job Placement Focus",
-      description: "Our curriculum is designed to help you land your dream tech job",
-      icon: <Check className="h-8 w-8 text-white" />
-    }
-  ];
 
   return (
     <section id="comparison" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
@@ -111,35 +94,6 @@ const PlatformComparison = () => {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             See how CodeMaster compares to other coding platforms and why we're the preferred choice for serious developers.
           </p>
-        </div>
-
-        {/* Key Advantages Cards */}
-        <div className="mb-16 animate-on-scroll opacity-0" style={{ animationDelay: '200ms' }}>
-          <Carousel className="w-full">
-            <CarouselContent>
-              {codeMasterAdvantages.map((advantage, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2">
-                    <Card className="overflow-hidden border-0 shadow-lg h-full bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-                      <CardContent className="p-6 flex flex-col items-center text-center h-full">
-                        <div className="bg-white/20 rounded-full p-4 mb-6">
-                          {advantage.icon}
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">{advantage.title}</h3>
-                        <p className="text-white/90">
-                          {advantage.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="hidden md:block">
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
-            </div>
-          </Carousel>
         </div>
 
         {/* Main comparison table - redesigned with better visuals */}

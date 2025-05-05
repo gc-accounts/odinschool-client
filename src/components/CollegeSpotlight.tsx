@@ -7,7 +7,6 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 
 interface CollegeQuality {
-  icon: React.ReactNode;
   title: string;
   description: string;
 }
@@ -43,71 +42,59 @@ const CollegeSpotlight = () => {
   // College qualities data - 10 points total
   const qualities: CollegeQuality[] = [
     {
-      icon: <GraduationCap className="text-primary-600 w-6 h-6" />,
-      title: "Academic Excellence",
-      description: "Renowned faculty with industry experience delivering cutting-edge curriculum"
+      
+      title: "#8",
+      description: "Top Universities in India 2024 by QS"
     },
     {
-      icon: <BookOpen className="text-primary-600 w-6 h-6" />,
-      title: "Diverse Programs",
+    
+      title: "#6",
       description: "Over 50 specialized tech programs across various disciplines"
     },
     {
-      icon: <Users className="text-primary-600 w-6 h-6" />,
-      title: "Strong Community",
+ 
+      title: "#42",
       description: "Vibrant campus life with tech clubs and networking opportunities"
     },
     {
-      icon: <Building className="text-primary-600 w-6 h-6" />,
-      title: "Modern Facilities",
+  
+      title: "#10",
       description: "State-of-the-art labs and workspaces with latest technology"
     },
     {
-      icon: <FlaskConical className="text-primary-600 w-6 h-6" />,
-      title: "Research Opportunities",
+     
+      title: "#9",
       description: "Student-led research projects with industry sponsorships"
     },
     {
-      icon: <Library className="text-primary-600 w-6 h-6" />,
-      title: "Digital Resources",
+  
+      title: "#7",
       description: "Extensive online library with premium access to tech publications"
     },
     {
-      icon: <Briefcase className="text-primary-600 w-6 h-6" />,
-      title: "Career Services",
-      description: "95% job placement rate with support from dedicated career advisors"
+  
+      title: "#344",
+      description: "Top Universities in India 2024 by QS"
     },
     {
-      icon: <Headphones className="text-primary-600 w-6 h-6" />,
-      title: "Student Support",
-      description: "24/7 technical assistance and personalized academic guidance"
+
+      title: "#6",
+      description: "Top Universities in India 2024 by QS"
     },
-    {
-      icon: <Star className="text-primary-600 w-6 h-6" />,
-      title: "Industry Partnerships",
-      description: "Collaborations with top tech companies for internship opportunities"
-    },
-    {
-      icon: <Award className="text-primary-600 w-6 h-6" />,
-      title: "Alumni Success",
-      description: "Distinguished graduates working at leading global tech companies"
-    }
+   
   ];
 
   // Split qualities for left and right sides
-  const leftQualities = qualities.slice(0, 5);
-  const rightQualities = qualities.slice(5);
+  const leftQualities = qualities.slice(0, 4);
+  const rightQualities = qualities.slice(4);
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16 opacity-0">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Featured <span className="text-primary-600">College Partner</span>
+          Why learn at  <span className="text-primary-600">E&ICT Academy, IIT Guhawati</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Tech Institute of Innovation partners with CodeMaster to deliver exceptional tech education
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
@@ -138,8 +125,8 @@ const CollegeSpotlight = () => {
                 />
               </div>
               <div className="bg-white rounded-lg shadow-lg p-4 max-w-[90%] mx-auto -mt-16 relative z-10 text-center">
-                <h3 className="text-xl font-bold text-gray-900">Tech Institute of Innovation</h3>
-                <p className="text-primary-600 font-medium">San Francisco, CA</p>
+                <h3 className="text-xl font-bold text-gray-900">Indian Institute of India Guwahati (IITG)</h3>
+                <p className="text-primary-600 font-medium">Guwahati, Assam</p>
               </div>
             </div>
           </div>
@@ -164,11 +151,8 @@ const CollegeSpotlight = () => {
 const QualityCard = ({ quality }: { quality: CollegeQuality }) => (
   <Card className="bg-white border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary-200">
     <CardContent className="p-4 flex gap-4 items-start">
-      <div className="p-2 bg-primary-50 rounded-lg shrink-0">
-        {quality.icon}
-      </div>
       <div>
-        <h3 className="font-bold text-gray-900">{quality.title}</h3>
+        <h2 className="text-xl font-bold text-primary">{quality.title}</h2>
         <p className="text-sm text-gray-600">{quality.description}</p>
       </div>
     </CardContent>

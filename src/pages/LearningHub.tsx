@@ -85,34 +85,22 @@ const LearningHub = () => {
       <Navbar />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-24">
+        <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 text-gray-900">
                 Learning Hub
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 mb-8">
-                Free resources and courses to help you get started with coding and level up your skills.
-              </p>
-              <p className="text-gray-600 mb-6">
-                Browse our collection of free courses covering HTML, CSS, JavaScript, and more. 
-                Designed for beginners, these courses will help you build a strong foundation in web development.
+              <p className="text-lg md:text-xl text-gray-600 ">
+              An extensive resource library to support you on your upskilling and professional development journey ahead.
               </p>
             </div>
           </div>
         </section>
 
         {/* Free Courses Section */}
-        <section className="py-16 bg-white">
+        <section className=" py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold text-gray-900">
-                Free Courses
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Start learning with these free beginner-friendly courses
-              </p>
-            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
               {freeCourses.map((course) => (
@@ -138,10 +126,6 @@ const LearningHub = () => {
                         <span>{course.lessons} lessons</span>
                       </div>
                       <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1 text-primary-600" />
-                        <span>{course.duration}</span>
-                      </div>
-                      <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1 text-primary-600" />
                         <span>{course.students.toLocaleString()}</span>
                       </div>
@@ -161,31 +145,6 @@ const LearningHub = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4 text-gray-900">
-                Ready for more advanced learning?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Check out our premium courses and webinars for in-depth, expert-led training.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/courses">
-                  <Button variant="default" size="lg">
-                    Explore Premium Courses
-                  </Button>
-                </Link>
-                <Link to="/webinars">
-                  <Button variant="outline" size="lg">
-                    Join Our Webinars
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

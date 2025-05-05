@@ -7,6 +7,8 @@ import SalaryForm, { SalaryFormValues } from '@/components/salary/SalaryForm';
 import SalaryResult from '@/components/salary/SalaryResult';
 import { calculateSalary } from '@/utils/salaryUtils';
 import { toast } from '@/hooks/use-toast';
+import FeaturedCourses from '@/components/FeaturedCourses';
+import Testimonials from '@/components/Testimonials';
 
 const SalaryCalculator = () => {
   const [showResults, setShowResults] = useState(false);
@@ -92,6 +94,8 @@ const SalaryCalculator = () => {
           </div>
         </div>
       </main>
+      <FeaturedCourses />
+      <Testimonials />
       <Footer />
     </>
   );

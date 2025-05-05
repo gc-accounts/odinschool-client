@@ -107,7 +107,7 @@ const InstructorProfile = () => {
             <Card key={instructor.id} className="border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden">
               <Link to={`/expert/${instructor.id}`}>
                 <CardContent className="p-0">
-                  <div className="h-2 bg-primary-600"></div>
+                  <div className="h-7 bg-primary-600"></div>
                   <div className="p-6">
                     <div className="flex flex-col items-center">
                       <Avatar className="h-24 w-24 mb-4">
@@ -134,8 +134,6 @@ const InstructorProfile = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    <Button className="w-full">View Profile</Button>
                   </div>
                 </CardContent>
               </Link>

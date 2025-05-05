@@ -34,9 +34,9 @@ const BlogPage = () => {
       <main className="min-h-screen bg-gray-50">
         <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Blog</h1>
+            <h1 className="text-4xl font-bold text-center mb-4">Stay current with the latest insights on our Blog!</h1>
             <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-              Insights, tutorials, and industry updates to help you stay ahead in your tech career
+            From the latest trends to best practices, read everything about Data Science, Web Development, Digital Marketing, and Power BI here.            
             </p>
             <div className="max-w-md mx-auto relative">
               <Input
@@ -52,7 +52,7 @@ const BlogPage = () => {
         </div>
         
         <div className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div className="mb-8 flex flex-wrap justify-center gap-2">
             <Button
               variant={selectedCategory === null ? "default" : "outline"}
               className="mb-2"
@@ -74,43 +74,35 @@ const BlogPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map(post => (
-              <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={post.coverImage} 
-                    alt={post.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="bg-primary-100 text-primary-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                      {post.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span className="mr-4">{formatDate(post.publishedAt)}</span>
-                    <Clock className="w-4 h-4 mr-1" />
-                    <span>{post.readTime} min read</span>
-                  </div>
-                </CardContent>
-                <CardFooter className="px-6 pb-6 pt-0 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img 
-                      src={post.author.avatar} 
-                      alt={post.author.name} 
-                      className="w-8 h-8 rounded-full mr-2"
-                    />
-                    <span className="text-sm font-medium">{post.author.name}</span>
-                  </div>
-                  <Button asChild>
-                    <Link to={`/blog/${post.id}`}>Read More</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
+           <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+           <div className="aspect-video overflow-hidden">
+             <img 
+               src={post.coverImage} 
+               alt={post.title} 
+               className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+             />
+           </div>
+           <CardContent className="p-6">
+             <div className="flex items-center gap-2 mb-3">
+               <span className="bg-primary-100 text-primary-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                 {post.category}
+               </span>
+             </div>
+             <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.title}</h3>
+             <p className="text-gray-600 line-clamp-3">{post.excerpt}</p>
+           </CardContent>
+         
+           <CardFooter className="px-6 pb-6 pt-0 flex items-center justify-between w-full">
+             <div className="flex items-flexend text-sm text-gray-500">
+               <span className="font-medium text-gray-900 mr-2">{post.author.name}</span>
+               <Calendar className="w-4 h-4 mr-1" />
+               <span>{formatDate(post.publishedAt)}</span>
+             </div>
+             <Button asChild>
+                <Link to={`/blog/${post.id}`}>Read More</Link>
+             </Button>
+           </CardFooter>
+         </Card>
             ))}
           </div>
           

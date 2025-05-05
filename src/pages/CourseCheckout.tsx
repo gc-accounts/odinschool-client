@@ -74,7 +74,7 @@ const CourseCheckout = () => {
             <div className="lg:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-8 bg-white p-6 rounded-lg shadow-sm">
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
+                  <h2 className="text-xl font-semibold mb-4">Reserve Your Seat</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
@@ -218,10 +218,6 @@ const CourseCheckout = () => {
                       {course.duration}
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
-                      <BookOpen className="h-4 w-4 mr-2" />
-                      {lessonCount} lessons
-                    </div>
-                    <div className="flex items-center text-sm text-gray-500">
                       <User className="h-4 w-4 mr-2" />
                       {course.students.toLocaleString()} students
                     </div>
@@ -241,38 +237,14 @@ const CourseCheckout = () => {
                       <span>${course.price.toFixed(2)}</span>
                     </div>
                   </div>
-                  
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">What's included:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>Full lifetime access</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>Access on mobile and desktop</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>All course materials and resources</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>30-day money-back guarantee</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="pt-4 border-t">
                     <Button variant="outline" asChild className="w-full">
                       <Link to={`/course-checkout-certificate/${id}`}>
                         Add Certificate (+ $29.99)
                       </Link>
                     </Button>
-                  </div>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>

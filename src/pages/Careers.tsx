@@ -1,74 +1,62 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, Users, GraduationCap, Building, CheckCircle } from 'lucide-react';
+import { Users, GraduationCap, Building, CheckCircle } from 'lucide-react';
+import CallbackForm from '@/components/CallbackForm';
 
 const Careers = () => {
   useEffect(() => {
-    // Scroll to top on page load
     window.scrollTo(0, 0);
-    
-    // Set page title
     document.title = "Careers at EduPlatform - Join Our Team";
   }, []);
 
   const perks = [
     {
       icon: <Users className="h-10 w-10 text-primary-600" />,
-      title: "Collaborative Environment",
-      description: "Work with talented professionals passionate about education and technology."
+      title: "Empowerment",
     },
     {
       icon: <GraduationCap className="h-10 w-10 text-primary-600" />,
-      title: "Continuous Learning",
-      description: "Access to our courses and learning resources for your professional development."
+      title: "Growth Mindset",
     },
     {
       icon: <Building className="h-10 w-10 text-primary-600" />,
-      title: "Remote-First Culture",
-      description: "Enjoy flexibility with our remote-first approach to work."
+      title: "Collaboration",
     },
     {
       icon: <CheckCircle className="h-10 w-10 text-primary-600" />,
-      title: "Impactful Work",
-      description: "Help shape the future of education and make a difference in learners' lives."
+      title: "Integrity",
     }
   ];
 
-  const openPositions = [
+  const images = [
     {
-      title: "Senior Full Stack Developer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time"
+      src: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+      alt: "Team at work having fun",
+      className: "col-span-2 row-span-1"
     },
     {
-      title: "Curriculum Designer",
-      department: "Education",
-      location: "Remote",
-      type: "Full-time"
+      src: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+      alt: "Woman with dogs",
+      className: "col-span-1 row-span-1"
     },
     {
-      title: "Data Scientist",
-      department: "Analytics",
-      location: "Remote",
-      type: "Full-time"
+      src: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79",
+      alt: "Group of friends cheering outdoors",
+      className: "col-span-1 row-span-1"
     },
     {
-      title: "UX/UI Designer",
-      department: "Design",
-      location: "Remote",
-      type: "Full-time"
+      src: "https://images.unsplash.com/photo-1529470839332-78ad660a6a82",
+      alt: "People with guitar and confetti",
+      className: "col-span-1 row-span-1"
     },
     {
-      title: "Content Marketing Specialist",
-      department: "Marketing",
-      location: "Remote",
-      type: "Full-time"
-    }
+      src: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+      alt: "Friends enjoying drinks",
+      className: "col-span-1 row-span-1"
+    },
   ];
 
   return (
@@ -80,13 +68,13 @@ const Careers = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
-                Join Our Mission to Transform Education
+                Careers at OdinSchool
               </h1>
               <p className="text-lg md:text-xl mb-8 text-white/90">
-                At EduPlatform, we're building the future of learning. Join our team of passionate educators, technologists, and innovators.
+                As an upskilling organization dedicated to transforming lives and careers, we understand the importance of having the right people on board. At OdinSchool, we have witnessed our graduates break free from the limitations that held them back and reach new heights in their professional lives. If you have what it takes to be the catalyst that ignites success in others’ careers, we welcome you onboard, heartily.
               </p>
               <Button size="lg" variant="secondary" className="text-primary-700 font-medium">
-                View Open Positions
+                Connect with us
               </Button>
             </div>
           </div>
@@ -97,13 +85,13 @@ const Careers = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-                Why Work With <span className="text-primary-600">EduPlatform</span>
+                We live by <span className="text-primary-600">our values</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Join a team that values innovation, collaboration, and making a positive impact on education worldwide
+                If you're ready to be a part of something bigger than yourself, where your work directly impacts the lives of others, OdinSchool is the place for you. We live by our values all day, every day.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {perks.map((perk, index) => (
                 <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow">
@@ -112,7 +100,6 @@ const Careers = () => {
                       {perk.icon}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{perk.title}</h3>
-                    <p className="text-gray-600">{perk.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -120,51 +107,69 @@ const Careers = () => {
           </div>
         </section>
 
-        {/* Open Positions */}
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-                Open <span className="text-primary-600">Positions</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Explore our current opportunities and find your perfect role
-              </p>
-            </div>
-            
-            <div className="space-y-4 max-w-4xl mx-auto">
-              {openPositions.map((position, index) => (
-                <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow overflow-hidden">
-                  <CardContent className="p-0">
-                    <div className="p-6 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">{position.title}</h3>
-                        <div className="flex flex-wrap gap-2 text-sm text-gray-600">
-                          <div className="flex items-center">
-                            <Briefcase className="h-4 w-4 mr-1" />
-                            {position.department}
-                          </div>
-                          <div className="flex items-center">
-                            <Building className="h-4 w-4 mr-1" />
-                            {position.location}
-                          </div>
-                          <div>{position.type}</div>
-                        </div>
-                      </div>
-                      <Button className="mt-4 lg:mt-0">View Details</Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            
-            <div className="text-center mt-12">
-              <p className="text-gray-600 mb-6">Don't see a position that matches your skills?</p>
-              <Button variant="outline">Send Us Your Resume</Button>
-            </div>
+        <section className="py-16 bg-white">
+  <div className="text-center mb-12">
+    <h2 className="text-4xl font-bold">We love working at OdinSchool</h2>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+    {[1, 2, 3].map((_, idx) => (
+      <div key={idx} className="bg-gray-50 rounded-xl p-6 shadow-sm">
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="Alex Morgan"
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <h4 className="text-lg font-semibold">Alex Morgan</h4>
           </div>
-        </section>
+        </div>
+        <p className="text-gray-600 italic text-sm">
+          “Beyond the incredible work we do, OdinSchool values work-life balance and a supportive environment. The company understands the importance of well-being and encourages a healthy integration of personal and professional life. It's refreshing to be part of an organization that genuinely cares about its employees.”
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
+        {/* Image Grid Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-gray-900">
+                  Life at <span className="text-primary-600 ">Odinschool</span>
+                </h2>
+              <div className="grid grid-cols-3 grid-rows-2 gap-6">
+                {images.map((img, idx) => (
+                  <div key={idx} className={`${img.className}`}>
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover rounded-xl shadow-md"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+       </section>
+
+       <section className="py-16 bg-gray-50">
+            <div className="text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-gray-900">
+            We come from  <span className="text-primary-600 ">everywhere</span>
+                </h2>
+            </div>
+
+            <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692"
+                alt="Team working together in an office"
+                className="w-full h-[500px] object-cover object-center"
+              />
+            </div>
+      </section>
       </main>
+      <CallbackForm />
       <Footer />
     </div>
   );

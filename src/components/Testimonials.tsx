@@ -117,13 +117,17 @@ const Testimonials = () => {
           <h2 className="heading-lg mb-4">
             What Our <span className="text-primary-600">Students Say</span>
           </h2>
-          <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Discover how our courses have helped students advance their careers and achieve their goals in the tech industry.
-          </p>
         </div>
 
-        <div className="mb-12">
-          <h3 className="heading-sm mb-6 text-center md:text-left">Career Transitions</h3>
+        <div>
+          <h3 className="heading-sm mb-4 text-center md:text-left">Video Testimonials</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {videoTestimonials.map((testimonial) => (
+              <VideoTestimonialCard key={testimonial.id} testimonial={testimonial} />
+            ))}
+          </div>
+        <div className="mt-8 mb-12">
+          <h3 className="heading-sm mb-4 text-center md:text-left">Career Transitions</h3>
           <div 
             ref={testimonialsRef} 
             className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
@@ -132,15 +136,8 @@ const Testimonials = () => {
             {careerTestimonials.map((testimonial) => (
               <CareerTransitionCard key={testimonial.id} testimonial={testimonial} />
             ))}
-          </div>
         </div>
 
-        <div className="mb-8">
-          <h3 className="heading-sm mb-6 text-center md:text-left">Video Testimonials</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {videoTestimonials.map((testimonial) => (
-              <VideoTestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
           </div>
         </div>
 
@@ -175,7 +172,7 @@ const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
       <CardContent className="p-0">
-        <div className="bg-gradient-to-r from-primary-800 to-primary-700 p-4 text-white">
+        <div className="bg-white p-4 ">
           <div className="flex justify-between items-start mb-4">
             <div className="flex gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
@@ -187,10 +184,10 @@ const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
                 />
               </div>
               <div>
-                <h4 className="font-semibold text-base">{testimonial.name}</h4>
-                <div className="flex items-center gap-1 text-primary-100 text-sm">
+                <h4 className="font-semibold  text-base">{testimonial.name}</h4>
+                <div className="flex items-center gap-1 text-sm">
                   <span className="line-through">{testimonial.previousRole}</span>
-                  <svg width="16" height="6" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="18" height="6" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.3536 4.35355C19.5488 4.15829 19.5488 3.84171 19.3536 3.64645L16.1716 0.464466C15.9763 0.269204 15.6597 0.269204 15.4645 0.464466C15.2692 0.659728 15.2692 0.976311 15.4645 1.17157L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53553C15.6597 7.7308 15.9763 7.7308 16.1716 7.53553L19.3536 4.35355ZM0 4.5H19V3.5H0V4.5Z" fill="currentColor"/>
                   </svg>
                   <span className="font-bold">{testimonial.currentRole}</span>
@@ -206,25 +203,9 @@ const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
             </div>
           </div>
           
-          <p className="text-sm italic mb-4">{testimonial.testimonial}</p>
+          <p className="italic text-gray-500 text-sm ">{testimonial.testimonial}</p>
           
-          <div className="grid grid-cols-3 gap-2 mt-3">
-            <div className="bg-white/10 rounded p-2 text-center">
-              <TrendingUp className="w-4 h-4 mx-auto mb-1" />
-              <p className="font-bold text-base">{testimonial.salaryIncrease}</p>
-              <p className="text-xs text-primary-100">Salary Increase</p>
-            </div>
-            <div className="bg-white/10 rounded p-2 text-center">
-              <Award className="w-4 h-4 mx-auto mb-1" />
-              <p className="font-bold text-base">{testimonial.timeToJob}</p>
-              <p className="text-xs text-primary-100">Time to Job</p>
-            </div>
-            <div className="bg-white/10 rounded p-2 text-center">
-              <Star className="w-4 h-4 mx-auto mb-1" />
-              <p className="font-bold text-base">{testimonial.rating}.0</p>
-              <p className="text-xs text-primary-100">Course Rating</p>
-            </div>
-          </div>
+
         </div>
         
         <div className="p-4">
@@ -240,13 +221,7 @@ const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-1 mb-3">
-            {testimonial.skills.map((skill, i) => (
-              <span key={i} className="bg-primary-50 text-primary-700 text-xs px-2 py-0.5 rounded-full">
-                {skill}
-              </span>
-            ))}
-          </div>
+          
         </div>
       </CardContent>
     </Card>
@@ -313,7 +288,7 @@ const VideoTestimonialCard = ({ testimonial }: VideoTestimonialProps) => {
         <div className="p-4">
           <div className="flex items-start mb-3">
             <Quote size={16} className="text-primary-600 mr-2 shrink-0 mt-1" />
-            <p className="italic text-gray-700 text-sm">{testimonial.testimonial}</p>
+            <p className="italic text-gray-500 text-sm">{testimonial.testimonial}</p>
           </div>
           
           <div className="flex items-center justify-between">

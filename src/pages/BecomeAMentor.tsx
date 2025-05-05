@@ -10,47 +10,27 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const BecomeAMentor = () => {
   const benefits = [
     {
-      title: "Share Your Expertise",
-      description: "Help shape the next generation of professionals by sharing your knowledge and experience.",
+      title: "Join our mission",
+      description: "Help us bridge the growing skill gap",
       icon: <Users className="h-10 w-10 text-primary-600" />,
     },
     {
-      title: "Build Your Brand",
-      description: "Establish yourself as a thought leader in your field and grow your professional network.",
+      title: "Give back",
+      description: "Share your knowledge with aspirants",
       icon: <Award className="h-10 w-10 text-primary-600" />,
     },
     {
-      title: "Flexible Schedule",
-      description: "Create your own hours and mentor students when it's convenient for you.",
+      title: "Identify talent",
+      description: "Get early access to talents & hire them",
       icon: <Clock className="h-10 w-10 text-primary-600" />,
     },
     {
-      title: "Competitive Compensation",
-      description: "Earn competitive rates for your mentorship sessions and course contributions.",
+      title: "Become our brand ambassador",
+      description: "Refer students and get rewarded",
       icon: <DollarSign className="h-10 w-10 text-primary-600" />,
     },
   ];
 
-  const mentors = [
-    {
-      name: "Dr. Emily Chen",
-      role: "Senior Data Scientist at Netflix",
-      image: "/placeholder.svg",
-      bio: "With over 10 years of experience in machine learning and AI, I enjoy helping students bridge the gap between theory and practical applications.",
-    },
-    {
-      name: "James Wilson",
-      role: "Lead Developer at Spotify",
-      image: "/placeholder.svg",
-      bio: "As a self-taught developer who made it to a lead position, I'm passionate about helping others navigate their coding journey.",
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Product Manager at Google",
-      image: "/placeholder.svg",
-      bio: "I specialize in helping aspiring product managers understand the intricacies of the role and prepare for interviews at top tech companies.",
-    },
-  ];
 
   const steps = [
     {
@@ -71,22 +51,22 @@ const BecomeAMentor = () => {
     {
       number: "04",
       title: "Start Mentoring",
-      description: "Begin connecting with students and sharing your knowledge through sessions and content creation.",
+      description: "Join OdinSchool as a mentor",
     },
   ];
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+      <main className="min-h-screen">
+        <div className="pt-28 pb-16 md:pt-24 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Become a Mentor</h1>
+            <h1 className="heading-xl font-bold text-center mb-4">Become a Mentor</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
               Share your expertise, inspire the next generation, and grow your professional network
             </p>
-            <div className="flex justify-center mt-8">
-              <Button asChild size="lg" className="bg-white text-primary-700 hover:bg-gray-100">
+            <div className="flex justify-center mt-8 mb-12">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-gray-100">
                 <a href="#apply">Apply Now</a>
               </Button>
             </div>
@@ -114,28 +94,7 @@ const BecomeAMentor = () => {
               ))}
             </div>
           </div>
-          
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-4">Meet Our Mentors</h2>
-            <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
-              Our mentors are industry professionals who are passionate about sharing their knowledge and experience.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {mentors.map((mentor, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-8 text-center">
-                  <Avatar className="h-24 w-24 mx-auto mb-4">
-                    <AvatarImage src={mentor.image} alt={mentor.name} />
-                    <AvatarFallback>{mentor.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="text-xl font-bold mb-1">{mentor.name}</h3>
-                  <p className="text-primary-600 mb-4">{mentor.role}</p>
-                  <p className="text-gray-600 mb-6">"{mentor.bio}"</p>
-                  <Button variant="outline" className="w-full">View Profile</Button>
-                </div>
-              ))}
-            </div>
-          </div>
+        
           
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>

@@ -18,10 +18,13 @@ import {
 
 const MainNav = () => {
   return (
-    <div className="hidden md:flex">
+    <div className="hidden md:flex ">
       <Link to="/" className="mr-6 flex items-center">
-        <GraduationCap className="h-6 w-6 text-primary" />
-        <span className="ml-2 text-xl font-bold">EduPlatform</span>
+      <img
+    src="https://www.odinschool.com/hubfs/OdinSchool_V3/icons/Odinschool_v3_logo.svg" // Replace with your actual logo URL
+    alt="EduPlatform Logo"
+    className="h-8 w-auto"
+  />
       </Link>
       <NavigationMenu>
         <NavigationMenuList>
@@ -158,11 +161,7 @@ const learningLinks = [
     href: "/courses-in-cities",
     description: "Find in-person courses in your location.",
   },
-  {
-    title: "Specialized Courses",
-    href: "/specialized-courses",
-    description: "Curated courses from top institutions like Microsoft, IITG, and OIDInSchool.",
-  },
+
 ];
 
 const resourceLinks = [
@@ -177,7 +176,7 @@ const resourceLinks = [
     description: "Read articles on industry trends and best practices.",
   },
   {
-    title: "Free Resources",
+    title: "Free Project",
     href: "/free-resources",
     description: "Access complimentary learning materials.",
   },

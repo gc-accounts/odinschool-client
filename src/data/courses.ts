@@ -1,7 +1,7 @@
 export const coursesData = [
   {
     id: '1',
-    title: 'Complete JavaScript: From Fundamentals to Full-Stack Development',
+    title: 'Data Science Course',
     description: 'Master JavaScript from the ground up. Learn fundamentals, ES6+, DOM manipulation, and build full-stack applications with Node.js, Express, and MongoDB.',
     instructor: 'Sarah Johnson',
     level: 'Beginner to Advanced',
@@ -14,7 +14,7 @@ export const coursesData = [
     company: 'Google',
     price: 149.99,
     sale: true,
-    salePrice: 89.99,
+    salePrice: 15000,
     certificate: true,
     tags: ['JavaScript', 'Web Development', 'Front-end', 'Back-end', 'MERN Stack'],
     prerequisites: ['Basic HTML and CSS knowledge'],
@@ -28,7 +28,7 @@ export const coursesData = [
   },
   {
     id: '2',
-    title: 'React for Professionals',
+    title: 'Power BI Certification Course',
     description: 'Build modern, responsive web applications with React.js and related ecosystem tools.',
     instructor: 'Michael Chen',
     level: 'Intermediate',
@@ -39,7 +39,8 @@ export const coursesData = [
     image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2000',
     category: 'Frontend',
     company: 'Microsoft',
-    price: 69.99,
+    price: 15000,
+    salePrice: 15000,
     fullDescription: `
       <p>Take your frontend development skills to the next level with this comprehensive React course. Designed for developers who already understand JavaScript basics, this course will teach you everything you need to know about building professional applications with React.</p>
       
@@ -69,7 +70,7 @@ export const coursesData = [
   },
   {
     id: '3',
-    title: 'Python Data Science',
+    title: 'Certification Program in Data Science and Machine Learning',
     description: 'Learn to analyze and visualize data using Python and popular data science libraries.',
     instructor: 'Emily Rodriguez',
     level: 'Intermediate',
@@ -81,6 +82,7 @@ export const coursesData = [
     category: 'Data Science',
     company: 'Amazon',
     price: 59.99,
+    salePrice: 15000,
     fullDescription: `
       <p>Dive into the world of data science with Python in this comprehensive course. You'll learn how to work with data using Python's powerful libraries and tools, gaining practical skills that are in high demand across industries.</p>
       
@@ -109,7 +111,7 @@ export const coursesData = [
   },
   {
     id: '4',
-    title: 'Advanced Machine Learning',
+    title: 'Certification Program in Applied Generative AI',
     description: 'Dive deep into ML algorithms, neural networks, and practical applications.',
     instructor: 'David Kim',
     level: 'Advanced',
@@ -117,9 +119,10 @@ export const coursesData = [
     lessons: 80,
     rating: 4.9,
     students: 5670,
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&w=800',
     category: 'Artificial Intelligence',
-    price: 79.99,
+    price: 799,
+    salePrice: 15000,
     fullDescription: `
       <p>This advanced machine learning course is designed for students with a strong foundation in programming and mathematics who want to master cutting-edge ML techniques. The course provides in-depth coverage of sophisticated algorithms and their practical applications.</p>
       
@@ -151,7 +154,7 @@ export const coursesData = [
   },
   {
     id: '5',
-    title: 'Full-Stack Web Development',
+    title: 'Data Analyst College Program',
     description: 'Build complete web applications from front to back end using modern technologies.',
     instructor: 'James Wilson',
     level: 'Intermediate',
@@ -162,6 +165,7 @@ export const coursesData = [
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000',
     category: 'Web Development',
     price: 69.99,
+    salePrice: 15000,
     fullDescription: `
       <p>Become a complete web developer with this comprehensive full-stack course. You'll learn to build end-to-end web applications, handling everything from user interfaces to server logic and database management.</p>
       
@@ -351,6 +355,90 @@ export const coursesData = [
       'Prototyping', 
       'Visual Design', 
       'Usability Testing'
+    ]
+  },
+  {
+    id: '10',
+    title: 'Data Analyst Course',
+    description: 'Deploy and scale applications using Amazon Web Services infrastructure.',
+    instructor: 'Priya Patel',
+    level: 'Advanced',
+    duration: '22 hours',
+    lessons: 75,
+    rating: 4.8,
+    students: 3950,
+    image: 'https://images.unsplash.com/photo-1603695950834-3963cfb7fd5c?q=80&w=2000',
+    category: 'DevOps',
+    price: 69.99,
+    fullDescription: `
+      <p>Gain mastery of Amazon Web Services (AWS) with this comprehensive cloud computing course. You'll learn to architect, deploy, and manage scalable, highly available, and fault-tolerant systems on the world's most popular cloud platform.</p>
+      
+      <p>The course covers core AWS services including EC2, S3, RDS, Lambda, and more, along with networking, security, and cost optimization. You'll explore infrastructure as code with CloudFormation and Terraform, continuous integration/deployment pipelines, monitoring, and best practices for cloud architecture.</p>
+      
+      <p>Through hands-on labs and real-world projects, you'll gain practical experience designing and implementing cloud solutions. By the end, you'll be prepared to design and manage production AWS environments and pursue AWS certification.</p>
+    `,
+    curriculum: [
+      { title: 'AWS Fundamentals', lessons: 10, duration: '2.5 hours' },
+      { title: 'Compute Services', lessons: 8, duration: '2 hours' },
+      { title: 'Storage Solutions', lessons: 7, duration: '2 hours' },
+      { title: 'Database Services', lessons: 8, duration: '2.5 hours' },
+      { title: 'Networking in AWS', lessons: 7, duration: '2 hours' },
+      { title: 'Serverless Architecture', lessons: 10, duration: '3 hours' },
+      { title: 'Infrastructure as Code', lessons: 8, duration: '2.5 hours' },
+      { title: 'Security Best Practices', lessons: 8, duration: '2 hours' },
+      { title: 'Monitoring and Management', lessons: 5, duration: '1.5 hours' },
+      { title: 'Cost Optimization', lessons: 4, duration: '1 hour' },
+    ],
+    skills: [
+      'AWS Services', 
+      'Cloud Architecture', 
+      'Infrastructure as Code', 
+      'Serverless Computing', 
+      'Cloud Security', 
+      'Scalability', 
+      'Cost Management'
+    ]
+  },
+  {
+    id: '11',
+    title: 'AI Analyst Course',
+    description: 'Deploy and scale applications using Amazon Web Services infrastructure.',
+    instructor: 'Priya Patel',
+    level: 'Advanced',
+    duration: '22 hours',
+    lessons: 75,
+    rating: 4.8,
+    students: 3950,
+    image: 'https://images.unsplash.com/photo-1603695950834-3963cfb7fd5c?q=80&w=2000',
+    category: 'DevOps',
+    price: 69.99,
+    fullDescription: `
+      <p>Gain mastery of Amazon Web Services (AWS) with this comprehensive cloud computing course. You'll learn to architect, deploy, and manage scalable, highly available, and fault-tolerant systems on the world's most popular cloud platform.</p>
+      
+      <p>The course covers core AWS services including EC2, S3, RDS, Lambda, and more, along with networking, security, and cost optimization. You'll explore infrastructure as code with CloudFormation and Terraform, continuous integration/deployment pipelines, monitoring, and best practices for cloud architecture.</p>
+      
+      <p>Through hands-on labs and real-world projects, you'll gain practical experience designing and implementing cloud solutions. By the end, you'll be prepared to design and manage production AWS environments and pursue AWS certification.</p>
+    `,
+    curriculum: [
+      { title: 'AWS Fundamentals', lessons: 10, duration: '2.5 hours' },
+      { title: 'Compute Services', lessons: 8, duration: '2 hours' },
+      { title: 'Storage Solutions', lessons: 7, duration: '2 hours' },
+      { title: 'Database Services', lessons: 8, duration: '2.5 hours' },
+      { title: 'Networking in AWS', lessons: 7, duration: '2 hours' },
+      { title: 'Serverless Architecture', lessons: 10, duration: '3 hours' },
+      { title: 'Infrastructure as Code', lessons: 8, duration: '2.5 hours' },
+      { title: 'Security Best Practices', lessons: 8, duration: '2 hours' },
+      { title: 'Monitoring and Management', lessons: 5, duration: '1.5 hours' },
+      { title: 'Cost Optimization', lessons: 4, duration: '1 hour' },
+    ],
+    skills: [
+      'AWS Services', 
+      'Cloud Architecture', 
+      'Infrastructure as Code', 
+      'Serverless Computing', 
+      'Cloud Security', 
+      'Scalability', 
+      'Cost Management'
     ]
   },
 ];

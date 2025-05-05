@@ -59,8 +59,8 @@ const ResumeBuilder = () => {
         
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="p-4 border-b flex justify-between items-center">
-              <div className="flex space-x-2">
+            <div className="p-4 border-b flex justify-between items-center ">
+              <div className="flex space-x-2 md:hidden" >
                 <Button 
                   variant={isEditing ? "default" : "outline"} 
                   size="sm" 
@@ -77,15 +77,6 @@ const ResumeBuilder = () => {
                 </Button>
               </div>
               <div className="flex space-x-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleSaveResume} 
-                  className="flex items-center"
-                >
-                  <Save className="h-4 w-4 mr-2" />
-                  Save
-                </Button>
                 <Button 
                   variant="default" 
                   size="sm" 

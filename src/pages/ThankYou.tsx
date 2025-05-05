@@ -28,12 +28,12 @@ const ThankYou = () => {
               <div className="bg-gray-50 rounded-lg p-6">
                 <h2 className="text-xl font-bold mb-2">What's Next?</h2>
                 <p className="text-gray-600 mb-4">
-                  Our team will review your submission and get back to you within 1-2 business days.
+                While you wait, check out our courses and other resources to continue your learning journey.
                 </p>
                 <div className="flex justify-center">
                   <Button variant="outline" asChild>
-                    <Link to="/contact">
-                      Contact Support
+                    <Link to="/Resources">
+                      Free Resources
                     </Link>
                   </Button>
                 </div>
@@ -67,24 +67,6 @@ const ThankYou = () => {
                   Upcoming Webinars
                 </Link>
               </Button>
-            </div>
-            
-            <div className="mt-12 border-t border-gray-200 pt-6">
-              <h3 className="font-bold mb-4">Recommended Next Steps</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <ArrowRight className="h-4 w-4 text-primary-600 mr-2 flex-shrink-0" />
-                  <span className="text-gray-600">Check your email for confirmation details</span>
-                </li>
-                <li className="flex items-center">
-                  <ArrowRight className="h-4 w-4 text-primary-600 mr-2 flex-shrink-0" />
-                  <span className="text-gray-600">Add our email to your contacts to avoid missing messages</span>
-                </li>
-                <li className="flex items-center">
-                  <ArrowRight className="h-4 w-4 text-primary-600 mr-2 flex-shrink-0" />
-                  <span className="text-gray-600">Follow us on social media for updates and resources</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

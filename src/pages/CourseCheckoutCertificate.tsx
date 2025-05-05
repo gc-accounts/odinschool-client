@@ -261,40 +261,11 @@ const CourseCheckoutCertificate = () => {
                       <span>${totalPrice.toFixed(2)}</span>
                     </div>
                   </div>
-                  
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">What's included:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>Full lifetime access</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>Access on mobile and desktop</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>All course materials and resources</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>Verified completion certificate</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        <span>30-day money-back guarantee</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="pt-4 border-t">
                     <Button variant="outline" asChild className="w-full">
                       <Link to={`/course-checkout/${id}`}>
                         Remove Certificate (Save $29.99)
                       </Link>
                     </Button>
-                  </div>
                 </CardContent>
               </Card>
             </div>

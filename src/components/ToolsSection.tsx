@@ -16,7 +16,7 @@ interface ToolCardProps {
 }
 
 const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) => (
-  <Card className="border border-primary-100 hover:shadow-lg transition-all duration-300 animate-on-scroll opacity-0" 
+  <Card className="border border-primary-100 hover:shadow-lg transition-all duration-300 animate-on-scroll " 
         style={{ animationDelay: `${delay}ms` }}>
     <CardContent className="p-5 flex flex-col items-center text-center">
       <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
@@ -105,7 +105,7 @@ const ToolsSection = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12 animate-on-scroll opacity-0">
+        <div className="text-center mb-12 animate-on-scroll ">
           <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm mb-4">
             Industry Tools
           </Badge>

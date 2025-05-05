@@ -54,20 +54,20 @@ const ReferralProgram = () => {
 
   const steps = [
     {
-      title: "Sign Up",
-      description: "Create an account on EduPlatform if you haven't already.",
+      title: "Join the movement",
+      description: "",
     },
     {
-      title: "Get Your Link",
-      description: "Access your unique referral link from your account dashboard.",
+      title: "Share the opportunity",
+      description: "",
     },
     {
-      title: "Share With Friends",
-      description: "Share your link via email, social media, or direct message.",
+      title: "Make an impact",
+      description: "",
     },
     {
-      title: "Earn Rewards",
-      description: "Get rewarded when your friends sign up and enroll in courses.",
+      title: "Earn ₹2000",
+      description: "",
     },
   ];
 
@@ -101,13 +101,13 @@ const ReferralProgram = () => {
                 <Gift className="h-8 w-8" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-center mb-4">Referral Program</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-              Share the gift of learning and earn rewards for every friend who joins EduPlatform
+            <h1 className="heading-xl font-bold text-center mb-4">Referral Program</h1>
+            <p className="text-lg font-light text-center max-w-6xl mx-auto mb-8">
+            It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
             </p>
             <div className="flex justify-center">
               <Button asChild size="lg" className="bg-white text-primary-700 hover:bg-gray-100">
-                <a href="#get-started">Get Your Referral Link</a>
+                <a href="#get-started">Flat ₹2000 for every admission</a>
               </Button>
             </div>
           </div>
@@ -155,73 +155,10 @@ const ReferralProgram = () => {
               ))}
             </div>
             
-            <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-4 text-center">Reward Tiers</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="p-3 text-left">Number of Referrals</th>
-                      <th className="p-3 text-left">Cash Reward</th>
-                      <th className="p-3 text-left">Course Credits</th>
-                      <th className="p-3 text-left">Bonus</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-3">1-5</td>
-                      <td className="p-3">$50 per referral</td>
-                      <td className="p-3">$75 credits per referral</td>
-                      <td className="p-3">-</td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-3">6-10</td>
-                      <td className="p-3">$75 per referral</td>
-                      <td className="p-3">$100 credits per referral</td>
-                      <td className="p-3">Free webinar access</td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="p-3">11-20</td>
-                      <td className="p-3">$100 per referral</td>
-                      <td className="p-3">$150 credits per referral</td>
-                      <td className="p-3">Free premium course</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3">21+</td>
-                      <td className="p-3">$150 per referral</td>
-                      <td className="p-3">$200 credits per referral</td>
-                      <td className="p-3">VIP membership</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+           
           </div>
           
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-4">Success Stories</h2>
-            <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
-              Meet some of our top referrers and learn how they succeeded with our program.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-8">
-                  <div className="flex items-center mb-4">
-                    <Avatar className="h-16 w-16 mr-4">
-                      <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                      <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="text-xl font-bold">{testimonial.name}</h3>
-                      <p className="text-primary-600">Earned: {testimonial.earned}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 italic">"{testimonial.quote}"</p>
-                </div>
-              ))}
-            </div>
-          </div>
+         
           
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
@@ -234,53 +171,7 @@ const ReferralProgram = () => {
               ))}
             </div>
           </div>
-          
-          <div id="get-started" className="bg-white rounded-lg shadow-lg p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-4">Ready to Start Earning?</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Sign in to your account to get your unique referral link and start sharing EduPlatform with your friends.
-              </p>
-            </div>
-            
-            <div className="max-w-md mx-auto">
-              <div className="mb-6">
-                <h3 className="text-lg font-medium mb-2">Already have an account?</h3>
-                <Button asChild className="w-full">
-                  <a href="/login">Sign In to Get Your Link</a>
-                </Button>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-medium mb-2">New to EduPlatform?</h3>
-                <Button asChild variant="outline" className="w-full">
-                  <a href="/signup">Create an Account</a>
-                </Button>
-              </div>
-            </div>
-            
-            <div className="mt-8 p-6 bg-primary-50 rounded-lg">
-              <h3 className="text-lg font-bold mb-2">Share these tips to maximize your earnings:</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <ArrowRight className="h-5 w-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Personalize your message when sharing your referral link.</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="h-5 w-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Share specific courses that might interest your friends.</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="h-5 w-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Use social media platforms to reach a wider audience.</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="h-5 w-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Follow up with friends who showed interest but haven't signed up yet.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+        
         </div>
       </main>
       <Footer />
