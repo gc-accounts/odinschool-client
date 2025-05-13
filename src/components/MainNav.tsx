@@ -185,6 +185,16 @@ const resourceLinks = [
     href: "/college-students",
     description: "Special resources designed for undergraduate and graduate students.",
   },
+  {
+    title: "Fun With Statistics",
+    href: "/fun-with-statistics",
+    description: "Discover the fascinating world of data analysis and visualization.",
+  },
+  {
+    title: "Data Science Career Guide",
+    href: "/data-science-career-guide",
+    description: "Complete guide to building a successful data science career.",
+  },
 ];
 
 const toolLinks = [
@@ -224,6 +234,11 @@ const companyLinks = [
   {
     title: "Contact Us",
     href: "/contact",
+    description: "Get in touch with our support team.",
+  },
+  {
+    title: "Odin Talks",
+    href: "/odintalks",
     description: "Get in touch with our support team.",
   },
 ];

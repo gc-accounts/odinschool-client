@@ -24,7 +24,28 @@ export const coursesData = [
       'Master asynchronous programming with Promises and async/await',
       'Create server-side applications with Node.js and Express',
       'Develop full-stack applications with MongoDB integration'
-    ]
+    ],
+    curriculum: [
+      { title: 'React Fundamentals', lessons: 10, duration: '2.5 hours' ,
+        subLessons: [
+          { title: "Overview of Web Development", duration: "20 min" },
+          { title: "Setting Up Your Development Environment", duration: "25 min" },
+          { title: "HTML Fundamentals", duration: "30 min" },
+          { title: "CSS Basics", duration: "25 min" },
+          { title: "Your First Web Page", duration: "20 min" }
+        ] },
+      { title: 'Components and Props', lessons: 8, duration: '2 hours',  subLessons: [
+        { title: "Overview of Web Development", duration: "20 min" },
+        { title: "Setting Up Your Development Environment", duration: "25 min" },
+        { title: "HTML Fundamentals", duration: "30 min" },
+        { title: "CSS Basics", duration: "25 min" },
+        { title: "Your First Web Page", duration: "20 min" }
+      ] },
+      { title: 'State and Lifecycle', lessons: 7, duration: '1.5 hours' },
+      { title: 'Hooks in Depth', lessons: 10, duration: '3 hours' },
+      { title: 'Routing with React Router', lessons: 6, duration: '1.5 hours' },
+      
+    ],
   },
   {
     id: '2',
@@ -66,7 +87,9 @@ export const coursesData = [
       'React Router', 
       'Performance Optimization', 
       'Testing'
-    ]
+    ],
+
+    courseProjects: []
   },
   {
     id: '3',

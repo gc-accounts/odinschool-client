@@ -1,98 +1,21 @@
 
-import React, { useRef, useEffect } from 'react';
-import { Star, Quote, Play, Briefcase, Award, TrendingUp } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Star, Quote, Play, Briefcase, Award, TrendingUp, } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { careerTestimonials } from '@/data/careerTestimonials';
+import { videoTestimonials } from '@/data/videoTestimonials';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const careerTestimonials = [
-  {
-    id: 1,
-    name: 'Alex Morgan',
-    previousRole: 'Marketing Specialist',
-    currentRole: 'Senior Frontend Developer',
-    company: 'Google',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/800px-Google_%22G%22_Logo.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&w=200',
-    testimonial: "I was working in marketing for 5 years before deciding to switch careers. CodeMaster's curriculum helped me land my dream job.",
-    rating: 5,
-    salaryIncrease: "145%",
-    timeToJob: "8 months",
-    skills: ["JavaScript", "React"]
-  },
-  {
-    id: 2,
-    name: 'Emma Watson',
-    previousRole: 'School Teacher',
-    currentRole: 'Data Scientist',
-    company: 'Microsoft',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/800px-Microsoft_logo.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&w=200',
-    testimonial: "After 7 years as a teacher, I made the switch to tech. CodeMaster gave me the skills to excel in my new role.",
-    rating: 5,
-    salaryIncrease: "120%",
-    timeToJob: "10 months",
-    skills: ["Python", "Machine Learning"]
-  },
-  {
-    id: 3,
-    name: 'David Chen',
-    previousRole: 'Sales Manager',
-    currentRole: 'Backend Developer',
-    company: 'Amazon',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&w=200',
-    testimonial: "I wanted a more technical role. CodeMaster's project-based approach helped me build a strong portfolio.",
-    rating: 5,
-    salaryIncrease: "110%",
-    timeToJob: "7 months",
-    skills: ["Java", "Spring Boot"]
-  }
-];
 
-const videoTestimonials = [
-  {
-    id: 1,
-    name: 'Sophia Chen',
-    role: 'Data Scientist',
-    company: 'Microsoft',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/800px-Microsoft_logo.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&w=200',
-    testimonial: "The Python for Data Science course was exactly what I needed to advance my career.",
-    rating: 5,
-    videoThumbnail: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800',
-    videoUrl: "#"
-  },
-  {
-    id: 2,
-    name: 'John Davis',
-    role: 'Frontend Developer',
-    company: 'Facebook',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/800px-F_icon.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&w=200',
-    testimonial: "The React masterclass helped me level up my frontend skills and get noticed by recruiters.",
-    rating: 5,
-    videoThumbnail: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=800',
-    videoUrl: "#"
-  },
-  {
-    id: 3,
-    name: 'Maria Rodriguez',
-    role: 'UX Designer',
-    company: 'Apple',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png',
-    avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?crop=entropy&w=200',
-    testimonial: "The UX/UI course provided practical insights that I apply daily in my work at Apple.",
-    rating: 5,
-    videoThumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800',
-    videoUrl: "#"
-  }
-];
 
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState("all");
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -110,6 +33,17 @@ const Testimonials = () => {
     return () => observer.disconnect();
   }, []);
 
+  const filteredTestimonials = activeTab === "all" 
+  ? careerTestimonials 
+  : careerTestimonials.filter(t => t.category === activeTab);
+
+const categoryColors = {
+  "Career Transition": "bg-blue-100 text-blue-800 border-blue-200",
+  "Career Upgrade": "bg-green-100 text-green-800 border-green-200",
+  "Career Launch": "bg-purple-100 text-purple-800 border-purple-200",
+  "Career Gap": "bg-amber-100 text-amber-800 border-amber-200"
+};
+
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -119,26 +53,64 @@ const Testimonials = () => {
           </h2>
         </div>
 
+          <div className="border-b mb-8">
+            <Tabs defaultValue="all" className="w-full">
+              <TabsList className="mb-4 w-full justify-center">
+                <TabsTrigger 
+                  value="all" 
+                  onClick={() => setActiveTab("all")}
+                >
+                  All Stories
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="Career Transition" 
+                  onClick={() => setActiveTab("Career Transition")}
+                >
+                  Career Transition
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="Career Upgrade" 
+                  onClick={() => setActiveTab("Career Upgrade")}
+                >
+                  Career Upgrade
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="Career Launch" 
+                  onClick={() => setActiveTab("Career Launch")}
+                >
+                  Career Launch
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="Career Gap" 
+                  onClick={() => setActiveTab("Career Gap")}
+                >
+                  Career Gap
+                </TabsTrigger>
+              </TabsList>
+
+              <div className="pt-6">
+                <div 
+                  ref={testimonialsRef} 
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
+                  style={{ animationDelay: '200ms' }}
+                >
+                  {filteredTestimonials.map((testimonial) => (
+                    <CareerTransitionCard key={testimonial.id} testimonial={testimonial} categoryColors={categoryColors} />
+                  ))}
+                </div>
+              </div>
+            </Tabs>
+            
+          </div>
         <div>
-          <h3 className="heading-sm mb-4 text-center md:text-left">Video Testimonials</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {videoTestimonials.map((testimonial) => (
-              <VideoTestimonialCard key={testimonial.id} testimonial={testimonial} />
+                <VideoTestimonialCard key={testimonial.id} testimonial={testimonial} categoryColors={categoryColors} />
             ))}
           </div>
+        </div>  
         <div className="mt-8 mb-12">
-          <h3 className="heading-sm mb-4 text-center md:text-left">Career Transitions</h3>
-          <div 
-            ref={testimonialsRef} 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
-            style={{ animationDelay: '200ms' }}
-          >
-            {careerTestimonials.map((testimonial) => (
-              <CareerTransitionCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-        </div>
 
-          </div>
         </div>
 
         <div className="text-center mt-12">
@@ -165,14 +137,23 @@ interface CareerTestimonialProps {
     salaryIncrease: string;
     timeToJob: string;
     skills: string[];
-  }
+    category: string;
+  };
+  categoryColors: Record<string, string>;
 }
 
-const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
+const CareerTransitionCard = ({ testimonial, categoryColors }: CareerTestimonialProps) => {
+  const badgeClass = categoryColors[testimonial.category as keyof typeof categoryColors] || "bg-gray-100 text-gray-800 border-gray-200";
+  
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
       <CardContent className="p-0">
         <div className="bg-white p-4 ">
+          <div className="flex items-center gap-2 mb-3">
+          <Badge className={`${badgeClass} flex items-center gap-1`}>
+              <span>{testimonial.category}</span>
+            </Badge>
+          </div>
           <div className="flex justify-between items-start mb-4">
             <div className="flex gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
@@ -185,44 +166,27 @@ const CareerTransitionCard = ({ testimonial }: CareerTestimonialProps) => {
               </div>
               <div>
                 <h4 className="font-semibold  text-base">{testimonial.name}</h4>
-                <div className="flex items-center gap-1 text-sm">
+                <div className="flex flex-col items-start text-sm gap-1">
                   <span className="line-through">{testimonial.previousRole}</span>
-                  <svg width="18" height="6" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="18" height="6" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotate-90">
                     <path d="M19.3536 4.35355C19.5488 4.15829 19.5488 3.84171 19.3536 3.64645L16.1716 0.464466C15.9763 0.269204 15.6597 0.269204 15.4645 0.464466C15.2692 0.659728 15.2692 0.976311 15.4645 1.17157L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53553C15.6597 7.7308 15.9763 7.7308 16.1716 7.53553L19.3536 4.35355ZM0 4.5H19V3.5H0V4.5Z" fill="currentColor"/>
                   </svg>
                   <span className="font-bold">{testimonial.currentRole}</span>
                 </div>
               </div>
             </div>
-            <div className="flex items-center bg-white rounded-full p-1 h-7 w-7 justify-center">
-              <img 
-                src={testimonial.companyLogo} 
-                alt={testimonial.company} 
-                className="w-5 h-5 object-contain"
-              />
-            </div>
           </div>
+          <img 
+                      src={testimonial.companyLogo} 
+                      alt={testimonial.company} 
+                      className="w-12 h-12 object-contain mb-2"
+                    />
           
-          <p className="italic text-gray-500 text-sm ">{testimonial.testimonial}</p>
+          <p className="italic text-gray-500 text-sm ">"{testimonial.testimonial}"</p>
           
 
         </div>
         
-        <div className="p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <p className="text-sm font-medium">Now at:</p>
-            <div className="flex items-center gap-1">
-              <img 
-                src={testimonial.companyLogo} 
-                alt={testimonial.company} 
-                className="w-4 h-4 object-contain"
-              />
-              <span className="font-bold text-sm">{testimonial.company}</span>
-            </div>
-          </div>
-          
-          
-        </div>
       </CardContent>
     </Card>
   );
@@ -240,10 +204,14 @@ interface VideoTestimonialProps {
     rating: number;
     videoThumbnail: string;
     videoUrl: string;
-  }
+    category: string;
+  };
+  categoryColors: Record<string, string>;
 }
 
-const VideoTestimonialCard = ({ testimonial }: VideoTestimonialProps) => {
+const VideoTestimonialCard = ({ testimonial, categoryColors }: VideoTestimonialProps) => {
+  const badgeClass = categoryColors[testimonial.category as keyof typeof categoryColors] || "bg-gray-100 text-gray-800 border-gray-200";
+  
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
       <CardContent className="p-0">
@@ -258,16 +226,11 @@ const VideoTestimonialCard = ({ testimonial }: VideoTestimonialProps) => {
               <Play className="h-6 w-6" />
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 text-white">
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
+          
+        </div>
+        
+        <div className="p-4">
+        <div>
                 <h4 className="font-semibold text-sm">{testimonial.name}</h4>
                 <div className="flex items-center gap-1 text-xs">
                   <span>{testimonial.role} at</span>
@@ -281,26 +244,6 @@ const VideoTestimonialCard = ({ testimonial }: VideoTestimonialProps) => {
                   <span>{testimonial.company}</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="p-4">
-          <div className="flex items-start mb-3">
-            <Quote size={16} className="text-primary-600 mr-2 shrink-0 mt-1" />
-            <p className="italic text-gray-500 text-sm">{testimonial.testimonial}</p>
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <div className="flex text-yellow-400">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-3 w-3 fill-current" />
-              ))}
-            </div>
-            <Button size="sm" variant="outline" className="text-xs py-1 h-7">
-              Watch Video
-            </Button>
-          </div>
         </div>
       </CardContent>
     </Card>

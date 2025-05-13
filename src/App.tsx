@@ -20,6 +20,7 @@ import ResumeBuilder from "./pages/ResumeBuilder";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import TermsOfUse from "./pages/TermsOfUse";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SuccessStories from "./pages/SuccessStories";
 import HireTalent from "./pages/HireTalent";
 import BecomeAMentor from "./pages/BecomeAMentor";
@@ -43,6 +44,10 @@ import News from "./pages/News";
 import Reviews from "./pages/Reviews";
 import CollegeStudents from "./pages/CollegeStudents";
 import SpecializedCourses from "./pages/SpecializedCourses";
+import OdinTalks from "./pages/OdinTalks";
+import MentorDetail from "./pages/MentorDetail";
+import FunWithStatistics from "./pages/FunWithStatistics";
+import DataScienceCareerGuide from "./pages/DataScienceCareerGuide";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +67,12 @@ function App() {
             <Route path="/course-checkout/:id" element={<CourseCheckout />} />
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />
             <Route path="/about" element={<About />} />
+
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/odintalks" element={<OdinTalks />} />
+            <Route path="/mentor/:id" element={<MentorDetail />} />
+            <Route path="/fun-with-statistics" element={<FunWithStatistics />} />
+            <Route path="/data-science-career-guide" element={<DataScienceCareerGuide />} />
             
             {/* Specialized Courses Route */}
             <Route path="/specialized-courses" element={<SpecializedCourses />} />

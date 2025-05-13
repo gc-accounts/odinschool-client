@@ -95,7 +95,7 @@ const InstructorProfile = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Learn from <span className="text-primary-600">Industry Experts</span>
+          Meet our  <span className="text-primary-600"> mentors and speakers!</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our instructors are active professionals with years of real-world experience in their fields

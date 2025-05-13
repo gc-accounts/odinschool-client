@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { 
   ArrowLeft, Clock, BarChart, Award, CheckCircle2, 
   Download, FileText, Users, Zap, Gift, BookOpen, 
-  Briefcase, Star, PlayCircle, MessageSquare
+  Briefcase, Star, PlayCircle, MessageSquare, CheckCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
@@ -23,6 +23,16 @@ import Testimonials from '@/components/Testimonials';
 import OrganizationLogos from '@/components/OrganizationLogos';
 import InstructorProfile from '@/components/InstructorProfile';
 import CollegeSpotlight from '@/components/CollegeSpotlight';
+import FAQsection from '@/components/FAQsection';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/accordion";
+import CareerServices from '@/components/CareerServices';
+import StatsSection from '@/components/StatsSection';
+import ExtrasSection2 from '@/components/ExtrasSection2';
+import CareerServices1 from '@/components/CareerServices1';
+import WhyLearnAI from '@/components/WhyLearnAI';
+import WhoCanApply from '@/components/WhocanApply';
+import CertificationSection1 from '@/components/CertificationSection1';
+
 
 const sectionConfig: {
   [key: string]: (() => JSX.Element)[];
@@ -31,10 +41,12 @@ const sectionConfig: {
     () => <OrganizationLogos />,
     () => <Testimonials />,
     () => <JobsSection />,
+    () => <CareerServices />,
     () => <ToolsSection />,
     () => <CertificationSection />,
     () => <PlatformComparison />,
     () => <InstructorProfile />,
+    () => <FAQsection />,
   ],
   "2": [
     () => <CertificationSection />,
@@ -43,21 +55,27 @@ const sectionConfig: {
   ],
   "3": [
     () => <ToolsSection />,
-    () => <CertificationSection />,
+     () => <OrganizationLogos />,
+    () => <CertificationSection1 />,
     () => <InstructorProfile />,
   ],
   "4": [
+    () => <WhyLearnAI />,
+    () => <WhoCanApply />,
     () => <Testimonials />,
-    () => <CertificationSection />,
-    () => <PlatformComparison />,
-    () => <ToolsSection />,
+    () => <CareerServices1 />,
     () => <CollegeSpotlight />,
+    () => <InstructorProfile />,
+    () => <FAQsection />,
   ],
   "5": [
+    () => <StatsSection />,
     () => <ToolsSection />,
     () => <JobsSection />,
+    () => <ExtrasSection2 />,
     () => <OrganizationLogos />,
     () => <InstructorProfile />,
+    () => <FAQsection />,
   ],
 };
 
@@ -99,7 +117,44 @@ const CourseDetail = () => {
     }
   ];
 
-
+  const curriculumData = [
+    {
+      title: "Introduction to Web Development",
+      lessons: "5 lessons",
+      duration: "2 hours",
+      subLessons: [
+        { title: "Overview of Web Development", duration: "20 min" },
+        { title: "Setting Up Your Development Environment", duration: "25 min" },
+        { title: "HTML Fundamentals", duration: "30 min" },
+        { title: "CSS Basics", duration: "25 min" },
+        { title: "Your First Web Page", duration: "20 min" }
+      ]
+    },
+    {
+      title: "JavaScript Essentials",
+      lessons: "6 lessons",
+      duration: "3 hours",
+      subLessons: [
+        { title: "JavaScript Syntax and Variables", duration: "30 min" },
+        { title: "Functions and Control Flow", duration: "35 min" },
+        { title: "Working with Arrays and Objects", duration: "30 min" },
+        { title: "DOM Manipulation", duration: "40 min" },
+        { title: "Event Handling", duration: "25 min" },
+        { title: "Building Interactive Components", duration: "20 min" }
+      ]
+    },
+    {
+      title: "Frontend Frameworks",
+      lessons: "4 lessons",
+      duration: "2.5 hours",
+      subLessons: [
+        { title: "Introduction to React", duration: "40 min" },
+        { title: "Component-Based Architecture", duration: "35 min" },
+        { title: "State Management", duration: "45 min" },
+        { title: "Building a Complete Frontend App", duration: "30 min" }
+      ]
+    }
+  ];
 
   return (
     <div>
@@ -186,7 +241,7 @@ const CourseDetail = () => {
                 <div className="prose max-w-none">
                   <p>{course.fullDescription || course.description}</p>
                   
-                  <h3 className="text-xl font-semibold mt-8 mb-4">What You'll Learn</h3>
+                  <h3 className="text-xl font-semibold mt-8 mb-4">Course Highlight</h3>
                   <ul className="space-y-2">
                     {course.learningObjectives?.map((objective, index) => (
                       <li key={index} className="flex items-start">
@@ -230,28 +285,81 @@ const CourseDetail = () => {
           </TabsContent>
           
           <TabsContent value="curriculum">
-            <h2 className="text-2xl font-bold mb-6">Course Curriculum</h2>
+            <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
             <div className="space-y-4">
-              {course.curriculum?.map((section, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-gray-50 px-4 py-3 flex justify-between items-center">
-                    <h3 className="font-medium">{section.title}</h3>
-                    <div className="text-sm text-gray-500">
-                      {section.lessons} lessons • {section.duration}
-                    </div>
+            <Accordion type="single" collapsible className="w-full">
+                {(course.curriculum || curriculumData).map((section, index) => (
+                     <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-2 rounded-lg mb-4">
+                    <AccordionTrigger className="hover:no-underline">
+                       <div className="flex items-start w-full">
+                        <div className="text-left">
+                          <h3 className="font-medium text-lg">{section.title}</h3>
+                          <p className="text-sm text-gray-500">{section.lessons} lessons</p>
+                          
+                        </div>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="pl-4 space-y-3">
+                      <ul className="list-disc pl-5 space-y-3">
+                          {section.subLessons?.map((lesson, i) => (
+                            <li key={i} className="text-gray-700">
+                              <span>{lesson.title}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Technology logos at bottom of accordion */}
+                        {index === 0 && (
+                          <div className="flex items-center gap-4 mt-6 pt-4 border-t border-gray-200">
+                            <div className="flex items-center">
+                              <img 
+                                src="/lovable-uploads/ec11265d-d131-4f19-a226-dbfd30c34de8.png" 
+                                alt="Technology logos" 
+                                className="h-20 object-contain" 
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+
+              {/* Course technology images at the end of the accordion */}
+              <div className="mt-8 pt-6 border-t">
+                <h3 className="text-lg font-semibold mb-4">Technologies You'll Master</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+                      alt="Programming"
+                      className="w-full h-40 object-cover rounded-md mb-3"
+                    />
+                    <h4 className="font-medium">Modern Development</h4>
+                    <p className="text-sm text-gray-600">Learn industry-standard tools and practices</p>
                   </div>
-                  <div className="p-4">
-                    <p className="text-gray-600">
-                      This section covers key concepts and practical applications related to {section.title.toLowerCase()}.
-                    </p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+                      alt="Code"
+                      className="w-full h-40 object-cover rounded-md mb-3"
+                    />
+                    <h4 className="font-medium">Clean Coding</h4>
+                    <p className="text-sm text-gray-600">Write maintainable, efficient code</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                      alt="Development"
+                      className="w-full h-40 object-cover rounded-md mb-3"
+                    />
+                    <h4 className="font-medium">Project-Based Learning</h4>
+                    <p className="text-sm text-gray-600">Apply concepts to real-world scenarios</p>
                   </div>
                 </div>
-              )) || (
-                <div className="text-gray-600">
-                  <p>This course includes {course.lessons} comprehensive lessons covering all aspects of {course.title}.</p>
-                  <p className="mt-4">Total course duration: {course.duration}</p>
-                </div>
-              )}
+              </div>
             </div>
           </TabsContent>
 
@@ -294,40 +402,6 @@ const CourseDetail = () => {
                           </CardFooter>
                         </Card>
                       ))}
-                    </div>
-
-                    <div className="mt-10">
-                      <h3 className="text-xl font-bold mb-4">Free Resources</h3>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Starter Project Templates</CardTitle>
-                          <CardDescription>
-                            Download these free project templates to jump-start your learning
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="flex p-3 border rounded-lg">
-                            <FileText className="h-10 w-10 text-primary-600 mr-3" />
-                            <div>
-                              <h4 className="font-medium">HTML/CSS Template</h4>
-                              <Button variant="link" className="h-auto p-0 text-primary-600">
-                                <Download className="h-4 w-4 mr-1" />
-                                Download
-                              </Button>
-                            </div>
-                          </div>
-                          <div className="flex p-3 border rounded-lg">
-                            <FileText className="h-10 w-10 text-primary-600 mr-3" />
-                            <div>
-                              <h4 className="font-medium">JavaScript Starter</h4>
-                              <Button variant="link" className="h-auto p-0 text-primary-600">
-                                <Download className="h-4 w-4 mr-1" />
-                                Download
-                              </Button>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
                     </div>
                   </div>
                 </TabsContent>

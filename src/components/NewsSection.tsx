@@ -28,7 +28,7 @@ const NewsSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-start text-center mb-10">
           <div className="w-full">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Latest News</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">OdinSchool in Media</h2>
             <p className="text-gray-600 max-auto">Stay updated with the latest announcements and success stories from CodeMaster</p>
           </div>
         </div>
@@ -45,7 +45,7 @@ const NewsSection = () => {
             </div>
               
               <CardContent>
-                <CardDescription className="line-clamp-3">
+                <CardDescription className="line-clamp-3 mt-2">
                   {item.description}
                 </CardDescription>
               </CardContent>
