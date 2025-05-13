@@ -11,6 +11,7 @@ import OrganizationLogos from '@/components/OrganizationLogos';
 import CallbackForm from '@/components/CallbackForm';
 import ExtrasSection1 from '@/components/ExtrasSection1';
 import NewsSection from '@/components/NewsSection';
+import WhyLearnDataAI from '@/components/WhyLearnDataAI';
 
 import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain, Image, Circle, Triangle, Check, ChevronRight, Target, Trophy, BookOpenCheck } from 'lucide-react';
 
@@ -258,6 +259,7 @@ const CollegeStudents = () => {
         </section>
         
       </main>
+      <WhyLearnDataAI />
       <Testimonials />
       <OrganizationLogos />
       <ExtrasSection1 />

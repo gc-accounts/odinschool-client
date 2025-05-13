@@ -43,13 +43,17 @@ const MobileNav = () => {
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>
+        
         <SheetContent side="left" className="w-[300px] sm:w-[350px]">
-          <SheetHeader>
-            <SheetTitle className="flex items-center gap-2">
-              <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="font-bold">EduPlatform</span>
-            </SheetTitle>
-          </SheetHeader>
+         <div className="md:hidden flex items-center mb-4">
+      <Link to="/" className="flex items-center">
+        <img
+          src="https://www.odinschool.com/hubfs/OdinSchool_V3/icons/Odinschool_v3_logo.svg"
+          alt="EduPlatform Logo"
+          className="h-8 w-auto"
+        />
+      </Link>
+    </div>
           
           <div className="mt-6 flex flex-col gap-4">
             <Link 
