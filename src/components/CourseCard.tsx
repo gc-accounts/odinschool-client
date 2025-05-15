@@ -103,29 +103,10 @@ const CourseCard = ({
         <p className="text-sm text-gray-600 mb-4 line-clamp-2">{description}</p>
         
         <div className="mt-auto space-y-3">
-          <div className="flex items-center text-sm">
-            <span className="font-medium">By {instructor}</span>
-          </div>
-          
-          <div className="flex flex-wrap gap-3 text-sm text-gray-600">
-            <div className="flex items-center">
-              <Clock size={14} className="mr-1" />
-              <span>{duration}</span>
-            </div>
-            <div className="flex items-center">
-              <BookOpen size={14} className="mr-1" />
-              <span>{lessons} lessons</span>
-            </div>
-            <div className="flex items-center">
-              <Users size={14} className="mr-1" />
-              <span>{total_enrolled}</span>
-            </div>
-          </div>
-          
           <div className="flex items-center justify-between pt-2 border-t border-gray-100">
             <div className="flex items-center">
               <Star size={14} className="text-yellow-400" />
-              <span className="ml-1 text-sm font-medium">{rating?.toFixed(1)}</span>
+              <span className="ml-1 text-sm font-medium">{rating}</span>
             </div>
             <div className="rounded-full w-8 h-8 bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
               <svg 
