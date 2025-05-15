@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CallbackForm from '@/components/CallbackForm';
 import OrganizationLogos from '@/components/OrganizationLogos';
-
+import EmployerTestimonials from '@/components/EmployerTestimonials';
 const HireTalent = () => {
   const talents = [
     {
@@ -122,7 +122,7 @@ const HireTalent = () => {
           </div>
 
           <OrganizationLogos />
-          
+          <EmployerTestimonials />
         </div>
       </main>
       <CallbackForm />

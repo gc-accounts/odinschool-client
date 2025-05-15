@@ -60,18 +60,12 @@ const CertificationSection = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="border border-primary-100 bg-white hover:shadow-lg transition-shadow duration-300 animate-on-scroll " style={{ animationDelay: `${index * 100}ms` }}>
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="w-full flex justify-center md:justify-start">
+          <img
+            src="https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2000"
+            alt="Robot hand AI"
+            className="rounded-xl w-64 md:w-full h-auto"
+          />
           </div>
         </div>
         

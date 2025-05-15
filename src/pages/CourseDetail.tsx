@@ -32,7 +32,8 @@ import CareerServices1 from '@/components/CareerServices1';
 import WhyLearnAI from '@/components/WhyLearnAI';
 import WhoCanApply from '@/components/WhocanApply';
 import CertificationSection1 from '@/components/CertificationSection1';
-
+import CareerOpportunities from '@/components/CareerOpportunities';
+import CareerServices2 from '@/components/CareerServices2';
 
 const sectionConfig: {
   [key: string]: (() => JSX.Element)[];
@@ -52,12 +53,16 @@ const sectionConfig: {
     () => <CertificationSection />,
     () => <Testimonials />,
     () => <InstructorProfile />,
+    () => <FAQsection />,
   ],
   "3": [
     () => <ToolsSection />,
      () => <OrganizationLogos />,
+     () => <CareerServices2 />,
     () => <CertificationSection1 />,
     () => <InstructorProfile />,
+    () => <CareerOpportunities />,
+    
   ],
   "4": [
     () => <WhyLearnAI />,
