@@ -10,7 +10,8 @@ const mentorsData = [
     id: "mentor-1",
     name: "Dr. Sarah Johnson",
     role: "AI Research Scientist",
-    company: "Google DeepMind",
+    companyLogo: "Google DeepMind",
+    company: "Spotify",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256",
     expertise: ["Machine Learning", "Natural Language Processing", "Neural Networks"],
     bio: "Dr. Sarah Johnson is a leading researcher in artificial intelligence with over 15 years of experience. She has published numerous papers on deep learning applications.",
@@ -25,7 +26,8 @@ const mentorsData = [
     id: "mentor-2",
     name: "Michael Chen",
     role: "Senior Software Engineer",
-    company: "Microsoft",
+    companyLogo: "Microsoft",
+    company: "Spotify",
     image: "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?auto=format&fit=crop&w=256",
     expertise: ["Cloud Architecture", "DevOps", "Microservices"],
     bio: "Michael Chen specializes in cloud-native applications and infrastructure automation. He has helped numerous organizations modernize their tech stacks.",
@@ -40,7 +42,8 @@ const mentorsData = [
     id: "mentor-3",
     name: "Priya Patel",
     role: "Data Science Director",
-    company: "Netflix",
+    companyLogo: "Netflix",
+    company: "Spotify",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=256",
     expertise: ["Big Data Analytics", "Recommendation Systems", "Statistical Modeling"],
     bio: "Priya leads data science initiatives focused on improving content recommendations and user experience through advanced analytics.",
@@ -55,7 +58,8 @@ const mentorsData = [
     id: "mentor-4",
     name: "James Wilson",
     role: "Cybersecurity Expert",
-    company: "CyberShield Inc.",
+    companyLogo: "CyberShield Inc.",
+    company: "Spotify",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256",
     expertise: ["Network Security", "Penetration Testing", "Security Architecture"],
     bio: "James specializes in identifying vulnerabilities in systems and developing robust security protocols to prevent cyber attacks.",
@@ -70,7 +74,8 @@ const mentorsData = [
     id: "mentor-5",
     name: "Elena Rodriguez",
     role: "Frontend Engineering Lead",
-    company: "Airbnb",
+    companyLogo: "Airbnb",
+    company: "Spotify",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=256",
     expertise: ["React", "UI/UX Design", "Performance Optimization"],
     bio: "Elena leads frontend development teams creating beautiful, accessible, and high-performance web applications.",
@@ -85,6 +90,7 @@ const mentorsData = [
     id: "mentor-6",
     name: "David Kim",
     role: "Product Manager",
+    companyLogo: "Spotify",
     company: "Spotify",
     image: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=256",
     expertise: ["Product Strategy", "User Research", "Agile Methodologies"],
@@ -123,18 +129,25 @@ const OdinTalks = () => {
             {mentorsData.map((mentor) => (
               <Link key={mentor.id} to={`/mentor/${mentor.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-[4/3] relative">
-                    <img 
-                      src={mentor.image} 
-                      alt={mentor.name}
-                      className="w-full h-full object-cover" 
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                      <h3 className="text-xl font-semibold text-white">{mentor.name}</h3>
-                      <p className="text-white/90">{mentor.role}</p>
-                <p className="text-gray-600 mb-3">{mentor.company}</p>
+                 <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
+                      <img 
+                        src={mentor.image} 
+                        alt={mentor.name}
+                        className="w-full h-full object-cover" 
+                      />
+                      
+                      <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
+                        <div>
+                          <h3 className=" font-semibold text-black">{mentor.name}</h3>
+                          <h3 className="text-gray-700">{mentor.role}</h3>
+                        </div>
+                        <img 
+                          src={mentor.companyLogo} 
+                          alt={`${mentor.company} logo`} 
+                          className="h-10 w-auto object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
              
                 </Card>
               </Link>

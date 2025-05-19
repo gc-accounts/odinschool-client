@@ -7,6 +7,7 @@ import CourseCard, { CourseProps } from '@/components/CourseCard';
 import Button from '@/components/Button';
 import { Search, Filter, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getCourses } from '@/utils/api/courses';
 
 // Sample courses data expanded
 const coursesData: CourseProps[] = [
@@ -89,13 +90,22 @@ const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedLevel, setSelectedLevel] = useState('All Levels');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [courses, setCourses] = useState<CourseProps[]>([]);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Courses - CodeMaster";
+    const fetchCourses = async () => {
+      const courses = await getCourses([]);
+      console.log(courses);
+      setCourses(courses);
+      setLoading(false);
+    }
+    fetchCourses();
   }, []);
   
-  const filteredCourses = coursesData.filter((course) => {
+  const filteredCourses = courses.filter((course) => {
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          course.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
@@ -121,7 +131,11 @@ const Courses = () => {
             </p>
           </div>
           
-          {filteredCourses.length > 0 ? (
+          {loading ? (<>
+            <div className="text-center py-16">
+              <h3 className="text-xl font-medium mb-2">Loading...</h3>
+            </div>
+          </>) : filteredCourses.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCourses.map((course) => (
                 <CourseCard key={course.id} {...course} />
