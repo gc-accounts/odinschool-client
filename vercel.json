@@ -5,6 +5,10 @@
         "destination": "http://13.203.229.113:1337/graphql"
       },
       {
+        "source": "/uploads/(.*)",
+        "destination": "http://13.203.229.113:1337/uploads/$1"
+      },
+      {
         "source": "/(.*)",
         "destination": "/index.html"
       }
