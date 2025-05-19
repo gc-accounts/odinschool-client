@@ -1,8 +1,0 @@
-{
-    "rewrites": [
-      {
-        "source": "/graphql",
-        "destination": "http://13.203.229.113:1337/graphql"
-      }
-    ]
-  }
