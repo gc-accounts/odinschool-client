@@ -2,7 +2,6 @@ import axiosApi from '../apiCall';
 
 import axios from 'axios';
 import course from './schema/course';
-import { imagePrefix } from '.';
 
 
 
@@ -36,7 +35,7 @@ export const getCourses = async (fields: string[]) => {
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: course.image_url?.url ? imagePrefix + course.image_url?.url : null,
+            image: course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
             
@@ -77,10 +76,10 @@ export const getCourse = async (id: string) => {
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: course.image_url?.url ? imagePrefix + course.image_url?.url : null,
+            image: course.image_url?.url,
             enrolled_avatars: course.enrolled_students?.enrolled_avatars?.map((avatar: any) => {
                 return {
-                    url: imagePrefix + avatar.url,
+                    url: avatar.url,
                     name: avatar.name
                 }
             }),
