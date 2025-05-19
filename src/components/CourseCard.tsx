@@ -19,6 +19,12 @@ export interface CourseProps {
   company?: string; // Add optional company property
   popular?: boolean;
   className?: string;
+  documentId: string;
+  enrolled_avatars: {
+    url: string;
+    name: string;
+  }[];
+  total_enrolled: number;   
 }
 
 const CourseCard = ({
@@ -36,10 +42,12 @@ const CourseCard = ({
   company, // Add company to destructured props
   popular = false,
   className,
+  documentId,
+  total_enrolled,
 }: CourseProps) => {
   return (
     <Link 
-      to={`/courses/${id}`}
+      to={`/courses/${documentId}`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl transition-all duration-300 h-full",
         "bg-white border border-gray-100 hover:border-primary-200 hover:shadow-lg",
@@ -110,14 +118,14 @@ const CourseCard = ({
             </div>
             <div className="flex items-center">
               <Users size={14} className="mr-1" />
-              <span>{students.toLocaleString()}</span>
+              <span>{total_enrolled}</span>
             </div>
           </div>
           
           <div className="flex items-center justify-between pt-2 border-t border-gray-100">
             <div className="flex items-center">
               <Star size={14} className="text-yellow-400" />
-              <span className="ml-1 text-sm font-medium">{rating.toFixed(1)}</span>
+              <span className="ml-1 text-sm font-medium">{rating?.toFixed(1)}</span>
             </div>
             <div className="rounded-full w-8 h-8 bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
               <svg 
