@@ -1,20 +1,39 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getWebinarById } from '@/data/webinars';
+import { getWebinarById, Webinar } from '@/data/webinars';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, Clock, ChevronLeft, User, Tag, DollarSign } from 'lucide-react';
+import { CalendarDays, Clock, ChevronLeft, User, Tag, DollarSign, Loader2 } from 'lucide-react';
 import { formatDate } from '@/utils/dateUtils';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { getWebinar } from '@/utils/api/webinars';
 
 const WebinarDetail = () => {
   const { id } = useParams<{ id: string }>();
+  console.log(id);
   const navigate = useNavigate();
   const { toast } = useToast();
-  
-  const webinar = getWebinarById(id || '');
-  
+  // state for webinar
+  const [webinar, setWebinar] = useState<Webinar | null>(null);
+  // loading state
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWebinar = async () => {
+      const webinar = await getWebinar(id || '');
+      setWebinar(webinar);
+      setLoading(false);
+    };
+    fetchWebinar();
+  }, [id]);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">
+      <Loader2 className="w-10 h-10 animate-spin" />
+    </div>;
+  }
+
   if (!webinar) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
@@ -24,7 +43,7 @@ const WebinarDetail = () => {
       </div>
     );
   }
-  
+
   const handleRegister = () => {
     if (webinar.status === 'past') {
       toast({
@@ -34,22 +53,22 @@ const WebinarDetail = () => {
       });
       return;
     }
-    
+
     navigate(`/webinar-registration/${webinar.id}`);
   };
-  
+
   const isPast = webinar.status === 'past';
-  
+
   return (
     <div className="container mx-auto px-4 py-16">
-      <button 
+      <button
         onClick={() => navigate('/webinars')}
         className="inline-flex items-center text-primary hover:underline mb-8"
       >
         <ChevronLeft size={20} className="mr-1" />
         Back to Webinars
       </button>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-8">
           <div>
@@ -71,9 +90,9 @@ const WebinarDetail = () => {
                 {isPast ? 'Past' : 'Upcoming'}
               </Badge>
             </div>
-            
+
             <h1 className="heading-lg mb-4">{webinar.title}</h1>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
               <div className="flex items-center text-muted-foreground">
                 <CalendarDays className="h-5 w-5 mr-2 text-primary" />
@@ -88,22 +107,27 @@ const WebinarDetail = () => {
                 <span>{webinar.instructor}</span>
               </div>
             </div>
-            
+
             <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
-              <img 
-                src={webinar.image} 
-                alt={webinar.title} 
+              <img
+                src={webinar.image}
+                alt={webinar.title}
                 className="w-full h-full object-cover"
               />
             </div>
-            
+
             <div className="space-y-6">
               <div>
                 <h2 className="heading-sm mb-3">About This Webinar</h2>
                 <p className="text-muted-foreground leading-relaxed">{webinar.description}</p>
               </div>
-              
+
               <div>
+                <h2 className="heading-sm mb-3">About the Instructor</h2>
+                <p className="text-muted-foreground leading-relaxed">{webinar.about_instructor}</p>
+              </div>
+
+              {/* <div>
                 <h2 className="heading-sm mb-3">What You'll Learn</h2>
                 <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
                   <li>Practical insights on {webinar.title.toLowerCase()}</li>
@@ -112,22 +136,22 @@ const WebinarDetail = () => {
                   <li>Latest trends and best practices in {webinar.category}</li>
                 </ul>
               </div>
-              
+
               <div>
                 <h2 className="heading-sm mb-3">Who Should Attend</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   This webinar is perfect for professionals in {webinar.category} looking to enhance their skills and knowledge.
                   Whether you're a beginner or experienced practitioner, you'll gain valuable insights.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
-        
+
         <div className="lg:col-span-1">
           <div className="sticky top-8 border rounded-lg p-6 shadow-sm">
             <h3 className="text-xl font-bold mb-4">{isPast ? 'Webinar Details' : 'Registration Details'}</h3>
-            
+
             <div className="space-y-4 mb-6">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Price:</span>
@@ -146,31 +170,31 @@ const WebinarDetail = () => {
                 <span>{webinar.duration}</span>
               </div>
             </div>
-            
+
             {isPast ? (
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="w-full mb-4"
                 disabled
               >
                 Webinar Ended
               </Button>
             ) : (
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 className="w-full mb-4"
                 onClick={handleRegister}
               >
                 {webinar.isPaid ? 'Register Now' : 'Register for Free'}
               </Button>
             )}
-            
+
             <div className="text-center text-sm text-muted-foreground">
               {!isPast && (
                 <p>Spaces are limited. Secure your spot today!</p>
               )}
             </div>
-            
+
             <div className="mt-6">
               <h4 className="font-medium mb-2">Tags</h4>
               <div className="flex flex-wrap gap-2">

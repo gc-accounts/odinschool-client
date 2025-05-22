@@ -1,21 +1,40 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import WebinarCard from '@/components/webinar/WebinarCard';
 import { Webinar, getUpcomingWebinars, getPastWebinars, getFreeWebinars, getPaidWebinars } from '@/data/webinars';
-import { Search } from 'lucide-react';
+import { Loader2, Search } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import { getWebinars } from '@/utils/api/webinars';
 
 const Webinars = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
-  
-  const upcomingWebinars = getUpcomingWebinars();
-  const pastWebinars = getPastWebinars();
-  const freeWebinars = getFreeWebinars();
-  const paidWebinars = getPaidWebinars();
+
+  // state for webinars
+  const [webinars, setWebinars] = useState<Webinar[]>([]);
+  // loading state
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWebinars = async () => {
+      const webinars = await getWebinars();
+      setWebinars(webinars);
+      setLoading(false);
+    };
+    fetchWebinars();
+  }, []);
+
+  const { upcomingWebinars, pastWebinars, freeWebinars, paidWebinars } = useMemo(() => {
+    return {
+      upcomingWebinars: webinars.filter(webinar => webinar.status === 'upcoming'),
+      pastWebinars: webinars.filter(webinar => webinar.status === 'past'),
+      freeWebinars: webinars.filter(webinar => !webinar.isPaid),
+      paidWebinars: webinars.filter(webinar => webinar.isPaid)
+    };
+  }, [webinars]);
   
   const filterWebinars = (webinars: Webinar[]) => {
     return webinars.filter(webinar => {
@@ -37,7 +56,11 @@ const Webinars = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <Loader2 className="w-10 h-10 animate-spin" />
+        </div>
+      ) : (<main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
@@ -126,7 +149,7 @@ const Webinars = () => {
         </div>
         </div>
         </section>
-      </main>
+      </main>)}
     </div>
   );
 };

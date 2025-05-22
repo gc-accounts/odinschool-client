@@ -1,4 +1,4 @@
-import axiosApi from '../apiCall';
+import axiosApi, { backendUrl } from '../apiCall';
 
 import axios from 'axios';
 import course from './schema/course';
@@ -35,7 +35,7 @@ export const getCourses = async (fields: string[]) => {
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: course.image_url?.url,
+            image: backendUrl + course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
             
@@ -76,10 +76,10 @@ export const getCourse = async (id: string) => {
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: course.image_url?.url,
+            image: backendUrl + course.image_url?.url,
             enrolled_avatars: course.enrolled_students?.enrolled_avatars?.map((avatar: any) => {
                 return {
-                    url: avatar.url,
+                    url: backendUrl + avatar.url,
                     name: avatar.name
                 }
             }),

@@ -1,103 +1,45 @@
 
-import React from 'react';
-import { Star, Award, TrendingUp } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Star, Award, TrendingUp, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { getSuccessMetrics } from '@/utils/api/successMetrics';
 
 const SuccessStories = () => {
-  const featuredStories = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Frontend Developer at Google",
-      image: "/placeholder.svg",
-      story: "I was working as a marketing assistant when I decided to change careers. With EduPlatform's comprehensive web development courses, I was able to learn the skills I needed to transition into tech. Within 8 months of starting my first course, I landed a job as a frontend developer at Google.",
-      course: "Full-Stack Web Development Bootcamp",
-      metrics: [
-        { label: "Salary Increase", value: "185%" },
-        { label: "Time to Job", value: "8 months" },
-        { label: "ROI", value: "27x investment" }
-      ]
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      role: "Data Scientist at Amazon",
-      image: "/placeholder.svg",
-      story: "After graduating with a business degree, I found my passion in data analysis. EduPlatform's data science track gave me a structured learning path and real-world projects that I could add to my portfolio. The career coaching services also helped me prepare for interviews at top tech companies.",
-      course: "Data Science Professional Certificate",
-      metrics: [
-        { label: "Salary Increase", value: "150%" },
-        { label: "Time to Job", value: "6 months" },
-        { label: "ROI", value: "22x investment" }
-      ]
-    }
-  ];
+  // static data
+  const [state, setState] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "James Wilson",
-      role: "UX Designer",
-      company: "Spotify",
-      quote: "The UX/UI Design course was exactly what I needed to pivot from graphic design to product design. The instructor's feedback on my projects was invaluable.",
-      image: "/placeholder.svg"
-    },
-    {
-      id: 2,
-      name: "Elena Rodriguez",
-      role: "Product Manager",
-      company: "Adobe",
-      quote: "The Product Management certification helped me transition from engineering to product. The hands-on approach and mentorship made all the difference.",
-      image: "/placeholder.svg"
-    },
-    {
-      id: 3,
-      name: "David Kim",
-      role: "Machine Learning Engineer",
-      company: "Netflix",
-      quote: "The AI and Machine Learning specialization was challenging but incredibly rewarding. The concepts were explained clearly and the projects were relevant to real-world applications.",
-      image: "/placeholder.svg"
-    },
-    {
-      id: 4,
-      name: "Jessica Patel",
-      role: "Cybersecurity Analyst",
-      company: "Microsoft",
-      quote: "After taking the Cybersecurity Professional track, I was able to secure a job at Microsoft. The hands-on labs and certification prep were key to my success.",
-      image: "/placeholder.svg"
-    },
-    {
-      id: 5,
-      name: "Carlos Mendez",
-      role: "Blockchain Developer",
-      company: "Coinbase",
-      quote: "The Blockchain development course was cutting-edge and comprehensive. I was able to build my own DApps and join a leading crypto company within months.",
-      image: "/placeholder.svg"
-    },
-    {
-      id: 6,
-      name: "Aisha Johnson",
-      role: "DevOps Engineer",
-      company: "Atlassian",
-      quote: "The DevOps Engineering track provided me with both the technical skills and the methodology knowledge I needed to excel in my interviews and daily work.",
-      image: "/placeholder.svg"
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getSuccessMetrics();
+      setState(data);
+      setLoading(false);
     }
-  ];
+    fetchData();
+  }, []);
+
+  const { successStories: featuredStories, placementRate, studentSatisfaction, salaryIncrease, testimonials } = useMemo(() => state ?? {}, [state]);
+
 
   const statistics = [
-    { label: "Average Salary Increase", value: "143%", icon: <TrendingUp className="h-8 w-8 text-primary-600" /> },
-    { label: "Job Placement Rate", value: "91%", icon: <Award className="h-8 w-8 text-primary-600" /> },
-    { label: "Student Satisfaction", value: "4.8/5", icon: <Star className="h-8 w-8 text-primary-600" /> }
+    { label: "Average Salary Increase", value: salaryIncrease + "%", icon: <TrendingUp className="h-8 w-8 text-primary-600" /> },
+    { label: "Job Placement Rate", value: placementRate + "%", icon: <Award className="h-8 w-8 text-primary-600" /> },
+    { label: "Student Satisfaction", value: studentSatisfaction + "/5", icon: <Star className="h-8 w-8 text-primary-600" /> }
   ];
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50">
+      {loading ? (
+        <div className='flex justify-center items-center h-screen'>
+          <Loader2 className='h-8 w-8 text-primary-600 animate-spin' />
+        </div>
+      ) : (<main className="min-h-screen bg-gray-50">
         <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-4">Success Stories</h1>
@@ -106,7 +48,7 @@ const SuccessStories = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {statistics.map((stat, index) => (
@@ -121,15 +63,15 @@ const SuccessStories = () => {
               </div>
             ))}
           </div>
-          
+
           <h2 className="text-3xl font-bold text-center mb-12">Featured Success Stories</h2>
-          
+
           {featuredStories.map((story, index) => (
             <div key={story.id} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 mb-16 bg-white rounded-lg shadow-lg overflow-hidden`}>
               <div className="lg:w-1/2 bg-gradient-to-br from-primary-700 to-primary-800 p-12 flex flex-col justify-center">
                 <Avatar className="h-24 w-24 mb-6 border-4 border-white">
                   <AvatarImage src={story.image} alt={story.name} />
-                  <AvatarFallback>{story.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                  <AvatarFallback>{story.name?.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <h3 className="text-2xl font-bold text-white mb-2">{story.name}</h3>
                 <p className="text-primary-100 mb-6">{story.role}</p>
@@ -152,9 +94,9 @@ const SuccessStories = () => {
                 <div className="mb-8">
                   <h5 className="font-bold text-gray-900 mb-2">Skills Acquired:</h5>
                   <div className="flex flex-wrap gap-2">
-                    {Array.from({ length: 5 }, (_, i) => (
+                    {story?.tags?.map((item: string, i: number) => (
                       <span key={i} className="bg-primary-50 text-primary-700 text-sm rounded-full px-3 py-1">
-                        Skill {i + 1}
+                        {item}
                       </span>
                     ))}
                   </div>
@@ -165,7 +107,7 @@ const SuccessStories = () => {
               </div>
             </div>
           ))}
-          
+
           <h2 className="text-3xl font-bold text-center mb-8">More Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {testimonials.map(testimonial => (
@@ -174,7 +116,7 @@ const SuccessStories = () => {
                   <div className="flex items-center mb-4">
                     <Avatar className="h-12 w-12 mr-4">
                       <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                      <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      <AvatarFallback>{testimonial?.name?.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
                       <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
@@ -191,7 +133,7 @@ const SuccessStories = () => {
               </Card>
             ))}
           </div>
-          
+
           <div className="bg-primary-50 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Write Your Success Story?</h2>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -207,7 +149,7 @@ const SuccessStories = () => {
             </div>
           </div>
         </div>
-      </main>
+      </main>)}
       <Footer />
     </>
   );

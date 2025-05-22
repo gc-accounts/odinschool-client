@@ -62,7 +62,7 @@ const WebinarCard = ({ webinar }: WebinarCardProps) => {
           Instructor: <span className="font-medium">{webinar.instructor}</span>
         </div>
         <Link 
-          to={`/webinars/${webinar.id}`}
+          to={`/webinars/${webinar?.id}`}
           className="text-primary hover:underline font-medium"
         >
           {isPast ? 'View Details' : 'Register Now'}
