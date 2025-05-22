@@ -48,6 +48,7 @@ import OdinTalks from "./pages/OdinTalks";
 import MentorDetail from "./pages/MentorDetail";
 import FunWithStatistics from "./pages/FunWithStatistics";
 import DataScienceCareerGuide from "./pages/DataScienceCareerGuide";
+import CourseDetail2 from "./pages/CourseDetail2";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:id" element={<CourseDetail />} />
+            <Route path="/courses2/:id" element={<CourseDetail2 />} />
             <Route path="/courses/:id/lessons/:lessonId" element={<CourseLesson />} />
             <Route path="/course-checkout/:id" element={<CourseCheckout />} />
             <Route path="/course-checkout-certificate/:id" element={<CourseCheckoutCertificate />} />

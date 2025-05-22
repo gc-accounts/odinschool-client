@@ -48,6 +48,17 @@ const Footer = () => {
       ],
     },
     {
+      title: "Resources",
+      links: [
+        { name: "All Resources", href: "/resources" },
+        { name: "Blog", href: "/blog" },
+        { name: "Free Project", href: "/free-resources" },
+        { name: "For College Students", href: "/college-students" },
+        { name: "Fun With Statistics", href: "/fun-with-statistics" },
+        { name: "Data Science Career Guide", href: "/data-science-career-guide" },
+      ],
+    },
+    {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/about' },
@@ -70,7 +81,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:grid-cols-5">
           {footerLinks.map((column) => (
             <div key={column.title}>
               <h3 className="text-white font-medium mb-4">{column.title}</h3>

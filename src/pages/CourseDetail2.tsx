@@ -67,12 +67,11 @@ const sectionConfig: {
   "3": [
     () => <ToolsSection />,
     () => <OrganizationLogos />,
-     () => <OrganizationLogos />,
-     () => <CareerServices2 />,
+    () => <OrganizationLogos />,
+    () => <CareerServices2 />,
     () => <CertificationSection1 />,
     () => <InstructorProfile />,
     () => <CareerOpportunities />,
-    
   ],
   "4": [
     () => <WhyLearnAI />,
@@ -111,6 +110,8 @@ const CourseDetail = () => {
   }, [id]);
 
   const sectionsToRender = sectionConfig["1"];
+
+  console.log(sectionsToRender);
 
   if (!course) {
     return (
@@ -280,16 +281,10 @@ const CourseDetail = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="mb-8 w-full justify-start">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
-                <TabsTrigger value="certificate">Certificate</TabsTrigger>
-              </TabsList>
+            
 
-              <TabsContent value="overview">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   <div className="lg:col-span-2">
                     <h2 className="text-2xl font-bold mb-4 text-[2rem]">About This Course</h2>
                     <div className="prose max-w-none">
@@ -336,9 +331,9 @@ const CourseDetail = () => {
                   </div>
 
                 </div>
-              </TabsContent>
 
-              <TabsContent value="curriculum">
+
+
                 <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
                 <div className="space-y-4">
                   <Accordion type="single" collapsible className="w-full">
@@ -402,52 +397,10 @@ const CourseDetail = () => {
                     </div>
                   </div>
                 </div>
-              </TabsContent>
 
-              {/* <TabsContent value="projects">
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold mb-4 text-[1.5rem]">Course Projects</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {courseProjects.map((project, index) => (
-                      <Card key={index} className="overflow-hidden">
-                        <div className="h-48 overflow-hidden">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform hover:scale-105"
-                          />
-                        </div>
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-center">
-                            <CardTitle className="text-lg">{project.title}</CardTitle>
-                            {project.free && (
-                              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                                <Gift className="h-3 w-3 mr-1" />
-                                Free
-                              </Badge>
-                            )}
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-gray-600">{project.description}</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button
-                            variant={project.free ? "default" : "outline"}
-                            className="w-full"
-                            size="sm"
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            {project.free ? 'Download Now' : 'Access with Course'}
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent> */}
 
-              <TabsContent value="certificate">
+
+
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold mb-4 text-[2rem]">Course Certificate</h3>
                   <div className="grid grid-cols-1 md:grid-row-2 gap-8">
@@ -493,9 +446,25 @@ const CourseDetail = () => {
                     </div>
                   </div>
                 </div>
+
+
+            {/* <Tabs defaultValue="overview" className="w-full">
+
+
+              <TabsContent value="overview">
+                
               </TabsContent>
 
-            </Tabs>
+              <TabsContent value="curriculum">
+                
+              </TabsContent>
+
+              
+              <TabsContent value="certificate">
+                
+              </TabsContent>
+
+            </Tabs> */}
           </div>
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
