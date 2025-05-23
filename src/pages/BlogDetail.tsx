@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, Tag, Share2, ChevronLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -7,10 +7,25 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { blogPosts } from '@/data/blog';
+import { getBlog } from '@/utils/api/blog';
 
 const BlogDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const post = blogPosts.find(post => post.id === id);
+
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      setLoading(true);
+      const post = await getBlog(id);
+      setPost(post);
+      setLoading(false);
+    }
+    fetchPost();
+  }, [id])
+
+
   
   // Find related posts (same category, excluding current post)
   const relatedPosts = blogPosts
@@ -57,11 +72,11 @@ const BlogDetail = () => {
               
               <div className="flex justify-between items-center gap-4 mb-6">
                 <div className="flex items-center">
-                  <img 
+                  {/* <img 
                     src={post.author.avatar} 
                     alt={post.author.name} 
                     className="w-10 h-10 rounded-full mr-3"
-                  />
+                  /> */}
                   <div>
                     <div className="font-medium">{post.author.name}</div>
                     <div className="text-sm ">{post.author.title}</div>
@@ -92,7 +107,7 @@ const BlogDetail = () => {
                 <img 
                   src={post.coverImage} 
                   alt={post.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>
@@ -101,18 +116,20 @@ const BlogDetail = () => {
         
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-3xl mx-auto rounded-b-lg ">
-            <div 
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+          <div className="prose-lg max-w-none">
+  <div
+    className="reset-post-content"
+    dangerouslySetInnerHTML={{ __html: post.content }}
+  />
+</div>
             
             <div className="mt-10 pt-8 border-t border-gray-200">
               <div className="flex flext-start">
-                <img 
+                {/* <img 
                   src={post.author.avatar} 
                   alt={post.author.name} 
                   className="w-16 h-16 rounded-full mr-4"
-                />
+                /> */}
                 <div>
                   <h3 className="font-bold text-lg">{post.author.name}</h3>
                   <p className="text-gray-600">{post.author.title}</p>

@@ -17,7 +17,8 @@ function modifyBlog(blog: any) {
         coverImage: blog?.image_url ? blog?.image_url : blog?.image?.url,
         // readTime: 6,
         publishedAt: blog?.publishedAt,
-        tags: blog?.tags
+        tags: blog?.tags,
+        head_html: blog?.head_html,
     }
 }
 
@@ -44,23 +45,21 @@ export const getBlogs = async (page: number, search: string) => {
 };
 
 
-export const getBlog = async (name: string) => {
+export const getBlog = async (id: string) => {
     const response = await axiosApi.post('', {
         query: `
-            query Blog($filters: BlogFiltersInput) {
-  blogs(filters: $filters) {
-    author
-  }
+            query Blog($documentId: ID!) {
+                blog(documentId: $documentId) {
+                    ${blog}
+                }
             }
         `,
         variables: {
-            "post_old_url": {
-                "eq": name
-            }
+            documentId: id
         }
     });
 
-    return modifyBlog(response.data.data.blogs[0]);
+    return modifyBlog(response.data.data.blog);
 };
 
 
