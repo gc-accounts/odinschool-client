@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Tag, Calendar, Clock } from 'lucide-react';
+import { Search, Tag, Calendar, Clock, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -9,19 +9,27 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { blogPosts } from '@/data/blog';
+import { getBlogs } from '@/utils/api/blog';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const categories = Array.from(new Set(blogPosts.map(post => post.category)));
-  
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory ? post.category === selectedCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+  const [page, setPage] = useState(1);
+
+  const [posts, setPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const posts = await getBlogs(page, searchTerm);
+      setPosts(posts);
+      setLoading(false);
+    };
+    fetchPosts();
+  }, [page, searchTerm]);
+
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -52,28 +60,16 @@ const BlogPage = () => {
         </div>
         
         <div className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex flex-wrap justify-center gap-2">
-            <Button
-              variant={selectedCategory === null ? "default" : "outline"}
-              className="mb-2"
-              onClick={() => setSelectedCategory(null)}
-            >
-              All Categories
-            </Button>
-            {categories.map(category => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className="mb-2"
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+          
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map(post => (
+            {loading ? (
+              <div className="col-span-full">
+                <div className="flex justify-center items-center h-full">
+                  <Loader2 className="w-8 h-8 animate-spin" />
+                </div>
+              </div>
+            ) : posts.map(post => (
            <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
            <div className="aspect-video overflow-hidden">
              <img 
@@ -106,7 +102,7 @@ const BlogPage = () => {
             ))}
           </div>
           
-          {filteredPosts.length === 0 && (
+          {!loading && posts.length === 0 && (
             <div className="text-center py-12">
               <h3 className="text-2xl font-semibold mb-2">No articles found</h3>
               <p className="text-gray-500">Try adjusting your search or filter criteria</p>
@@ -116,19 +112,13 @@ const BlogPage = () => {
           <Pagination className="mt-12">
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious href="#" />
+                <PaginationPrevious onClick={() => setPage(page - 1)} />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#" isActive>1</PaginationLink>
+                <PaginationLink onClick={() => setPage(page)} isActive>{page}</PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
+                <PaginationNext onClick={() => setPage(page + 1)} />
               </PaginationItem>
             </PaginationContent>
           </Pagination>

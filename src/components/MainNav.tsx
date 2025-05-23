@@ -50,7 +50,7 @@ const MainNav = () => {
           </NavigationMenuItem>
 
           {/* Resources Section */}
-          {/* <NavigationMenuItem>
+          <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <Library className="mr-2 h-4 w-4" />
               Resources
@@ -68,10 +68,10 @@ const MainNav = () => {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem> */}
+          </NavigationMenuItem>
 
           {/* Tools Section */}
-          {/* <NavigationMenuItem>
+          <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <Calculator className="mr-2 h-4 w-4" />
               Tools
@@ -89,7 +89,7 @@ const MainNav = () => {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem> */}
+          </NavigationMenuItem>
 
           {/* Company Section */}
           <NavigationMenuItem>

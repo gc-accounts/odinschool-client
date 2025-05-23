@@ -25,41 +25,7 @@ export const blogPosts: BlogPost[] = [
     slug: "top-10-programming-languages-2023",
     excerpt: "Discover the most in-demand programming languages that will boost your career prospects in the tech industry this year.",
     content: `
-      <p>The tech industry continues to evolve at a rapid pace, and staying updated with the most relevant programming languages is crucial for developers looking to advance their careers. Here are the top 10 programming languages that are expected to dominate the industry in 2023:</p>
-      
-      <h3>1. Python</h3>
-      <p>Python continues to be the most versatile programming language with applications in data science, machine learning, web development, and automation. Its simple syntax and extensive libraries make it an excellent choice for beginners and experts alike.</p>
-      
-      <h3>2. JavaScript</h3>
-      <p>As the backbone of web development, JavaScript remains indispensable. With frameworks like React, Angular, and Vue.js, JavaScript has expanded its capabilities far beyond simple web interactions.</p>
-      
-      <h3>3. Rust</h3>
-      <p>Rust has been gaining tremendous popularity for its focus on performance and safety. It's particularly valuable for system-level programming and is increasingly being adopted by major tech companies.</p>
-      
-      <h3>4. Go</h3>
-      <p>Developed by Google, Go is known for its simplicity and efficiency in building scalable web services and networking applications. It's particularly popular in cloud and server environments.</p>
-      
-      <h3>5. TypeScript</h3>
-      <p>TypeScript adds static typing to JavaScript, making it more robust for large-scale applications. Its adoption has grown significantly, especially in enterprise environments.</p>
-      
-      <h3>6. Kotlin</h3>
-      <p>As the preferred language for Android development, Kotlin offers modern features and better safety compared to Java. It's concise, expressive, and fully interoperable with Java.</p>
-      
-      <h3>7. Swift</h3>
-      <p>Swift remains the primary language for iOS app development. It's known for its performance, safety features, and ease of use compared to Objective-C.</p>
-      
-      <h3>8. Dart</h3>
-      <p>With the rise of Flutter for cross-platform mobile development, Dart has seen increased adoption. It's designed for building high-performance, multi-platform applications.</p>
-      
-      <h3>9. C#</h3>
-      <p>C# continues to be vital in the Microsoft ecosystem, especially for game development with Unity and enterprise applications with .NET Core.</p>
-      
-      <h3>10. SQL</h3>
-      <p>Despite the rise of NoSQL databases, SQL remains essential for data management and analysis. Proficiency in SQL is still highly valued in the job market.</p>
-      
-      <h3>Conclusion</h3>
-      <p>Choosing which programming language to learn depends on your career goals and interests. The most successful developers often have proficiency in multiple languages, allowing them to select the best tool for specific projects.</p>
-    `,
+      `,
     author: {
       name: "Sarah Johnson",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
