@@ -8,11 +8,15 @@ import course from './schema/course';
 
 
 
-export const getCourses = async (fields: string[]) => {
+export const getCourses = async (fields: string[], pageNumber: number = 1, city: string = '') => {
+    const cityFilter = city ? `filters: { city: { name: { eq: "${city}" } } }` : '';
     const response = await axiosApi.post('', {
         query: `
             query Courses {
-                courses(pagination: {pageSize: 100}) {
+                courses(
+                    pagination: {pageSize: 10, page: ${pageNumber ?? 1}}, 
+                    ${cityFilter}
+                ) {
                     ${course}
                 }
             }
