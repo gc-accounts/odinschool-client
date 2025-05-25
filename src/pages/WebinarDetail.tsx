@@ -167,7 +167,7 @@ const WebinarDetail = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Duration:</span>
-                <span>{webinar.duration}</span>
+                <span>{(webinar.duration ?? 0)/60} hr</span>
               </div>
             </div>
 

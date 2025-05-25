@@ -14,4 +14,6 @@ export default `
       url
     }
     documentId
+    is_featured
+    is_odin_talk
   `

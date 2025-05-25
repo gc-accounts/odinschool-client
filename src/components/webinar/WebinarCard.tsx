@@ -44,7 +44,7 @@ const WebinarCard = ({ webinar }: WebinarCardProps) => {
           <span>{formatDate(new Date(webinar.date))}</span>
           <span className="mx-2">•</span>
           <Clock className="h-4 w-4 mr-1" />
-          <span>{webinar.duration}</span>
+          <span>{(webinar.duration ?? 0)/60} hr</span>
         </div>
         <CardTitle className="line-clamp-2 text-xl">{webinar.title}</CardTitle>
         <CardDescription className="flex items-center mt-1">

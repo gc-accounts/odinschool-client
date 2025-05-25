@@ -1,11 +1,10 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getWebinarById } from '@/data/webinars';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -18,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { formatDate } from '@/utils/dateUtils';
+import { getWebinar } from '@/utils/api/webinars';
 
 const formSchema = z.object({
   fullName: z.string().min(3, { message: "Full name must be at least 3 characters" }),
@@ -29,20 +29,19 @@ const formSchema = z.object({
 
 const WebinarRegistration = () => {
   const { id } = useParams<{ id: string }>();
+  const [webinar, setWebinar] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWebinar = async () => {
+      const webinar = await getWebinar(id || '');
+      setWebinar(webinar);
+      setLoading(false);
+    };
+    fetchWebinar();
+  }, [id]);
+  
   const navigate = useNavigate();
-  
-  const webinar = getWebinarById(id || '');
-  
-  if (!webinar) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="heading-lg mb-4">Webinar Not Found</h1>
-        <p className="mb-8">The webinar you're looking for doesn't exist or has been removed.</p>
-        <Button onClick={() => navigate('/webinars')}>Back to Webinars</Button>
-      </div>
-    );
-  }
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,6 +52,23 @@ const WebinarRegistration = () => {
       marketingConsent: false,
     },
   });
+  
+  if(loading){
+    return <div className="flex justify-center items-center h-screen">
+      <Loader2 className="w-10 h-10 animate-spin" />
+    </div>
+  }
+  if (!webinar) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="heading-lg mb-4">Webinar Not Found</h1>
+        <p className="mb-8">The webinar you're looking for doesn't exist or has been removed.</p>
+        <Button onClick={() => navigate('/webinars')}>Back to Webinars</Button>
+      </div>
+    );
+  }
+  
+
   
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Registration form submitted:", values);

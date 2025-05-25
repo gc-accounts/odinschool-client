@@ -8,6 +8,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { getSuccessMetrics } from '@/utils/api/successMetrics';
 
+import Testimonials from '@/components/Testimonials';
+
 const SuccessStories = () => {
   // static data
   const [state, setState] = useState<any>([]);
@@ -107,6 +109,8 @@ const SuccessStories = () => {
               </div>
             </div>
           ))}
+
+          <Testimonials />
 
           <h2 className="text-3xl font-bold text-center mb-8">More Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

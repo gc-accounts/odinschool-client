@@ -236,11 +236,11 @@ const companyLinks = [
     href: "/contact",
     description: "Get in touch with our support team.",
   },
-  {
-    title: "Odin Talks",
-    href: "/odintalks",
-    description: "Get in touch with our support team.",
-  },
+  // {
+  //   title: "Odin Talks",
+  //   href: "/odintalks",
+  //   description: "Get in touch with our support team.",
+  // },
 ];
 
 export default MainNav;

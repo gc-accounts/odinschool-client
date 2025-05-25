@@ -2,6 +2,7 @@ import axiosApi, { backendUrl } from '../apiCall';
 import webinarSchema from './schema/webinars';
 
 const transformWebinarData = (webinar: any) => {
+    console.log(webinar);
     return {
         id: webinar.documentId || `web-${Math.random().toString(36).substr(2, 9)}`,
         title: webinar.title,
@@ -12,24 +13,61 @@ const transformWebinarData = (webinar: any) => {
         instructor: webinar.Instructor,
         about_instructor: webinar.about_instructor,
         price: webinar.price || 0,
-        image: webinar.image_url ?? backendUrl + webinar.poster_url?.url,
+        image: webinar.image_url ?? backendUrl + webinar.poster_url[0]?.url,
         category: webinar.category || "Web Development",
         tags: webinar.tags?.split(',') || [],
-        isFeatured: webinar.isFeatured || false,
+        isFeatured: webinar.is_featured || false,
         isPaid: (webinar.price && webinar.price > 0) ? true : false,
         status: new Date(webinar.date) < new Date() ? "past" : "upcoming",
+        isOdintalk: webinar.is_odin_talk || false,
     };
 };
 
-export const getWebinars = async () => {
+export const getWebinars = async ({
+    pageNumber = 1,
+    pageSize = 10,
+    search = '',
+    isOdintalk = undefined,
+    isFeatured = undefined,
+    time = 'all', // upcoming, past, all
+    isPaid = undefined,
+}) => {
+    let filterObj: any = {};
+
+    if(isFeatured != undefined){
+        filterObj.is_featured = { eq: isFeatured };
+    }
+
+    if(search != ''){
+        filterObj.title = { containsi: search };
+    }
+if(time != 'all'){
+    const currentDate = new Date();
+    const currentDateString = currentDate.toISOString().split('T')[0]; // Get only the date part
+    if(time == 'upcoming'){
+        filterObj.date = { gt: currentDateString };
+    }else if(time == 'past'){
+        filterObj.date = { lt: currentDateString };
+    }
+}
+    if(isPaid != undefined){
+        filterObj.price = isPaid ? { gt: 0 } : { eq: 0 };
+    }
     const response = await axiosApi.post('', {
         query: `    
-            query Webinars {
-                webinars {
+            query Webinars($filters: WebinarFiltersInput, $pagination: PaginationArg) {
+                webinars(filters: $filters, pagination: $pagination) {
                     ${webinarSchema}
                 }
             }
-        `
+        `,
+        variables: {
+            filters: filterObj,
+            pagination: {
+                page: pageNumber,
+                pageSize: pageSize
+            }
+        }
     });
 
     return response.data.data.webinars.map(transformWebinarData);
