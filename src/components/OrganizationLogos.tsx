@@ -1,19 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { getOrganisations } from '@/utils/api/organisation';
 
 const OrganizationLogos = () => {
+  const [logos, setLogos] = useState<any[]>([]);
+
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchLogos = async () => {
+      setLoading(true);
+      const logos = await getOrganisations();
+      setLogos(logos);
+      setLoading(false);
+    };
+    fetchLogos();
+  }, []);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
-  const logos = [...Array(60)].map((_, index) => ({
-    id: index + 1,
-    name: `Company ${index + 1}`,
-    logo: `https://source.unsplash.com/random/200x100?sig=${index + 1}`,
-  }));
 
-  const repeatedLogos = [...logos, ...logos];
+
+  const repeatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -32,6 +43,11 @@ const OrganizationLogos = () => {
     const walk = (x - startX.current) * 1.5;
     containerRef.current.scrollLeft = scrollLeft.current - walk;
   };
+
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
 
   return (
     <section className="py-12 bg-white overflow-hidden relative">
@@ -64,7 +80,20 @@ const OrganizationLogos = () => {
         >
           <div className="scrolling-logos flex min-w-max">
             <div className="grid grid-rows-3 gap-4 grid-flow-col auto-cols-max">
-              {repeatedLogos.map((logo) => (
+              {loading ? (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    {[...Array(44)].map((_, index) => (
+                      <div key={index} className="animate-pulse">
+                        <div className="bg-gray-200 rounded-xl h-20 mb-4"></div>
+                        <div className="space-y-3">
+                          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : repeatedLogos?.length > 0 ? repeatedLogos.map((logo) => (
                 <Card
                   key={`${logo.id}-${Math.random()}`}
                   className="border-0 shadow-sm hover:shadow-md transition-shadow w-[180px] h-[100px]"
@@ -77,7 +106,11 @@ const OrganizationLogos = () => {
                     />
                   </CardContent>
                 </Card>
-              ))}
+              )) : (
+                <div className="flex justify-center items-center h-full">
+                  <p className="text-gray-500">No logos found</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

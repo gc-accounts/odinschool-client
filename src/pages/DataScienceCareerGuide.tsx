@@ -1,124 +1,136 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { 
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download, FileText } from 'lucide-react';
+import { Download, FileText, Loader2 } from 'lucide-react';
+import { getDataScienceCareerGuide } from '@/utils/api/dataScienceCareerGuide';
+import Markdown from '@/components/Markdown';
 
 const DataScienceCareerGuide = () => {
+  const [dataScienceCareerGuide, setDataScienceCareerGuide] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = "Data Science Career Guide - OdinSchool";
+    getDataScienceCareerGuide().then((data) => {
+      setLoading(true);
+      setDataScienceCareerGuide(data);
+      setLoading(false);
+    });
   }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      
-      <main className="flex-grow">
-           <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+
+      {loading ? (
+        <div className="grid place-items-center h-screen">
+          <Loader2 className="h-10 w-10 animate-spin" />
+        </div>
+      ) : (<main className="flex-grow">
+        <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">The Most Comprehensive Data Science Career Guide</h1>
+            <h1 className="text-4xl font-bold text-center mb-4">{dataScienceCareerGuide?.title}</h1>
           </div>
         </div>
         <div className="container mx-auto px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             <div className="lg:col-span-2 order-2 lg:order-1">
               <div className="mb-8">
-                <h2 className="text-2xl font-semibold mb-4">Navigate Your Data Science Journey</h2>
-                <p className="text-gray-600 mb-4">
-                  The field of data science is vast and evolving rapidly. Whether you're just starting out or looking to advance your career, this guide will help you navigate the complex landscape of data science roles, skills, and opportunities.
-                </p>
-                <p className="text-gray-600 mb-4">
-                  We've compiled insights from industry experts, hiring managers, and successful data scientists to create a practical, actionable guide that addresses real-world challenges and opportunities in the field.
-                </p>
-                <p className="text-gray-600">
-                  From building a solid foundation in statistics and programming to creating an impressive portfolio and acing technical interviews, this guide provides step-by-step advice to help you achieve your career goals.
-                </p>
+                <h2 className="text-2xl font-semibold mb-4">{dataScienceCareerGuide?.sub_title}</h2>
+                {dataScienceCareerGuide?.description && (
+                  <div className="prose prose-sm" style={{
+
+                  }}>
+                    {/*@ts-ignore */}
+                    <Markdown markdown={dataScienceCareerGuide?.description} />
+                  </div>
+                )}
               </div>
-              
+
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold mb-4">What's Inside</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {guideContents.map((item, index) => (
+                  {dataScienceCareerGuide.itenaries.map((item: any, index: number) => (
                     <div key={index} className="flex items-start p-4 bg-gray-50 rounded-lg">
                       <div className="flex-shrink-0 p-2 bg-primary-100 rounded-full mr-3">
                         <FileText className="h-4 w-4 text-primary-800" />
                       </div>
                       <div>
                         <h3 className="font-medium">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.description}</p>
+                        <p className="text-sm text-gray-600">{item.sub_title}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-              
+
               <div className="mb-10">
                 <h2 className="text-2xl font-semibold mb-4">Table of Contents</h2>
                 <Accordion type="single" collapsible className="w-full">
-                  {tableOfContents.map((section, index) => (
+                  {dataScienceCareerGuide?.content.map((section: any, index: number) => (
                     <AccordionItem key={index} value={`section-${index}`}>
                       <AccordionTrigger className="text-left">{section.title}</AccordionTrigger>
                       <AccordionContent>
-                        <ul className="pl-4 space-y-2">
-                          {section.topics.map((topic, topicIndex) => (
-                            <li key={topicIndex} className="text-gray-600">• {topic}</li>
-                          ))}
-                        </ul>
+                      <div className="prose prose-sm" style={{
+
+}}>
+                          <Markdown markdown={section.description} />
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
               </div>
             </div>
-            
+
             <div className="lg:col-span-1 order-1 lg:order-2">
               <div className="sticky top-24">
                 <div className="bg-gray-50 rounded-xl p-6 mb-6">
                   <div className="flex justify-center mb-4">
-                    <img 
-                      src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?auto=format&fit=crop&w=400"
+                    <img
+                      src={dataScienceCareerGuide?.poster}
                       alt="Data Science Career Guide Cover"
                       className="rounded-md shadow-md max-w-full h-auto"
                     />
                   </div>
-                  <Button className="w-full mb-4 flex items-center justify-center gap-2">
-                    <Download className="h-4 w-4" />
+                  <Button onClick={()=>{
+                      window.open(dataScienceCareerGuide?.file, "_blank");
+                    }} className="w-full mb-4 flex items-center justify-center gap-2">
+                    <Download className="h-4 w-4"  />
                     Download PDF Guide
                   </Button>
-                  <div className="text-center text-sm text-gray-500">
+                  {/* <div className="text-center text-sm text-gray-500">
                     <p>Free 72-page comprehensive guide</p>
                     <p>Last updated: May 2025</p>
-                  </div>
+                  </div> */}
                 </div>
-                
+
                 <div className="bg-white border rounded-xl p-6">
                   <div className="flex items-center mb-6">
-                    <img 
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=64"
+                    <img
+                      src={dataScienceCareerGuide?.author?.avatar}
                       alt="Author"
                       className="w-16 h-16 rounded-full mr-4 object-cover"
                     />
                     <div>
                       <h3 className="font-medium">Written by</h3>
-                      <p className="text-lg font-semibold">Alex Morgan</p>
-                      <p className="text-sm text-gray-600">Lead Data Scientist, OdinSchool</p>
+                      <p className="text-lg font-semibold">{dataScienceCareerGuide?.author?.name}</p>
+                      <p className="text-sm text-gray-600">{dataScienceCareerGuide?.author?.designation}</p>
                     </div>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    Alex has 10+ years of experience in data science and has worked with companies like Google, Amazon, and IBM. He is passionate about helping aspiring data scientists build successful careers.
+                    {dataScienceCareerGuide?.author?.description}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className="bg-primary-50 rounded-xl p-8 mb-16">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-semibold mb-4">Ready to Start Your Data Science Journey?</h2>
@@ -136,8 +148,8 @@ const DataScienceCareerGuide = () => {
             </div>
           </div>
         </div>
-      </main>
-      
+      </main>)}
+
       <Footer />
     </div>
   );

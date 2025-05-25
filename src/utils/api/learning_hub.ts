@@ -1,12 +1,11 @@
-import axiosApi, { backendUrl } from '../apiCall';
-import course from './schema/course';
+import axiosApi, { backendUrl } from "../apiCall";
+import learning_hub from "./schema/learning_hub";
 
 
 
 
 
-
-export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = ''}) => {
+export const getLearningHubCourses = async ({ pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = '' }) => {
 
     let filterObj: any = {}
     let paginationObj: any = {
@@ -17,7 +16,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
         filterObj.city = { name: { eq: city } }
     }
 
-    if(isFeatured != undefined){
+    if (isFeatured != undefined) {
         filterObj.is_featured = { eq: isFeatured }
     }
     if (search !== "") {
@@ -26,6 +25,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
             { description: { containsi: search } }
         ]
     }
+    filterObj.is_learning_hub = { eq: true }
 
     // if (category !== "") {
     //     filterObj.category = { containsi: category }
@@ -45,7 +45,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
                     pagination: $pagination,
                     filters: $filters
                 ) {
-                    ${course}
+                    ${learning_hub}
                 }
             }
         `,
@@ -55,7 +55,6 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
         }
     });
 
-    console.log(response.data.data);
 
     const data = response.data.data.courses.map((course: any) => {
         return {
@@ -74,19 +73,19 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
             image: backendUrl + course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
-            
+            curriculum: course.curriculum
         }
     });
     return data;
 }
 
 
-export const getCourse = async (id: string) => {
+export const getLearningHubCourse = async (id: string) => {
     const response = await axiosApi.post('', {
         query: `
             query Course($documentId: ID!) {
                 course(documentId: $documentId) {
-                    ${course}
+                    ${learning_hub}
                 }
             }
         `,
@@ -95,36 +94,22 @@ export const getCourse = async (id: string) => {
         }
     });
 
-    console.log(response);
-   
-    const data = [response.data?.data?.course].map((course: any) => {
-        return {
-            id: course.id,
-            documentId: course.documentId,
-            title: course.title,
-            description: course.description,
-            level: course.level,
-            on_sale: course.on_sale,
-            has_certificate: course.has_certificate,
-            overview: course.overview,
-            slug: course.slug,
-            createdAt: course.createdAt,
-            updatedAt: course.updatedAt,
-            publishedAt: course.publishedAt,
-            url_slug: course.url_slug,
-            image: backendUrl + course.image_url?.url,
-            enrolled_avatars: course.enrolled_students?.enrolled_avatars?.map((avatar: any) => {
-                return {
-                    url: backendUrl + avatar.url,
-                    name: avatar.name
-                }
-            }),
-            total_enrolled: course.enrolled_students?.total_enrolled,
-            rating: course.rating?.overall_rating,
-            total_rated: course.rating?.total_rated,
-            curriculum: course.curriculum
-        }
-    });
-    return data;
+    return {
+        documentId: response.data.data.course.documentId,
+        title: response.data.data.course.title,
+        description: response.data.data.course.description,
+        level: response.data.data.course.level,
+        on_sale: response.data.data.course.on_sale,
+        has_certificate: response.data.data.course.has_certificate,
+        overview: response.data.data.course.overview,
+        slug: response.data.data.course.slug,
+        createdAt: response.data.data.course.createdAt,
+        updatedAt: response.data.data.course.updatedAt,
+        publishedAt: response.data.data.course.publishedAt,
+        url_slug: response.data.data.course.url_slug,
+        image: backendUrl + response.data.data.course.image_url?.url,
+        curriculum: response.data.data.course.curriculum
+    }
 }
+
 

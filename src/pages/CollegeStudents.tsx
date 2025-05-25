@@ -14,6 +14,7 @@ import NewsSection from '@/components/NewsSection';
 import WhyLearnDataAI from '@/components/WhyLearnDataAI';
 
 import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain, Image, Circle, Triangle, Check, ChevronRight, Target, Trophy, BookOpenCheck } from 'lucide-react';
+import OdinTalks from '@/components/OdinTalks';
 
 const mentorsData = [
   {
@@ -263,48 +264,7 @@ const CollegeStudents = () => {
       <Testimonials />
       <OrganizationLogos />
       <ExtrasSection1 />
- <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-               Odintalks
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Listen to subject matter experts, industry practitioners, and thought leaders talk about the latest trends, technologies, hiring processes, and more in our free OdinTalks sessions.
-              </p>
-            </div>
-            
-            
-              <div className="container mx-auto py-12 px-4 md:px-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {mentorsData.map((mentor) => (
-                        <Link key={mentor.id} to={`/mentor/${mentor.id}`}>
-                          <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                            <div className="aspect-[4/3] relative">
-                              <img 
-                                src={mentor.image} 
-                                alt={mentor.name}
-                                className="w-full h-full object-cover" 
-                              />
-                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 className="text-xl font-semibold text-white">{mentor.name}</h3>
-                                <p className="text-white/90">{mentor.role}</p>
-                              <p className="text-gray-600">{mentor.company}</p>
-                              </div>
-                            </div>
-                          </Card>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-            
-            <div className="text-center">
-              <Button asChild size="lg">
-                <Link to="/odintalks">Explore OdinTalks</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+      <OdinTalks />
       <NewsSection />
       <CallbackForm />
       <Footer />

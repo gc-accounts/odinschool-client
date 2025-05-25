@@ -1,89 +1,43 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Clock, Users, ArrowRight } from 'lucide-react';
+import { BookOpen, Clock, Users, ArrowRight, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import { getLearningHubCourses } from '@/utils/api/learning_hub';
 // Sample free courses data
-const freeCourses = [
-  {
-    id: 'free-html-basics',
-    title: 'HTML Fundamentals',
-    description: 'Learn the building blocks of web development with this introductory HTML course.',
-    lessons: 5,
-    duration: '2 hours',
-    students: 1245,
-    level: 'Beginner',
-    image: '/placeholder.svg'
-  },
-  {
-    id: 'free-css-basics',
-    title: 'CSS for Beginners',
-    description: 'Master the basics of styling web pages with CSS in this beginner-friendly course.',
-    lessons: 7,
-    duration: '3 hours',
-    students: 982,
-    level: 'Beginner',
-    image: '/placeholder.svg'
-  },
-  {
-    id: 'free-js-intro',
-    title: 'JavaScript Basics',
-    description: 'Get started with JavaScript programming and learn the fundamentals of web interactivity.',
-    lessons: 8,
-    duration: '4 hours',
-    students: 1568,
-    level: 'Beginner',
-    image: '/placeholder.svg'
-  },
-  {
-    id: 'free-git-basics',
-    title: 'Git Essentials',
-    description: 'Learn version control with Git and understand how to manage your code effectively.',
-    lessons: 6,
-    duration: '2.5 hours',
-    students: 753,
-    level: 'Beginner',
-    image: '/placeholder.svg'
-  },
-  {
-    id: 'free-python-intro',
-    title: 'Python Fundamentals',
-    description: 'Start your programming journey with Python, a versatile and beginner-friendly language.',
-    lessons: 10,
-    duration: '5 hours',
-    students: 2134,
-    level: 'Beginner',
-    image: '/placeholder.svg'
-  },
-  {
-    id: 'free-web-accessibility',
-    title: 'Web Accessibility',
-    description: 'Learn how to make your websites accessible to everyone, including people with disabilities.',
-    lessons: 4,
-    duration: '1.5 hours',
-    students: 421,
-    level: 'Intermediate',
-    image: '/placeholder.svg'
-  }
-];
+
 
 const LearningHub = () => {
-  useEffect(() => {
-    // Scroll to top on page load
-    window.scrollTo(0, 0);
-    
-    // Set page title
-    document.title = "Learning Hub - Free Courses to Learn Coding Fundamentals";
-  }, []);
+  const [learningHub, setLearningHub] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
+
+  useEffect(() => {
+    getLearningHubCourses({
+      pageNumber: pageNumber,
+    }).then((res) => {
+      setLoading(true);
+      setLearningHub([
+        ...res
+      ]);
+      setLoading(false);
+    });
+  }, [pageNumber]);
+  const getTotalLessons = (course: any) => {
+    return course.curriculum?.reduce((acc: number, curr: any) => acc + curr.lessons, 0);
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">
+      {loading ? (
+        <div className="grid place-items-center h-screen">
+          <Loader2 className="h-10 w-10 animate-spin" />
+        </div>
+      ) : (<main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
@@ -92,7 +46,7 @@ const LearningHub = () => {
                 Learning Hub
               </h1>
               <p className="text-lg md:text-xl text-gray-600 ">
-              An extensive resource library to support you on your upskilling and professional development journey ahead.
+                An extensive resource library to support you on your upskilling and professional development journey ahead.
               </p>
             </div>
           </div>
@@ -103,12 +57,12 @@ const LearningHub = () => {
           <div className="container mx-auto px-4 md:px-6">
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {freeCourses.map((course) => (
+              {learningHub?.length > 0 ? learningHub?.map((course: any) => (
                 <Card key={course.id} className="overflow-hidden transition-all hover:shadow-lg">
                   <div className="aspect-video bg-gray-100 relative">
-                    <img 
-                      src={course.image} 
-                      alt={course.title} 
+                    <img
+                      src={course.image}
+                      alt={course.title}
                       className="object-cover w-full h-full"
                     />
                     <div className="absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
@@ -117,22 +71,22 @@ const LearningHub = () => {
                   </div>
                   <CardHeader className="pb-3">
                     <CardTitle className="text-xl">{course.title}</CardTitle>
-                    <CardDescription className="line-clamp-2">{course.description}</CardDescription>
+                    <CardDescription className="line-clamp-2">{course.overview}</CardDescription>
                   </CardHeader>
                   <CardContent className="pb-4">
                     <div className="flex items-center space-x-4 text-sm text-gray-500">
                       <div className="flex items-center">
                         <BookOpen className="h-4 w-4 mr-1 text-primary-600" />
-                        <span>{course.lessons} lessons</span>
+                        <span>{getTotalLessons(course)} lessons</span>
                       </div>
                       <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1 text-primary-600" />
-                        <span>{course.students.toLocaleString()}</span>
+                        <span>{course.total_enrolled}</span>
                       </div>
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Link to={`/learning-hub/${course.id}`} className="w-full">
+                    <Link to={`/learning-hub/${course.documentId}`} className="w-full">
                       <Button variant="default" className="w-full">
                         Start Learning
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -140,12 +94,16 @@ const LearningHub = () => {
                     </Link>
                   </CardFooter>
                 </Card>
-              ))}
+              )) : (
+                <div className="grid place-items-center h-screen">
+                  <p>No courses found</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-      </main>
+      </main>)}
       <Footer />
     </div>
   );

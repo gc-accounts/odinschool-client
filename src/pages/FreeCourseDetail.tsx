@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Download, ChevronRight, ChevronLeft } from 'lucide-react';
+import { BookOpen, Download, ChevronRight, ChevronLeft, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import { getLearningHubCourse } from '@/utils/api/learning_hub';
+import Markdown from '@/components/Markdown';
 // Sample lessons content 
 const courseData = {
   'free-html-basics': {
@@ -287,25 +288,35 @@ const FreeCourseDetail = () => {
   const { courseId } = useParams();
   const [activeLesson, setActiveLesson] = useState('');
   const [course, setCourse] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Scroll to top on page load
-    window.scrollTo(0, 0);
-    
-    // Get course data based on courseId
-    if (courseId && courseData[courseId as keyof typeof courseData]) {
-      const selectedCourse = courseData[courseId as keyof typeof courseData];
-      setCourse(selectedCourse);
-      
-      // Set the first lesson as active by default
-      if (selectedCourse.lessons && selectedCourse.lessons.length > 0) {
-        setActiveLesson(selectedCourse.lessons[0].id);
-      }
-      
-      // Set page title
-      document.title = `${selectedCourse.title} - Learning Hub`;
+    const fetchCourse = async () => {
+      setLoading(true);
+      const res: any = await getLearningHubCourse(courseId as string);
+      setCourse(res);
+      setActiveLesson(res.curriculum[0].id);
+      setLoading(false);
     }
+    fetchCourse();
   }, [courseId]);
+
+
+  if (loading) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="h-10 w-10 animate-spin" />
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+
 
   if (!course) {
     return (
@@ -325,21 +336,21 @@ const FreeCourseDetail = () => {
     );
   }
 
-  const currentLessonIndex = course.lessons.findIndex((lesson: any) => lesson.id === activeLesson);
-  const currentLesson = course.lessons[currentLessonIndex];
+  const currentLessonIndex = course.curriculum.findIndex((lesson: any) => lesson.id === activeLesson);
+  const currentLesson = course.curriculum[currentLessonIndex];
   const hasPrevious = currentLessonIndex > 0;
-  const hasNext = currentLessonIndex < course.lessons.length - 1;
+  const hasNext = currentLessonIndex < course.curriculum.length - 1;
 
   const handlePreviousLesson = () => {
     if (hasPrevious) {
-      setActiveLesson(course.lessons[currentLessonIndex - 1].id);
+      setActiveLesson(course.curriculum[currentLessonIndex - 1].id);
       window.scrollTo(0, 0);
     }
   };
 
   const handleNextLesson = () => {
     if (hasNext) {
-      setActiveLesson(course.lessons[currentLessonIndex + 1].id);
+      setActiveLesson(course.curriculum[currentLessonIndex + 1].id);
       window.scrollTo(0, 0);
     }
   };
@@ -369,7 +380,7 @@ const FreeCourseDetail = () => {
                 </span>
                 <span className="ml-4 flex items-center text-sm text-gray-600">
                   <BookOpen className="h-4 w-4 mr-1" />
-                  {course.lessons.length} lessons
+                  {course.curriculum.length} lessons
                 </span>
               </div>
             </div>
@@ -381,8 +392,8 @@ const FreeCourseDetail = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <Tabs defaultValue="content" className="space-y-4">
-               
-                
+
+
                 <TabsContent value="content" className="space-y-6">
                   {/* Lesson Selection */}
                   <Card>
@@ -390,24 +401,23 @@ const FreeCourseDetail = () => {
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold">Lessons</h3>
                         <span className="text-sm text-gray-500">
-                          {currentLessonIndex + 1} of {course.lessons.length}
+                          {currentLessonIndex + 1} of {course.curriculum.length}
                         </span>
                       </div>
                       <div className="space-y-2">
-                        {course.lessons.map((lesson: any, index: number) => (
+                        {course.curriculum.map((lesson: any, index: number) => (
                           <button
                             key={lesson.id}
                             onClick={() => setActiveLesson(lesson.id)}
-                            className={`w-full text-left p-3 rounded-md flex items-center ${
-                              activeLesson === lesson.id 
-                                ? 'bg-primary-50 text-primary-700 border-l-4 border-primary-600' 
+                            className={`w-full text-left p-3 rounded-md flex items-center ${activeLesson === lesson.id
+                                ? 'bg-primary-50 text-primary-700 border-l-4 border-primary-600'
                                 : 'hover:bg-gray-50'
-                            }`}
+                              }`}
                           >
                             <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-gray-100 text-gray-800 text-sm mr-3">
                               {index + 1}
                             </span>
-                            <span className="font-medium">{lesson.title}</span>
+                            <span className="font-medium">{lesson.heading}</span>
                           </button>
                         ))}
                       </div>
@@ -417,23 +427,24 @@ const FreeCourseDetail = () => {
                   {/* Lesson Content */}
                   {currentLesson && (
                     <div>
-                      <h2 className="text-2xl font-bold mb-6">{currentLesson.title}</h2>
-                      <div 
-                        className="prose max-w-none"
-                        dangerouslySetInnerHTML={{ __html: currentLesson.content }}
-                      />
-                      
+                      <h2 className="text-2xl font-bold mb-6">{currentLesson.heading}</h2>
+                      <div className="prose prose-sm" style={{
+
+                      }}>
+                        <Markdown markdown={currentLesson.description} />
+                      </div>
+
                       <div className="mt-8 pt-6 border-t flex justify-between">
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           onClick={handlePreviousLesson}
                           disabled={!hasPrevious}
                         >
                           <ChevronLeft className="mr-2 h-4 w-4" />
                           Previous Lesson
                         </Button>
-                        
-                        <Button 
+
+                        <Button
                           onClick={handleNextLesson}
                           disabled={!hasNext}
                         >
@@ -444,8 +455,8 @@ const FreeCourseDetail = () => {
                     </div>
                   )}
                 </TabsContent>
-                
-               
+
+
               </Tabs>
             </div>
           </div>
