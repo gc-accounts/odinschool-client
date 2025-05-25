@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
@@ -6,220 +5,268 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BookOpenIcon, UsersIcon } from 'lucide-react';
+import { BookOpenIcon, Loader2, UsersIcon } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { InstructorProps } from '@/components/InstructorProfile';
+// import { InstructorProps } from '@/components/InstructorProfile';
+import { getMentorById } from '@/utils/api/mentor';
 
 // Extend instructor data with more details
-interface ExpertDetail extends InstructorProps {
+// interface ExpertDetail extends InstructorProps {
+//   expertise: string[];
+//   education: {
+//     degree: string;
+//     institution: string;
+//     year: string;
+//   }[];
+//   courses: {
+//     id: string;
+//     title: string;
+//     category: string;
+//     rating: number;
+//     students: number;
+//   }[];
+//   about: string;
+// }
+
+// Sample expert details data
+// const expertsData: ExpertDetail[] = [
+//   {
+//     id: '1',
+//     name: 'Sarah Johnson',
+//     title: 'Senior JavaScript Developer',
+//     bio: 'Full-stack developer with 10+ years of experience. Passionate about teaching web development and helping others build their dream applications.',
+//     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&w=800',
+//     companies: [
+//       {
+//         name: 'Google',
+//         logo: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Microsoft',
+//         logo: 'https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Amazon',
+//         logo: 'https://images.unsplash.com/photo-1617952233714-78515f368490?crop=entropy&w=100'
+//       }
+//     ],
+//     featured: true,
+//     expertise: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB'],
+//     education: [
+//       {
+//         degree: 'Master of Computer Science',
+//         institution: 'Stanford University',
+//         year: '2010'
+//       },
+//       {
+//         degree: 'Bachelor of Software Engineering',
+//         institution: 'MIT',
+//         year: '2008'
+//       }
+//     ],
+//     courses: [
+//       {
+//         id: '1',
+//         title: 'JavaScript Fundamentals',
+//         category: 'Web Development',
+//         rating: 4.8,
+//         students: 12450
+//       },
+//       {
+//         id: '5',
+//         title: 'Advanced React Patterns',
+//         category: 'Frontend',
+//         rating: 4.9,
+//         students: 8320
+//       },
+//       {
+//         id: '7',
+//         title: 'Full-Stack Web Development',
+//         category: 'Web Development',
+//         rating: 4.7,
+//         students: 6540
+//       }
+//     ],
+//     about: 'Sarah Johnson is a seasoned software engineer with over a decade of experience building scalable web applications. After graduating from Stanford University, she joined Google where she worked on critical projects for Google Cloud Platform. Later, she moved to Microsoft to lead frontend architecture for Office 365 before joining Amazon as a Principal Engineer.'
+//   },
+//   {
+//     id: '2',
+//     name: 'Michael Chen',
+//     title: 'React & Frontend Expert',
+//     bio: 'Frontend specialist with focus on React ecosystem. 8+ years building scalable web applications and mentoring junior developers.',
+//     avatar: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?crop=entropy&w=800',
+//     companies: [
+//       {
+//         name: 'Facebook',
+//         logo: 'https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Airbnb',
+//         logo: 'https://images.unsplash.com/photo-1635350804108-7170f0ef2f9f?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Dropbox',
+//         logo: 'https://images.unsplash.com/photo-1620288627223-53302f4e8c74?crop=entropy&w=100'
+//       }
+//     ],
+//     featured: true,
+//     expertise: ['React', 'TypeScript', 'Redux', 'Next.js', 'UI/UX Design'],
+//     education: [
+//       {
+//         degree: 'Master of Human-Computer Interaction',
+//         institution: 'Carnegie Mellon University',
+//         year: '2012'
+//       },
+//       {
+//         degree: 'Bachelor of Computer Science',
+//         institution: 'UC Berkeley',
+//         year: '2010'
+//       }
+//     ],
+//     courses: [
+//       {
+//         id: '2',
+//         title: 'React for Professionals',
+//         category: 'Frontend',
+//         rating: 4.9,
+//         students: 8325
+//       },
+//       {
+//         id: '8',
+//         title: 'Building UIs with TypeScript',
+//         category: 'Frontend',
+//         rating: 4.7,
+//         students: 6210
+//       }
+//     ],
+//     about: 'Michael Chen is a frontend architecture specialist who has shaped the way modern web interfaces are built. His career began at Facebook where he contributed to the React core team, helping develop and promote component-based architecture patterns that are now industry standards.'
+//   },
+//   {
+//     id: '3',
+//     name: 'Emily Rodriguez',
+//     title: 'Data Scientist & Python Expert',
+//     bio: 'Data scientist with expertise in machine learning and statistical analysis. PhD in Computer Science with focus on AI applications.',
+//     avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?crop=entropy&w=800',
+//     companies: [
+//       {
+//         name: 'IBM',
+//         logo: 'https://images.unsplash.com/photo-1610337673044-720471f83677?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Netflix',
+//         logo: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?crop=entropy&w=100'
+//       },
+//       {
+//         name: 'Intel',
+//         logo: 'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&w=100'
+//       }
+//     ],
+//     featured: true,
+//     expertise: ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'Computer Vision'],
+//     education: [
+//       {
+//         degree: 'PhD in Computer Science',
+//         institution: 'University of California, Berkeley',
+//         year: '2013'
+//       },
+//       {
+//         degree: 'Master of Science in AI',
+//         institution: 'Stanford University',
+//         year: '2010'
+//       }
+//     ],
+//     courses: [
+//       {
+//         id: '3',
+//         title: 'Python Data Science',
+//         category: 'Data Science',
+//         rating: 4.7,
+//         students: 9840
+//       },
+//       {
+//         id: '10',
+//         title: 'Natural Language Processing',
+//         category: 'AI',
+//         rating: 4.8,
+//         students: 4520
+//       }
+//     ],
+//     about: 'Emily Rodriguez is a leading researcher and practitioner in the field of artificial intelligence and data science. With a PhD from UC Berkeley focusing on machine learning applications, she has pioneered techniques that have become fundamental to modern AI systems.'
+//   }
+// ];
+
+interface Expert {
+  id: string;
+  name: string;
+  title: string;
+  bio: string;
+  avatar: string;
+  companies: Array<{ name: string; logo: string }>;
+  featured: boolean;
   expertise: string[];
-  education: {
+  education: Array<{
     degree: string;
     institution: string;
     year: string;
-  }[];
-  courses: {
+  }>;
+  courses: Array<{
     id: string;
     title: string;
     category: string;
     rating: number;
     students: number;
-  }[];
+  }>;
   about: string;
 }
 
-// Sample expert details data
-const expertsData: ExpertDetail[] = [
-  {
-    id: '1',
-    name: 'Sarah Johnson',
-    title: 'Senior JavaScript Developer',
-    bio: 'Full-stack developer with 10+ years of experience. Passionate about teaching web development and helping others build their dream applications.',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&w=800',
-    companies: [
-      {
-        name: 'Google',
-        logo: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?crop=entropy&w=100'
-      },
-      {
-        name: 'Microsoft',
-        logo: 'https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?crop=entropy&w=100'
-      },
-      {
-        name: 'Amazon',
-        logo: 'https://images.unsplash.com/photo-1617952233714-78515f368490?crop=entropy&w=100'
-      }
-    ],
-    featured: true,
-    expertise: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB'],
-    education: [
-      {
-        degree: 'Master of Computer Science',
-        institution: 'Stanford University',
-        year: '2010'
-      },
-      {
-        degree: 'Bachelor of Software Engineering',
-        institution: 'MIT',
-        year: '2008'
-      }
-    ],
-    courses: [
-      {
-        id: '1',
-        title: 'JavaScript Fundamentals',
-        category: 'Web Development',
-        rating: 4.8,
-        students: 12450
-      },
-      {
-        id: '5',
-        title: 'Advanced React Patterns',
-        category: 'Frontend',
-        rating: 4.9,
-        students: 8320
-      },
-      {
-        id: '7',
-        title: 'Full-Stack Web Development',
-        category: 'Web Development',
-        rating: 4.7,
-        students: 6540
-      }
-    ],
-    about: 'Sarah Johnson is a seasoned software engineer with over a decade of experience building scalable web applications. After graduating from Stanford University, she joined Google where she worked on critical projects for Google Cloud Platform. Later, she moved to Microsoft to lead frontend architecture for Office 365 before joining Amazon as a Principal Engineer.'
-  },
-  {
-    id: '2',
-    name: 'Michael Chen',
-    title: 'React & Frontend Expert',
-    bio: 'Frontend specialist with focus on React ecosystem. 8+ years building scalable web applications and mentoring junior developers.',
-    avatar: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?crop=entropy&w=800',
-    companies: [
-      {
-        name: 'Facebook',
-        logo: 'https://images.unsplash.com/photo-1633675254053-d96c7668c3b8?crop=entropy&w=100'
-      },
-      {
-        name: 'Airbnb',
-        logo: 'https://images.unsplash.com/photo-1635350804108-7170f0ef2f9f?crop=entropy&w=100'
-      },
-      {
-        name: 'Dropbox',
-        logo: 'https://images.unsplash.com/photo-1620288627223-53302f4e8c74?crop=entropy&w=100'
-      }
-    ],
-    featured: true,
-    expertise: ['React', 'TypeScript', 'Redux', 'Next.js', 'UI/UX Design'],
-    education: [
-      {
-        degree: 'Master of Human-Computer Interaction',
-        institution: 'Carnegie Mellon University',
-        year: '2012'
-      },
-      {
-        degree: 'Bachelor of Computer Science',
-        institution: 'UC Berkeley',
-        year: '2010'
-      }
-    ],
-    courses: [
-      {
-        id: '2',
-        title: 'React for Professionals',
-        category: 'Frontend',
-        rating: 4.9,
-        students: 8325
-      },
-      {
-        id: '8',
-        title: 'Building UIs with TypeScript',
-        category: 'Frontend',
-        rating: 4.7,
-        students: 6210
-      }
-    ],
-    about: 'Michael Chen is a frontend architecture specialist who has shaped the way modern web interfaces are built. His career began at Facebook where he contributed to the React core team, helping develop and promote component-based architecture patterns that are now industry standards.'
-  },
-  {
-    id: '3',
-    name: 'Emily Rodriguez',
-    title: 'Data Scientist & Python Expert',
-    bio: 'Data scientist with expertise in machine learning and statistical analysis. PhD in Computer Science with focus on AI applications.',
-    avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?crop=entropy&w=800',
-    companies: [
-      {
-        name: 'IBM',
-        logo: 'https://images.unsplash.com/photo-1610337673044-720471f83677?crop=entropy&w=100'
-      },
-      {
-        name: 'Netflix',
-        logo: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?crop=entropy&w=100'
-      },
-      {
-        name: 'Intel',
-        logo: 'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&w=100'
-      }
-    ],
-    featured: true,
-    expertise: ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'Computer Vision'],
-    education: [
-      {
-        degree: 'PhD in Computer Science',
-        institution: 'University of California, Berkeley',
-        year: '2013'
-      },
-      {
-        degree: 'Master of Science in AI',
-        institution: 'Stanford University',
-        year: '2010'
-      }
-    ],
-    courses: [
-      {
-        id: '3',
-        title: 'Python Data Science',
-        category: 'Data Science',
-        rating: 4.7,
-        students: 9840
-      },
-      {
-        id: '10',
-        title: 'Natural Language Processing',
-        category: 'AI',
-        rating: 4.8,
-        students: 4520
-      }
-    ],
-    about: 'Emily Rodriguez is a leading researcher and practitioner in the field of artificial intelligence and data science. With a PhD from UC Berkeley focusing on machine learning applications, she has pioneered techniques that have become fundamental to modern AI systems.'
-  }
-];
-
 const ExpertDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [expert, setExpert] = useState<ExpertDetail | null>(null);
+  const [expert, setExpert] = useState<Expert | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
-    
-    // Find the expert with the matching id
-    const foundExpert = expertsData.find(expert => expert.id === id);
-    
-    if (foundExpert) {
-      setExpert(foundExpert);
-      document.title = `${foundExpert.name} - Expert Profile | CodeMaster`;
+    const fetchExpert = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Find the expert with the matching id
+        const foundExpert = await getMentorById(id);
+        setExpert(foundExpert);
+      } catch (err) {
+        setError('Failed to load expert details');
+        console.error('Error fetching expert:', err);
+      } finally {
+        setLoading(false);
+      }
     }
+    fetchExpert();
   }, [id]);
 
-  if (!expert) {
+  console.log(expert);
+
+  if (loading) {
+    return (
+      <>
+      <Navbar />
+      <div className="container mx-auto px-4 py-20 text-center">
+         <Loader2 className="h-10 w-10 animate-spin" />
+      </div>
+      <Footer />
+    </>
+    )
+  }
+
+  if (error || !expert) {
     return (
       <>
         <Navbar />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-2xl font-bold mb-4">Expert not found</h1>
-          <p className="mb-6">The expert you're looking for doesn't exist or may have been removed.</p>
+          <p className="mb-6">{error || "The expert you're looking for doesn't exist or may have been removed."}</p>
           <Link to="/">
             <Button>Return to Home</Button>
           </Link>
@@ -228,6 +275,9 @@ const ExpertDetail = () => {
       </>
     );
   }
+
+  const totalStudents = expert.courses?.reduce((total, course) => total + (course.students || 0), 0) || 0;
+  const courseCount = expert.courses?.length || 0;
 
   return (
     <>
@@ -240,7 +290,7 @@ const ExpertDetail = () => {
               <div className="md:w-1/4 flex justify-center">
                 <Avatar className="h-48 w-48 border-4 border-white shadow-xl">
                   <AvatarImage src={expert.avatar} alt={expert.name} />
-                  <AvatarFallback className="text-4xl">{expert.name.charAt(0)}</AvatarFallback>
+                  <AvatarFallback className="text-4xl">{expert.name?.charAt(0) || '?'}</AvatarFallback>
                 </Avatar>
               </div>
               
@@ -251,7 +301,7 @@ const ExpertDetail = () => {
                 </div>
                 
                 <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                  {expert.expertise.map((skill, index) => (
+                  {expert.expertise?.map((skill, index) => (
                     <Badge key={index} variant="secondary" className="bg-white/20 hover:bg-white/30">
                       {skill}
                     </Badge>
@@ -292,7 +342,7 @@ const ExpertDetail = () => {
                         <h3 className="text-lg font-semibold">Students Taught</h3>
                       </div>
                       <p className="text-3xl font-bold text-primary-600">
-                        {expert.courses.reduce((total, course) => total + course.students, 0).toLocaleString()}+
+                        {totalStudents.toLocaleString()}+
                       </p>
                       <p className="text-sm text-gray-500">Across all courses</p>
                     </CardContent>
@@ -305,7 +355,7 @@ const ExpertDetail = () => {
                         <h3 className="text-lg font-semibold">Courses Created</h3>
                       </div>
                       <p className="text-3xl font-bold text-primary-600">
-                        {expert.courses.length}
+                        {courseCount}
                       </p>
                       <p className="text-sm text-gray-500">Specialized training programs</p>
                     </CardContent>
@@ -318,7 +368,7 @@ const ExpertDetail = () => {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-6">Education</h2>
                     <div className="space-y-6">
-                      {expert.education.map((edu, index) => (
+                      {expert.education?.map((edu, index) => (
                         <div key={index} className="p-4 border-l-4 border-primary-600 bg-white shadow rounded">
                           <h3 className="text-xl font-bold">{edu.degree}</h3>
                           <div className="text-gray-600">
@@ -335,7 +385,7 @@ const ExpertDetail = () => {
               <TabsContent value="courses">
                 <h2 className="text-2xl font-bold mb-6">Courses by {expert.name}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {expert.courses.map((course) => (
+                  {expert.courses?.map((course) => (
                     <Card key={course.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                       <Link to={`/courses/${course.id}`}>
                         <div className="h-3 bg-primary-600"></div>
