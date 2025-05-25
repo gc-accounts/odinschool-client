@@ -6,7 +6,7 @@
     },
     {
       "source": "/uploads/(.*)",
-      "destination": "http://13.203.229.113:1337/uploads/$1"
+      "destination": "https://google.com/uploads/$1"
     },
     {
       "source": "/(.*)",
