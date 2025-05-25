@@ -5,5 +5,5 @@ export default function handler(
   response: VercelResponse
 ) {
   // Redirect to the GraphQL endpoint
-  response.redirect(301, 'http://13.203.229.113:1337/graphql');
+  response.redirect(301, 'https://google.com');
 } 
