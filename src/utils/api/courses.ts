@@ -8,7 +8,7 @@ import course from './schema/course';
 
 
 
-export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined}) => {
+export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = ''}) => {
 
     let filterObj: any = {}
     let paginationObj: any = {
@@ -22,6 +22,21 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
     if(isFeatured != undefined){
         filterObj.is_featured = { eq: isFeatured }
     }
+    if (search !== "") {
+        filterObj.or = [
+            { title: { containsi: search } },
+            { description: { containsi: search } }
+        ]
+    }
+
+    // if (category !== "") {
+    //     filterObj.category = { containsi: category }
+    // }
+
+    if (level !== "") {
+        filterObj.level = { eq: level }
+    }
+
     const response = await axiosApi.post('', {
         query: `
             query Courses (

@@ -18,34 +18,42 @@ const categories = ['All', 'Web Development', 'Frontend', 'Backend', 'Mobile Dev
 const levels = ['All Levels', 'Beginner', 'Intermediate', 'Advanced'];
 
 const Courses = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedLevel, setSelectedLevel] = useState('All Levels');
+  const [searchTerm, setSearchTerm1] = useState('');
+  const [selectedCategory, setSelectedCategory1] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [courses, setCourses] = useState<CourseProps[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setPage1] = useState(1);
+
+  const setSearchTerm = (searchTerm: string) => {
+    setLoading(true);
+    setSearchTerm1(searchTerm);
+  }
+
+  const setPage = (page: number) => {
+    setLoading(true); 
+    setPage1(page);
+  }
+
+  const setSelectedCategory = (category: string) => {
+    setLoading(true);
+    setSelectedCategory1(category);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Courses - CodeMaster";
     const fetchCourses = async () => {
-      const courses = await getCourses({pageNumber: page});
+      const courses = await getCourses({pageNumber: page, search: searchTerm, category: selectedCategory, level: selectedLevel});
       console.log(courses);
       setCourses(courses);
       setLoading(false);
     }
     fetchCourses();
-  }, [page]);
+  }, [page, searchTerm, selectedCategory, selectedLevel]);
   
-  const filteredCourses = courses.filter((course) => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         course.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
-    const matchesLevel = selectedLevel === 'All Levels' || course.level === selectedLevel;
-    
-    return matchesSearch && matchesCategory && matchesLevel;
-  });
+  const filteredCourses = courses
   
   const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
   
@@ -65,7 +73,7 @@ const Courses = () => {
           </div>
           
           {loading ? (<>
-            <div className="text-center py-16">
+            <div className="grid place-items-center h-full">
               <Loader2 className="w-10 h-10 animate-spin" />
             </div>
           </>) : filteredCourses.length > 0 ? (

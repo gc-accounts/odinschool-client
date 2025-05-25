@@ -25,7 +25,7 @@ const cities = [
 
 const CoursesInCities = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCity, setActiveCity] = useState('new-york');
+  const [activeCity, setActiveCity] = useState('');
   const [cities, setCities] = useState<any[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,7 +35,8 @@ const CoursesInCities = () => {
   useEffect(() => {
     const fetchCities = async () => {
       setLoading(true);
-      const cities = await getCities(1, 15);
+      const cities = await getCities({isFeatured: true});
+      handleCityChange(cities[0].name);
       setCities([...cities]);
       setLoading(false);
     };
@@ -47,7 +48,7 @@ const CoursesInCities = () => {
       setCoursesLoading(true);
       setCourses([]); // Clear existing courses while loading
       try {
-        const courses = await getCourses({ pageNumber: pageNumber, city: activeCity });
+        const courses = await getCourses({ pageNumber: pageNumber, city: activeCity, search: searchTerm });
         setCourses([...courses]);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -55,23 +56,20 @@ const CoursesInCities = () => {
       } finally {
         setCoursesLoading(false);
       }
+      setCoursesLoading(false);
     };
-    fetchCourses();
-  }, [activeCity]);
-
-  // Filter courses based on search term
-  const filteredCourses = useMemo(() =>
-    courses.filter(course =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.category.toLowerCase().includes(searchTerm.toLowerCase())
-    ),
-    [courses, searchTerm]
-  );
+    if(activeCity != '' && !loading){
+      fetchCourses();
+    }
+  }, [activeCity, searchTerm, loading]);
 
   const handleCityChange = (cityName: string) => {
+    setCoursesLoading(true);
     setActiveCity(cityName);
   };
 
+
+  console.log(courses);
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -106,7 +104,7 @@ const CoursesInCities = () => {
 
         {/* City Tabs */}
         <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
-          <Tabs defaultValue={activeCity} onValueChange={handleCityChange}>
+          <Tabs defaultValue={activeCity} value={activeCity} onValueChange={handleCityChange}>
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-4">Browse by Location</h2>
               {loading ? (
@@ -116,7 +114,7 @@ const CoursesInCities = () => {
                   ))}
                 </div>
               ) : (
-                <TabsList className="flex overflow-x-auto pb-2 space-x-2">
+                <TabsList className="overflow-x-auto">
                   {cities.map(city => (
                     <TabsTrigger
                       key={city.id}
@@ -146,14 +144,14 @@ const CoursesInCities = () => {
                     <div className="flex items-center space-x-4">
                       <div className="text-center">
                         <div className="text-2xl font-bold text-primary-600">
-                          {filteredCourses.length}
+                          {courses.length}
                         </div>
                         <div className="text-sm text-gray-600">Available Courses</div>
                       </div>
                       <div className="h-12 w-px bg-gray-200"></div>
                       <div className="text-center">
                         <div className="text-2xl font-bold text-primary-600">
-                          {filteredCourses.filter(course => course.popular).length}
+                          {courses.filter(course => course.popular).length}
                         </div>
                         <div className="text-sm text-gray-600">Popular Courses</div>
                       </div>
@@ -179,10 +177,10 @@ const CoursesInCities = () => {
                       </div>
                     ))}
                   </div>
-                ) : filteredCourses.length > 0 ? (
+                ) : courses.length > 0 ? (
                   <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {filteredCourses.map(course => (
+                      {courses.map(course => (
                         <CourseCard
                           key={course.id}
                           id={course.id}
@@ -203,6 +201,7 @@ const CoursesInCities = () => {
                           total_enrolled={course.students}
                         />
                       ))}
+                      <h2>Courses</h2>
                     </div>
                     <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
                   </div>

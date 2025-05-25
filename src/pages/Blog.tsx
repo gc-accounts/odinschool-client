@@ -13,10 +13,20 @@ import { getBlogs } from '@/utils/api/blog';
 import PaginationComponent from '@/components/PaginationComponent';
 
 const BlogPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm1] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage1] = useState(1);
+
+  const setPage = (page: number) => {
+    setLoading(true);
+    setPage1(page);
+  }
+
+  const setSearchTerm = (searchTerm: string) => {
+    setLoading(true);
+    setSearchTerm1(searchTerm);
+  }
 
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -66,7 +76,7 @@ const BlogPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {loading ? (
               <div className="col-span-full">
-                <div className="flex justify-center items-center h-full">
+                <div className="grid place-items-center h-full">
                   <Loader2 className="w-8 h-8 animate-spin" />
                 </div>
               </div>
