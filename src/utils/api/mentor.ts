@@ -1,4 +1,4 @@
-import axiosApi from "../apiCall";
+import axiosApi, { backendUrl } from "../apiCall";
 import mentorSchema from "./schema/mentor";
 
 
@@ -8,10 +8,10 @@ function modifyMentor(mentor:any) {
         name: mentor.name,
         title: mentor.designation,
         bio: mentor.description,
-        avatar: mentor.logo ?? mentor.logo_media.url,
+        avatar: mentor.logo ?? backendUrl + mentor.logo_media.url,
         companies: mentor.companies.map((company:any) => ({
             name: company.name,
-            logo: company.logo.url
+            logo: backendUrl + company.logo.url
         })),
         featured: mentor.is_featured,
         expertise: mentor.tags?.split(',') || [],

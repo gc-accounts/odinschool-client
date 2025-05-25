@@ -16,7 +16,7 @@ const FeaturedCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const data = await getCourses([], 1, '', 4, true);
+        const data = await getCourses({pageNumber: 1, city: '', isFeatured: true});
         // Transform the data to match CourseProps interface
         const transformedCourses = data.map((course: any) => ({
           id: course.documentId,

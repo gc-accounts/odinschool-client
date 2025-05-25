@@ -12,7 +12,7 @@ const transformWebinarData = (webinar: any) => {
         instructor: webinar.Instructor,
         about_instructor: webinar.about_instructor,
         price: webinar.price || 0,
-        image: webinar.image_url ?? webinar.poster_url?.url,
+        image: webinar.image_url ?? backendUrl + webinar.poster_url?.url,
         category: webinar.category || "Web Development",
         tags: webinar.tags?.split(',') || [],
         isFeatured: webinar.isFeatured || false,

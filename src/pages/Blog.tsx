@@ -10,6 +10,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { blogPosts } from '@/data/blog';
 import { getBlogs } from '@/utils/api/blog';
+import PaginationComponent from '@/components/PaginationComponent';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,7 +24,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const posts = await getBlogs(page, searchTerm);
+      const posts = await getBlogs({page, search: searchTerm});
       setPosts(posts);
       setLoading(false);
     };
@@ -109,19 +110,7 @@ const BlogPage = () => {
             </div>
           )}
           
-          <Pagination className="mt-12">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious onClick={() => setPage(page - 1)} />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink onClick={() => setPage(page)} isActive>{page}</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext onClick={() => setPage(page + 1)} />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+          <PaginationComponent currentPage={page} setCurrentPage={setPage} totalPages={undefined} />
         </div>
       </main>
       <Footer />

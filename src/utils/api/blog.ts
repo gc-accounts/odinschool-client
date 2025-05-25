@@ -14,7 +14,7 @@ function modifyBlog(blog: any) {
             name: blog?.author,
         },
 
-        coverImage: blog?.image_url ? blog?.image_url : blog?.image?.url,
+        coverImage: blog?.image_url ? blog?.image_url : backendUrl +  blog?.image?.url,
         // readTime: 6,
         publishedAt: blog?.publishedAt,
         tags: blog?.tags,
@@ -22,23 +22,37 @@ function modifyBlog(blog: any) {
     }
 }
 
-export const getBlogs = async (page: number, search: string) => {
-    const filters = search == "" ? "" : `, filters : {
-        meta_description: {
-            containsi: "${search}"
-        },
-        title: {
-            containsi: "${search}"
+export const getBlogs = async ({page = 1, search = ''}) => {
+
+    let filterObj: any = {}
+    let paginationObj: any = {
+        pageSize: 10,
+        page: page
+    }
+    if (search !== "") {
+        filterObj.meta_description = {
+            containsi: search
         }
-    }`
+    }
+
     const response = await axiosApi.post('', {
         query: `
-            query Blogs {
-                blogs(pagination: {pageSize: 10, page: ${page}} ${filters} ) {
+            query Blogs (
+                $filters: BlogFiltersInput
+                $pagination: PaginationArg
+            ) {
+                blogs(
+                    pagination: $pagination,
+                    filters: $filters
+                ) {
                     ${blog}
                 }
             }
-        `
+        `,
+        variables: {
+            filters: filterObj,
+            pagination: paginationObj
+        }
     });
 
     return response.data.data.blogs.map(modifyBlog);

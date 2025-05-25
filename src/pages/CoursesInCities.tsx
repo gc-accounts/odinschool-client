@@ -9,6 +9,7 @@ import CourseCard from '@/components/CourseCard';
 import { getCities } from '@/utils/api/city';
 import { getCourses } from '@/utils/api/courses';
 import { citySchema } from '@/utils/api/schema/cities';
+import PaginationComponent from '@/components/PaginationComponent';
 
 // Cities data
 const cities = [
@@ -29,6 +30,7 @@ const CoursesInCities = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [coursesLoading, setCoursesLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -45,7 +47,7 @@ const CoursesInCities = () => {
       setCoursesLoading(true);
       setCourses([]); // Clear existing courses while loading
       try {
-        const courses = await getCourses([], 1, activeCity);
+        const courses = await getCourses({ pageNumber: pageNumber, city: activeCity });
         setCourses([...courses]);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -58,11 +60,11 @@ const CoursesInCities = () => {
   }, [activeCity]);
 
   // Filter courses based on search term
-  const filteredCourses = useMemo(() => 
-    courses.filter(course => 
+  const filteredCourses = useMemo(() =>
+    courses.filter(course =>
       course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.category.toLowerCase().includes(searchTerm.toLowerCase())
-    ), 
+    ),
     [courses, searchTerm]
   );
 
@@ -73,7 +75,7 @@ const CoursesInCities = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      
+
       <main className="flex-grow">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-primary-50 to-primary-100">
@@ -85,7 +87,7 @@ const CoursesInCities = () => {
               <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 Discover in-person and hybrid learning opportunities available in cities across the country.
               </p>
-              
+
               <div className="mt-6 max-w-lg mx-auto">
                 <div className="relative flex items-center">
                   <Input
@@ -101,7 +103,7 @@ const CoursesInCities = () => {
             </div>
           </div>
         </div>
-        
+
         {/* City Tabs */}
         <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <Tabs defaultValue={activeCity} onValueChange={handleCityChange}>
@@ -116,8 +118,8 @@ const CoursesInCities = () => {
               ) : (
                 <TabsList className="flex overflow-x-auto pb-2 space-x-2">
                   {cities.map(city => (
-                    <TabsTrigger 
-                      key={city.id} 
+                    <TabsTrigger
+                      key={city.id}
                       value={city.name}
                       className="px-4 py-2 rounded-full"
                     >
@@ -127,7 +129,7 @@ const CoursesInCities = () => {
                 </TabsList>
               )}
             </div>
-            
+
             {/* Active City Info Section */}
             {!loading && (
               <div className="mb-8 bg-white rounded-lg shadow-sm border border-gray-100 p-6">
@@ -160,13 +162,13 @@ const CoursesInCities = () => {
                 </div>
               </div>
             )}
-            
+
             <TabsContent value={activeCity}>
               <div>
                 <h3 className="text-xl font-semibold mb-6">
                   Courses Available in {activeCity}
                 </h3>
-                
+
                 {coursesLoading ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[1, 2, 3].map((i) => (
@@ -178,28 +180,31 @@ const CoursesInCities = () => {
                     ))}
                   </div>
                 ) : filteredCourses.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredCourses.map(course => (
-                      <CourseCard
-                        key={course.id}
-                        id={course.id}
-                        title={course.title}
-                        description={course.description}
-                        instructor={course.instructor}
-                        level={course.level as any}
-                        duration={course.duration}
-                        lessons={course.lessons}
-                        rating={course.rating}
-                        students={course.students}
-                        image={course.image}
-                        category={course.category}
-                        company={course.company}
-                        popular={parseInt(course.id) % 3 === 0}
-                        documentId={course.id}
-                        enrolled_avatars={[]}
-                        total_enrolled={course.students}
-                      />
-                    ))}
+                  <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {filteredCourses.map(course => (
+                        <CourseCard
+                          key={course.id}
+                          id={course.id}
+                          title={course.title}
+                          description={course.description}
+                          instructor={course.instructor}
+                          level={course.level as any}
+                          duration={course.duration}
+                          lessons={course.lessons}
+                          rating={course.rating}
+                          students={course.students}
+                          image={course.image}
+                          category={course.category}
+                          company={course.company}
+                          popular={parseInt(course.id) % 3 === 0}
+                          documentId={course.id}
+                          enrolled_avatars={[]}
+                          total_enrolled={course.students}
+                        />
+                      ))}
+                    </div>
+                    <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
                   </div>
                 ) : (
                   <div className="text-center py-12">
@@ -212,7 +217,7 @@ const CoursesInCities = () => {
           </Tabs>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

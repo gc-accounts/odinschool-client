@@ -5,10 +5,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CourseCard, { CourseProps } from '@/components/CourseCard';
 import Button from '@/components/Button';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, Filter, X, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getCourses } from '@/utils/api/courses';
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import PaginationComponent from '@/components/PaginationComponent';
 
 // Sample courses data expanded
 
@@ -30,7 +30,7 @@ const Courses = () => {
     window.scrollTo(0, 0);
     document.title = "Courses - CodeMaster";
     const fetchCourses = async () => {
-      const courses = await getCourses([], page);
+      const courses = await getCourses({pageNumber: page});
       console.log(courses);
       setCourses(courses);
       setLoading(false);
@@ -66,7 +66,7 @@ const Courses = () => {
           
           {loading ? (<>
             <div className="text-center py-16">
-              <h3 className="text-xl font-medium mb-2">Loading...</h3>
+              <Loader2 className="w-10 h-10 animate-spin" />
             </div>
           </>) : filteredCourses.length > 0 ? (
             <div>
@@ -78,19 +78,7 @@ const Courses = () => {
                
             </div>
             <br />
-            <Pagination className="mt-12">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious onClick={() => setPage(page - 1)} />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink onClick={() => setPage(page)} isActive>{page}</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext onClick={() => setPage(page + 1)} />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+            <PaginationComponent currentPage={page} setCurrentPage={setPage} totalPages={undefined} />
             </div>
           ) : (
             <div className="text-center py-16">

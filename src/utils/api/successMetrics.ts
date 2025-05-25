@@ -26,7 +26,7 @@ export const getSuccessMetrics = async () => {
         return {
             name: story.name,
             role: story.current_position,
-            image: story.image_url?.url,
+            image: backendUrl + story.image_url?.url,
             story: story.description,
             course: story.description_course,
             metrics: [
@@ -45,7 +45,7 @@ export const getSuccessMetrics = async () => {
             role: story.current_position,
             company: story.company,
             quote: story.description,
-            image: story.image_url?.url,
+            image: backendUrl + story.image_url?.url,
         }
     })
 
