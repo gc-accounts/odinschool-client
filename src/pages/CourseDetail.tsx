@@ -10,7 +10,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import {
   ArrowLeft, Clock, BarChart, Award, CheckCircle2,
   Download, FileText, Users, Zap, Gift, BookOpen,
-  Briefcase, Star, PlayCircle, MessageSquare, CheckCircle
+  Briefcase, Star, PlayCircle, MessageSquare, CheckCircle,
+  Loader2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
@@ -112,7 +113,7 @@ const CourseDetail = () => {
 
   const sectionsToRender = sectionConfig["1"];
 
-  if (!course) {
+  if (!course && !loading) {
     return (
       <div>
         <Navbar />
@@ -189,9 +190,10 @@ const CourseDetail = () => {
     return (
       <div>
         <Navbar />
-        <div className="text-center py-16">
-          <h3 className="text-xl font-medium mb-2">Loading...</h3>
+        <div className="text-center py-16 grid place-items-center">
+          <Loader2 className="h-10 w-10 animate-spin" />
         </div>
+        <Footer />
       </div>
     );
   }

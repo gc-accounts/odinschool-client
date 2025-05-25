@@ -1,72 +1,49 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import CourseCard, { CourseProps } from './CourseCard';
 import Button from './Button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const courseData: CourseProps[] = [
-  {
-    id: '1',
-    title: 'JavaScript Fundamentals',
-    description: 'Master the core concepts of JavaScript programming from basics to advanced topics.',
-    instructor: 'Sarah Johnson',
-    level: 'Beginner',
-    duration: '10 hours',
-    lessons: 45,
-    rating: 4.8,
-    students: 12450,
-    image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=2000',
-    category: 'Web Development',
-    company: 'Google',
-    popular: true,
-  },
-  {
-    id: '2',
-    title: 'React for Professionals',
-    description: 'Build modern, responsive web applications with React.js and related ecosystem tools.',
-    instructor: 'Michael Chen',
-    level: 'Intermediate',
-    duration: '15 hours',
-    lessons: 60,
-    rating: 4.9,
-    students: 8325,
-    image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2000',
-    category: 'Frontend',
-    company: 'Microsoft',
-    popular: true,
-  },
-  {
-    id: '3',
-    title: 'Python Data Science',
-    description: 'Learn to analyze and visualize data using Python and popular data science libraries.',
-    instructor: 'Emily Rodriguez',
-    level: 'Intermediate',
-    duration: '20 hours',
-    lessons: 72,
-    rating: 4.7,
-    students: 9840,
-    image: 'https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=2000',
-    category: 'Data Science',
-  },
-  {
-    id: '4',
-    title: 'Advanced Machine Learning',
-    description: 'Dive deep into ML algorithms, neural networks, and practical applications.',
-    instructor: 'David Kim',
-    level: 'Advanced',
-    duration: '25 hours',
-    lessons: 80,
-    rating: 4.9,
-    students: 5670,
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000',
-    category: 'Artificial Intelligence',
-  },
-];
+import { getCourses } from '@/utils/api/courses';
 
 const FeaturedCourses = () => {
+  const [courses, setCourses] = useState<CourseProps[]>([]);
+  const [loading, setLoading] = useState(true);
+  
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const data = await getCourses([], 1, '', 4, true);
+        // Transform the data to match CourseProps interface
+        const transformedCourses = data.map((course: any) => ({
+          id: course.documentId,
+          documentId: course.documentId,
+          title: course.title,
+          description: course.description,
+          instructor: 'Expert Instructor', // Default value since not in API
+          level: course.level || 'Beginner',
+          duration: '10 hours', // Default value since not in API
+          lessons: 45, // Default value since not in API
+          rating: course.rating || 4.5,
+          students: course.total_enrolled || 0,
+          image: course.image,
+          category: 'Technology', // Default value since not in API
+          enrolled_avatars: [], // Default empty array since not in API
+          total_enrolled: course.total_enrolled || 0,
+        }));
+        setCourses(transformedCourses);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -88,7 +65,7 @@ const FeaturedCourses = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [courses]); // Add courses as dependency to re-run when courses change
 
   const addToCardRefs = (el: HTMLDivElement | null, index: number) => {
     if (el) {
@@ -108,17 +85,32 @@ const FeaturedCourses = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {courseData.map((course, index) => (
-            <div
-              key={course.id}
-              ref={(el) => addToCardRefs(el, index)}
-              className="opacity-0"
-            >
-              <CourseCard {...course} />
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="animate-pulse">
+                <div className="bg-gray-200 rounded-xl h-48 mb-4"></div>
+                <div className="space-y-3">
+                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-200 rounded"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {courses.map((course, index) => (
+              <div
+                key={course.id}
+                ref={(el) => addToCardRefs(el, index)}
+                className="opacity-0"
+              >
+                <CourseCard {...course} />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <Link to="/courses">

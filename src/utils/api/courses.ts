@@ -8,14 +8,20 @@ import course from './schema/course';
 
 
 
-export const getCourses = async (fields: string[], pageNumber: number = 1, city: string = '') => {
-    const cityFilter = city ? `filters: { city: { name: { eq: "${city}" } } }` : '';
+export const getCourses = async (fields: string[], pageNumber: number = 1, city: string = '', pageSize: number = 10, isFeatured: boolean = undefined) => {
+    const cityFilter = city !=="" ? `filters: { city: { name: { eq: "${city}" } } }` : '';
+
+    let featuredFilter = '';
+    if(isFeatured != undefined){
+        featuredFilter = `filters: { is_featured: { eq: ${isFeatured} } }`;
+    }
     const response = await axiosApi.post('', {
         query: `
             query Courses {
                 courses(
                     pagination: {pageSize: 10, page: ${pageNumber ?? 1}}, 
                     ${cityFilter}
+                    ${featuredFilter}
                 ) {
                     ${course}
                 }
