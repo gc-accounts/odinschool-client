@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/graphql",
-      "destination": "https://google.com"
+      "destination": "https://13.203.229.113:1337/graphql"
     },
     {
       "source": "/uploads/(.*)",
-      "destination": "https://google.com/uploads/$1"
+      "destination": "http://13.203.229.113:1337/uploads/$1"
     },
     {
       "source": "/(.*)",
