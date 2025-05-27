@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HelpCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/accordion";
 
 const FAQ = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const faqCategories = [
     {
       title: "Courses & Learning",

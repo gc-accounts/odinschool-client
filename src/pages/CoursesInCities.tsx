@@ -42,7 +42,9 @@ const CoursesInCities = () => {
     };
     fetchCities();
   }, []);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const fetchCourses = async () => {
       setCoursesLoading(true);

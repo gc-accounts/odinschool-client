@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -54,6 +54,7 @@ const queryClient = new QueryClient();
 
 // Convert from arrow function to regular function component to ensure proper React component structure
 function App() {
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

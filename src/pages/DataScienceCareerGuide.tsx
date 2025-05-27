@@ -22,6 +22,9 @@ const DataScienceCareerGuide = () => {
       setLoading(false);
     });
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">

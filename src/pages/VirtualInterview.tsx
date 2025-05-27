@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -25,7 +25,9 @@ import { Mic, Video, Play, Pause, MessageSquare, Share2 } from 'lucide-react';
 const VirtualInterview = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const questions = [
     "Tell me about yourself and your background in education.",
     "Why are you interested in joining EduPlatform?",

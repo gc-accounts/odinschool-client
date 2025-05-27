@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FileText, Download, Save } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -55,6 +55,9 @@ const options = {
 
 
 const ResumeBuilder = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [resumeData, setResumeData] = useState<ResumeData>(initialResumeData);
   const [isEditing, setIsEditing] = useState(true);
 

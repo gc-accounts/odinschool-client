@@ -27,7 +27,9 @@ const FreeResources = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const fetchProjects = async () => {
       try {

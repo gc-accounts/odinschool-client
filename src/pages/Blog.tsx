@@ -30,7 +30,9 @@ const BlogPage = () => {
 
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);

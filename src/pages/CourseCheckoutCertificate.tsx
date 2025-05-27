@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen, Award } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -9,12 +9,22 @@ import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { courses } from '@/data/courses';
-
+import { getCourse } from '@/utils/api/courses';
 const CERTIFICATE_PRICE = 29.99;
 
 const CourseCheckoutCertificate = () => {
   const { id } = useParams<{ id: string }>();
-  const course = courses.find(course => course.id === id);
+  const [course, setCourse] = useState<any>(null);  
+  const [loading, setLoading] = useState(true);
+  const [price, setPrice] = useState(0);
+  useEffect(() => {
+    const fetchCourse = async () => {
+      const course = await getCourse(id || '');
+      setCourse(course[0]);
+      setLoading(false);
+    }
+    fetchCourse();
+  }, [id]);
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -25,7 +35,9 @@ const CourseCheckoutCertificate = () => {
     cvv: '',
     paymentMethod: 'credit-card',
   });
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));

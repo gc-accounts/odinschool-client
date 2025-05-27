@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calculator } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -11,6 +11,9 @@ import FeaturedCourses from '@/components/FeaturedCourses';
 import Testimonials from '@/components/Testimonials';
 
 const SalaryCalculator = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [showResults, setShowResults] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [formData, setFormData] = useState<SalaryFormValues | null>(null);

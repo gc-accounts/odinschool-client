@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen } from 'lucide-react';
+import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -9,11 +9,28 @@ import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { courses } from '@/data/courses';
+import { getCourse } from '@/utils/api/courses';
 
 const CourseCheckout = () => {
   const { id } = useParams<{ id: string }>();
-  const course = courses.find(course => course.id === id);
-  
+  const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [price, setPrice] = useState(0);
+  const [certificateButtonState, setCertificateButtonState] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    const fetchCourse = async () => {
+      setLoading(true);
+      const course = await getCourse(id || '');
+      setCourse(course[0]);
+      setPrice(course[0].price);
+      setLoading(false);
+    }
+    fetchCourse();
+  }, [id]);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,39 +40,43 @@ const CourseCheckout = () => {
     cvv: '',
     paymentMethod: 'credit-card',
   });
-  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // In a real app, you would process payment here
     window.location.href = `/thank-you`;
   };
-  
-  if (!course) {
+
+
+
+  if (!course || loading) {
     return (
       <>
         <Navbar />
         <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
+          {loading ? (
+            <Loader2 className="h-10 w-10 animate-spin" />
+          ) : (<div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Course not found</h1>
             <Button asChild>
               <Link to="/courses">Back to Courses</Link>
             </Button>
-          </div>
+          </div>)}
         </div>
         <Footer />
       </>
     );
   }
-  
-  const lessonCount = Array.isArray(course.lessons) 
-    ? course.lessons.length 
+
+  const lessonCount = Array.isArray(course.lessons)
+    ? course.lessons.length
     : (typeof course.lessons === 'number' ? course.lessons : 0);
-  
+
   return (
     <>
       <Navbar />
@@ -67,9 +88,9 @@ const CourseCheckout = () => {
               Back to Course
             </Link>
           </Button>
-          
+
           <h1 className="text-3xl font-bold mb-8">Checkout</h1>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-8 bg-white p-6 rounded-lg shadow-sm">
@@ -78,42 +99,42 @@ const CourseCheckout = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
-                      <Input 
-                        id="firstName" 
-                        name="firstName" 
-                        value={formData.firstName} 
-                        onChange={handleInputChange} 
-                        required 
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
-                      <Input 
-                        id="lastName" 
-                        name="lastName" 
-                        value={formData.lastName} 
-                        onChange={handleInputChange} 
-                        required 
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
                   </div>
                   <div className="space-y-2 mt-4">
                     <Label htmlFor="email">Email Address</Label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={handleInputChange} 
-                      required 
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
-                  <RadioGroup 
-                    defaultValue="credit-card" 
+                  <RadioGroup
+                    defaultValue="credit-card"
                     name="paymentMethod"
                     value={formData.paymentMethod}
                     onValueChange={(value) => setFormData(prev => ({ ...prev, paymentMethod: value }))}
@@ -138,48 +159,48 @@ const CourseCheckout = () => {
                       </Label>
                     </div>
                   </RadioGroup>
-                  
+
                   {formData.paymentMethod === 'credit-card' && (
                     <div className="mt-4 space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="cardNumber">Card Number</Label>
-                        <Input 
-                          id="cardNumber" 
-                          name="cardNumber" 
-                          value={formData.cardNumber} 
-                          onChange={handleInputChange} 
-                          placeholder="1234 5678 9012 3456" 
-                          required 
+                        <Input
+                          id="cardNumber"
+                          name="cardNumber"
+                          value={formData.cardNumber}
+                          onChange={handleInputChange}
+                          placeholder="1234 5678 9012 3456"
+                          required
                         />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="expiryDate">Expiry Date</Label>
-                          <Input 
-                            id="expiryDate" 
-                            name="expiryDate" 
-                            value={formData.expiryDate} 
-                            onChange={handleInputChange} 
-                            placeholder="MM/YY" 
-                            required 
+                          <Input
+                            id="expiryDate"
+                            name="expiryDate"
+                            value={formData.expiryDate}
+                            onChange={handleInputChange}
+                            placeholder="MM/YY"
+                            required
                           />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="cvv">CVV</Label>
-                          <Input 
-                            id="cvv" 
-                            name="cvv" 
-                            value={formData.cvv} 
-                            onChange={handleInputChange} 
-                            placeholder="123" 
-                            required 
+                          <Input
+                            id="cvv"
+                            name="cvv"
+                            value={formData.cvv}
+                            onChange={handleInputChange}
+                            placeholder="123"
+                            required
                           />
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-                
+
                 <div className="pt-4 border-t">
                   <Button type="submit" size="lg" className="w-full">
                     Complete Purchase
@@ -191,7 +212,7 @@ const CourseCheckout = () => {
                 </div>
               </form>
             </div>
-            
+
             <div>
               <Card>
                 <CardHeader className="pb-3">
@@ -200,9 +221,9 @@ const CourseCheckout = () => {
                 <CardContent className="space-y-6">
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
-                      <img 
-                        src={course.image} 
-                        alt={course.title} 
+                      <img
+                        src={course.image}
+                        alt={course.title}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -211,7 +232,7 @@ const CourseCheckout = () => {
                       <div className="text-sm text-gray-500">{course.instructor}</div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-2" />
@@ -219,14 +240,14 @@ const CourseCheckout = () => {
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <User className="h-4 w-4 mr-2" />
-                      {course.students.toLocaleString()} students
+                      {course.students?.toLocaleString()} students
                     </div>
                   </div>
-                  
+
                   <div className="border-t pt-4">
                     <div className="flex justify-between py-2">
                       <span>Price</span>
-                      <span>${course.price.toFixed(2)}</span>
+                      <span>${price?.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between py-2">
                       <span>Certificate</span>
@@ -234,14 +255,24 @@ const CourseCheckout = () => {
                     </div>
                     <div className="flex justify-between py-2 font-bold border-t">
                       <span>Total</span>
-                      <span>${course.price.toFixed(2)}</span>
+                      <span>${price?.toFixed(2)}</span>
                     </div>
                   </div>
-                    <Button variant="outline" asChild className="w-full">
-                      <Link to={`/course-checkout-certificate/${id}`}>
-                        Add Certificate (+ $29.99)
-                      </Link>
-                    </Button>
+                  {course.has_certificate && (<Button 
+                  
+                  variant="outline" onClick={(e) => {
+                    console.log(course.has_certificate);
+                    if (certificateButtonState) {
+                      setPrice(price + 29.99);
+                      setCertificateButtonState(false);
+                    } else {
+                      setPrice(price - 29.99);
+                      setCertificateButtonState(true);
+                    }
+
+                  }} className="w-full">
+                    {certificateButtonState ? "Add Certificate (+ $29.99)" : "Remove Certificate (- $29.99)"}
+                  </Button>)}
                 </CardContent>
               </Card>
 

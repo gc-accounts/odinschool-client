@@ -10,6 +10,8 @@ import { ArrowLeft, Briefcase, GraduationCap, Calendar } from 'lucide-react';
 import { mentorsData } from '@/data/mentors';
 
 const MentorDetail = () => {
+
+  
   const { id } = useParams<{ id: string }>();
   const [mentor, setMentor] = useState<any>(null);
   const [loading, setLoading] = useState(true);

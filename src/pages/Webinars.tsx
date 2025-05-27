@@ -73,7 +73,9 @@ const Webinars = () => {
     fetchWebinars();
   }, [searchQuery, tab]);
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
 

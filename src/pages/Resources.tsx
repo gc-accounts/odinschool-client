@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calculator, FileText, Download, BookOpen, Video } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -12,6 +11,9 @@ import InstructorProfile from '@/components/InstructorProfile';
 import Testimonials from '@/components/Testimonials';
 
 const Resources = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const resourceLinks = [
     {
       title: 'Salary Calculator',

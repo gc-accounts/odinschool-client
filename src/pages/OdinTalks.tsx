@@ -105,6 +105,8 @@ const mentorsData = [
 ];
 
 const OdinTalks = () => {
+
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "OdinTalks - Meet Our Mentors";

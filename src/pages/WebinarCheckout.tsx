@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getWebinarById } from '@/data/webinars';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,7 +44,9 @@ const WebinarCheckout = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   
   const { registrationData } = (location.state as LocationState) || {};
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const webinar = getWebinarById(id || '');
   
   if (!webinar) {

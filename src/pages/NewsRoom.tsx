@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Newspaper, Calendar, User, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,6 +8,9 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const NewsRoom = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const featuredNews = {
     title: "EduPlatform Raises $50M Series B to Expand Global Reach",
     excerpt: "The funding will be used to develop new course offerings, enhance the platform's technology, and expand into new markets, with a focus on Asia and Europe.",

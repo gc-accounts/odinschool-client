@@ -40,7 +40,9 @@ const WebinarRegistration = () => {
     };
     fetchWebinar();
   }, [id]);
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Star, ThumbsUp, MessageSquare } from "lucide-react";
 
 const Reviews = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [activeTab, setActiveTab] = useState("all");
   
   useEffect(() => {

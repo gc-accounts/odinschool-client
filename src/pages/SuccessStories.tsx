@@ -24,7 +24,9 @@ const SuccessStories = () => {
     }
     fetchData();
   }, []);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { successStories: featuredStories, placementRate, studentSatisfaction, salaryIncrease, testimonials } = useMemo(() => state ?? {}, [state]);
 
 

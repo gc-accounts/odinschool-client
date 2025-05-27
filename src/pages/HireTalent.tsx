@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Check } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,6 +10,9 @@ import CallbackForm from '@/components/CallbackForm';
 import OrganizationLogos from '@/components/OrganizationLogos';
 import EmployerTestimonials from '@/components/EmployerTestimonials';
 const HireTalent = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const talents = [
     {
       name: "Alex Chen",

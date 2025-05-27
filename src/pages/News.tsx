@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Globe, ExternalLink, Star, Clock } from "lucide-react";
 
 const News = () => {
+  
   const [activeTab, setActiveTab] = useState("all");
 
   useEffect(() => {

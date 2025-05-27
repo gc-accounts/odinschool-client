@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle, Home, BookOpen, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const ThankYou = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />

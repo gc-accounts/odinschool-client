@@ -14,7 +14,9 @@ const LearningHub = () => {
   const [learningHub, setLearningHub] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [pageNumber, setPageNumber] = useState<number>(1);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     getLearningHubCourses({

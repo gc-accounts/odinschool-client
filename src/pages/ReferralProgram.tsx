@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Gift, Users, DollarSign, Award, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,6 +8,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const ReferralProgram = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const rewards = [
     {
       title: "Cash Rewards",

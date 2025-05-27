@@ -289,7 +289,9 @@ const FreeCourseDetail = () => {
   const [activeLesson, setActiveLesson] = useState('');
   const [course, setCourse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const fetchCourse = async () => {
       setLoading(true);

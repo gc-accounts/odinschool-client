@@ -59,5 +59,6 @@ export default `
                     createdAt
                     updatedAt
                     publishedAt
+                    price
                
         `

@@ -6,6 +6,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const NotFound = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const location = useLocation();
 
   useEffect(() => {

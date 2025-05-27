@@ -40,7 +40,9 @@ const Courses = () => {
     setLoading(true);
     setSelectedCategory1(category);
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Courses - CodeMaster";

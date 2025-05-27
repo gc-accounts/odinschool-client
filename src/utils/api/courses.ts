@@ -74,7 +74,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
             image: backendUrl + course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
-            
+            price: course.price,
         }
     });
     return data;
@@ -122,7 +122,8 @@ export const getCourse = async (id: string) => {
             total_enrolled: course.enrolled_students?.total_enrolled,
             rating: course.rating?.overall_rating,
             total_rated: course.rating?.total_rated,
-            curriculum: course.curriculum
+            curriculum: course.curriculum,
+            price: course.price
         }
     });
     return data;

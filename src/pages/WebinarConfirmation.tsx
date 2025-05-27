@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getWebinarById } from '@/data/webinars';
 import { Check, Calendar, Download, Mail } from 'lucide-react';
@@ -21,7 +21,9 @@ const WebinarConfirmation = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { registrationData, paymentCompleted } = (location.state as LocationState) || {};
   
   const webinar = getWebinarById(id || '');
