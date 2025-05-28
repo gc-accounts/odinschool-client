@@ -7,7 +7,7 @@ interface PaginationComponentProps {
     totalPages: number | undefined;
 }
 
-const PaginationComponent: React.FC<PaginationComponentProps> = ({ currentPage, setCurrentPage, totalPages }) => {
+const PaginationComponent: React.FC<PaginationComponentProps> = ({ currentPage, setCurrentPage }) => {
     return (
         <Pagination className="mt-12">
             <PaginationContent>

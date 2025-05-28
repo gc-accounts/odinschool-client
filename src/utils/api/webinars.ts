@@ -41,6 +41,9 @@ export const getWebinars = async ({
     if(search != ''){
         filterObj.title = { containsi: search };
     }
+    if(isOdintalk != undefined){
+        filterObj.is_odin_talk = { eq: isOdintalk };
+    }
 if(time != 'all'){
     const currentDate = new Date();
     const currentDateString = currentDate.toISOString().split('T')[0]; // Get only the date part

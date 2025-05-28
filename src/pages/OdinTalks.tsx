@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
-
+import { Webinar } from '@/data/webinars';
+import { getWebinars } from '@/utils/api/webinars';
+import PaginationComponent from '@/components/PaginationComponent';
+import mentor from '@/utils/api/schema/mentor';
+import { Loader2 } from 'lucide-react';
 // Define mentor data
 const mentorsData = [
   {
@@ -105,59 +109,85 @@ const mentorsData = [
 ];
 
 const OdinTalks = () => {
+  const [webinars, setWebinars] = useState<Webinar[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
 
-  
+
+  useEffect(() => {
+    const fetchWebinars = async () => {
+      const webinars = await getWebinars({
+        pageNumber: pageNumber,
+        pageSize: 10,
+        isOdintalk: true,
+      });
+      setWebinars(webinars);
+      setLoading(false);
+    };
+    fetchWebinars();
+  }, [pageNumber]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "OdinTalks - Meet Our Mentors";
   }, []);
 
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">
+      <Loader2 className="w-10 h-10 animate-spin" />
+    </div>;
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      
+
       <main className="flex-grow pb-16">
         <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-4">Stay current with the latest insights on our Blog!</h1>
             <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-            From the latest trends to best practices, read everything about Data Science, Web Development, Digital Marketing, and Power BI here.            
+              From the latest trends to best practices, read everything about Data Science, Web Development, Digital Marketing, and Power BI here.
             </p>
           </div>
         </div>
-          
-            <div className="container mx-auto py-12 px-4 md:px-6">
+
+        <div className="container mx-auto py-12 px-4 md:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mentorsData.map((mentor) => (
-              <Link key={mentor.id} to={`/mentor/${mentor.id}`}>
+            {webinars.map((webinar) => (
+              <Link key={webinar.id} to={`/webinars/${webinar.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                 <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
-                      <img 
-                        src={mentor.image} 
-                        alt={mentor.name}
-                        className="w-full h-full object-cover" 
-                      />
-                      
-                      <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
-                        <div>
-                          <h3 className=" font-semibold text-black">{mentor.name}</h3>
-                          <h3 className="text-gray-700">{mentor.role}</h3>
-                        </div>
-                        <img 
-                          src={mentor.companyLogo} 
-                          alt={`${mentor.company} logo`} 
-                          className="h-10 w-auto object-contain"
-                        />
+                  <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
+                    <img
+                      src={webinar.image}
+                      alt={webinar.title}
+                      className="w-full h-full object-cover"
+                    />
+
+                    <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
+                      <div>
+                        <h3 className=" font-semibold text-black">{webinar.title}</h3>
+                        <h3 className="text-gray-700">{webinar.instructor}</h3>
                       </div>
+                      {/* <img
+                        src={webinar.companyLogo}
+                        alt={`${webinar.company} logo`}
+                        className="h-10 w-auto object-contain"
+                      /> */}
                     </div>
-             
+                  </div>
+
                 </Card>
               </Link>
             ))}
           </div>
+          <PaginationComponent
+            currentPage={pageNumber}
+            setCurrentPage={setPageNumber}
+          />
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

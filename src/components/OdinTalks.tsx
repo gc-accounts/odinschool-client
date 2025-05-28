@@ -62,8 +62,9 @@ const OdinTalks = () => {
       const webinars = await getWebinars({
         pageNumber: 1,
         pageSize: 3,
+        isOdintalk: true,
         isFeatured: true,
-        time: 'upcoming'
+        // time: 'upcoming'
       });
       setWebinars(webinars);
       setLoading(false);
@@ -101,7 +102,7 @@ const OdinTalks = () => {
             </div>
           ) : (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {webinars.map((webinar) => (
-              <Link key={webinar.id} to={`/webinar/${webinar.id}`}>
+              <Link key={webinar.id} to={`/webinars/${webinar.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="aspect-[4/3] relative">
                     <img 
