@@ -38,7 +38,7 @@ const Testimonials = () => {
       setLoading(true);
       const stories = await getStories({
         pageNumber: 1,
-        pageSize: 5,
+        pageSize: 3,
         isFeatured: true,
         remarks: activeTab
       });
