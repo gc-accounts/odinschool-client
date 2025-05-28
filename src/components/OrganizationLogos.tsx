@@ -58,14 +58,14 @@ const OrganizationLogos = () => {
           100% { transform: translateX(-50%); }
         }
         .scrolling-logos {
-          animation: scrollLeft 60s linear infinite;
+          animation: scrollLeft 120s linear infinite;
         }
         .scrolling-logos:hover {
           animation-play-state: paused;
         }
       `}</style>
 
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">500+ Hiring Organizations</h2>
         </div>
@@ -96,9 +96,9 @@ const OrganizationLogos = () => {
               ) : repeatedLogos?.length > 0 ? repeatedLogos.map((logo) => (
                 <Card
                   key={`${logo.id}-${Math.random()}`}
-                  className="border-0 shadow-sm hover:shadow-md transition-shadow w-[180px] h-[100px]"
+                  className="border-0 shadow-sm hover:shadow-md transition-shadow w-[160px] h-[80px]"
                 >
-                  <CardContent className="flex items-center justify-center p-4 h-full">
+                  <CardContent className="flex items-center justify-center p-3 h-full">
                     <img
                       src={logo.logo}
                       alt={`${logo.name} logo`}

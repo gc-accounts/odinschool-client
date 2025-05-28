@@ -8,7 +8,7 @@ function modifyMentor(mentor:any) {
         name: mentor.name,
         title: mentor.designation,
         bio: mentor.description,
-        avatar: mentor.logo ?? backendUrl + mentor.logo_media.url,
+        avatar: backendUrl + mentor.photo?.url,
         companies: mentor.companies.map((company:any) => ({
             name: company.name,
             logo: backendUrl + company.logo.url
