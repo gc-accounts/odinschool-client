@@ -74,7 +74,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/odintalks" element={<OdinTalks />} />
             <Route path="/mentor/:id" element={<MentorDetail />} />
-            <Route path="/fun-with-statistics" element={<FunWithStatistics />} />
+            <Route path="/fun-with-statistics/*" element={<FunWithStatistics />} />
             <Route path="/data-science-career-guide" element={<DataScienceCareerGuide />} />
             
             {/* Specialized Courses Route */}

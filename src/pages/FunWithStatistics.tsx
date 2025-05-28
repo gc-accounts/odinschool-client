@@ -1,19 +1,123 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BarChart, BarChartHorizontal, Download } from 'lucide-react';
+import { getDsBook } from '@/utils/api/dsBook';
+import { useParams } from 'react-router-dom';
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import { useNavigate } from 'react-router-dom';
 
 const FunWithStatistics = () => {
+  const [dsBook, setDsBook] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentChapter, setCurrentChapter] = useState<any>(null);
+
+  const currentChapterId = useParams()['*'];
+  console.log("currentChapterId", currentChapterId);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchDsBook = async () => {
+      setIsLoading(true);
+      const data = await getDsBook();
+      setDsBook(data);
+      setIsLoading(false);
+    }
+    fetchDsBook();
+  }, [])
+
+  useEffect(() => {
+    if (dsBook) {
+      console.log("chaper updated", currentChapterId);
+      const chapter = dsBook.chapers.find((chapter: any) => chapter.url_slug.split('/')[1] === currentChapterId);
+      setCurrentChapter(chapter);
+    }
+  }, [dsBook, currentChapterId]);
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Fun with Statistics - OdinSchool";
   }, []);
-
+  if(isLoading) {
+    return <div>Loading...</div>;
+  }
+  console.log(currentChapterId, dsBook?.chapters, dsBook?.chapters?.find((chapter: any) => chapter.url_slug === currentChapterId));
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+
+    <br />
+      <div className="grid"
+        style={{
+          gridTemplateColumns: '250px 1fr'
+        }}
+      >
+        <div className="sticky top-24 overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)] mb-10 mt-2 bg-white">
+          <NavigationMenuPrimitive.Root orientation='vertical'
+            className='relative z-10 flex max-h-max flex-1 items-center justify-left'  
+            value={currentChapterId}    
+          >
+            <NavigationMenuPrimitive.List className='mb-10 w-full'>
+              {dsBook?.chapers.map((chapter: any) => (
+                <NavigationMenuPrimitive.Item key={chapter.id} value={chapter?.url_slug?.split('/')[1]}>
+                  <NavigationMenuPrimitive.Trigger
+                    onClick={() => {
+                      navigate(`/${chapter.url_slug}`);
+                    }}
+                    style={{
+                      backgroundColor: chapter?.url_slug?.split('/')[1] === currentChapterId ? '#4D8EF6' : 'transparent'
+                    }}
+                    className='group inline-flex h-10 w-full max-w-[240px] items-left justify-left rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
+                  >
+                    <span className='text-left max-w-[220px] truncate'>{chapter.title}</span>
+                  </NavigationMenuPrimitive.Trigger>
+                  {chapter.children && chapter.children.length > 0 && (
+                    <NavigationMenuPrimitive.Content>
+                      <NavigationMenuPrimitive.List className='ml-4 '>
+                        {chapter.children.map((child: any) => (
+                          <NavigationMenuPrimitive.Item key={child.id} value={child.url_slug} className='bg-red'>
+                            <NavigationMenuPrimitive.Trigger
+                              onClick={() => {
+                                navigate(`/${child.url_slug}`);
+                              }}
+                              style={{
+                                backgroundColor: '#A6C8FF',
+                                margin: '5px 0 0 0'
+                              }}
+                              className='group inline-flex h-8 w-full max-w-[220px] items-left justify-left rounded-md bg-background px-3 py-1 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
+                            >
+                              <span className='text-left max-w-[200px] truncate'>{child.title}</span>
+                            </NavigationMenuPrimitive.Trigger>
+                          </NavigationMenuPrimitive.Item>
+                        ))}
+                      </NavigationMenuPrimitive.List>
+                    </NavigationMenuPrimitive.Content>
+                  )}
+                </NavigationMenuPrimitive.Item>
+              ))}
+            </NavigationMenuPrimitive.List>
+          </NavigationMenuPrimitive.Root>
+        </div>
+        <div className="p-2">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : currentChapter ? (
+            <Card>
+              <CardContent className='p-5'>
+                <h2 className="text-2xl font-bold mb-4">{currentChapter.title}</h2>
+                {currentChapter.is_html ? (
+                  <div className="reset-post-content" dangerouslySetInnerHTML={{ __html: currentChapter.content }} />
+                ) : (
+                  <p>{currentChapter.content}</p>
+                )}
+              </CardContent>
+            </Card>
+          ) : (
+            <p>Select a chapter to view its content.</p>
+          )}
+        </div>
+      </div>
       
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-4 md:px-6">
