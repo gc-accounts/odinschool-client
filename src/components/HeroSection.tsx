@@ -39,14 +39,12 @@ const HeroSection = () => {
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 text-primary-700 mb-6">
                 <span className="text-xs font-medium">Master Coding Skills</span>
               </div>
-              <h1 className="heading-xl text-balance">
-              Upskill Now! Accelerate Your Career
-                <span className="text-primary-600"> Online Courses</span>
+              <h1 className="heading-xl text-balance">Upskill Now! <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>
 
             <p ref={addToRefs} className="body-lg text-gray-600 opacity-0 delay-100 max-w-xl">
-              Elevate your programming skills with industry-focused courses designed by experienced developers. Start your journey from beginner to professional developer.
+              Gain practical, job-ready skills through industry-aligned courses with hands-on learning. Learn from top experts to stay current with the latest trends. Receive holistic career support and personalized guidance to achieve your goals.
             </p>
             
             <div ref={addToRefs} className="flex flex-col sm:flex-row gap-4 opacity-0 delay-200">

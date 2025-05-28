@@ -22,4 +22,7 @@ companies {
     logo_media {
       url
     }
+      photo {
+        url
+      }
 `

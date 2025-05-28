@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
-
-import { getMentors } from '@/utils/api/mentor';
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getMentors } from "@/utils/api/mentor";
 
 export interface CompanyProps {
   name: string;
@@ -20,33 +20,57 @@ export interface InstructorProps {
   avatar: string;
   companies: CompanyProps[];
   featured: boolean;
-  expertise?: string[];
-  education?: {
-    degree: string;
-    institution: string;
-    year: string;
-  }[];
 }
 
 const InstructorProfile = () => {
   const [mentors, setMentors] = useState<InstructorProps[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+    containScroll: "trimSnaps",
+  });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index),
+    [emblaApi]
+  );
 
   useEffect(() => {
     const fetchMentors = async () => {
       try {
         setLoading(true);
-        const mentors = await getMentors(10, page);
+        const mentors = await getMentors(10, 1);
         setMentors(mentors);
       } catch (error) {
-        console.error('Error fetching mentors:', error);
+        console.error("Error fetching mentors:", error);
       } finally {
         setLoading(false);
       }
-    }
+    };
     fetchMentors();
-  }, [page]);
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi, onSelect]);
+
+  const dots = useMemo(() => {
+    if (!emblaApi) return [];
+    return emblaApi.scrollSnapList().map((_, index) => index);
+  }, [emblaApi, mentors]);
 
   const LoadingSkeleton = () => (
     <Card className="border border-gray-200 overflow-hidden">
@@ -59,18 +83,13 @@ const InstructorProfile = () => {
             <Skeleton className="h-4 w-24 mb-3" />
             <Skeleton className="h-20 w-full mb-4" />
           </div>
-          <div className="flex justify-center space-x-3">
-            {[1, 2, 3].map((i) => (
-              <Skeleton key={i} className="w-8 h-8 rounded-full" />
-            ))}
-          </div>
         </div>
       </CardContent>
     </Card>
   );
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-gray-50 relative">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
@@ -80,53 +99,105 @@ const InstructorProfile = () => {
             Our instructors are active professionals with years of real-world experience in their fields
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            // Show loading skeletons
-            Array.from({ length: 6 }).map((_, index) => (
+
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {Array.from({ length: 6 }).map((_, index) => (
               <LoadingSkeleton key={index} />
-            ))
-          ) : (
-            // Show actual mentor cards
-            mentors.map((instructor) => (
-              <Card key={instructor.id} className="border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden">
-                <Link to={`/expert/${instructor.id}`}>
-                  <CardContent className="p-0">
-                    <div className="h-7 bg-primary-600"></div>
-                    <div className="p-6">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="h-24 w-24 mb-4">
-                          <AvatarImage src={instructor.avatar} alt={instructor.name} />
-                          <AvatarFallback>{instructor.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <h3 className="text-xl font-semibold mb-1">{instructor.name}</h3>
-                        <p className="text-sm text-gray-500 mb-3">{instructor.title}</p>
-                        <p className="text-center text-gray-600 mb-4">{instructor.bio}</p>
-                      </div>
-                      
-                      <div className="flex justify-center space-x-3 mb-4">
-                        {instructor.companies.map((company, index) => (
-                          <div 
-                            key={index} 
-                            className="w-8 h-8 rounded-full overflow-hidden border border-gray-200"
-                            title={company.name}
-                          >
-                            <img 
-                              src={company.logo} 
-                              alt={company.name} 
-                              className="w-full h-full object-cover"
-                            />
+            ))}
+          </div>
+        ) : (
+          <div className="relative px-6">
+            {/* Navigation Arrows */}
+            <button
+              onClick={scrollPrev}
+              className="absolute z-10 top-1/2 left-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="absolute z-10 top-1/2 right-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Carousel */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex min-w-0">
+                {mentors.map((instructor) => (
+                  <div
+                    key={instructor.id}
+                    className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]"
+                  >
+                    <Card className="mx-2 border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden">
+                      <Link to={`/expert/${instructor.id}`}>
+                        <CardContent className="p-0">
+                          <div className="h-7 bg-primary-600"></div>
+                          <div className="p-6">
+                            <div className="flex flex-col items-center">
+                              <Avatar className="h-24 w-24 mb-4">
+                                <AvatarImage src={instructor.avatar} alt={instructor.name} />
+                                <AvatarFallback>
+                                  {instructor.name.charAt(0)}
+                                </AvatarFallback>
+                              </Avatar>
+                              <h3 className="text-xl font-semibold mb-1">{instructor.name}</h3>
+                              <p className="text-sm text-gray-500 mb-0">{instructor.title}</p>
+                              <p className="text-center text-gray-600 mb-4">{instructor.bio}</p>
+                            </div>
+                            <div className="flex flex-col items-center space-y-3 mb-0">
+                              <div
+                                className="mb-4 rounded-md overflow-hidden border-gray-200"
+                                title={instructor.companies[0]?.name}
+                              >
+                                <img
+                                  src={instructor.companies[0]?.logo}
+                                  alt={instructor.companies[0]?.name}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                              <div className="flex justify-between w-full border-t-2 pt-4">
+                                {instructor.companies.slice(1, 3).map((company, index) => (
+                                  <div
+                                    key={index}
+                                    className="rounded-md overflow-hidden border-gray-200"
+                                    title={company.name}
+                                  >
+                                    <img
+                                      src={company.logo}
+                                      alt={company.name}
+                                      className="w-full h-full object-contain"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Link>
-              </Card>
-            ))
-          )}
-        </div>
+                        </CardContent>
+                      </Link>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center mt-6 gap-2">
+              {dots.map((index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    index === selectedIndex
+                      ? "bg-primary-600 w-[28px] shadow"
+                      : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
