@@ -63,7 +63,7 @@ const formFields: FieldConfig[] = [
     label: 'Program',
     type: 'select',
     options: ['Data Science Course', 'Certification Program in Applied Generative AI', 'Generative AI Course', 'Data Science Elite Course'],
-    rules: { required: 'Please select your experience level' },
+    rules: { required: 'Please select a program' },
   },
   { name: 'ga_client_id', type: 'hidden' },
 ];
@@ -187,6 +187,7 @@ const HeroSection = () => {
             </div>
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
               <DynamicForm
+                buttonText={'Request Callback'}
                 fields={formFields}
                 initialValues={{
                   ga_client_id: 'auto-fetch-or-from-cookie',
