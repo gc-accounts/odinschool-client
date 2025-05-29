@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button"; 
+import RequestCallback from "./custom-component/RequestCallback";
 const opportunities = [
   {
     title: "Data Scientist",
@@ -23,14 +24,17 @@ const opportunities = [
   },
 ];
 
-const CareerOpportunities = () => {
+interface CareerOpportunitiesProps{
+  slug:String
+}
+const CareerOpportunities = ({slug}:CareerOpportunitiesProps) => {
   return (
     <section className="py-12 px-4 md:px-8">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Possible Career Opportunities
       </h2>
 
-      <div className=" container mx-auto mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className=" container mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {opportunities.map((item, index) => (
           <div
             key={index}
@@ -42,9 +46,7 @@ const CareerOpportunities = () => {
         ))}
       </div>
 
-      <div className="text-center">
-        <Button>Request Callback</Button>
-      </div>
+      <RequestCallback slug={slug}/>
     </section>
   );
 };
