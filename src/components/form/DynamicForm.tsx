@@ -13,7 +13,7 @@ import {
 export interface FieldConfig {
   name: string;
   label?: string;
-  type: 'text' | 'select' | 'hidden';
+  type: 'text' | 'select' | 'hidden' | 'textarea'; // ✅ added textarea
   required?: boolean;
   options?: string[];
   rules?: {
@@ -24,13 +24,15 @@ export interface FieldConfig {
   };
 }
 
+
 interface DynamicFormProps {
   fields: FieldConfig[];
   initialValues?: { [key: string]: any };
+  buttonText: String;
   onSubmit: (data: any) => void;
 }
 
-const DynamicForm = ({ fields, initialValues = {}, onSubmit }: DynamicFormProps) => {
+const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: DynamicFormProps) => {
   if (!Array.isArray(fields) || fields.length === 0) {
     return <div className="text-red-500">Error: Form fields not provided.</div>;
   }
@@ -55,7 +57,7 @@ const DynamicForm = ({ fields, initialValues = {}, onSubmit }: DynamicFormProps)
                   <FormControl>
                     <Input {...formField} className="focus:outline-none focus:border-primary-500" />
                   </FormControl>
-                  <FormMessage  className='font-medium text-xs'/>
+                  <FormMessage className='font-medium text-xs' />
                 </FormItem>
               )}
             />
@@ -91,7 +93,30 @@ const DynamicForm = ({ fields, initialValues = {}, onSubmit }: DynamicFormProps)
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className='font-medium text-xs'/>
+                    <FormMessage className='font-medium text-xs' />
+                  </FormItem>
+                )}
+              />
+            );
+          }
+          if (field.type === 'textarea') {
+            return (
+              <FormField
+                key={field.name}
+                control={form.control}
+                name={field.name}
+                rules={field.rules}
+                render={({ field: formField }) => (
+                  <FormItem>
+                    <FormLabel className="text-xs">{field.label}</FormLabel>
+                    <FormControl>
+                      <textarea
+                        {...formField}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500 text-sm"
+                        rows={4}
+                      />
+                    </FormControl>
+                    <FormMessage className="font-medium text-xs" />
                   </FormItem>
                 )}
               />
@@ -110,15 +135,15 @@ const DynamicForm = ({ fields, initialValues = {}, onSubmit }: DynamicFormProps)
                   <FormControl>
                     <Input {...formField} className="focus:outline-none focus:border-primary-500" />
                   </FormControl>
-                  <FormMessage  className='font-medium text-xs'/>
+                  <FormMessage className='font-medium text-xs' />
                 </FormItem>
               )}
             />
           );
         })}
 
-        <Button type="submit" className="w-full">
-          Request a Callback
+        <Button type="submit" className="w-full" style={{ marginTop: "1.5rem" }}>
+          {buttonText ? buttonText : 'Request  Callback'}
         </Button>
       </form>
     </Form>
