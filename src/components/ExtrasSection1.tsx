@@ -50,7 +50,7 @@ const ExtrasSection1 = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 w-md">
           {resources.map((resource) => (
             <div key={resource.id} className="flex flex-col items-center">
-              <div className="rounded-lg overflow-hidden shadow-md mb-4 w-full h-48">
+              <div className="rounded-lg overflow-hidden shadow-md mb-4 w-full h-full">
                 <img 
                   src={resource.image} 
                   alt={resource.title}
