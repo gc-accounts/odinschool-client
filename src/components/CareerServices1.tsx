@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Brain, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import RequestCallback from './custom-component/RequestCallback';
 
-const CareerServices = () => {
+interface CareerServices1Props{
+  slug:String
+}
+const CareerServices = ({slug}:CareerServices1Props) => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -57,12 +61,7 @@ const CareerServices = () => {
         </div>
         
         
-        
-        <div className="text-center">
-          <Button asChild size="lg">
-            <Link to="/odintalks">Request Callback</Link>
-          </Button>
-        </div>
+     <RequestCallback slug={slug}/>
         <div className="mt-16 bg-white p-6 md:p-10 rounded-xl border border-gray-200 shadow-sm animate-on-scroll ">
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold mb-4">How do I enroll in this program?</h3>

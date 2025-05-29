@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Code, Brain, Rocket } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import RequestCallback from './custom-component/RequestCallback';
 
-const CareerServices = () => {
+interface CareerServicesProps{
+  slug:String
+}
+const CareerServices = ({slug}:CareerServicesProps) => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -43,12 +44,8 @@ const CareerServices = () => {
             </div>
           ))}
         </div>
-        
-        <div className="text-center">
-          <Button asChild size="lg">
-            <Link to="/odintalks">Request Callback</Link>
-          </Button>
-        </div>
+         
+       <RequestCallback slug={slug}/>
       </div>
     </section>
   );
