@@ -362,10 +362,11 @@ const handleFormSubmit = async (data: any) => {
                   </div>
                   <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
                     <DynamicForm
+                     buttonText={'Request Callback'}
                       fields={formFields}
                       initialValues={{
                         program: course.slug,
-                        ga_client_id: 'auto-fetch-or-from-cookie',
+                        ga_client_id: '',
                         business_unit: 'Odinschool'
                       }}
                       onSubmit={(data) => {

@@ -144,9 +144,10 @@ const RequestCallback = ({ slug }: RequestCallbackProps) => {
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
                 <DynamicForm
                     fields={formFields}
+                    buttonText={'Request Callback'}
                     initialValues={{
                         program: slug,
-                        ga_client_id: 'auto-fetch-or-from-cookie',
+                        ga_client_id: '',
                         business_unit: 'Odinschool'
                     }}
                     onSubmit={(data) => {
