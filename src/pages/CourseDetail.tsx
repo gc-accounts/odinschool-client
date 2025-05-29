@@ -181,27 +181,6 @@ const CourseDetail = () => {
   ],
 };
 
-<<<<<<< HEAD
-const CourseDetail = () => {
-
-  const [course, setCourse] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const { id } = useParams<{ id: string }>();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  useEffect(() => {
-    const fetchCourse = async () => {
-      const course = await getCourse(id || '');
-      setCourse(course[0]);
-      setLoading(false);
-    }
-    fetchCourse();
-  }, [id]);
-
-=======
->>>>>>> 01aac65 (course form integrated)
   const sectionsToRender = sectionConfig["1"];
 
   if (!course && !loading) {
@@ -673,14 +652,6 @@ const handleFormSubmit = async (data: any) => {
 
               </Tabs>
             </div>
-<<<<<<< HEAD
-
-            <div className="bg-white rounded-lg shadow-md p-6 mt-8">
-              <h3 className="text-xl font-bold mb-4">Register Now</h3>
-              <div className="mb-4">
-                <span className="text-2xl font-bold">₹{course.price}+ GST</span>
-                {/* {course.salePrice && <span className="text-gray-500 line-through ml-2">₹{course.salePrice}</span>} */}
-=======
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-bold mb-4">Course Statistics</h3>
@@ -709,7 +680,6 @@ const handleFormSubmit = async (data: any) => {
                 </div>
                 <Progress value={75} className="mt-4" />
                 <p className="text-sm text-gray-500 mt-2">75% completed</p>
->>>>>>> 01aac65 (course form integrated)
               </div>
 
               <div className="bg-white rounded-lg shadow-md p-6 mt-8">
@@ -737,15 +707,6 @@ const handleFormSubmit = async (data: any) => {
                 <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
                 <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
               </div>
-<<<<<<< HEAD
-
-              <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
-
-              <Button className="w-full" onClick={() => window.location.href=`/course-checkout/${id}`}>Enroll Now</Button>
-              <Button variant="link" className="w-full mt-2" onClick={() => window.location.href=`/course-checkout/${id}`}>Reserve your seat at ₹5000 + GST</Button>
-              <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
-=======
->>>>>>> 01aac65 (course form integrated)
             </div>
           </div>
         </div>
