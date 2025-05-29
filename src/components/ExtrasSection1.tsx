@@ -31,8 +31,8 @@ const ExtrasSection1 = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
+      <div className="container">
 
         <div className='max-w-4xl mx-auto'>
 
@@ -40,9 +40,9 @@ const ExtrasSection1 = () => {
 
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Everything you need to take your career to the next level
+            Everything you need to take your <span className="text-primary-600">career to the next level</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="body-md text-gray-600 max-w-2xl mx-auto">
           There's no time like the present to upskill your career. Start your upskilling journey now to grab the best opportunities in the market.
           </p>
         </div>

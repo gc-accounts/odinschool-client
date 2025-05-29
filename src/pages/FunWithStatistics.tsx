@@ -120,7 +120,7 @@ const FunWithStatistics = () => {
       </div>
       
       <main className="flex-grow pt-24 pb-16">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container">
           <div className="mb-12 max-w-3xl">
             <h1 className="text-4xl font-bold mb-4">The Little Book of Statistics</h1>
             <p className="text-lg text-gray-600 italic">

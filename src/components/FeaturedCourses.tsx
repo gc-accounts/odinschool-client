@@ -76,8 +76,8 @@ const FeaturedCourses = ({
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section ref={sectionRef} className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
+      <div className="container">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">
             Explore Our <span className="text-primary-600">Featured Courses</span>

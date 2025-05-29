@@ -89,13 +89,13 @@ const InstructorProfile = () => {
   );
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50 relative">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50 relative">
+      <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Meet our <span className="text-primary-600">mentors and speakers!</span>
+            Meet our <span className="text-primary-600">Mentors and Speakers!</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="body-md text-gray-600 max-w-2xl mx-auto">
             Our instructors are active professionals with years of real-world experience in their fields
           </p>
         </div>

@@ -89,9 +89,9 @@ const Index = () => {
       </main>
       <ExtrasSection1 />
       <NewsSection />
-      <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
+      <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gray-50">
+          <div className="container">
+            <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
                 Ready to <span className="text-primary-600">Get Started?</span>
               </h2>

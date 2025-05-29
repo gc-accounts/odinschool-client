@@ -72,7 +72,7 @@ const About = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="pt-28 pb-16 md:pt-24 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto opacity-0">
               <h1 className="heading-xl mb-6">
                 We're on a Mission to <span className="text-primary-600">Transform Coding Education</span>
@@ -85,7 +85,7 @@ const About = () => {
         
         {/* Stats Section */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div ref={addToRefs} className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-0">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
@@ -106,7 +106,7 @@ const About = () => {
         
         {/* Our Story Section */}
         <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div ref={addToRefs} className="opacity-0">
                 <div className="relative">
@@ -151,7 +151,7 @@ const About = () => {
         
         {/* Our Values */}
         <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
               <h2 className="heading-lg mb-4">
               Who we are

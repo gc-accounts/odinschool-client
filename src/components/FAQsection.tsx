@@ -25,7 +25,7 @@ const faqs = [
 const FAQsection = () => {
     return (
         <section className="my-32">
-            <div className="container mx-auto px-4 md:px-6">
+            <div className="container">
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
                 <h2 className="heading-lg mb-4">
                 Frequently Asked <span className="text-primary-600">Questions</span>

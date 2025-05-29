@@ -28,18 +28,18 @@ const OdinTalks = () => {
 
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="px-[20px] pt-[50px] md:px-[30px] md:pt-[70px] bg-white">
+      <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Odintalks
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-primary-600">
+            OdinTalks
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="body-md text-gray-600 max-w-3xl mx-auto">
             Listen to subject matter experts, industry practitioners, and thought leaders talk about the latest trends, technologies, hiring processes, and more in our free OdinTalks sessions.
           </p>
         </div>
         
-        <div className="container mx-auto py-12 px-4 md:px-6">
+        <div className="pb-12 md:pb-6">
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[...Array(4)].map((_, index) => (

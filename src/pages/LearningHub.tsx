@@ -43,7 +43,7 @@ const LearningHub = () => {
       ) : (<main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 text-gray-900">
                 Learning Hub
@@ -58,7 +58,7 @@ const LearningHub = () => {
         {/* Free Courses Section */}
         {learningHub?.length > 0 ? (
           <section className=" py-16 bg-white">
-            <div className="container mx-auto px-4 md:px-6">
+            <div className="container">
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {learningHub?.map((course: any) => (<Card key={course.id} className="overflow-hidden transition-all hover:shadow-lg">
