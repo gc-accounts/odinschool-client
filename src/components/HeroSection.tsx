@@ -88,13 +88,13 @@ const HeroSection = () => {
           <div>
               <div className="flex gap-8 items-end justify-center flex-row ">
                     <img
-                      src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79 "
+                      src="https://strapi.odinschool.com/uploads/image1_5d9dce47c3.webp"
                       alt="Student 1"
                       className="rounded-full w-80 h-80 object-cover"
                     />
               
                 <img
-                  src="https://images.unsplash.com/photo-1529470839332-78ad660a6a82"
+                  src="https://strapi.odinschool.com/uploads/image2_7ce09bafd6.webp"
                   alt="Student 2"
                   className="rounded-3xl w-40 h-40 object-cover"
                 />
@@ -102,13 +102,13 @@ const HeroSection = () => {
               <div className="flex gap-10 items-top justify-center flex-direction:row mt-8">
                 <img
                 
-                  src="https://images.unsplash.com/photo-1543269865-cbf427effbad"
+                  src="https://strapi.odinschool.com/uploads/image3_03b46926bd.webp"
                   alt="Student 3"
                   className="rounded-3xl w-40 h-40 object-cover"
                 />
               
                 <img
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+                  src="https://strapi.odinschool.com/uploads/image4_451d402ddc.webp"
                   alt="Student 4"
                   className="rounded-full w-80 h-80 object-cover"
                 />
