@@ -7,18 +7,19 @@ function convertSchema(project: any) {
         id: project.documentId,
         title: project.title,
         description: project.description,
-        category: project.category.replaceAll("_", " "),
-        video: backendUrl + project.poster?.url,
-        downloadUrl: backendUrl + project.file?.url,
+        category: project.category?.replaceAll("_", " "),
+        video: project.video_url ? project.video_url :   project.video?.url ? backendUrl + project.video?.url : null,
+        poster: project.poster_url ? project.poster_url : project.poster?.url ? backendUrl + project.poster?.url : null,
+        downloadUrl: project.file?.url ? backendUrl + project.file?.url : '',
         fileSize: project.file?.size,
         fileFormat: project.file?.ext,
         createdAt: project.publishedAt,
         popularity: project.downloads,
         tags: project.tags?.split(',')?.map((tag: string) => {
-            tag = tag.trim();
+            tag = tag?.trim();
             // replace all underscores with spaces
             // @ts-ignore
-            tag = tag.replaceAll("_", " ");
+            tag = tag?.replaceAll("_", " ");
             return tag;
         })
     };

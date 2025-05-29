@@ -297,7 +297,7 @@ const FreeCourseDetail = () => {
       setLoading(true);
       const res: any = await getLearningHubCourse(courseId as string);
       setCourse(res);
-      setActiveLesson(res.curriculum[0].id);
+      setActiveLesson(res.modules[0].id);
       setLoading(false);
     }
     fetchCourse();
@@ -338,21 +338,21 @@ const FreeCourseDetail = () => {
     );
   }
 
-  const currentLessonIndex = course.curriculum.findIndex((lesson: any) => lesson.id === activeLesson);
-  const currentLesson = course.curriculum[currentLessonIndex];
+  const currentLessonIndex = course.modules.findIndex((lesson: any) => lesson.id === activeLesson);
+  const currentLesson = course.modules[currentLessonIndex];
   const hasPrevious = currentLessonIndex > 0;
-  const hasNext = currentLessonIndex < course.curriculum.length - 1;
+  const hasNext = currentLessonIndex < course.modules.length - 1;
 
   const handlePreviousLesson = () => {
     if (hasPrevious) {
-      setActiveLesson(course.curriculum[currentLessonIndex - 1].id);
+      setActiveLesson(course.modules[currentLessonIndex - 1].id);
       window.scrollTo(0, 0);
     }
   };
 
   const handleNextLesson = () => {
     if (hasNext) {
-      setActiveLesson(course.curriculum[currentLessonIndex + 1].id);
+      setActiveLesson(course.modules[currentLessonIndex + 1].id);
       window.scrollTo(0, 0);
     }
   };
@@ -382,7 +382,7 @@ const FreeCourseDetail = () => {
                 </span>
                 <span className="ml-4 flex items-center text-sm text-gray-600">
                   <BookOpen className="h-4 w-4 mr-1" />
-                  {course.curriculum.length} lessons
+                  {course.modules.length} lessons
                 </span>
               </div>
             </div>
@@ -403,23 +403,23 @@ const FreeCourseDetail = () => {
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold">Lessons</h3>
                         <span className="text-sm text-gray-500">
-                          {currentLessonIndex + 1} of {course.curriculum.length}
+                          {currentLessonIndex + 1} of {course.modules.length}
                         </span>
                       </div>
                       <div className="space-y-2">
-                        {course.curriculum.map((lesson: any, index: number) => (
+                        {course.modules.map((lesson: any, index: number) => (
                           <button
                             key={lesson.id}
                             onClick={() => setActiveLesson(lesson.id)}
                             className={`w-full text-left p-3 rounded-md flex items-center ${activeLesson === lesson.id
-                                ? 'bg-primary-50 text-primary-700 border-l-4 border-primary-600'
-                                : 'hover:bg-gray-50'
+                              ? 'bg-primary-50 text-primary-700 border-l-4 border-primary-600'
+                              : 'hover:bg-gray-50'
                               }`}
                           >
                             <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-gray-100 text-gray-800 text-sm mr-3">
                               {index + 1}
                             </span>
-                            <span className="font-medium">{lesson.heading}</span>
+                            <span className="font-medium">{lesson.title}</span>
                           </button>
                         ))}
                       </div>
@@ -429,11 +429,31 @@ const FreeCourseDetail = () => {
                   {/* Lesson Content */}
                   {currentLesson && (
                     <div>
-                      <h2 className="text-2xl font-bold mb-6">{currentLesson.heading}</h2>
+                      <h2 className="text-2xl font-bold mb-6">{currentLesson.title}</h2>
                       <div className="prose prose-sm" style={{
 
                       }}>
-                        <Markdown markdown={currentLesson.description} />
+                        <p>{currentLesson.description}</p>
+                        <br />
+
+                        {currentLesson?.isYoutube && currentLesson?.video ? (
+                          <div className="relative aspect-video">
+                            <iframe src={`https://www.youtube.com/embed/${currentLesson.video}`} className="w-full h-full" allowFullScreen></iframe>
+                          </div>
+                        ): currentLesson?.video ? (
+                          <video src={currentLesson.video} className="w-full h-full" controls></video>
+                        ): (
+                          <></>
+                        )}
+                        
+                        {currentLesson.is_rich_text_markdown ? <Markdown markdown={currentLesson.rich_description} /> : (
+                          <div
+                            className="reset-post-content"
+                            dangerouslySetInnerHTML={{ __html: currentLesson.rich_description }}
+                          >
+
+                          </div>
+                        )}
                       </div>
 
                       <div className="mt-8 pt-6 border-t flex justify-between">

@@ -6,6 +6,7 @@ export default `
                     level
                     on_sale
                     has_certificate
+                    
                     rating {
                         id
                         overall_rating
@@ -60,5 +61,6 @@ export default `
                     updatedAt
                     publishedAt
                     price
+                    image_url_string
                
         `

@@ -3,8 +3,16 @@ import course from './schema/course';
 
 
 
-
-
+function modifyCourseModules(courseModules: any) {
+    return courseModules.map((module: any) => {
+        return {
+            ...module,
+            image: module.image?.url ? backendUrl + module.image?.url : module.image_url,
+            video: module.video?.url ? backendUrl + module.video?.url : module.video_slug,
+            isYoutube: module.video?.url ? false : module.video_slug ? true : false
+        }
+    })
+}
 
 export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = ''}) => {
 
@@ -71,10 +79,11 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: backendUrl + course.image_url?.url,
+            image: course.image_url_string ? course.image_url_string : backendUrl + course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
             price: course.price,
+            modules: modifyCourseModules(course.course_modules)
         }
     });
     return data;
@@ -123,7 +132,8 @@ export const getCourse = async (id: string) => {
             rating: course.rating?.overall_rating,
             total_rated: course.rating?.total_rated,
             curriculum: course.curriculum,
-            price: course.price
+            price: course.price,
+            modules: modifyCourseModules(course.course_modules)
         }
     });
     return data;

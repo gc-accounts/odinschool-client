@@ -5,7 +5,9 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getCourses } from '@/utils/api/courses';
 
-const FeaturedCourses = () => {
+const FeaturedCourses = ({
+  searchText = ''
+}) => {
   const [courses, setCourses] = useState<CourseProps[]>([]);
   const [loading, setLoading] = useState(true);
   
@@ -16,7 +18,7 @@ const FeaturedCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const data = await getCourses({pageNumber: 1, city: '', isFeatured: true});
+        const data = await getCourses({pageNumber: 1, city: '', isFeatured: true, search: searchText});
         // Transform the data to match CourseProps interface
         const transformedCourses = data.map((course: any) => ({
           id: course.documentId,
@@ -43,7 +45,7 @@ const FeaturedCourses = () => {
     };
 
     fetchCourses();
-  }, []);
+  }, [searchText]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

@@ -12,6 +12,11 @@ export default `
     poster {
       url
     }
+      poster_url
+      video_url
+      video{
+        url
+      }
     tags
     publishedAt
     title

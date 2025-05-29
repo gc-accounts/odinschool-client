@@ -7,6 +7,7 @@ import { BookOpen, Clock, Users, ArrowRight, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getLearningHubCourses } from '@/utils/api/learning_hub';
+import PaginationComponent from '@/components/PaginationComponent';
 // Sample free courses data
 
 
@@ -30,7 +31,7 @@ const LearningHub = () => {
     });
   }, [pageNumber]);
   const getTotalLessons = (course: any) => {
-    return course.curriculum?.reduce((acc: number, curr: any) => acc + curr.lessons, 0);
+    return course.modules?.length
   }
   return (
     <div className="flex flex-col min-h-screen">
@@ -55,12 +56,12 @@ const LearningHub = () => {
         </section>
 
         {/* Free Courses Section */}
-        <section className=" py-16 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
+        {learningHub?.length > 0 ? (
+          <section className=" py-16 bg-white">
+            <div className="container mx-auto px-4 md:px-6">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {learningHub?.length > 0 ? learningHub?.map((course: any) => (
-                <Card key={course.id} className="overflow-hidden transition-all hover:shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                {learningHub?.map((course: any) => (<Card key={course.id} className="overflow-hidden transition-all hover:shadow-lg">
                   <div className="aspect-video bg-gray-100 relative">
                     <img
                       src={course.image}
@@ -95,15 +96,16 @@ const LearningHub = () => {
                       </Button>
                     </Link>
                   </CardFooter>
-                </Card>
-              )) : (
-                <div className="grid place-items-center h-screen">
-                  <p>No courses found</p>
-                </div>
-              )}
+                </Card>))}
+              </div>
             </div>
+            <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={learningHub?.length} />
+          </section>
+        ) : (
+          <div className="grid place-items-center h-screen">
+            <p>No courses found</p>
           </div>
-        </section>
+        )}
 
       </main>)}
       <Footer />

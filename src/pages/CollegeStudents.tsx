@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -15,6 +14,7 @@ import WhyLearnDataAI from '@/components/WhyLearnDataAI';
 
 import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain, Image, Circle, Triangle, Check, ChevronRight, Target, Trophy, BookOpenCheck } from 'lucide-react';
 import OdinTalks from '@/components/OdinTalks';
+import FeaturedCourses from '@/components/FeaturedCourses';
 
 const mentorsData = [
   {
@@ -71,198 +71,112 @@ const CollegeStudents = () => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen overflow-x-hidden bg-[#0c0a16]">
-        {/* New Mosaic Banner Design - Keep existing */}
-        <section className="relative py-16 md:py-28 bg-gray-900 overflow-hidden">
-          {/* Background patterns */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00LTEuNzktNC00LTR6TTI0IDMwYy0yLjIxIDAtNCAxLjc5LTQgNHMxLjc5IDQgNCA0IDQtMS43OSA0LTQtMS43OS00LTQtNHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9Ii4yNSIvPjwvZz48L3N2Zz4=')]"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            {/* Main banner grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8">
-              
-              {/* Main headline - 5 columns */}
-              <div className="lg:col-span-5 flex flex-col justify-center">
-                <div className="p-1 px-3 bg-white/10 backdrop-blur-sm rounded-full inline-flex items-center mb-6 border border-white/10 max-w-max">
-                  <div className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></div>
-                  <span className="text-white/90 text-sm">For college students</span>
-                </div>
-                
-                <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white leading-tight tracking-tight">
-                Get Future Ready<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"> Data & AI</span>
-                </h1>
-                
-                <p className="text-white/80 text-xl mb-6 max-w-xl">
-                  Tech training that keeps pace with industry demands—designed for busy students building their future.
-                </p>
-                
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="px-6 py-6 text-lg bg-white text-purple-700 hover:bg-white/90">
-                    <GraduationCap className="mr-2 h-5 w-5" /> Get Student Pricing
-                  </Button>
-                  <Button size="lg" variant="outline" className="px-6 py-6 text-lg bg-transparent border-white/40 text-white hover:bg-white/10">
-                    <BookOpen className="mr-2 h-5 w-5" /> Browse Courses
-                  </Button>
-                </div>
-                
-                {/* Social proof */}
-                <div className="mt-8 pt-8 border-t border-white/10">
-                  <div className="flex items-center space-x-6">
-                    <div>
-                      <p className="text-white/60 text-sm">Trusted by students from:</p>
-                      <div className="flex items-center mt-2 gap-3">
-                        <div className="h-8 w-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">S</div>
-                        <div className="h-8 w-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">M</div>
-                        <div className="h-8 w-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">H</div>
-                        <div className="h-8 w-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">+</div>
-                      </div>
-                    </div>
-                    <div className="pl-6 border-l border-white/10">
-                      <p className="text-white/60 text-sm">Student satisfaction</p>
-                      <div className="flex mt-1 text-yellow-400">
-                        <Star fill="currentColor" size={16} />
-                        <Star fill="currentColor" size={16} />
-                        <Star fill="currentColor" size={16} />
-                        <Star fill="currentColor" size={16} />
-                        <Star fill="currentColor" size={16} />
-                        <span className="text-white ml-2">4.9/5</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <main className="min-h-screen overflow-x-hidden bg-[#2d1846] flex items-center justify-center py-12 px-4">
+        <div className="max-w-6xl w-full flex flex-col md:flex-row gap-8 items-center">
+          {/* Left Section */}
+          <div className="flex-1 text-white">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="bg-[#3a235a] px-3 py-1 rounded-full flex items-center gap-1 text-yellow-400 font-semibold text-sm">
+                <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z"/></svg>
+                4.6/5 | 1,539 Reviews
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-2">AI Analyst<br />College Program</h1>
+            <p className="mb-6 text-lg">Become an AI-Powered Analyst &amp; Stay Ahead in the Age of Automation!</p>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="flex items-center gap-2 bg-[#3a235a] rounded-lg px-4 py-3">
+                <Check className="text-purple-400 w-5 h-5" />
+                <span>Internship program</span>
               </div>
-              
-              {/* Right side mosaic - 7 columns */}
-              <div className="lg:col-span-7">
-                <div className="grid grid-cols-6 grid-rows-6 gap-4 h-full">
-                  {/* Feature highlighted card */}
-                  <div className="col-span-4 row-span-3 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-6 flex flex-col justify-between transform hover:scale-[1.02] transition-all duration-300 overflow-hidden relative group">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                    <div>
-                      <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
-                        <Trophy className="text-white h-6 w-6" />
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Student Success Program</h3>
-                      <p className="text-white/70">Personalized mentorship and career guidance</p>
-                    </div>
-                    <Button variant="outline" className="mt-4 bg-white/10 border-white/20 text-white w-full hover:bg-white/20 backdrop-blur-sm">
-                      Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                    </Button>
-                  </div>
-                  
-                  {/* Student photo */}
-                  <div className="col-span-2 row-span-3 rounded-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
-                    <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80')] bg-cover bg-center relative group">
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                        <p className="text-white text-sm font-medium">Real student projects</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Stats card */}
-                  <div className="col-span-2 row-span-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl p-5 transform hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between">
-                    <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
-                      <Target className="text-white h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-3xl font-bold text-white">94%</h3>
-                      <p className="text-white/80 text-sm">Job placement success rate</p>
-                    </div>
-                  </div>
-                  
-                  {/* Tech skills card */}
-                  <div className="col-span-2 row-span-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-5 transform hover:scale-[1.02] transition-all duration-300">
-                    <h3 className="text-white font-medium mb-3">Top Skills</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">React</div>
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">Python</div>
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">AWS</div>
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">UX/UI</div>
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">Node.js</div>
-                      <div className="px-2 py-1 bg-white/10 rounded-lg backdrop-blur-sm text-white/90 text-xs">+5 more</div>
-                    </div>
-                  </div>
-                  
-                  {/* Pricing preview */}
-                  <div className="col-span-2 row-span-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-5 transform hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                        <CreditCard className="text-white h-5 w-5" />
-                      </div>
-                      <div className="text-white font-medium">Student Price</div>
-                    </div>
-                    <div>
-                      <div className="flex items-baseline">
-                        <span className="text-white/70 text-sm line-through mr-2">5k₹</span>
-                        <span className="text-white text-3xl font-bold">3k₹</span>
-                        <span className="text-white/70">/mo</span>
-                      </div>
-                      <p className="text-white/80 text-xs mt-1">with PL-300 Certification</p>
-                    </div>
-                  </div>
-                  
-                  {/* Campus communities */}
-                  <div className="col-span-4 row-span-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-4 transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                        <Users className="text-white h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Campus Communities</h3>
-                        <p className="text-white/80 text-xs">Connect with 200+ student communities</p>
-                      </div>
-                    </div>
-                    <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
-                      Join
-                    </Button>
-                  </div>
-                  
-                  {/* Learning paths */}
-                  <div className="col-span-4 row-span-1 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-4 transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                        <BookOpenCheck className="text-white h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Learning Paths</h3>
-                        <p className="text-white/80 text-xs">6 structured career paths to choose from</p>
-                      </div>
-                    </div>
-                    <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm">
-                      Explore
-                    </Button>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 bg-[#3a235a] rounded-lg px-4 py-3">
+                <Check className="text-purple-400 w-5 h-5" />
+                <span>Job prep support</span>
+              </div>
+              <div className="flex items-center gap-2 bg-[#3a235a] rounded-lg px-4 py-3">
+                <Check className="text-purple-400 w-5 h-5" />
+                <span>Live online classes</span>
+              </div>
+              <div className="flex items-center gap-2 bg-[#3a235a] rounded-lg px-4 py-3">
+                <Check className="text-purple-400 w-5 h-5" />
+                <span>20+ Projects</span>
               </div>
             </div>
+            <p className="text-yellow-400 font-semibold mb-2">
+              Student ID is mandatory for the enrollment to the course.
+            </p>
             
-            {/* Featured companies banner */}
-            <div className="mt-16 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-center mb-2">
-                <p className="text-white/50 text-sm">Our students work at top companies worldwide</p>
-              </div>
-              <div className="flex justify-around items-center flex-wrap gap-4 md:gap-8">
-                <div className="text-white/40 font-semibold">Google</div>
-                <div className="text-white/40 font-semibold">Microsoft</div>
-                <div className="text-white/40 font-semibold">Amazon</div>
-                <div className="text-white/40 font-semibold">Meta</div>
-                <div className="text-white/40 font-semibold">Apple</div>
-                <div className="text-white/40 font-semibold">Spotify</div>
-              </div>
-            </div>
           </div>
-          
-          {/* Custom diagonal cut and wave at the bottom */}
-          <div className="absolute -bottom-1 left-0 right-0 h-16 md:h-20">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-              <path fill="#ffff" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
+          {/* Right Section (Form) */}
+          <div className="flex-1 max-w-lg w-full bg-white rounded-2xl shadow-lg p-8 relative">
+            <form className=" flex flex-col gap-4">
+              <div className="flex flex-col md:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="First Name*"
+                  className="flex-1 min-w-0 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name*"
+                  className="flex-1 min-w-0 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+                />
+              </div>
+              <div className="flex flex-col md:flex-row gap-2">
+                <input
+                  type="email"
+                  placeholder="Email*"
+                  className="flex-1 min-w-0 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+                />
+                <div className="flex flex-col sm:flex-row flex-1 gap-2 min-w-0">
+                  <select className="border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                  </select>
+                  <input
+                    type="tel"
+                    placeholder="Phone*"
+                    className="border border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+                  />
+                </div>
+              </div>
+              <input
+                type="text"
+                placeholder="Roll number / Student ID*"
+                className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+              />
+              <div className="flex flex-col md:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="College Name*"
+                  className="flex-1 min-w-0 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+                />
+                <select className="flex-1 min-w-0 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full">
+                  <option>Year of Graduation*</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
+                </select>
+              </div>
+              <input
+                type="text"
+                placeholder="City / District*"
+                className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full"
+              />
+              <p className="text-xs text-gray-500 mt-2">
+                By providing your contact details, you agree to our <a href="#" className="underline">Privacy Policy</a>
+              </p>
+              <button
+                type="submit"
+                className="mt-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg py-3 shadow-lg transition w-full"
+              >
+                Request a Callback
+              </button>
+            </form>
           </div>
-        </section>
-        
+        </div>
       </main>
+      <FeaturedCourses searchText="data science" />
       <WhyLearnDataAI />
       <Testimonials />
       <OrganizationLogos />

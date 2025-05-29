@@ -6,6 +6,26 @@ export default `
                     level
                     on_sale
                     has_certificate
+
+                    course_modules {
+      description
+      display_order
+      documentId
+      image {
+        url
+      }
+      image_url
+      name
+      old_id
+      rich_description
+      slug
+      title
+      video {
+        url
+      }
+      video_slug
+      is_rich_text_markdown
+    }
                     rating {
                         id
                         overall_rating
@@ -30,5 +50,5 @@ export default `
                     createdAt
                     updatedAt
                     publishedAt
-               
+                    image_url_string
         `

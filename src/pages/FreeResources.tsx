@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { getProjects } from '@/utils/api/project';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import PaginationComponent from '@/components/PaginationComponent';
+import ResourceCard from '@/components/ResourceCard';
 
 const categoriesObjs = [
   { key: '', value: 'All' },
@@ -23,7 +24,7 @@ const categories = categoriesObjs.map((category) => category.value);
 
 const FreeResources = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('Project_Template');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
@@ -34,7 +35,7 @@ const FreeResources = () => {
     const fetchProjects = async () => {
       try {
         const data = await getProjects({
-          pageNumber: 1,
+          pageNumber: pageNumber,
           pageSize: 10,
           category: selectedCategory,
           search: searchTerm
@@ -48,7 +49,7 @@ const FreeResources = () => {
     };
 
     fetchProjects();
-  }, [selectedCategory]);
+  }, [selectedCategory, searchTerm, pageNumber]);
 
 
 
@@ -57,8 +58,10 @@ const FreeResources = () => {
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    return new Date(dateString)?.toLocaleDateString('en-US', options);
   };
+
+  console.log("projects", projects);
 
   return (
     <>
@@ -109,58 +112,11 @@ const FreeResources = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map(resource => (
-                <Card key={resource.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="aspect-video overflow-hidden bg-gray-100">
-                    <img 
-                      src={resource.video} 
-                      alt={resource.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="bg-primary-100 text-primary-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                        {resource.category}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{resource.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{resource.description}</p>
-                    
-                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mb-4">
-                      <div className="flex items-center">
-                        <FileText className="w-4 h-4 mr-1" />
-                        <span>{resource.fileFormat}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <File className="w-4 h-4 mr-1" />
-                        <span>{resource.fileSize}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        <span>{formatDate(resource.createdAt)}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Download className="w-4 h-4 mr-1" />
-                        <span>{resource.popularity.toLocaleString()}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {resource.tags?.slice(0, 3).map((tag: string) => (
-                        <span key={tag} className="inline-flex items-center bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded">
-                          <Tag className="w-3 h-3 mr-1" />
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                  <CardFooter className="px-6 pb-6 pt-0">
-                    <Button className="w-full gap-2" onClick={() => window.open(resource.downloadUrl, '_blank')}>
-                      <Download className="h-4 w-4" />
-                      Download Now
-                    </Button>
-                  </CardFooter>
-                </Card>
+                <ResourceCard 
+                  key={resource.id}
+                  resource={resource}
+                  formatDate={formatDate}
+                />
               ))}
             </div>
           )}

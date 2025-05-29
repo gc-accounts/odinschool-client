@@ -2,7 +2,17 @@ import axiosApi, { backendUrl } from "../apiCall";
 import learning_hub from "./schema/learning_hub";
 
 
-
+function modifyCourseModules(courseModules: any) {
+    return courseModules.map((module: any) => {
+        return {
+            ...module,
+            image: module.image?.url ? backendUrl + module.image?.url : module.image_url,
+            video: module.video?.url ? backendUrl + module.video?.url : module.video_slug,
+            isYoutube: module.video?.url ? false : module.video_slug ? true : false,
+            id: module.documentId
+        }
+    })
+}
 
 
 export const getLearningHubCourses = async ({ pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = '' }) => {
@@ -70,10 +80,11 @@ export const getLearningHubCourses = async ({ pageNumber = 1, city = '', isFeatu
             updatedAt: course.updatedAt,
             publishedAt: course.publishedAt,
             url_slug: course.url_slug,
-            image: backendUrl + course.image_url?.url,
+            image: course.image_url_string ? course.image_url_string : backendUrl + course.image_url?.url,
             rating: course.rating?.overall_rating,
             total_enrolled: course.enrolled_students?.total_enrolled,
-            curriculum: course.curriculum
+            curriculum: course.curriculum,
+            modules: modifyCourseModules(course.course_modules)
         }
     });
     return data;
@@ -107,8 +118,9 @@ export const getLearningHubCourse = async (id: string) => {
         updatedAt: response.data.data.course.updatedAt,
         publishedAt: response.data.data.course.publishedAt,
         url_slug: response.data.data.course.url_slug,
-        image: backendUrl + response.data.data.course.image_url?.url,
-        curriculum: response.data.data.course.curriculum
+        image: response.data.data.course.image_url_string ? response.data.data.course.image_url_string : backendUrl + response.data.data.course.image_url?.url,
+        curriculum: response.data.data.course.curriculum,
+        modules: modifyCourseModules(response.data.data.course.course_modules)
     }
 }
 
