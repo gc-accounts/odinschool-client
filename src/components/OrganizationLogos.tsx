@@ -50,7 +50,7 @@ const OrganizationLogos = () => {
   }
 
   return (
-    <section className="py-12 bg-white overflow-hidden relative">
+    <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-white overflow-hidden relative">
       {/* Inline animation keyframes */}
       <style>{`
         @keyframes scrollLeft {
@@ -67,7 +67,7 @@ const OrganizationLogos = () => {
 
       <div className="mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">500+ Hiring Organizations</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2"><span className='text-primary-600'>500+</span> Hiring Organizations</h2>
         </div>
 
         <div

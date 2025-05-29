@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Button from './Button';
-import { ArrowRight, Code, Cpu, Trophy } from 'lucide-react';
+import { ArrowRight, Code, Cpu, Trophy,LaptopMinimalCheck, BookOpenText, BriefcaseBusiness } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Modal from './component-template/Modal';
 import DynamicForm from './form/DynamicForm';
@@ -157,28 +157,28 @@ const HeroSection = () => {
   };
   
   return (
-    <section className="pt-24 md:pt-20 pb-16 md:pb-24 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] overflow-hidden">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center">
-          <div className="space-y-8 md:pr-8">
+          <div className="space-y-8">
             <div ref={addToRefs} className="opacity-0">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 text-primary-700 mb-6">
-                <span className="text-xs font-medium">Master Coding Skills</span>
+                <span className="text-xs font-medium">Master In-Demand Tech Skills. Get Job-Ready.</span>
               </div>
               <h1 className="heading-xl text-balance">
-                Upskill Now! Accelerate Your Career
-                <span className="text-primary-600"> Online Courses</span>
+                Upskill Now! 
+                <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>
 
-            <p ref={addToRefs} className="body-lg text-gray-600 opacity-0 delay-100 max-w-xl">
-              Gain practical, job-ready skills through industry-aligned courses with hands-on learning. Learn from top experts to stay current with the latest trends. Receive holistic career support and personalized guidance to achieve your goals.
+            <p ref={addToRefs} className="text-gray-600 opacity-0 delay-100 max-w-xl">
+              Learn job-ready tech skills through expert-led online bootcamps. OdinSchool empowers you to upskill, build projects, and unlock top career opportunities.
             </p>
 
             <div ref={addToRefs} className="flex flex-col sm:flex-row gap-4 opacity-0 delay-200">
               <Button
                 size="lg"
-                icon={<ArrowRight size={18} />}
+                icon={<ArrowRight className='ml-1' size={18} />}
                 iconPosition="right"
                 onClick={() => setFormOpen(true)}
               >
@@ -205,19 +205,19 @@ const HeroSection = () => {
             <div ref={addToRefs} className="grid grid-cols-3 gap-4 pt-4 opacity-0 delay-300">
               {[
                 {
-                  icon: <Code size={20} className="text-primary-600" />,
-                  label: '100+ Courses',
-                  description: 'Wide variety of topics'
+                  icon: <LaptopMinimalCheck size={20} className="text-primary-600" />,
+                  label: 'In-Demand Bootcamps',
+                  description: 'Curated programs built for tech careers'
                 },
                 {
-                  icon: <Trophy size={20} className="text-primary-600" />,
-                  label: 'Expert Instructors',
-                  description: 'Learn from the best'
+                  icon: <BookOpenText size={20} className="text-primary-600" />,
+                  label: 'Elite Programs',
+                  description: 'Focused learning paths with high career ROI'
                 },
                 {
-                  icon: <Cpu size={20} className="text-primary-600" />,
-                  label: 'Hands-on Projects',
-                  description: 'Build your portfolio'
+                  icon: <BriefcaseBusiness size={20} className="text-primary-600" />,
+                  label: 'Job-Ready Curriculum',
+                  description: 'Learn what the industry actually needs'
                 },
               ].map((item, index) => (
                 <div key={index} className="text-center p-3">
@@ -233,9 +233,9 @@ const HeroSection = () => {
             <div>
               <div className="flex gap-8 items-end justify-center flex-row ">
                 <img
-                  src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79 "
+                  src="https://strapi.odinschool.com/uploads/image1_5d9dce47c3.webp"
                   alt="Student 1"
-                  className="rounded-full w-80 h-80 object-cover"
+                  className="rounded-full w-60 h-60 object-cover"
                 />
 
                 <img
@@ -247,7 +247,7 @@ const HeroSection = () => {
               <div className="flex gap-10 items-top justify-center flex-direction:row mt-8">
                 <img
 
-                  src="https://images.unsplash.com/photo-1543269865-cbf427effbad"
+                  src="https://strapi.odinschool.com/uploads/image3_03b46926bd.webp"
                   alt="Student 3"
                   className="rounded-3xl w-40 h-40 object-cover"
                 />
@@ -255,7 +255,7 @@ const HeroSection = () => {
                 <img
                   src="https://strapi.odinschool.com/uploads/image4_451d402ddc.webp"
                   alt="Student 4"
-                  className="rounded-full w-80 h-80 object-cover"
+                  className="rounded-full w-60 h-60 object-cover"
                 />
               </div>
             </div>

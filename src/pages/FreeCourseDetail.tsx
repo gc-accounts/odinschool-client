@@ -363,7 +363,7 @@ const FreeCourseDetail = () => {
       <main className="flex-grow">
         {/* Course Header */}
         <section className="bg-gradient-to-b from-primary-50 to-white pt-12 pb-6">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="max-w-4xl mx-auto">
               <div className="mb-2 flex items-center text-sm">
                 <a href="/learning-hub" className="text-primary-600 hover:underline">Learning Hub</a>
@@ -391,7 +391,7 @@ const FreeCourseDetail = () => {
 
         {/* Course Content */}
         <section className="py-8">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="max-w-4xl mx-auto">
               <Tabs defaultValue="content" className="space-y-4">
 

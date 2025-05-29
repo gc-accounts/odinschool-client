@@ -10,7 +10,7 @@ interface CareerServices1Props{
 const CareerServices = ({slug}:CareerServices1Props) => {
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
             <span className="text-primary-600">Career Services</span> in a nutshell

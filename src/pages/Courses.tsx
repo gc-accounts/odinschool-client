@@ -64,7 +64,7 @@ const Courses = () => {
       <Navbar />
       
       <main className="flex-grow pt-24 pb-16">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container">
           <div className="mb-8 md:mb-12">
             <h1 className="heading-lg mb-4 ">
               Explore Our <span className="text-primary-600">Courses</span>

@@ -89,7 +89,7 @@ const Webinars = () => {
       ) : (<main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 text-gray-900">
                 Learn and grow with OdinSchool's Events

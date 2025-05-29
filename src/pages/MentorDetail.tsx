@@ -69,7 +69,7 @@ const MentorDetail = () => {
       <Navbar />
       
       <main className="flex-grow pt-12 pb-16">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container">
           <div>
             <Button variant="ghost" asChild className="group mb-4 text-primary">
               <Link to="/odintalks" className="flex items-center">

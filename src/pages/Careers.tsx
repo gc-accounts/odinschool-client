@@ -65,7 +65,7 @@ const Careers = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
                 Careers at OdinSchool
@@ -82,7 +82,7 @@ const Careers = () => {
 
         {/* Why Work With Us */}
         <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
                 We live by <span className="text-primary-600">our values</span>

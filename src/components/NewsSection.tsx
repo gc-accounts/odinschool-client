@@ -24,11 +24,11 @@ const NewsSection = () => {
 
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
+      <div className="container">
         <div className="flex flex-col md:flex-row items-start text-center mb-10">
           <div className="w-full">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">OdinSchool in Media</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">OdinSchool in <span className="text-primary-600">Media</span></h2>
             <p className="text-gray-600 max-auto">Stay updated with the latest announcements and success stories from CodeMaster</p>
           </div>
         </div>

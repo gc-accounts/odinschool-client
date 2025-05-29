@@ -31,7 +31,7 @@ const CertificationSection = () => {
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-primary-50">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-on-scroll ">
             <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm">

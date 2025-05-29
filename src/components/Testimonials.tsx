@@ -82,12 +82,15 @@ const Testimonials = () => {
 
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
+    <section ref={sectionRef} className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50">
+      <div className="container">
+        <div ref={headerRef} className="text-center max-w-6xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">
-            What Our <span className="text-primary-600">Students Say</span>
+            Hear from your peers who've <span className="text-primary-600">been successfully placed</span>
           </h2>
+          <p className="body-md text-gray-600 max-w-2xl mx-auto">
+            Discover our most popular courses designed to help you master in-demand skills and advance your career in technology.
+          </p>
         </div>
        {loading ?
        

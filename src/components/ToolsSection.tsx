@@ -104,7 +104,7 @@ const ToolsSection = () => {
 
   return (
     <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container">
         <div className="text-center mb-12 animate-on-scroll ">
           <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm mb-4">
             Industry Tools
