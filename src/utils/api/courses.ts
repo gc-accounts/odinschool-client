@@ -4,14 +4,14 @@ import course from './schema/course';
 
 
 function modifyCourseModules(courseModules: any) {
-    return courseModules.map((module: any) => {
+    return courseModules?.map((module: any) => {
         return {
             ...module,
             image: module.image?.url ? backendUrl + module.image?.url : module.image_url,
             video: module.video?.url ? backendUrl + module.video?.url : module.video_slug,
             isYoutube: module.video?.url ? false : module.video_slug ? true : false
         }
-    })
+    }) ?? []
 }
 
 export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = ''}) => {
