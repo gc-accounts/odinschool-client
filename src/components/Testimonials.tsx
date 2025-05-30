@@ -18,7 +18,10 @@ const transformationType = [
   { name: "Career Launch", key: "Career Launch" },
 ];
 
-const Testimonials = () => {
+interface TestimonialsProps{
+ sectionClass?:String
+}
+const Testimonials = ({sectionClass}:TestimonialsProps) => {
 
   const [stories, setStories] = useState<any[]>([]);
   const [videoStories, setVideoStories] = useState<any[]>([]);
@@ -75,7 +78,7 @@ const Testimonials = () => {
 
 
   return (
-    <section ref={sectionRef} className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50">
+    <section ref={sectionRef} className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50'}`}>
       <div className="container">
         <div ref={headerRef} className="text-center max-w-6xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">

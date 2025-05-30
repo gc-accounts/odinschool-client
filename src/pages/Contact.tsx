@@ -4,40 +4,51 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from '@/hooks/use-toast';
+import contactFormFields from '@/data/contactFormFields';
+import DynamicForm from '@/components/form/DynamicForm';
+import { submitToZoho } from '@/utils/api/submitToZoho';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const hiddenFields = {
+    xnQsjsdp: '0ee5fe53d8fdab0c50e05b6711b8646e52af804ecad070c5c2048cd027b0ef61',
+    xmIwtLD: '43b71e08f2fd49b38ef635e57723ad06c199ca8b29ea5fa48b314181e575842418b919d303f74b11878d665b6cb5c787',
+    actionType: 'Q29udGFjdHM=',
+    returnURL: 'null',
+  };
+
+  const fieldMap = {
+    name: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    phone: 'Phone',
+    program: 'Program',
+    description: 'Description',
+    ga_client_id: 'ga_client_id',
+    business_unit: 'Business Unit',
+  };
+
+  const handleFormSubmit = async (data: any, reset: () => void) => {
+    const [firstName, ...rest] = data.name?.split(' ') || [];
+    const lastName = rest.join(' ') || 'NA';
+
+    await submitToZoho({
+      data: { ...data, name: firstName, lastName },
+      fieldMap,
+      hiddenFields,
+      toast,
+      onSuccess: reset,
+    });
+  };
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent",
-        description: "We've received your message and will get back to you soon.",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSubmitting(false);
-    }, 1500);
-  };
+
 
   return (
     <>
@@ -51,90 +62,20 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your email address"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                    Subject
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    placeholder="What is this regarding?"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your message here..."
-                    className="resize-none"
-                  />
-                </div>
-                
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <span className="flex items-center">
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    <span className="flex items-center">
-                      <Send className="mr-2 h-4 w-4" />
-                      Send Message
-                    </span>
-                  )}
-                </Button>
-              </form>
+              <DynamicForm
+                fields={contactFormFields}
+                buttonText="Submit"
+                initialValues={{ ga_client_id: '', business_unit: 'OdinSchool' }}
+                onSubmit={(data, reset) => handleFormSubmit(data, reset)}
+              />
+
             </div>
-            
+
             <div>
               <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
@@ -157,7 +98,7 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 bg-primary-100 rounded-full p-3">
                       <Phone className="h-6 w-6 text-primary-600" />
@@ -174,7 +115,7 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 bg-primary-100 rounded-full p-3">
                       <MapPin className="h-6 w-6 text-primary-600" />
@@ -190,7 +131,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-2xl font-bold mb-6">FAQ</h2>
                 <p className="text-gray-600 mb-4">

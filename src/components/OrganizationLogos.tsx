@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { getOrganisations } from '@/utils/api/organisation';
 
-const OrganizationLogos = () => {
+interface organizationProps{
+ sectionClass?:String
+}
+const OrganizationLogos = ({sectionClass}:organizationProps) => {
   const [logos, setLogos] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -50,7 +53,7 @@ const OrganizationLogos = () => {
   }
 
   return (
-    <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-white overflow-hidden relative">
+    <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative`}>
       {/* Inline animation keyframes */}
       <style>{`
         @keyframes scrollLeft {

@@ -25,11 +25,12 @@ const opportunities = [
 ];
 
 interface CareerOpportunitiesProps{
-  slug:String
+  slug:String,
+  sectionClass?: String
 }
-const CareerOpportunities = ({slug}:CareerOpportunitiesProps) => {
+const CareerOpportunities = ({slug, sectionClass}:CareerOpportunitiesProps) => {
   return (
-    <section className="py-12 px-4 md:px-8">
+    <section className={`${sectionClass ? sectionClass : 'py-12 px-4 md:px-8'}`}>
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Possible Career Opportunities
       </h2>

@@ -22,7 +22,10 @@ export interface InstructorProps {
   featured: boolean;
 }
 
-const InstructorProfile = () => {
+interface InstructorProfileProps{
+ sectionClass?:String
+}
+const InstructorProfile = ({sectionClass}:InstructorProfileProps) => {
   const [mentors, setMentors] = useState<InstructorProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -89,7 +92,7 @@ const InstructorProfile = () => {
   );
 
   return (
-    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50 relative">
+    <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">

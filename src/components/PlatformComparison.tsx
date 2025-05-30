@@ -18,7 +18,10 @@ interface ComparisonFeature {
   highlight?: boolean;
 }
 
-const PlatformComparison = () => {
+interface PlatformComparison{
+   sectionClass?:String
+}
+const PlatformComparison = ({sectionClass}:PlatformComparison) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   
   const features: ComparisonFeature[] = [
@@ -85,7 +88,7 @@ const PlatformComparison = () => {
 
 
   return (
-    <section id="comparison" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="comparison" className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-gradient-to-b from-white to-gray-50'}`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll opacity-0">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">

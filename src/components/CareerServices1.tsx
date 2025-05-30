@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import RequestCallback from './custom-component/RequestCallback';
 
 interface CareerServices1Props{
-  slug:String
+  slug:String,
+  sectionClass?:String
 }
-const CareerServices = ({slug}:CareerServices1Props) => {
+const CareerServices = ({slug, sectionClass}:CareerServices1Props) => {
   return (
-    <section className="py-16 bg-white">
+    <section className={`${sectionClass ? sectionClass : 'py-16 bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
@@ -50,7 +51,7 @@ const CareerServices = ({slug}:CareerServices1Props) => {
             
             
           ].map((item, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-all">
+            <div key={index} className={`${sectionClass.includes('bg-primary-50') ? 'bg-white' : 'bg-primary-50'} rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-all`}>
               <div className="mx-auto flex items-center justify-center h-16 w-16 bg-primary-50 rounded-full mb-4">
                 {item.icon}
               </div>
