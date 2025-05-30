@@ -216,6 +216,7 @@ interface Expert {
     category: string;
     rating: number;
     students: number;
+    url_slug: string;
   }>;
   about: string;
 }
@@ -387,7 +388,7 @@ const ExpertDetail = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {expert.courses?.map((course) => (
                     <Card key={course.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                      <Link to={`/courses/${course.id}`}>
+                      <Link to={`/courses/${course.url_slug}`}>
                         <div className="h-3 bg-primary-600"></div>
                         <CardContent className="p-6">
                           <div className="flex justify-between items-start mb-4">

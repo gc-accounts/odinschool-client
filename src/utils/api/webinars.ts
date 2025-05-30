@@ -42,7 +42,14 @@ export const getWebinars = async ({
         filterObj.title = { containsi: search };
     }
     if(isOdintalk != undefined){
-        filterObj.is_odin_talk = { eq: isOdintalk };
+        if(isOdintalk == true){
+            filterObj.is_odin_talk = { eq: true };
+        }else{
+            filterObj.or = [
+                { "is_odin_talk": { "eq": false } },
+                { "is_odin_talk": { "null": true } }
+              ]
+        }
     }
 if(time != 'all'){
     const currentDate = new Date();

@@ -25,6 +25,11 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
         filterObj.city = { name: { eq: city } }
     }
 
+    filterObj.or = [
+        { "is_learning_hub": { "eq": false } },
+        { "is_learning_hub": { "null": true } }
+      ]
+
     if(isFeatured != undefined){
         filterObj.is_featured = { eq: isFeatured }
     }
@@ -90,7 +95,11 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
 }
 
 
-export const getCourse = async (id: string) => {
+export const getCourse = async (id: string, url_slug: string="") => {
+
+    let course = null;
+    if(url_slug === ""){
+    
     const response = await axiosApi.post('', {
         query: `
             query Course($documentId: ID!) {
@@ -103,10 +112,28 @@ export const getCourse = async (id: string) => {
             documentId: id
         }
     });
-
-    console.log(response);
+    course = response.data?.data?.course;
+    }else{
+        const filterObj: any = {
+            url_slug: { eq: url_slug }
+        }
+        const response = await axiosApi.post('', {
+            query: `
+                query Courses($filters: CourseFiltersInput) {
+                    courses(filters: $filters) {
+                        ${course}
+                    }
+                }
+            `,
+            variables: {
+                filters: filterObj
+            }
+        });
+        course = response.data?.data?.courses[0];
+    }
+    console.log(course);
    
-    const data = [response.data?.data?.course].map((course: any) => {
+    const data = [course].map((course: any) => {
         return {
             id: course.id,
             documentId: course.documentId,

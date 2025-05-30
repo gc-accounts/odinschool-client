@@ -25,6 +25,7 @@ export interface CourseProps {
     name: string;
   }[];
   total_enrolled: number;   
+  url_slug: string;
 }
 
 const CourseCard = ({
@@ -44,10 +45,11 @@ const CourseCard = ({
   className,
   documentId,
   total_enrolled,
+  url_slug,
 }: CourseProps) => {
   return (
     <Link 
-      to={`/courses/${documentId}`}
+      to={`/courses/${url_slug}`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl transition-all duration-300 h-full",
         "bg-white border border-gray-100 hover:border-primary-200 hover:shadow-lg",
