@@ -21,10 +21,12 @@ const faqs = [
     }
   ];
 
-  
-const FAQsection = () => {
+interface FAQsectionProps{
+ sectionClass?:String
+}
+const FAQsection = ({sectionClass}:FAQsectionProps) => {
     return (
-        <section className="my-32">
+        <section className={`${sectionClass ? sectionClass : 'my-32'}`}>
             <div className="container">
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
                 <h2 className="heading-lg mb-4">

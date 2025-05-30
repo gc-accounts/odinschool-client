@@ -4,7 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Briefcase, MapPin, Building, DollarSign, Search } from 'lucide-react';
 
-const JobsSection = () => {
+interface jobsSectionProps{
+ sectionClass?:String
+}
+const JobsSection = ({sectionClass}:jobsSectionProps) => {
   const jobs = [
     {
       id: 1,
@@ -51,7 +54,7 @@ const JobsSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
