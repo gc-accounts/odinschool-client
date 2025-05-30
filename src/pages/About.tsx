@@ -36,9 +36,9 @@ const About = () => {
   };
 
   const stats = [
-    { value: '100+', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
-    { value: '50,000+', label: 'Students', icon: <Users className="text-primary-600" size={24} /> },
-    { value: '25+', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
+    { value: '20+', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
+    { value: '20,000+', label: 'Students', icon: <Users className="text-primary-600" size={24} /> },
+    { value: '100+', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
     { value: '95%', label: 'Satisfaction Rate', icon: <Heart className="text-primary-600" size={24} /> }
   ];
 
@@ -71,11 +71,11 @@ const About = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="pt-28 pb-16 md:pt-24 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-primary-100 to-white">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto opacity-0">
               <h1 className="heading-xl mb-6">
-                We're on a Mission to <span className="text-primary-600">Transform Coding Education</span>
+                Growing  <span className="text-primary-600">every day!</span>
               </h1>
               <p className="body-lg text-gray-700 mb-8">
               OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry.              </p>
@@ -84,7 +84,7 @@ const About = () => {
         </section>
         
         {/* Stats Section */}
-        <section className="py-16 bg-white">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-white">
           <div className="container">
             <div ref={addToRefs} className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-0">
               {stats.map((stat, index) => (
@@ -105,7 +105,7 @@ const About = () => {
         </section>
         
         {/* Our Story Section */}
-        <section className="py-16 md:py-24">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div ref={addToRefs} className="opacity-0">
@@ -126,8 +126,7 @@ const About = () => {
                 <h2 className="heading-lg mb-6">
                 We are <span className="text-primary-600">OdinSchool</span>
                 </h2>
-                <p className="body-md text-gray-700 mb-4">
-                OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry.                </p>
+                <p className="body-md text-gray-700 mb-4">OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry. </p>
                 <ul className="space-y-3 mb-6">
                   {['Industry-experienced instructors', 'Project-based curriculum', 'Career Services', 'Placement Assistance'].map((item, index) => (
                     <li key={index} className="flex items-start">
@@ -138,7 +137,7 @@ const About = () => {
                 </ul>
                 <Link to="/courses">
                   <Button 
-                    icon={<ArrowRight size={18} />}
+                    icon={<ArrowRight className='ml-1' size={18} />}
                     iconPosition="right"
                   >
                     Explore Our Courses
@@ -150,7 +149,7 @@ const About = () => {
         </section>
         
         {/* Our Values */}
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-gray-50">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
               <h2 className="heading-lg mb-4">
