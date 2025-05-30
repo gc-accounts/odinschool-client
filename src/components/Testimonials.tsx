@@ -11,18 +11,11 @@ import { getStories } from '@/utils/api/story';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 const transformationType = [
-  {
-    name: "All",
-    key: ""
-  }
-  , {
-    name: "Career Transition",
-    key: "Career Transition"
-  },
+  { name: "All", key: ""},
+  { name: "Career Transition", key: "Career Transition"},
+  { name: "Career Gap", key: "Career Gap" },
   { name: "Career Upgrade", key: "Career Upgrade" },
-  { name: "Career Relaunch", key: "Career Relaunch" },
-  { name: "Salary Increase", key: "Hike" },
-  { name: "Year Gap", key: "Gap" }
+  { name: "Career Launch", key: "Career Launch" },
 ];
 
 const Testimonials = () => {
@@ -268,7 +261,7 @@ const VideoTestimonialCard = ({ testimonial, categoryColors }: any) => {
             </div>
           </div>
 
-          <div className="p-4">
+          <div className="p-4 hidden">
             <div>
               <h4 className="font-semibold text-sm">{testimonial.name}</h4>
               <div className="flex items-center gap-1 text-xs">
