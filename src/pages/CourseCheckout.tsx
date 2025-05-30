@@ -23,7 +23,7 @@ const CourseCheckout = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       setLoading(true);
-      const course = await getCourse(id || '');
+      const course = await getCourse("", id || '');
       setCourse(course[0]);
       setPrice(course[0].price);
       setLoading(false);

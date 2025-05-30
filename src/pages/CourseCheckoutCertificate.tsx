@@ -19,7 +19,7 @@ const CourseCheckoutCertificate = () => {
   const [price, setPrice] = useState(0);
   useEffect(() => {
     const fetchCourse = async () => {
-      const course = await getCourse(id || '');
+      const course = await getCourse("", id || '');
       setCourse(course[0]);
       setLoading(false);
     }

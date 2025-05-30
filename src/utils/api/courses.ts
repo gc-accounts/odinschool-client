@@ -97,7 +97,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
 
 export const getCourse = async (id: string, url_slug: string="") => {
 
-    let course = null;
+    let courseItem = null;
     if(url_slug === ""){
     
     const response = await axiosApi.post('', {
@@ -112,7 +112,7 @@ export const getCourse = async (id: string, url_slug: string="") => {
             documentId: id
         }
     });
-    course = response.data?.data?.course;
+    courseItem = response.data?.data?.course;
     }else{
         const filterObj: any = {
             url_slug: { eq: url_slug }
@@ -129,11 +129,11 @@ export const getCourse = async (id: string, url_slug: string="") => {
                 filters: filterObj
             }
         });
-        course = response.data?.data?.courses[0];
+        courseItem = response.data?.data?.courses[0];
     }
-    console.log(course);
+    console.log(courseItem);
    
-    const data = [course].map((course: any) => {
+    const data = [courseItem].map((course: any) => {
         return {
             id: course.id,
             documentId: course.documentId,

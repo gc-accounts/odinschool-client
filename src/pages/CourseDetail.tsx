@@ -117,7 +117,7 @@ const CourseDetail = () => {
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const course = await getCourse(id || '');
+      const course = await getCourse("", id || '');
       setCourse(course[0]);
       setLoading(false);
     }
