@@ -69,7 +69,7 @@ const Contact = () => {
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
               <DynamicForm
                 fields={contactFormFields}
-                buttonText="Request Callback"
+                buttonText="Submit"
                 initialValues={{ ga_client_id: '', business_unit: 'OdinSchool' }}
                 onSubmit={(data, reset) => handleFormSubmit(data, reset)}
               />
