@@ -79,9 +79,9 @@ const formFields: FieldConfig[] = [
     required: true,
     rules: {
       required: 'Phone number is required',
-      minLength: {
-        value: 10,
-        message: 'Phone number must be at least 10 digits',
+      pattern: {
+        value: /^[0-9]{10}$/, // exactly 10 digits
+        message: 'Phone number must be exactly 10 digits (numbers only)',
       },
     },
   },
@@ -125,61 +125,61 @@ const CourseDetail = () => {
   }, [id]);
 
   const sectionConfig: {
-  [key: string]: (() => JSX.Element)[];
-} = {
-  "1": [
-    () => <OrganizationLogos />,
-    () => <Testimonials />,
-    () => <JobsSection />,
-    () => <CareerServices slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}/>,
-    () => <ToolsSection />,
-    () => <CertificationSection />,
-    () => <PlatformComparison />,
-    () => <InstructorProfile />,
-    () => <FAQsection />,
-    () => <CareerServices2 />,
-    () => <CertificationSection1 />,
-    () => <CareerOpportunities slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}/>,
-    () => <WhyLearnAI />,
-    () => <WhoCanApply />,
-    () => <CareerServices1 slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}/>,
-    () => <CollegeSpotlight />,
-  ],
-  "2": [
-    () => <CertificationSection />,
-    () => <Testimonials />,
-    () => <InstructorProfile />,
-    () => <FAQsection />,
-  ],
-  "3": [
-    () => <ToolsSection />,
-    () => <OrganizationLogos />,
-    () => <OrganizationLogos />,
-    () => <CareerServices2 />,
-    () => <CertificationSection1 />,
-    () => <InstructorProfile />,
-    () => <CareerOpportunities slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}/>,
+    [key: string]: (() => JSX.Element)[];
+  } = {
+    "1": [
+      () => <OrganizationLogos />,
+      () => <Testimonials />,
+      () => <JobsSection />,
+      () => <CareerServices slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <ToolsSection />,
+      () => <CertificationSection />,
+      () => <PlatformComparison />,
+      () => <InstructorProfile />,
+      () => <FAQsection />,
+      () => <CareerServices2 />,
+      () => <CertificationSection1 />,
+      () => <CareerOpportunities slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <WhyLearnAI />,
+      () => <WhoCanApply />,
+      () => <CareerServices1 slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CollegeSpotlight />,
+    ],
+    "2": [
+      () => <CertificationSection />,
+      () => <Testimonials />,
+      () => <InstructorProfile />,
+      () => <FAQsection />,
+    ],
+    "3": [
+      () => <ToolsSection />,
+      () => <OrganizationLogos />,
+      () => <OrganizationLogos />,
+      () => <CareerServices2 />,
+      () => <CertificationSection1 />,
+      () => <InstructorProfile />,
+      () => <CareerOpportunities slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
 
-  ],
-  "4": [
-    () => <WhyLearnAI />,
-    () => <WhoCanApply />,
-    () => <Testimonials />,
-    () => <CareerServices1 slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}/>,
-    () => <CollegeSpotlight />,
-    () => <InstructorProfile />,
-    () => <FAQsection />,
-  ],
-  "5": [
-    () => <StatsSection />,
-    () => <ToolsSection />,
-    () => <JobsSection />,
-    () => <ExtrasSection2 />,
-    () => <OrganizationLogos />,
-    () => <InstructorProfile />,
-    () => <FAQsection />,
-  ],
-};
+    ],
+    "4": [
+      () => <WhyLearnAI />,
+      () => <WhoCanApply />,
+      () => <Testimonials />,
+      () => <CareerServices1 slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CollegeSpotlight />,
+      () => <InstructorProfile />,
+      () => <FAQsection />,
+    ],
+    "5": [
+      () => <StatsSection />,
+      () => <ToolsSection />,
+      () => <JobsSection />,
+      () => <ExtrasSection2 />,
+      () => <OrganizationLogos />,
+      () => <InstructorProfile />,
+      () => <FAQsection />,
+    ],
+  };
 
   const sectionsToRender = sectionConfig["1"];
 
@@ -276,60 +276,60 @@ const CourseDetail = () => {
 
 
   // Handle Form Submit
-const handleFormSubmit = async (data: any) => {
-  console.log('data------------------------', data);
+  const handleFormSubmit = async (data: any) => {
+    console.log('data------------------------', data);
 
-  const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
+    const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
 
-  const hiddenFields = {
-    xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
-    xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
-    actionType: "Q29udGFjdHM=",
-    returnURL: "null",
+    const hiddenFields = {
+      xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
+      xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
+      actionType: "Q29udGFjdHM=",
+      returnURL: "null",
+    };
+
+    const formData = new FormData();
+
+    // Append hidden fields
+    Object.entries(hiddenFields).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    // Append visible form data
+    formData.append("First Name", data.firstName || '');
+    formData.append("Last Name", data.lastName || '');
+    formData.append("Email", data.email || '');
+    formData.append("Phone", data.phone || '');
+    formData.append("Year of Graduation", data.year || '');
+    formData.append("Work Experience Level", data.experience || '');
+    formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug);
+    formData.append("ga_client_id", '');
+    formData.append("Business Unit", 'OdinSchool');
+
+    try {
+      const response = await axios.post(zohoEndpoint, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      toast({
+        title: "Form submitted successfully!",
+        description: "Thank you for your interest. Our team will contact you shortly.",
+      });
+
+    } catch (err) {
+      console.error('Error submitting form:', err);
+
+      toast({
+        title: "Form submission failed!",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive"
+      });
+    }
+
+    setFormOpen(false);
   };
-
-  const formData = new FormData();
-
-  // Append hidden fields
-  Object.entries(hiddenFields).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-
-  // Append visible form data
-  formData.append("First Name", data.firstName || '');
-  formData.append("Last Name", data.lastName || '');
-  formData.append("Email", data.email || '');
-  formData.append("Phone", data.phone || '');
-  formData.append("Year of Graduation", data.year || '');
-  formData.append("Work Experience Level", data.experience || '');
-  formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug);
-  formData.append("ga_client_id", '');
-  formData.append("Business Unit", 'OdinSchool');
-
-  try {
-    const response = await axios.post(zohoEndpoint, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-
-    toast({
-      title: "Form submitted successfully!",
-      description: "Thank you for your interest. Our team will contact you shortly.",
-    });
-
-  } catch (err) {
-    console.error('Error submitting form:', err);
-
-    toast({
-      title: "Form submission failed!",
-      description: "Something went wrong. Please try again later.",
-      variant: "destructive"
-    });
-  }
-
-  setFormOpen(false);
-};
 
 
 
@@ -362,7 +362,7 @@ const handleFormSubmit = async (data: any) => {
                   </div>
                   <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
                     <DynamicForm
-                     buttonText={'Request Callback'}
+                      buttonText={'Request Callback'}
                       fields={formFields}
                       initialValues={{
                         program: course.slug,
