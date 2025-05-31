@@ -111,18 +111,18 @@ const CourseDetail = () => {
 
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const { toast } = useToast();
 
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const course = await getCourse(id || '');
+      const course = await getCourse(slug || '');
       setCourse(course[0]);
       setLoading(false);
     }
     fetchCourse();
-  }, [id]);
+  }, [slug]);
 
   const sectionConfig: {
     [key: string]: (() => JSX.Element)[];

@@ -25,8 +25,8 @@ const opportunities = [
 ];
 
 interface CareerOpportunitiesProps{
-  slug:String,
-  sectionClass?: String
+slug:String,
+sectionClass?: String
 }
 const CareerOpportunities = ({slug, sectionClass}:CareerOpportunitiesProps) => {
   return (
