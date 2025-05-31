@@ -64,7 +64,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/courses/:id" element={<CourseDetail />} />
+            <Route path="/courses/:slug" element={<CourseDetail />} />
             <Route path="/courses2/:id" element={<CourseDetail2 />} />
             <Route path="/courses/:id/lessons/:lessonId" element={<CourseLesson />} />
             <Route path="/course-checkout/:id" element={<CourseCheckout />} />
@@ -76,46 +76,46 @@ function App() {
             <Route path="/mentor/:id" element={<MentorDetail />} />
             <Route path="/fun-with-statistics/*" element={<FunWithStatistics />} />
             <Route path="/data-science-career-guide" element={<DataScienceCareerGuide />} />
-            
+
             {/* Specialized Courses Route */}
             <Route path="/specialized-courses" element={<SpecializedCourses />} />
-            
+
             {/* Expert Detail Route */}
             <Route path="/expert/:id" element={<ExpertDetail />} />
-            
+
             {/* Learning Hub Routes */}
             <Route path="/learning-hub" element={<LearningHub />} />
             <Route path="/learning-hub/:courseId" element={<FreeCourseDetail />} />
-            
+
             {/* Courses in Cities Route */}
             <Route path="/courses-in-cities" element={<CoursesInCities />} />
-            
+
             {/* Resources Route */}
             <Route path="/resources" element={<Resources />} />
             <Route path="/train-your-team" element={<TrainYourTeam />} />
             <Route path="/college-students" element={<CollegeStudents />} />
-            
+
             {/* New Routes for News and Reviews */}
             <Route path="/news" element={<News />} />
             <Route path="/reviews" element={<Reviews />} />
-            
+
             {/* Webinar Routes */}
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/webinars/:id" element={<WebinarDetail />} />
             <Route path="/webinar-registration/:id" element={<WebinarRegistration />} />
             <Route path="/webinar-checkout/:id" element={<WebinarCheckout />} />
             <Route path="/webinar-confirmation/:id" element={<WebinarConfirmation />} />
-            
+
             {/* Tools Routes */}
             <Route path="/salary-calculator" element={<SalaryCalculator />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
             <Route path="/virtual-interview" element={<VirtualInterview />} />
-            
+
             {/* Blog and Resources */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/free-resources" element={<FreeResources />} />
-            
+
             {/* Career and Company Pages */}
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
@@ -127,7 +127,7 @@ function App() {
             <Route path="/news" element={<NewsRoom />} />
             <Route path="/referral-program" element={<ReferralProgram />} />
             <Route path="/thank-you" element={<ThankYou />} />
-            
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

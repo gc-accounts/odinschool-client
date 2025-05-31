@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -9,11 +9,12 @@ import {
 import {
   Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
 } from '@/components/ui/form';
+import { useEffect } from 'react';
 
 export interface FieldConfig {
   name: string;
   label?: string;
-  type: 'text' | 'select' | 'hidden' | 'textarea'; // ✅ added textarea
+  type: 'text' | 'select' | 'hidden' | 'textarea';
   required?: boolean;
   options?: string[];
   rules?: {
@@ -24,31 +25,40 @@ export interface FieldConfig {
   };
 }
 
-
 interface DynamicFormProps {
   fields: FieldConfig[];
   initialValues?: { [key: string]: any };
   buttonText: String;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: any, reset: () => void) => void;
 }
 
 const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: DynamicFormProps) => {
-  if (!Array.isArray(fields) || fields.length === 0) {
-    return <div className="text-red-500">Error: Form fields not provided.</div>;
-  }
+  // Extend initialValues with all field names set to '' if missing
+  const extendedDefaults = fields.reduce((acc, field) => {
+    acc[field.name] = initialValues[field.name] ?? '';
+    return acc;
+  }, {} as Record<string, any>);
 
   const form = useForm({
-    defaultValues: initialValues || {},
+    defaultValues: extendedDefaults,
   });
+
+  const { reset, control, register, handleSubmit, setValue } = form;
+
+  const handleFormSubmit = (data: any) => {
+    onSubmit(data, () => {
+      reset(extendedDefaults);
+    });
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
         <div className="flex gap-4">
           {fields.slice(0, 2).map((field) => (
             <FormField
               key={field.name}
-              control={form.control}
+              control={control}
               name={field.name}
               rules={field.rules}
               render={({ field: formField }) => (
@@ -57,7 +67,7 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
                   <FormControl>
                     <Input {...formField} className="focus:outline-none focus:border-primary-500" />
                   </FormControl>
-                  <FormMessage className='font-medium text-xs' />
+                  <FormMessage className="font-medium text-xs" />
                 </FormItem>
               )}
             />
@@ -66,20 +76,22 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
 
         {fields.slice(2).map((field) => {
           if (field.type === 'hidden') {
-            return <input key={field.name} type="hidden" {...form.register(field.name)} />;
+            return <input key={field.name} type="hidden" {...register(field.name)} />;
           }
 
           if (field.type === 'select') {
+            const selectedValue = useWatch({ control, name: field.name });
+
             return (
               <FormField
                 key={field.name}
-                control={form.control}
+                control={control}
                 name={field.name}
                 rules={field.rules}
                 render={({ field: formField }) => (
                   <FormItem>
                     <FormLabel className="text-xs">{field.label}</FormLabel>
-                    <Select onValueChange={formField.onChange} defaultValue={formField.value}>
+                    <Select value={selectedValue} onValueChange={(val) => setValue(field.name, val)}>
                       <FormControl>
                         <SelectTrigger className="focus:outline-none focus:border-primary-500">
                           <SelectValue placeholder={`Select ${field.label}`} />
@@ -93,17 +105,18 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className='font-medium text-xs' />
+                    <FormMessage className="font-medium text-xs" />
                   </FormItem>
                 )}
               />
             );
           }
+
           if (field.type === 'textarea') {
             return (
               <FormField
                 key={field.name}
-                control={form.control}
+                control={control}
                 name={field.name}
                 rules={field.rules}
                 render={({ field: formField }) => (
@@ -126,7 +139,7 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
           return (
             <FormField
               key={field.name}
-              control={form.control}
+              control={control}
               name={field.name}
               rules={field.rules}
               render={({ field: formField }) => (
@@ -135,15 +148,15 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
                   <FormControl>
                     <Input {...formField} className="focus:outline-none focus:border-primary-500" />
                   </FormControl>
-                  <FormMessage className='font-medium text-xs' />
+                  <FormMessage className="font-medium text-xs" />
                 </FormItem>
               )}
             />
           );
         })}
 
-        <Button type="submit" className="w-full" style={{ marginTop: "1.5rem" }}>
-          {buttonText ? buttonText : 'Request  Callback'}
+        <Button type="submit" className="w-full mt-6">
+          {buttonText}
         </Button>
       </form>
     </Form>
@@ -151,9 +164,3 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
 };
 
 export default DynamicForm;
-
-
-
-
-
-

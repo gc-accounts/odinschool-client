@@ -20,6 +20,7 @@ export interface CourseProps {
   popular?: boolean;
   className?: string;
   documentId: string;
+  url_slug:string;
   enrolled_avatars: {
     url: string;
     name: string;
@@ -44,10 +45,12 @@ const CourseCard = ({
   popular = false,
   className,
   documentId,
+  url_slug,
   total_enrolled,
   url_slug,
 }: CourseProps) => {
   return (
+
     <Link 
       to={`/courses/${url_slug}`}
       className={cn(

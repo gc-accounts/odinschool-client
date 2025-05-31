@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Button from '@/components/Button';
-import { Award, BookOpen, Users, Check, ArrowRight, Heart, Lightbulb, Send, Clock } from 'lucide-react';
+import { Award, BookOpen, Users, Check, ArrowRight, Heart, Lightbulb, FolderKanban, BriefcaseBusiness, Send, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -36,10 +36,10 @@ const About = () => {
   };
 
   const stats = [
-    { value: '100+', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
-    { value: '50,000+', label: 'Students', icon: <Users className="text-primary-600" size={24} /> },
-    { value: '25+', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
-    { value: '95%', label: 'Satisfaction Rate', icon: <Heart className="text-primary-600" size={24} /> }
+    { value: 'Industry-aligned Courses', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
+    { value: 'Hands-on Projects', label: 'Students', icon: <FolderKanban className="text-primary-600" size={24} /> },
+    { value: 'Career Services', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
+    { value: 'Placement Assistance', label: 'Satisfaction Rate', icon: <BriefcaseBusiness className="text-primary-600" size={24} /> }
   ];
 
   const values = [
@@ -71,20 +71,18 @@ const About = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="pt-28 pb-16 md:pt-24 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-primary-100 to-white">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto opacity-0">
               <h1 className="heading-xl mb-6">
-                We're on a Mission to <span className="text-primary-600">Transform Coding Education</span>
+                Empowering Learners. <span className="text-primary-600">Transforming Careers.</span> Fueling Industry.
               </h1>
-              <p className="body-lg text-gray-700 mb-8">
-              OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry.              </p>
             </div>
           </div>
         </section>
         
         {/* Stats Section */}
-        <section className="py-16 bg-white">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-white">
           <div className="container">
             <div ref={addToRefs} className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-0">
               {stats.map((stat, index) => (
@@ -92,12 +90,12 @@ const About = () => {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 mb-4">
                     {stat.icon}
                   </div>
-                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-1">
+                  <div className="text-lg md:text-xl font-display font-bold text-gray-800 mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  {/* <div className="text-sm text-gray-600">
                     {stat.label}
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
@@ -105,14 +103,14 @@ const About = () => {
         </section>
         
         {/* Our Story Section */}
-        <section className="py-16 md:py-24">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div ref={addToRefs} className="opacity-0">
                 <div className="relative">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2000"
+                      src="https://strapi.odinschool.com/uploads/Career_s_Hero_Image_ce20df1ae4.webp"
                       alt="Team collaboration"
                       className="w-full h-full object-cover"
                     />
@@ -126,8 +124,7 @@ const About = () => {
                 <h2 className="heading-lg mb-6">
                 We are <span className="text-primary-600">OdinSchool</span>
                 </h2>
-                <p className="body-md text-gray-700 mb-4">
-                OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry.                </p>
+                <p className="body-md text-gray-700 mb-4">OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry. </p>
                 <ul className="space-y-3 mb-6">
                   {['Industry-experienced instructors', 'Project-based curriculum', 'Career Services', 'Placement Assistance'].map((item, index) => (
                     <li key={index} className="flex items-start">
@@ -138,7 +135,7 @@ const About = () => {
                 </ul>
                 <Link to="/courses">
                   <Button 
-                    icon={<ArrowRight size={18} />}
+                    icon={<ArrowRight className='ml-1' size={18} />}
                     iconPosition="right"
                   >
                     Explore Our Courses
@@ -150,7 +147,7 @@ const About = () => {
         </section>
         
         {/* Our Values */}
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-gray-50">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
               <h2 className="heading-lg mb-4">

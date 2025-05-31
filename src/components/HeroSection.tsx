@@ -43,13 +43,13 @@ const formFields: FieldConfig[] = [
     label: 'Phone',
     type: 'text',
     required: true,
-    rules: {
-      required: 'Phone number is required',
-      minLength: {
-        value: 10,
-        message: 'Phone number must be at least 10 digits',
-      },
-    },
+rules: {
+  required: 'Phone number is required',
+  pattern: {
+    value: /^[0-9]{10}$/, // exactly 10 digits
+    message: 'Phone number must be exactly 10 digits (numbers only)',
+  },
+},
   },
   {
     name: 'year',

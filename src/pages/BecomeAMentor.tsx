@@ -63,14 +63,14 @@ const BecomeAMentor = () => {
     <>
       <Navbar />
       <main className="min-h-screen">
-        <div className="pt-28 pb-16 md:pt-24 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
+        <div className="pt-16 pb-16 md:pt-20 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
           <div className="container mx-auto px-4">
             <h1 className="heading-xl font-bold text-center mb-4">Become a Mentor</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
               Share your expertise, inspire the next generation, and grow your professional network
             </p>
             <div className="flex justify-center mt-8 mb-12">
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-gray-100">
+              <Button asChild size="lg" className="bg-primary text-white hover:text-primary-600 hover:bg-gray-100">
                 <a href="#apply">Apply Now</a>
               </Button>
             </div>

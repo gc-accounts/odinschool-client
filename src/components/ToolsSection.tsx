@@ -28,7 +28,11 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
   </Card>
 );
 
-const ToolsSection = () => {
+
+interface ToolsSectionProps{
+ sectionClass?:String
+}
+const ToolsSection = ({sectionClass}:ToolsSectionProps) => {
   const tools = [
     {
       name: "Power BI",
@@ -103,7 +107,7 @@ const ToolsSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12 animate-on-scroll ">
           <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm mb-4">

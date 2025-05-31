@@ -1,6 +1,5 @@
 import axiosApi, { backendUrl } from '../apiCall';
-import course from './schema/course';
-
+import courseSchema from './schema/course'; // ✅ must be on top
 
 
 function modifyCourseModules(courseModules: any) {
@@ -9,20 +8,27 @@ function modifyCourseModules(courseModules: any) {
             ...module,
             image: module.image?.url ? backendUrl + module.image?.url : module.image_url,
             video: module.video?.url ? backendUrl + module.video?.url : module.video_slug,
-            isYoutube: module.video?.url ? false : module.video_slug ? true : false
-        }
-    }) ?? []
+            isYoutube: module.video?.url ? false : !!module.video_slug
+        };
+    }) ?? [];
 }
 
-export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefined, search = '', category = '', level = ''}) => {
-
-    let filterObj: any = {}
+export const getCourses = async ({
+    pageNumber = 1,
+    city = '',
+    isFeatured = undefined,
+    search = '',
+    category = '',
+    level = ''
+}) => {
+    let filterObj: any = {};
     let paginationObj: any = {
         pageSize: 10,
         page: pageNumber
-    }
+    };
+
     if (city !== "") {
-        filterObj.city = { name: { eq: city } }
+        filterObj.city = { name: { eq: city } };
     }
 
     filterObj.or = [
@@ -33,32 +39,25 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
     if(isFeatured != undefined){
         filterObj.is_featured = { eq: isFeatured }
     }
+
     if (search !== "") {
         filterObj.or = [
             { title: { containsi: search } },
             { description: { containsi: search } }
-        ]
+        ];
     }
-
-    // if (category !== "") {
-    //     filterObj.category = { containsi: category }
-    // }
 
     if (level !== "") {
-        filterObj.level = { eq: level }
+        filterObj.level = { eq: level };
     }
+
+    filterObj.is_learning_hub = { eq: false };
 
     const response = await axiosApi.post('', {
         query: `
-            query Courses (
-                $filters: CourseFiltersInput
-                $pagination: PaginationArg
-            ) {
-                courses(
-                    pagination: $pagination,
-                    filters: $filters
-                ) {
-                    ${course}
+            query Courses($filters: CourseFiltersInput, $pagination: PaginationArg) {
+                courses(filters: $filters, pagination: $pagination) {
+                    ${courseSchema}
                 }
             }
         `,
@@ -68,29 +67,27 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
         }
     });
 
-    console.log(response.data.data);
+    const data = response.data.data.courses.map((course: any) => ({
+        documentId: course.documentId,
+        title: course.title,
+        description: course.description,
+        is_learning_hub: course.is_learning_hub,
+        level: course.level,
+        on_sale: course.on_sale,
+        has_certificate: course.has_certificate,
+        overview: course.overview,
+        slug: course.slug,
+        createdAt: course.createdAt,
+        updatedAt: course.updatedAt,
+        publishedAt: course.publishedAt,
+        url_slug: course.url_slug,
+        image: course.image_url_string ? course.image_url_string : backendUrl + course.image_url?.url,
+        rating: course.rating?.overall_rating,
+        total_enrolled: course.enrolled_students?.total_enrolled,
+        price: course.price,
+        modules: modifyCourseModules(course.course_modules)
+    }));
 
-    const data = response.data.data.courses.map((course: any) => {
-        return {
-            documentId: course.documentId,
-            title: course.title,
-            description: course.description,
-            level: course.level,
-            on_sale: course.on_sale,
-            has_certificate: course.has_certificate,
-            overview: course.overview,
-            slug: course.slug,
-            createdAt: course.createdAt,
-            updatedAt: course.updatedAt,
-            publishedAt: course.publishedAt,
-            url_slug: course.url_slug,
-            image: course.image_url_string ? course.image_url_string : backendUrl + course.image_url?.url,
-            rating: course.rating?.overall_rating,
-            total_enrolled: course.enrolled_students?.total_enrolled,
-            price: course.price,
-            modules: modifyCourseModules(course.course_modules)
-        }
-    });
     return data;
 }
 
@@ -104,7 +101,7 @@ export const getCourse = async (id: string, url_slug: string="") => {
         query: `
             query Course($documentId: ID!) {
                 course(documentId: $documentId) {
-                    ${course}
+                    ${courseSchema}
                 }
             }
         `,
@@ -121,7 +118,7 @@ export const getCourse = async (id: string, url_slug: string="") => {
             query: `
                 query Courses($filters: CourseFiltersInput) {
                     courses(filters: $filters) {
-                        ${course}
+                            ${courseSchema}
                     }
                 }
             `,

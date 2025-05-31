@@ -15,10 +15,14 @@ const transformationType = [
   { name: "Career Transition", key: "Career Transition"},
   { name: "Career Gap", key: "Career Gap" },
   { name: "Career Upgrade", key: "Career Upgrade" },
+  { name: "Salary Hike", key: "Salary Hike" },
   { name: "Career Launch", key: "Career Launch" },
 ];
 
-const Testimonials = () => {
+interface TestimonialsProps{
+ sectionClass?:String
+}
+const Testimonials = ({sectionClass}:TestimonialsProps) => {
 
   const [stories, setStories] = useState<any[]>([]);
   const [videoStories, setVideoStories] = useState<any[]>([]);
@@ -66,8 +70,8 @@ const Testimonials = () => {
     "Career Transition": "bg-blue-100 text-blue-800 border-blue-200",
     "Career Upgrade": "bg-green-100 text-green-800 border-green-200",
     "Career Relaunch": "bg-purple-100 text-purple-800 border-purple-200",
-    "Gap": "bg-amber-100 text-amber-800 border-amber-200",
-    "Hike": "bg-red-100 text-red-800 border-red-200"
+    "Career Gap": "bg-amber-100 text-amber-800 border-amber-200",
+    "Salary Hike": "bg-red-100 text-red-800 border-red-200"
   };
 
 
@@ -75,14 +79,14 @@ const Testimonials = () => {
 
 
   return (
-    <section ref={sectionRef} className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50">
+    <section ref={sectionRef} className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50'}`}>
       <div className="container">
         <div ref={headerRef} className="text-center max-w-6xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">
             Hear from your peers who've <span className="text-primary-600">been successfully placed</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Discover our most popular courses designed to help you master in-demand skills and advance your career in technology.
+            Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p>
         </div>
        {loading ?

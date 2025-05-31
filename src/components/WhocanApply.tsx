@@ -1,9 +1,12 @@
 import React from 'react';
 
-const WhoCanApply = () => {
+interface WhoCanApplyProps{
+ sectionClass?:String
+}
+const WhoCanApply = ({sectionClass}:WhoCanApplyProps) => {
   return (
-    <section className="w-full py-10 px-4">
-      <div className="max-w-6xl  mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-100 rounded-xl p-6 md:p-10 shadow-sm">
+    <section className={`${sectionClass ? sectionClass : 'w-full py-10 px-4'}`}>
+      <div className="max-w-6xl  mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Left: Text */}
         <div className="w-full md:w-1/2">
@@ -26,7 +29,7 @@ const WhoCanApply = () => {
         {/* Right: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1617445460394-8b677aa636bb?auto=format&fit=crop&w=400&q=80"
+            src="https://media.istockphoto.com/id/1288148699/photo/young-business-woman-in-office-stock-photo.jpg?s=1024x1024&w=is&k=20&c=oAHaOIMgSvK_jA_cFpRtkvJNVi2jX__Jd24vsMoEK98="
             alt="Student with laptop"
             className="w-64 md:w-80 h-auto rounded-lg object-cover"
           />
