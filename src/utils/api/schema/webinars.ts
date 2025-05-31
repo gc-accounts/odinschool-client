@@ -16,4 +16,5 @@ export default `
     documentId
     is_featured
     is_odin_talk
+    is_html
   `

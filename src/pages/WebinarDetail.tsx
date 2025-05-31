@@ -8,6 +8,7 @@ import { formatDate } from '@/utils/dateUtils';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { getWebinar } from '@/utils/api/webinars';
+import Markdown from '@/components/Markdown';
 
 const WebinarDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -121,12 +122,20 @@ const WebinarDetail = () => {
             <div className="space-y-6">
               <div>
                 <h2 className="heading-sm mb-3">About This Webinar</h2>
-                <p className="text-muted-foreground leading-relaxed">{webinar.description}</p>
+                {webinar?.is_html ? (
+                    <div dangerouslySetInnerHTML={{ __html: webinar.description }} />
+                ) : (
+                  <Markdown markdown={webinar.description} />
+                )}
               </div>
 
               <div>
                 <h2 className="heading-sm mb-3">About the Instructor</h2>
-                <p className="text-muted-foreground leading-relaxed">{webinar.about_instructor}</p>
+                {webinar?.is_html ? (
+                    <div dangerouslySetInnerHTML={{ __html: webinar.about_instructor }} />
+                ) : (
+                  <Markdown markdown={webinar.about_instructor} />
+                )}
               </div>
 
               {/* <div>

@@ -21,6 +21,7 @@ const transformWebinarData = (webinar: any) => {
         status: new Date(webinar.date) < new Date() ? "past" : "upcoming",
         isOdintalk: webinar.is_odin_talk || false,
         url_slug: webinar.slug,
+        is_html: webinar.is_html || false,
     };
 };
 
