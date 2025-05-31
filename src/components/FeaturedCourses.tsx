@@ -80,10 +80,10 @@ const FeaturedCourses = ({
       <div className="container">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
           <h2 className="heading-lg mb-4">
-            Explore Our <span className="text-primary-600">Featured Courses</span>
+            Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Discover our most popular courses designed to help you master in-demand skills and advance your career in technology.
+            Discover flexible, expert-led programs designed to equip you with the practical skills and confidence to thrive in today’s fast-paced tech industry.
           </p>
         </div>
 

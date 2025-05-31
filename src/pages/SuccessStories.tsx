@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { getSuccessMetrics } from '@/utils/api/successMetrics';
+import { successStoriesData } from '@/data/successStories';
 
 import Testimonials from '@/components/Testimonials';
 
@@ -129,20 +130,19 @@ const SuccessStories = () => {
 
           <h2 className="text-3xl font-bold text-center mb-8">More Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {testimonials.map(testimonial => (
+            {successStoriesData.map(testimonial => (
               <Card key={testimonial.id} className="overflow-y-scroll max-h-[400px]">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <Avatar className="h-12 w-12 mr-4">
-                      <AvatarImage src={testimonial.image} alt={testimonial.name} />
                       <AvatarFallback>{testimonial?.name?.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
                       <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
-                      <p className="text-sm text-gray-600">{testimonial.role} at {testimonial.company}</p>
+                      <p className="text-sm text-gray-600">{testimonial.designation} at {testimonial.company}</p>
                     </div>
                   </div>
-                  <p className="text-gray-700 mb-4 text-sm">"{testimonial.quote}"</p>
+                  <p className="text-gray-700 mb-4 text-sm">"{testimonial.description}"</p>
                   <div className="flex text-amber-400">
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star key={i} className="h-4 w-4 fill-current" />
@@ -156,7 +156,7 @@ const SuccessStories = () => {
           <div className="bg-primary-50 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Write Your Success Story?</h2>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Join thousands of students who have transformed their careers with EduPlatform. Browse our courses and start your journey today.
+              Join thousands of learners who’ve upskilled with OdinSchool and transitioned into high-growth tech roles. Explore your path today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg">

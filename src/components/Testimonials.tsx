@@ -86,7 +86,7 @@ const Testimonials = ({sectionClass}:TestimonialsProps) => {
             Hear from your peers who've <span className="text-primary-600">been successfully placed</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Discover our most popular courses designed to help you master in-demand skills and advance your career in technology.
+            Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p>
         </div>
        {loading ?
