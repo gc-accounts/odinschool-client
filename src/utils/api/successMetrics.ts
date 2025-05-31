@@ -28,6 +28,7 @@ export const getSuccessMetrics = async () => {
             role: story.current_position,
             image: backendUrl + story.image_url?.url,
             story: story.description,
+            title: story.title,
             course: story.description_course,
             metrics: [
                 { label: "Salary Increase", value: story.salary_increase + "%" },

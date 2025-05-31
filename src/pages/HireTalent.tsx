@@ -75,7 +75,7 @@ const HireTalent = () => {
     <>
       <Navbar />
       <main className="min-h-screen">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-4">Hire the right talent at zero cost</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
