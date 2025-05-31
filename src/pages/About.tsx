@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Button from '@/components/Button';
-import { Award, BookOpen, Users, Check, ArrowRight, Heart, Lightbulb, Send, Clock } from 'lucide-react';
+import { Award, BookOpen, Users, Check, ArrowRight, Heart, Lightbulb, FolderKanban, BriefcaseBusiness, Send, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -36,10 +36,10 @@ const About = () => {
   };
 
   const stats = [
-    { value: '20+', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
-    { value: '20,000+', label: 'Students', icon: <Users className="text-primary-600" size={24} /> },
-    { value: '100+', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
-    { value: '95%', label: 'Satisfaction Rate', icon: <Heart className="text-primary-600" size={24} /> }
+    { value: 'Industry-aligned Courses', label: 'Courses', icon: <BookOpen className="text-primary-600" size={24} /> },
+    { value: 'Hands-on Projects', label: 'Students', icon: <FolderKanban className="text-primary-600" size={24} /> },
+    { value: 'Career Services', label: 'Expert Instructors', icon: <Award className="text-primary-600" size={24} /> },
+    { value: 'Placement Assistance', label: 'Satisfaction Rate', icon: <BriefcaseBusiness className="text-primary-600" size={24} /> }
   ];
 
   const values = [
@@ -75,10 +75,8 @@ const About = () => {
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto opacity-0">
               <h1 className="heading-xl mb-6">
-                Growing  <span className="text-primary-600">every day!</span>
+                Empowering Learners. <span className="text-primary-600">Transforming Careers.</span> Fueling Industry.
               </h1>
-              <p className="body-lg text-gray-700 mb-8">
-              OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry.              </p>
             </div>
           </div>
         </section>
@@ -92,12 +90,12 @@ const About = () => {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 mb-4">
                     {stat.icon}
                   </div>
-                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-1">
+                  <div className="text-lg md:text-xl font-display font-bold text-gray-800 mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  {/* <div className="text-sm text-gray-600">
                     {stat.label}
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
@@ -112,7 +110,7 @@ const About = () => {
                 <div className="relative">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2000"
+                      src="https://strapi.odinschool.com/uploads/Career_s_Hero_Image_ce20df1ae4.webp"
                       alt="Team collaboration"
                       className="w-full h-full object-cover"
                     />

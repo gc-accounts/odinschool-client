@@ -17,96 +17,101 @@ const FAQ = () => {
   }, []);
   const faqCategories = [
     {
-      title: "Courses & Learning",
-      questions: [
-        {
-          question: "How do I enroll in a course?",
-          answer: "To enroll in a course, browse our course catalog, select the course you're interested in, and click the 'Enroll Now' button. Follow the checkout process to complete your enrollment. Once enrolled, you'll have immediate access to the course materials."
-        },
-        {
-          question: "Can I access courses on mobile devices?",
-          answer: "Yes! Our platform is fully responsive and works on all devices including smartphones, tablets, laptops, and desktop computers. You can learn on the go or from the comfort of your home."
-        },
-        {
-          question: "How long do I have access to a course after purchasing?",
-          answer: "Once you purchase a course, you'll have lifetime access to the course materials. You can revisit the lessons as often as you'd like, and you'll also receive updates if the course content is refreshed."
-        },
-        {
-          question: "Are certificates provided upon course completion?",
-          answer: "Yes, we provide digital certificates of completion for all of our courses. These certificates can be added to your LinkedIn profile or included in your resume to showcase your new skills."
-        }
-      ]
+        "title": "Bootcamps",
+        "questions": [
+            {
+                "question": "Who are the instructors for the Bootcamps?",
+                "answer": "All of our instructors are industry veterans with extensive core experience in their respective fields. Our instructors also come with a passion to teach and enjoy interacting with students."
+            },
+            {
+                "question": "What projects will I be working on during the Bootcamps?",
+                "answer": "You will work on multiple projects across the core domains of Data Science and Power BI. The projects are kept updated in line with industry trends; so expect variety. Please check the respective course pages for more details."
+            },
+            {
+                "question": "What can I expect at the end of the Courses?",
+                "answer": "At the end of the Courses, you will be fully prepared to tackle real-world challenges in the respective domains and become an industry asset who is productive from day one. Using multiple projects, we will train you in the essential tools and technologies needed to get a job. We also offer placement assistance to help you bag a job. The Power BI Certification Course will help you ace your certification exams."
+            },
+            {
+                "question": "How are classes conducted?",
+                "answer": "The classes are conducted online over the internet using our LMS. You will require access to the internet (Speed of 2 Mbps+ recommended) on a computer/laptop (preferred) to attend. Class size may vary depending on the specific cohort. However, we have teaching assistants available to interact in small groups and also reply to your queries. You will have access to the day-wise scheduled learning sessions on the LMS. In addition, we have set up support channels on the LMS where you can ask questions to the domain experts to resolve your doubts."
+            },
+            {
+                "question": "How does mentorship work?",
+                "answer": "As part of OdinSchool's mentorship program, practising industry professionals are brought into the bootcamps to interact with students and provide industry insights. Our mentors are very knowledgeable in their subjects and are passionate about helping students."
+            },
+            {
+                "question": "What if I get stuck? What kind of support is available?",
+                "answer": "You can reach out to us via our discussion forums anytime you get stuck. You can also clarify doubts right within your lectures from the instructors. Your learning will be over our online learning management system available to you anytime, anywhere."
+            }
+        ]
     },
     {
-      title: "Account & Billing",
-      questions: [
-        {
-          question: "How do I create an account?",
-          answer: "To create an account, click the 'Sign Up' button in the top right corner of the page. Fill in your details, verify your email address, and you're ready to go!"
-        },
-        {
-          question: "What payment methods do you accept?",
-          answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and in certain regions, bank transfers. All payments are securely processed."
-        },
-        {
-          question: "Can I get a refund if I'm not satisfied?",
-          answer: "Yes, we offer a 30-day money-back guarantee for all course purchases. If you're not satisfied with a course, you can request a full refund within 30 days of purchase through our support team."
-        },
-        {
-          question: "How do I update my billing information?",
-          answer: "To update your billing information, log in to your account, go to your Account Settings, select the 'Billing' tab, and you can update your payment details there."
-        }
-      ]
+        "title": "Executive Programs",
+        "questions": [
+            {
+                "question": "What executive program does OdinSchool offer?",
+                "answer": "OdinSchool, in collaboration with IIT Gandhinagar's E&ICT Academy, offers specialized 6-month courses in Applied Generative AI and DevOps & Cloud Computing."
+            },
+            {
+                "question": "Do I get a certificate after completing these courses?",
+                "answer": "Yes, upon successfully completing these executive programs, you will be awarded a certificate of accomplishment from the E&ICT Academy, IIT Guwahati."
+            },
+            {
+                "question": "What are the eligibility criteria for these courses?",
+                "answer": "Applicants who have a Bachelors degree with an aggregate of at least 50% marks are welcome to join. A background in Mathematics or Computer Science is preferable."
+            }
+        ]
     },
     {
-      title: "Technical Support",
-      questions: [
-        {
-          question: "What should I do if a video won't play?",
-          answer: "If you're experiencing issues with video playback, first try refreshing the page. If that doesn't work, check your internet connection, try a different browser, or clear your browser cache. If you're still having issues, contact our support team."
-        },
-        {
-          question: "How do I reset my password?",
-          answer: "To reset your password, click on the 'Sign In' button, then select 'Forgot Password'. Enter the email address associated with your account, and we'll send you instructions on how to reset your password."
-        },
-        {
-          question: "The site is loading slowly. What can I do?",
-          answer: "If the site is loading slowly, try clearing your browser cache, using a different browser, or checking your internet connection. If the issue persists, it might be a temporary problem on our end, and we recommend trying again later."
-        },
-        {
-          question: "How do I contact technical support?",
-          answer: "You can contact our technical support team through the Contact Us page, by emailing support@eduplatform.com, or by using the live chat feature available on all pages in the bottom right corner."
-        }
-      ]
+        "title": "Applications",
+        "questions": [
+            {
+                "question": "What are the selection criteria?",
+                "answer": "You will be selected based on your application and your interaction with our Counselling Team."
+            },
+            {
+                "question": "Do I need to submit any documents while enrolling?",
+                "answer": "If you opt for the EMI option for payment, you are required to submit the necessary documents. Additionally, you might have to submit documents such as your experience certificate, graduation certification, etc., during the placement process."
+            },
+            {
+                "question": "Do I need to pay anything to start my application?",
+                "answer": "No. You need to pay the Tuition Fee only at the time of admission."
+            }
+        ]
     },
     {
-      title: "Tools & Resources",
-      questions: [
-        {
-          question: "How does the Salary Calculator work?",
-          answer: "Our Salary Calculator uses data from industry reports, government statistics, and our own research to provide accurate salary estimates based on your role, experience, skills, and location. The results represent average ranges for your specific profile."
-        },
-        {
-          question: "Can I save my resume in the Resume Builder?",
-          answer: "Yes, you can save your resume in our Resume Builder. Your progress is automatically saved as you work, and you can download your finished resume as a PDF when you're ready to apply for jobs."
-        },
-        {
-          question: "How do I join the Referral Program?",
-          answer: "To join our Referral Program, log in to your account and navigate to the Referral Program page. There, you'll receive a unique referral link that you can share with friends. You'll earn rewards for each person who signs up using your link."
-        },
-        {
-          question: "What is the Hire Talent program?",
-          answer: "The Hire Talent program connects employers with skilled professionals who have completed our courses. If you're an employer, you can post job opportunities and search for candidates. If you're a student, you can showcase your skills and connect with potential employers."
-        }
-      ]
+        "title": "Payments",
+        "questions": [
+            {
+                "question": "What payment options are available for me?",
+                "answer": "You can either pay the tuition fee in one go or work with our authorized credit partners to avail flexible EMI facility."
+            },
+            {
+                "question": "What payment modes do you support?",
+                "answer": "We support cheques (subject to realization), IMPS, NEFT, UPI, Credit, and Debit card payments."
+            }
+        ]
+    },
+    {
+        "title": "Placements",
+        "questions": [
+            {
+                "question": "Do your bootcamps guarantee placements?",
+                "answer": "Our many tie-ups with hiring partners enable us to arrange interviews for you. We will train you, help you prepare your resume and professional profiles, and coach you to perform well in interviews. But, ultimately, getting the placement is in your hands and your performance in the recruiting company’s interview process."
+            },
+            {
+                "question": "How does the placement process work in Bootcamps?",
+                "answer": "When our industry partners send us their hiring requirements, we match them with the profiles of our students. The profiles that best suit the requirements are sent to the hiring partners and further selection schedules are planned. All Bootcamps come with Career Services that include placement preparation workshops, industry mentorships, and interview preparation. Our Career Office will work closely with you in the process of preparing you for your career transition. We work with our recruiting partners to arrange interviews for you where you will need to perform and get selected. We will also prepare you to search for opportunities on your own."
+            }
+        ]
     }
-  ];
+]
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-white/10 rounded-full p-3">
@@ -151,7 +156,7 @@ const FAQ = () => {
                 <a href="/contact">Contact Us</a>
               </Button>
               <Button variant="outline">
-                <a href="mailto:support@eduplatform.com">Email Support</a>
+                <a href="mailto:hello@odinschool.com">Email Support</a>
               </Button>
             </div>
           </div>

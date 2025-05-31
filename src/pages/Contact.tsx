@@ -54,7 +54,7 @@ const Contact = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
@@ -87,13 +87,8 @@ const Contact = () => {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">Email Us</h3>
                       <p className="mt-1 text-gray-600">
-                        <a href="mailto:info@eduplatform.com" className="hover:text-primary-600">
-                          info@eduplatform.com
-                        </a>
-                      </p>
-                      <p className="mt-1 text-gray-600">
-                        <a href="mailto:support@eduplatform.com" className="hover:text-primary-600">
-                          support@eduplatform.com
+                        <a href="mailto:hello@odinschool.com " className="hover:text-primary-600">
+                          hello@odinschool.com 
                         </a>
                       </p>
                     </div>
@@ -106,12 +101,9 @@ const Contact = () => {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">Call Us</h3>
                       <p className="mt-1 text-gray-600">
-                        <a href="tel:+18005551234" className="hover:text-primary-600">
-                          +1 (800) 555-1234
+                        <a href="tel:+919355011033 " className="hover:text-primary-600">
+                          + 91 935 501 1033 
                         </a>
-                      </p>
-                      <p className="mt-1 text-gray-600">
-                        Monday - Friday, 9am - 6pm EST
                       </p>
                     </div>
                   </div>
@@ -123,9 +115,11 @@ const Contact = () => {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">Visit Us</h3>
                       <p className="mt-1 text-gray-600">
-                        123 Education Lane<br />
-                        Suite 200<br />
-                        San Francisco, CA 94105
+                        <span className='font-medium'>OdinSchool</span><br/>
+GreyCampus Edutech Private Limited,<br/>
+Aikya Vihar, Plot 218, B Block,
+Kavuri Hills Phase - II,<br/>
+Hyderabad - 500033 
                       </p>
                     </div>
                   </div>
