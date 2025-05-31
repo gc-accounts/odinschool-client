@@ -3,6 +3,8 @@ export default `
                     documentId
                     title
                     description
+                    is_learning_hub
+
                     level
                     on_sale
                     has_certificate
