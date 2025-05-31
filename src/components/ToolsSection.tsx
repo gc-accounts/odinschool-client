@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { 
@@ -7,10 +7,13 @@ import {
   PanelLeft, Calculator, Server, Cloud 
 } from 'lucide-react';
 
+import { courseToolsData } from '@/data/courseToolsData';
+import { getDataByPage } from '@/utils/getDataByPage';
+import { useLocation } from 'react-router-dom';
 interface ToolCardProps {
   name: string;
   description: string;
-  icon: React.ReactNode;
+  icon: string;
   bgColor: string;
   delay: number;
 }
@@ -20,7 +23,7 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
         style={{ animationDelay: `${delay}ms` }}>
     <CardContent className="p-5 flex flex-col items-center text-center">
       <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
-        {icon}
+        <img src={icon} alt="" />
       </div>
       <h3 className="text-lg font-bold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
@@ -106,6 +109,10 @@ const ToolsSection = ({sectionClass}:ToolsSectionProps) => {
     },
   ];
 
+  const path = useLocation().pathname
+  const ToolsData= getDataByPage(courseToolsData, path)
+
+
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
@@ -121,15 +128,15 @@ const ToolsSection = ({sectionClass}:ToolsSectionProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {tools.map((tool, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+          {ToolsData?.tools?.map((tool, index) => (
             <ToolCard
               key={index}
               name={tool.name}
               description={tool.description}
-              icon={tool.icon}
-              bgColor={tool.bgColor}
-              delay={tool.delay}
+              icon={tool.path}
+              bgColor={'#f2f2f2'}
+              delay={100 * index +1}
             />
           ))}
         </div>

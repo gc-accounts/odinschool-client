@@ -42,8 +42,11 @@ import DynamicForm from '@/components/form/DynamicForm';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 import { FieldConfig } from '@/components/form/DynamicForm';
-
-
+import { courseHighlights } from '@/data/courseHighlights';
+import { useLocation } from 'react-router-dom';
+import CourseCertificate from '@/components/course-details/CourseCertificate';
+import { getDataByPage } from '@/utils/getDataByPage';
+import { courseToolsData } from '@/data/courseToolsData';
 const formFields: FieldConfig[] = [
   {
     name: 'firstName',
@@ -113,6 +116,13 @@ const CourseDetail = () => {
   const [loading, setLoading] = useState(true);
   const { slug } = useParams<{ slug: string }>();
   const { toast } = useToast();
+
+  const location = useLocation();
+
+  const currentPath = location.pathname;
+  const courseHighlightData = getDataByPage(courseHighlights, currentPath)
+  const toolsData = getDataByPage(courseToolsData, currentPath)
+  
 
 
   useEffect(() => {
@@ -442,23 +452,23 @@ const CourseDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="mb-8 w-full justify-start">
+                  <TabsList className="mb-8 w-full justify-start py-7 px-2">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
                     {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
                     <TabsTrigger value="certificate">Certificate</TabsTrigger>
                   </TabsList>
 
-                  <TabsContent value="overview">
+                  <TabsContent value="overview" className='px-2'>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                       <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-bold mb-4 text-[2rem]">About This Course</h2>
+                        <h2 className="text-2xl font-bold mb-6">About This Course</h2>
                         <div className="prose max-w-none">
                           <p>{course.fullDescription || course.description}</p>
 
-                          <h3 className="text-xl font-semibold mt-8 mb-4">Course Highlight</h3>
+                         {courseHighlightData &&  <h3 className="text-xl font-semibold mt-8 mb-4">Course Highlight</h3>} 
                           <ul className="space-y-2">
-                            {course.learningObjectives?.map((objective, index) => (
+                            {/* {course.learningObjectives?.map((objective, index) => (
                               <li key={index} className="flex items-start">
                                 <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -472,34 +482,33 @@ const CourseDetail = () => {
                                   </svg>
                                   <span>Master {course.title} concepts and techniques</span>
                                 </li>
-                              )}
+                              )} */}
+
+                            {
+                              courseHighlightData && courseHighlightData.highlight.map((point, index) => {
+
+                                return (
+                                  <li className="flex items-start" key={index}>
+                                    <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span>{point && point}</span>
+                                  </li>
+                                )
+
+                              })
+                            }
+
+
                           </ul>
 
-                          <h3 className="text-xl font-semibold mt-8 mb-4">Prerequisites</h3>
-                          <ul className="space-y-2">
-                            {course.prerequisites?.map((prerequisite, index) => (
-                              <li key={index} className="flex items-start">
-                                <svg className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>{prerequisite}</span>
-                              </li>
-                            )) || (
-                                <li className="flex items-start">
-                                  <svg className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                  <span>Basic understanding of the subject</span>
-                                </li>
-                              )}
-                          </ul>
                         </div>
                       </div>
 
                     </div>
                   </TabsContent>
 
-                  <TabsContent value="curriculum">
+                  <TabsContent value="curriculum" className='px-2'>
                     <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
                     <div className="space-y-4">
                       <Accordion type="single" collapsible className="w-full">
@@ -529,8 +538,9 @@ const CourseDetail = () => {
                         ))}
                       </Accordion>
 
+          
                       {/* Course technology images at the end of the accordion */}
-                      <div className="mt-8 pt-6 border-t">
+                      {/* <div className="mt-8 pt-6 border-t">
                         <h3 className="text-lg font-semibold mb-4">Technologies You'll Master</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="bg-gray-50 p-4 rounded-lg">
@@ -561,7 +571,7 @@ const CourseDetail = () => {
                             <p className="text-sm text-gray-600">Apply concepts to real-world scenarios</p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </TabsContent>
 
@@ -608,52 +618,8 @@ const CourseDetail = () => {
                 </div>
               </TabsContent> */}
 
-                  <TabsContent value="certificate">
-                    <div className="space-y-6">
-                      <h3 className="text-2xl font-bold mb-4 text-[2rem]">Course Certificate</h3>
-                      <div className="grid grid-cols-1 md:grid-row-2 gap-8">
-                        <div className="space-y-2">
-                          <h4 className="font-bold text-lg">Industry-Recognized Certification</h4>
-                          <p className="text-gray-700">
-                            Upon successful completion of the course, you'll receive a verified certificate that you can share with potential employers and on your LinkedIn profile.
-                          </p>
-                          <div className="space-y-2">
-                            <div className="flex items-start gap-2">
-                              <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                              <p>Accredited by leading industry partners</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                              <p>Verifiable through unique certificate ID</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                              <p>Showcase your skills to potential employers</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <CheckCircle2 className="text-green-600 mt-1" size={18} />
-                              <p>Lifetime access to your certificate</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                          <div className="relative aspect-[16/12] mb-4">
-                            <img
-                              src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?crop=entropy&w=800"
-                              alt="Certificate Sample"
-                              className="rounded-lg border-2 border-gray-200 shadow-lg w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="relative aspect-[16/12] mb-4">
-                            <img
-                              src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?crop=entropy&w=800"
-                              alt="Certificate Sample"
-                              className="rounded-lg border-2 border-gray-200 shadow-lg w-full h-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <TabsContent value="certificate" className='px-2'>
+                  <CourseCertificate/>
                   </TabsContent>
 
                 </Tabs>
@@ -714,6 +680,10 @@ const CourseDetail = () => {
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
                 </div>
               </div>
+            </div>
+
+            <div className='mt-8'>
+              <Button>Download Broucher</Button>
             </div>
           </div>
         </section>
