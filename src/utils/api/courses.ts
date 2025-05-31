@@ -43,7 +43,10 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
         filterObj.level = { eq: level }
     }
 
+    filterObj.is_learning_hub = { eq: false };
+
     const response = await axiosApi.post('', {
+        
         query: `
             query Courses (
                 $filters: CourseFiltersInput
@@ -70,6 +73,7 @@ export const getCourses = async ({pageNumber = 1, city = '', isFeatured = undefi
             documentId: course.documentId,
             title: course.title,
             description: course.description,
+            is_learning_hub:course.is_learning_hub,
             level: course.level,
             on_sale: course.on_sale,
             has_certificate: course.has_certificate,
