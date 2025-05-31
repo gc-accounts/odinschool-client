@@ -47,7 +47,6 @@ const CourseCard = ({
   documentId,
   url_slug,
   total_enrolled,
-  url_slug,
 }: CourseProps) => {
   return (
 
