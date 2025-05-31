@@ -153,7 +153,8 @@ const CourseDetail = () => {
       () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <CareerServices1
         sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-        slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course': course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course': course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        
       />,
       () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
 
@@ -172,14 +173,14 @@ const CourseDetail = () => {
       () => <CareerServices2 />,
       () => <CertificationSection1 />,
       () => <InstructorProfile />,
-      () => <CareerOpportunities slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course': course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course': course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
 
     ],
     "4": [
       () => <WhyLearnAI />,
       () => <WhoCanApply />,
       () => <Testimonials />,
-      () => <CareerServices1 slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course': course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course': course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
       () => <CollegeSpotlight />,
       () => <InstructorProfile />,
       () => <FAQsection />,
@@ -316,7 +317,7 @@ const CourseDetail = () => {
     formData.append("Phone", data.phone || '');
     formData.append("Year of Graduation", data.year || '');
     formData.append("Work Experience Level", data.experience || '');
-    formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug);
+    formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course': course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course': course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
     formData.append("ga_client_id", '');
     formData.append("Business Unit", 'OdinSchool');
 
