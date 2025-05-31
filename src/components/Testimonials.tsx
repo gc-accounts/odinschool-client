@@ -15,7 +15,7 @@ const transformationType = [
   { name: "Career Transition", key: "Career Transition"},
   { name: "Career Gap", key: "Career Gap" },
   { name: "Career Upgrade", key: "Career Upgrade" },
-  { name: "Career Hike", key: "Career Hike" },
+  { name: "Salary Hike", key: "Salary Hike" },
   { name: "Career Launch", key: "Career Launch" },
 ];
 
@@ -71,7 +71,7 @@ const Testimonials = ({sectionClass}:TestimonialsProps) => {
     "Career Upgrade": "bg-green-100 text-green-800 border-green-200",
     "Career Relaunch": "bg-purple-100 text-purple-800 border-purple-200",
     "Career Gap": "bg-amber-100 text-amber-800 border-amber-200",
-    "Career Hike": "bg-red-100 text-red-800 border-red-200"
+    "Salary Hike": "bg-red-100 text-red-800 border-red-200"
   };
 
 
