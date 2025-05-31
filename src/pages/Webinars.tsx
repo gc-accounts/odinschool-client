@@ -50,6 +50,8 @@ function getFilterObj(tab: string, isOdintalk: boolean) {
 const Webinars = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [tab, setTab] = useState(tabOptions[0].value);
+  const [pageNumber, setPageNumber] = useState(1);
+  // const [pageSize, setPageSize] = useState(10);
 
 
   // state for webinars
@@ -61,7 +63,7 @@ const Webinars = () => {
     const fetchWebinars = async () => {
       const filterObj = getFilterObj(tab, false);
       const webinars = await getWebinars({
-        pageNumber: 1,
+        pageNumber: pageNumber,
         pageSize: 10,
         search: searchQuery,
         isOdintalk: false,
@@ -71,7 +73,7 @@ const Webinars = () => {
       setLoading(false);
     };
     fetchWebinars();
-  }, [searchQuery, tab]);
+  }, [searchQuery, tab, pageNumber]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

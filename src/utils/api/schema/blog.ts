@@ -17,6 +17,7 @@ export default `
     publishedAt
     seo_title
     status_s
+    url_slug
     tags
     title
     updatedAt

@@ -34,7 +34,7 @@ const WebinarRegistration = () => {
 
   useEffect(() => {
     const fetchWebinar = async () => {
-      const webinar = await getWebinar(id || '');
+      const webinar = await getWebinar("", id || '');
       setWebinar(webinar);
       setLoading(false);
     };

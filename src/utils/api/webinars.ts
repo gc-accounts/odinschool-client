@@ -20,6 +20,7 @@ const transformWebinarData = (webinar: any) => {
         isPaid: (webinar.price && webinar.price > 0) ? true : false,
         status: new Date(webinar.date) < new Date() ? "past" : "upcoming",
         isOdintalk: webinar.is_odin_talk || false,
+        url_slug: webinar.slug,
     };
 };
 
@@ -83,18 +84,35 @@ if(time != 'all'){
     return response.data.data.webinars.map(transformWebinarData);
 };
 
-export const getWebinar = async (id: string) => {
-    const response = await axiosApi.post('', {
-        query: `
-            query Webinar($documentId: ID!) {
-                webinar(documentId: $documentId) {
+export const getWebinar = async (id: string, url_slug: string = "") => {
+    let webinarItem = null;
+    if(id != ""){
+        const response = await axiosApi.post('', {
+            query: `
+                query Webinar($documentId: ID!) {
+                    webinar(documentId: $documentId) {
                     ${webinarSchema}
                 }
             }
         `,
         variables: { documentId: id }
-    });
+        });
+        webinarItem = response.data.data.webinar;
+    }else{
+        const response = await axiosApi.post('', {
+            query: `
+                query Webinar($filters: WebinarFiltersInput) {
+                    webinars(filters: $filters) {
+                        ${webinarSchema}
+                    }
+                }
+            `,
+            variables: { filters: { slug: { eq: url_slug } } }
+        }); 
+        webinarItem = response.data.data.webinars[0];
+    }
 
-    return transformWebinarData(response.data.data.webinar);
+
+    return transformWebinarData(webinarItem);
 };
 

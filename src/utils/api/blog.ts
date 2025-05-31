@@ -7,6 +7,7 @@ function modifyBlog(blog: any) {
         id: blog?.documentId,
         title: blog?.title,
         slug: blog?.post_old_url,
+        url_slug: blog?.url_slug,
         excerpt: blog?.meta_description,
         content: blog?.post_body,
 
@@ -59,10 +60,12 @@ export const getBlogs = async ({page = 1, search = ''}) => {
 };
 
 
-export const getBlog = async (id: string) => {
-    const response = await axiosApi.post('', {
-        query: `
-            query Blog($documentId: ID!) {
+export const getBlog = async (id: string, url_slug: string = "") => {
+    let blogItem = null;
+    if(url_slug === ""){
+        const response = await axiosApi.post('', {
+            query: `
+                query Blog($documentId: ID!) {
                 blog(documentId: $documentId) {
                     ${blog}
                 }
@@ -73,8 +76,27 @@ export const getBlog = async (id: string) => {
         }
     });
 
-    return modifyBlog(response.data.data.blog);
-};
+        blogItem = modifyBlog(response.data.data.blog);
+    }else{
+        const response = await axiosApi.post('', {
+            query: `
+                query Blogs($filters: BlogFiltersInput) {
+                    blogs(filters: $filters) {
+                        ${blog}
+                    }
+                }
+            `,
+            variables: {
+                filters: {
+                    url_slug: { eq: url_slug }
+                }
+            }
+        });
 
+        blogItem = modifyBlog(response.data.data.blogs[0]);
+    }
+
+    return blogItem;
+};
 
 

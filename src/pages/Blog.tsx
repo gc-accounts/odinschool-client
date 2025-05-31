@@ -108,7 +108,7 @@ const BlogPage = () => {
                <span>{formatDate(post.publishedAt)}</span>
              </div>
              <Button asChild>
-                <Link to={`/blog/${post.id}`}>Read More</Link>
+                <Link to={`/blog/${post.url_slug}`}>Read More</Link>
              </Button>
            </CardFooter>
          </Card>

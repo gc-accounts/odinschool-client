@@ -20,7 +20,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchPost = async () => {
       setLoading(true);
-      const post = await getBlog(id);
+      const post = await getBlog("", id);
       setPost(post);
       setLoading(false);
     }
