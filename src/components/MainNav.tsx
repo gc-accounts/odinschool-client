@@ -21,7 +21,7 @@ const MainNav = () => {
     <div className="hidden md:flex ">
       <Link to="/" className="mr-6 flex items-center">
       <img
-    src="https://www.odinschool.com/hubfs/OdinSchool_V3/icons/Odinschool_v3_logo.svg" // Replace with your actual logo URL
+    src="https://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp" // Replace with your actual logo URL
     alt="EduPlatform Logo"
     className="h-8 w-auto"
   />

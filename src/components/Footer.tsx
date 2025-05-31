@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 // Utility function to handle links both inside and outside Router context
 const SafeLink = ({ to, className, children }: { 
@@ -125,6 +125,12 @@ const Footer = () => {
                 <span className="sr-only">Instagram</span>
                 <Instagram size={20} className="text-primary-600" />
               </a>
+              <a href="https://www.youtube.com/@OdinSchool" className="text-gray-400 hover:text-gray-200">
+                <span className="sr-only">Youtube</span>
+                <Youtube size={20} className="text-primary-600" />
+              </a>
+
+              
 
             </div>
           </div>

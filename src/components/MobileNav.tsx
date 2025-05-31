@@ -48,7 +48,7 @@ const MobileNav = () => {
          <div className="md:hidden flex items-center mb-4">
       <Link to="/" className="flex items-center">
         <img
-          src="https://www.odinschool.com/hubfs/OdinSchool_V3/icons/Odinschool_v3_logo.svg"
+          src="https://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp"
           alt="EduPlatform Logo"
           className="h-8 w-auto"
         />
