@@ -79,6 +79,12 @@ const REFRESH_TOKEN = "1000.9610e09a6a7a1d160ff1b71e848ad575.807b0d1acb74af5c6d6
 const CLIENT_ID = "1000.0OJAI0ZC0NIBXRX19IC6B14QE22HFT";
 const CLIENT_SECRET = "ea6422637d7299fdb33bf7a62b41ad6465a851d12b";
 
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
+
 const CourseCheckout = () => {
   const params = useParams();
   const id = params?.id as string;
@@ -90,6 +96,7 @@ const CourseCheckout = () => {
   const { toast } = useToast();
   const [showPayment, setShowPayment] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(0);
+  const [isRazorpayLoaded, setIsRazorpayLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -176,8 +183,128 @@ const CourseCheckout = () => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      // Step 1: Get fresh access token
+      const accessToken = await getAccessToken();
+
+      // Step 2: Create contact in Zoho CRM
+      const zohoFormData = new FormData();
+      zohoFormData.append('accessToken', accessToken);
+      zohoFormData.append('First Name', formData.firstName);
+      zohoFormData.append('Last Name', formData.lastName);
+      zohoFormData.append('Email', formData.email);
+      zohoFormData.append('Phone', formData.phone);
+      zohoFormData.append('Program', course?.slug || '');
+      zohoFormData.append('Year of Graduation', formData.year);
+      zohoFormData.append('Coupon Code', '');
+      zohoFormData.append('Ga_client_id', '');
+      zohoFormData.append('Business Unit', 'Odinschool');
+
+      const contactResponse = await fetch('/api/zoho/contact', {
+        method: 'POST',
+        body: zohoFormData
+      });
+
+      if (!contactResponse.ok) {
+        const errorData = await contactResponse.json();
+        throw new Error(errorData.error || 'Failed to create contact');
+      }
+
+      const contactData = await contactResponse.json();
+
+      // Step 3: Verify contact creation was successful
+      if (contactData?.data?.[0]?.status === 'success') {
+        // Step 4: Show success message for contact creation
+        toast({
+          title: "Registration successful!",
+          description: "Please complete the payment to secure your seat.",
+        });
+
+        // Step 5: Initiate payment flow
+        try {
+          await handlePayment(formData);
+        } catch (paymentError) {
+          console.error('Payment initiation error:', paymentError);
+          // Even if payment fails, the contact is created
+          toast({
+            title: "Contact Created",
+            description: "Your registration is complete. Please try the payment again or contact support.",
+          });
+        }
+      } else {
+        throw new Error('Failed to create contact in CRM');
+      }
+    } catch (error) {
+      console.error('Error in registration process:', error);
+      toast({
+        title: "Registration failed",
+        description: error instanceof Error ? error.message : "There was an error processing your registration. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // Load Razorpay script
+  useEffect(() => {
+    const loadRazorpay = () => {
+      return new Promise((resolve, reject) => {
+        if (window.Razorpay) {
+          setIsRazorpayLoaded(true);
+          resolve(window.Razorpay);
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        script.onload = () => {
+          setIsRazorpayLoaded(true);
+          resolve(window.Razorpay);
+        };
+        script.onerror = () => {
+          reject(new Error('Failed to load Razorpay SDK'));
+        };
+        document.body.appendChild(script);
+      });
+    };
+
+    loadRazorpay().catch((error) => {
+      console.error('Error loading Razorpay:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load payment system. Please refresh the page.",
+        variant: "destructive"
+      });
+    });
+  }, []);
+
   const handlePayment = async (formData: FormData) => {
     try {
+      // Wait for Razorpay to be loaded
+      if (!window.Razorpay) {
+        console.log('Waiting for Razorpay to load...');
+        await new Promise((resolve) => {
+          const checkRazorpay = setInterval(() => {
+            if (window.Razorpay) {
+              clearInterval(checkRazorpay);
+              resolve(true);
+            }
+          }, 100);
+
+          // Timeout after 5 seconds
+          setTimeout(() => {
+            clearInterval(checkRazorpay);
+            throw new Error('Razorpay SDK failed to load');
+          }, 5000);
+        });
+      }
+
       // Create Razorpay order
       const orderResponse = await fetch('/api/payment/razorpay', {
         method: 'POST',
@@ -198,6 +325,7 @@ const CourseCheckout = () => {
       }
 
       const orderData = await orderResponse.json();
+      console.log('Order created:', orderData);
 
       // Initialize Razorpay
       const options = {
@@ -209,6 +337,7 @@ const CourseCheckout = () => {
         image: "https://www.odinschool.com/hubfs/OdinSchool%20M22/icons/fevicon.svg",
         order_id: orderData.id,
         handler: async function (response: RazorpayResponse) {
+          console.log('Payment response:', response);
           try {
             // Verify payment
             const verifyResponse = await fetch('/api/payment/razorpay', {
@@ -229,6 +358,7 @@ const CourseCheckout = () => {
             }
 
             const verifyData = await verifyResponse.json();
+            console.log('Payment verification:', verifyData);
 
             if (verifyData.response === 'Paid') {
               // Track conversion
@@ -248,8 +378,16 @@ const CourseCheckout = () => {
               statusFormData.append('paid_event_name', course?.title || '');
               statusFormData.append('effective_bootcamp_fee', String(course?.price || 0));
 
-              // Redirect to thank you page
-              window.location.href = '/thank-you';
+              // Show success message
+              toast({
+                title: "Payment Successful!",
+                description: "Thank you for your payment. Redirecting to confirmation page...",
+              });
+
+              // Redirect to thank you page after a short delay
+              setTimeout(() => {
+                window.location.href = '/thank-you';
+              }, 2000);
             } else {
               toast({
                 title: "Payment Failed",
@@ -276,10 +414,12 @@ const CourseCheckout = () => {
         }
       };
 
-      const razorpay = new (window as any).Razorpay(options);
+      console.log('Opening Razorpay with options:', options);
+      const razorpay = new window.Razorpay(options);
       razorpay.open();
 
       razorpay.on('payment.failed', function (response: any) {
+        console.error('Payment failed:', response);
         toast({
           title: "Payment Failed",
           description: "Your payment could not be processed. Please try again.",
@@ -290,60 +430,9 @@ const CourseCheckout = () => {
       console.error('Payment error:', error);
       toast({
         title: "Payment Error",
-        description: "There was an error initiating the payment. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to initiate payment. Please try again.",
         variant: "destructive"
       });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitting(true);
-
-    try {
-      // Get fresh access token
-      const accessToken = await getAccessToken();
-
-      // Create FormData for the contact creation
-      const zohoFormData = new FormData();
-      zohoFormData.append('accessToken', accessToken);
-      zohoFormData.append('First Name', formData.firstName);
-      zohoFormData.append('Last Name', formData.lastName);
-      zohoFormData.append('Email', formData.email);
-      zohoFormData.append('Phone', formData.phone);
-      zohoFormData.append('Program', course?.slug || '');
-      zohoFormData.append('Year of Graduation', formData.year);
-      zohoFormData.append('Coupon Code', '');
-      zohoFormData.append('Ga_client_id', '');
-      zohoFormData.append('Business Unit', 'Odinschool');
-
-      // Submit to our backend endpoint
-      const response = await fetch('/api/zoho/contact', {
-        method: 'POST',
-        body: zohoFormData
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to create contact');
-      }
-
-      const data = await response.json();
-      if (data?.data?.[0]?.status === 'success') {
-        // Initiate payment flow after successful contact creation
-        await handlePayment(formData);
-      } else {
-        throw new Error('Failed to create contact');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Registration failed",
-        description: "There was an error processing your registration. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setSubmitting(false);
     }
   };
 
@@ -374,10 +463,6 @@ const CourseCheckout = () => {
 
   return (
     <>
-      <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        strategy="lazyOnload"
-      />
       <Navbar />
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
