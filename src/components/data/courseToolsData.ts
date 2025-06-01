@@ -2,7 +2,7 @@ export const courseToolsData = [
     {
         id: 1,
         title: 'Data Science Course',
-        path: '/course/data-science-course',
+        path: '/data-science-course',
         tools: [
             {
                 path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
@@ -80,7 +80,7 @@ export const courseToolsData = [
     {
         id: 2,
         title: 'Generative AI Course',
-        path: '/course/generative-ai-bootcamp',
+        path: '/generative-ai-bootcamp',
         tools: [
             {
                 path: 'https://strapi.odinschool.com/uploads/SQL_100_X60_ca123c9b46.webp',
@@ -182,7 +182,7 @@ export const courseToolsData = [
     {
         id: 3,
         title: 'Certification Program in Applied Generative AI',
-        path: '/course/generative-ai-course-iitg',
+        path: '/generative-ai-course-iitg',
         tools: [
             {
                 path: 'https://strapi.odinschool.com/uploads/SQL_100_X60_ca123c9b46.webp',
@@ -284,7 +284,7 @@ export const courseToolsData = [
     {
         id: 4,
         title: 'Data Science Elite Course',
-        path: '/course/data-science-elite-course',
+        path: '/data-science-elite-course',
         tools: [
             {
                 path: 'https://strapi.odinschool.com/uploads/python_1_ad82826a61.webp',

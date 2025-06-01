@@ -3,7 +3,7 @@ export const CourseCertificateData = [
         id: 1,
         title: 'Data Scinece Course',
         sub_title: 'Showcase your certificate as a symbol of your Data Science expertise.',
-        path: '/course/data-science-course',
+        path: '/data-science-course',
         points: ['Official and Verified', 'Easily Sharable', 'Enhances Credibility',],
         certificate_img: ['https://strapi.odinschool.com/uploads/DS_Certificate_03c7cccd9b.webp']
     },
@@ -11,7 +11,7 @@ export const CourseCertificateData = [
         id: 2,
         title: 'Certification Program in Applied Generative AI',
         sub_title: "Boost your career with E&ICT Academy - IIT Guwahati's Certification Program in Applied Generative AI",
-        path: '/course/generative-ai-course-iitg',
+        path: '/generative-ai-course-iitg',
         points: ['Earn an invaluable credential to add to your portfolio.', 'Showcase your Generative AI expertise.'],
         certificate_img: ['https://strapi.odinschool.com/uploads/IITG_20_20_Gen_20_AI_20certificate_b4d3aea49d.png']
     },
@@ -19,7 +19,7 @@ export const CourseCertificateData = [
         id: 3,
         title: 'Generative AI Course',
         sub_title: "Showcase your certificate as a symbol of your AI expertise.",
-        path: '/course/generative-ai-bootcamp',
+        path: '/generative-ai-bootcamp',
         points: [],
         certificate_img: ['https://strapi.odinschool.com/uploads/Generative_20_AI_20_Bootcamp_1_b808e88258.webp']
     },
@@ -27,7 +27,7 @@ export const CourseCertificateData = [
         id: 4,
         title: 'Data Science Elite Course',
         sub_title: "Showcase your certificate as a symbol of your Data Science expertise.",
-        path: '/course/data-science-elite-course',
+        path: '/data-science-elite-course',
         points: ['Official and Verified', 'Easily Sharable', 'Enhances Credibility'],
         certificate_img: ['https://strapi.odinschool.com/uploads/Generative_20_AI_20_Bootcamp_1_9faa3d892a.webp']
     },

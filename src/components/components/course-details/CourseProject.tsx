@@ -11,7 +11,7 @@ import { getDataByPage } from '@/components/utils/getDataByPage';
 import { usePathname } from 'next/navigation';
 const CourseProject = () => {
   const path = usePathname()
-  const projectData = path === '/course/data-science-course' ? getDataByPage(DsCourseProjectData, path) : path === '/course/generative-ai-bootcamp' ? getDataByPage(DsGenAiData, path) : path === '/course/generative-ai-course-iitg' ? getDataByPage(DsGenAiIITGData, path) : path === '/course/data-science-elite-course' ? getDataByPage(DsEliteCourseProjectData, path) : ''
+  const projectData = path === '/data-science-course' ? getDataByPage(DsCourseProjectData, path) : path === '/generative-ai-bootcamp' ? getDataByPage(DsGenAiData, path) : path === '/generative-ai-course-iitg' ? getDataByPage(DsGenAiIITGData, path) : path === '/data-science-elite-course' ? getDataByPage(DsEliteCourseProjectData, path) : ''
 
   useEffect(() => {
     console.log('----------projectData---', projectData);
