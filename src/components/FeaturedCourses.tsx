@@ -35,7 +35,7 @@ const FeaturedCourses = ({
           category: 'Technology', // Default value since not in API
           enrolled_avatars: [], // Default empty array since not in API
           total_enrolled: course.total_enrolled || 0,
-          url_slug:course.url_slug
+          url_slug:course.url_slug,
         }));
 
         console.log('transformedCourses--', transformedCourses);
