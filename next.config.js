@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    dirs: ['src'],
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   dirs: ['src'],
+  //   ignoreDuringBuilds: true,
+  // },
 
   reactStrictMode: true,
   swcMinify: true,
