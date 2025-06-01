@@ -97,7 +97,7 @@ This changelog is manually generated and not accurate with the package.json, onl
 
     Unused import will automatically be removed by the ESlint autofix.
 
-- #### Renamed CustomLink to UnderlineLink
+- #### Renamed CustomLink href UnderlineLink
 
     This is to compensate the new PrimaryLink component
 
