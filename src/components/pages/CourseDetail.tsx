@@ -47,6 +47,7 @@ import { usePathname } from 'next/navigation'
 import CourseCertificate from '@/components/components/course-details/CourseCertificate';
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { courseToolsData } from '@/components/data/courseToolsData';
+import CourseProject from '@/components/components/course-details/CourseProject';
 const formFields: FieldConfig[] = [
   {
     name: 'firstName',
@@ -460,7 +461,7 @@ const CourseDetail = () => {
                   <TabsList className="mb-8 w-full justify-start py-7 px-2">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                    {/* <TabsTrigger value="projects">Projects</TabsTrigger> */}
+                    <TabsTrigger value="projects">Projects</TabsTrigger>
                     <TabsTrigger value="certificate">Certificate</TabsTrigger>
                   </TabsList>
 
@@ -580,48 +581,9 @@ const CourseDetail = () => {
                     </div>
                   </TabsContent>
 
-                  {/* <TabsContent value="projects">
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold mb-4 text-[1.5rem]">Course Projects</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {courseProjects.map((project, index) => (
-                      <Card key={index} className="overflow-hidden">
-                        <div className="h-48 overflow-hidden">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform hover:scale-105"
-                          />
-                        </div>
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-center">
-                            <CardTitle className="text-lg">{project.title}</CardTitle>
-                            {project.free && (
-                              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                                <Gift className="h-3 w-3 mr-1" />
-                                Free
-                              </Badge>
-                            )}
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-gray-600">{project.description}</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button
-                            variant={project.free ? "default" : "outline"}
-                            className="w-full"
-                            size="sm"
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            {project.free ? 'Download Now' : 'Access with Course'}
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent> */}
+                  <TabsContent value="projects">
+                    <CourseProject />
+                  </TabsContent>
 
                   <TabsContent value="certificate" className='px-2'>
                     <CourseCertificate />
