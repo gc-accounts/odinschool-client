@@ -11,9 +11,9 @@ import { courseToolsData } from '@/components/data/courseToolsData';
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { usePathname } from 'next/navigation'
 interface ToolCardProps {
-  name: string;
-  description: string;
-  icon: string;
+  name: string | undefined;
+  description: string | undefined;
+  icon: string | undefined;
   bgColor: string;
   delay: number;
 }

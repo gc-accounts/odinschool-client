@@ -121,11 +121,15 @@ const CourseDetail = () => {
 
   const currentPath = location;
   const courseHighlightData = getDataByPage(courseHighlights, currentPath)
+
+
   const toolsData = getDataByPage(courseToolsData, currentPath)
 
 
 
   useEffect(() => {
+    console.log('courseHighlightData---------------', courseHighlights);
+
     const fetchCourse = async () => {
       const course = await getCourse("", id || '');
       setCourse(course[0]);
