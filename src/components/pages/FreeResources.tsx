@@ -67,8 +67,8 @@ const FreeResources = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
-          <div className="container mx-auto px-4">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+          <div className="container">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-white/10 rounded-full p-3">
                 <Download className="h-8 w-8" />
@@ -89,10 +89,11 @@ const FreeResources = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
           </div>
-        </div>
+        </section>
         
-        <div className="container mx-auto px-4 py-12">
-          <div className="mb-8 flex flex-wrap gap-2">
+        <section className='px-[20px] pt-[50px] md:px-[30px] md:pt-[70px]'>
+        <div className="container">
+          <div className="mb-8 flex flex-wrap gap-2 hidden">
             {categoriesObjs.map(category => (
               <Button
                 key={category.key}
@@ -128,8 +129,10 @@ const FreeResources = () => {
             </div>
           )}
         </div>
-      
+        </section>
+      <section className='px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]'>
         <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
+        </section>
       </main>
       <Footer />
     </>

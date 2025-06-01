@@ -1,13 +1,15 @@
 
 // Defines different types of jobs with their base salaries
 export const jobRoles = [
-  { id: "software-engineer", title: "Software Engineer", baseSalary: 90000 },
-  { id: "data-scientist", title: "Data Scientist", baseSalary: 105000 },
-  { id: "product-manager", title: "Product Manager", baseSalary: 110000 },
-  { id: "ui-ux-designer", title: "UI/UX Designer", baseSalary: 85000 },
-  { id: "devops-engineer", title: "DevOps Engineer", baseSalary: 95000 },
-  { id: "web-developer", title: "Web Developer", baseSalary: 80000 },
-  { id: "mobile-developer", title: "Mobile Developer", baseSalary: 85000 },
+  { id: "data-analyst", title: "Data Analyst", baseSalary: 500000 },
+  { id: "data-scientist", title: "Data Scientist", baseSalary: 650000 },
+  { id: "business-analyst", title: "Business Analyst", baseSalary: 800000 },
+  { id: "power-bi-developer", title: "Power BI Developer", baseSalary: 550000 },
+  { id: "bi-analyst", title: "BI Analyst", baseSalary: 700000 },
+  { id: "prompt-engineer", title: "Prompt Engineer", baseSalary: 500000 },
+  { id: "gen-ai-specialist", title: "Gen AI Specialist", baseSalary: 750000 },
+  { id: "ai-product-analyst", title: "AI Product Analyst", baseSalary: 850000 },
+  { id: "nlp-associate", title: "NLP Associate", baseSalary: 500000 },
 ];
 
 // Defines multipliers based on experience levels
@@ -29,15 +31,16 @@ export const educationLevels = [
 
 // Defines location cost of living adjustments
 export const locations = [
-  { id: "san-francisco", title: "San Francisco", adjustment: 50000 },
-  { id: "new-york", title: "New York", adjustment: 45000 },
-  { id: "seattle", title: "Seattle", adjustment: 35000 },
-  { id: "chicago", title: "Chicago", adjustment: 25000 },
-  { id: "austin", title: "Austin", adjustment: 20000 },
-  { id: "denver", title: "Denver", adjustment: 15000 },
-  { id: "remote", title: "Remote", adjustment: 0 },
-  { id: "other", title: "Other", adjustment: 10000 },
+  { id: "hyderabad", title: "Hyderabad", adjustment: 0 },
+  { id: "bengaluru", title: "Bengaluru", adjustment: 0 },
+  { id: "ncr", title: "NCR", adjustment: 0 },
+  { id: "chennai", title: "Chennai", adjustment: 0 },
+  { id: "mumbai", title: "Mumbai", adjustment: 0 },
+  { id: "kolkata", title: "Kolkata", adjustment: 0 },
+  { id: "pune", title: "Pune", adjustment: 0 },
+  { id: "anywhere-india", title: "Anywhere in India", adjustment: 0 }
 ];
+
 
 // Calculate the estimated salary based on inputs
 export function calculateSalary(
@@ -102,9 +105,9 @@ export function calculateSalary(
 
 // Format currency values
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
     maximumFractionDigits: 0
   }).format(amount);
 }

@@ -39,7 +39,6 @@ const SalaryResult = ({ formData, result, onRecalculate }: SalaryResultProps) =>
         <div className="bg-primary-50 rounded-lg p-6 text-center">
           <p className="text-gray-500 mb-2">Estimated Annual Salary</p>
           <div className="flex items-center justify-center">
-            <DollarSign className="h-8 w-8 text-primary-600 mr-1" />
             <span className="text-4xl font-bold text-primary-700">{formatCurrency(result.adjusted)}</span>
           </div>
         </div>
