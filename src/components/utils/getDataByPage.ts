@@ -21,5 +21,5 @@ export function getDataByPage(
   highlights: getDataByPageProps[],
   currentPath: string
 ): getDataByPageProps | undefined {
-  return highlights.find(course => `${course.path}` === currentPath);
+  return highlights?.find(course => `${course.path}` === currentPath);
 }
