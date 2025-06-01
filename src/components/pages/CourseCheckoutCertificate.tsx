@@ -183,7 +183,7 @@ const CourseCheckoutCertificate = () => {
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <Button variant="outline" className="mb-6" asChild>
-            <Link href={`/courses/${id}`} className="flex items-center">
+            <Link href={`/course/${id}`} className="flex items-center">
               <ChevronLeft className="mr-2 h-4 w-4" />
               Back to Course
             </Link>

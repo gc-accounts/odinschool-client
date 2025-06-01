@@ -85,7 +85,7 @@ const CourseLesson = () => {
           <div className="w-full md:w-80 lg:w-96 border-r border-gray-200 overflow-y-auto pb-20 bg-gray-50">
             <div className="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10">
               <Link
-                href={`/courses/${id}`}
+                href={`/course/${id}`}
                 className="inline-flex items-center text-gray-700 hover:text-primary-600 transition-colors text-sm font-medium"
               >
                 <ChevronLeft size={16} className="mr-1" />

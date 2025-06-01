@@ -49,7 +49,7 @@ const CourseCard = ({
   return (
 
     <Link
-      href={`/courses/${url_slug}`}
+      href={`/course/${url_slug}`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl transition-all duration-300 h-full",
         "bg-white border border-gray-100 hover:border-primary-200 hover:shadow-lg",
