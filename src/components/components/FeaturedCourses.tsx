@@ -35,7 +35,7 @@ const FeaturedCourses = ({
           category: 'Technology', // Default value since not in API
           enrolled_avatars: [], // Default empty array since not in API
           total_enrolled: course.total_enrolled || 0,
-          url_slug: course.url_slug || course.documentId, // Add url_slug with fallback to documentId
+          url_slug: course.url_slug // Add url_slug with fallback to documentId
         }));
         setCourses(transformedCourses);
       } catch (error) {
