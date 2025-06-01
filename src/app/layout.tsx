@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
 import * as React from 'react';
 
+import { gtmScript } from "src/lib/gtm";
+
+
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
+import Script from 'next/script';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -56,7 +60,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <head>
+        <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
+      </head>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }
