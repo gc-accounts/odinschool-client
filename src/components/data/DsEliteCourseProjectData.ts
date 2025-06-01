@@ -1,6 +1,6 @@
 export const DsEliteCourseProjectData = [
   {
-    path: '/course/data-science-elite-course',
+    path: '/data-science-elite-course',
     project: [
       {
         project_img: 'https://strapi.odinschool.com/uploads/Covid_20prediction_9ca848b9ea.webp',

@@ -1,6 +1,6 @@
 export const DsGenAiIITGData = [
   {
-    path: '/course/generative-ai-course-iitg',
+    path: '/generative-ai-course-iitg',
     project: [
       {
         project_img: 'https://strapi.odinschool.com/uploads/Quill_Blog_Genie_AI_Powered_Content_Creation_Assistant_a310f5245b.webp',

@@ -1,6 +1,6 @@
 export const DsGenAiData = [
   {
-    path: '/course/generative-ai-bootcamp',
+    path: '/generative-ai-bootcamp',
     project: [
       {
         project_img: 'https://strapi.odinschool.com/uploads/Covid_20prediction_b855263bf2.webp',
