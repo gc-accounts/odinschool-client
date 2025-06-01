@@ -83,7 +83,7 @@ export const courseToolsData = [
         path: '/generative-ai-course-iitg',
         tools: [
             {
-                path: 'https://strapi.odinschool.com/uploads/SQL_100_X60_ca123c9b46.webp', Add commentMore actions
+                path: 'https://strapi.odinschool.com/uploads/SQL_100_X60_ca123c9b46.webp',
                 name: '',
                 description: "",
             },
