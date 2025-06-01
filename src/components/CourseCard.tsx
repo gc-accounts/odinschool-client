@@ -26,7 +26,6 @@ export interface CourseProps {
     name: string;
   }[];
   total_enrolled: number;   
-  url_slug: string;
 }
 
 const CourseCard = ({
