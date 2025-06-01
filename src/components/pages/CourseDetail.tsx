@@ -48,7 +48,9 @@ import CourseCertificate from '@/components/components/course-details/CourseCert
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { courseToolsData } from '@/components/data/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
+import { useRouter } from 'next/navigation';
 const formFields: FieldConfig[] = [
+
   {
     name: 'firstName',
     label: 'First Name',
@@ -122,7 +124,7 @@ const CourseDetail = () => {
 
   const currentPath = location;
   const courseHighlightData = getDataByPage(courseHighlights, currentPath)
-
+  const router = useRouter()
 
   const toolsData = getDataByPage(courseToolsData, currentPath)
 
@@ -332,11 +334,21 @@ const CourseDetail = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
+      // ✅ Store email and redirect
+      sessionStorage.setItem('submittedEmail', data.email);
+
 
       toast({
         title: "Form submitted successfully!",
         description: "Thank you for your interest. Our team will contact you shortly.",
       });
+
+      // ✅ Redirect to thank-you page with specific course route 
+      const courseSlug = course.slug || '';
+      setTimeout(() => {
+        router.push(`/thank-you-2?title=${courseSlug}`);
+      }, 1000);
+
 
     } catch (err) {
       console.error('Error submitting form:', err);
@@ -458,7 +470,7 @@ const CourseDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="mb-8 w-full justify-start py-7 px-2">
+                  <TabsList className="mb-8 w-full justify-start py-2 px-2 overflow-x-auto h-max">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
                     <TabsTrigger value="projects">Projects</TabsTrigger>
