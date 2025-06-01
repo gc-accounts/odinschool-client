@@ -3,7 +3,7 @@
 export interface Tool {
   path?: string;
   name?: string;
-  description?:string
+  description?: string
 }
 
 export interface getDataByPageProps {
