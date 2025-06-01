@@ -11,18 +11,18 @@ import { getStories } from '@/components/utils/api/story';
 import { Dialog, DialogContent } from '@/components/components/ui/dialog';
 
 const transformationType = [
-  { name: "All", key: ""},
-  { name: "Career Transition", key: "Career Transition"},
+  { name: "All", key: "" },
+  { name: "Career Transition", key: "Career Transition" },
   { name: "Career Gap", key: "Career Gap" },
   { name: "Career Upgrade", key: "Career Upgrade" },
   { name: "Salary Hike", key: "Salary Hike" },
   { name: "Career Launch", key: "Career Launch" },
 ];
 
-interface TestimonialsProps{
- sectionClass?:String
+interface TestimonialsProps {
+  sectionClass?: String
 }
-const Testimonials = ({sectionClass}:TestimonialsProps) => {
+const Testimonials = ({ sectionClass }: TestimonialsProps) => {
 
   const [stories, setStories] = useState<any[]>([]);
   const [videoStories, setVideoStories] = useState<any[]>([]);
@@ -50,7 +50,7 @@ const Testimonials = ({sectionClass}:TestimonialsProps) => {
   const testimonialsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if(loading) return;
+    if (loading) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -89,66 +89,66 @@ const Testimonials = ({sectionClass}:TestimonialsProps) => {
             Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p>
         </div>
-       {loading ?
-       
-       (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[...Array(4)].map((_, index) => (
-              <div key={index} className="animate-pulse">
-                <div className="bg-gray-200 rounded-xl h-48 mb-4"></div>
-                <div className="space-y-3">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded"></div>
-                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-       )
-       : ( <>
-        <div className="border-b mb-8">
-          <Tabs defaultValue="" onValueChange={(value) => setActiveTab(value)} value={activeTab} className="w-full">
-            <TabsList className="mb-4 w-full justify-center">
-              {transformationType.map((type) => (
-                <TabsTrigger
-                  value={type.key}
-                >
-                  {type.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+        {loading ?
 
-            <div className="pt-6">
-              <div
-                ref={testimonialsRef}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
-                style={{ animationDelay: '200ms' }}
-              >
-                {stories.map((testimonial) => (
-                  <CareerTransitionCard key={testimonial.documentId} testimonial={testimonial} categoryColors={categoryColors} />
+          (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {[...Array(4)].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-gray-200 rounded-xl h-48 mb-4"></div>
+                  <div className="space-y-3">
+                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-200 rounded"></div>
+                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+          : (<>
+            <div className="border-b mb-8">
+              <Tabs defaultValue="" onValueChange={(value) => setActiveTab(value)} value={activeTab} className="w-full">
+                <TabsList className="mb-4 w-full lg:justify-center justify-start overflow-x-auto h-max p-2">
+                  {transformationType.map((type) => (
+                    <TabsTrigger
+                      value={type.key}
+                    >
+                      {type.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+
+                <div className="pt-6">
+                  <div
+                    ref={testimonialsRef}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
+                    style={{ animationDelay: '200ms' }}
+                  >
+                    {stories.map((testimonial) => (
+                      <CareerTransitionCard key={testimonial.documentId} testimonial={testimonial} categoryColors={categoryColors} />
+                    ))}
+                  </div>
+                </div>
+              </Tabs>
+
+            </div>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {videoStories.map((testimonial) => (
+                  <VideoTestimonialCard key={testimonial.documentId} testimonial={testimonial} categoryColors={categoryColors} />
                 ))}
               </div>
             </div>
-          </Tabs>
+            <div className="mt-8 mb-12">
 
-        </div>
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {videoStories.map((testimonial) => (
-              <VideoTestimonialCard key={testimonial.documentId} testimonial={testimonial} categoryColors={categoryColors} />
-            ))}
-          </div>
-        </div>
-        <div className="mt-8 mb-12">
+            </div>
 
-        </div>
-
-        <div className="text-center mt-12">
-          <Button variant="outline" className="hover:bg-primary-50">
-            View More Success Stories
-          </Button>
-        </div>
-        </>)}
+            <div className="text-center mt-12">
+              <Button variant="outline" className="hover:bg-primary-50">
+                View More Success Stories
+              </Button>
+            </div>
+          </>)}
       </div>
     </section>
   );

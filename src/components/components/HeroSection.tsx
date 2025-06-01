@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Button from './Button';
-import { ArrowRight, Code, Cpu, Trophy,LaptopMinimalCheck, BookOpenText, BriefcaseBusiness } from 'lucide-react';
+import { ArrowRight, Code, Cpu, Trophy, LaptopMinimalCheck, BookOpenText, BriefcaseBusiness } from 'lucide-react';
 import { cn } from '@/components/lib/utils';
 import Modal from './component-template/Modal';
 import DynamicForm from './form/DynamicForm';
@@ -43,13 +43,13 @@ const formFields: FieldConfig[] = [
     label: 'Phone',
     type: 'text',
     required: true,
-rules: {
-  required: 'Phone number is required',
-  pattern: {
-    value: /^[0-9]{10}$/, // exactly 10 digits
-    message: 'Phone number must be exactly 10 digits (numbers only)',
-  },
-},
+    rules: {
+      required: 'Phone number is required',
+      pattern: {
+        value: /^[0-9]{10}$/, // exactly 10 digits
+        message: 'Phone number must be exactly 10 digits (numbers only)',
+      },
+    },
   },
   {
     name: 'year',
@@ -74,7 +74,7 @@ const HeroSection = () => {
 
   const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const {toast} = useToast()
+  const { toast } = useToast()
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -101,26 +101,26 @@ const HeroSection = () => {
 
 
   // Handle Form SUbmit
-    // Handle Form Submit
+  // Handle Form Submit
   const handleFormSubmit = async (data: any) => {
     console.log('data------------------------', data);
-  
+
     const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
-  
+
     const hiddenFields = {
       xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
       xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
       actionType: "Q29udGFjdHM=",
       returnURL: "null",
     };
-  
+
     const formData = new FormData();
-  
+
     // Append hidden fields
     Object.entries(hiddenFields).forEach(([key, value]) => {
       formData.append(key, value);
     });
-  
+
     // Append visible form data
     formData.append("First Name", data.firstName || '');
     formData.append("Last Name", data.lastName || '');
@@ -130,32 +130,32 @@ const HeroSection = () => {
     formData.append("Program", data.program);
     formData.append("ga_client_id", '');
     formData.append("Business Unit", 'OdinSchool');
-  
+
     try {
       const response = await axios.post(zohoEndpoint, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-  
+
       toast({
         title: "Form submitted successfully!",
         description: "Thank you for your interest. Our team will contact you shortly.",
       });
-  
+
     } catch (err) {
       console.error('Error submitting form:', err);
-  
+
       toast({
         title: "Form submission failed!",
         description: "Something went wrong. Please try again later.",
         variant: "destructive"
       });
     }
-  
+
     setFormOpen(false);
   };
-  
+
   return (
     <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] overflow-hidden">
       <div className="container">
@@ -166,7 +166,7 @@ const HeroSection = () => {
                 <span className="text-xs font-medium">Master In-Demand Tech Skills. Get Job-Ready.</span>
               </div>
               <h1 className="heading-xl text-balance">
-                Upskill Now! 
+                Upskill Now!
                 <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>
@@ -194,9 +194,9 @@ const HeroSection = () => {
                   business_unit: 'Odinschool'
                 }}
 
-                onSubmit={(data)=>{
+                onSubmit={(data) => {
                   handleFormSubmit(data)
-                  
+
                 }}
 
               />
