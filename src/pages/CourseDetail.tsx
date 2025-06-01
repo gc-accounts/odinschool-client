@@ -148,7 +148,10 @@ const CourseDetail = () => {
       () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       // () => <CareerServices2 />,
       // () => <CertificationSection1 />,
-      () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CareerOpportunities 
+      sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+               slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course': course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course': course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+ />,
       // () => <WhyLearnAI />,
       () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <CareerServices1
