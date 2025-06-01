@@ -81,7 +81,102 @@ export const courseToolsData = [
         id: 2,
         title: 'Certification Program in Applied Generative AI',
         path: '/generative-ai-course-iitg',
-        tools: []
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_100_X60_ca123c9b46.webp', Add commentMore actions
+                name: '',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/My_SQL_100_X40_16c8456d12.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Python_6bb773eaa3.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Jupyter_20100_X40_5c05e216b0.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pycharm_150_X60_179677689a.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Google_Colab_150_X60_2c0971d74c.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pandas_150_X60_a08b141636.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Num_Py_150_X60_8d4f000feb.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_150_X60_c7d0f2d591.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Docker_150_X60_1_be01db978c.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Git_150_X60_848a76689f.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Visual_Studio_20_c3d8536169.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Kubernetes_150_X60_1_9056f7b534.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Hugging_20_Face_2cd7e5cea4.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Lang_Chain_150_X60_599384d116.webp',
+                name: '',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Llama_Index_150_X60_73109999dc.webp',
+                name: '',
+                description: "",
+            },
+        ]
     },
 
     {
