@@ -655,8 +655,12 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                   </div>
 
                   <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
+                  <Link href={`/course-checkout/${id}`}>
+                    <Button className="w-full">
+                      Enroll Now
+                    </Button>
+                  </Link>
 
-                  <Button className="w-full">Enroll Now</Button>
                   <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
                 </div>
