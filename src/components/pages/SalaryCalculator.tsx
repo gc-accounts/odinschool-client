@@ -59,19 +59,22 @@ const SalaryCalculator = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
-          <div className="container mx-auto px-4">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+          <div className="container text-center">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-white/10 rounded-full p-3">
                 <Calculator className="h-8 w-8" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-center mb-4">Salary Calculator</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
+            <h1 className="text-4xl font-bold text-center mb-4">
+              Salary Calculator
+            </h1>
+            <p className="text-lg text-center max-w-2xl mx-auto text-slate-300">
               Estimate your market value based on your job role, experience, education and location.
             </p>
+
           </div>
-        </div>
+        </section>
         
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
