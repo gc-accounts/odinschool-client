@@ -109,13 +109,15 @@ const formFields: FieldConfig[] = [
 
 
 
-const CourseDetail = () => {
+const CourseDetail = ({ courseId }: { courseId: string }) => {
 
   const [formOpen, setFormOpen] = useState(false);
 
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams<{ id: string }>();
+  const { id } = courseId ? {
+    id: courseId
+  } : useParams<{ id: string }>();
   const { toast } = useToast();
 
   const location = usePathname();
