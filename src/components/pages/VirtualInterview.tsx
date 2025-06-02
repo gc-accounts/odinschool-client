@@ -21,6 +21,7 @@ import {
   DialogTrigger,
 } from "@/components/components/ui/dialog";
 import { Mic, Video, Play, Pause, MessageSquare, Airplay, Share2 } from 'lucide-react';
+import Link from 'next/link';
 
 const VirtualInterview = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -70,18 +71,18 @@ const VirtualInterview = () => {
             <h1 className="text-4xl font-bold text-center mb-4">
               Virtual Interview Practice
             </h1>
-            <p className="text-lg text-center max-w-2xl mx-auto mb-8 text-slate-300">
+            <p className="text-lg text-center max-w-2xl mx-auto text-slate-300">
               Prepare for your OdinSchool interview with our AI-powered virtual
               interview simulator. Practice common interview questions and
               receive instant feedback.
             </p>
-            <Button size="lg" className="bg-primary-600 hover:bg-primary-700">
+            {/* <Button size="lg" className="bg-primary-600 hover:bg-primary-700">
               Start Interview
-            </Button>
+            </Button> */}
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">
@@ -138,7 +139,7 @@ const VirtualInterview = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -227,40 +228,43 @@ const VirtualInterview = () => {
                       <ul className="space-y-4">
                         <li className="p-3 border rounded-md hover:bg-gray-50 transition-colors cursor-pointer">
                           <div className="font-medium">
-                            Educational Content Developer
+                            Senior Associate - Analytics at GALE
                           </div>
-                          <div className="text-sm text-gray-500">
-                            Create engaging learning materials
-                          </div>
+                          <ul className="text-sm text-gray-500">
+                            <li>CTC: 23 - 25 LPA</li>
+                            <li>Location: Bangalore</li>
+                          </ul>
                         </li>
+
                         <li className="p-3 border rounded-md hover:bg-gray-50 transition-colors cursor-pointer">
                           <div className="font-medium">
-                            Learning Experience Designer
+                            Business Analyst at Apna
                           </div>
-                          <div className="text-sm text-gray-500">
-                            Design user-centered learning journeys
-                          </div>
+                          <ul className="text-sm text-gray-500">
+                            <li>CTC: 20 - 22 LPA</li>
+                            <li>Location: Bangalore</li>
+                          </ul>
                         </li>
-                        <li className="p-3 border rounded-md hover:bg-gray-50 transition-colors cursor-pointer">
-                          <div className="font-medium">Course Mentor</div>
-                          <div className="text-sm text-gray-500">
-                            Guide students through their learning
-                          </div>
-                        </li>
+
                         <li className="p-3 border rounded-md hover:bg-gray-50 transition-colors cursor-pointer">
                           <div className="font-medium">
-                            Educational Data Analyst
+                            Data Engineer at Battery Smart
                           </div>
-                          <div className="text-sm text-gray-500">
-                            Drive insights from learning data
-                          </div>
+                          <ul className="text-sm text-gray-500">
+                            <li>CTC: 12 - 15 LPA</li>
+                            <li>Location: Remote</li>
+                          </ul>
                         </li>
+
+
                       </ul>
                     </CardContent>
                     <CardFooter>
+                      <Link href="https://jobs.odinschool.com/" target="blank">
                       <Button variant="outline" className="w-full">
                         View All Open Positions
                       </Button>
+                      </Link>
                     </CardFooter>
                   </Card>
                 </div>

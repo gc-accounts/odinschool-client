@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/components/ui/accordion";
-import { Download, FileText, Loader2 } from 'lucide-react';
+import { Download, FileText, Loader2, BookUp } from 'lucide-react';
 import { getDataScienceCareerGuide } from '@/components/utils/api/dataScienceCareerGuide';
 import Markdown from '@/components/components/Markdown';
 
@@ -35,11 +35,28 @@ const DataScienceCareerGuide = () => {
           <Loader2 className="h-10 w-10 animate-spin" />
         </div>
       ) : (<main className="flex-grow">
-        <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">{dataScienceCareerGuide?.title}</h1>
+
+
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+          <div className="container text-center">
+            <div className="flex items-center justify-center mb-6">
+              <div className="bg-white/10 rounded-full p-3">
+                <BookUp className="h-8 w-8" />
+              </div>
+            </div>
+            <h1 className="text-4xl font-bold text-center mb-4">
+              {dataScienceCareerGuide?.title}
+            </h1>
+            <p className="text-lg text-center max-w-2xl mx-auto text-slate-300">
+              This guide covers everything you need to know to build a successful data science career. This guide is your ultimate resource for navigating the data science landscape with clarity and confidence.
+            </p>
+            {/* <Button size="lg" className="bg-primary-600 hover:bg-primary-700">
+              Start Interview
+            </Button> */}
           </div>
-        </div>
+        </section>
+
+
         <div className="container mx-auto px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             <div className="lg:col-span-2 order-2 lg:order-1">
@@ -113,7 +130,7 @@ const DataScienceCareerGuide = () => {
                   </div> */}
                 </div>
 
-                <div className="bg-white border rounded-xl p-6">
+                {/* <div className="bg-white border rounded-xl p-6">
                   <div className="flex items-center mb-6">
                     <img
                       src={dataScienceCareerGuide?.author?.avatar}
@@ -129,20 +146,21 @@ const DataScienceCareerGuide = () => {
                   <p className="text-gray-600 text-sm">
                     {dataScienceCareerGuide?.author?.description}
                   </p>
-                </div>
+                </div> */}
+
               </div>
             </div>
           </div>
 
-          <div className="bg-primary-50 rounded-xl p-8 mb-16">
+          <div className="bg-primary-50 rounded-xl p-8 mb-8">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-semibold mb-4">Ready to Start Your Data Science Journey?</h2>
               <p className="text-gray-600 mb-6">
-                Our Data Science Bootcamp provides hands-on training, personalized mentorship, and career support to help you land your dream job in data science.
+                Gain hands-on experience, 1:1 mentorship, and dedicated placement support — everything you need to become job-ready in data science.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild>
-                  <a href="/courses">Explore Bootcamp</a>
+                  <a href="/courses">Explore Courses</a>
                 </Button>
                 <Button variant="outline" asChild>
                   <a href="/contact">Talk to an Advisor</a>
@@ -158,112 +176,6 @@ const DataScienceCareerGuide = () => {
   );
 };
 
-// Data for the guide contents section
-const guideContents = [
-  {
-    title: "Role Profiles",
-    description: "Detailed breakdown of various data science roles and responsibilities"
-  },
-  {
-    title: "Skill Development",
-    description: "Prioritized list of technical and soft skills to develop"
-  },
-  {
-    title: "Learning Roadmap",
-    description: "Step-by-step learning path from beginner to advanced"
-  },
-  {
-    title: "Portfolio Building",
-    description: "Guide to creating impactful data science projects"
-  },
-  {
-    title: "Resume Templates",
-    description: "Industry-specific resume formats and examples"
-  },
-  {
-    title: "Interview Preparation",
-    description: "Common questions and strategies for technical interviews"
-  },
-  {
-    title: "Salary Insights",
-    description: "Compensation benchmarks by role, experience, and location"
-  },
-  {
-    title: "Growth Strategies",
-    description: "Long-term career development and advancement tactics"
-  }
-];
 
-// Data for the table of contents accordion
-const tableOfContents = [
-  {
-    title: "Chapter 1: Introduction to Data Science Careers",
-    topics: [
-      "The evolving landscape of data science",
-      "Different roles within the data ecosystem",
-      "Core skills and competencies",
-      "Industry trends and future outlook"
-    ]
-  },
-  {
-    title: "Chapter 2: Building Your Foundation",
-    topics: [
-      "Essential mathematics and statistics",
-      "Programming languages for data science",
-      "Data manipulation and visualization",
-      "Machine learning fundamentals",
-      "Big data technologies"
-    ]
-  },
-  {
-    title: "Chapter 3: Educational Pathways",
-    topics: [
-      "Degree programs vs. bootcamps vs. self-learning",
-      "Recommended courses and resources",
-      "Certifications worth pursuing",
-      "Building a personalized learning plan"
-    ]
-  },
-  {
-    title: "Chapter 4: Creating a Standout Portfolio",
-    topics: [
-      "Selecting meaningful project topics",
-      "Data acquisition and cleaning strategies",
-      "Showcasing analytical processes",
-      "Presenting results effectively",
-      "GitHub best practices for data scientists"
-    ]
-  },
-  {
-    title: "Chapter 5: Job Search Strategies",
-    topics: [
-      "Crafting a data science resume",
-      "Building an online presence",
-      "Networking in the data science community",
-      "Working with recruiters",
-      "Evaluating job opportunities"
-    ]
-  },
-  {
-    title: "Chapter 6: Mastering the Interview Process",
-    topics: [
-      "Types of data science interviews",
-      "Technical challenge preparation",
-      "Answering behavioral questions",
-      "Case study approaches",
-      "Post-interview follow-up strategies"
-    ]
-  },
-  {
-    title: "Chapter 7: Career Growth and Specialization",
-    topics: [
-      "Choosing a specialization path",
-      "Advancing to senior and leadership roles",
-      "Transitioning between industries",
-      "Staying updated with emerging technologies",
-      "Building your personal brand"
-    ]
-  }
-];
 
 export default DataScienceCareerGuide;
