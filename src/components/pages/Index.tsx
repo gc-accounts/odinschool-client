@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react';
 import HeroSection from '@/components/components/HeroSection';
 import FeaturedCourses from '@/components/components/FeaturedCourses';
@@ -66,13 +67,13 @@ const mentorsData = [
     ]
   },
 ];
+
+
 const Index = () => {
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
 
-    // Set page title
-    document.title = "CodeMaster - Learn to Code with Expert-Led Online Courses";
   }, []);
 
   return (
@@ -95,7 +96,7 @@ const Index = () => {
               Ready to <span className="text-primary-600">Get Started?</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Request a callback from our team and start your coding journey today
+              Request a callback from our team and begin your upskilling journey today.
             </p>
           </div>
           <CallbackForm />

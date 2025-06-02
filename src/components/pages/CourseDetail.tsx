@@ -54,6 +54,10 @@ import { useRouter } from 'next/navigation';
 
 import { useProgram } from '@/context/ProgramContext';
 
+import { dsFaqsData } from '@/components/data/dsFaqsData';
+import { genAiFaqsData } from '@/components/data/genAiFaqsData';
+import { genAiiitgFaqsData } from '@/components/data/genAiiitgFaqsData';
+import { dsEliteFaqsData } from '@/components/data/dsEliteFaqsData';
 const formFields: FieldConfig[] = [
 
   {
@@ -161,448 +165,468 @@ interface CourseDetailProps {
   courseId: string;
   initialCourse?: Course;
 }
+const getFaqData = (slug: string) => {
+  switch (slug) {
+    case 'data-science-course':
+      return dsFaqsData;
+    case 'generative-ai-bootcamp':
+      return genAiFaqsData;
+    case 'generative-ai-course-iitg':
+      return genAiiitgFaqsData;
+    case 'data-science-elite-course':
+      return dsEliteFaqsData;
 
-const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
-  const [formOpen, setFormOpen] = useState(false);
-  const [course, setCourse] = useState<Course | null>(initialCourse || null);
-  const [loading, setLoading] = useState(!initialCourse);
-  const { id } = courseId ? {
-    id: courseId
-  } : useParams<{ id: string }>();
-  const { toast } = useToast();
-  const location = usePathname();
-  const currentPath = location;
-  const router = useRouter()
-  const { setProgram } = useProgram();
-
-  useEffect(() => {
-    const fetchCourse = async () => {
-      if (!id || initialCourse) return; // Skip fetching if we have initialCourse
-      setLoading(true);
-      try {
-        const courseData = await getCourse("", id);
-        if (courseData && courseData[0]) {
-          setCourse(courseData[0]);
-          // Set the program when course data is fetched
-          setProgram(courseData[0].slug || '');
-        }
-      } catch (error) {
-        console.error('Error fetching course:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCourse();
-
-    // Set program from initial course if available
-    if (initialCourse?.slug) {
-      console.log('initialCourse', initialCourse);
-      setProgram(initialCourse.slug);
-    }
-
-    return () => {
-      setProgram('');
-    };
-  }, [id, initialCourse, setProgram]);
-
-  if (loading || !course) {
-    return (
-      <div>
-        <Navbar />
-        <div className="text-center py-16 grid place-items-center">
-          <Loader2 className="h-10 w-10 animate-spin" />
-        </div>
-        <Footer />
-      </div>
-    );
+    default:
+      return [];
   }
+};
 
-  // After the guard clause, TypeScript knows course is not null
-  const courseHighlightData = getDataByPage(courseHighlights, currentPath) as CourseHighlight | undefined;
-  const toolsData = getDataByPage(courseToolsData, currentPath);
-  const total_enrolled = course.enrolled_students?.total_enrolled || 0;
-  const total_lessons = course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0) || 0;
-  const rating = course.rating || 0;
-  const total_rated = course.total_rated || 0;
 
-  const sectionConfig: {
-    [key: string]: (() => JSX.Element)[];
-  } = {
-    "1": [
-      () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
-      () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      // () => <CareerServices slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
-      () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      // () => <CertificationSection />,
-      () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      // () => <CareerServices2 />,
-      // () => <CertificationSection1 />,
-      () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
-      // () => <WhyLearnAI />,
-      () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      () => <CareerServices1
-        sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
 
-      />,
-      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+const CourseDetail = ({ courseId }: { courseId: string }) => {
 
-      // () => <CollegeSpotlight />,
-    ],
-    "2": [
-      () => <CertificationSection />,
-      () => <Testimonials />,
-      () => <InstructorProfile />,
-      () => <FAQsection />,
-    ],
-    "3": [
-      () => <ToolsSection />,
-      () => <OrganizationLogos />,
-      () => <OrganizationLogos />,
-      () => <CareerServices2 />,
-      () => <CertificationSection1 />,
-      () => <InstructorProfile />,
-      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+  const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
+    const [formOpen, setFormOpen] = useState(false);
+    const [course, setCourse] = useState<Course | null>(initialCourse || null);
+    const [loading, setLoading] = useState(!initialCourse);
+    const { id } = courseId ? {
+      id: courseId
+    } : useParams<{ id: string }>();
+    const { toast } = useToast();
+    const location = usePathname();
+    const currentPath = location;
+    const router = useRouter()
+    const { setProgram } = useProgram();
 
-    ],
-    "4": [
-      () => <WhyLearnAI />,
-      () => <WhoCanApply />,
-      () => <Testimonials />,
-      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
-      () => <CollegeSpotlight />,
-      () => <InstructorProfile />,
-      () => <FAQsection />,
-    ],
-    "5": [
-      () => <StatsSection />,
-      () => <ToolsSection />,
-      () => <JobsSection />,
-      () => <ExtrasSection2 />,
-      () => <OrganizationLogos />,
-      () => <InstructorProfile />,
-      () => <FAQsection />,
-    ],
-  };
+    useEffect(() => {
+      const fetchCourse = async () => {
+        if (!id || initialCourse) return; // Skip fetching if we have initialCourse
+        setLoading(true);
+        try {
+          const courseData = await getCourse("", id);
+          if (courseData && courseData[0]) {
+            setCourse(courseData[0]);
+            // Set the program when course data is fetched
+            setProgram(courseData[0].slug || '');
+          }
+        } catch (error) {
+          console.error('Error fetching course:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchCourse();
 
-  const sectionsToRender = sectionConfig["1"];
+      // Set program from initial course if available
+      if (initialCourse?.slug) {
+        console.log('initialCourse', initialCourse);
+        setProgram(initialCourse.slug);
+      }
 
-  const courseProjects = [
-    {
-      title: "E-commerce Dashboard",
-      description: "Build a fully functional admin dashboard for an e-commerce platform.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Social Media App",
-      description: "Create a responsive social networking application with real-time features.",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A simple weather application consuming API data with beautiful visualizations.",
-      image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?crop=entropy&w=800",
-      free: true
+      return () => {
+        setProgram('');
+      };
+    }, [id, initialCourse, setProgram]);
+
+    if (loading || !course) {
+      return (
+        <div>
+          <Navbar />
+          <div className="text-center py-16 grid place-items-center">
+            <Loader2 className="h-10 w-10 animate-spin" />
+          </div>
+          <Footer />
+        </div>
+      );
     }
-  ];
-  console.log(course);
-  const curriculumData = [
-    {
-      title: "Introduction to Web Development",
-      lessons: "5 lessons",
-      duration: "2 hours",
-      subLessons: [
-        { title: "Overview of Web Development", duration: "20 min" },
-        { title: "Setting Up Your Development Environment", duration: "25 min" },
-        { title: "HTML Fundamentals", duration: "30 min" },
-        { title: "CSS Basics", duration: "25 min" },
-        { title: "Your First Web Page", duration: "20 min" }
-      ]
-    },
-    {
-      title: "JavaScript Essentials",
-      lessons: "6 lessons",
-      duration: "3 hours",
-      subLessons: [
-        { title: "JavaScript Syntax and Variables", duration: "30 min" },
-        { title: "Functions and Control Flow", duration: "35 min" },
-        { title: "Working with Arrays and Objects", duration: "30 min" },
-        { title: "DOM Manipulation", duration: "40 min" },
-        { title: "Event Handling", duration: "25 min" },
-        { title: "Building Interactive Components", duration: "20 min" }
-      ]
-    },
-    {
-      title: "Frontend Frameworks",
-      lessons: "4 lessons",
-      duration: "2.5 hours",
-      subLessons: [
-        { title: "Introduction to React", duration: "40 min" },
-        { title: "Component-Based Architecture", duration: "35 min" },
-        { title: "State Management", duration: "45 min" },
-        { title: "Building a Complete Frontend App", duration: "30 min" }
-      ]
-    }
-  ];
 
-  console.log(total_enrolled, total_lessons, course);
+    // After the guard clause, TypeScript knows course is not null
+    const courseHighlightData = getDataByPage(courseHighlights, currentPath) as CourseHighlight | undefined;
+    const toolsData = getDataByPage(courseToolsData, currentPath);
+    const total_enrolled = course.enrolled_students?.total_enrolled || 0;
+    const total_lessons = course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0) || 0;
+    const rating = course.rating || 0;
+    const total_rated = course.total_rated || 0;
 
-  // Handle Form Submit
-  const handleFormSubmit = async (data: any) => {
-    console.log('data------------------------', data);
+    const sectionConfig: {
+      [key: string]: (() => JSX.Element)[];
+    } = {
+      "1": [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        // () => <CareerServices slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        // () => <CertificationSection />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        // () => <CareerServices2 />,
+        // () => <CertificationSection1 />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        // () => <WhyLearnAI />,
+        // () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
 
-    const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          data={getFaqData(course.slug)} />,
 
-    const hiddenFields = {
-      xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
-      xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
-      actionType: "Q29udGFjdHM=",
-      returnURL: "null",
+        // () => <CollegeSpotlight />,
+      ],
+      "2": [
+        () => <CertificationSection />,
+        () => <Testimonials />,
+        () => <InstructorProfile />,
+        () => <FAQsection />,
+      ],
+      "3": [
+        () => <ToolsSection />,
+        () => <OrganizationLogos />,
+        () => <OrganizationLogos />,
+        () => <CareerServices2 />,
+        () => <CertificationSection1 />,
+        () => <InstructorProfile />,
+        () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+
+      ],
+      "4": [
+        () => <WhyLearnAI />,
+        () => <WhoCanApply />,
+        () => <Testimonials />,
+        () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+        () => <CollegeSpotlight />,
+        () => <InstructorProfile />,
+        () => <FAQsection />,
+      ],
+      "5": [
+        () => <StatsSection />,
+        () => <ToolsSection />,
+        () => <JobsSection />,
+        () => <ExtrasSection2 />,
+        () => <OrganizationLogos />,
+        () => <InstructorProfile />,
+        () => <FAQsection />,
+      ],
     };
 
-    const formData = new FormData();
+    const sectionsToRender = sectionConfig["1"];
 
-    // Append hidden fields
-    Object.entries(hiddenFields).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+    const courseProjects = [
+      {
+        title: "E-commerce Dashboard",
+        description: "Build a fully functional admin dashboard for an e-commerce platform.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&w=800",
+        free: false
+      },
+      {
+        title: "Social Media App",
+        description: "Create a responsive social networking application with real-time features.",
+        image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&w=800",
+        free: false
+      },
+      {
+        title: "Weather Dashboard",
+        description: "A simple weather application consuming API data with beautiful visualizations.",
+        image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?crop=entropy&w=800",
+        free: true
+      }
+    ];
+    console.log(course);
+    const curriculumData = [
+      {
+        title: "Introduction to Web Development",
+        lessons: "5 lessons",
+        duration: "2 hours",
+        subLessons: [
+          { title: "Overview of Web Development", duration: "20 min" },
+          { title: "Setting Up Your Development Environment", duration: "25 min" },
+          { title: "HTML Fundamentals", duration: "30 min" },
+          { title: "CSS Basics", duration: "25 min" },
+          { title: "Your First Web Page", duration: "20 min" }
+        ]
+      },
+      {
+        title: "JavaScript Essentials",
+        lessons: "6 lessons",
+        duration: "3 hours",
+        subLessons: [
+          { title: "JavaScript Syntax and Variables", duration: "30 min" },
+          { title: "Functions and Control Flow", duration: "35 min" },
+          { title: "Working with Arrays and Objects", duration: "30 min" },
+          { title: "DOM Manipulation", duration: "40 min" },
+          { title: "Event Handling", duration: "25 min" },
+          { title: "Building Interactive Components", duration: "20 min" }
+        ]
+      },
+      {
+        title: "Frontend Frameworks",
+        lessons: "4 lessons",
+        duration: "2.5 hours",
+        subLessons: [
+          { title: "Introduction to React", duration: "40 min" },
+          { title: "Component-Based Architecture", duration: "35 min" },
+          { title: "State Management", duration: "45 min" },
+          { title: "Building a Complete Frontend App", duration: "30 min" }
+        ]
+      }
+    ];
 
-    // Append visible form data
-    formData.append("First Name", data.firstName || '');
-    formData.append("Last Name", data.lastName || '');
-    formData.append("Email", data.email || '');
-    formData.append("Phone", data.phone || '');
-    formData.append("Year of Graduation", data.year || '');
-    formData.append("Work Experience Level", data.experience || '');
-    formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
-    formData.append("ga_client_id", '');
-    formData.append("Business Unit", 'OdinSchool');
+    console.log(total_enrolled, total_lessons, course);
 
-    try {
-      const response = await axios.post(zohoEndpoint, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    // Handle Form Submit
+    const handleFormSubmit = async (data: any) => {
+      console.log('data------------------------', data);
+
+      const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
+
+      const hiddenFields = {
+        xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
+        xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
+        actionType: "Q29udGFjdHM=",
+        returnURL: "null",
+      };
+
+      const formData = new FormData();
+
+      // Append hidden fields
+      Object.entries(hiddenFields).forEach(([key, value]) => {
+        formData.append(key, value);
       });
-      // ✅ Store email and redirect
-      sessionStorage.setItem('submittedEmail', data.email);
+
+      // Append visible form data
+      formData.append("First Name", data.firstName || '');
+      formData.append("Last Name", data.lastName || '');
+      formData.append("Email", data.email || '');
+      formData.append("Phone", data.phone || '');
+      formData.append("Year of Graduation", data.year || '');
+      formData.append("Work Experience Level", data.experience || '');
+      formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
+      formData.append("ga_client_id", '');
+      formData.append("Business Unit", 'OdinSchool');
+
+      try {
+        const response = await axios.post(zohoEndpoint, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        // ✅ Store email and redirect
+        sessionStorage.setItem('submittedEmail', data.email);
 
 
-      toast({
-        title: "Form submitted successfully!",
-        description: "Thank you for your interest. Our team will contact you shortly.",
-      });
+        toast({
+          title: "Form submitted successfully!",
+          description: "Thank you for your interest. Our team will contact you shortly.",
+        });
 
-      // ✅ Redirect to thank-you page with specific course route 
-      const courseSlug = course.slug || '';
-      setTimeout(() => {
-        router.push(`/thank-you-2?title=${courseSlug}`);
-      }, 1000);
-
-
-    } catch (err) {
-      console.error('Error submitting form:', err);
-
-      toast({
-        title: "Form submission failed!",
-        description: "Something went wrong. Please try again later.",
-        variant: "destructive"
-      });
-    }
-
-    setFormOpen(false);
-  };
+        // ✅ Redirect to thank-you page with specific course route 
+        const courseSlug = course.slug || '';
+        setTimeout(() => {
+          router.push(`/thank-you-2?title=${courseSlug}`);
+        }, 1000);
 
 
+      } catch (err) {
+        console.error('Error submitting form:', err);
 
-  return (
-    <>
-      <MetaTags
-        title={`${course.title} | Your Site Name`}
-        description={course.description || course.fullDescription || `Learn ${course.title} with our comprehensive course. ${course.level} level course with ${total_lessons} lessons and ${total_enrolled}+ enrolled students.`}
-        image={course.image}
-        url={`/courses/${course.slug || course.id}`}
-        type="website"
-        author="Your Institution Name"
-        publishedAt={course.publishedAt}
-        keywords={[
-          course.title,
-          course.level,
-          ...(course.skills || []),
-          ...(course.tags || []),
-          'online course',
-          'certification',
-          'learning',
-          'education'
-        ]}
-      />
-      <div>
-        <Navbar />
-        <section className="bg-gradient-to-r from-primary-50 to-primary-100 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
-          <div className="container">
-            <div className="flex items-center ">
-              <Link href="/courses" className="text-primary-600 hover:underline flex items-center">
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                Back to Courses
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">{course.title}</h1>
-                <div className="flex items-center space-x-4 mt-4">
-                  <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
-                  {course.on_sale && <Badge className="bg-green-600">Sale</Badge>}
-                  {course.has_certificate && <Badge className="bg-blue-600">Certificate</Badge>}
-                </div>
-                <p className="mt-4 text-lg text-gray-600">{course.description}</p>
+        toast({
+          title: "Form submission failed!",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive"
+        });
+      }
+
+      setFormOpen(false);
+    };
+
+
+
+    return (
+      <>
+        <MetaTags
+          title={`${course.title} | Your Site Name`}
+          description={course.description || course.fullDescription || `Learn ${course.title} with our comprehensive course. ${course.level} level course with ${total_lessons} lessons and ${total_enrolled}+ enrolled students.`}
+          image={course.image}
+          url={`/courses/${course.slug || course.id}`}
+          type="website"
+          author="Your Institution Name"
+          publishedAt={course.publishedAt}
+          keywords={[
+            course.title,
+            course.level,
+            ...(course.skills || []),
+            ...(course.tags || []),
+            'online course',
+            'certification',
+            'learning',
+            'education'
+          ]}
+        />
+        <div>
+          <Navbar />
+          <section className="bg-gradient-to-r from-primary-50 to-primary-100 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+            <div className="container">
+              <div className="flex items-center ">
+                <Link href="/courses" className="text-primary-600 hover:underline flex items-center">
+                  <ArrowLeft className="mr-2 h-5 w-5" />
+                  Back to Courses
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <Button size="lg" onClick={() => setFormOpen(true)}>
-                      Talk to an Expert
-                    </Button>
+                  <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">{course.title}</h1>
+                  <div className="flex items-center space-x-4 mt-4">
+                    <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
+                    {course.on_sale && <Badge className="bg-green-600">Sale</Badge>}
+                    {course.has_certificate && <Badge className="bg-blue-600">Certificate</Badge>}
                   </div>
-                  <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                    <DynamicForm
-                      buttonText={'Request Callback'}
-                      fields={formFields}
-                      initialValues={{
-                        program: course.slug,
-                        ga_client_id: '',
-                        business_unit: 'Odinschool'
-                      }}
-                      onSubmit={(data) => {
-                        handleFormSubmit(data)
-                      }}
+                  <p className="mt-4 text-lg text-gray-600">{course.description}</p>
+                  <div>
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      <Button size="lg" onClick={() => setFormOpen(true)}>
+                        Talk to an Expert
+                      </Button>
+                    </div>
+                    <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+                      <DynamicForm
+                        buttonText={'Request Callback'}
+                        fields={formFields}
+                        initialValues={{
+                          program: course.slug,
+                          ga_client_id: '',
+                          business_unit: 'Odinschool'
+                        }}
+                        onSubmit={(data) => {
+                          handleFormSubmit(data)
+                        }}
 
-                    />
-                  </Modal>
+                      />
+                    </Modal>
 
 
-                </div>
+                  </div>
 
 
 
-                <div className=" pt-4">
-                  <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-10">
+                  <div className=" pt-4">
+                    <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-10">
 
 
-                    <div className="flex items-center mt-2 gap-3">
-                      {course.enrolled_avatars?.map((avatar: { url: string; name: string }, index: number) => (
-                        <img
-                          key={index}
-                          src={avatar.url}
-                          alt={avatar.name}
-                          className={`h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 ${index === 0 ? 'ml-0' : '-ml-6'}`}
-                        />
-                      ))}
-                      {/* <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79" alt="Logo 1" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1" />
+                      <div className="flex items-center mt-2 gap-3">
+                        {course.enrolled_avatars?.map((avatar: { url: string; name: string }, index: number) => (
+                          <img
+                            key={index}
+                            src={avatar.url}
+                            alt={avatar.name}
+                            className={`h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 ${index === 0 ? 'ml-0' : '-ml-6'}`}
+                          />
+                        ))}
+                        {/* <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79" alt="Logo 1" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1" />
                             {/* <img src="https://images.unsplash.com/photo-1529470839332-78ad660a6a82" alt="Logo 2" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" />
                             <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad" alt="Logo 3" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" />
                             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Logo 4" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" /> */}
-                      <span className=" text-sm">Join {total_enrolled}+ students</span>
-                    </div>
-
-
-                    <div>
-                      <div className="flex items-center mt-2 gap-2">
-                        <div className="flex text-yellow-400 space-x-1">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} fill={i < rating ? "currentColor" : "none"} size={16} />
-                          ))}
-                        </div>
-                        <span className="text-sm">{rating}/5</span>
-                        <a href="#ratings" className="text-sm underline hover:text-primary">
-                          ({total_rated} ratings)
-                        </a>
+                        <span className=" text-sm">Join {total_enrolled}+ students</span>
                       </div>
+
+
+                      <div>
+                        <div className="flex items-center mt-2 gap-2">
+                          <div className="flex text-yellow-400 space-x-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} fill={i < rating ? "currentColor" : "none"} size={16} />
+                            ))}
+                          </div>
+                          <span className="text-sm">{rating}/5</span>
+                          <a href="#ratings" className="text-sm underline hover:text-primary">
+                            ({total_rated} ratings)
+                          </a>
+                        </div>
+                      </div>
+
                     </div>
-
                   </div>
-                </div>
 
-              </div>
-              <div className="rounded-xl overflow-hidden ">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-auto object-cover"
-                />
+                </div>
+                <div className="rounded-xl overflow-hidden ">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className='px-[20px] py-[50px] md:px-[30px] md:py-[70px]'>
-          <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="mb-8 w-full justify-start py-2 px-2 overflow-x-auto h-max">
-                    <TabsTrigger value="overview">Overview</TabsTrigger>
-                    <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                    <TabsTrigger value="projects">Projects</TabsTrigger>
-                    <TabsTrigger value="certificate">Certificate</TabsTrigger>
-                  </TabsList>
+          <section className='px-[20px] py-[50px] md:px-[30px] md:py-[70px]'>
+            <div className="container">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2">
+                  <Tabs defaultValue="overview" className="w-full">
+                    <TabsList className="mb-8 w-full justify-start py-2 px-2 overflow-x-auto h-max">
+                      <TabsTrigger value="overview">Overview</TabsTrigger>
+                      <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
+                      <TabsTrigger value="projects">Projects</TabsTrigger>
+                      <TabsTrigger value="certificate">Certificate</TabsTrigger>
+                    </TabsList>
 
-                  <TabsContent value="overview" className='px-2'>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                      <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-bold mb-6">About This Course</h2>
-                        <div className="prose max-w-none">
-                          <p>{course.fullDescription || course.description}</p>
+                    <TabsContent value="overview" className='px-2'>
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div className="lg:col-span-2">
+                          <h2 className="text-2xl font-bold mb-6">About This Course</h2>
+                          <div className="prose max-w-none">
+                            <p>{course.fullDescription || course.description}</p>
 
-                          {courseHighlightData?.highlight?.map((point, index) => (
-                            <li className="flex items-start" key={index}>
-                              <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                              <span>{point}</span>
-                            </li>
-                          ))}
+                            {courseHighlightData?.highlight?.map((point, index) => (
+                              <li className="flex items-start" key={index}>
+                                <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>{point}</span>
+                              </li>
+                            ))}
 
+                          </div>
                         </div>
+
                       </div>
+                    </TabsContent>
 
-                    </div>
-                  </TabsContent>
+                    <TabsContent value="curriculum" className='px-2'>
+                      <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
+                      <div className="space-y-4">
+                        <Accordion type="single" collapsible className="w-full">
+                          {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
+                            <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-2 rounded-lg mb-4">
+                              <AccordionTrigger className="hover:no-underline">
+                                <div className="flex items-start w-full">
+                                  <div className="text-left">
+                                    <h3 className="font-medium text-lg">{section.heading}</h3>
+                                    <p className="text-sm text-gray-500">{section.lessons} lessons</p>
 
-                  <TabsContent value="curriculum" className='px-2'>
-                    <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
-                    <div className="space-y-4">
-                      <Accordion type="single" collapsible className="w-full">
-                        {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
-                          <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-2 rounded-lg mb-4">
-                            <AccordionTrigger className="hover:no-underline">
-                              <div className="flex items-start w-full">
-                                <div className="text-left">
-                                  <h3 className="font-medium text-lg">{section.heading}</h3>
-                                  <p className="text-sm text-gray-500">{section.lessons} lessons</p>
-
-                                </div>
-                              </div>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="pl-4 space-y-3">
-                                {section.description && (
-                                  <div className="prose prose-sm" style={{
-
-                                  }}>
-                                    <Markdown markdown={section.description} />
                                   </div>
-                                )}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
+                                </div>
+                              </AccordionTrigger>
+                              <AccordionContent>
+                                <div className="pl-4 space-y-3">
+                                  {section.description && (
+                                    <div className="prose prose-sm" style={{
+
+                                    }}>
+                                      <Markdown markdown={section.description} />
+                                    </div>
+                                  )}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
 
 
-                      {/* Course technology images at the end of the accordion */}
-                      {/* <div className="mt-8 pt-6 border-t">
+                        {/* Course technology images at the end of the accordion */}
+                        {/* <div className="mt-8 pt-6 border-t">
                         <h3 className="text-lg font-semibold mb-4">Technologies You'll Master</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="bg-gray-50 p-4 rounded-lg">
@@ -634,108 +658,117 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                           </div>
                         </div>
                       </div> */}
+                      </div>
+                    </TabsContent>
+
+                    <TabsContent value="projects">
+                      <CourseProject />
+                    </TabsContent>
+
+                    <TabsContent value="certificate" className='px-2'>
+                      <CourseCertificate />
+                    </TabsContent>
+
+                  </Tabs>
+                </div>
+                <div className="lg:col-span-1">
+                  <div className="bg-white rounded-lg shadow-md p-6">
+                    <h3 className="text-lg font-bold mb-4">Reviews & Recognition</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          {/* <BarChart className="h-5 w-5 mr-2 text-gray-500" />
+                        <span>Lessons: </span> */}
+
+                          <img
+                            src="https://strapi.odinschool.com/uploads/Google_20100x40_7ed0d4c3dc.webp"
+                            alt="google" className='w-20' />
+                        </div>
+                        <span>{course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0)}</span>
+                        <div>
+                          <div className='flex items-center gap-2'>
+                            <span className='text-xs font-light'>4.6</span>
+                            <img src="https://strapi.odinschool.com/uploads/4_7_Rating_d1c77dfdf8.svg"
+                              alt="rating-star" className='w-12' />
+                            <span className='text-xs font-light'>1,484 Reviews</span>
+
+
+                          </div>
+                        </div>
+                        {/* <span>{course.curriculum.map((section) => section.lessons).reduce((a, b) => a + b, 0)}</span> */}
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className='font-semibold text-primary-500 text-base'>Bootcamp</span>
+
+                        <div className='flex gap-2 items-center'>
+                          <span className='text-xs font-light'>90.4</span>
+                          <Progress value={90.4} className="w-20 h-3" />
+                          <span className='text-xs font-light'>5,031 Reviews</span>
+                        </div>
+                      </div>
                     </div>
-                  </TabsContent>
 
-                  <TabsContent value="projects">
-                    <CourseProject />
-                  </TabsContent>
+                  </div>
 
-                  <TabsContent value="certificate" className='px-2'>
-                    <CourseCertificate />
-                  </TabsContent>
+                  <div className="bg-white rounded-lg shadow-md p-6 mt-8">
+                    <h3 className="text-xl font-bold mb-4">Register Now</h3>
+                    <div className="mb-4">
+                      <span className="text-2xl font-bold">₹{course.price}+ GST</span>
+                      {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
+                    </div>
 
-                </Tabs>
+                    <div className="flex flex-wrap gap-2 mt-2 mb-4">
+                      {course.skills?.map((skill, index) => (
+                        <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          {skill}
+                        </span>
+                      )) || course.tags?.map((tag, index) => (
+                        <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
+                    <Link href={`/course-checkout/${id}`}>
+                      <Button className="w-full">
+                        Enroll Now
+                      </Button>
+                    </Link>
+
+                    <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
+                    <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
+                  </div>
+                </div>
               </div>
-              <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-xl font-bold mb-4">Course Statistics</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <BarChart className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Lessons: </span>
-                      </div>
-                      <span>{course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0)}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <Award className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Rating</span>
-                      </div>
-                      <span>{course.rating}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <Users className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Students</span>
-                      </div>
-                      <span>{course?.enrolled_students?.total_enrolled}</span>
-                    </div>
-                  </div>
-                  <Progress value={75} className="mt-4" />
-                  <p className="text-sm text-gray-500 mt-2">75% completed</p>
-                </div>
 
-                <div className="bg-white rounded-lg shadow-md p-6 mt-8">
-                  <h3 className="text-xl font-bold mb-4">Register Now</h3>
-                  <div className="mb-4">
-                    <span className="text-2xl font-bold">₹{course.salePrice}+ GST</span>
-                    {course.sale && <span className="text-gray-500 line-through ml-2">${course.salePrice}</span>}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mt-2 mb-4">
-                    {course.skills?.map((skill, index) => (
-                      <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                        {skill}
-                      </span>
-                    )) || course.tags?.map((tag, index) => (
-                      <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
-                  <Link href={`/course-checkout/${id}`}>
-                    <Button className="w-full">
-                      Enroll Now
-                    </Button>
-                  </Link>
-
-                  <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
-                  <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
-                </div>
+              <div className='mt-8'>
+                <Button>Download Brochure</Button>
               </div>
             </div>
+          </section>
 
-            <div className='mt-8'>
-              <Button>Download Broucher</Button>
-            </div>
+          <div className="flex flex-col min-h-screen">
+            <main className="flex-grow">
+              <div className="w-full">
+                {sectionsToRender ? (
+                  sectionsToRender.map((Section, index) => (
+                    <div key={index}>
+                      <Section />
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-red-600">No sections configured for course ID: {id}</div>
+                )}
+              </div>
+            </main>
           </div>
-        </section>
-
-        <div className="flex flex-col min-h-screen">
-          <main className="flex-grow">
-            <div className="w-full">
-              {sectionsToRender ? (
-                sectionsToRender.map((Section, index) => (
-                  <div key={index}>
-                    <Section />
-                  </div>
-                ))
-              ) : (
-                <div className="text-red-600">No sections configured for course ID: {id}</div>
-              )}
-            </div>
-          </main>
+          <Footer />
         </div>
-        <Footer />
-      </div>
 
-    </>
+      </>
 
-  );
-};
+    );
+  };
 
-export default CourseDetail;
+  export default CourseDetail;

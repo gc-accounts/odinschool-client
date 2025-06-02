@@ -227,10 +227,7 @@ const MobileNav = () => {
               </AccordionItem>
             </Accordion>
 
-            <div className="flex flex-col gap-2 mt-4">
-              <Button variant="outline" onClick={closeSheet}>Sign In</Button>
-              <Button onClick={closeSheet}>Sign Up</Button>
-            </div>
+
           </div>
         </SheetContent>
       </Sheet>

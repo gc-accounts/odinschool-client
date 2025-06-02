@@ -29,7 +29,7 @@ export const CourseCertificateData = [
         sub_title: "Showcase your certificate as a symbol of your Data Science expertise.",
         path: '/data-science-elite-course',
         points: ['Official and Verified', 'Easily Sharable', 'Enhances Credibility'],
-        certificate_img: ['https://strapi.odinschool.com/uploads/Generative_20_AI_20_Bootcamp_1_9faa3d892a.webp']
+        certificate_img: ['https://strapi.odinschool.com/uploads/DS_Elite_Course_Certificate_7ae53e8cea.webp']
     },
 
 ]

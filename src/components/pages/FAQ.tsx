@@ -21,15 +21,25 @@ const FAQ = () => {
         "questions": [
             {
                 "question": "Who are the instructors for the Bootcamps?",
-                "answer": "All of our instructors are industry veterans with extensive core experience in their respective fields. Our instructors also come with a passion to teach and enjoy interacting with students."
+                "answer": "Our instructors include a diverse mix of experienced industry professionals, academic experts, startup founders, and domain mentors. They bring both real-world experience and teaching passion to help learners bridge the gap between theory and practical application. Most importantly, they are deeply invested in your career success."
             },
             {
-                "question": "What projects will I be working on during the Bootcamps?",
-                "answer": "You will work on multiple projects across the core domains of Data Science and Power BI. The projects are kept updated in line with industry trends; so expect variety. Please check the respective course pages for more details."
-            },
+  "question": "What projects will I be working on during the Bootcamps?",
+  "answer": `You'll work on multiple hands-on projects that mirror real-world industry challenges in domains like Data Science, Power BI, Machine Learning, Python, SQL, and more. These projects are regularly updated to reflect the latest trends and tools used by top companies.
+  <p class="font-semibold mt-4">Depending on your course, you may work on:</p>
+  <ul class="list-disc list-inside mt-2 space-y-1 mb-6">
+    <li>End-to-end data science workflows (data wrangling → modeling → deployment)</li>
+    <li>Sales forecasting and customer churn analysis</li>
+    <li>Power BI dashboards for business reporting</li>
+    <li>NLP-based sentiment analysis</li>
+    <li>Generative AI use cases like chatbot building or prompt engineering</li>
+  </ul>
+  <p>Each project is designed to build job-ready skills and strengthen your portfolio.</p>
+ 📌 For course-specific project lists, please visit the respective course page.`
+},
             {
                 "question": "What can I expect at the end of the Courses?",
-                "answer": "At the end of the Courses, you will be fully prepared to tackle real-world challenges in the respective domains and become an industry asset who is productive from day one. Using multiple projects, we will train you in the essential tools and technologies needed to get a job. We also offer placement assistance to help you bag a job. The Power BI Certification Course will help you ace your certification exams."
+                "answer": "At the end of the Courses, you will be fully prepared to tackle real-world challenges in the respective domains and become an industry asset who is productive from day one. Using multiple projects, we will train you in the essential tools and technologies needed to get a job. We also offer placement assistance to help you bag a job."
             },
             {
                 "question": "How are classes conducted?",
@@ -37,7 +47,7 @@ const FAQ = () => {
             },
             {
                 "question": "How does mentorship work?",
-                "answer": "As part of OdinSchool's mentorship program, practising industry professionals are brought into the bootcamps to interact with students and provide industry insights. Our mentors are very knowledgeable in their subjects and are passionate about helping students."
+                "answer": "At OdinSchool, you’ll be mentored by industry experts and successful alumni who guide you through projects, share career insights, and help you prepare for real-world roles. From live sessions to career advice — our mentorship is hands-on, relevant, and built to support your growth."
             },
             {
                 "question": "What if I get stuck? What kind of support is available?",
@@ -50,7 +60,14 @@ const FAQ = () => {
         "questions": [
             {
                 "question": "What executive program does OdinSchool offer?",
-                "answer": "OdinSchool, in collaboration with IIT Gandhinagar's E&ICT Academy, offers specialized 6-month courses in Applied Generative AI and DevOps & Cloud Computing."
+                "answer": `OdinSchool currently offers a specialized executive program in collaboration with E&ICT Academy, IIT Guwahati:
+                <ul class="list-disc list-inside mt-2 space-y-1 mb-6">
+    <li class="font-semibold">Certification Program in Applied Generative AI</li>
+  </ul>
+  This program is ideal for working professionals, entrepreneurs, recent graduates, and anyone looking to upskill in Gen AI.
+ You don’t need a technical background — just curiosity and commitment.<br/>
+The program covers practical tools, real-world use cases, and hands-on projects to help you apply Gen AI in your career or business.
+`
             },
             {
                 "question": "Do I get a certificate after completing these courses?",
@@ -111,7 +128,7 @@ const FAQ = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-white/10 rounded-full p-3">
@@ -119,13 +136,14 @@ const FAQ = () => {
               </div>
             </div>
             <h1 className="text-4xl font-bold text-center mb-4">Frequently Asked Questions</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
+            <p className="text-xl text-center max-w-2xl mx-auto text-slate-300">
               Find answers to common questions about our platform, courses, and services
             </p>
           </div>
-        </div>
+        </section>
         
-        <div className="container mx-auto px-4 py-12">
+        <section className='px-[20px] py-[50px] md:px-[30px] md:py-[70px]'>
+        <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {faqCategories.map((category, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6">
@@ -137,7 +155,7 @@ const FAQ = () => {
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-gray-600">
-                        {faq.answer}
+                        <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -161,6 +179,8 @@ const FAQ = () => {
             </div>
           </div>
         </div>
+        </section>
+
       </main>
       <Footer />
     </>

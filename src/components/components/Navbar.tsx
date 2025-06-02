@@ -14,7 +14,9 @@ const Navbar = () => {
           <MainNav />
         </div>
         <div className="flex items-center gap-2">
-          <Button className="bg-primary text-white hover:bg-primary/90">Log In</Button>
+          <Button className="bg-primary text-white hover:bg-primary/90">
+            <Link href={'https://go.odinschool.com/login'} target='_blank'>Log In</Link>
+          </Button>
         </div>
       </div>
     </header>
