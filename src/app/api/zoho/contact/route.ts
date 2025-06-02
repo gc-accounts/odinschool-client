@@ -3,46 +3,47 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const accessToken = formData.get('accessToken') as string;
+    const accessToken = formData.get('accessToken');
 
-    // Format data according to Zoho CRM API requirements
+    if (!accessToken) {
+      return NextResponse.json(
+        { error: 'Access token is required' },
+        { status: 400 }
+      );
+    }
+
     const contactData = {
       data: [{
         First_Name: formData.get('First Name'),
-        Last_Name: formData.get('Last Name'),
         Email: formData.get('Email'),
         Phone: formData.get('Phone'),
         Program: formData.get('Program'),
         Year_of_Graduation: formData.get('Year of Graduation'),
-        Coupon_Code: formData.get('Coupon Code') || '',
-        Ga_client_id: formData.get('Ga_client_id') || '',
-        Business_Unit: formData.get('Business Unit') || 'Odinschool'
+        Ga_client_id: formData.get('Ga_client_id'),
+        Business_Unit: formData.get('Business Unit'),
       }]
     };
 
-    const zohoEndpoint = "https://crm.zoho.in/crm/v2/Contacts";
-
-    const response = await fetch(zohoEndpoint, {
+    const response = await fetch('https://www.zohoapis.in/crm/v2/Contacts', {
       method: 'POST',
       headers: {
-        'Authorization': `Zoho-oauthtoken ${accessToken}`,
-        'Content-Type': 'application/json'
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(contactData)
+      body: JSON.stringify(contactData),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Zoho API Error:', errorData);
       throw new Error(errorData.message || 'Failed to create contact');
     }
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error: any) {
-    console.error('Error in Zoho Contact API:', error);
+  } catch (error) {
+    console.error('Error creating contact:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to create contact' },
+      { error: error instanceof Error ? error.message : 'Failed to create contact' },
       { status: 500 }
     );
   }

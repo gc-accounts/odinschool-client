@@ -1,15 +1,17 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import * as React from 'react';
-
-import { gtmScript } from "src/lib/gtm";
-
-
+import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
-
 import { siteConfig } from '@/constant/config';
 import Script from 'next/script';
+import { Toaster } from '@/components/components/ui/toaster';
+import WhatsAppChat from '@/components/components/WhatsAppChat';
+import { gtmScript } from '@/lib/gtm';
+import { ProgramProvider } from '@/context/ProgramContext';
+
+const inter = Inter({ subsets: ['latin'] });
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -59,12 +61,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
       </head>
-      <body>
-        {children}
+      <body className={inter.className}>
+        <ProgramProvider>
+          {children}
+        <WhatsAppChat />
+        </ProgramProvider>
+        <Toaster />
       </body>
     </html>
   );

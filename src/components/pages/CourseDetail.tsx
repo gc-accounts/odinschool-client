@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+'use client'
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
@@ -49,6 +50,9 @@ import { getDataByPage } from '@/components/utils/getDataByPage';
 import { courseToolsData } from '@/components/data/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
 import { useRouter } from 'next/navigation';
+
+import { useProgram } from '@/context/ProgramContext';
+
 const formFields: FieldConfig[] = [
 
   {
@@ -109,39 +113,116 @@ const formFields: FieldConfig[] = [
   { name: 'ga_client_id', type: 'hidden' },
 ];
 
+interface Course {
+  id: string;
+  documentId: string;
+  title: string;
+  description: string;
+  fullDescription?: string;
+  level: string;
+  on_sale: boolean;
+  has_certificate: boolean;
+  overview: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  url_slug: string;
+  image: string;
+  sale?: boolean;
+  salePrice?: number;
+  skills?: string[];
+  tags?: string[];
+  enrolled_avatars?: Array<{
+    url: string;
+    name: string;
+  }>;
+  enrolled_students?: {
+    total_enrolled: number;
+  };
+  rating?: number;
+  total_rated?: number;
+  curriculum?: Array<{
+    id: string;
+    heading: string;
+    lessons: number;
+    description?: string;
+  }>;
+  price?: number;
+  modules?: any[];
+}
 
+interface CourseHighlight {
+  highlight: string[];
+}
 
-const CourseDetail = ({ courseId }: { courseId: string }) => {
+interface CourseDetailProps {
+  courseId: string;
+  initialCourse?: Course;
+}
 
+const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const [formOpen, setFormOpen] = useState(false);
-
-  const [course, setCourse] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [course, setCourse] = useState<Course | null>(initialCourse || null);
+  const [loading, setLoading] = useState(!initialCourse);
   const { id } = courseId ? {
     id: courseId
   } : useParams<{ id: string }>();
   const { toast } = useToast();
-
   const location = usePathname();
-
   const currentPath = location;
-  const courseHighlightData = getDataByPage(courseHighlights, currentPath)
   const router = useRouter()
-
-  const toolsData = getDataByPage(courseToolsData, currentPath)
-
-
+  const { setProgram } = useProgram();
 
   useEffect(() => {
-    console.log('courseHighlightData---------------', courseHighlights);
-
     const fetchCourse = async () => {
-      const course = await getCourse("", id || '');
-      setCourse(course[0]);
-      setLoading(false);
-    }
+      if (!id || initialCourse) return; // Skip fetching if we have initialCourse
+      setLoading(true);
+      try {
+        const courseData = await getCourse("", id);
+        if (courseData && courseData[0]) {
+          setCourse(courseData[0]);
+          // Set the program when course data is fetched
+          setProgram(courseData[0].slug || '');
+        }
+      } catch (error) {
+        console.error('Error fetching course:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchCourse();
-  }, [id]);
+
+    // Set program from initial course if available
+    if (initialCourse?.slug) {
+      console.log('initialCourse', initialCourse);
+      setProgram(initialCourse.slug);
+    }
+
+    return () => {
+      setProgram('');
+    };
+  }, [id, initialCourse, setProgram]);
+
+  if (loading || !course) {
+    return (
+      <div>
+        <Navbar />
+        <div className="text-center py-16 grid place-items-center">
+          <Loader2 className="h-10 w-10 animate-spin" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // After the guard clause, TypeScript knows course is not null
+  const courseHighlightData = getDataByPage(courseHighlights, currentPath) as CourseHighlight | undefined;
+  const toolsData = getDataByPage(courseToolsData, currentPath);
+  const total_enrolled = course.enrolled_students?.total_enrolled || 0;
+  const total_lessons = course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0) || 0;
+  const rating = course.rating || 0;
+  const total_rated = course.total_rated || 0;
 
   const sectionConfig: {
     [key: string]: (() => JSX.Element)[];
@@ -207,18 +288,6 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
 
   const sectionsToRender = sectionConfig["1"];
 
-  if (!course && !loading) {
-    return (
-      <div>
-        <Navbar />
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-bold">Course not found</h1>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
   const courseProjects = [
     {
       title: "E-commerce Dashboard",
@@ -279,25 +348,7 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
     }
   ];
 
-
-  if (loading && !course) {
-    return (
-      <div>
-        <Navbar />
-        <div className="text-center py-16 grid place-items-center">
-          <Loader2 className="h-10 w-10 animate-spin" />
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
-
-  const total_enrolled = course?.enrolled_students?.total_enrolled;
-  const total_lessons = course?.curriculum?.map((section) => section.lessons).reduce((a, b) => a + b, 0);
-
   console.log(total_enrolled, total_lessons, course);
-
 
   // Handle Form Submit
   const handleFormSubmit = async (data: any) => {
@@ -384,10 +435,10 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                 <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">{course.title}</h1>
                 <div className="flex items-center space-x-4 mt-4">
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
-                  {course.sale && <Badge className="bg-green-600">Sale</Badge>}
-                  {course.certificate && <Badge className="bg-blue-600">Certificate</Badge>}
+                  {course.on_sale && <Badge className="bg-green-600">Sale</Badge>}
+                  {course.has_certificate && <Badge className="bg-blue-600">Certificate</Badge>}
                 </div>
-                <p className="mt-4 text-base text-gray-600">{course.description}</p>
+                <p className="mt-4 text-lg text-gray-600">{course.description}</p>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <Button size="lg" onClick={() => setFormOpen(true)}>
@@ -420,7 +471,7 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
 
 
                     <div className="flex items-center mt-2 gap-3">
-                      {course.enrolled_avatars?.map((avatar, index) => (
+                      {course.enrolled_avatars?.map((avatar: { url: string; name: string }, index: number) => (
                         <img
                           key={index}
                           src={avatar.url}
@@ -432,22 +483,20 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                             {/* <img src="https://images.unsplash.com/photo-1529470839332-78ad660a6a82" alt="Logo 2" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" />
                             <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad" alt="Logo 3" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" />
                             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Logo 4" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 -ml-6" /> */}
-                      <span className=" text-sm">Join 10K+ students</span>
+                      <span className=" text-sm">Join {total_enrolled}+ students</span>
                     </div>
 
 
                     <div>
                       <div className="flex items-center mt-2 gap-2">
                         <div className="flex text-yellow-400 space-x-1">
-                          <Star fill="currentColor" size={16} />
-                          <Star fill="currentColor" size={16} />
-                          <Star fill="currentColor" size={16} />
-                          <Star fill="currentColor" size={16} />
-                          <Star fill="currentColor" size={16} />
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} fill={i < rating ? "currentColor" : "none"} size={16} />
+                          ))}
                         </div>
-                        <span className="text-sm ">{course.rating}/5</span>
+                        <span className="text-sm">{rating}/5</span>
                         <a href="#ratings" className="text-sm underline hover:text-primary">
-                          ({course.total_rated} ratings)
+                          ({total_rated} ratings)
                         </a>
                       </div>
                     </div>
@@ -486,41 +535,14 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                         <div className="prose max-w-none">
                           <p>{course.fullDescription || course.description}</p>
 
-                          {courseHighlightData && <h3 className="text-xl font-semibold mt-8 mb-4">Course Highlight</h3>}
-                          <ul className="space-y-2">
-                            {/* {course.learningObjectives?.map((objective, index) => (
-                              <li key={index} className="flex items-start">
-                                <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                </svg>
-                                <span>{objective}</span>
-                              </li>
-                            )) || (
-                                <li className="flex items-start">
-                                  <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                  </svg>
-                                  <span>Master {course.title} concepts and techniques</span>
-                                </li>
-                              )} */}
-
-                            {
-                              courseHighlightData && courseHighlightData.highlight.map((point, index) => {
-
-                                return (
-                                  <li className="flex items-start" key={index}>
-                                    <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <span>{point && point}</span>
-                                  </li>
-                                )
-
-                              })
-                            }
-
-
-                          </ul>
+                          {courseHighlightData?.highlight?.map((point, index) => (
+                            <li className="flex items-start" key={index}>
+                              <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span>{point}</span>
+                            </li>
+                          ))}
 
                         </div>
                       </div>
@@ -532,7 +554,7 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                     <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
                     <div className="space-y-4">
                       <Accordion type="single" collapsible className="w-full">
-                        {(course.curriculum).map((section, index) => (
+                        {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
                           <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-2 rounded-lg mb-4">
                             <AccordionTrigger className="hover:no-underline">
                               <div className="flex items-start w-full">
@@ -614,7 +636,7 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                         <BarChart className="h-5 w-5 mr-2 text-gray-500" />
                         <span>Lessons: </span>
                       </div>
-                      <span>{course.curriculum.map((section) => section.lessons).reduce((a, b) => a + b, 0)}</span>
+                      <span>{course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0)}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
