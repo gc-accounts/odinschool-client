@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Search, Tag, Calendar, Clock, Loader2 } from 'lucide-react';
+import { Search, Tag, Calendar, Clock, BookOpenText, Loader2 } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
@@ -53,11 +53,16 @@ const BlogPage = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
-          <div className="container mx-auto px-4">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+          <div className="container text-center">
+            <div className="flex items-center justify-center mb-6">
+              <div className="bg-white/10 rounded-full p-3">
+                <BookOpenText className="h-8 w-8" />
+              </div>
+            </div>
             <h1 className="text-4xl font-bold text-center mb-4">Stay current with the latest insights on our Blog!</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-              From the latest trends to best practices, read everything about Data Science, Web Development, Digital Marketing, and Power BI here.
+            <p className="text-xl text-center max-w-2xl mx-auto mb-8 text-slate-300">
+              Explore insights on Data Science, Generative AI, career growth, and in-demand tech skills — all curated to help you stay ahead.
             </p>
             <div className="max-w-md mx-auto relative">
               <Input
@@ -70,7 +75,7 @@ const BlogPage = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="container mx-auto px-4 py-12">
 

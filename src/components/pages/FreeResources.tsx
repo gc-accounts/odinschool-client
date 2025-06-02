@@ -75,8 +75,8 @@ const FreeResources = () => {
               </div>
             </div>
             <h1 className="text-4xl font-bold text-center mb-4">Project Page</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-              Download free templates, code snippets, and learning materials to accelerate your development journey
+            <p className="text-xl text-center max-w-2xl mx-auto mb-8 text-slate-300">
+              Beginner to advanced level projects with detailed explanation, for practicing and strengthening your skills in Data Science and Generative AI.
             </p>
             <div className="max-w-md mx-auto relative">
               <Input
