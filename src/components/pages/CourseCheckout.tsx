@@ -286,62 +286,46 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      // Wait for Razorpay to be loaded
-      if (!window.Razorpay) {
-        console.log('Waiting for Razorpay to load...');
-        await new Promise((resolve) => {
-          const checkRazorpay = setInterval(() => {
-            if (window.Razorpay) {
-              clearInterval(checkRazorpay);
-              resolve(true);
-            }
-          }, 100);
+      const payableAmount = course?.price || 0;
 
-          // Timeout after 5 seconds
-          setTimeout(() => {
-            clearInterval(checkRazorpay);
-            throw new Error('Razorpay SDK failed to load');
-          }, 5000);
-        });
-      }
+      // Log the request we're about to make
+      console.log('Creating order with amount:', payableAmount);
 
-      // Create Razorpay order
-      const orderResponse = await fetch('/api/payment/razorpay', {
+      // Create order using our proxy endpoint
+      const orderResponse = await fetch('/api/payment/create-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          amount: course?.price || 0,
-          name: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email,
-          phone: formData.phone,
-          courseName: course?.title || ''
+          amount: Number(payableAmount), // Ensure it's a number
+          coupon: '' // Add coupon code if needed
         })
       });
 
       if (!orderResponse.ok) {
-        throw new Error('Failed to create payment order');
+        const errorData = await orderResponse.json();
+        console.error('Order creation failed:', errorData);
+        throw new Error(errorData.details || 'Failed to create payment order');
       }
 
-      const orderData = await orderResponse.json();
-      console.log('Order created:', orderData);
+      const { orderId } = await orderResponse.json();
+      console.log('Order created successfully:', orderId);
 
-      // Initialize Razorpay
+      // Initialize Razorpay with the order ID
       const options = {
         key: "rzp_live_gxJ95DeVUwmpdc",
-        amount: orderData.amount,
+        amount: Math.round(payableAmount * 100), // Convert to paise
         currency: "INR",
         name: `${course?.title} Seat Booking`,
         description: "OdinSchool Payment",
         image: "https://www.odinschool.com/hubfs/OdinSchool%20M22/icons/fevicon.svg",
-        order_id: orderData.id,
+        order_id: orderId,
         handler: async function (response: RazorpayResponse) {
-          console.log('Payment response:', response);
           try {
-            // Verify payment
-            const verifyResponse = await fetch('/api/payment/razorpay', {
-              method: 'PUT',
+            // Verify payment using our proxy endpoint
+            const verifyResponse = await fetch('/api/payment/verify', {
+              method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
               },
@@ -349,49 +333,58 @@ const CourseCheckout = () => {
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_signature: response.razorpay_signature,
-                amount: course?.price || 0
+                razorpay_amount: payableAmount
               })
             });
 
-            if (!verifyResponse.ok) {
-              throw new Error('Payment verification failed');
-            }
-
             const verifyData = await verifyResponse.json();
-            console.log('Payment verification:', verifyData);
 
             if (verifyData.response === 'Paid') {
+              // Submit success data using our proxy endpoint
+              await fetch('/api/payment/success', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  name: `${formData.firstName} ${formData.lastName}`,
+                  email: formData.email,
+                  phone: formData.phone,
+                  product_name: `${course?.title} Seat Booking`,
+                  response: verifyData.response
+                })
+              });
+
               // Track conversion
               const img = document.createElement('img');
-              img.src = `https://shareasale.com/sale.cfm?amount=${course?.price}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
+              img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
               document.body.appendChild(img);
 
-              // Submit payment status
+              // Submit payment status form
               const paymentStatusForm = document.createElement('form');
               paymentStatusForm.method = 'POST';
-              paymentStatusForm.action = '/api/payment/status';
+              paymentStatusForm.action = '/api/payment-status';
 
-              const statusFormData = new FormData();
-              statusFormData.append('email', formData.email);
-              statusFormData.append('payment_status', 'Paid');
-              statusFormData.append('payable_amount', String(course?.price || 0));
-              statusFormData.append('paid_event_name', course?.title || '');
-              statusFormData.append('effective_bootcamp_fee', String(course?.price || 0));
+              const paymentFormData = new FormData();
+              paymentFormData.append('email', formData.email);
+              paymentFormData.append('payment_status', 'Paid');
+              paymentFormData.append('payable_amount', payableAmount.toString());
+              paymentFormData.append('paid_event_name', `${course?.title} Seat Booking`);
+              paymentFormData.append('effective_bootcamp_fee', payableAmount.toString());
 
-              // Show success message
+              // Show success message and redirect
               toast({
                 title: "Payment Successful!",
                 description: "Thank you for your payment. Redirecting to confirmation page...",
               });
 
-              // Redirect to thank you page after a short delay
               setTimeout(() => {
                 window.location.href = '/thank-you';
               }, 2000);
             } else {
               toast({
                 title: "Payment Failed",
-                description: "There was an error processing your payment. Please try again.",
+                description: verifyData.response || "There was an error processing your payment. Please try again.",
                 variant: "destructive"
               });
             }
@@ -414,7 +407,7 @@ const CourseCheckout = () => {
         }
       };
 
-      console.log('Opening Razorpay with options:', options);
+      // Open Razorpay payment window
       const razorpay = new window.Razorpay(options);
       razorpay.open();
 
@@ -439,6 +432,9 @@ const CourseCheckout = () => {
   if (!course || loading) {
     return (
       <>
+        <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+        <Script src="https://www.dwin1.com/19038.js" strategy="beforeInteractive" />
         <Navbar />
         <div className="min-h-screen flex items-center justify-center">
           {loading ? (
@@ -463,6 +459,9 @@ const CourseCheckout = () => {
 
   return (
     <>
+      <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+      <Script src="https://www.dwin1.com/19038.js" strategy="beforeInteractive" />
       <Navbar />
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
