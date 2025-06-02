@@ -49,6 +49,10 @@ import { getDataByPage } from '@/components/utils/getDataByPage';
 import { courseToolsData } from '@/components/data/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
 import { useRouter } from 'next/navigation';
+import { dsFaqsData } from '@/components/data/dsFaqsData';
+import { genAiFaqsData } from '@/components/data/genAiFaqsData';
+import { genAiiitgFaqsData } from '@/components/data/genAiiitgFaqsData';
+import { dsEliteFaqsData } from '@/components/data/dsEliteFaqsData';
 const formFields: FieldConfig[] = [
 
   {
@@ -111,6 +115,25 @@ const formFields: FieldConfig[] = [
 
 
 
+const getFaqData = (slug: string) => {
+  switch (slug) {
+    case 'data-science-course':
+      return dsFaqsData;
+    case 'generative-ai-bootcamp':
+      return genAiFaqsData;
+    case 'generative-ai-course-iitg':
+      return genAiiitgFaqsData;
+    case 'data-science-elite-course':
+      return dsEliteFaqsData;
+
+    
+    default:
+      return [];
+  }
+};
+
+
+
 const CourseDetail = ({ courseId }: { courseId: string }) => {
 
   const [formOpen, setFormOpen] = useState(false);
@@ -165,7 +188,8 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
         slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
 
       />,
-      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} 
+      data={getFaqData(course.slug)} />,
 
       // () => <CollegeSpotlight />,
     ],

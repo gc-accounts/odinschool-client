@@ -5,9 +5,10 @@ import { dsFaqsData } from '@/components/data/dsFaqsData';
 
 
 interface FAQsectionProps{
- sectionClass?:String
+ sectionClass?:String;
+ data: { question: string; answer: string }[];
 }
-const FAQsection = ({sectionClass}:FAQsectionProps) => {
+const FAQsection = ({ sectionClass, data }: FAQsectionProps) => {
     return (
         <section className={`${sectionClass ? sectionClass : 'my-32'}`}>
             <div className="container">
@@ -20,7 +21,7 @@ const FAQsection = ({sectionClass}:FAQsectionProps) => {
                 </p>
             </div>
           <Accordion type="single" collapsible>
-            {dsFaqsData.map((faq, index) => (
+            {data.map((faq, index) => (
               <AccordionItem key={index} value={`faq-${index}`}>
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
