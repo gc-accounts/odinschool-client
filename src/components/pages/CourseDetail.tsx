@@ -126,7 +126,6 @@ const getFaqData = (slug: string) => {
     case 'data-science-elite-course':
       return dsEliteFaqsData;
 
-    
     default:
       return [];
   }
@@ -182,14 +181,14 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
       // () => <CertificationSection1 />,
       () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
       // () => <WhyLearnAI />,
-      () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+      // () => <WhoCanApply sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <CareerServices1
-        sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
         slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
 
       />,
-      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} 
-      data={getFaqData(course.slug)} />,
+      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        data={getFaqData(course.slug)} />,
 
       // () => <CollegeSpotlight />,
     ],
@@ -631,32 +630,40 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
               </div>
               <div className="lg:col-span-1">
                 <div className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-xl font-bold mb-4">Course Statistics</h3>
+                  <h3 className="text-lg font-bold mb-4">Reviews & Recognition</h3>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <BarChart className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Lessons: </span>
+                        {/* <BarChart className="h-5 w-5 mr-2 text-gray-500" />
+                        <span>Lessons: </span> */}
+
+                        <img
+                          src="https://strapi.odinschool.com/uploads/Google_20100x40_7ed0d4c3dc.webp"
+                          alt="google" className='w-20' />
                       </div>
-                      <span>{course.curriculum.map((section) => section.lessons).reduce((a, b) => a + b, 0)}</span>
+                      <div>
+                        <div className='flex items-center gap-2'>
+                          <span className='text-xs font-light'>4.6</span>
+                          <img src="https://strapi.odinschool.com/uploads/4_7_Rating_d1c77dfdf8.svg"
+                            alt="rating-star" className='w-12' />
+                          <span className='text-xs font-light'>1,484 Reviews</span>
+
+
+                        </div>
+                      </div>
+                      {/* <span>{course.curriculum.map((section) => section.lessons).reduce((a, b) => a + b, 0)}</span> */}
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <Award className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Rating</span>
+                      <span className='font-semibold text-primary-500 text-base'>Bootcamp</span>
+
+                      <div className='flex gap-2 items-center'>
+                        <span className='text-xs font-light'>90.4</span>
+                        <Progress value={90.4} className="w-20 h-3" />
+                        <span className='text-xs font-light'>5,031 Reviews</span>
                       </div>
-                      <span>{course.rating}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <Users className="h-5 w-5 mr-2 text-gray-500" />
-                        <span>Students</span>
-                      </div>
-                      <span>{course?.enrolled_students?.total_enrolled}</span>
                     </div>
                   </div>
-                  <Progress value={75} className="mt-4" />
-                  <p className="text-sm text-gray-500 mt-2">75% completed</p>
+
                 </div>
 
                 <div className="bg-white rounded-lg shadow-md p-6 mt-8">

@@ -39,87 +39,88 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Land Your <span className="text-blue-600">Dream Job</span>
+            Land Your <span className="text-blue-600">Data Scientist and More Jobs!</span>
           </h2>
           <p className="text-md text-gray-600">
-            Our graduates get hired at top companies worldwide. Here are some of the positions you could qualify for:
+            The continuous need for skilled professionals shows no signs of slowing down in the Data Science field.
+            Upskill yourself to grab the best jobs! Multiple Job Drives Every Month!
+
           </p>
         </div>
 
-<div className="relative px-6">
-        {/* Arrows */}
-        <button
-          onClick={scrollPrev}
-          className="absolute z-10 top-1/2 left-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={scrollNext}
-          className="absolute z-10 top-1/2 right-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+        <div className="relative px-6">
+          {/* Arrows */}
+          <button
+            onClick={scrollPrev}
+            className="absolute z-10 top-1/2 left-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute z-10 top-1/2 right-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-        {/* Carousel */}
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {dsJobsDrives.map((item) => (
-              <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] px-2">
-                <Card className="border border-gray-200 hover:shadow-lg transition-all h-full">
-                  <CardContent className="p-6">
-                    <div className="mb-4">
-                      <div className="relative mb-6 flex items-center">
-                        <img
-                          src={item.jobCompanyLogo}
-                          alt={item.jobDesignation}
-                          className="w-30 h-14 object-contain rounded-md shadow-sm border"
-                        />
+          {/* Carousel */}
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {dsJobsDrives.map((item) => (
+                <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] px-2">
+                  <Card className="border border-gray-200 hover:shadow-lg transition-all h-full">
+                    <CardContent className="p-6">
+                      <div className="mb-4">
+                        <div className="relative mb-6 flex items-center">
+                          <img
+                            src={item.jobCompanyLogo}
+                            alt={item.jobDesignation}
+                            className="w-30 h-14 object-contain rounded-md shadow-sm border"
+                          />
+                        </div>
+                        <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
                       </div>
-                      <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
-                    </div>
 
-                    <div className="mb-4 space-y-2 text-sm text-gray-600">
-                      <div className="flex items-center">
-                        <MapPin size={16} className="mr-2" />
-                        {item.jobLocation}
+                      <div className="mb-4 space-y-2 text-sm text-gray-600">
+                        <div className="flex items-center">
+                          <MapPin size={16} className="mr-2" />
+                          {item.jobLocation}
+                        </div>
+                        <div className="flex items-center">
+                          <Building size={16} className="mr-2" />
+                          Full-time
+                        </div>
+                        <div className="flex items-center">
+                          <BriefcaseBusiness size={16} className="mr-2" />
+                          {item.jobExp}
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <Building size={16} className="mr-2" />
-                        Full-time
-                      </div>
-                      <div className="flex items-center">
-                        <BriefcaseBusiness size={16} className="mr-2" />
-                        {item.jobExp}
-                      </div>
-                    </div>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {item.jobSkills.map((skill: string, idx: number) => (
-                        <Badge key={idx} variant="outline" className="bg-primary-50">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {item.jobSkills.map((skill: string, idx: number) => (
+                          <Badge key={idx} variant="outline" className="bg-primary-50">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center mt-6 gap-2">
+            {dots.map((index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${index === selectedIndex ? 'bg-blue-600 w-[28px] shadow' : 'bg-gray-300'
+                  }`}
+              />
             ))}
           </div>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center mt-6 gap-2">
-          {dots.map((index) => (
-            <button
-              key={index}
-              onClick={() => scrollTo(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                index === selectedIndex ? 'bg-blue-600 w-[28px] shadow' : 'bg-gray-300'
-              }`}
-            />
-          ))}
-        </div>
         </div>
 
       </div>

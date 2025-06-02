@@ -20,71 +20,71 @@ interface ComparisonFeature {
   highlight?: boolean;
 }
 
-interface PlatformComparison{
-   sectionClass?:String
+interface PlatformComparison {
+  sectionClass?: String
 }
-const PlatformComparison = ({sectionClass}:PlatformComparison) => {
+const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+
   const features: ComparisonFeature[] = [
-    { 
-      name: 'Live Online Classes', 
+    {
+      name: 'Live Online Classes',
       odinschool: true,
-      odinschoolInfo: 'Live online classes led by instructors', 
+      odinschoolInfo: 'Live online classes led by instructors',
       others: false,
-      othersInfo:'',
+      othersInfo: '',
       highlight: true
     },
-    { 
-      name: 'Course Fee', 
-      odinschool: true, 
+    {
+      name: 'Course Fee',
+      odinschool: true,
       odinschoolInfo: 'Very high value for money ',
       others: false,
-      othersInfo:'Expensive',
+      othersInfo: 'Expensive',
     },
-    { 
-      name: 'Curriculum', 
-      odinschool: true, 
+    {
+      name: 'Curriculum',
+      odinschool: true,
       odinschoolInfo: ' Updated every month as per industry requirements ',
       others: true,
-      othersInfo:'Not up-to-date',
+      othersInfo: 'Not up-to-date',
     },
-    { 
-      name: 'Projects', 
-      odinschool: true, 
+    {
+      name: 'Projects',
+      odinschool: true,
       odinschoolInfo: 'Industry-aligned projects with project presentation guidance',
       others: false,
-      othersInfo:'Not industry-aligned ',
+      othersInfo: 'Not industry-aligned ',
       highlight: true,
     },
-    { 
-      name: 'Mock Interviews', 
-      odinschool: true, 
+    {
+      name: 'Mock Interviews',
+      odinschool: true,
       odinschoolInfo: 'With a dedicated team of experts',
       others: false,
-      othersInfo:'',
+      othersInfo: '',
     },
-    { 
-      name: 'Career Services', 
-      odinschool: true, 
+    {
+      name: 'Career Services',
+      odinschool: true,
       odinschoolInfo: 'Extensive services, including resume-building and behavioral skills workshops',
       others: false,
-      othersInfo:'',
+      othersInfo: '',
     },
-    { 
-      name: 'Support', 
-      odinschool: true, 
+    {
+      name: 'Support',
+      odinschool: true,
       odinschoolInfo: 'A dedicated support team',
       others: false,
-      othersInfo:'',
+      othersInfo: '',
       highlight: true
     },
-    { 
-      name: 'Salary Negotiation ', 
-      odinschool: true, 
+    {
+      name: 'Salary Negotiation ',
+      odinschool: true,
       odinschoolInfo: 'For higher salaries',
       others: false,
-      othersInfo:'',
+      othersInfo: '',
     }
   ];
 
@@ -112,9 +112,10 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
             Why OdinSchool is your gateway to a <span className="text-primary-600">successful Data Science career</span>
           </h2>
-          {/* <p className="text-md text-gray-600 max-w-2xl mx-auto">
-            See how odinschool compares to other coding platforms and why we're the preferred choice for serious developers.
-          </p> */}
+
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
+            OdinSchool helps learners upskill with confidence through live training, hands-on projects, and dedicated career support. Whether you're switching careers or leveling up, we’re with you every step of the way.
+          </p>
         </div>
 
         {/* Main comparison table - redesigned with better visuals */}
@@ -135,8 +136,8 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
               {/* Table body */}
               <div className="divide-y">
                 {features.map((feature, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className={cn(
                       "grid grid-cols-3",
                       feature.highlight ? "bg-primary-50" : "bg-white"
@@ -153,10 +154,10 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
                       </span>
                     </div>
                     <div className="col-span-1 p-4 flex items-center">
-                      {feature.odinschool ? 
+                      {feature.odinschool ?
                         <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary-100 flex items-center justify-center">
                           <Check className="h-5 w-5 text-primary-600" />
-                        </div> : 
+                        </div> :
                         <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
@@ -164,10 +165,10 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
                       <p className='ml-4'>{feature.odinschoolInfo}</p>
                     </div>
                     <div className="col-span-1 p-4 flex items-center">
-                      {feature.others ? 
+                      {feature.others ?
                         <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
                           <Check className="h-5 w-5 text-gray-600" />
-                        </div> : 
+                        </div> :
                         <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
