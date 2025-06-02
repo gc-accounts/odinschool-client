@@ -662,8 +662,8 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
                 <div className="bg-white rounded-lg shadow-md p-6 mt-8">
                   <h3 className="text-xl font-bold mb-4">Register Now</h3>
                   <div className="mb-4">
-                    <span className="text-2xl font-bold">₹{course.salePrice}+ GST</span>
-                    {course.sale && <span className="text-gray-500 line-through ml-2">${course.salePrice}</span>}
+                    <span className="text-2xl font-bold">₹{course.price}+ GST</span>
+                    {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
                   </div>
 
                   <div className="flex flex-wrap gap-2 mt-2 mb-4">
@@ -692,7 +692,7 @@ const CourseDetail = ({ courseId }: { courseId: string }) => {
             </div>
 
             <div className='mt-8'>
-              <Button>Download Broucher</Button>
+              <Button>Download Brochure</Button>
             </div>
           </div>
         </section>

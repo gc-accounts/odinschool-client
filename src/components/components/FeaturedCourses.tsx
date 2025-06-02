@@ -32,7 +32,7 @@ const FeaturedCourses = ({
           rating: course.rating || 4.5,
           students: course.total_enrolled || 0,
           image: course.image,
-          category: 'Technology', // Default value since not in API
+          // category: 'Technology', // Default value since not in API
           enrolled_avatars: [], // Default empty array since not in API
           total_enrolled: course.total_enrolled || 0,
           url_slug: course.url_slug // Add url_slug with fallback to documentId
