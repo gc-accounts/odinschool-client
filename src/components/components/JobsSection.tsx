@@ -1,125 +1,125 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/components/ui/card';
-import { Button } from '@/components/components/ui/button';
 import { Badge } from '@/components/components/ui/badge';
-import { Briefcase, MapPin, Building, DollarSign, Search } from 'lucide-react';
+import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
+import { dsJobsDrives } from '@/components/data/dsJobsDrives';
+import { Button } from '@/components/components/ui/button';
 
-interface jobsSectionProps{
- sectionClass?:String
+interface JobsSectionProps {
+  sectionClass?: string;
 }
-const JobsSection = ({sectionClass}:jobsSectionProps) => {
-  const jobs = [
-    {
-      id: 1,
-      title: 'Frontend Developer',
-      company: 'TechCorp',
-      location: 'Remote',
-      salary: '$80k - $120k',
-      skills: ['JavaScript', 'React', 'CSS'],
-      badgeText: 'New',
-      badgeColor: 'bg-green-100 text-green-800',
-      logo: 'T'
-    },
-    {
-      id: 2,
-      title: 'Full Stack Engineer',
-      company: 'StartupX',
-      location: 'New York, NY',
-      salary: '$90k - $140k',
-      skills: ['JavaScript', 'Node.js', 'MongoDB'],
-      badgeText: 'Hot',
-      badgeColor: 'bg-red-100 text-red-800',
-      logo: 'S'
-    },
-    {
-      id: 3,
-      title: 'Data Scientist',
-      company: 'Analytics Co',
-      location: 'Boston, MA',
-      salary: '$95k - $145k',
-      skills: ['Python', 'Machine Learning', 'Statistics'],
-      badgeText: 'Featured',
-      badgeColor: 'bg-blue-100 text-blue-800',
-      logo: 'A'
-    },
-    {
-      id: 4,
-      title: 'UX/UI Designer',
-      company: 'DesignHub',
-      location: 'San Francisco, CA',
-      salary: '$85k - $130k',
-      skills: ['Figma', 'User Research', 'Prototyping'],
-      logo: 'D'
-    }
-  ];
+
+const JobsSection = ({ sectionClass }: JobsSectionProps) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', containScroll: 'trimSnaps' });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on('select', onSelect);
+    onSelect();
+  }, [emblaApi, onSelect]);
+
+  const dots = useMemo(() => {
+    if (!emblaApi) return [];
+    return emblaApi.scrollSnapList().map((_, index) => index);
+  }, [emblaApi]);
 
   return (
-    <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'} relative`}>
+      <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
             Land Your <span className="text-blue-600">Dream Job</span>
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-md text-gray-600">
             Our graduates get hired at top companies worldwide. Here are some of the positions you could qualify for:
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {jobs.map((job) => (
-            <Card key={job.id} className="border border-gray-200 hover:shadow-lg transition-all">
-              <CardContent className="p-0">
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 text-blue-700 font-bold text-xl">
-                      {job.logo}
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-1 text-gray-900">{job.title}</h3>
-                      <p className="text-gray-600">{job.company}</p>
-                    </div>
-                  </div>
+<div className="relative px-6">
+        {/* Arrows */}
+        <button
+          onClick={scrollPrev}
+          className="absolute z-10 top-1/2 left-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="absolute z-10 top-1/2 right-0 -translate-y-1/2 bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
 
-                  {job.badgeText && (
-                    <div className="mb-3">
-                      <span className={`inline-block px-2 py-1 text-xs font-medium rounded ${job.badgeColor}`}>
-                        {job.badgeText}
-                      </span>
+        {/* Carousel */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {dsJobsDrives.map((item) => (
+              <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] px-2">
+                <Card className="border border-gray-200 hover:shadow-lg transition-all h-full">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <div className="relative mb-6 flex items-center">
+                        <img
+                          src={item.jobCompanyLogo}
+                          alt={item.jobDesignation}
+                          className="w-30 h-14 object-contain rounded-md shadow-sm border"
+                        />
+                      </div>
+                      <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
                     </div>
-                  )}
 
-                  <div className="mb-4 space-y-2 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <MapPin size={16} className="mr-2" />
-                      {job.location}
+                    <div className="mb-4 space-y-2 text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <MapPin size={16} className="mr-2" />
+                        {item.jobLocation}
+                      </div>
+                      <div className="flex items-center">
+                        <Building size={16} className="mr-2" />
+                        Full-time
+                      </div>
+                      <div className="flex items-center">
+                        <BriefcaseBusiness size={16} className="mr-2" />
+                        {item.jobExp}
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <Building size={16} className="mr-2" />
-                      Full-time
-                    </div>
-                    <div className="flex items-center">
-                      <DollarSign size={16} className="mr-2" />
-                      {job.salary}
-                    </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {job.skills.map((skill, idx) => (
-                      <Badge key={idx} variant="outline" className="bg-gray-50">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div className="border-t p-4">
-                  <Button variant="secondary" className="w-full">
-                    <Briefcase size={16} className="mr-2" />
-                    View Details
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {item.jobSkills.map((skill: string, idx: number) => (
+                        <Badge key={idx} variant="outline" className="bg-primary-50">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center mt-6 gap-2">
+          {dots.map((index) => (
+            <button
+              key={index}
+              onClick={() => scrollTo(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                index === selectedIndex ? 'bg-blue-600 w-[28px] shadow' : 'bg-gray-300'
+              }`}
+            />
           ))}
+        </div>
         </div>
 
       </div>
