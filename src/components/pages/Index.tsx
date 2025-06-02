@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react';
 import HeroSection from '@/components/components/HeroSection';
 import FeaturedCourses from '@/components/components/FeaturedCourses';
@@ -66,13 +67,13 @@ const mentorsData = [
     ]
   },
 ];
+
+
 const Index = () => {
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
 
-    // Set page title
-    document.title = "CodeMaster - Learn to Code with Expert-Led Online Courses";
   }, []);
 
   return (
