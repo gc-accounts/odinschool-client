@@ -13,8 +13,10 @@ import {
 
 interface ComparisonFeature {
   name: string;
-  codemaster: boolean;
+  odinschool: boolean;
+  odinschoolInfo: string,
   others: boolean;
+  othersInfo: string,
   highlight?: boolean;
 }
 
@@ -26,47 +28,63 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
   
   const features: ComparisonFeature[] = [
     { 
-      name: 'Expert-led live instruction', 
-      codemaster: true, 
+      name: 'Live Online Classes', 
+      odinschool: true,
+      odinschoolInfo: 'Live online classes led by instructors', 
       others: false,
+      othersInfo:'',
       highlight: true
     },
     { 
-      name: 'Personalized learning paths', 
-      codemaster: true, 
-      others: false
-    },
-    { 
-      name: 'Industry-recognized certificates', 
-      codemaster: true, 
-      others: true
-    },
-    { 
-      name: '24/7 mentor support', 
-      codemaster: true, 
+      name: 'Course Fee', 
+      odinschool: true, 
+      odinschoolInfo: 'Very high value for money ',
       others: false,
+      othersInfo:'Expensive',
+    },
+    { 
+      name: 'Curriculum', 
+      odinschool: true, 
+      odinschoolInfo: ' Updated every month as per industry requirements ',
+      others: true,
+      othersInfo:'Not up-to-date',
+    },
+    { 
+      name: 'Projects', 
+      odinschool: true, 
+      odinschoolInfo: 'Industry-aligned projects with project presentation guidance',
+      others: false,
+      othersInfo:'Not industry-aligned ',
+      highlight: true,
+    },
+    { 
+      name: 'Mock Interviews', 
+      odinschool: true, 
+      odinschoolInfo: 'With a dedicated team of experts',
+      others: false,
+      othersInfo:'',
+    },
+    { 
+      name: 'Career Services', 
+      odinschool: true, 
+      odinschoolInfo: 'Extensive services, including resume-building and behavioral skills workshops',
+      others: false,
+      othersInfo:'',
+    },
+    { 
+      name: 'Support', 
+      odinschool: true, 
+      odinschoolInfo: 'A dedicated support team',
+      others: false,
+      othersInfo:'',
       highlight: true
     },
     { 
-      name: 'Real-world project assessments', 
-      codemaster: true, 
-      others: false
-    },
-    { 
-      name: 'Job placement assistance', 
-      codemaster: true, 
-      others: false
-    },
-    { 
-      name: 'Unlimited project reviews', 
-      codemaster: true, 
+      name: 'Salary Negotiation ', 
+      odinschool: true, 
+      odinschoolInfo: 'For higher salaries',
       others: false,
-      highlight: true
-    },
-    { 
-      name: 'Corporate training options', 
-      codemaster: true, 
-      others: false
+      othersInfo:'',
     }
   ];
 
@@ -92,11 +110,11 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll opacity-0">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Why Choose <span className="text-primary-600">CodeMaster</span>
+            Why OdinSchool is your gateway to a <span className="text-primary-600">successful Data Science career</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            See how CodeMaster compares to other coding platforms and why we're the preferred choice for serious developers.
-          </p>
+          {/* <p className="text-md text-gray-600 max-w-2xl mx-auto">
+            See how odinschool compares to other coding platforms and why we're the preferred choice for serious developers.
+          </p> */}
         </div>
 
         {/* Main comparison table - redesigned with better visuals */}
@@ -105,11 +123,11 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
             <CardContent className="p-0">
               {/* Table header */}
               <div className="grid grid-cols-3 border-b">
-                <div className="col-span-1 p-4 bg-gray-50 font-medium">Features</div>
-                <div className="col-span-1 p-4 bg-primary-50 text-center font-bold text-primary-800">
-                  CodeMaster
+                <div className="col-span-1 p-4 bg-gray-50 font-bold">Features</div>
+                <div className="col-span-1 p-4 bg-primary-50 font-bold text-primary-800">
+                  OdinSchool
                 </div>
-                <div className="col-span-1 p-4 text-center font-medium text-gray-500">
+                <div className="col-span-1 p-4 font-medium text-gray-500">
                   Others
                 </div>
               </div>
@@ -126,7 +144,7 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
                   >
                     <div className="col-span-1 p-4 flex items-center">
                       <span>
-                        {feature.name}
+                        <span className='font-semibold'>{feature.name}</span>
                         {feature.highlight && (
                           <span className="ml-2 inline-block bg-primary-600 text-white text-xs px-2 py-0.5 rounded-full">
                             Key Feature
@@ -134,25 +152,27 @@ const PlatformComparison = ({sectionClass}:PlatformComparison) => {
                         )}
                       </span>
                     </div>
-                    <div className="col-span-1 p-4 flex justify-center items-center">
-                      {feature.codemaster ? 
-                        <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
+                    <div className="col-span-1 p-4 flex items-center">
+                      {feature.odinschool ? 
+                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary-100 flex items-center justify-center">
                           <Check className="h-5 w-5 text-primary-600" />
                         </div> : 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
                       }
+                      <p className='ml-4'>{feature.odinschoolInfo}</p>
                     </div>
-                    <div className="col-span-1 p-4 flex justify-center items-center">
+                    <div className="col-span-1 p-4 flex items-center">
                       {feature.others ? 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
                           <Check className="h-5 w-5 text-gray-600" />
                         </div> : 
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
                       }
+                      <p className='ml-4'>{feature.othersInfo}</p>
                     </div>
                   </div>
                 ))}

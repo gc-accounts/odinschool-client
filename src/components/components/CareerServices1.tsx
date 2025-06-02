@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Code, Brain, Rocket } from 'lucide-react';
+import { Network, UserRoundPen, Newspaper, Handshake, Podcast } from 'lucide-react';
 import { Button } from '@/components/components/ui/button';
 import RequestCallback from './custom-component/RequestCallback';
 
@@ -16,37 +16,37 @@ const CareerServices = ({ slug, sectionClass }: CareerServices1Props) => {
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
             <span className="text-primary-600">Career Services</span> in a nutshell
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
             Get ready for your dream job! Attend comprehensive industry readiness training with Career Services.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 justify-items-center">
           {[
             {
-              icon: <Code className="h-10 w-10 text-primary-600" />,
-              title: "Learn workplace skills",
-              description: "Your working style and behavior decide if you are a good cultural fit. Learn the right skills so you never feel out of place at work."
+              icon: <Network className="h-10 w-10 text-primary-600" />,
+              title: "Workplace Behavioral Skills Workshops ",
+              description: "Get ready to become a great cultural fit at your workplace. Learn workplace skills from experts."
             },
             {
-              icon: <Brain className="h-10 w-10 text-primary-600" />,
-              title: "Sell your skills, and sell them well",
-              description: "You are halfway there if you have a great resume and an optimized online presence. Work with our experts to build your professional profiles."
+              icon: <UserRoundPen className="h-10 w-10 text-primary-600" />,
+              title: "Professional Profile Building",
+              description: "Optimize your resume and LinkedIn profiles to maximize your chances of landing amazing opportunities."
             },
             {
-              icon: <Rocket className="h-10 w-10 text-primary-600" />,
-              title: "Attend mock interviewst",
+              icon: <Newspaper className="h-10 w-10 text-primary-600" />,
+              title: "Interview Preparation",
               description: "Get a grip on those pre-interview nerves. Test and practice your skills with mock interview sessions."
             },
             {
-              icon: <Rocket className="h-10 w-10 text-primary-600" />,
-              title: "Attend mock interviewst",
-              description: "Get a grip on those pre-interview nerves. Test and practice your skills with mock interview sessions."
+              icon: <Handshake className="h-10 w-10 text-primary-600" />,
+              title: "Holistic Placement Support",
+              description: "Get exclusive access to OdinSchool’s placement portal and placement support."
             },
             {
-              icon: <Rocket className="h-10 w-10 text-primary-600" />,
-              title: "Attend mock interviewst",
-              description: "Get a grip on those pre-interview nerves. Test and practice your skills with mock interview sessions."
+              icon: <Podcast className="h-10 w-10 text-primary-600" />,
+              title: "Industry Interaction and Discussions ",
+              description: "Engage in multiple interactions and case study discussions with industry professionals."
             }
 
 
