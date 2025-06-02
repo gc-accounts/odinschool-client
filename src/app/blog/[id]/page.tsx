@@ -1,7 +1,19 @@
-'use client';
-
+import { getBlog } from '@/components/utils/api/blog';
 import BlogDetail from '@/components/pages/BlogDetail';
+import { notFound } from 'next/navigation';
 
-export default function BlogDetailPage() {
-  return <BlogDetail />;
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function BlogDetailPage({ params }: PageProps) {
+  const post = await getBlog("", params.id);
+
+  if (!post) {
+    notFound();
+  }
+
+  return <BlogDetail post={post} />;
 } 

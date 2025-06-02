@@ -15,15 +15,15 @@ function modifyBlog(blog: any) {
             name: blog?.author,
         },
 
-        coverImage: blog?.image_url ? blog?.image_url : backendUrl +  blog?.image?.url,
+        coverImage: blog?.image_url ? blog?.image_url : backendUrl + blog?.image?.url,
         // readTime: 6,
         publishedAt: blog?.publishedAt,
-        tags: blog?.tags,
+        tags: blog?.tags?.split(','),
         head_html: blog?.head_html,
     }
 }
 
-export const getBlogs = async ({page = 1, search = ''}) => {
+export const getBlogs = async ({ page = 1, search = '' }) => {
 
     let filterObj: any = {}
     let paginationObj: any = {
@@ -62,7 +62,7 @@ export const getBlogs = async ({page = 1, search = ''}) => {
 
 export const getBlog = async (id: string, url_slug: string = "") => {
     let blogItem = null;
-    if(url_slug === ""){
+    if (url_slug === "") {
         const response = await axiosApi.post('', {
             query: `
                 query Blog($documentId: ID!) {
@@ -71,13 +71,13 @@ export const getBlog = async (id: string, url_slug: string = "") => {
                 }
             }
         `,
-        variables: {
-            documentId: id
-        }
-    });
+            variables: {
+                documentId: id
+            }
+        });
 
         blogItem = modifyBlog(response.data.data.blog);
-    }else{
+    } else {
         const response = await axiosApi.post('', {
             query: `
                 query Blogs($filters: BlogFiltersInput) {

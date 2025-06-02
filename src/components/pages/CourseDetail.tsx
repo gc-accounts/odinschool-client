@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
+import MetaTags from '@/components/components/MetaTags';
 import Markdown from '@/components/components/Markdown';
 import { Button } from '@/components/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
@@ -420,6 +421,25 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
   return (
     <>
+      <MetaTags
+        title={`${course.title} | Your Site Name`}
+        description={course.description || course.fullDescription || `Learn ${course.title} with our comprehensive course. ${course.level} level course with ${total_lessons} lessons and ${total_enrolled}+ enrolled students.`}
+        image={course.image}
+        url={`/courses/${course.slug || course.id}`}
+        type="website"
+        author="Your Institution Name"
+        publishedAt={course.publishedAt}
+        keywords={[
+          course.title,
+          course.level,
+          ...(course.skills || []),
+          ...(course.tags || []),
+          'online course',
+          'certification',
+          'learning',
+          'education'
+        ]}
+      />
       <div>
         <Navbar />
         <section className="bg-gradient-to-r from-primary-50 to-primary-100 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
