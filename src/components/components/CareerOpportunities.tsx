@@ -1,38 +1,58 @@
 import React from "react";
-import { Button } from "@/components/components/ui/button"; 
+import { Button } from "@/components/components/ui/button";
 import RequestCallback from "./custom-component/RequestCallback";
 const opportunities = [
   {
     title: "Data Scientist",
     description:
-      "Your working style and behavior decide if you are a good cultural fit. Learn the right skills so you never feel out of place at work.",
+      "Extract insights from structured and unstructured data using statistics, machine learning, and business domain knowledge to solve real-world problems.",
   },
   {
     title: "Machine Learning Engineer",
     description:
-      "You are halfway there if you have a great resume and an optimized online presence. Work with our experts to build your professional profiles.",
+      "Develop and deploy ML models in production environments. Focuses on algorithm optimization, feature engineering, and model performance tuning.",
   },
   {
     title: "AI Research Scientist",
     description:
-      "Get a grip on those pre-interview nerves. Test and practice your skills with mock interview sessions.",
+      "Drive innovation by exploring advanced AI techniques such as deep learning, NLP, and reinforcement learning, often in academic or R&D settings.",
   },
   {
     title: "Data Engineer",
     description:
-      "Get a grip on those pre-interview nerves. Test and practice your skills with mock interview sessions.",
+      "Design and maintain scalable data infrastructure and pipelines. Work closely with data scientists to ensure clean, accessible, and reliable data.",
+  },
+  {
+    title: "Business Analyst",
+    description:
+      "Use data to uncover trends, create dashboards, and support business decisions. Focuses on translating data into actionable business insights.",
+  },
+  {
+    title: "Data Analyst",
+    description:
+      "Collect, clean, and interpret data to answer specific questions. Often uses tools like Excel, SQL, and visualization platforms like Power BI.",
+  },
+  {
+    title: "BI Analyst (Power BI / Tableau)",
+    description:
+      "Specializes in data visualization and storytelling. Builds dashboards that help stakeholders monitor performance and make informed decisions.",
+  },
+  {
+    title: "Product/Data Consultant",
+    description:
+      "Advises companies on data strategy, analytics setup, and implementation. Combines business sense with technical skills to deliver impact.",
   },
 ];
 
-interface CareerOpportunitiesProps{
-slug:String,
-sectionClass?: String
+interface CareerOpportunitiesProps {
+  slug: String,
+  sectionClass?: String
 }
-const CareerOpportunities = ({slug, sectionClass}:CareerOpportunitiesProps) => {
+const CareerOpportunities = ({ slug, sectionClass }: CareerOpportunitiesProps) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-12 px-4 md:px-8'}`}>
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-        Possible Career Opportunities
+        Career Paths After This Course
       </h2>
 
       <div className=" container mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -47,7 +67,7 @@ const CareerOpportunities = ({slug, sectionClass}:CareerOpportunitiesProps) => {
         ))}
       </div>
 
-      <RequestCallback slug={slug}/>
+      <RequestCallback slug={slug} />
     </section>
   );
 };
