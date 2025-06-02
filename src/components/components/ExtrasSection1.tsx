@@ -63,11 +63,11 @@ const ExtrasSection1 = () => {
           </div>
         </div>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Button asChild size="lg" className="px-6">
             <Link href="/resources">View PL-300 Courses</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

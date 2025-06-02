@@ -96,7 +96,7 @@ const Index = () => {
               Ready to <span className="text-primary-600">Get Started?</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Request a callback from our team and start your coding journey today
+              Request a callback from our team and begin your upskilling journey today.
             </p>
           </div>
           <CallbackForm />
