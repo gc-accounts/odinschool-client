@@ -58,6 +58,7 @@ import { dsFaqsData } from '@/components/data/dsFaqsData';
 import { genAiFaqsData } from '@/components/data/genAiFaqsData';
 import { genAiiitgFaqsData } from '@/components/data/genAiiitgFaqsData';
 import { dsEliteFaqsData } from '@/components/data/dsEliteFaqsData';
+import getCourseData from '@/components/utils/getCourseData';
 const formFields: FieldConfig[] = [
 
   {
@@ -250,12 +251,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1
           sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+          slug={'Data Science Course'}
         />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
     "2":
       [
@@ -265,12 +266,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1
           sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+          slug={'Generative AI Course'}
         />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
     ,
     "3":
@@ -281,12 +282,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1
           sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+          slug={'Certification Program in Applied Generative AI'}
         />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
     "4":
       [
@@ -296,28 +297,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1
           sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+          slug={'Data Science Elite Course'}
         />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
-    "5":
-      [
-        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
-        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
-        () => <CareerServices1
-          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
-        />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
-      ]
   };
 
 
@@ -331,18 +317,18 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+      () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} data={getCourseData(course.slug).careerPath} />,
       () => <CareerServices1
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
         slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
       />,
-      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
     ],
     "2": [
       () => <CertificationSection />,
       () => <Testimonials />,
       () => <InstructorProfile />,
-      () => <FAQsection data={getFaqData(course.slug)} />,
+      () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
     "3": [
       () => <ToolsSection />,
@@ -351,7 +337,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <CareerServices2 />,
       () => <CertificationSection1 />,
       () => <InstructorProfile />,
-      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
     ],
     "4": [
       () => <WhyLearnAI />,
@@ -360,7 +346,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
       () => <CollegeSpotlight />,
       () => <InstructorProfile />,
-      () => <FAQsection data={getFaqData(course.slug)} />,
+      () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
     "5": [
       () => <StatsSection />,
@@ -369,7 +355,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <ExtrasSection2 />,
       () => <OrganizationLogos />,
       () => <InstructorProfile />,
-      () => <FAQsection data={getFaqData(course.slug)} />,
+      () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
   };
 
@@ -485,8 +471,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">{course.title}</h1>
                 <div className="flex items-center space-x-4 mt-4">
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
-                  {course.on_sale && <Badge className="bg-green-600">Sale</Badge>}
-                  {course.has_certificate && <Badge className="bg-blue-600">Certificate</Badge>}
+
                 </div>
                 <p className="mt-4 text-lg text-gray-600">{course.description}</p>
                 <div>
@@ -581,18 +566,23 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   <TabsContent value="overview" className='px-2'>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                       <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-bold mb-6">About This Course</h2>
+                        <h2 className="text-2xl font-bold mb-2">About This Course</h2>
                         <div className="prose max-w-none">
                           <p>{course.fullDescription || course.description}</p>
 
-                          {courseHighlightData?.highlight?.map((point, index) => (
-                            <li className="flex items-start" key={index}>
-                              <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                              <span>{point}</span>
-                            </li>
-                          ))}
+
+                          <div className='mt-6'>
+                            <p className='text-lg font-bold mb-2'>Course Highlights</p>
+                            {courseHighlightData?.highlight?.map((point, index) => (
+                              <li className="flex items-start" key={index}>
+                                <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>{point}</span>
+                              </li>
+                            ))}
+
+                          </div>
 
                         </div>
                       </div>
