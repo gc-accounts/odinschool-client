@@ -71,5 +71,6 @@ export default `
                     publishedAt
                     price
                     image_url_string
+                    longDescription
                
         `
