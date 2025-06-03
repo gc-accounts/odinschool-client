@@ -1,4 +1,4 @@
-export const DsCourseProjectData = [
+export const DsProjectsData = [
   {
     path: '/data-science-course',
     project: [

@@ -1,4 +1,4 @@
-export const DsEliteCourseCareerPathData = [
+export const DsEliteCareerPathData = [
   {
     id: 1,
     title: "AI-Powered Marketing Strategist",

@@ -1,4 +1,4 @@
-export const GenAiCareerPathData = [
+export const GenAICareerPathData = [
   {
     id: 1,
     title: "AI-Powered Marketing Strategist",
