@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@/components/components/ui/button";
 import RequestCallback from "./custom-component/RequestCallback";
 const opportunities = [
   {
@@ -46,9 +45,12 @@ const opportunities = [
 
 interface CareerOpportunitiesProps {
   slug: String,
-  sectionClass?: String
+  sectionClass?: String,
+  data: { id: number, title: String, description: String }[]
 }
-const CareerOpportunities = ({ slug, sectionClass }: CareerOpportunitiesProps) => {
+//  data: { question: string; answer: string }[];
+
+const CareerOpportunities = ({ slug, sectionClass, data }: CareerOpportunitiesProps) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-12 px-4 md:px-8'}`}>
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
@@ -56,9 +58,9 @@ const CareerOpportunities = ({ slug, sectionClass }: CareerOpportunitiesProps) =
       </h2>
 
       <div className=" container mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {opportunities.map((item, index) => (
+        {data?.map((item, index) => (
           <div
-            key={index}
+            key={item.id}
             className="border rounded-xl p-6 shadow-sm hover:shadow-md transition"
           >
             <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
