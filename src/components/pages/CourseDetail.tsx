@@ -15,6 +15,7 @@ import {
   Briefcase, Star, PlayCircle, MessageSquare, CheckCircle,
   Loader2
 } from 'lucide-react';
+import RichTextRenderer from '@/components/utils/RichTextRenderer';
 import Link from 'next/link';
 import { Badge } from '@/components/components/ui/badge';
 import { Progress } from '@/components/components/ui/progress';
@@ -234,8 +235,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} 
-        data={getCourseData(course.slug).careerPath} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'}
+          data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
@@ -247,8 +248,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} 
-        data={getCourseData(course.slug).careerPath} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
+          data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
@@ -273,8 +274,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} 
-        data={getCourseData(course.slug).careerPath} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'}
+          data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
@@ -449,7 +450,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
 
                 </div>
-                <p className="mt-4 text-lg text-gray-600">{course.description}</p>
+                <div className="mt-4 text-lg text-gray-600">{<RichTextRenderer content={course?.longDescription} /> || course.description}</div>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <Button size="lg" onClick={() => setFormOpen(true)}>
@@ -544,7 +545,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                       <div className="lg:col-span-2">
                         <h2 className="text-2xl font-bold mb-2">About This Course</h2>
                         <div className="prose max-w-none">
-                          <p>{course.fullDescription || course.description}</p>
+                          <div>{<RichTextRenderer content={course?.longDescription} /> || course.fullDescription || course.description}</div>
 
 
                           <div className='mt-6'>

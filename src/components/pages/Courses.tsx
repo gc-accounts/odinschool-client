@@ -1,63 +1,50 @@
-
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import CourseCard, { CourseProps } from '@/components/components/CourseCard';
 import Button from '@/components/components/Button';
-import { Search, Filter, X, Loader2 } from 'lucide-react';
-import { cn } from '@/components/lib/utils';
+import { Loader2 } from 'lucide-react';
 import { getCourses } from '@/components/utils/api/courses';
 import PaginationComponent from '@/components/components/PaginationComponent';
 
-// Sample courses data expanded
-
-
-// Define filter categories
-const categories = ['All', 'Web Development', 'Frontend', 'Backend', 'Mobile Development', 'Data Science', 'Artificial Intelligence', 'DevOps', 'Design'];
-const levels = ['All Levels', 'Beginner', 'Intermediate', 'Advanced'];
+const COURSES_PER_PAGE = 3;
 
 const Courses = () => {
   const [searchTerm, setSearchTerm1] = useState('');
   const [selectedCategory, setSelectedCategory1] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedLevel, setSelectedLevel1] = useState('');
   const [courses, setCourses] = useState<CourseProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage1] = useState(1);
 
-  const setSearchTerm = (searchTerm: string) => {
-    setLoading(true);
-    setSearchTerm1(searchTerm);
-  }
-
-  const setPage = (page: number) => {
-    setLoading(true);
-    setPage1(page);
-  }
+  const setSearchTerm = (term: string) => {
+    setPage1(1);
+    setSearchTerm1(term);
+  };
 
   const setSelectedCategory = (category: string) => {
-    setLoading(true);
+    setPage1(1);
     setSelectedCategory1(category);
-  }
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  };
+
+  const setSelectedLevel = (level: string) => {
+    setPage1(1);
+    setSelectedLevel1(level);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Courses - CodeMaster";
     const fetchCourses = async () => {
-      const courses = await getCourses({ pageNumber: page, search: searchTerm, category: selectedCategory, level: selectedLevel });
-      console.log(courses);
-      setCourses(courses);
+      const allCourses = await getCourses({ pageNumber: 1, search: searchTerm, category: selectedCategory, level: selectedLevel });
+      setCourses(allCourses);
       setLoading(false);
-    }
+    };
     fetchCourses();
-  }, [page, searchTerm, selectedCategory, selectedLevel]);
+  }, [searchTerm, selectedCategory, selectedLevel]);
 
-  const filteredCourses = courses
-
-  const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
+  const totalPages = Math.ceil(courses.length / COURSES_PER_PAGE);
+  const currentCourses = courses.slice((page - 1) * COURSES_PER_PAGE, page * COURSES_PER_PAGE);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -66,9 +53,7 @@ const Courses = () => {
       <main className="flex-grow pt-24 pb-16">
         <div className="container">
           <div className="mb-8 md:mb-12">
-            <h1 className="heading-lg mb-4 ">
-
-
+            <h1 className="heading-lg mb-4">
               Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
             </h1>
             <p className="body-md text-gray-600 max-w-3xl">
@@ -76,21 +61,19 @@ const Courses = () => {
             </p>
           </div>
 
-          {loading ? (<>
+          {loading ? (
             <div className="grid place-items-center h-full">
               <Loader2 className="w-10 h-10 animate-spin" />
             </div>
-          </>) : filteredCourses.length > 0 ? (
+          ) : currentCourses.length > 0 ? (
             <div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredCourses.map((course) => (
+                {currentCourses.map((course) => (
                   <CourseCard key={course.id} {...course} />
                 ))}
-
               </div>
               <br />
-              <PaginationComponent currentPage={page} setCurrentPage={setPage} totalPages={undefined} />
+              <PaginationComponent currentPage={page} setCurrentPage={setPage1} totalPages={totalPages} />
             </div>
           ) : (
             <div className="text-center py-16">

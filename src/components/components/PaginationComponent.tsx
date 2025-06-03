@@ -1,29 +1,56 @@
 import React from 'react';
-import { Pagination, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationContent } from '@/components/components/ui/pagination';
+import {
+    Pagination,
+    PaginationItem,
+    PaginationLink,
+    PaginationPrevious,
+    PaginationNext,
+    PaginationContent
+} from '@/components/components/ui/pagination';
 
 interface PaginationComponentProps {
     currentPage: number;
     setCurrentPage: (page: number) => void;
-    totalPages: number | undefined;
+    totalPages: number;
 }
 
-const PaginationComponent: React.FC<PaginationComponentProps> = ({ currentPage, setCurrentPage }) => {
+const PaginationComponent: React.FC<PaginationComponentProps> = ({
+    currentPage,
+    setCurrentPage,
+    totalPages
+}) => {
+    const visiblePages = [1, 2, 3].filter(page => page <= totalPages);
+
     return (
         <Pagination className="mt-12">
             <PaginationContent>
-                {currentPage > 1 && <PaginationItem>
-                    <PaginationPrevious onClick={() => setCurrentPage(currentPage - 1)} />
-                </PaginationItem>}
                 <PaginationItem>
-                    <PaginationLink onClick={() => setCurrentPage(currentPage)} isActive>{currentPage}</PaginationLink>
+                    <PaginationPrevious
+                        onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+                        className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    />
                 </PaginationItem>
+
+                {visiblePages.map((pageNum) => (
+                    <PaginationItem className='cursor-pointer' key={pageNum}>
+                        <PaginationLink
+                            onClick={() => setCurrentPage(pageNum)}
+                            isActive={pageNum === currentPage}
+                        >
+                            {pageNum}
+                        </PaginationLink>
+                    </PaginationItem>
+                ))}
+
                 <PaginationItem>
-                    <PaginationNext onClick={() => setCurrentPage(currentPage + 1)} />
+                    <PaginationNext
+                        onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    />
                 </PaginationItem>
             </PaginationContent>
-        </Pagination>)
-}
+        </Pagination>
+    );
+};
 
 export default PaginationComponent;
-
-
