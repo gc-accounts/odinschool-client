@@ -545,7 +545,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="mb-8 w-full justify-start py-2 px-2 overflow-x-auto h-max">
+                  <TabsList className="mb-8 w-full justify-start py-3 px-2 overflow-x-auto h-max">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
                     <TabsTrigger value="projects">Projects</TabsTrigger>
@@ -579,7 +579,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                     <div className="space-y-4">
                       <Accordion type="single" collapsible className="w-full">
                         {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
-                          <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-2 rounded-lg mb-4">
+                          <AccordionItem key={index} value={`section-${index}`} className="border px-4 py-0 rounded-lg mb-4">
                             <AccordionTrigger className="hover:no-underline">
                               <div className="flex items-start w-full">
                                 <div className="text-left">
