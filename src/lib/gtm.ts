@@ -1,4 +1,4 @@
-export const GTM_ID = 'GTM-W9W9X4QJ';
+export const GTM_ID = 'GTM-NZZ47SC';
 
 export const gtmScript = `
 (function(w,d,s,l,i){
