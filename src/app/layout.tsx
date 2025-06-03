@@ -8,7 +8,7 @@ import { siteConfig } from '@/constant/config';
 import Script from 'next/script';
 import { Toaster } from '@/components/components/ui/toaster';
 import WhatsAppChat from '@/components/components/WhatsAppChat';
-import { gtmScript } from '@/lib/gtm';
+import { gtmScript, GTM_ID } from '@/lib/gtm';
 import { ProgramProvider } from '@/context/ProgramContext';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -66,6 +66,14 @@ export default function RootLayout({
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
       </head>
       <body className={inter.className}>
+        <noscript>
+    <iframe
+      src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+      height="0"
+      width="0"
+      style={{ display: 'none', visibility: 'hidden' }}
+    ></iframe>
+  </noscript>
         <ProgramProvider>
           {children}
         <WhatsAppChat />

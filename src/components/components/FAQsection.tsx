@@ -1,8 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/components/ui/accordion';
 import { HelpCircle } from 'lucide-react';
 import { Button } from '@/components/components/ui/button';
-import { dsFaqsData } from '@/components/data/dsFaqsData';
-
 
 interface FAQsectionProps{
  sectionClass?:String;

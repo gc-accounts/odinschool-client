@@ -26,8 +26,8 @@ const CareerServices = ({ slug, sectionClass }: CareerServices1Props) => {
             CourseCarrerServiceData.map((item, index) => {
               return (
                 <div key={index} className={`${sectionClass?.includes('bg-primary-50') ? 'bg-white' : 'bg-primary-50'} rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-all`}>
-                  <div className="mx-auto flex items-center justify-center h-16 w-16 bg-primary-50 rounded-full mb-4">
-                    <item.icon className="h-6 w-6 text-primary-600" />
+                  <div className="mx-auto flex items-center justify-center h-16 w-16 bg-primary-50 rounded-full mb-4 shadow ">
+                    <item.icon className="h-8 w-8 text-primary-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-gray-600 mb-4">{item.description}</p>

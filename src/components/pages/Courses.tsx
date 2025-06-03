@@ -67,10 +67,12 @@ const Courses = () => {
         <div className="container">
           <div className="mb-8 md:mb-12">
             <h1 className="heading-lg mb-4 ">
-              Explore Our <span className="text-primary-600">Courses</span>
+
+
+              Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
             </h1>
             <p className="body-md text-gray-600 max-w-3xl">
-              Browse our comprehensive catalog of programming courses designed to take you from beginner to professional developer. Filter by category, level, or search for specific topics.
+              Discover flexible, expert-led programs designed to equip you with the practical skills and confidence to thrive in today's fast-paced tech industry.
             </p>
           </div>
 
