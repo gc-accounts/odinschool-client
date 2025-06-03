@@ -181,11 +181,6 @@ const resourceLinks = [
     description: "Access complimentary learning materials.",
   },
   {
-    title: "For College Students",
-    href: "/college-students",
-    description: "Special resources designed for undergraduate and graduate students.",
-  },
-  {
     title: "Fun With Statistics",
     href: "/fun-with-statistics",
     description: "Discover the fascinating world of data analysis and visualization.",

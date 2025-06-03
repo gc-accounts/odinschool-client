@@ -142,13 +142,6 @@ const MobileNav = () => {
                     >
                       Free Resources
                     </Link>
-                    <Link
-                      href="/college-students"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      For College Students
-                    </Link>
                   </div>
                 </AccordionContent>
               </AccordionItem>
