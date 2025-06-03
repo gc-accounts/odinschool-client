@@ -110,7 +110,7 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll opacity-0">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Why OdinSchool is your gateway to a <span className="text-primary-600">successful Data Science career</span>
+            Why OdinSchool is your gateway to a <span className="text-primary-600">successful career</span>
           </h2>
 
           <p className="text-md text-gray-600 max-w-2xl mx-auto">

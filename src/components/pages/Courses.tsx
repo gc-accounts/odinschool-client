@@ -72,7 +72,7 @@ const Courses = () => {
               Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
             </h1>
             <p className="body-md text-gray-600 max-w-3xl">
-              Discover flexible, expert-led programs designed to equip you with the practical skills and confidence to thrive in today's fast-paced tech industry.
+              Designed to help you crack great jobs in emerging technologies and in-demand areas.
             </p>
           </div>
 
