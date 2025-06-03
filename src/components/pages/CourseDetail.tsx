@@ -242,6 +242,88 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const sectionConfig: {
     [key: string]: (() => JSX.Element)[];
   } = {
+    "1":
+      [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      ],
+    "2":
+      [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      ]
+    ,
+    "3":
+      [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      ],
+    "4":
+      [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      ],
+    "5":
+      [
+        () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} />,
+        () => <CareerServices1
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getFaqData(course.slug)} />,
+      ]
+  };
+
+
+  const AbTestingsectionConfig: {
+    [key: string]: (() => JSX.Element)[];
+  } = {
     "1": [
       () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
       () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
@@ -291,67 +373,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
     ],
   };
 
-  const sectionsToRender = sectionConfig["1"];
 
-  const courseProjects = [
-    {
-      title: "E-commerce Dashboard",
-      description: "Build a fully functional admin dashboard for an e-commerce platform.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Social Media App",
-      description: "Create a responsive social networking application with real-time features.",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&w=800",
-      free: false
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A simple weather application consuming API data with beautiful visualizations.",
-      image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?crop=entropy&w=800",
-      free: true
-    }
-  ];
-  console.log(course);
-  const curriculumData = [
-    {
-      title: "Introduction to Web Development",
-      lessons: "5 lessons",
-      duration: "2 hours",
-      subLessons: [
-        { title: "Overview of Web Development", duration: "20 min" },
-        { title: "Setting Up Your Development Environment", duration: "25 min" },
-        { title: "HTML Fundamentals", duration: "30 min" },
-        { title: "CSS Basics", duration: "25 min" },
-        { title: "Your First Web Page", duration: "20 min" }
-      ]
-    },
-    {
-      title: "JavaScript Essentials",
-      lessons: "6 lessons",
-      duration: "3 hours",
-      subLessons: [
-        { title: "JavaScript Syntax and Variables", duration: "30 min" },
-        { title: "Functions and Control Flow", duration: "35 min" },
-        { title: "Working with Arrays and Objects", duration: "30 min" },
-        { title: "DOM Manipulation", duration: "40 min" },
-        { title: "Event Handling", duration: "25 min" },
-        { title: "Building Interactive Components", duration: "20 min" }
-      ]
-    },
-    {
-      title: "Frontend Frameworks",
-      lessons: "4 lessons",
-      duration: "2.5 hours",
-      subLessons: [
-        { title: "Introduction to React", duration: "40 min" },
-        { title: "Component-Based Architecture", duration: "35 min" },
-        { title: "State Management", duration: "45 min" },
-        { title: "Building a Complete Frontend App", duration: "30 min" }
-      ]
-    }
-  ];
+
+  const sectionsToRender = course.slug === 'data-science-course' ? sectionConfig["1"] : course.slug === 'generative-ai-bootcamp' ? sectionConfig["2"] : course.slug === 'generative-ai-course-iitg' ? sectionConfig["3"] : course.slug === 'data-science-elite-course' ? sectionConfig["4"] : '';
+
+
 
   console.log(total_enrolled, total_lessons, course);
 
