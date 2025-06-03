@@ -181,6 +181,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       setLoading(true);
       try {
         const response = await getCourse("", id);
+
         if (response && response[0]) {
           setCourse(response[0]);
           setProgram(response[0].slug || '');
@@ -339,6 +340,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
   console.log(total_enrolled, total_lessons, course);
+  console.log('course----------------', course);
+
 
   // Handle Form Submit
   const handleFormSubmit = async (data: any) => {
@@ -681,7 +684,24 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                 <div className="bg-white rounded-lg shadow-md p-6 mt-8">
                   <h3 className="text-xl font-bold mb-4">Register Now</h3>
-                  <div className="mb-4">
+                  {
+                    course?.cohortDates && <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+                      <span className="font-medium text-sm">Upcoming Cohort:</span>
+                      <div className="flex gap-3">
+                        {
+                          course?.cohortDates?.cohort1 &&
+                          <div className="text-xs font-light border rounded-md px-2 py-1">{course?.cohortDates?.cohort1}</div>
+                        }
+                        {
+                          course?.cohortDates?.cohort2 &&
+                          <div className="text-xs font-light border rounded-md px-2 py-1">{course?.cohortDates?.cohort2}</div>
+                        }
+                      </div>
+                    </div>
+                  }
+
+
+                  <div className="my-4">
                     <span className="text-2xl font-bold">₹{course.price}+ GST</span>
                     {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
                   </div>

@@ -5,10 +5,17 @@ export default `
                     description
                     is_learning_hub
 
+
                     level
                     on_sale
                     has_certificate
                     
+                    cohortDates{
+                     id
+                     cohort1
+                     cohort2
+                    }
+
                     rating {
                         id
                         overall_rating

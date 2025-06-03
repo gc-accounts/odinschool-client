@@ -146,6 +146,7 @@ export const getCourse = async (id: string, url_slug: string = "") => {
             level: course.level,
             on_sale: course.on_sale,
             has_certificate: course.has_certificate,
+            cohortDates: course.cohortDates,
             overview: course.overview,
             slug: course.slug,
             createdAt: course.createdAt,
