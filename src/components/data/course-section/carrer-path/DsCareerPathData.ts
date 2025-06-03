@@ -1,4 +1,4 @@
-export const DsCourseCareerPathData =
+export const DsCareerPathData =
   [
     {
       id: 1,

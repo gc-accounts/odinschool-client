@@ -1,4 +1,4 @@
-export const DsGenAiData = [
+export const GenAIProjectsData = [
   {
     path: '/generative-ai-bootcamp',
     project: [

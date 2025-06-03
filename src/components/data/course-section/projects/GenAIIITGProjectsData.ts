@@ -1,4 +1,4 @@
-export const DsGenAiIITGData = [
+export const GenAIIITGProjectsData = [
   {
     path: '/generative-ai-course-iitg',
     project: [

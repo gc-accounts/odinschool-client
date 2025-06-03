@@ -25,7 +25,7 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
       <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
         <img src={icon} alt="" />
       </div>
-      <h3 className="text-lg font-bold mb-2">{name}</h3>
+      <h3 className="text-md font-semibold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
     </CardContent>
   </Card>
@@ -36,79 +36,6 @@ interface ToolsSectionProps {
   sectionClass?: String
 }
 const ToolsSection = ({ sectionClass }: ToolsSectionProps) => {
-  const tools = [
-    {
-      name: "Power BI",
-      description: "Create interactive data visualizations and dashboards",
-      icon: <LineChart className="h-8 w-8 text-white" />,
-      bgColor: "bg-blue-600",
-      delay: 100
-    },
-    {
-      name: "SQL",
-      description: "Query and manage databases with structured query language",
-      icon: <Database className="h-8 w-8 text-white" />,
-      bgColor: "bg-orange-600",
-      delay: 200
-    },
-    {
-      name: "DAX",
-      description: "Build formulas and expressions for data analysis",
-      icon: <Calculator className="h-8 w-8 text-white" />,
-      bgColor: "bg-green-600",
-      delay: 300
-    },
-    {
-      name: "M Language",
-      description: "Transform and clean data with Power Query formulas",
-      icon: <Code className="h-8 w-8 text-white" />,
-      bgColor: "bg-purple-600",
-      delay: 400
-    },
-    {
-      name: "Excel",
-      description: "Advanced spreadsheet analysis and integration",
-      icon: <PanelLeft className="h-8 w-8 text-white" />,
-      bgColor: "bg-emerald-600",
-      delay: 500
-    },
-    {
-      name: "Data Modeling",
-      description: "Design efficient data models for analysis",
-      icon: <Server className="h-8 w-8 text-white" />,
-      bgColor: "bg-pink-600",
-      delay: 600
-    },
-    {
-      name: "Azure",
-      description: "Cloud services integration for BI solutions",
-      icon: <Cloud className="h-8 w-8 text-white" />,
-      bgColor: "bg-cyan-600",
-      delay: 700
-    },
-    {
-      name: "Data Visualization",
-      description: "Create impactful visualizations using best practices",
-      icon: <Palette className="h-8 w-8 text-white" />,
-      bgColor: "bg-yellow-600",
-      delay: 800
-    },
-    {
-      name: "Figma",
-      description: "Design professional dashboards before implementation",
-      icon: <Figma className="h-8 w-8 text-white" />,
-      bgColor: "bg-red-600",
-      delay: 900
-    },
-    {
-      name: "Web Integration",
-      description: "Embed reports and dashboards in websites and apps",
-      icon: <Globe className="h-8 w-8 text-white" />,
-      bgColor: "bg-indigo-600",
-      delay: 1000
-    },
-  ];
-
   const path = usePathname()
   const ToolsData = getDataByPage(courseToolsData, path)
 

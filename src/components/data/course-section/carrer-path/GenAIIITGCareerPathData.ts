@@ -1,4 +1,4 @@
-export const GenAiIITGCareerPathData =
+export const GenAIIITGCareerPathData =
   [
     {
       id: 1,
