@@ -7,11 +7,12 @@ import { notFound } from 'next/navigation';
 interface Props {
   params: {
     courseId: string
+    lessonId: string
   }
 }
 
 export default async function FreeCourseDetailPage({ params }: Props) {
-  const { courseId } = params;
+  const { courseId, lessonId } = params;
 
   // Fetch course data on the server
   const course = await getLearningHubCourse("", courseId);
@@ -20,5 +21,5 @@ export default async function FreeCourseDetailPage({ params }: Props) {
     notFound();
   }
 
-  return <FreeCourseDetail courseId={courseId} initialCourse={course} />;
+  return <FreeCourseDetail courseId={courseId} initialCourse={course} lessonId={lessonId} />;
 } 

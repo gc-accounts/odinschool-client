@@ -8,6 +8,7 @@ import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { getLearningHubCourse } from '@/components/utils/api/learning_hub';
 import Markdown from '@/components/components/Markdown';
+import { useRouter } from 'next/navigation';
 // Sample lessons content 
 const courseData = {
   'free-html-basics': {
@@ -283,17 +284,29 @@ const courseData = {
   // Additional courses would be defined here in the same format
 };
 
-const FreeCourseDetail = () => {
+interface FreeCourseDetailProps {
+  courseId: string;
+  initialCourse?: any;
+  lessonId?: string;
+}
+
+const FreeCourseDetail = ({
+  courseId: csId,
+  initialCourse,
+  lessonId
+}: FreeCourseDetailProps) => {
   const params = useParams();
-  const courseId = params?.id as string;
-  const [activeLesson, setActiveLesson] = useState('');
-  const [course, setCourse] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const courseId = csId || params?.id as string;
+  const [activeLesson, setActiveLesson] = useState(lessonId || '');
+  const [course, setCourse] = useState<any>(initialCourse || null);
+  const [loading, setLoading] = useState(!initialCourse);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
     const fetchCourse = async () => {
+      if (initialCourse) return;
       setLoading(true);
       const res: any = await getLearningHubCourse("", courseId);
       setCourse(res);
@@ -301,7 +314,7 @@ const FreeCourseDetail = () => {
       setLoading(false);
     }
     fetchCourse();
-  }, [courseId]);
+  }, [courseId, initialCourse]);
 
 
   if (loading) {
@@ -338,21 +351,21 @@ const FreeCourseDetail = () => {
     );
   }
 
-  const currentLessonIndex = course.modules.findIndex((lesson: any) => lesson.id === activeLesson);
+  const currentLessonIndex = course.modules.findIndex((lesson: any) => lesson.slug === activeLesson);
   const currentLesson = course.modules[currentLessonIndex];
   const hasPrevious = currentLessonIndex > 0;
   const hasNext = currentLessonIndex < course.modules.length - 1;
 
   const handlePreviousLesson = () => {
     if (hasPrevious) {
-      setActiveLesson(course.modules[currentLessonIndex - 1].id);
+      setActiveLesson(course.modules[currentLessonIndex - 1].slug);
       window.scrollTo(0, 0);
     }
   };
 
   const handleNextLesson = () => {
     if (hasNext) {
-      setActiveLesson(course.modules[currentLessonIndex + 1].id);
+      setActiveLesson(course.modules[currentLessonIndex + 1].slug);
       window.scrollTo(0, 0);
     }
   };
@@ -410,8 +423,10 @@ const FreeCourseDetail = () => {
                         {course.modules.map((lesson: any, index: number) => (
                           <button
                             key={lesson.id}
-                            onClick={() => setActiveLesson(lesson.id)}
-                            className={`w-full text-left p-3 rounded-md flex items-center ${activeLesson === lesson.id
+                            onClick={() => {
+                              router.push(`/learning-hub/${courseId}/${lesson.slug}`);
+                            }}
+                            className={`w-full text-left p-3 rounded-md flex items-center ${activeLesson === lesson.slug
                               ? 'bg-primary-50 text-primary-700 border-l-4 border-primary-600'
                               : 'hover:bg-gray-50'
                               }`}
