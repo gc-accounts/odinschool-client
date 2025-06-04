@@ -9,7 +9,7 @@ export const courseHighlights = [
         id: 2,
         title: 'Certification Program in Applied Generative AI',
         path: '/generative-ai-course-iitg',
-        highlight: ['Get certified by the prestigious E&ICT Academy, IIT Guwahati', 'Attend live interactive sessions led by experts', 'Engage in hands-on project-based learning with 20+ projects', 'A visit to the prestigious IIT Guhawati Campus to expand your professional network (exclusively for successful learners)', 'Get access to Career Services to assist you in making career transitions', ' Participate in hackathons, case study discussions, Q & A sessions with experts', 'Learn technologies and tools to build and deploy GenAI models']
+        highlight: ['Learn technologies and tools to build and deploy GenAI models', 'Get certified by the prestigious E&ICT Academy, IIT Guwahati', 'Attend live interactive sessions led by experts', 'Engage in hands-on project-based learning with 20+ projects', 'A visit to the prestigious IIT Guhawati Campus to expand your professional network (exclusively for successful learners)', 'Get access to Career Services to assist you in making career transitions', ' Participate in hackathons, case study discussions, Q & A sessions with experts' , 'Live interactive sessions by IIT faculty']
     },
 
     {

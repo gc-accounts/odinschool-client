@@ -9,6 +9,7 @@ import { Badge } from '@/components/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
 import { getStories } from '@/components/utils/api/story';
 import { Dialog, DialogContent } from '@/components/components/ui/dialog';
+import Link from 'next/link';
 
 const transformationType = [
   { name: "All", key: "" },
@@ -144,9 +145,11 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
             </div>
 
             <div className="text-center mt-12">
+              <Link href='/success-stories'>
               <Button variant="outline" className="hover:bg-primary-50">
                 View More Success Stories
               </Button>
+              </Link>
             </div>
           </>)}
       </div>
