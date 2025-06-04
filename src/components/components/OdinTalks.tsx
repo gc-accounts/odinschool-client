@@ -5,7 +5,12 @@ import { Card } from '@/components/components/ui/card';
 import { getWebinars } from '@/components/utils/api/webinars';
 
 
-const OdinTalks = () => {
+interface JobsSectionProps {
+  sectionClass?: string;
+}
+
+
+const OdinTalks = ({ sectionClass }: JobsSectionProps) => {
   const [webinars, setWebinars] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +33,7 @@ const OdinTalks = () => {
 
 
   return (
-    <section className="px-[20px] pt-[50px] md:px-[30px] md:pt-[70px] bg-white">
+    <section className={`${sectionClass ? sectionClass : 'px-[20px] pt-[50px] md:px-[30px] md:pt-[70px] bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-primary-600">

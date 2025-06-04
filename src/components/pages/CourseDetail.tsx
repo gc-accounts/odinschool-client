@@ -58,6 +58,7 @@ import DsEliteFold from '@/components/components/DsEliteFold';
 
 import getCourseData from '@/components/utils/getCourseData';
 import brochureFormField from '@/components/data/brochureFormField';
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import DataLeaders from '@/components/components/DataLeaders';
 import Mentorship from '@/components/components/Mentorship';
 import DsEliteSuccessStories from '@/components/components/DsEliteSuccessStories';
@@ -170,17 +171,30 @@ interface CourseDetailProps {
 }
 
 
+// http://localhost:3000/data-science-course?utm_source=Email+Marketing&utm_custom_source=youtube&utm_medium=banner&utm_campaign=Telugu+Video&utm_id=camp-vthetechee&utm_term=20May2025&utm_content=sadsadsad
+
+
+
 const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const [formOpen, setFormOpen] = useState(false);
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const [course, setCourse] = useState<Course | null>(initialCourse || null);
   const [loading, setLoading] = useState(!initialCourse);
+  const [utmData, setUtmData] = useState<Record<string, string>>({});
   const { id } = useParams<{ id: string }>();
   const { toast } = useToast();
   const location = usePathname();
   const currentPath = location;
   const router = useRouter();
   const { setProgram } = useProgram();
+
+  useEffect(() => {
+    const trackingData = getUTMTrackingData();
+    setUtmData(trackingData);
+    sessionStorage.setItem('utmTracking', JSON.stringify(trackingData));
+
+  }, []);
+
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -209,6 +223,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       setProgram('');
     };
   }, [id, initialCourse, setProgram]);
+
+
 
   if (loading || !course) {
     return (
@@ -354,6 +370,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   console.log(total_enrolled, total_lessons, course);
   console.log('course----------------', course);
 
+  // console.log('utmData-----------', utmData);
+
 
   // Handle Form Submit
   const handleFormSubmit = async (data: any) => {
@@ -385,6 +403,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
     formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
     formData.append("ga_client_id", '');
     formData.append("Business Unit", 'OdinSchool');
+    formData.append("Source Domain", 'Odinschool Course')
+    formData.append('First Page Seen', utmData['First Page Seen'] || '');
+    formData.append('Original Traffic Source', utmData['Original Traffic Source'] || '');
+    formData.append('Original Traffic Source Drill-Down 1', utmData['Original Traffic Source Drill-Down 1'] || '');
+    formData.append('Original Traffic Source Drill-Down 2', utmData['Original Traffic Source Drill-Down 2'] || '');
+    formData.append('UTM Term-First Page Seen', utmData['UTM Term-First Page Seen'] || '');
+    formData.append('UTM Content-First Page Seen', utmData['UTM Content-First Page Seen'] || '');
 
     try {
       const response = await axios.post(zohoEndpoint, formData, {
@@ -400,6 +425,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         title: "Form submitted successfully!",
         description: "Thank you for your interest. Our team will contact you shortly.",
       });
+
+
 
       // ✅ Redirect to thank-you page with specific course route 
       const courseSlug = course.slug || '';
@@ -472,12 +499,6 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       });
     }
   };
-
-
-
-
-
-
 
 
   return (

@@ -21,6 +21,8 @@ import { Card, CardContent } from '@/components/components/ui/card';
 import ExtrasSection1 from '@/components/components/ExtrasSection1';
 import DsEliteFold from '@/components/components/DsEliteFold';
 
+
+
 const Index = () => {
   useEffect(() => {
     // Scroll to top on page load
@@ -38,7 +40,8 @@ const Index = () => {
         <FeaturedCourses />
         <Testimonials />
         <InstructorProfile />
-        <OdinTalks />
+        <JobsSection />
+        <OdinTalks sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
       </main>
       <ExtrasSection1 />
       <NewsSection />

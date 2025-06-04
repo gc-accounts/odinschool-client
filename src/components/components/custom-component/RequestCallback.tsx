@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/components/ui/button';
 import Modal from '../component-template/Modal';
 import DynamicForm from '../form/DynamicForm';
 import axios from 'axios';
 import { useToast } from '@/components/hooks/use-toast';
 import { FieldConfig } from '../form/DynamicForm';
-
+import { useRouter } from 'next/navigation';
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 interface RequestCallbackProps {
     slug: String
 }
@@ -74,7 +75,19 @@ const formFields: FieldConfig[] = [
 const RequestCallback = ({ slug }: RequestCallbackProps) => {
 
     const [formOpen, setFormOpen] = useState(false);
+    const [utmData, setUtmData] = useState<Record<string, string>>({});
+
     const { toast } = useToast();
+    const router = useRouter()
+
+
+    useEffect(() => {
+        const trackingData = getUTMTrackingData();
+        setUtmData(trackingData);
+        sessionStorage.setItem('utmTracking', JSON.stringify(trackingData));
+
+    }, []);
+
 
     // Handle Form Submit
     const handleFormSubmit = async (data: any) => {
@@ -106,6 +119,16 @@ const RequestCallback = ({ slug }: RequestCallbackProps) => {
         formData.append("Program", data.program);
         formData.append("ga_client_id", '');
         formData.append("Business Unit", 'OdinSchool');
+        formData.append("Source Domain", 'Odinschool Course')
+
+        // UTM Tracking 
+        formData.append("Source Domain", 'Odinschool Home Page')
+        formData.append('First Page Seen', utmData['First Page Seen'] || '');
+        formData.append('Original Traffic Source', utmData['Original Traffic Source'] || '');
+        formData.append('Original Traffic Source Drill-Down 1', utmData['Original Traffic Source Drill-Down 1'] || '');
+        formData.append('Original Traffic Source Drill-Down 2', utmData['Original Traffic Source Drill-Down 2'] || '');
+        formData.append('UTM Term-First Page Seen', utmData['UTM Term-First Page Seen'] || '');
+        formData.append('UTM Content-First Page Seen', utmData['UTM Content-First Page Seen'] || '');
 
         try {
             const response = await axios.post(zohoEndpoint, formData, {
@@ -114,10 +137,22 @@ const RequestCallback = ({ slug }: RequestCallbackProps) => {
                 }
             });
 
+            // ✅ Store email and redirect
+            sessionStorage.setItem('submittedEmail', data.email);
+
+
             toast({
                 title: "Form submitted successfully!",
                 description: "Thank you for your interest. Our team will contact you shortly.",
             });
+
+            // ✅ Redirect to thank-you page with specific course route 
+            const courseSlug = slug || '';
+            setTimeout(() => {
+                router.push(`/thank-you-2?title=${courseSlug}`);
+            }, 1000);
+
+
 
         } catch (err) {
             console.error('Error submitting form:', err);
