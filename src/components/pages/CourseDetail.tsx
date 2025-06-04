@@ -54,6 +54,7 @@ import CourseProject from '@/components/components/course-details/CourseProject'
 import { useRouter } from 'next/navigation';
 
 import { useProgram } from '@/context/ProgramContext';
+import DsEliteFold from '@/components/components/DsEliteFold';
 
 import getCourseData from '@/components/utils/getCourseData';
 const formFields: FieldConfig[] = [
@@ -229,6 +230,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   } = {
     "1":
       [
+        () => <DsEliteFold sectionClass={'bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
@@ -244,13 +246,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       [
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
+        // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
           data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
+        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
     ,
@@ -258,12 +260,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       [
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} />,
+        // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
+        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
     "4":
@@ -277,7 +279,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'}
           data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
+        () => <FAQsection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
   };
 
