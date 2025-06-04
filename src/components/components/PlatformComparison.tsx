@@ -49,6 +49,14 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
       others: true,
       othersInfo: 'Not up-to-date',
     },
+     {
+      name: 'Job Drives',
+      odinschool: true,
+      odinschoolInfo: 'Attend at least 3 Job Drives every month',
+      others: false,
+      othersInfo: 'Limited opportunities',
+      highlight: true,
+    },
     {
       name: 'Projects',
       odinschool: true,

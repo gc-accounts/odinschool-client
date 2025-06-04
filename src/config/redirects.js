@@ -521,11 +521,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: '/salary-calculator',
-    destination: '/data-science/salary-calculator',
-    permanent: true
-  },
-  {
     source: '/test-header-page',
     destination: '/resume-builder',
     permanent: true
@@ -631,11 +626,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: '/sitemap',
-    destination: '/m22/sitemap',
-    permanent: true
-  },
-  {
     source: '/sitemap-v3',
     destination: '/sitemap',
     permanent: true
@@ -646,11 +636,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: '/success-stories',
-    destination: '/m22/success-stories',
-    permanent: true
-  },
-  {
     source: '/business-analytics-bootcamp',
     destination: '/datascience-bootcamp',
     permanent: true
@@ -658,11 +643,6 @@ const redirects = [
   {
     source: '/v3-careers',
     destination: '/careers',
-    permanent: true
-  },
-  {
-    source: '/careers',
-    destination: '/m22/careers',
     permanent: true
   },
   {
@@ -1053,11 +1033,6 @@ const redirects = [
   {
     source: '/digital-marketing-bootcamp',
     destination: 'https://www.odinschool.com/digital-marketing-course',
-    permanent: true
-  },
-  {
-    source: '/courses',
-    destination: 'https://www.odinschool.com/',
     permanent: true
   },
   {
