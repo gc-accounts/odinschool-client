@@ -62,11 +62,11 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-b from-gray-900 to-gray-800 text-white py-20">
-          <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="relative bg-gradient-to-br from-primary-800 to-primary-700 text-white py-20">
+          {/* <div className="absolute inset-0 bg-black/50 z-0" /> */}
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
-              <Button variant="outline" className="mb-6 text-white border-white hover:bg-white/10" asChild>
+              <Button variant="outline" className="mb-6 bg-primary-600 border-white hover:text-white hover:bg-white/10" asChild>
                 <Link href="/blog" className="flex items-center">
                   <ChevronLeft className="mr-2 h-4 w-4" />
                   Back to Blog
@@ -95,7 +95,7 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
                 {post.tags && post.tags?.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag, index) => (
-                      <Badge key={index} variant="outline" className="bg-white/5 border-white/20">
+                      <Badge key={index} variant="outline" className="bg-white/5 border-white/20 text-white">
                         <Tag className="w-3 h-3 mr-1" />
                         {tag}
                       </Badge>
