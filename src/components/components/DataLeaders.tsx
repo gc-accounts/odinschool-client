@@ -61,7 +61,7 @@ export default function DataLeaders({ sectionClass }: { sectionClass?: string })
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Leaders Column (col-span-8) */}
-          <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {leaders.map((leader, index) => (
               <Card
                 key={index}
@@ -91,7 +91,7 @@ export default function DataLeaders({ sectionClass }: { sectionClass?: string })
           </div>
 
           {/* Info Column (col-span-4) */}
-          <div className="md:col-span-4">
+          {/* <div className="md:col-span-4">
             <Card className="border border-primary-100  shadow-md">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-semibold text-dark mb-4">Learn from Industry Experts</h2>
@@ -106,7 +106,7 @@ export default function DataLeaders({ sectionClass }: { sectionClass?: string })
                 </ul>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

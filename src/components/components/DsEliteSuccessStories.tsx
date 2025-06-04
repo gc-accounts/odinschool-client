@@ -64,7 +64,7 @@ export default function DsEliteSuccessStories({ sectionClass }: { sectionClass?:
           
 
           {/* Info Column (col-span-4) */}
-          <div className="md:col-span-4">
+          {/* <div className="md:col-span-4">
             <Card className="border border-primary-100  shadow-md">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-semibold text-dark mb-4">Learn from Industry Experts</h2>
@@ -79,10 +79,10 @@ export default function DsEliteSuccessStories({ sectionClass }: { sectionClass?:
                 </ul>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
 
           {/* students Column (col-span-8) */}
-          <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {students.map((leader, index) => (
               <Card
                 key={index}

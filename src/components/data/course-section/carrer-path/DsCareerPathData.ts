@@ -2,21 +2,21 @@ export const DsCareerPathData =
   [
     {
       id: 1,
-      title: "Data Scientist",
+      title: "Data Analyst",
       description:
-        "Extract insights from structured and unstructured data using statistics, machine learning, and business domain knowledge to solve real-world problems.",
+        "Collect, clean, and interpret data to answer specific questions. Often uses tools like Excel, SQL, and visualization platforms like Power BI.",
     },
     {
       id: 2,
-      title: "Machine Learning Engineer",
+      title: "Business Analyst",
       description:
-        "Develop and deploy ML models in production environments. Focuses on algorithm optimization, feature engineering, and model performance tuning.",
+        "Use data to uncover trends, create dashboards, and support business decisions. Focuses on translating data into actionable business insights.",
     },
     {
       id: 3,
-      title: "AI Research Scientist",
+      title: "Product Analyst",
       description:
-        "Drive innovation by exploring advanced AI techniques such as deep learning, NLP, and reinforcement learning, often in academic or R&D settings.",
+        "Use data to track feature performance, user behavior, and key metrics. Work with product teams to turn insights into better decisions and improvements.",
     },
     {
       id: 4,
@@ -26,21 +26,21 @@ export const DsCareerPathData =
     },
     {
       id: 5,
-      title: "Business Analyst",
+      title: "Machine Learning Engineer",
       description:
-        "Use data to uncover trends, create dashboards, and support business decisions. Focuses on translating data into actionable business insights.",
+        "Develop and deploy ML models in production environments. Focuses on algorithm optimization, feature engineering, and model performance tuning.",
     },
     {
       id: 6,
-      title: "Data Analyst",
+      title: "Market Research Analyst",
       description:
-        "Collect, clean, and interpret data to answer specific questions. Often uses tools like Excel, SQL, and visualization platforms like Power BI.",
+        "Collects and analyzes market data, survey results, and consumer trends using basic statistical techniques.",
     },
     {
       id: 7,
-      title: "BI Analyst (Power BI / Tableau)",
+      title: "Data Scientist",
       description:
-        "Specializes in data visualization and storytelling. Builds dashboards that help stakeholders monitor performance and make informed decisions.",
+        "Extract insights from structured and unstructured data using statistics, machine learning, and business domain knowledge to solve real-world problems.",
     },
     {
       id: 8,

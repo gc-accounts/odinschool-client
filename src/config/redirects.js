@@ -701,11 +701,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: "/salary-calculator",
-    destination: "/data-science/salary-calculator",
-    permanent: true
-  },
-  {
     source: "/test-header-page",
     destination: "/resume-builder",
     permanent: true
@@ -868,11 +863,6 @@ const redirects = [
   {
     source: "/v3-careers",
     destination: "/careers",
-    permanent: true
-  },
-  {
-    source: "/careers",
-    destination: "/m22/careers",
     permanent: true
   },
   {
