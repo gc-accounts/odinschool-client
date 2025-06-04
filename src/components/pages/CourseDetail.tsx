@@ -57,6 +57,7 @@ import { useProgram } from '@/context/ProgramContext';
 import DsEliteFold from '@/components/components/DsEliteFold';
 
 import getCourseData from '@/components/utils/getCourseData';
+import brochureFormField from '@/components/data/brochureFormField';
 const formFields: FieldConfig[] = [
 
   {
@@ -168,6 +169,7 @@ interface CourseDetailProps {
 
 const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const [formOpen, setFormOpen] = useState(false);
+  const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const [course, setCourse] = useState<Course | null>(initialCourse || null);
   const [loading, setLoading] = useState(!initialCourse);
   const { id } = useParams<{ id: string }>();
@@ -413,6 +415,63 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   };
 
 
+  // Handle Brochure Form
+
+  const handleBrochureFormSubmit = async (data: any) => {
+    try {
+      const accessTokenRes = await fetch('/api/auth/token-brochure', { method: 'POST' });
+      if (!accessTokenRes.ok) throw new Error('Token refresh failed');
+      const { access_token } = await accessTokenRes.json();
+
+      const brochureFormData = new FormData();
+      brochureFormData.append('accessToken', access_token);
+      brochureFormData.append('First Name', data.firstName);
+      brochureFormData.append('Last Name', data.lastName);
+      brochureFormData.append('Email', data.email);
+      brochureFormData.append('Phone', data.phone);
+      brochureFormData.append('Program', course.slug === 'data-science-course' ? 'Data Science Course'
+        : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+          : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+            : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+              : course.slug);
+      brochureFormData.append('Year of Graduation', data.year);
+      brochureFormData.append('ga_client_id', '');
+      brochureFormData.append('Business Unit', 'Odinschool');
+      brochureFormData.append('Source_Domain', 'Brochure Form');
+
+      const response = await fetch('/api/zoho/brochure', {
+        method: 'POST',
+        body: brochureFormData
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit brochure form');
+      }
+
+      toast({
+        title: "Brochure requested successfully!",
+        description: "Check your email shortly for the brochure.",
+      });
+
+      setBrochureFormOpen(false);
+
+    } catch (err) {
+      console.error('Error submitting brochure form:', err);
+      toast({
+        title: "Error!",
+        description: err instanceof Error ? err.message : 'Submission failed. Try again later.',
+        variant: "destructive"
+      });
+    }
+  };
+
+
+
+
+
+
+
 
   return (
     <>
@@ -570,7 +629,29 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   </TabsContent>
 
                   <TabsContent value="curriculum" className='px-2'>
-                    <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
+
+                    <div className='flex justify-between items-center mb-6'>
+                      <h2 className="text-2xl font-bold">Program Curriculum</h2>
+                      <Button onClick={() => setBrochureFormOpen(true)}>Download Brochure</Button>
+                      <Modal header_text={'Download Brochure'} open={brochureFormOpen} onOpenChange={setBrochureFormOpen}>
+                        <DynamicForm
+                          buttonText={'Download Brochure'}
+                          fields={brochureFormField}
+                          initialValues={{
+                            program: course.slug,
+                            ga_client_id: '',
+                            business_unit: 'Odinschool',
+                            Source_Domain: 'Brochure Form'
+
+                          }}
+                          onSubmit={(data) => {
+                            handleBrochureFormSubmit(data)
+                          }}
+
+                        />
+                      </Modal>
+                    </div>
+
                     <div className="space-y-4">
                       <Accordion type="single" collapsible className="w-full">
                         {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
@@ -733,9 +814,6 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="mt-8">
-            <Button>Download Brochure</Button>
           </div>
         </section>
 
