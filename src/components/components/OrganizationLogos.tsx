@@ -70,7 +70,7 @@ const OrganizationLogos = ({ sectionClass }: organizationProps) => {
 
       <div className="mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2"><span className='text-primary-600'>500+</span> Hiring Organizations</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2"><span className='text-primary-600'>600+</span> Hiring Organizations</h2>
         </div>
 
         <div

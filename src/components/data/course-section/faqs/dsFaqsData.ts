@@ -29,7 +29,7 @@ export const dsFaqsData = [
   },
   {
     "question": "Do you offer a job guarantee?",
-    "answer": "No, there is no job guarantee. OdinSchool is proud to offer top-notch live classes, mentorship, projects, and extensive career services. We also provide dedicated placement assistance through our network of 500+ hiring partners. We're fully committed to your success. However, it's important to understand that our Course does not offer a job guarantee and that your own effort and dedication are essential to achieving success. We encourage you to work hard and take full advantage of the job options we provide, knowing that we'll be there to support you every step of the way."
+    "answer": "No, there is no job guarantee. OdinSchool is proud to offer top-notch live classes, mentorship, projects, and extensive career services. We also provide dedicated placement assistance through our network of 600+ hiring partners. We're fully committed to your success. However, it's important to understand that our Course does not offer a job guarantee and that your own effort and dedication are essential to achieving success. We encourage you to work hard and take full advantage of the job options we provide, knowing that we'll be there to support you every step of the way."
   },
   {
     "question": "Is there a refund policy for this Data Science Course?",

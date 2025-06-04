@@ -3,7 +3,7 @@ export const courseHighlights = [
         id: 1,
         title: 'Data Scinece Course',
         path: '/data-science-course',
-        highlight: ['Live Online Classes', 'Live Doubt Clearing Sessions', '10+ Projects', '230+ Assignments', 'Work on real world case studies', 'Mock interviews with industry experts', '500+ Hiring organisations', 'Job drives every month']
+        highlight: ['Live Online Classes', 'Live Doubt Clearing Sessions', '10+ Projects', '230+ Assignments', 'Work on real world case studies', 'Mock interviews with industry experts', '600+ Hiring organisations', 'Job drives every month']
     },
     {
         id: 2,

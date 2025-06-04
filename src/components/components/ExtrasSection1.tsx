@@ -19,7 +19,7 @@ const ExtrasSection1 = () => {
     {
       id: 3,
       image: "https://strapi.odinschool.com/uploads/500_hiring_organisations_c7884faed5.webp",
-      title: " 500+ Hiring Organizations ",
+      title: " 600+ Hiring Organizations ",
       description: "Join our community of learners and expand your knowledge"
     },
     {
