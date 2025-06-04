@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/components/ui/button';
 import { Input } from '@/components/components/ui/input';
@@ -9,30 +9,29 @@ import { useToast } from '@/components/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/components/ui/card';
 import { usePathname } from 'next/navigation';
 import { useProgram } from '@/context/ProgramContext';
-
-interface WhatsAppChatProps {
-  program?: string;
-}
-
-const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
+import { useRouter } from 'next/navigation';
+const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { program } = useProgram();
   const pathname = usePathname();
+  const router = useRouter()
+
   const [formData, setFormData] = useState({
     firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     year: '',
+    program: '',
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // Reset program when URL changes
   useEffect(() => {
-    setFormData(prev => ({
-      ...prev,
-      program: program
-    }));
+    if (program) {
+      setFormData(prev => ({ ...prev, program }));
+    }
   }, [program]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,15 +43,9 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
     try {
       const response = await fetch('/api/auth/token', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' }
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to get access token');
-      }
-
+      if (!response.ok) throw new Error('Failed to get access token');
       const data = await response.json();
       return data?.access_token;
     } catch (error) {
@@ -71,9 +64,10 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
       const zohoFormData = new FormData();
       zohoFormData.append('accessToken', accessToken);
       zohoFormData.append('First Name', formData.firstName);
+      zohoFormData.append('Last Name', formData.lastName);
       zohoFormData.append('Email', formData.email);
       zohoFormData.append('Phone', formData.phone);
-      zohoFormData.append('Program', program || '');
+      zohoFormData.append('Program', formData.program === 'data-science-course' ? 'Data Science Course' : formData.program === 'data-science-elite-course' ? 'Data Science Elite Course' : formData.program === 'generative-ai-bootcamp' ? 'Generative AI Course' : formData.program === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : formData.program);
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
@@ -93,12 +87,17 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
         description: "Your information has been submitted successfully. We'll contact you soon.",
       });
 
-      // Reset form and close chat
+      // router.push('https://api.whatsapp.com/send?phone=919355011033')
+      window.open('https://api.whatsapp.com/send?phone=919355011033', '_blank');
+
+
       setFormData({
         firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         year: '',
+        program: '',
       });
       setIsOpen(false);
 
@@ -116,7 +115,6 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
 
   return (
     <>
-      {/* Floating WhatsApp Button */}
       <Button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-lg bg-green-500 hover:bg-green-600"
@@ -125,7 +123,6 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
         <MessageCircle className="h-6 w-6 text-white" />
       </Button>
 
-      {/* Chat Form Modal */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <Card className="w-full max-w-md relative">
@@ -144,15 +141,28 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
 
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                  />
+                <div className='grid grid-cols-2 gap-2'>
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -184,25 +194,26 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
                 {!program ? (
                   <div className="space-y-2">
                     <Label htmlFor="program">Program</Label>
-                    <Input
+                    <select
                       id="program"
                       name="program"
-                      value={program}
-                      onChange={handleInputChange}
+                      value={formData.program}
+                      onChange={(e) => setFormData(prev => ({ ...prev, program: e.target.value }))}
                       required
-                      placeholder="Enter program name"
-                    />
+                      className="w-full rounded-md border border-input bg-background px-3 py-2"
+                    >
+                      <option value="">Select Program</option>
+                      <option value="Data Science Course">Data Science Course</option>
+                      <option value="Data Science Elite Course">Data Science Elite Course</option>
+                      <option value="Certification Program in Applied Generative AI">Certification Program in Applied Generative AI</option>
+                      <option value="Generative AI Course">Generative AI Course</option>
+                    </select>
                   </div>
-                ) : (
-                  <div className="space-y-2">
-                    <Label>Program</Label>
-                    <div className="w-full rounded-md border border-input bg-background px-3 py-2">
-                      {program}
-                    </div>
-                  </div>
-                )}
 
-                <div className="space-y-2">
+                ) : ''
+                }
+
+                < div className="space-y-2">
                   <Label htmlFor="year">Year of Graduation</Label>
                   <select
                     id="year"
@@ -236,10 +247,10 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ }) => {
               </form>
             </CardContent>
           </Card>
-        </div>
+        </div >
       )}
     </>
   );
 };
 
-export default WhatsAppChat; 
+export default WhatsAppChat;

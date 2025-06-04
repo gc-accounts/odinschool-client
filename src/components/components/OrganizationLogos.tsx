@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/components/ui/card';
 import { getOrganisations } from '@/components/utils/api/organisation';
 
-interface organizationProps{
- sectionClass?:String
+interface organizationProps {
+  sectionClass?: String
 }
-const OrganizationLogos = ({sectionClass}:organizationProps) => {
+const OrganizationLogos = ({ sectionClass }: organizationProps) => {
   const [logos, setLogos] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -70,7 +70,7 @@ const OrganizationLogos = ({sectionClass}:organizationProps) => {
 
       <div className="mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2"><span className='text-primary-600'>500+</span> Hiring Organizations</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2"><span className='text-primary-600'>600+</span> Hiring Organizations</h2>
         </div>
 
         <div
@@ -105,7 +105,7 @@ const OrganizationLogos = ({sectionClass}:organizationProps) => {
                     <img
                       src={logo.logo}
                       alt={`${logo.name} logo`}
-                      className="max-h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all"
+                      className="max-h-12 max-w-full object-contain transition-all"
                     />
                   </CardContent>
                 </Card>

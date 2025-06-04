@@ -20,11 +20,10 @@ export async function POST(request: Request) {
         Phone: formData.get('Phone'),
         Program: formData.get('Program'),
         Year_Of_Graduation: formData.get('Year of Graduation'),
-        Ga_client_id: formData.get('Ga_client_id'),
+        Ga_client_id: formData.get('ga_client_id'),
         Business_Unit: formData.get('Business Unit'),
-        Source_Domain: 'Odinschool Whatsapp Form',
-        Incoming_Medium: 'Whatsapp',
-        duplicate_check_fields: ['Email']  // ✅ critical fix
+        Source_Domain: formData.get('Source_Domain'),
+        duplicate_check_fields: ['Email']
       }],
       trigger: ['workflow']
     };
@@ -32,7 +31,7 @@ export async function POST(request: Request) {
     const response = await fetch('https://www.zohoapis.in/crm/v2/Contacts/upsert', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(contactData),
@@ -40,15 +39,15 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || 'Failed to create or update contact');
+      throw new Error(errorData.message || 'Failed to upsert contact');
     }
 
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Error creating/updating contact:', error);
+    console.error('Brochure API Error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to create or update contact' },
+      { error: error instanceof Error ? error.message : 'Internal Server Error' },
       { status: 500 }
     );
   }

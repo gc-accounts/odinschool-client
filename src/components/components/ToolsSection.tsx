@@ -7,7 +7,7 @@ import {
   PanelLeft, Calculator, Server, Cloud
 } from 'lucide-react';
 
-import { courseToolsData } from '@/components/data/courseToolsData';
+import { courseToolsData } from '@/components/data/course-section/tools/courseToolsData';
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { usePathname } from 'next/navigation'
 interface ToolCardProps {

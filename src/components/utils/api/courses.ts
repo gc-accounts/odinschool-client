@@ -62,17 +62,19 @@ export const getCourses = async ({
 
     const response = await axiosApi.post('', {
         query: `
-            query Courses($filters: CourseFiltersInput, $pagination: PaginationArg) {
-                courses(filters: $filters, pagination: $pagination) {
-                    ${courseSchema}
-                }
-            }
-        `,
+    query Courses($filters: CourseFiltersInput, $pagination: PaginationArg, $sort: [String]) {
+      courses(filters: $filters, pagination: $pagination, sort: $sort) {
+        ${courseSchema}
+      }
+    }
+  `,
         variables: {
             filters: filterObj,
-            pagination: paginationObj
+            pagination: paginationObj,
+            sort: ["order:asc"]
         }
     });
+
 
     const data = response.data.data.courses.map((course: any) => ({
         documentId: course.documentId,
@@ -165,7 +167,8 @@ export const getCourse = async (id: string, url_slug: string = "") => {
             total_rated: course.rating?.total_rated,
             curriculum: course.curriculum,
             price: course.price,
-            modules: modifyCourseModules(course.course_modules)
+            modules: modifyCourseModules(course.course_modules),
+            longDescription: course.longDescription
         }
     });
     return data;

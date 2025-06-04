@@ -15,6 +15,7 @@ import {
   Briefcase, Star, PlayCircle, MessageSquare, CheckCircle,
   Loader2
 } from 'lucide-react';
+import RichTextRenderer from '@/components/utils/RichTextRenderer';
 import Link from 'next/link';
 import { Badge } from '@/components/components/ui/badge';
 import { Progress } from '@/components/components/ui/progress';
@@ -48,13 +49,15 @@ import { courseHighlights } from '@/components/data/courseHighlights';
 import { usePathname } from 'next/navigation'
 import CourseCertificate from '@/components/components/course-details/CourseCertificate';
 import { getDataByPage } from '@/components/utils/getDataByPage';
-import { courseToolsData } from '@/components/data/courseToolsData';
+import { courseToolsData } from '@/components/data/course-section/tools/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
 import { useRouter } from 'next/navigation';
 
 import { useProgram } from '@/context/ProgramContext';
+import DsEliteFold from '@/components/components/DsEliteFold';
 
 import getCourseData from '@/components/utils/getCourseData';
+import brochureFormField from '@/components/data/brochureFormField';
 const formFields: FieldConfig[] = [
 
   {
@@ -166,6 +169,7 @@ interface CourseDetailProps {
 
 const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const [formOpen, setFormOpen] = useState(false);
+  const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const [course, setCourse] = useState<Course | null>(initialCourse || null);
   const [loading, setLoading] = useState(!initialCourse);
   const { id } = useParams<{ id: string }>();
@@ -228,14 +232,15 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   } = {
     "1":
       [
+        () => <DsEliteFold sectionClass={'bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} 
-        data={getCourseData(course.slug).careerPath} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'}
+          data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
@@ -243,13 +248,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       [
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} 
-        data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
+        // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
+          data={getCourseData(course.slug).careerPath} />,
+        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
     ,
@@ -257,12 +262,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       [
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} />,
+        // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
+        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} />,
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
     "4":
@@ -273,10 +278,10 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} 
-        data={getCourseData(course.slug).careerPath} />,
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'}
+          data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} />,
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
+        () => <FAQsection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
   };
 
@@ -410,6 +415,63 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   };
 
 
+  // Handle Brochure Form
+
+  const handleBrochureFormSubmit = async (data: any) => {
+    try {
+      const accessTokenRes = await fetch('/api/auth/token-brochure', { method: 'POST' });
+      if (!accessTokenRes.ok) throw new Error('Token refresh failed');
+      const { access_token } = await accessTokenRes.json();
+
+      const brochureFormData = new FormData();
+      brochureFormData.append('accessToken', access_token);
+      brochureFormData.append('First Name', data.firstName);
+      brochureFormData.append('Last Name', data.lastName);
+      brochureFormData.append('Email', data.email);
+      brochureFormData.append('Phone', data.phone);
+      brochureFormData.append('Program', course.slug === 'data-science-course' ? 'Data Science Course'
+        : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+          : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+            : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+              : course.slug);
+      brochureFormData.append('Year of Graduation', data.year);
+      brochureFormData.append('ga_client_id', '');
+      brochureFormData.append('Business Unit', 'Odinschool');
+      brochureFormData.append('Source_Domain', 'Brochure Form');
+
+      const response = await fetch('/api/zoho/brochure', {
+        method: 'POST',
+        body: brochureFormData
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit brochure form');
+      }
+
+      toast({
+        title: "Brochure requested successfully!",
+        description: "Check your email shortly for the brochure.",
+      });
+
+      setBrochureFormOpen(false);
+
+    } catch (err) {
+      console.error('Error submitting brochure form:', err);
+      toast({
+        title: "Error!",
+        description: err instanceof Error ? err.message : 'Submission failed. Try again later.',
+        variant: "destructive"
+      });
+    }
+  };
+
+
+
+
+
+
+
 
   return (
     <>
@@ -449,7 +511,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
 
                 </div>
-                <p className="mt-4 text-lg text-gray-600">{course.description}</p>
+                <div className="mt-4 text-lg text-gray-600">{<RichTextRenderer content={course?.longDescription} /> || course.description}</div>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <Button size="lg" onClick={() => setFormOpen(true)}>
@@ -544,7 +606,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                       <div className="lg:col-span-2">
                         <h2 className="text-2xl font-bold mb-2">About This Course</h2>
                         <div className="prose max-w-none">
-                          <p>{course.fullDescription || course.description}</p>
+                          <div>{<RichTextRenderer content={course?.longDescription} /> || course.fullDescription || course.description}</div>
 
 
                           <div className='mt-6'>
@@ -567,7 +629,29 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   </TabsContent>
 
                   <TabsContent value="curriculum" className='px-2'>
-                    <h2 className="text-2xl font-bold mb-6">Program Curriculum</h2>
+
+                    <div className='flex justify-between items-center mb-6'>
+                      <h2 className="text-2xl font-bold">Program Curriculum</h2>
+                      <Button onClick={() => setBrochureFormOpen(true)}>Download Brochure</Button>
+                      <Modal header_text={'Download Brochure'} open={brochureFormOpen} onOpenChange={setBrochureFormOpen}>
+                        <DynamicForm
+                          buttonText={'Download Brochure'}
+                          fields={brochureFormField}
+                          initialValues={{
+                            program: course.slug,
+                            ga_client_id: '',
+                            business_unit: 'Odinschool',
+                            Source_Domain: 'Brochure Form'
+
+                          }}
+                          onSubmit={(data) => {
+                            handleBrochureFormSubmit(data)
+                          }}
+
+                        />
+                      </Modal>
+                    </div>
+
                     <div className="space-y-4">
                       <Accordion type="single" collapsible className="w-full">
                         {(course.curriculum || []).map((section: { heading: string; lessons: number; description?: string }, index: number) => (
@@ -730,9 +814,6 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="mt-8">
-            <Button>Download Brochure</Button>
           </div>
         </section>
 
