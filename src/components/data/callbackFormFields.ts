@@ -57,8 +57,14 @@ const callbackFormFields: FieldConfig[] = [
     rules: { required: 'Please select a program' },
   },
   { name: 'ga_client_id', type: 'hidden' },
-  { name: 'business_unit', type: 'hidden' }
-
+  { name: 'business_unit', type: 'hidden' },
+  // hidden fields for url tracking
+  { name: 'First_Page_Seen', type: 'hidden' },
+  { name: 'Original_Traffic_Source', type: 'hidden' },
+  { name: 'Original_Traffic_Source_Drill_Down_1', type: 'hidden' },
+  { name: 'Original_Traffic_Source_Drill_Down_2', type: 'hidden' },
+  { name: 'UTM_Term_First_Page_Seen', type: 'hidden' },
+  { name: 'UTM_Content_First_Page_Seen', type: 'hidden' },
 ];
 
 export default callbackFormFields;

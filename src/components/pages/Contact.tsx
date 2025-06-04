@@ -28,6 +28,7 @@ const Contact = () => {
     description: 'Description',
     ga_client_id: 'ga_client_id',
     business_unit: 'Business Unit',
+    source_domain: 'Source Domain'
   };
 
   const handleFormSubmit = async (data: any, reset: () => void) => {
@@ -70,7 +71,7 @@ const Contact = () => {
               <DynamicForm
                 fields={contactFormFields}
                 buttonText="Submit"
-                initialValues={{ ga_client_id: '', business_unit: 'OdinSchool' }}
+                initialValues={{ ga_client_id: '', business_unit: 'OdinSchool', source_domain: 'Odinschool contact-us form' }}
                 onSubmit={(data, reset) => handleFormSubmit(data, reset)}
               />
 
@@ -88,7 +89,7 @@ const Contact = () => {
                       <h3 className="text-lg font-medium text-gray-900">Email Us</h3>
                       <p className="mt-1 text-gray-600">
                         <a href="mailto:hello@odinschool.com " className="hover:text-primary-600">
-                          hello@odinschool.com 
+                          hello@odinschool.com
                         </a>
                       </p>
                     </div>
@@ -102,7 +103,7 @@ const Contact = () => {
                       <h3 className="text-lg font-medium text-gray-900">Call Us</h3>
                       <p className="mt-1 text-gray-600">
                         <a href="tel:+919355011033 " className="hover:text-primary-600">
-                          + 91 935 501 1033 
+                          + 91 935 501 1033
                         </a>
                       </p>
                     </div>
@@ -115,11 +116,11 @@ const Contact = () => {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900">Visit Us</h3>
                       <p className="mt-1 text-gray-600">
-                        <span className='font-medium'>OdinSchool</span><br/>
-GreyCampus Edutech Private Limited,<br/>
-Aikya Vihar, Plot 218, B Block,
-Kavuri Hills Phase - II,<br/>
-Hyderabad - 500033 
+                        <span className='font-medium'>OdinSchool</span><br />
+                        GreyCampus Edutech Private Limited,<br />
+                        Aikya Vihar, Plot 218, B Block,
+                        Kavuri Hills Phase - II,<br />
+                        Hyderabad - 500033
                       </p>
                     </div>
                   </div>

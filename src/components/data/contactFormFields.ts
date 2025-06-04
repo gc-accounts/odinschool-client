@@ -55,7 +55,8 @@ const contactFormFields: FieldConfig[] = [
     required: false,
   },
   { name: 'ga_client_id', type: 'hidden' },
-  { name: 'business_unit', type: 'hidden' }
+  { name: 'business_unit', type: 'hidden' },
+  { name: 'source_domain', type: 'hidden' }
 ];
 
 export default contactFormFields;
