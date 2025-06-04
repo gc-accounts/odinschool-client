@@ -68,57 +68,58 @@ const MobileNav = () => {
             <Accordion type="single" collapsible className="w-full">
               {/* Learning Section */}
               <AccordionItem value="learning">
-                <AccordionTrigger className="flex items-center gap-2 text-base font-medium">
-                  <GraduationCap className="h-5 w-5" />
-                  Learning
-                </AccordionTrigger>
+                <AccordionTrigger className="flex justify-between items-center text-base font-medium">
+  <span className="flex items-center gap-2">
+    <GraduationCap className="h-5 w-5" />
+    Courses
+  </span>
+
+</AccordionTrigger>
+
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link
-                      href="/courses"
+                      href="/data-science-elite-course"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
-                      Courses
+                      Data Science Elite Course
                     </Link>
                     <Link
-                      href="/learning-hub"
+                      href="/generative-ai-course-iitg"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
-                      Learning Hub
+                      Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati
                     </Link>
                     <Link
-                      href="/webinars"
+                      href="/data-science-course"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
-                      Webinars
+                      Data Science Course
                     </Link>
                     <Link
-                      href="/courses-in-cities"
+                      href="/generative-ai-bootcamp"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
-                      Courses in Cities
+                      Generative AI Course
                     </Link>
-                    <Link
-                      href="/specialized-courses"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Specialized Courses
-                    </Link>
+
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
               {/* Resources Section */}
               <AccordionItem value="resources">
-                <AccordionTrigger className="flex items-center gap-2 text-base font-medium">
-                  <Library className="h-5 w-5" />
-                  Resources
-                </AccordionTrigger>
+                <AccordionTrigger className="flex justify-between items-center text-base font-medium">
+  <span className="flex items-center gap-2">
+    <Library className="h-5 w-5" />
+    Resources
+  </span>
+
+</AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link
@@ -147,7 +148,7 @@ const MobileNav = () => {
               </AccordionItem>
 
               {/* Tools Section */}
-              <AccordionItem value="tools">
+              {/* <AccordionItem value="tools">
                 <AccordionTrigger className="flex items-center gap-2 text-base font-medium">
                   <Calculator className="h-5 w-5" />
                   Tools
@@ -177,14 +178,17 @@ const MobileNav = () => {
                     </Link>
                   </div>
                 </AccordionContent>
-              </AccordionItem>
+              </AccordionItem> */}
 
               {/* Company Section */}
               <AccordionItem value="company">
-                <AccordionTrigger className="flex items-center gap-2 text-base font-medium">
-                  <Building2 className="h-5 w-5" />
-                  Company
-                </AccordionTrigger>
+                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
+  <span className="flex items-center gap-2">
+    <Building2 className="h-5 w-5" />
+    Company
+  </span>
+
+</AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link

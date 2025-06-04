@@ -1,50 +1,50 @@
 export const DsEliteCareerPathData = [
   {
     id: 1,
-    title: "AI-Powered Marketing Strategist",
+    title: "Data Analyst",
     description:
-      "Uses GenAI to scale personalization, creative production, campaign optimization, and customer engagement strategies across platforms.",
+      "Analyzes structured data using SQL, Excel, and BI tools to provide actionable insights and support decision-making across teams.",
   },
   {
     id: 2,
-    title: "GenAI Consultant",
+    title: "Business Intelligence (BI) Analyst",
     description:
-      "Advise businesses on how to integrate Generative AI into their workflows — from content ops to internal tooling and customer-facing systems.",
+      "Creates dashboards and visual reports using Power BI or Tableau to help organizations track KPIs and performance metrics.",
   },
   {
     id: 3,
     title: "AI Product Analyst",
     description:
-      "Support product teams by applying generative AI tools to user feedback, prototyping, feature validation, and data-driven content experiments.",
+      "Uses data to understand user behavior, monitor feature performance, and support product decisions with analytical insights.",
   },
   {
     id: 4,
-    title: "AI Solutions Specialist",
+    title: "Finance Analyst",
     description:
-      "Develop practical AI-driven workflows by combining LLMs, APIs, and automation tools to improve efficiency in marketing, operations, and support.",
+      "Applies data techniques to monitor budgets, forecast revenue, and uncover trends in financial operations or investment analysis.",
   },
   {
     id: 5,
-    title: "Generative AI Specialist",
+    title: "Marketing Analyst",
     description:
-      "Apply Gen AI tools to streamline tasks, generate content, and support teams across marketing, product, or operations.",
+      "Tracks campaign performance, user engagement, and channel attribution using data to optimize marketing strategies.",
   },
   {
     id: 6,
-    title: "Prompt Engineer (Applied)",
+    title: "AI/ML Engineer",
     description:
-      "Craft structured prompts and iterative flows that guide AI outputs for business use cases — from content to code to analysis.",
+      "Designs and deploys machine learning models and AI systems into production environments using Python, ML libraries, and cloud tools.",
   },
   {
     id: 7,
-    title: "Gen AI Analytics Associate",
+    title: "Data Scientist",
     description:
-      "Uses Gen AI for exploratory data analysis, insight generation, summarization, and reporting tasks with business impact.",
+      "Builds predictive models and uncovers insights using statistics, machine learning, and real-world datasets to solve business problems.",
   },
   {
     id: 8,
-    title: "Campaign Optimization Associate (AI-Powered)",
+    title: "Risk Analyst",
     description:
-      "Applies Gen AI to create, test, and optimize ad creatives, email content, and messaging variations for marketing campaigns.",
+      "Monitors financial, operational, or fraud risks using statistical models and predictive analytics — common in finance and insurance.",
   },
 ]
