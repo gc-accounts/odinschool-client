@@ -1,1221 +1,1540 @@
 /** @type {import('next').NextConfig} */
 const redirects = [
   {
-    source: '/scholarships',
-    destination: '/college-scholarships',
+    source: "/scholarships",
+    destination: "/college-scholarships",
     permanent: true
   },
   {
-    source: '/academy/platform',
-    destination: 'https://learn.odinschool.com/s/store/courses/datascience',
+    source: "/academy/platform",
+    destination: "https:/learn.odinschool.com/s/store/courses/description/academy",
     permanent: true
   },
   {
-    source: '/for-corporate',
-    destination: '/hire-odin-grades',
+    source: "/for-corporate",
+    destination: "/hire-odin-grades",
     permanent: true
   },
   {
-    source: '/hire-odin-grades',
-    destination: '/hire-odin-grads',
+    source: "/hire-odin-grades",
+    destination: "/hire-odin-grads",
     permanent: true
   },
   {
-    source: '/corder/order-details',
-    destination: '/order/order-details',
+    source: "/corder/order-details",
+    destination: "/order/order-details",
     permanent: true
   },
   {
-    source: '/-ab-variant-a5b78f2a-e8cf-42fa-8b05-58b97def8fc1',
-    destination: '/-ab-variant-f87842ff-42fe-408d-93ba-23a1ae551fbd',
+    source: "/online-datascience-bootcamp",
+    destination: "/webinar-registernow",
     permanent: true
   },
   {
-    source: '/v3-contact-us',
-    destination: '/contact-us',
+    source: "/webinar",
+    destination: "/webinar-registernow",
     permanent: true
   },
   {
-    source: '/v3-about-us',
-    destination: '/about-us',
+    source: "/terms-and-conditions",
+    destination: "/terms-of-use",
     permanent: true
   },
   {
-    source: '/v3-hire-from-us',
-    destination: '/corporate/hire-odin-grads',
+    source: "/full-stack-java-developer-bootcamp-application",
+    destination: "/full-stack-java-developer-bootcamp/application",
     permanent: true
   },
   {
-    source: '/v3-home',
-    destination: '/',
+    source: "/ds-thank-you-not-eligible-0",
+    destination: "/ds-thank-you-not-eligible",
     permanent: true
   },
   {
-    source: '/terms-of-use-v3',
-    destination: '/terms-of-use',
+    source: "/datascience-bootcamp/walk-ins",
+    destination: "http:/20029733.hs-sites.com/bootcamp/walk-ins",
     permanent: true
   },
   {
-    source: '/privacy-policy-v3',
-    destination: '/privacy-policy',
+    source: "/fs-workflow-eligibility",
+    destination: "/fs-thankyou-not-eligible",
     permanent: true
   },
   {
-    source: '/v3-faqs',
-    destination: '/faqs',
+    source: "/fs-thank-you-eligible",
+    destination: "/full-stack-java-developer-bootcamp/application/thank-you",
     permanent: true
   },
   {
-    source: '/courses/diploma-in-web-development',
-    destination: '/full-stack-web-development',
+    source: "/fs-entrance-exam",
+    destination: "/full-stack-java-developer-bootcamp/scholarship/application",
     permanent: true
   },
   {
-    source: '/courses/diploma-in-full-stack-web-development',
-    destination: '/full-stack-web-development',
+    source: "/fs-thank-you-not-eligible",
+    destination: "/full-stack-java-developer-bootcamp/application/thank-you/not-eligible",
     permanent: true
   },
   {
-    source: '/courses/diploma-in-data-science-analytics',
-    destination: '/data-science-and-analytics',
+    source: "/ds-thank-you-eligible",
+    destination: "/datascience-bootcamp/application/thank-you/eligible",
     permanent: true
   },
   {
-    source: '/courses/advanced-digital-marketing',
-    destination: '/digital-marketing',
+    source: "/ds-thank-you-not-eligible",
+    destination: "/datascience-bootcamp/application/thank-you/not-eligible",
     permanent: true
   },
   {
-    source: '/courses/finance-and-analytics',
-    destination: '/finance-and-analytics',
+    source: "/datascience-bootcamp/scholarship/application/thank-you-0",
+    destination: "/order/order-details/thank-you",
     permanent: true
   },
   {
-    source: '/courses/testing-and-qa',
-    destination: '/quality-assurance-and-testing',
+    source: "/application",
+    destination: "/bootcamp/application",
     permanent: true
   },
   {
-    source: '/courses/data-analyst-course',
-    destination: 'http://college.odinschool.com/data-analyst-course',
+    source: "/test/bootcamp-demo-class",
+    destination: "http:/20029733.hs-sites.com/bootcamp-demo-class",
     permanent: true
   },
   {
-    source: '/courses/ai-analyst-course',
-    destination: 'http://college.odinschool.com/ai-analyst-course',
+    source: "/bootcamp",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/test-2024',
-    destination: 'http://dev.odinschool.com/test-2025',
+    source: "/bootcamps",
+    destination: "/bootcamps-drafted",
     permanent: true
   },
   {
-    source: '/-ab-variant-326a498a-9260-4834-aa21-fbd72a8d9fb0',
-    destination: '/data-science-course',
+    source: "/full-stack-java-developer/aptitude-test/thank-you",
+    destination: "/job-fair/test-1/thank-you",
     permanent: true
   },
   {
-    source: '/investment-banking-and-finance-operations-elite-cours/checkout',
-    destination: '/investment-banking-and-finance-operations-elite-course/checkout',
+    source: "/bootcamps/hyderabad",
+    destination: "/test-bootcamps/hyderabad",
     permanent: true
   },
   {
-    source: '/online-datascience-bootcamp',
-    destination: '/webinar-registernow',
+    source: "/datascience-bootcamp/booking",
+    destination: "/datascience-bootcamp/2-days-pass",
     permanent: true
   },
   {
-    source: '/webinar',
-    destination: '/webinar-registernow',
+    source: "/job-fair/mediamint-technologies",
+    destination: "/job-fair/ctrl-s",
     permanent: true
   },
   {
-    source: '/terms-and-conditions',
-    destination: '/terms-of-use',
+    source: "/open-scholarship/application",
+    destination: "/data-science-course",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer-bootcamp-application',
-    destination: '/full-stack-java-developer-bootcamp/application',
+    source: "/scholarship",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/ds-thank-you-not-eligible-0',
-    destination: '/ds-thank-you-not-eligible',
+    source: "/job-fair/face-academcy",
+    destination: "/job-fair/face-academy",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/walk-ins',
-    destination: 'http://20029733.hs-sites.com/bootcamp/walk-ins',
+    source: "/job-fair/resume-video",
+    destination: "/job-fair/resume-and-video",
     permanent: true
   },
   {
-    source: '/fs-workflow-eligibility',
-    destination: '/fs-thankyou-not-eligible',
+    source: "/webinar-registernow",
+    destination: "/webinars",
     permanent: true
   },
   {
-    source: '/fs-thank-you-eligible',
-    destination: '/full-stack-java-developer-bootcamp/application/thank-you',
+    source: "/zerocodehr",
+    destination: "/jobs-zerocodehr",
     permanent: true
   },
   {
-    source: '/fs-entrance-exam',
-    destination: '/full-stack-java-developer-bootcamp/scholarship/application',
+    source: "/jobs-zerocodehr",
+    destination: "/jobs/zerocodehr",
     permanent: true
   },
   {
-    source: '/fs-thank-you-not-eligible',
-    destination: '/full-stack-java-developer-bootcamp/application/thank-you/not-eligible',
+    source: "/job-portal-table",
+    destination: "/jobs",
     permanent: true
   },
   {
-    source: '/ds-thank-you-eligible',
-    destination: '/datascience-bootcamp/application/thank-you/eligible',
+    source: "/full-stack-java-developer-bootcamp/scholarship",
+    destination: "/full-stack-java-developer-bootcamp",
     permanent: true
   },
   {
-    source: '/ds-thank-you-not-eligible',
-    destination: '/datascience-bootcamp/application/thank-you/not-eligible',
+    source: "/odintalk",
+    destination: "/odintalks",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/scholarship/application/thank-you-0',
-    destination: '/order/order-details/thank-you',
+    source: "/datascience-bootcamp/form",
+    destination: "/datascience-bootcamp-with-job-assistance",
     permanent: true
   },
   {
-    source: '/application',
-    destination: '/bootcamp/application',
+    source: "/blog/data-science/beautifulsoup-a-step-by-step-guide-to-data-scraping-with-python",
+    destination: "https:/www.greycampus.com/blog/data-science/beautifulsoup-a-step-by-step-guide-to-data-scraping-with-python",
     permanent: true
   },
   {
-    source: '/test/bootcamp-demo-class',
-    destination: 'http://20029733.hs-sites.com/bootcamp-demo-class',
+    source: "/business-analytics/application",
+    destination: "/datascience-application",
     permanent: true
   },
   {
-    source: '/bootcamp',
-    destination: 'https://www.odinschool.com/',
+    source: "/data-science-interview",
+    destination: "/data-science-interview/live",
     permanent: true
   },
   {
-    source: '/bootcamps',
-    destination: '/bootcamps-drafted',
+    source: "/data-science-interview/start",
+    destination: "/data-science-interview",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer/aptitude-test/thank-you',
-    destination: '/job-fair/test-1/thank-you',
+    source: "/open-campus",
+    destination: "/opencampus",
     permanent: true
   },
   {
-    source: '/bootcamps/hyderabad',
-    destination: '/test-bootcamps/hyderabad',
+    source: "/datascience-bootcamp-with-job-assistance-0",
+    destination: "/datascience-bootcamp/job-assistance",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/booking',
-    destination: '/datascience-bootcamp/2-days-pass',
+    source: "/channel-partner",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/job-fair/mediamint-technologies',
-    destination: '/job-fair/ctrl-s',
+    source: "/opecampus",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/open-scholarship/application',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/blog/quality-management/a-good-business-requirements-document-puts-you-ahead-of-the-game",
+    destination: "https:/www.greycampus.com/blog/quality-management/a-good-business-requirements-document-puts-you-ahead-of-the-game",
     permanent: true
   },
   {
-    source: '/scholarship',
-    destination: 'http://www.odinschool.com/',
+    source: "/blog/latest-updates/women-in-tech-scholarship",
+    destination: "https:/www.greycampus.com/blog/latest-updates/women-in-tech-scholarship",
     permanent: true
   },
   {
-    source: '/job-fair/face-academcy',
-    destination: '/job-fair/face-academy',
+    source: "/opecampus/ms-excel/mos-excel-2007-exam",
+    destination: "https:/www.greycampus.com/opencampus/ms-excel/mos-excel-2007-exam",
     permanent: true
   },
   {
-    source: '/job-fair/resume-video',
-    destination: '/job-fair/resume-and-video',
+    source: "/opecampus/ms-excel/mos-excel-2013-exam",
+    destination: "https:/www.greycampus.com/opencampus/ms-excel/mos-excel-2013-exam",
     permanent: true
   },
   {
-    source: '/webinar-registernow',
-    destination: 'http://www.odinschool.com/webinars',
+    source: "/blog/hadoop-administrator/eligibility-criteria-for-hadoop-administrator",
+    destination: "/learning-hub/hadoop-administrator/eligibility-criteria-for-hadoop-administrator",
     permanent: true
   },
   {
-    source: '/zerocodehr',
-    destination: '/jobs-zerocodehr',
+    source: "/become-an-afffiliate/application",
+    destination: "/become-an-affiliate/application",
     permanent: true
   },
   {
-    source: '/jobs-zerocodehr',
-    destination: '/jobs/zerocodehr',
+    source: "/learning-hub/installation",
+    destination: "/learning-hub/ruby/installation",
     permanent: true
   },
   {
-    source: '/job-portal-table',
-    destination: '/jobs',
+    source: "/blog/top-25-tableau-interview-questions-and-answers-for-2022",
+    destination: "/blog/top-25-tableau-interview-questions-and-answers-for-2023",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer-bootcamp/scholarship',
-    destination: 'http://www.odinschool.com/full-stack-java-developer-bootcamp',
+    source: "/learnin-hub",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/odintalk',
-    destination: '/odintalks',
+    source: "/full-stack-java-developer-bootcamp",
+    destination: "/full-stack-software-development-bootcamp",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/form',
-    destination: '/datascience-bootcamp-with-job-assistance',
+    source: "/opencampus/ms-excel/mos-certification-exam-format",
+    destination: "/learning-hub/ms-excel/mos-certification-exam-format",
     permanent: true
   },
   {
-    source: '/data-science-interview',
-    destination: '/data-science-interview/live',
+    source: "/opencampus/ms-excel/mos-excel-2007-exam",
+    destination: "/learning-hub/ms-excel/mos-excel-2007-exam",
     permanent: true
   },
   {
-    source: '/data-science-interview/start',
-    destination: '/data-science-interview',
+    source: "/opencampus/ms-excel/mos-excel-2010-exam",
+    destination: "/learning-hub/ms-excel/mos-excel-2010-exam",
     permanent: true
   },
   {
-    source: '/open-campus',
-    destination: '/opencampus',
+    source: "/opencampus/ms-excel/mos-excel-2013-exam",
+    destination: "/learning-hub/ms-excel/mos-excel-2013-exam",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp-with-job-assistance-0',
-    destination: '/datascience-bootcamp/job-assistance',
+    source: "/opencampus/machine-learning/k-fold-cross-validation",
+    destination: "/learning-hub/machine-learning/k-fold-cross-validation",
     permanent: true
   },
   {
-    source: '/channel-partner',
-    destination: 'http://www.odinschool.com/',
+    source: "/opencampus/machine-learning/k-nearest-neighbour",
+    destination: "/learning-hub/machine-learning/k-nearest-neighbour",
     permanent: true
   },
   {
-    source: '/opecampus',
-    destination: '/learning-hub',
+    source: "/opencampus/machine-learning/perceptron-vs-svm",
+    destination: "/learning-hub/machine-learning/perceptron-vs-svm",
     permanent: true
   },
   {
-    source: '/become-an-afffiliate/application',
-    destination: '/become-an-affiliate/application',
+    source: "/opencampus/machine-learning/supervised-and-unsupervised-learning",
+    destination: "/learning-hub/machine-learning/supervised-and-unsupervised-learning",
     permanent: true
   },
   {
-    source: '/learnin-hub',
-    destination: 'https://www.odinschool.com/learning-hub',
+    source: "/opencampus/machine-learning/why-do-linear-models-fail",
+    destination: "/learning-hub/machine-learning/why-do-linear-models-fail",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer-bootcamp',
-    destination: '/full-stack-software-development-bootcamp',
+    source: "/opencampus/data-analytics/data-analytics-explosion",
+    destination: "/learning-hub/data-analytics/data-analytics-explosion",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/mos-certification-exam-format',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/mos-certification-exam-format',
+    source: "/opencampus/data-analytics/data-analytics-redefining-the-process-in-healthcare-industry",
+    destination: "/learning-hub/data-analytics/data-analytics-redefining-the-process-in-healthcare-industry",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/mos-excel-2007-exam',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/mos-excel-2007-exam',
+    source: "/opencampus/data-analytics/evolution-of-analytics",
+    destination: "/learning-hub/data-analytics/evolution-of-analytics",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/mos-excel-2010-exam',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/mos-excel-2010-exam',
+    source: "/opencampus/data-analytics/finding-your-path-in-data-analytics",
+    destination: "/learning-hub/data-analytics/finding-your-path-in-data-analytics",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/mos-excel-2013-exam',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/mos-excel-2013-exam',
+    source: "/opencampus/data-analytics/what-is-analytics",
+    destination: "/learning-hub/data-analytics/what-is-analytics",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/k-fold-cross-validation',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/k-fold-cross-validation',
+    source: "/opencampus/data-analytics/perspective-of-a-consultant-to-data-analytics",
+    destination: "/learning-hub/data-analytics/perspective-of-a-consultant-to-data-analytics",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/k-nearest-neighbour',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/k-nearest-neighbour',
+    source: "/opencampus/ms-excel/microsoft-office-specialist",
+    destination: "/learning-hub/ms-excel/microsoft-office-specialist",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/perceptron-vs-svm',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/perceptron-vs-svm',
+    source: "/opencampus/ms-excel/what-is-ms-excel",
+    destination: "/learning-hub/ms-excel/what-is-ms-excel",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/supervised-and-unsupervised-learning',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/supervised-and-unsupervised-learning',
+    source: "/opencampus/machine-learning/application-of-machine-learning",
+    destination: "/learning-hub/machine-learning/application-of-machine-learning",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/why-do-linear-models-fail',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/why-do-linear-models-fail',
+    source: "/opencampus/machine-learning/classification-algorithms",
+    destination: "/learning-hub/machine-learning/classification-algorithms",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/data-analytics-explosion',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/data-analytics-explosion',
+    source: "/opencampus/machine-learning/confusion-matrix",
+    destination: "/learning-hub/machine-learning/confusion-matrix",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/data-analytics-redefining-the-process-in-healthcare-industry',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/data-analytics-redefining-the-process-in-healthcare-industry',
+    source: "/opencampus/machine-learning/decision-tree-model",
+    destination: "/learning-hub/machine-learning/decision-tree-model",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/evolution-of-analytics',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/evolution-of-analytics',
+    source: "/opencampus/machine-learning/dimensionality-reduction-pca",
+    destination: "/learning-hub/machine-learning/dimensionality-reduction-pca",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/finding-your-path-in-data-analytics',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/finding-your-path-in-data-analytics',
+    source: "/opencampus/machine-learning/errors-overfitting",
+    destination: "/learning-hub/machine-learning/errors-overfitting",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/what-is-analytics',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/what-is-analytics',
+    source: "/demo-class/thank-you",
+    destination: "/data-science/affiliate/demo-class/thank-you",
     permanent: true
   },
   {
-    source: '/opencampus/data-analytics/perspective-of-a-consultant-to-data-analytics',
-    destination: 'http://www.odinschool.com/learning-hub/data-analytics/perspective-of-a-consultant-to-data-analytics',
+    source: "/odintalk/vishal-jain-0",
+    destination: "/odintalk/anirudh-kasturi",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/microsoft-office-specialist',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/microsoft-office-specialist',
+    source: "/blog/others/top-21-business-analyst-interview-questions-and-answers",
+    destination: "/blog/data-science/top-21-business-analyst-interview-questions-and-answers",
     permanent: true
   },
   {
-    source: '/opencampus/ms-excel/what-is-ms-excel',
-    destination: 'http://www.odinschool.com/learning-hub/ms-excel/what-is-ms-excel',
+    source: "/blog/top-20-questions-asked-during-an-interview-for-a-data-analyst-position",
+    destination: "/blog/big-data/top-20-questions-asked-during-an-interview-for-a-data-analyst-position",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/application-of-machine-learning',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/application-of-machine-learning',
+    source: "/corporate/blogs/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide",
+    destination: "/corporate/blogs/for-corporate/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/classification-algorithms',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/classification-algorithms',
+    source: "/odintalk/vishal-jain",
+    destination: "/odintalks/vishal-jain",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/confusion-matrix',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/confusion-matrix',
+    source: "/odintalk/sharthakacharjee",
+    destination: "/odintalks/sharthakacharjee",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/decision-tree-model',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/decision-tree-model',
+    source: "/odintalk/sushanthgaonkar",
+    destination: "/odintalks/sushanthgaonkar",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/dimensionality-reduction-pca',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/dimensionality-reduction-pca',
+    source: "/odintalk/krishnakumar",
+    destination: "/odintalks/krishnakumar",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/errors-overfitting',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/errors-overfitting',
+    source: "/corporate-training",
+    destination: "/corporate/training",
     permanent: true
   },
   {
-    source: '/demo-class/thank-you',
-    destination: '/data-science/affiliate/demo-class/thank-you',
+    source: "/hire-odin-grads",
+    destination: "/corporate/hire-odin-grads",
     permanent: true
   },
   {
-    source: '/odintalk/vishal-jain-0',
-    destination: '/odintalk/anirudh-kasturi',
+    source: "/odintalk/vikramduggal",
+    destination: "/odintalks/vikramduggal",
     permanent: true
   },
   {
-    source: '/odintalk/vishal-jain',
-    destination: '/odintalks/vishal-jain',
+    source: "/data-science",
+    destination: "/datascience-bootcamp",
     permanent: true
   },
   {
-    source: '/odintalk/sharthakacharjee',
-    destination: '/odintalks/sharthakacharjee',
+    source: "/odintalk/ajay-malgaonkar",
+    destination: "/odintalks/ajay-malgaonkar",
     permanent: true
   },
   {
-    source: '/odintalk/sushanthgaonkar',
-    destination: '/odintalks/sushanthgaonkar',
+    source: "/odintalk/shashank-mishra",
+    destination: "/odintalks/shashank-mishra",
     permanent: true
   },
   {
-    source: '/odintalk/krishnakumar',
-    destination: '/odintalks/krishnakumar',
+    source: "/odintalk/raam-gururanjan",
+    destination: "/odintalks/raam-gururanjan",
     permanent: true
   },
   {
-    source: '/corporate-training',
-    destination: '/corporate/training',
+    source: "/odintalk/anirudh-kasturi",
+    destination: "/odintalks/anirudh-kasturi",
     permanent: true
   },
   {
-    source: '/hire-odin-grads',
-    destination: '/corporate/hire-odin-grads',
+    source: "/blog/what-is-data-modelling",
+    destination: "/blog/data-science/what-is-data-modelling",
     permanent: true
   },
   {
-    source: '/odintalk/vikramduggal',
-    destination: '/odintalks/vikramduggal',
+    source: "/blog/top-25-tableau-interview-questions-and-answers-for-2023",
+    destination: "/blog/data-science/top-25-tableau-interview-questions-and-answers-for-2023",
     permanent: true
   },
   {
-    source: '/data-science',
-    destination: 'http://www.odinschool.com/datascience-bootcamp',
+    source: "/blog/data-science-roadmap-for-beginners",
+    destination: "/blog/data-science/data-science-roadmap-for-beginners",
     permanent: true
   },
   {
-    source: '/odintalk/ajay-malgaonkar',
-    destination: '/odintalks/ajay-malgaonkar',
+    source: "/blog/data-analyst-job-description-responsibilities-skills-required-and-salary-trends",
+    destination: "/blog/data-science/data-analyst-job-description-responsibilities-skills-required-and-salary-trends",
     permanent: true
   },
   {
-    source: '/odintalk/shashank-mishra',
-    destination: '/odintalks/shashank-mishra',
+    source: "/blog/top-20-questions-to-prepare-for-your-entry-level-data-analyst-interview",
+    destination: "/blog/data-science/top-20-questions-to-prepare-for-your-entry-level-data-analyst-interview",
     permanent: true
   },
   {
-    source: '/odintalk/raam-gururanjan',
-    destination: '/odintalks/raam-gururanjan',
+    source: "/blog/engineers-need-to-be-data-savvy-now-more-than-ever",
+    destination: "/blog/data-science/engineers-need-to-be-data-savvy-now-more-than-ever",
     permanent: true
   },
   {
-    source: '/odintalk/anirudh-kasturi',
-    destination: '/odintalks/anirudh-kasturi',
+    source: "/blog/getting-started-in-data-science-here-are-some-key-areas-you-can-specialise-in",
+    destination: "/blog/data-science/getting-started-in-data-science-here-are-some-key-areas-you-can-specialise-in",
     permanent: true
   },
   {
-    source: '/data-science/master-class/thank-you',
-    destination: '/master-class/thank-you',
+    source: "/blog/data-science-the-cutting-edge-technology-at-the-climate-crisis-warfront",
+    destination: "/blog/data-science/data-science-the-cutting-edge-technology-at-the-climate-crisis-warfront",
     permanent: true
   },
   {
-    source: '/master-class/thank-you',
-    destination: '/masterclass/thank-you',
+    source: "/blog/top-20-data-science-interview-questions",
+    destination: "/blog/data-science/top-20-data-science-interview-questions",
     permanent: true
   },
   {
-    source: '/salary-calculator',
-    destination: '/data-science/salary-calculator',
+    source: "/blog/why-you-should-prioritize-skills-over-degrees-in-your-data-science",
+    destination: "/blog/data-science/why-you-should-prioritize-skills-over-degrees-in-your-data-science",
     permanent: true
   },
   {
-    source: '/test-header-page',
-    destination: '/resume-builder',
+    source: "/blog/5-ways-to-gain-hands-on-experience-in-data-science",
+    destination: "/blog/data-science/5-ways-to-gain-hands-on-experience-in-data-science",
     permanent: true
   },
   {
-    source: '/masterclass/analyzing-loan-application-data-using-pytho',
-    destination: '/masterclass/analyzing-loan-application-data-using-python',
+    source: "/blog/optimize-your-resume-for-your-data-science-career-with-these-tips",
+    destination: "/blog/data-science/optimize-your-resume-for-your-data-science-career-with-these-tips",
     permanent: true
   },
   {
-    source: '/masterclass/demystifying-deep-learning-a-visual-journey',
-    destination: 'http://www.odinschool.com/events',
+    source: "/blog/making-a-career-change-to-data-science-with-limited-or-no-coding-skills-here-are-some-tips",
+    destination: "/blog/data-science/making-a-career-change-to-data-science-with-limited-or-no-coding-skills-here-are-some-tips",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer-bootcamp/application/thank-you',
-    destination: '/full-stack-software-development-bootcamp/application/thank-you/eligible',
+    source: "/blog/here-are-some-tips-to-prepare-for-your-next-data-science-interview",
+    destination: "/blog/data-science/here-are-some-tips-to-prepare-for-your-next-data-science-interview",
     permanent: true
   },
   {
-    source: '/full-stack-java-developer-bootcamp/application/thank-you/not-eligible',
-    destination: '/full-stack-software-development-bootcamp/application/thank-you/not-eligible',
+    source: "/blog/the-story-of-bill-peace-how-a-former-security-professional-uses-ai-to-combat-human-trafficking",
+    destination: "/blog/data-science/the-story-of-bill-peace-how-a-former-security-professional-uses-ai-to-combat-human-trafficking",
     permanent: true
   },
   {
-    source: '/enterprise',
-    destination: 'http://www.odinschool.com/corporate/enterprise',
+    source: "/blog/nats-world-how-python-changed-a-boys-life",
+    destination: "/blog/data-science/nats-world-how-python-changed-a-boys-life",
     permanent: true
   },
   {
-    source: '/big-data-hadoop-developer-training-instructor-led',
-    destination: 'http://www.odinschool.com',
+    source: "/blog/heres-how-you-can-get-a-job-in-data-science",
+    destination: "/blog/data-science/heres-how-you-can-get-a-job-in-data-science",
     permanent: true
   },
   {
-    source: '/bootcamps-hyderabad',
-    destination: '/datascience-bootcamp',
+    source: "/blog/debunking-data-science-myths-5-common-misconceptions-to-unlearn",
+    destination: "/blog/data-science/debunking-data-science-myths-5-common-misconceptions-to-unlearn",
     permanent: true
   },
   {
-    source: '/masterclass/paid/thankyou',
-    destination: '/masterclass/paid/thank-you',
+    source: "/blog/land-your-first-data-science-job-with-these-8-tips",
+    destination: "/blog/data-science/land-your-first-data-science-job-with-these-8-tips",
     permanent: true
   },
   {
-    source: '/opencampus/big-data-developer/what-is-big-data',
-    destination: 'http://www.odinschool.com/learning-hub/big-data-developer/what-is-big-data',
+    source: "/blog/5-signs-you-need-a-career-change",
+    destination: "/blog/data-science/5-signs-you-need-a-career-change",
     permanent: true
   },
   {
-    source: '/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession',
-    destination: '/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession/22-feb-2023',
+    source: "/blog/quality-management/types-of-hypothesis-testing",
+    destination: "/blog/data-science/types-of-hypothesis-testing",
     permanent: true
   },
   {
-    source: '/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession/22-feb-2023',
-    destination: '/college/webinar/22-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession',
+    source: "/blog/emerging-technologies/top-8-trending-technologies-taking-the-world-by-storm",
+    destination: "/blog/data-science/top-8-trending-technologies-taking-the-world-by-storm",
     permanent: true
   },
   {
-    source: '/college/masterclass/thank-you',
-    destination: '/college/webinar/thank-you',
+    source: "/blog/information-technology/must-practice-software-testing-interview-questions-before-your-interview",
+    destination: "/blog/programming/must-practice-software-testing-interview-questions-before-your-interview",
     permanent: true
   },
   {
-    source: '/opencampus/hadoop-administrator/what-is-hadoop',
-    destination: 'http://www.odinschool.com/learning-hub/hadoop-administrator/what-is-hadoop',
+    source: "/blog/others/20-selenium-interview-questions-and-answers-you-should-prepare",
+    destination: "/blog/programming/20-selenium-interview-questions-and-answers-you-should-prepare",
     permanent: true
   },
   {
-    source: '/college/webinar/23-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession-0',
-    destination: '/college/webinar/23-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession',
+    source: "/blog/others/top-30-linux-interview-questions-and-answers",
+    destination: "/blog/programming/top-30-linux-interview-questions-and-answers",
     permanent: true
   },
   {
-    source: '/opencampus/machine-learning/what-is-machine-learning',
-    destination: 'http://www.odinschool.com/learning-hub/machine-learning/what-is-machine-learning',
+    source: "/blog/others/the-difference-between-a-resume-and-a-cv-curriculum-vitae",
+    destination: "/blog/data-science/the-difference-between-a-resume-and-a-cv-curriculum-vitae",
     permanent: true
   },
   {
-    source: '/business-analytics-bootcamp',
-    destination: '/business-analytics-bootcamp-old',
+    source: "/blog/it-service-management/itil-interview-questions",
+    destination: "/blog/programming/itil-interview-questions",
     permanent: true
   },
   {
-    source: '/odinsights',
-    destination: '/events',
+    source: "/blog/it-service-management/how-important-is-itil-for-business-analysts",
+    destination: "/blog/programming/how-important-is-itil-for-business-analysts",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp-v3',
-    destination: '/datascience-bootcamp',
+    source: "/blog/latest-updates/interview-questions-and-answers-informatica-powercenter",
+    destination: "/blog/data-science/interview-questions-and-answers-informatica-powercenter",
     permanent: true
   },
   {
-    source: '/masterclass',
-    destination: '/events',
+    source: "/blog/cloud/top-33-frequently-asked-devops-interview-questions-and-answers",
+    destination: "/blog/cloud-computing/top-33-frequently-asked-devops-interview-questions-and-answers",
     permanent: true
   },
   {
-    source: '/full-stack-software-development-bootcamp/application/thank-you/not-eligible/v3',
-    destination: '/full-stack-software-development-bootcamp/application/thank-you/not-eligible',
+    source: "/blog/it-service-management/itil-service-life-cycle",
+    destination: "/blog/programming/itil-service-life-cycle",
     permanent: true
   },
   {
-    source: '/sitemap',
-    destination: '/m22/sitemap',
+    source: "/blog/information-security/how-will-artificial-intelligence-and-machine-learning-redefine-and-transform-cybersecurity",
+    destination: "/blog/programming/how-will-artificial-intelligence-and-machine-learning-redefine-and-transform-cybersecurity",
     permanent: true
   },
   {
-    source: '/sitemap-v3',
-    destination: '/sitemap',
+    source: "/blog/quality-management/the-robots-are-coming-will-process-excellence-survive",
+    destination: "/blog/programming/the-robots-are-coming-will-process-excellence-survive",
     permanent: true
   },
   {
-    source: '/success-stories-v3',
-    destination: '/success-stories',
+    source: "/blog/programming/how-will-artificial-intelligence-and-machine-learning-redefine-and-transform-cybersecurity",
+    destination: "/blog/data-science/how-will-artificial-intelligence-and-machine-learning-redefine-and-transform-cybersecurity",
     permanent: true
   },
   {
-    source: '/success-stories',
-    destination: '/m22/success-stories',
+    source: "/blog/it-service-management/itil-service-design-overview-principles-objectives",
+    destination: "/blog/programming/itil-service-design-overview-principles-objectives",
     permanent: true
   },
   {
-    source: '/business-analytics-bootcamp',
-    destination: '/datascience-bootcamp',
+    source: "/blog/quality-management/better-software-development-and-testing-with-the-defect-bug-life-cycle",
+    destination: "/blog/programming/better-software-development-and-testing-with-the-defect-bug-life-cycle",
     permanent: true
   },
   {
-    source: '/v3-careers',
-    destination: '/careers',
+    source: "/blog/cloud/top-10-reasons-to-get-an-aws-certification",
+    destination: "/blog/cloud-computing/top-10-reasons-to-get-an-aws-certification",
     permanent: true
   },
   {
-    source: '/careers',
-    destination: '/m22/careers',
+    source: "/blog/it-service-management/itil-service-strategy-processes",
+    destination: "/blog/programming/itil-service-strategy-processes",
     permanent: true
   },
   {
-    source: '/fullstack-category',
-    destination: '/full-stack-software-development-bootcamp',
+    source: "/blog/project-management/top-3-agile-software-development-methods",
+    destination: "/blog/programming/top-3-agile-software-development-methods",
     permanent: true
   },
   {
-    source: '/corporate/enterprise',
-    destination: '/training-solution',
+    source: "/blog/workplace-tools/five-excellent-basic-formatting-tips-on-ms-excel",
+    destination: "/blog/others/five-excellent-basic-formatting-tips-on-ms-excel",
     permanent: true
   },
   {
-    source: '/corporate/hire-odin-grads',
-    destination: '/talent-solution',
+    source: "/blog/cloud/10-cutting-edge-cloud-services-offered-by-azure-in-2020",
+    destination: "/blog/cloud-computing/10-cutting-edge-cloud-services-offered-by-azure-in-2020",
     permanent: true
   },
-
   {
-    source: '/full-stack-software-development-bootcamp',
-    destination: 'https://www.odinschool.com/full-stack-developer-course',
+    source: "/blog/project-management/business-analysts-and-project-managers-a-comparison-of-their-roles-and-responsibilities",
+    destination: "/blog/data-science/business-analysts-and-project-managers-a-comparison-of-their-roles-and-responsibilities",
     permanent: true
   },
   {
-    source: '/data-science-salary-calculator',
-    destination: '/data-science-salary-calculator-archived',
+    source: "/corporate/training",
+    destination: "/corporate/enterprise",
     permanent: true
   },
   {
-    source: '/data-science-salary-calculator',
-    destination: '/data-science/salary-calculator',
+    source: "/data-science/master-class/thank-you",
+    destination: "/master-class/thank-you",
     permanent: true
   },
   {
-    source: '/opencampus',
-    destination: 'http://hubspot.greycampus.com/gc/opencampus',
+    source: "/master-class/thank-you",
+    destination: "/masterclass/thank-you",
     permanent: true
   },
   {
-    source: '/careers/application/thank-you/eligible',
-    destination: '/careers/application',
+    source: "/test-header-page",
+    destination: "/resume-builder",
     permanent: true
   },
   {
-    source: '/thank-you-0',
-    destination: '/careerthank-you',
+    source: "/masterclass/analyzing-loan-application-data-using-pytho",
+    destination: "/masterclass/analyzing-loan-application-data-using-python",
     permanent: true
   },
   {
-    source: '/careerthank-you',
-    destination: '/careers/application/thank-you',
+    source: "/masterclass/demystifying-deep-learning-a-visual-journey",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/checkout-ab',
-    destination: '/checkout',
+    source: "/full-stack-java-developer-bootcamp/application/thank-you",
+    destination: "/full-stack-software-development-bootcamp/application/thank-you/eligible",
     permanent: true
   },
   {
-    source: '/rahul-saha',
-    destination: '/odintalks/rahul-saha',
+    source: "/full-stack-java-developer-bootcamp/application/thank-you/not-eligible",
+    destination: "/full-stack-software-development-bootcamp/application/thank-you/not-eligible",
     permanent: true
   },
   {
-    source: '/data-science/affiliate/demo-class',
-    destination: 'https://www.odinschool.com/data-science/demo-class',
+    source: "/enterprise",
+    destination: "/corporate/enterprise",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/affiliate/application/thank-you/eligible',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/big-data-hadoop-developer-training-instructor-led",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/job-assistance',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/bootcamps-hyderabad",
+    destination: "/datascience-bootcamp",
     permanent: true
   },
   {
-    source: '/data-science/affiliate/demo-class/thank-you',
-    destination: 'https://www.odinschool.com/data-science/demo-class/thank-you',
+    source: "/masterclass/paid/thankyou",
+    destination: "/masterclass/paid/thank-you",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/bangalore-v3',
-    destination: '/datascience-bootcamp/bangalore-v3-archived',
+    source: "/opencampus/big-data-developer/what-is-big-data",
+    destination: "/learning-hub/big-data-developer/what-is-big-data",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/hyderabad-v3',
-    destination: '/datascience-bootcamp/hyderabad-v3-archived',
+    source: "/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession",
+    destination: "/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession/22-feb-2023",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/mumbai-v3',
-    destination: '/datascience-bootcamp/mumbai',
+    source: "/college/webinar/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession/22-feb-2023",
+    destination: "/college/webinar/22-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/bangalore-v3',
-    destination: '/datascience-bootcamp/bangalore',
+    source: "/college/masterclass/thank-you",
+    destination: "/college/webinar/thank-you",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/hyderabad-v3',
-    destination: '/datascience-bootcamp/hyderabad',
+    source: "/opencampus/hadoop-administrator/what-is-hadoop",
+    destination: "/learning-hub/hadoop-administrator/what-is-hadoop",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/pune-v3',
-    destination: '/datascience-bootcamp/pune',
+    source: "/college/webinar/23-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession-0",
+    destination: "/college/webinar/23-feb-2023/how-to-get-a-high-paying-job-as-a-fresher-even-during-a-recession",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/mumbai-v3',
-    destination: '/datascience-bootcamp/mumbai-v3-archived',
+    source: "/opencampus/machine-learning/what-is-machine-learning",
+    destination: "/learning-hub/machine-learning/what-is-machine-learning",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/chennai-v3',
-    destination: '/datascience-bootcamp/chennai-v3-archived',
+    source: "/business-analytics-bootcamp",
+    destination: "/business-analytics-bootcamp-old",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/pune-v3',
-    destination: '/datascience-bootcamp/pune-v3-archived',
+    source: "/odinsights",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/chennai-v3',
-    destination: '/datascience-bootcamp/chennai',
+    source: "/datascience-bootcamp-v3",
+    destination: "/datascience-bootcamp",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp-8',
-    destination: 'http://20029733.hs-sites.com/datascience-bootcamp-8',
+    source: "/masterclass",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/quotations-crm',
-    destination: '/quotations',
+    source: "/full-stack-software-development-bootcamp/application/thank-you/not-eligible/v3",
+    destination: "/full-stack-software-development-bootcamp/application/thank-you/not-eligible",
     permanent: true
   },
   {
-    source: '/performance-marketing-bootcamp',
-    destination: '/digital-marketing/performance-marketing-bootcamp',
+    source: "/v3-contact-us",
+    destination: "/contact-us",
     permanent: true
   },
   {
-    source: '/resume-builder/thank-you',
-    destination: 'http://20029733.hs-sites.com/resume-builder/thank-you',
+    source: "/v3-about-us",
+    destination: "/about-us",
     permanent: true
   },
   {
-    source: '/become-an-affiliate',
-    destination: 'http://www.odinschool.com',
+    source: "/v3-hire-from-us",
+    destination: "/corporate/hire-odin-grads",
     permanent: true
   },
   {
-    source: '/microsoft-azure-fundamentals-training-course',
-    destination: 'http://www.greycampus.in/microsoft-azure-fundamentals-training-course',
+    source: "/v3-home",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp-10',
-    destination: 'http://20029733.hs-sites.com/datascience-bootcamp-10',
+    source: "/terms-of-use-v3",
+    destination: "/terms-of-use",
     permanent: true
   },
   {
-    source: '/web-developer-bootcamp',
-    destination: 'https://www.odinschool.com/web-development-course',
+    source: "/privacy-policy-v3",
+    destination: "/privacy-policy",
     permanent: true
   },
   {
-    source: '/digital-marketing',
-    destination: 'https://www.odinschool.com/digital-marketing/performance-marketing-bootcamp',
-    permanent: false
+    source: "/v3-faqs",
+    destination: "/faqs",
+    permanent: true
+  },
+  {
+    source: "/sitemap",
+    destination: "/m22/sitemap",
+    permanent: true
+  },
+  {
+    source: "/sitemap-v3",
+    destination: "/sitemap",
+    permanent: true
+  },
+  {
+    source: "/success-stories-v3",
+    destination: "/success-stories",
+    permanent: true
+  },
+  {
+    source: "/business-analytics-bootcamp",
+    destination: "/datascience-bootcamp",
+    permanent: true
+  },
+  {
+    source: "/v3-careers",
+    destination: "/careers",
+    permanent: true
+  },
+  {
+    source: "/fullstack-category",
+    destination: "/full-stack-software-development-bootcamp",
+    permanent: true
+  },
+  {
+    source: "/corporate/enterprise",
+    destination: "/training-solution",
+    permanent: true
+  },
+  {
+    source: "/corporate/hire-odin-grads",
+    destination: "/talent-solution",
+    permanent: true
+  },
+  {
+    source: "/full-stack-software-development-bootcamp",
+    destination: "/full-stack-developer-course",
+    permanent: true
+  },
+  {
+    source: "/data-science-salary-calculator",
+    destination: "/data-science-salary-calculator-archived",
+    permanent: true
+  },
+  {
+    source: "/data-science-salary-calculator",
+    destination: "/data-science/salary-calculator",
+    permanent: true
+  },
+  {
+    source: "/opencampus",
+    destination: "http:/hubspot.greycampus.com/gc/opencampus",
+    permanent: true
+  },
+  {
+    source: "/careers/application/thank-you/eligible",
+    destination: "/careers/application",
+    permanent: true
+  },
+  {
+    source: "/thank-you-0",
+    destination: "/careerthank-you",
+    permanent: true
+  },
+  {
+    source: "/careerthank-you",
+    destination: "/careers/application/thank-you",
+    permanent: true
+  },
+  {
+    source: "/checkout-ab",
+    destination: "/checkout",
+    permanent: true
+  },
+  {
+    source: "/rahul-saha",
+    destination: "/odintalks/rahul-saha",
+    permanent: true
+  },
+  {
+    source: "/data-science/affiliate/demo-class",
+    destination: "/data-science/demo-class",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/affiliate/application/thank-you/eligible",
+    destination: "/data-science-course",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/job-assistance",
+    destination: "/data-science-course",
+    permanent: true
+  },
+  {
+    source: "/data-science/affiliate/demo-class/thank-you",
+    destination: "/data-science/demo-class/thank-you",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/bangalore-v3",
+    destination: "/datascience-bootcamp/bangalore-v3-archived",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/hyderabad-v3",
+    destination: "/datascience-bootcamp/hyderabad-v3-archived",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/mumbai-v3",
+    destination: "/datascience-bootcamp/mumbai",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/bangalore-v3",
+    destination: "/datascience-bootcamp/bangalore",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/hyderabad-v3",
+    destination: "/datascience-bootcamp/hyderabad",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/pune-v3",
+    destination: "/datascience-bootcamp/pune",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/mumbai-v3",
+    destination: "/datascience-bootcamp/mumbai-v3-archived",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/chennai-v3",
+    destination: "/datascience-bootcamp/chennai-v3-archived",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/pune-v3",
+    destination: "/datascience-bootcamp/pune-v3-archived",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/chennai-v3",
+    destination: "/datascience-bootcamp/chennai",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp-8",
+    destination: "http:/20029733.hs-sites.com/datascience-bootcamp-8",
+    permanent: true
+  },
+  {
+    source: "/quotations-crm",
+    destination: "/quotations",
+    permanent: true
+  },
+  {
+    source: "/performance-marketing-bootcamp",
+    destination: "/digital-marketing/performance-marketing-bootcamp",
+    permanent: true
+  },
+  {
+    source: "/resume-builder/thank-you",
+    destination: "http:/20029733.hs-sites.com/resume-builder/thank-you",
+    permanent: true
+  },
+  {
+    source: "/become-an-affiliate",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "/microsoft-azure-fundamentals-training-course",
+    destination: "http:/www.greycampus.in/microsoft-azure-fundamentals-training-course",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp-10",
+    destination: "http:/20029733.hs-sites.com/datascience-bootcamp-10",
+    permanent: true
+  },
+  {
+    source: "/web-developer-bootcamp",
+    destination: "/web-development-course",
+    permanent: true
+  },
+  {
+    source: "/digital-marketing",
+    destination: "/digital-marketing/performance-marketing-bootcamp",
+    permanent: true
+  },
+  {
+    source: "/blog/karthik",
+    destination: "/blog/from-logistics-to-data-analysis-karthiks-career-transition-to-global-transportation-analyst",
+    permanent: true
+  },
+  {
+    source: "/thankyou",
+    destination: "/thank-you",
+    permanent: true
+  },
+  {
+    source: "/datascience-bootcamp/scholarship/application/thank-you",
+    destination: "/data-science-bootcamp/scholarship/application/thank-you",
+    permanent: true
+  },
+  {
+    source: "/digital-marketing/performance-marketing-bootcamp",
+    destination: "/digital-marketing/performance-marketing-bootcamp-archived",
+    permanent: true
+  },
+  {
+    source: "/digital-marketing/performance-marketing-bootcamp",
+    destination: "/digital-marketing-course",
+    permanent: true
+  },
+  {
+    source: "/blog/are-data-science-courses-affordable-in-india",
+    destination: "/blog/why-is-data-science-always-in-demand",
+    permanent: true
+  },
+  {
+    source: "/v3/datascience-bootcamp-with-job-assistance",
+    destination: "/datascience-bootcamp-with-job-assistance",
+    permanent: true
+  },
+  {
+    source: "/blog/a-blueprint-for-data-science-career-advancement",
+    destination: "/blog/data-science-roadmap-2024-everything-you-should-know",
+    permanent: true
+  },
+  {
+    source: "/data-science-salary-calculator-archived",
+    destination: "/data-science-interview/thank-you",
+    permanent: true
+  },
+  {
+    source: "/verify-certificate",
+    destination: "https:/go.odinschool.com/verify-certificate",
+    permanent: true
+  },
+  {
+    source: "/bootcamps/full-stack",
+    destination: "/web-development-course",
+    permanent: true
+  },
+  {
+    source: "/data-analyst-career-hackathon-odinschool",
+    destination: "/masterclass/data-analyst-career-hackathon-hack-your-future",
+    permanent: true
+  },
+  {
+    source: "/blog/data-science-pay-after-placement-programs-5-top-risks",
+    destination: "/blog/data-science-pay-after-placement-pros-and-cons",
+    permanent: true
+  },
+  {
+    source: "/blog/web-developer-salary-in-india-2024-insights-for-freshers-experienced",
+    destination: "/blog/web-development-salary-in-india-2024-insights-for-freshers-experienced",
+    permanent: true
+  },
+  {
+    source: "/blog/performance-marketing-role-in-the-great-indian-festival-and-big-billion-days",
+    destination: "/blog/digital-marketing-in-the-great-indian-festival-and-big-billion-days",
+    permanent: true
+  },
+  {
+    source: "/varsity/tutorial",
+    destination: "/varsity",
+    permanent: true
+  },
+  {
+    source: "/blog/data-science-driving-constant-gratification-in-2023",
+    destination: "/blog/data-science-driving-constant-gratification",
+    permanent: true
+  },
+  {
+    source: "/varsity/tutorial/sql-and-mysql/data-extraction-transformation-and-loading-etl",
+    destination: "/varsity/sql/data-extraction-transformation-and-loading-etl",
+    permanent: true
+  },
+  {
+    source: "/varsity/tutorial/sql/mysql-mastery/advanced-database-design-and-constraints",
+    destination: "/varsity/sql/advanced-database-design-and-constraints",
+    permanent: true
+  },
+  {
+    source: "/varsity/tutorial/sql/mysql-mastery/basic-mysql-operations",
+    destination: "/varsity/sql/basic-mysql-operations",
+    permanent: true
+  },
+  {
+    source: "/varsity/tutorial/sql/mysql-mastery/introduction-to-databases-sql-and-mysql",
+    destination: "/varsity/sql/introduction-to-databases-sql-and-mysql",
+    permanent: true
+  },
+  {
+    source: "/digital-marketing-bootcamp/application",
+    destination: "/digital-marketing-course",
+    permanent: true
+  },
+  {
+    source: "/blog/the-symbiosis-of-data-science-and-artificial-intelligence",
+    destination: "/blog/data-science-and-artificial-intelligence-partners-in-tech-innovation",
+    permanent: true
+  },
+  {
+    source: "/data-science-bootcamp/checkout",
+    destination: "/data-science-bootcamp/checkout",
+    permanent: true
   },
   {
-    source: '/thankyou',
-    destination: 'https://www.odinschool.com/thank-you',
+    source: "/blog/shashanks-journey-through-start-ups-and-data-science-discoveries",
+    destination: "/blog/how-shashank-rebooted-his-career-with-data-science",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/scholarship/application/thank-you',
-    destination: 'https://www.odinschool.com/data-science-bootcamp/scholarship/application/thank-you',
+    source: "/digital-marketing-bootcamp",
+    destination: "/ds-demo",
     permanent: true
   },
   {
-    source: '/digital-marketing/performance-marketing-bootcamp',
-    destination: '/digital-marketing/performance-marketing-bootcamp-archived',
+    source: "/ds-demo",
+    destination: "/datascience-bootcamp/demo-class",
     permanent: true
   },
   {
-    source: '/digital-marketing/performance-marketing-bootcamp',
-    destination: '/digital-marketing-course',
+    source: "/blog/why-is-data-science-always-in-demand&gt;",
+    destination: "/blog/why-is-data-science-always-in-demand",
     permanent: true
   },
   {
-    source: '/v3/datascience-bootcamp-with-job-assistance',
-    destination: '/datascience-bootcamp-with-job-assistance',
+    source: "/sdk-integration",
+    destination: "/sdk-integration",
     permanent: true
   },
   {
-    source: '/data-science-salary-calculator-archived',
-    destination: '/data-science-interview/thank-you',
+    source: "/masterclass/digital-marketing-for-entrepreneurs",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/verify-certificate',
-    destination: 'https://go.odinschool.com/verify-certificate',
+    source: "/blog/13-most-in-demand-data-science-skills-in-2023",
+    destination: "/blog/13-most-in-demand-data-science-skills",
     permanent: true
   },
   {
-    source: '/bootcamps/full-stack',
-    destination: 'https://www.odinschool.com/web-development-course',
+    source: "/blog/reshaping-destiny-soniyas-inspiring-journey-from-hr-to-data-science",
+    destination: "/blog/tag/success-story",
     permanent: true
   },
   {
-    source: '/data-analyst-career-hackathon-odinschool',
-    destination: '/masterclass/data-analyst-career-hackathon-hack-your-future',
+    source: "/blog/saravanas-journey-of-learning-problems-and-a-career-change",
+    destination: "/blog/saravanas-journey-of-learning-challenges-and-a-career-change",
     permanent: true
   },
   {
-    source: '/varsity/tutorial',
-    destination: '/varsity',
+    source: "/learning-hub/tag/big-data-developer",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/varsity/tutorial/sql-and-mysql/data-extraction-transformation-and-loading-etl',
-    destination: 'https://www.odinschool.com/varsity/sql/data-extraction-transformation-and-loading-etl',
+    source: "/learning-hub/tag/machine-learning",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/varsity/tutorial/sql/mysql-mastery/advanced-database-design-and-constraints',
-    destination: 'https://www.odinschool.com/varsity/sql/advanced-database-design-and-constraints',
+    source: "/learning-hub/tag/php",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/varsity/tutorial/sql/mysql-mastery/basic-mysql-operations',
-    destination: 'https://www.odinschool.com/varsity/sql/basic-mysql-operations',
+    source: "/learning-hub/tag/ruby",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/varsity/tutorial/sql/mysql-mastery/introduction-to-databases-sql-and-mysql',
-    destination: 'https://www.odinschool.com/varsity/sql/introduction-to-databases-sql-and-mysql',
+    source: "/learning-hub/tag/hadoop-administrator",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/digital-marketing-bootcamp/application',
-    destination: 'https://www.odinschool.com/digital-marketing-course',
+    source: "/learning-hub/tag/data-analytics",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/data-science-bootcamp/checkout',
-    destination: 'http://dev.odinschool.com/data-science-bootcamp/checkout',
+    source: "/learning-hub/tag/ms-excel",
+    destination: "/learning-hub",
     permanent: true
   },
   {
-    source: '/dev/digital-marketing-bootcamp',
-    destination: '/ds-demo',
+    source: "/varsity/big-data-fundamentals/introduction-to-mongo-db",
+    destination: "/varsity/big-data-fundamentals/fundamentals-of-mongodb",
     permanent: true
   },
   {
-    source: '/dev/ds-demo',
-    destination: '/datascience-bootcamp/demo-class',
+    source: "/blog/lights-camera-data-an-actors-transformation-into-a-lead-analyst",
+    destination: "/blog/lights-camera-data-an-actor-transformation-into-a-lead-analyst",
     permanent: true
   },
   {
-    source: '/sdk-integration',
-    destination: 'http://www.odinschool.com/sdk-integration',
+    source: "/software-engineering/react-web-development-course",
+    destination: "/web-development-course",
     permanent: true
   },
   {
-    source: '/masterclass/digital-marketing-for-entrepreneurs',
-    destination: 'https://www.odinschool.com/events',
+    source: "/datascience-bootcamp",
+    destination: "/data-science-course",
     permanent: true
   },
   {
-    source: '/varsity/big-data-fundamentals/introduction-to-mongo-db',
-    destination: 'https://www.odinschool.com/varsity/big-data-fundamentals/fundamentals-of-mongodb',
+    source: "/data-science/demo-class",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/software-engineering/react-web-development-course',
-    destination: '/web-development-course',
+    source: "/datascience-bootcamp/data-science-course",
+    destination: "/data-science-course",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/datascience-bootcamp/brochure",
+    destination: "/data-science-course",
     permanent: true
   },
   {
-    source: '/data-science/demo-class',
-    destination: 'https://www.odinschool.com/events',
+    source: "/blog/support-role-to-bda-to-sr.-data-analyst-at-sony-with-15-lpa",
+    destination: "/blog/support-role-to-bda-to-sr.-data-analyst-at-sony-with-huge-salary",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/data-science-course',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/datascience-bootcamp/hyderabad",
+    destination: "/data-science-course/hyderabad",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/brochure',
-    destination: 'https://www.odinschool.com/data-science-course',
+    source: "/datascience-bootcamp/pune",
+    destination: "/data-science-course/pune",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/hyderabad',
-    destination: '/data-science-course/hyderabad',
+    source: "/datascience-bootcamp/chennai",
+    destination: "/data-science-course/chennai",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/pune',
-    destination: '/data-science-course/pune',
+    source: "/datascience-bootcamp/mumbai",
+    destination: "/data-science-course/mumbai",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/chennai',
-    destination: '/data-science-course/chennai',
+    source: "/datascience-bootcamp/bangalore",
+    destination: "/data-science-course/bangalore",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/mumbai',
-    destination: '/data-science-course/mumbai',
+    source: "/data-science-course-0",
+    destination: "/data-science-course-version-b-testing",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/bangalore',
-    destination: '/data-science-course/bangalore',
+    source: "/web-development-course",
+    destination: "/web-development-course/oldpage",
     permanent: true
   },
   {
-    source: '/data-science-course-0',
-    destination: '/data-science-course-version-b-testing',
+    source: "/rwd/checkout",
+    destination: "/checkout/rwd",
     permanent: true
   },
   {
-    source: '/web-development-course',
-    destination: '/web-development-course/oldpage',
+    source: "/datascience-bootcamp/book-a-demo",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/rwd/checkout',
-    destination: '/checkout/rwd',
+    source: "/software-engineering/react-web-development-course/book-a-demo",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/book-a-demo',
-    destination: 'https://www.odinschool.com/events',
+    source: "/datascience-bootcamp/book-a-demo/register",
+    destination: "/events",
     permanent: true
   },
   {
-    source: '/software-engineering/react-web-development-course/book-a-demo',
-    destination: 'https://www.odinschool.com/events',
+    source: "/blog/unlocking-vast-potential-full-stack-development-opportunities-in-the-mobile-market",
+    destination: "/blog/unlocking-web-development-opportunities-in-the-mobile-market",
     permanent: true
   },
   {
-    source: '/datascience-bootcamp/book-a-demo/register',
-    destination: 'https://www.odinschool.com/events',
+    source: "/blog/enhancing-mental-health-assessment-through-full-stack-development-bridging-technology-and-mental-well-being",
+    destination: "/blog/enhancing-mental-health-assessment-through-web-development",
     permanent: true
   },
   {
-    source: '/manipal-mba-course',
-    destination: '/manipal-university-jaipur/mba',
+    source: "/blog/behavioural-data-science-interview-questions-are-not-hr-questions",
+    destination: "/blog/master-behavioral-interview-questions-data-science-interview",
     permanent: true
   },
   {
-    source: '/manipal-university-jaipur/mba',
-    destination: '/online-mba-manipal-university-jaipur',
+    source: "/manipal-mba-course",
+    destination: "/manipal-university-jaipur/mba",
     permanent: true
   },
   {
-    source: '/manipal-university-jaipur/mca',
-    destination: '/online-mca-manipal-university-jaipur',
+    source: "/manipal-mca-course",
+    destination: "/manipal-university-jaipur/mca",
     permanent: true
   },
   {
-    source: '/online-mca-manipal-university-sikkim',
-    destination: '/online-mca-sikkim-manipal-university',
+    source: "/manipal-university-jaipur/mba",
+    destination: "/online-mba-manipal-university-jaipur",
     permanent: true
   },
   {
-    source: '/digital-marketing-bootcamp',
-    destination: 'https://www.odinschool.com/digital-marketing-course',
+    source: "/manipal-university-jaipur/mca",
+    destination: "/online-mca-manipal-university-jaipur",
     permanent: true
   },
   {
-    source: '/university-programs',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mca-manipal-university-sikkim",
+    destination: "/online-mca-sikkim-manipal-university",
     permanent: true
   },
   {
-    source: '/os-microsoft-azure-900-webpage/checkout',
-    destination: '/azure-course-with-az-900-certification/checkout',
+    source: "/digital-marketing-bootcamp",
+    destination: "/digital-marketing-course",
     permanent: true
   },
   {
-    source: '/bootcamps-drafted',
-    destination: 'https://www.odinschool.com',
+    source: "/university-programs",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/thank-you-26',
-    destination: 'http://dev.odinschool.com/thank-you-26',
+    source: "/os-microsoft-azure-900-webpage/checkout",
+    destination: "/azure-course-with-az-900-certification/checkout",
     permanent: true
   },
   {
-    source: '/full-stack-foundation-bootcamp',
-    destination: 'https://www.odinschool.com/full-stack-developer-course',
+    source: "/bootcamps-drafted",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/data-science-course-hello-bar',
-    destination: '/data-science-course-vb',
+    source: "/thank-you-26",
+    destination: "/thank-you-26",
     permanent: true
   },
   {
-    source: '/data-science-course-vb',
-    destination: '/data-science-course/vb',
+    source: "/full-stack-foundation-bootcamp",
+    destination: "/full-stack-developer-course",
     permanent: true
   },
   {
-    source: '/online-mba-manipal-university-jaipur',
-    destination: 'https://www.odinschool.com/',
+    source: "/data-science-course-hello-bar",
+    destination: "/data-science-course-vb",
     permanent: true
   },
   {
-    source: '/online-mba-lovely-professional-university',
-    destination: 'https://www.odinschool.com/',
+    source: "/data-science-course-vb",
+    destination: "/data-science-course/vb",
     permanent: true
   },
   {
-    source: '/online-mca-sikkim-manipal-university',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mba-manipal-university-jaipur",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/online-mba-amity-university',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mba-lovely-professional-university",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/online-mca-manipal-university-jaipur',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mca-sikkim-manipal-university",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/online-mca-lovely-professional-university',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mba-amity-university",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/online-bca-manipal-university-jaipur',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mca-manipal-university-jaipur",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/online-bba-manipal-university-jaipur',
-    destination: 'https://www.odinschool.com/',
+    source: "/online-mca-lovely-professional-university",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/checkout/iim',
-    destination: '/business-analytics-course/checkout',
+    source: "/online-bca-manipal-university-jaipur",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/data-science-course/checkout',
-    destination: '/data-science-course-usa/checkout',
+    source: "/online-bba-manipal-university-jaipur",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/checkout/usa',
-    destination: '/data-science-course/checkout',
+    source: "/checkout/iim",
+    destination: "/business-analytics-course/checkout",
     permanent: true
   },
   {
-    source: '/data-science-course-usa/checkout',
-    destination: '/generative-ai-course-iitg-usa/checkout',
+    source: "/data-science-course/checkout",
+    destination: "/data-science-course-usa/checkout",
     permanent: true
   },
   {
-    source: '/generative-ai-course-iitg-usa/checkout',
-    destination: '/applied-generative-ai-online-course/checkout',
+    source: "/checkout/usa",
+    destination: "/data-science-course/checkout",
     permanent: true
   },
   {
-    source: '/certified-business-accountant-course',
-    destination: 'https://www.odinschool.com',
+    source: "/data-science-course-usa/checkout",
+    destination: "/generative-ai-course-iitg-usa/checkout",
     permanent: true
   },
   {
-    source: '/digital-marketing-course',
-    destination: 'https://www.odinschool.com',
+    source: "/generative-ai-course-iitg-usa/checkout",
+    destination: "/applied-generative-ai-online-course/checkout",
     permanent: true
   },
   {
-    source: '/full-stack-developer-course',
-    destination: 'https://www.odinschool.com',
+    source: "/certified-business-accountant-course",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/azure-course-with-az-900-certification',
-    destination: 'https://www.odinschool.com',
+    source: "/digital-marketing-course",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/generative-ai-course-iitg/checkout-0',
-    destination: '/certification-in-data-science-and-machine-learning/checkout',
+    source: "/full-stack-developer-course",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/certification-in-data-science-and-machine-learning/checkout',
-    destination: '/certificate-program-in-data-science-and-machine-learning/checkout',
+    source: "/azure-course-with-az-900-certification",
+    destination: "/",
     permanent: true
   },
   {
-    source: '/data-science-course-96',
-    destination: 'http://dev.odinschool.com/data-science-course-96',
+    source: "/generative-ai-course-iitg/checkout-0",
+    destination: "/certification-in-data-science-and-machine-learning/checkout",
     permanent: true
   },
   {
-    source: '/gen-ai-bootcamp/checkout',
-    destination: '/generative-ai-bootcamp/checkout',
+    source: "/certification-in-data-science-and-machine-learning/checkout",
+    destination: "/certificate-program-in-data-science-and-machine-learning/checkout",
     permanent: true
   },
   {
-    source: '/college-programs',
-    destination: 'http://college.odinschool.com/college-programs',
+    source: "/data-science-course-96",
+    destination: "/data-science-course-96",
     permanent: true
   },
   {
-    source: '/college-programs',
-    destination: '/',
+    source: "/gen-ai-bootcamp/checkout",
+    destination: "/generative-ai-bootcamp/checkout",
     permanent: true
   },
   {
-    source: '/data-analyst-course',
-    destination: 'http://college.odinschool.com/data-analyst-course',
+    source: "/data-analyst-course",
+    destination: "https://college.odinschool.com/data-analyst-course",
     permanent: true
   },
   {
-    source: '/ai-analyst-course',
-    destination: 'http://college.odinschool.com/ai-analyst-course',
+    source: "/ai-analyst-course",
+    destination: "https://college.odinschool.com/ai-analyst-course",
     permanent: true
   },
   {
-    source: '/investment-banking-and-finance-operations-elite-cours/checkout',
-    destination: '/investment-banking-and-finance-operations-elite-course/checkout',
+    source: "/investment-banking-and-finance-operations-elite-cours/checkout",
+    destination: "/investment-banking-and-finance-operations-elite-course/checkout",
     permanent: true
   }
-];
+]
 
 module.exports = redirects; 

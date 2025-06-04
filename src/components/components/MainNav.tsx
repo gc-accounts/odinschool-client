@@ -32,7 +32,7 @@ const MainNav = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <GraduationCap className="mr-2 h-4 w-4" />
-              Learning
+              Courses
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -71,7 +71,7 @@ const MainNav = () => {
           </NavigationMenuItem>
 
           {/* Tools Section */}
-          <NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <Calculator className="mr-2 h-4 w-4" />
               Tools
@@ -89,7 +89,7 @@ const MainNav = () => {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
 
           {/* Company Section */}
           <NavigationMenuItem>
@@ -126,12 +126,12 @@ const ListItem = React.forwardRef<
       <Link
         href={props.href || "#"}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
           className
         )}
       >
-        <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <h4 className="text-sm font-medium mb-1">{title}</h4>
+        <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
           {children}
         </p>
       </Link>
@@ -142,25 +142,32 @@ ListItem.displayName = "ListItem";
 
 const learningLinks = [
   {
-    title: "Courses",
-    href: "/courses",
-    description: "Browse our comprehensive catalog of courses.",
+    title: "Data Science Elite Course",
+    href: "/data-science-elite-course",
+    description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
   {
-    title: "Learning Hub",
-    href: "/learning-hub",
-    description: "Access study materials and additional resources.",
-  },
-  {
-    title: "Webinars",
-    href: "/webinars",
+    title: "Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati",
+    href: "/generative-ai-course-iitg",
     description: "Join live and on-demand educational webinars.",
   },
   {
-    title: "Courses in Cities",
-    href: "/courses-in-cities",
-    description: "Find in-person courses in your location.",
+    title: "Data Science Course",
+    href: "/data-science-course",
+    description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
+  {
+    title: "Generative AI Course",
+    href: "generative-ai-bootcamp",
+    description: "Master cutting-edge skills in this industry-aligned Course.",
+  },
+
+
+  // {
+  //   title: "Courses in Cities",
+  //   href: "/courses-in-cities",
+  //   description: "Find in-person courses in your location.",
+  // },
 
 ];
 
@@ -189,6 +196,11 @@ const resourceLinks = [
     title: "Data Science Career Guide",
     href: "/data-science-career-guide",
     description: "Complete guide to building a successful data science career.",
+  },
+   {
+    title: "Learning Hub",
+    href: "/learning-hub",
+    description: "Access study materials and additional resources.",
   },
 ];
 
