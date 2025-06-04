@@ -13,7 +13,7 @@ interface Props {
 const RichTextRenderer: React.FC<Props> = ({ content }) => {
   return (
     <div>
-      {content.map((block, index) => {
+      {content?.map((block, index) => {
         if (block.type === 'paragraph') {
           return (
             <p key={index} className="text-base leading-relaxed text-gray-800">

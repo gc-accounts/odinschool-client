@@ -803,7 +803,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   </div>
 
                   <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
-                  <Link href={`/course-checkout/${id}`}>
+                  <Link href={`/course-checkout/${course.url_slug}`}>
                     <Button className="w-full">
                       Enroll Now
                     </Button>
