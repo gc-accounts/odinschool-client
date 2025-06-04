@@ -680,11 +680,7 @@ const redirects = [
     destination: '/talent-solution',
     permanent: true
   },
-  {
-    source: '/blog',
-    destination: 'http://hubspot.greycampus.com/blog-darfted',
-    permanent: true
-  },
+
   {
     source: '/full-stack-software-development-bootcamp',
     destination: 'https://www.odinschool.com/full-stack-developer-course',
