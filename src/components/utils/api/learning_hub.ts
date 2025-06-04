@@ -91,36 +91,48 @@ export const getLearningHubCourses = async ({ pageNumber = 1, city = '', isFeatu
 }
 
 
-export const getLearningHubCourse = async (id: string) => {
-    const response = await axiosApi.post('', {
-        query: `
+export const getLearningHubCourse = async (id: string, url_slug: string = "") => {
+    let courseItem = null;
+    if (url_slug === "") {
+        const response = await axiosApi.post('', {
+            query: `
             query Course($documentId: ID!) {
                 course(documentId: $documentId) {
                     ${learning_hub}
                 }
             }
         `,
-        variables: {
-            documentId: id
-        }
-    });
-
+            variables: {
+                documentId: id
+            }
+        });
+        courseItem = response.data.data.course;
+    } else {
+        const response = await axiosApi.post('', {
+            query: `
+            query Course($urlSlug: String!) {
+                course(urlSlug: $urlSlug) {
+                    ${learning_hub}
+                }
+            }
+        `,
+            variables: {
+                urlSlug: url_slug
+            }
+        });
+        courseItem = response.data.data.course;
+    }
     return {
-        documentId: response.data.data.course.documentId,
-        title: response.data.data.course.title,
-        description: response.data.data.course.description,
-        level: response.data.data.course.level,
-        on_sale: response.data.data.course.on_sale,
-        has_certificate: response.data.data.course.has_certificate,
-        overview: response.data.data.course.overview,
-        slug: response.data.data.course.slug,
-        createdAt: response.data.data.course.createdAt,
-        updatedAt: response.data.data.course.updatedAt,
-        publishedAt: response.data.data.course.publishedAt,
-        url_slug: response.data.data.course.url_slug,
-        image: response.data.data.course.image_url_string ? response.data.data.course.image_url_string : backendUrl + response.data.data.course.image_url?.url,
-        curriculum: response.data.data.course.curriculum,
-        modules: modifyCourseModules(response.data.data.course.course_modules)
+        documentId: courseItem.documentId,
+        title: courseItem.title,
+        description: courseItem.description,
+        level: courseItem.level,
+        on_sale: courseItem.on_sale,
+        publishedAt: courseItem.publishedAt,
+        url_slug: courseItem.url_slug,
+        image: courseItem.image_url_string ? courseItem.image_url_string : backendUrl + courseItem.image_url?.url,
+        curriculum: courseItem.curriculum,
+        modules: modifyCourseModules(courseItem.course_modules)
     }
 }
 

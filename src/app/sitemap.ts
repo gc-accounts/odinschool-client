@@ -85,6 +85,7 @@ async function fetchCourses() {
             url_slug
             publishedAt
             updatedAt
+            is_learning_hub
           }
         }
       `,
@@ -137,9 +138,10 @@ async function fetchWebinars() {
       query: `
         query Webinars($pagination: PaginationArg) {
           webinars(pagination: $pagination) {
-            url_slug
+            slug
             publishedAt
             updatedAt
+            is_odin_talk
           }
         }
       `,
@@ -217,7 +219,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Create paths for courses
   const coursePaths = courses.map(course => ({
-    url: `${baseUrl}/${course.url_slug}`,
+    url: `${baseUrl}/${course.is_learning_hub ? 'learning-hub/' : ''}${course.url_slug}`,
     lastModified: course.updatedAt || course.publishedAt || new Date().toISOString(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -225,7 +227,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Create paths for webinars
   const webinarPaths = webinars.map(webinar => ({
-    url: `${baseUrl}/webinars/${webinar.url_slug}`,
+    url: `${baseUrl}/${webinar.is_odin_talk ? 'odintalks/' : 'webinars/'}${webinar.slug}`,
     lastModified: webinar.updatedAt || webinar.publishedAt || new Date().toISOString(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

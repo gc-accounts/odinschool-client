@@ -89,7 +89,7 @@ const LearningHub = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/learning-hub/${course.documentId}`} className="w-full">
+                    <Link href={`/learning-hub/${course.url_slug}`} className="w-full">
                       <Button variant="default" className="w-full">
                         Start Learning
                         <ArrowRight className="ml-2 h-4 w-4" />

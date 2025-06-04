@@ -295,7 +295,7 @@ const FreeCourseDetail = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       setLoading(true);
-      const res: any = await getLearningHubCourse(courseId);
+      const res: any = await getLearningHubCourse("", courseId);
       setCourse(res);
       setActiveLesson(res.modules[0].id);
       setLoading(false);

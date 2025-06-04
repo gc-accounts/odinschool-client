@@ -155,7 +155,7 @@ const OdinTalks = () => {
         <div className="container mx-auto py-12 px-4 md:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {webinars.map((webinar) => (
-              <Link key={webinar.id} href={`/webinars/${webinar.id}`}>
+              <Link key={webinar.id} href={`/odintalks/${webinar.url_slug}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
                     <img
