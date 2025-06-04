@@ -20,7 +20,7 @@ export const CourseCertificateData = [
         title: 'Generative AI Course',
         sub_title: "Showcase your certificate as a symbol of your AI expertise.",
         path: '/generative-ai-bootcamp',
-        points: [],
+        points: ['Official and Verified', 'Easily Sharable', 'Enhances Credibility',],
         certificate_img: ['https://strapi.odinschool.com/uploads/Generative_20_AI_20_Bootcamp_1_b808e88258.webp']
     },
     {

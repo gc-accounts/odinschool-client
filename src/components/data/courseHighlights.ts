@@ -9,7 +9,7 @@ export const courseHighlights = [
         id: 2,
         title: 'Certification Program in Applied Generative AI',
         path: '/generative-ai-course-iitg',
-        highlight: ['Get certified by the prestigious E&ICT Academy, IIT Guwahati', 'Attend live interactive sessions led by experts', 'Engage in hands-on project-based learning with 20+ projects', 'A visit to the prestigious IIT Guhawati Campus to expand your professional network (exclusively for successful learners)', 'Get access to Career Services to assist you in making career transitions', ' Participate in hackathons, case study discussions, Q & A sessions with experts', 'Learn technologies and tools to build and deploy GenAI models']
+        highlight: ['Learn technologies and tools to build and deploy GenAI models', 'Get certified by the prestigious E&ICT Academy, IIT Guwahati', 'Attend live interactive sessions led by experts', 'Engage in hands-on project-based learning with 20+ projects', 'A visit to the prestigious IIT Guhawati Campus to expand your professional network (exclusively for successful learners)', 'Get access to Career Services to assist you in making career transitions', ' Participate in hackathons, case study discussions, Q & A sessions with experts' , 'Live interactive sessions by IIT faculty']
     },
 
     {
@@ -24,14 +24,11 @@ export const courseHighlights = [
         title: 'Generative AI Course',
         path: '/data-science-elite-course',
         highlight: [
-            'Curriculum designed to get you a job and empower you to thrive in it',
-            'Real time interaction is the most engaging way to learn',
-            'Get your doubts clarified in real time',
-            'There is no better way to stay motivated and aligned to your goal',
-            'Cross the first hiring hurdle with ease',
-            'Develop and project confidence because confidence MATTERS!',
-            'Apply to jobs that we have specially curated for you',
-            'Understand the technology inside out with hands-on learning'
+            '10x more exposure: Weekly sessions led by experts for 10x more industry-focused exposure',
+            '10+ Hiring Sprints: Fast Track your placement journey with EXCLUSIVE placement drive opportunities',
+            'Mentorship by Alumni Network: Gain actionable insights from professionals who have been there and done that through mentorship and dedicated sessions.',
+            'Hands-on with Real-World Tools: A program so that you can “DO and BUILD”; not just “LEARN and KNOW”',
+            'Complete Career Support: Don’t just “GET” opportunities”; get complete support to “CRACK” them too',
         ]
     },
 ]

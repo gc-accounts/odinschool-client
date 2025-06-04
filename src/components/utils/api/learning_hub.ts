@@ -110,17 +110,19 @@ export const getLearningHubCourse = async (id: string, url_slug: string = "") =>
     } else {
         const response = await axiosApi.post('', {
             query: `
-            query Course($urlSlug: String!) {
-                course(urlSlug: $urlSlug) {
+            query Courses($filters: CourseFiltersInput) {
+                courses(filters: $filters) {
                     ${learning_hub}
                 }
             }
         `,
             variables: {
-                urlSlug: url_slug
+                filters: {
+                    url_slug: { eq: url_slug }
+                }
             }
         });
-        courseItem = response.data.data.course;
+        courseItem = response.data.data.courses[0];
     }
     return {
         documentId: courseItem.documentId,

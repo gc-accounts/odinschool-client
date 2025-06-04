@@ -6,27 +6,30 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/components/ui/
 import { Card, CardContent } from "@/components/components/ui/card";
 import { Skeleton } from "@/components/components/ui/skeleton";
 import { getMentors } from "@/components/utils/api/mentor";
-import { DsMentorsData } from "@/components/data/course-section/mentors/DsMentorsData";
 
-export interface CompanyProps {
-  name: string;
-  logo: string;
-}
+// export interface CompanyProps {
+//   name: string;
+//   logo: string;
+// }
 
-export interface InstructorProps {
-  id: string;
-  name: string;
-  title: string;
-  bio: string;
-  avatar: string;
-  companies: CompanyProps[];
-  featured: boolean;
-}
+// export interface InstructorProps {
+//   id: String;
+//   name: String;
+//   title: String;
+//   bio: String;
+//   avatar: String;
+//   companies: CompanyProps[];
+//   featured: boolean;
+// }
 
 interface InstructorProfileProps {
-  sectionClass?: String
+  slug: String,
+  sectionClass?: String,
+  data: { id: number, name: String, photo: String, designation: String, currentCompany:String, prevCompanies: [] }[]
 }
-const InstructorProfile = ({ sectionClass }: InstructorProfileProps) => {
+const InstructorProfile = ({ slug, sectionClass, data }: InstructorProfileProps) => {
+
+
   const [mentors, setMentors] = useState<InstructorProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -50,20 +53,7 @@ const InstructorProfile = ({ sectionClass }: InstructorProfileProps) => {
     [emblaApi]
   );
 
-  useEffect(() => {
-    const fetchMentors = async () => {
-      try {
-        setLoading(true);
-        const mentors = await getMentors(10, 1);
-        setMentors(mentors);
-      } catch (error) {
-        console.error("Error fetching mentors:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchMentors();
-  }, []);
+
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -129,7 +119,7 @@ const InstructorProfile = ({ sectionClass }: InstructorProfileProps) => {
             {/* Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex min-w-0">
-                {DsMentorsData.map((instructor) => (
+                {data.map((instructor) => (
                   <div
                     key={instructor.id}
                     className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]"

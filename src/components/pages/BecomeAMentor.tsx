@@ -1,3 +1,4 @@
+'use client'
 
 import React, { useEffect } from 'react';
 import { Users, Award, Clock, DollarSign } from 'lucide-react';
@@ -76,14 +77,14 @@ const BecomeAMentor = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Why Become a Mentor?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-10">
               Join our community of industry experts who are passionate about education and making a difference in students' careers.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
                 <Card key={index} className="h-full">
@@ -98,14 +99,14 @@ const BecomeAMentor = () => {
               ))}
             </div>
           </div>
-        
-          
+
+
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
             <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
               Becoming a mentor is a straightforward process. Here's what you can expect:
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-lg p-8 relative">
@@ -118,13 +119,13 @@ const BecomeAMentor = () => {
               ))}
             </div>
           </div>
-          
+
           <div id="apply" className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-center mb-4">Apply to Become a Mentor</h2>
             <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
               Fill out the form below to start your application process. Our team will review your submission and get back to you within 5 business days.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>

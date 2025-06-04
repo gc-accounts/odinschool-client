@@ -1,4 +1,5 @@
 
+"use client"
 import React, { useEffect, useMemo, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
 import { Input } from '@/components/components/ui/input';
@@ -40,9 +41,9 @@ function getFilterObj(tab: string, isOdintalk: boolean) {
   } else if (tab === 'past') {
     filterObj.time = 'past';
   }
-  if(isOdintalk){
+  if (isOdintalk) {
     filterObj.isOdintalk = true;
-  }else{
+  } else {
     filterObj.isOdintalk = false;
   }
   return filterObj;

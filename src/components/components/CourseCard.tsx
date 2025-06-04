@@ -105,11 +105,12 @@ const CourseCard = ({
         <p className="text-sm text-gray-600 mb-4 line-clamp-2">{description}</p>
 
         <div className="mt-auto space-y-3">
-          <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-            <div className="flex items-center">
+          <div className="flex items-center justify-end pt-2 border-t border-gray-100">
+            {/* <div className="flex items-center">
               <Star size={14} className="text-yellow-400" />
               <span className="ml-1 text-sm font-medium">{rating}</span>
-            </div>
+            </div> */}
+            <span className="mr-2 text-sm font-medium">Know more</span>
             <div className="rounded-full w-8 h-8 bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
               <svg
                 className="w-4 h-4 text-primary-600 transition-transform group-hover:translate-x-0.5"
