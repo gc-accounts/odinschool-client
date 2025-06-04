@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/components/ui/tabs";
@@ -9,6 +11,7 @@ import Footer from '@/components/components/Footer';
 import { getLearningHubCourse } from '@/components/utils/api/learning_hub';
 import Markdown from '@/components/components/Markdown';
 import { useRouter } from 'next/navigation';
+import MetaTags from '@/components/components/MetaTags';
 // Sample lessons content 
 const courseData = {
   'free-html-basics': {
