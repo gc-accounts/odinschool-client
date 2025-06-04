@@ -1052,11 +1052,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: '/courses',
-    destination: 'https://www.odinschool.com/',
-    permanent: true
-  },
-  {
     source: '/university-programs',
     destination: 'https://www.odinschool.com/',
     permanent: true

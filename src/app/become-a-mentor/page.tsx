@@ -1,4 +1,3 @@
-'use client';
 
 import BecomeAMentor from "@/components/pages/BecomeAMentor";
 import { Metadata, ResolvingMetadata } from 'next';

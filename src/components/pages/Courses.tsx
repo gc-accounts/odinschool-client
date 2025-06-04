@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
@@ -34,7 +35,6 @@ const Courses = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Courses - CodeMaster";
     const fetchCourses = async () => {
       const allCourses = await getCourses({ pageNumber: 1, search: searchTerm, category: selectedCategory, level: selectedLevel });
       setCourses(allCourses);
