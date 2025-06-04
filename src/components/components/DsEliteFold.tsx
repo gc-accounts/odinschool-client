@@ -43,7 +43,7 @@ const partnerLogos = [
       <div className="max-w-5xl mx-auto px-4">
         <p className="text-lg text-white">After the successful May launch, we’re thrilled to announce the</p>
         <h2 className="text-3xl md:text-4xl font-bold text-primary-600 mt-2">
-          June 2025 Data Science Elite Course
+          <span className='text-white'>June 2025</span> Data Science Elite Course
         </h2>
         <p className="text-white font-semibold mt-2">
           the only Data Science Course in India backed by 5 fast growing companies!

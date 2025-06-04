@@ -49,7 +49,7 @@ import { courseHighlights } from '@/components/data/courseHighlights';
 import { usePathname } from 'next/navigation'
 import CourseCertificate from '@/components/components/course-details/CourseCertificate';
 import { getDataByPage } from '@/components/utils/getDataByPage';
-import { courseToolsData } from '@/components/data/courseToolsData';
+import { courseToolsData } from '@/components/data/course-section/tools/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
 import { useRouter } from 'next/navigation';
 
