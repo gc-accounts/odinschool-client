@@ -9,11 +9,12 @@ import { useToast } from '@/components/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/components/ui/card';
 import { usePathname } from 'next/navigation';
 import { useProgram } from '@/context/ProgramContext';
-
+import { useRouter } from 'next/navigation';
 const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { program } = useProgram();
   const pathname = usePathname();
+  const router = useRouter()
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -85,6 +86,10 @@ const WhatsAppChat: React.FC = () => {
         title: "Success!",
         description: "Your information has been submitted successfully. We'll contact you soon.",
       });
+
+      // router.push('https://api.whatsapp.com/send?phone=919355011033')
+      window.open('https://api.whatsapp.com/send?phone=919355011033', '_blank');
+
 
       setFormData({
         firstName: '',
