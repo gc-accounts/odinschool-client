@@ -53,7 +53,7 @@ const partnerLogos = [
   {partnerLogos.map(({ id, name, logo }) => (
     <div
       key={id}
-      className="w-[45%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
+      className="w-[40%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
     >
       <img
         src={logo}
