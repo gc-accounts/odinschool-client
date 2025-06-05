@@ -250,7 +250,7 @@ const HeroSection = () => {
                 <div key={index} className="text-center p-3">
                   <div className="flex justify-center mb-2">{item.icon}</div>
                   <h3 className="text-sm font-semibold">{item.label}</h3>
-                  <p className="text-xs text-gray-500">{item.description}</p>
+                  <p className="text-xs text-gray-500 md:block hidden">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -260,13 +260,13 @@ const HeroSection = () => {
             <div>
               <div className="flex gap-8 items-end justify-center flex-row ">
                 <img
-                  src="https://strapi.odinschool.com/uploads/image1_5d9dce47c3.webp"
+                  src="https://strapi.odinschool.com/uploads/img1_49895ea8de.webp"
                   alt="Student 1"
                   className="rounded-full w-60 h-60 object-cover"
                 />
 
                 <img
-                  src="https://strapi.odinschool.com/uploads/image2_7ce09bafd6.webp"
+                  src="https://strapi.odinschool.com/uploads/img2_a118e82026.webp"
                   alt="Student 2"
                   className="rounded-3xl w-40 h-40 object-cover"
                 />
