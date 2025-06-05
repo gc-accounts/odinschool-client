@@ -107,23 +107,23 @@ const ReferralProgram = () => {
             </div>
             <h1 className="heading-xl font-bold text-center mb-4">Referral Program</h1>
             <p className="text-lg font-light text-center max-w-6xl mx-auto mb-8">
-            It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
+              It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
             </p>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <Button asChild size="lg" className="bg-white text-primary-700 hover:bg-gray-100">
                 <a href="#get-started">Flat ₹2000 for every admission</a>
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">How It Works</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-10">
               Our referral program is simple: share EduPlatform with friends, and get rewarded when they sign up and enroll in courses.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, index) => (
                 <Card key={index} className="relative">
@@ -138,13 +138,13 @@ const ReferralProgram = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">Earn Amazing Rewards</h2>
             <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
               The more friends you refer, the more rewards you unlock. Choose how you want to be rewarded.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {rewards.map((reward, index) => (
                 <Card key={index} className="h-full">
@@ -158,12 +158,12 @@ const ReferralProgram = () => {
                 </Card>
               ))}
             </div>
-            
-           
+
+
           </div>
-          
-         
-          
+
+
+
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -175,7 +175,7 @@ const ReferralProgram = () => {
               ))}
             </div>
           </div>
-        
+
         </div>
       </main>
       <Footer />

@@ -141,13 +141,13 @@ const News = () => {
                         <CardContent className="flex-grow">
                           <p className="text-muted-foreground line-clamp-3">{item.excerpt}</p>
                         </CardContent>
-                        <CardFooter>
+                        {/* <CardFooter>
                           <Button variant="outline" className="w-full" asChild>
                             <a href={item.url} target="_blank" rel="noopener noreferrer">
                               Read Full Article <ExternalLink size={16} className="ml-2" />
                             </a>
                           </Button>
-                        </CardFooter>
+                        </CardFooter> */}
                       </Card>
                     ))}
                   </div>

@@ -1,4 +1,5 @@
 
+import Footer from '@/components/components/Footer';
 import Webinars from '@/components/pages/Webinars';
 import { Metadata, ResolvingMetadata } from 'next';
 
@@ -27,5 +28,9 @@ export async function generateMetadata(
 }
 
 export default function WebinarsPage() {
-  return <Webinars />;
+  return <>
+    <Webinars />
+    <Footer />
+
+  </>
 } 
