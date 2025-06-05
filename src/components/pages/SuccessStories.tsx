@@ -9,6 +9,8 @@ import { Card, CardContent } from '@/components/components/ui/card';
 import { Button } from '@/components/components/ui/button';
 import { getSuccessMetrics } from '@/components/utils/api/successMetrics';
 import { successStoriesData } from '@/components/data/successStories';
+import { BsSuitcaseLg } from "react-icons/bs";
+
 
 import Testimonials from '@/components/components/Testimonials';
 
@@ -33,7 +35,7 @@ const SuccessStories = () => {
 
 
   const statistics = [
-    { label: "Average Salary Increase", value: salaryIncrease + "%", icon: <TrendingUp className="h-8 w-8 text-primary-600" /> },
+    { label: "Hiring Partners", value: salaryIncrease + "+", icon: <BsSuitcaseLg className="h-8 w-8 text-primary-600" /> },
     { label: "Bootcamp NPS", value: placementRate, icon: <Award className="h-8 w-8 text-primary-600" /> },
     { label: "Google reviews", value: studentSatisfaction + "/5", icon: <Star className="h-8 w-8 text-primary-600" /> }
   ];

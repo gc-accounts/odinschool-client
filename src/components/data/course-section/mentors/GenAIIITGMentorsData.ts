@@ -4,7 +4,7 @@ export const GenAIIITGMentorsData = [
     "name": "Dr. Gaurav Trivedi",
     "photo": "https://strapi.odinschool.com/uploads/Dr_Gaurav_trivedi_1_98b932c680.webp",
     "designation": "Professor",
-    "currentCompany": "https://strapi.odinschool.com/uploads/E_and_ICT_100_X40_3195d590ea.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/E_and_ICT_100_X40_76b65f62cb.webp",
     "prevCompanies": []
   },
   {
@@ -12,7 +12,7 @@ export const GenAIIITGMentorsData = [
     "name": "Dr. Debanga Raj Neog",
     "photo": "https://strapi.odinschool.com/uploads/Debanga_Raj_Neog_779f081433.webp",
     "designation": "Assistant Professor",
-    "currentCompany": "https://strapi.odinschool.com/uploads/E_and_ICT_100_X40_3195d590ea.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/E_and_ICT_100_X40_76b65f62cb.webp",
     "prevCompanies": []
   },
   {
@@ -20,7 +20,7 @@ export const GenAIIITGMentorsData = [
     "name": "Dr. B S A S Rajita",
     "photo": "https://strapi.odinschool.com/uploads/Dr_Rajita_2_61f77e14ce.webp",
     "designation": "Lead Faculty",
-    "currentCompany": "hhttps://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp",
     "prevCompanies": []
   },
   {
