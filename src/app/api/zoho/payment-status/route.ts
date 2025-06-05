@@ -18,6 +18,7 @@ export async function POST(request: Request) {
         Program: formData.get('Program'),
         Payment_Status: formData.get('Payment_Status'),
         Payable_Amount: formData.get('Payable_Amount'),
+        Effective_Bootcamp_Fee: formData.get('Effective Bootcamp Fee'),
         Ga_client_id: formData.get('Ga_client_id'),
         Business_Unit: formData.get('Business Unit'),
         Source_Domain: 'Razorpay status form',

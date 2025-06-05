@@ -39,7 +39,7 @@ const MobileNav = () => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="h-8 w-8" />
+            <Menu className="text-2xl" />
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>
@@ -69,35 +69,29 @@ const MobileNav = () => {
               {/* Learning Section */}
               <AccordionItem value="learning">
                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
-  <span className="flex items-center gap-2">
-    <GraduationCap className="h-5 w-5" />
-    Courses
-  </span>
+                  <span className="flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5" />
+                    Courses
+                  </span>
 
-</AccordionTrigger>
+                </AccordionTrigger>
 
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
-                    <Link
-                      href="/data-science-elite-course"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Data Science Elite Course
-                    </Link>
-                    <Link
-                      href="/generative-ai-course-iitg"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati
-                    </Link>
                     <Link
                       href="/data-science-course"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
                       Data Science Course
+                    </Link>
+
+                    <Link
+                      href="/generative-ai-course-iitg"
+                      className="py-2 text-sm"
+                      onClick={closeSheet}
+                    >
+                      Certification Program in Applied Generative AI - E&ICT Academy, IITG
                     </Link>
                     <Link
                       href="/generative-ai-bootcamp"
@@ -114,12 +108,12 @@ const MobileNav = () => {
               {/* Resources Section */}
               <AccordionItem value="resources">
                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
-  <span className="flex items-center gap-2">
-    <Library className="h-5 w-5" />
-    Resources
-  </span>
+                  <span className="flex items-center gap-2">
+                    <Library className="h-5 w-5" />
+                    Resources
+                  </span>
 
-</AccordionTrigger>
+                </AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link
@@ -182,13 +176,13 @@ const MobileNav = () => {
 
               {/* Company Section */}
               <AccordionItem value="company">
-                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
-  <span className="flex items-center gap-2">
-    <Building2 className="h-5 w-5" />
-    Company
-  </span>
+                <AccordionTrigger className="flex justify-between items-center text-base font-medium">
+                  <span className="flex items-center gap-2">
+                    <Building2 className="h-5 w-5" />
+                    Company
+                  </span>
 
-</AccordionTrigger>
+                </AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link

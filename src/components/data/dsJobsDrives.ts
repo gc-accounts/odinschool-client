@@ -33,7 +33,7 @@ export const dsJobsDrives = [
   },
   {
     "id": 5,
-    "jobCompanyLogo": "https://www.odinschool.com/hubfs/Celebal%20Logo.svg",
+    "jobCompanyLogo": "https://strapi.odinschool.com/uploads/Celebal_20_Logo_09cb6854b9.svg",
     "jobDesignation": "Junior Associte - Data Science",
     "jobExp": "Fresher",
     "jobSkills": ["SQL", "Machine Learning", "Python"],
@@ -57,7 +57,7 @@ export const dsJobsDrives = [
   },
   {
     "id": 8,
-    "jobCompanyLogo": "https://www.odinschool.com/hubfs/vetic.svg",
+    "jobCompanyLogo": "https://strapi.odinschool.com/uploads/vetic_a1d6263c84.svg",
     "jobDesignation": "MIS Executive",
     "jobExp": "Fresher",
     "jobSkills": ["SQL", "Excel"],
@@ -89,7 +89,7 @@ export const dsJobsDrives = [
   },
   {
     "id": 12,
-    "jobCompanyLogo": "https://www.odinschool.com/hubfs/Flipkart.svg",
+    "jobCompanyLogo": "https://strapi.odinschool.com/uploads/Flipkart_056ea5e304.svg",
     "jobDesignation": "MIS Executive",
     "jobExp": "Fresher & Experienced",
     "jobSkills": ["Python", "SQL"],
