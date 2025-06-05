@@ -180,8 +180,8 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${index === selectedIndex
-                    ? "bg-primary-600 w-[28px] shadow"
+                  className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] rounded-full transition-all duration-200 ${index === selectedIndex
+                    ? "bg-primary-600 md:w-[28px] w-[1.5rem] shadow"
                     : "bg-gray-300"
                     }`}
                 />

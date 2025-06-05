@@ -114,7 +114,7 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
               <button
                 key={index}
                 onClick={() => scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-200 ${index === selectedIndex ? 'bg-blue-600 w-[28px] shadow' : 'bg-gray-300'
+                className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] rounded-full transition-all duration-200 ${index === selectedIndex ? 'bg-blue-600 md:w-[28px] w-[1.5rem] shadow' : 'bg-gray-300'
                   }`}
               />
             ))}
