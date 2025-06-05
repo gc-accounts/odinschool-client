@@ -115,7 +115,7 @@ const FeaturedCourses = ({
           </div>
         )}
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Link href="/courses">
             <Button
               variant="outline"
@@ -126,7 +126,7 @@ const FeaturedCourses = ({
               View All Courses
             </Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ const Footer = () => {
       title: 'Platform',
       links: [
         { name: 'Home', href: '/' },
-        { name: 'Courses', href: '/courses' },
+        // { name: 'Courses', href: '/courses' },
         { name: 'Webinars', href: '/webinars' },
         { name: 'Success Stories', href: '/success-stories' },
       ],
@@ -72,7 +72,7 @@ const Footer = () => {
       links: [
         { name: 'Terms of Use', href: '/terms' },
         { name: 'Privacy Policy', href: '/privacy' },
-        { name: 'Cookie Policy', href: '/cookies' },
+        // { name: 'Cookie Policy', href: '/cookies' },
       ],
     },
   ];

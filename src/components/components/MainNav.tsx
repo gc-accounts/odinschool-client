@@ -18,7 +18,7 @@ import {
 
 const MainNav = () => {
   return (
-    <div className="hidden md:flex ">
+    <div className="hidden md:flex gap-10">
       <Link href="/" className="mr-6 flex items-center">
         <img
           src="https://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp" // Replace with your actual logo URL
@@ -147,7 +147,7 @@ const learningLinks = [
     description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
   {
-    title: "Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati",
+    title: "Generative AI IITG",
     href: "/generative-ai-course-iitg",
     description: "Join live and on-demand educational webinars.",
   },
@@ -197,7 +197,7 @@ const resourceLinks = [
     href: "/data-science-career-guide",
     description: "Complete guide to building a successful data science career.",
   },
-   {
+  {
     title: "Learning Hub",
     href: "/learning-hub",
     description: "Access study materials and additional resources.",

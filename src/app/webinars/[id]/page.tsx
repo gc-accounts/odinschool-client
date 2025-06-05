@@ -2,6 +2,7 @@ import { getWebinar } from '@/components/utils/api/webinars';
 import WebinarDetail from '@/components/pages/WebinarDetail';
 import { notFound } from 'next/navigation';
 import { Metadata, ResolvingMetadata } from 'next';
+import Footer from '@/components/components/Footer';
 interface PageProps {
   params: {
     id: string;
@@ -63,5 +64,9 @@ export default async function WebinarDetailPage({ params }: PageProps) {
     price: Number(apiWebinar.price) || 0,
   };
 
-  return <WebinarDetail webinar={webinar} />;
+  return <>
+    <WebinarDetail webinar={webinar} />
+
+    <Footer />
+  </>
 } 
