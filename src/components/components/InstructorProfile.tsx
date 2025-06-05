@@ -142,7 +142,7 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
                                 />
                               </div>
                               {
-                                instructor.prevCompanies.length>0 && 
+                                instructor.prevCompanies.length>0 && (
                                  <div className="flex justify-between w-full border-t-2 pt-4">
                                 {instructor.prevCompanies.map((company, index) => (
                                   <div
@@ -158,6 +158,7 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
                                   </div>
                                 ))}
                               </div>
+                                )  
                               }
                              
 
