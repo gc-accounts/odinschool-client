@@ -262,32 +262,31 @@ const HeroSection = () => {
                 <img
                   src="https://strapi.odinschool.com/uploads/img1_49895ea8de.webp"
                   alt="Student 1"
-                  className="rounded-full w-60 h-60 object-cover"
+                  className="rounded-full md:w-60 md:h-60 w-32 h:32 object-cover"
                 />
 
                 <img
                   src="https://strapi.odinschool.com/uploads/img2_a118e82026.webp"
                   alt="Student 2"
-                  className="rounded-3xl w-40 h-40 object-cover"
+                  className="rounded-3xl md:w-40 md:h-40 w-32 h:32 object-cover"
                 />
               </div>
               <div className="flex gap-10 items-top justify-center flex-direction:row mt-8">
                 <img
-
-                  src="https://strapi.odinschool.com/uploads/image3_03b46926bd.webp"
+                   src="https://strapi.odinschool.com/uploads/img2_fc7fbb8c4e.png"
                   alt="Student 3"
-                  className="rounded-3xl w-40 h-40 object-cover"
+                  className="rounded-3xl md:w-40 md:h-40 w-32 h:32 object-cover"
                 />
 
                 <img
-                  src="https://strapi.odinschool.com/uploads/image4_451d402ddc.webp"
+                 src="https://strapi.odinschool.com/uploads/img3_d2a7f5236c.png"
                   alt="Student 4"
-                  className="rounded-full w-60 h-60 object-cover"
+                  className="rounded-full md:w-60 md:h-60 w-32 h:32 object-cover"
                 />
               </div>
             </div>
-            <div className="absolute -bottom-0 -right-6 w-28 h-28 rounded-full bg-primary-100 z-0"></div>
-            <div className="absolute -top-0 -left-0 w-20 h-20 rounded-full bg-primary-100 z-0"></div>
+            <div className="absolute -bottom-0 -right-6 md:w-28 md:h-28 rounded-full bg-primary-100 z-0"></div>
+            <div className="absolute -top-0 -left-0 md:w-20 md:h-20 rounded-full bg-primary-100 z-0"></div>
           </div>
         </div>
       </div>

@@ -147,7 +147,7 @@ const learningLinks = [
     description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
   {
-    title: "Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati",
+    title: "Certification Program in Applied Generative AI - E&ICT Academy, IITG",
     href: "/generative-ai-course-iitg",
     description: "Join live and on-demand educational webinars.",
   },
