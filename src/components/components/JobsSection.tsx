@@ -46,7 +46,7 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
           </p>
         </div>
 
-        <div className="relative px-6">
+        <div className="relative px-4">
           {/* Arrows */}
           <button
             onClick={scrollPrev}

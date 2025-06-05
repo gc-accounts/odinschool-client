@@ -49,7 +49,7 @@ const NewsSection = () => {
           </p>
         </div>
 
-        <div className="relative px-6">
+        <div className="relative px-4">
           {/* Navigation Arrows */}
           <button
             onClick={scrollPrev}
