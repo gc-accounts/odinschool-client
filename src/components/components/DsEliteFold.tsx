@@ -48,21 +48,25 @@ const partnerLogos = [
         <p className="text-white font-semibold mt-2">
           the only Data Science Course in India backed by 5 fast growing companies!
         </p>
+{/* Logos */}
+<div className="flex flex-wrap justify-center mt-10">
+  {partnerLogos.map(({ id, name, logo }) => (
+    <div
+      key={id}
+      className="w-[45%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
+    >
+      <img
+        src={logo}
+        alt={`${name} logo`}
+        width={100}
+        height={40}
+        className="h-10 w-auto object-contain"
+      />
+    </div>
+  ))}
+</div>
 
-        {/* Logos */}
-        <div className="flex flex-wrap justify-center items-center gap-4 mt-10">
-          {partnerLogos.map(({ id, name, logo }) => (
-            <div key={id} className="bg-primary-50 px-6 py-3 rounded-lg">
-              <img
-                src={logo}
-                alt={`${name} logo`}
-                width={100}
-                height={40}
-                className="h-10 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
+
 
         {/* What's special */}
         <div className="mt-12">
