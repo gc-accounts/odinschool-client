@@ -39,7 +39,7 @@ const MobileNav = () => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="h-5 w-5" />
+            <Menu className="h-8 w-8" />
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>

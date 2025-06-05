@@ -13,9 +13,12 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: {
+    DEFAULT: '0rem', // applies to all unless overridden
+    sm: '3rem',       // applies from `sm` breakpoint and up
+  },
       screens: {
-        '2xl': '1400px'
+        '2xl': '1350px',
       }
     },
     extend: {

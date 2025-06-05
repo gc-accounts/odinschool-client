@@ -1,4 +1,4 @@
-export const DsEliteMentorsData = [
+export const GenAIMentorsData = [
   {
     "id": 1,
     "name": "Sawinder Pal Kaur",
