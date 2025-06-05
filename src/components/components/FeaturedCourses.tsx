@@ -107,7 +107,7 @@ const FeaturedCourses = ({
               <div
                 key={course.id}
                 ref={(el) => addToCardRefs(el, index)}
-                className="opacity-0"
+                className="w-full sm:w-[48%] lg:w-[30%] max-w-sm"
               >
                 <CourseCard {...course} />
               </div>
