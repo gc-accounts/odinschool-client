@@ -79,26 +79,27 @@ const MobileNav = () => {
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link
-                      href="/data-science-elite-course"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Data Science Elite Course
-                    </Link>
-                    <Link
-                      href="/generative-ai-course-iitg"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Certification Program in Applied Generative AI - E&ICT Academy, IIT Guwahati
-                    </Link>
-                    <Link
                       href="/data-science-course"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
                       Data Science Course
                     </Link>
+                    {/* <Link
+                      href="/data-science-elite-course"
+                      className="py-2 text-sm"
+                      onClick={closeSheet}
+                    >
+                      Data Science Elite Course
+                    </Link> */}
+                    <Link
+                      href="/generative-ai-course-iitg"
+                      className="py-2 text-sm"
+                      onClick={closeSheet}
+                    >
+                      Certification Program in Applied Generative AI - E&ICT Academy, IITG
+                    </Link>
+                    
                     <Link
                       href="/generative-ai-bootcamp"
                       className="py-2 text-sm"

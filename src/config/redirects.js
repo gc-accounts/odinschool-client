@@ -1530,6 +1530,17 @@ const redirects = [
     destination: "https://college.odinschool.com/ai-analyst-course",
     permanent: true
   },
+
+  {
+    source: "https://college.odinschool.com/data-analyst-course",
+    destination: "/",
+    permanent: true
+  },
+  {
+    source: "https://college.odinschool.com/ai-analyst-course",
+    destination: "/",
+    permanent: true
+  },
   {
     source: "/investment-banking-and-finance-operations-elite-cours/checkout",
     destination: "/investment-banking-and-finance-operations-elite-course/checkout",

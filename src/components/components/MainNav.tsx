@@ -141,21 +141,22 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 const learningLinks = [
-  {
-    title: "Data Science Elite Course",
-    href: "/data-science-elite-course",
-    description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
-  },
-  {
-    title: "Generative AI IITG",
-    href: "/generative-ai-course-iitg",
-    description: "Join live and on-demand educational webinars.",
-  },
-  {
+   {
     title: "Data Science Course",
     href: "/data-science-course",
     description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
+  // {
+  //   title: "Data Science Elite Course",
+  //   href: "/data-science-elite-course",
+  //   description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
+  // },
+  {
+    title: "Certification Program in Applied Generative AI - E&ICT Academy, IITG",
+    href: "/generative-ai-course-iitg",
+    description: "Join live and on-demand educational webinars.",
+  },
+ 
   {
     title: "Generative AI Course",
     href: "generative-ai-bootcamp",
