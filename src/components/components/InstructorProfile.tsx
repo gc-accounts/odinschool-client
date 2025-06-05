@@ -175,7 +175,7 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
             </div>
 
             {/* Pagination Dots */}
-            <div className="flex justify-center mt-6 gap-2">
+            <div className="flex justify-center flex-wrap mt-6 gap-2">
               {dots.map((index) => (
                 <button
                   key={index}

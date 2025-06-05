@@ -170,7 +170,7 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
                       }
-                      <p className='ml-4'>{feature.odinschoolInfo}</p>
+                      <p className='ml-4 text-sm md:text-md'>{feature.odinschoolInfo}</p>
                     </div>
                     <div className="col-span-1 p-4 flex items-center">
                       {feature.others ?

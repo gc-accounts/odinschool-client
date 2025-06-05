@@ -43,7 +43,7 @@ const Index = () => {
         <FeaturedCourses />
         <Testimonials />
         <InstructorProfileHome data={DsMentorsData} />
-        <JobsSection />
+        <JobsSection sectionClass={'px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
         <OdinTalks sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
       </main>
       <ExtrasSection1 />
