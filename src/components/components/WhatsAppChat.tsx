@@ -121,7 +121,7 @@ const WhatsAppChat: React.FC = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed md:bottom-6 bottom-5 md:right-6 right-5 z-50 rounded-full w-12 h-12 shadow-lg bg-green-500 hover:bg-green-600"
+        className="fixed md:bottom-6 bottom-5 md:right-6 right-5 md:w-12 md:h-12 w-10 h-10 z-50 rounded-full shadow-lg bg-green-500 hover:bg-green-600"
         aria-label="Open WhatsApp chat"
       >
         <IoLogoWhatsapp className="h-10 w-10 text-white" />
@@ -129,13 +129,13 @@ const WhatsAppChat: React.FC = () => {
 
 
 <Link href="tel:9355011033">
-  <div className="group fixed bottom-20 right-6 z-50 flex items-center">
+  <div className="group fixed bottom-20 right-5 z-50 flex items-center">
     {/* Phone number visible only on desktop and on hover */}
     <span className="hidden lg:inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 mr-2 text-md font-medium text-white bg-primary-500 px-3 py-2 rounded-full shadow-lg">
       +91 9355 011033
     </span>
     <Button
-      className="rounded-full w-12 h-12 shadow-lg bg-primary-500 hover:bg-primary-600 transition-all"
+      className="rounded-full md:w-12 md:h-12 w-10 h-10 shadow-lg bg-primary-500 hover:bg-primary-600 transition-all"
       aria-label="Call OdinSchool"
     >
       <MdCall className="h-6 w-6 text-white" />

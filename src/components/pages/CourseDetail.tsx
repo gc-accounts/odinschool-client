@@ -628,7 +628,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <Tabs defaultValue="overview" className="w-full">
-                  <TabsList className="mb-8 w-full justify-start py-3 px-2 overflow-x-auto h-max">
+                  <TabsList className="mb-8 w-full justify-start py-3 px-2 overflow-x-auto h-max bg-primary-50">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
                     <TabsTrigger value="projects">Projects</TabsTrigger>
