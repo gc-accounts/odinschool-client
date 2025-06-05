@@ -61,14 +61,14 @@ export default function DataLeaders({ sectionClass }: { sectionClass?: string })
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Leaders Column (col-span-8) */}
-          <div className="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:col-span-12 lg:grid-cols-3 md:gap-6 gap-5">
             {leaders.map((leader, index) => (
               <Card
                 key={index}
                 className="border border-primary-100 hover:shadow-lg transition-all duration-300 animate-on-scroll"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-5 flex flex-col items-center text-center">
+                <CardContent className="md:p-5 p-4 flex flex-col items-center text-center">
                   <div className="w-20 h-20 rounded-full overflow-hidden mb-4">
                     <img
                       src={leader.image}

@@ -48,7 +48,7 @@ const CareerServices = ({ slug, sectionClass }: CareerServices1Props) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { step: "1", title: "Apply", },
               { step: "2", title: " Talk to A Counsellor", },
@@ -62,7 +62,7 @@ const CareerServices = ({ slug, sectionClass }: CareerServices1Props) => {
                 {index < 3 && (
                   <div className="absolute top-6 left-[50%] w-auto h-0.5 bg-primary-200 hidden md:block"></div>
                 )}
-                <h4 className="text-lg font-bold mb-2">{step.title}</h4>
+                <h4 className="text-lg text-center font-bold mb-2">{step.title}</h4>
               </div>
             ))}
           </div>

@@ -22,10 +22,10 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
   <Card className="border border-primary-100 hover:shadow-lg transition-all duration-300 animate-on-scroll "
     style={{ animationDelay: `${delay}ms` }}>
     <CardContent className="p-5 flex flex-col items-center text-center">
-      <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
-        <img src={icon} alt="" />
+      <div className={`md:w-16 md:h-16 w-10 h-10 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
+        <img src={icon} alt={name} />
       </div>
-      <h3 className="text-md font-semibold mb-2">{name}</h3>
+      <h3 className="md:text-md text-xs font-semibold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
     </CardContent>
   </Card>
@@ -55,7 +55,7 @@ const ToolsSection = ({ sectionClass }: ToolsSectionProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
           {ToolsData?.tools?.map((tool, index) => (
             <ToolCard
               key={index}
