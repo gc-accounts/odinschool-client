@@ -15,14 +15,14 @@ const nextConfig = {
   },
 
   // Uncoment to add domain whitelist
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: 'https',
-  //       hostname: 'res.cloudinary.com',
-  //     },
-  //   ]
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'strapi.odinschool.com',
+      },
+    ]
+  },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports

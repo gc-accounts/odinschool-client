@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/component
 import CallbackForm from '@/components/components/CallbackForm';
 import OrganizationLogos from '@/components/components/OrganizationLogos';
 import EmployerTestimonials from '@/components/components/EmployerTestimonials';
+import Image from 'next/image';
 const HireTalent = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,6 +72,34 @@ const HireTalent = () => {
     },
   ];
 
+
+  const jobs = [
+    {
+      id: 1,
+      image_url: 'https://strapi.odinschool.com/uploads/6_current_company_9e1a7516fe.jpg'
+    },
+    {
+      id: 2,
+      image_url: 'https://strapi.odinschool.com/uploads/8_current_company_ab4b947ae4.jpg'
+    },
+    {
+      id: 3,
+      image_url: 'https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_7ceeb6c515.webp'
+    },
+    {
+      id: 4,
+      image_url: 'https://strapi.odinschool.com/uploads/Deloitte_100_X40_1_1_ca02ecb519.webp'
+    },
+    {
+      id: 5,
+      image_url: 'https://strapi.odinschool.com/uploads/celebal_100_X40_ded943d1df.webp'
+    },
+    {
+      id: 6,
+      image_url: 'https://strapi.odinschool.com/uploads/Flipkart_200x80_grid_84fabff857.webp'
+    }
+  ]
+
   return (
     <>
       <Navbar />
@@ -83,7 +112,7 @@ const HireTalent = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
             <div>
@@ -110,17 +139,37 @@ const HireTalent = () => {
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h3 className="text-xl font-bold mb-6">Companies That Hire Our Graduates</h3>
               <div className="grid grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, index) => (
+                {/* {Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-20">
                     <span className="text-gray-500 font-medium">Company {index + 1}</span>
                   </div>
-                ))}
+                ))} */}
+
+                {
+                  jobs.map((job) => {
+                    return (
+                      <div key={job.id} className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-20">
+                        {/* <span className="text-gray-500 font-medium">Company</span> */}
+                        <Image
+                          src={job.image_url}
+                          alt={`image-${job.id}`}
+                          width={100}
+                          height={100}
+                          objectFit='cover'
+
+
+                        />
+
+                      </div>
+                    )
+                  })
+                }
               </div>
-              <div className="mt-6 text-center">
+              {/* <div className="mt-6 text-center">
                 <a href="#testimonials" className="text-primary-600 hover:text-primary-700 font-medium">
                   See what employers say about our talent →
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
 
