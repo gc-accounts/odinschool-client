@@ -194,7 +194,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     backendUrl: BACKEND_URL,
   });
 
-  const baseUrl = 'https://odinschool-client.vercel.app';
+  const baseUrl = 'https://www.odinschool.com';
 
   // Fetch all dynamic content
   const [blogs, courses, webinars] = await Promise.all([

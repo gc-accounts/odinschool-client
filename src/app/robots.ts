@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://odinschool-client.vercel.app';
+  const baseUrl = 'https://www.odinschool.com';
 
   return {
     rules: {
