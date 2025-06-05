@@ -150,9 +150,9 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
       <button
         key={index}
         onClick={() => scrollTo(index)}
-        className={`transition-all duration-300 rounded-full ${
+        className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] transition-all duration-300 rounded-full ${
           index === selectedIndex
-            ? 'bg-[#1a6cf7] w-6 h-2'
+            ? 'bg-[#1a6cf7] md:w-[28px] w-[1.5rem] shadow'
             : 'bg-gray-300 w-2 h-2'
         }`}
       />
