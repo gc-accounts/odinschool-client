@@ -11,6 +11,8 @@ import { usePathname } from 'next/navigation';
 import { useProgram } from '@/context/ProgramContext';
 import { useRouter } from 'next/navigation';
 import { IoLogoWhatsapp } from "react-icons/io";
+import { MdCall } from "react-icons/md";
+import Link from 'next/link';
 
 const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,11 +121,21 @@ const WhatsAppChat: React.FC = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 rounded-full w-12 h-12 shadow-lg bg-green-500 hover:bg-green-600"
+        className="fixed md:bottom-6 bottom-5 md:right-6 right-5 z-50 rounded-full w-12 h-12 shadow-lg bg-green-500 hover:bg-green-600"
         aria-label="Open WhatsApp chat"
       >
-        <IoLogoWhatsapp size={20} className="h-10 w-10 text-white" />
+        <IoLogoWhatsapp className="h-10 w-10 text-white" />
       </Button>
+
+
+<Link href="tel:9355011033">
+      <Button
+        className="fixed bottom-20 right-6 z-50 rounded-full w-12 h-12 shadow-lg bg-primary-500 hover:bg-primary-600"
+        aria-label="Call OdinSchool"
+      >
+        <MdCall className="h-10 w-10 text-white -scale-x-100" />
+      </Button>
+      </Link>
 
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
