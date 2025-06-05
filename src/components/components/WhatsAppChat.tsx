@@ -10,6 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/component
 import { usePathname } from 'next/navigation';
 import { useProgram } from '@/context/ProgramContext';
 import { useRouter } from 'next/navigation';
+import { IoLogoWhatsapp } from "react-icons/io";
+
 const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { program } = useProgram();
@@ -117,10 +119,10 @@ const WhatsAppChat: React.FC = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-lg bg-green-500 hover:bg-green-600"
+        className="fixed bottom-6 right-6 z-50 rounded-full w-12 h-12 shadow-lg bg-green-500 hover:bg-green-600"
         aria-label="Open WhatsApp chat"
       >
-        <MessageCircle className="h-6 w-6 text-white" />
+        <IoLogoWhatsapp size={20} className="h-10 w-10 text-white" />
       </Button>
 
       {isOpen && (

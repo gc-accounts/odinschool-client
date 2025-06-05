@@ -260,7 +260,7 @@ const HeroSection = () => {
             <div>
               <div className="flex gap-8 items-end justify-center flex-row ">
                 <img
-                  src="https://strapi.odinschool.com/uploads/img1_49895ea8de.webp"
+                  src="https://strapi.odinschool.com/uploads/image1_5d9dce47c3.webp"
                   alt="Student 1"
                   className="rounded-full md:w-60 md:h-60 w-32 h:32 object-cover"
                 />
