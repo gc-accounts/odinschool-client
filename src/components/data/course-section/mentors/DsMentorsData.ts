@@ -144,7 +144,7 @@ export const DsMentorsData = [
   {
     "id": 14,
     "name": "Saurabh Ray",
-    "photo": "https://strapi.odinschool.com/uploads/14_current_company_48b2f2d48c.jpg",
+    "photo": "https://strapi.odinschool.com/uploads/14_photo_97ffe968e9.jpg",
     "designation": "Data Scientist",
     "currentCompany": "https://strapi.odinschool.com/uploads/14_current_company_48b2f2d48c.jpg",
     "prevCompanies": [
