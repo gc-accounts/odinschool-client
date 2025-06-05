@@ -160,10 +160,10 @@ const CourseCheckout = () => {
   const getAccessToken = async () => {
     try {
       // Use our backend endpoint instead of calling Zoho directly
-      const response = await fetch('/api/auth/token', {
+      const response = await fetch('/api/auth/token-checkout', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }
       });
 
@@ -183,6 +183,36 @@ const CourseCheckout = () => {
     }
   };
 
+  const getAccessTokenForPayment = async () => {
+    try {
+      // Use our backend endpoint instead of calling Zoho directly
+      const response = await fetch('/api/auth/token-payment-status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get access token');
+      }
+
+      const data = await response.json();
+      if (data?.access_token) {
+        return data.access_token;
+      } else {
+        throw new Error('No access token in response');
+      }
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      throw error;
+    }
+  };
+
+  function add18Percent(value) {
+    return value + (value * 0.18);
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
@@ -198,13 +228,17 @@ const CourseCheckout = () => {
       zohoFormData.append('Last Name', formData.lastName);
       zohoFormData.append('Email', formData.email);
       zohoFormData.append('Phone', formData.phone);
-      zohoFormData.append('Program', course?.slug || '');
+      zohoFormData.append('Program', course.slug === 'data-science-course' ? 'Data Science Course'
+        : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+          : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+            : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+              : course.slug);
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Coupon Code', '');
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
 
-      const contactResponse = await fetch('/api/zoho/contact', {
+      const contactResponse = await fetch('/api/zoho/checkout-form', {
         method: 'POST',
         body: zohoFormData
       });
@@ -286,7 +320,7 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      const payableAmount = course?.price || 0;
+      const payableAmount = add18Percent(price || 0);
 
       // Log the request we're about to make
       console.log('Creating order with amount:', payableAmount);
@@ -339,55 +373,59 @@ const CourseCheckout = () => {
 
             const verifyData = await verifyResponse.json();
 
-            if (verifyData.response === 'Paid') {
-              // Submit success data using our proxy endpoint
-              await fetch('/api/payment/success', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  name: `${formData.firstName} ${formData.lastName}`,
-                  email: formData.email,
-                  phone: formData.phone,
-                  product_name: `${course?.title} Seat Booking`,
-                  response: verifyData.response
-                })
-              });
+            const accessToken2: any = await getAccessTokenForPayment()
+            const zohoPaymentFormData = new FormData();
+            zohoPaymentFormData.append('accessToken', accessToken2 || '');
+            zohoPaymentFormData.append('Email', formData.email || '');
+            zohoPaymentFormData.append('Program', course.slug === 'data-science-course' ? 'Data Science Course'
+              : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+                : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+                  : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+                    : course.slug,);
 
-              // Track conversion
-              const img = document.createElement('img');
-              img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
-              document.body.appendChild(img);
+            zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
+            zohoPaymentFormData.append('Payable_Amount', payableAmount || '');
+            zohoPaymentFormData.append('Ga_client_id', '')
 
-              // Submit payment status form
-              const paymentStatusForm = document.createElement('form');
-              paymentStatusForm.method = 'POST';
-              paymentStatusForm.action = '/api/payment-status';
 
-              const paymentFormData = new FormData();
-              paymentFormData.append('email', formData.email);
-              paymentFormData.append('payment_status', 'Paid');
-              paymentFormData.append('payable_amount', payableAmount.toString());
-              paymentFormData.append('paid_event_name', `${course?.title} Seat Booking`);
-              paymentFormData.append('effective_bootcamp_fee', payableAmount.toString());
+            // Submit success data using our proxy endpoint
+            await fetch('/api/zoho/payment-status', {
+              method: 'POST',
+              body: zohoPaymentFormData
+            });
 
-              // Show success message and redirect
-              toast({
-                title: "Payment Successful!",
-                description: "Thank you for your payment. Redirecting to confirmation page...",
-              });
+            // Track conversion
+            const img = document.createElement('img');
+            img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
+            document.body.appendChild(img);
 
-              setTimeout(() => {
-                window.location.href = '/thank-you';
-              }, 2000);
-            } else {
-              toast({
-                title: "Payment Failed",
-                description: verifyData.response || "There was an error processing your payment. Please try again.",
-                variant: "destructive"
-              });
-            }
+            // Submit payment status form
+            const paymentStatusForm = document.createElement('form');
+            paymentStatusForm.method = 'POST';
+            paymentStatusForm.action = '/api/payment-status';
+
+            // const paymentFormData = new FormData();
+            // paymentFormData.append('email', formData.email);
+            // paymentFormData.append('payment_status', 'Paid');
+            // paymentFormData.append('payable_amount', payableAmount.toString());
+            // paymentFormData.append('paid_event_name', `${course?.title} Seat Booking`);
+            // paymentFormData.append('effective_bootcamp_fee', payableAmount.toString());
+
+            toast({
+              title: verifyData.response,
+            });
+
+            // Show success message and redirect
+            // toast({
+            //   title: "Payment Successful!",
+            //   description: "Thank you for your payment. Redirecting to confirmation page...",
+            // });
+
+            // setTimeout(() => {
+            //   window.location.href = '/thank-you';
+            // }, 2000);
+
+
           } catch (error) {
             console.error('Payment verification error:', error);
             toast({
@@ -585,11 +623,11 @@ const CourseCheckout = () => {
                     </div>
                     <div>
                       <h3 className="font-medium">{course.title}</h3>
-                      <div className="text-sm text-gray-500">{course.instructor}</div>
+                      {/* <div className="text-sm text-gray-500">{course.instructor}</div> */}
                     </div>
                   </div>
 
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-2" />
                       {course.duration}
@@ -598,23 +636,23 @@ const CourseCheckout = () => {
                       <User className="h-4 w-4 mr-2" />
                       {course.students?.toLocaleString()} students
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="border-t pt-4">
                     <div className="flex justify-between py-2">
                       <span>Price</span>
-                      <span>${price?.toFixed(2)}</span>
+                      <span>₹{price?.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between py-2">
+                    {/* <div className="flex justify-between py-2">
                       <span>Certificate</span>
                       <span>Not Included</span>
-                    </div>
+                    </div> */}
                     <div className="flex justify-between py-2 font-bold border-t">
                       <span>Total</span>
-                      <span>${price?.toFixed(2)}</span>
+                      <span>₹{price?.toFixed(2)}</span>
                     </div>
                   </div>
-                  {course.has_certificate && (
+                  {/* {course.has_certificate && (
                     <Button
                       variant="outline"
                       onClick={() => {
@@ -630,7 +668,7 @@ const CourseCheckout = () => {
                     >
                       {certificateButtonState ? "Add Certificate (+ $29.99)" : "Remove Certificate (- $29.99)"}
                     </Button>
-                  )}
+                  )} */}
                 </CardContent>
               </Card>
             </div>

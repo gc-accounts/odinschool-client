@@ -37,8 +37,8 @@ const callbackFormFields: FieldConfig[] = [
     rules: {
       required: 'Phone number is required',
       pattern: {
-        value: /^[0-9]{10}$/, // exactly 10 digits
-        message: 'Phone number must be exactly 10 digits (numbers only)',
+        value: /^[0-9]{10,12}$/,
+        message: 'Phone number must be between 10 and 12 digits (numbers only)',
       },
     },
   },

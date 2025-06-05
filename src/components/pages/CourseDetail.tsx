@@ -62,6 +62,8 @@ import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import DataLeaders from '@/components/components/DataLeaders';
 import Mentorship from '@/components/components/Mentorship';
 import DsEliteSuccessStories from '@/components/components/DsEliteSuccessStories';
+import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
+import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
 const formFields: FieldConfig[] = [
 
   {
@@ -99,8 +101,8 @@ const formFields: FieldConfig[] = [
     rules: {
       required: 'Phone number is required',
       pattern: {
-        value: /^[0-9]{10}$/, // exactly 10 digits
-        message: 'Phone number must be exactly 10 digits (numbers only)',
+        value: /^[0-9]{10,12}$/,
+        message: 'Phone number must be between 10 and 12 digits (numbers only)',
       },
     },
   },
@@ -300,7 +302,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <DsEliteSuccessStories sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <OrganizationLogos sectionClass={'bg-white  py-[50px]  md:py-[70px]'} />,
         () => <Testimonials sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        
+
         () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} 
@@ -806,11 +808,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                       <div className="flex gap-3">
                         {
                           course?.cohortDates?.cohort1 &&
-                          <div className="text-xs font-light border rounded-md px-2 py-1">{course?.cohortDates?.cohort1}</div>
+                          <div className="text-sm bg-primary-50 border rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort1)}</div>
                         }
                         {
                           course?.cohortDates?.cohort2 &&
-                          <div className="text-xs font-light border rounded-md px-2 py-1">{course?.cohortDates?.cohort2}</div>
+                          <div className="text-sm border bg-primary-50 rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort2)}</div>
                         }
                       </div>
                     </div>
@@ -818,7 +820,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
                   <div className="my-4">
-                    <span className="text-2xl font-bold">₹{course.price}+ GST</span>
+                    <span className="text-2xl font-bold">{formatCurrencyINR(course.price)}+ GST</span>
                     {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
                   </div>
 
