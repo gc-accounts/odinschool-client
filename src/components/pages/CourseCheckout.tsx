@@ -382,7 +382,7 @@ const CourseCheckout = () => {
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
                     : course.slug,);
-
+            zohoPaymentFormData.append('Effective Bootcamp Fee', (price ?? '').toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
             zohoPaymentFormData.append('Payable_Amount', payableAmount || '');
             zohoPaymentFormData.append('Ga_client_id', '')

@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     paymentStatusFormData.append('payment_status', 'Paid');
     paymentStatusFormData.append('payable_amount', body.payable_amount?.toString() || '0');
     paymentStatusFormData.append('paid_event_name', body.product_name);
-    paymentStatusFormData.append('effective_bootcamp_fee', body.effective_bootcamp_fee?.toString() || '0');
+
 
     // Submit payment status form
     try {

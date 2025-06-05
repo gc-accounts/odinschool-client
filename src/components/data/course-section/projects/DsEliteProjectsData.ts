@@ -14,9 +14,9 @@ export const DsEliteProjectsData = [
       },
       {
         project_img: 'https://strapi.odinschool.com/uploads/Health_Insurance_Prediction_5037b70c78.webp',
-        project_title: 'Corona Tracker Prediction',
+        project_title: 'Health Insurance Prediction',
         project_description: "Build a predictive ML model to increase the accuracy of health insurance prediction"
       },
-      ]
+    ]
   },
 ]

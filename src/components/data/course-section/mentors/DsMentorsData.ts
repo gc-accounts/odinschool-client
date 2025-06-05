@@ -100,7 +100,7 @@ export const DsMentorsData = [
   {
     "id": 10,
     "name": "Krishna Chaitanya",
-    "photo": "https://strapi.odinschool.com/uploads/10_photo_039cbd11d1.jpgp",
+    "photo": "https://strapi.odinschool.com/uploads/10_photo_039cbd11d1.jpg",
     "designation": "Senior Solutions Architect",
     "currentCompany": "https://strapi.odinschool.com/uploads/10_current_company_8a04b46300.jpg",
     "prevCompanies": [
