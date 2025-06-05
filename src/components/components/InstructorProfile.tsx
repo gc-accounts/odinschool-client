@@ -107,8 +107,7 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
             {/* Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex min-w-0">
-                 {
-                  data.map((instructor)=>{
+                 {Array.isArray(data) && data.map((instructor)=>{
                     return(
                             <div
                     key={instructor.id}
