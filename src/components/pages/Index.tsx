@@ -20,6 +20,9 @@ import { Button } from '@/components/components/ui/button';
 import { Card, CardContent } from '@/components/components/ui/card';
 import ExtrasSection1 from '@/components/components/ExtrasSection1';
 import DsEliteFold from '@/components/components/DsEliteFold';
+import getCourseData from '@/components/utils/getCourseData';
+import InstructorProfileHome from '@/components/components/InstructorProfileHome';
+import { DsMentorsData } from '@/components/data/course-section/mentors/DsMentorsData';
 
 
 
@@ -39,7 +42,7 @@ const Index = () => {
         <DsEliteFold sectionClass={'bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
         <FeaturedCourses />
         <Testimonials />
-        <InstructorProfile />
+        <InstructorProfileHome data={DsMentorsData} />
         <JobsSection />
         <OdinTalks sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
       </main>

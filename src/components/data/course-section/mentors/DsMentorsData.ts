@@ -2,295 +2,295 @@ export const DsMentorsData = [
   {
     "id": 1,
     "name": "Sawinder Pal Kaur",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Sawinder%20Pal%20Kaur%20.webp?width=140&height=140&name=Sawinder%20Pal%20Kaur%20.webp",
+    "photo": "https://strapi.odinschool.com/uploads/1_photo_c5f3a2bd58.jpg",
     "designation": "Machine Learning Expert",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/SAP%20%20100X40.webp?width=100&height=40&name=SAP%20%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/1_current_company_bb97b6d4bb.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Shell%20100X40.webp?width=80&height=32&name=Shell%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/Unext%20100X40.webp?width=80&height=32&name=Unext%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/1_prev_company_1_e81e7f3fe6.jpg",
+      "https://strapi.odinschool.com/uploads/1_prev_company_2_70ce1e5342.jpg"
     ]
   },
   {
     "id": 2,
     "name": "Dr. Subarna Roy",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Dr.%20Subarna%20Roy.webp?width=140&height=140&name=Dr.%20Subarna%20Roy.webp",
+    "photo": "https://strapi.odinschool.com/uploads/2_photo_cba34e853b.jpg",
     "designation": "Chief Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/IBM%20100X40.webp?width=100&height=40&name=IBM%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/2_current_company_64039aab61.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/TCS100X40%20Individual.webp?width=80&height=32&name=TCS100X40%20Individual.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/ANZ%20100X40.webp?width=80&height=32&name=ANZ%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/2_prev_company_1_5345b688f0.jpg",
+      "https://strapi.odinschool.com/uploads/2_prev_company_2_1cce1ae249.jpg"
     ]
   },
   {
     "id": 3,
     "name": "Amit Rustagi",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Amit%20rustagi%20.webp?width=140&height=140&name=Amit%20rustagi%20.webp",
+    "photo": "https://strapi.odinschool.com/uploads/3_photo_7d7d9a408b.jpg",
     "designation": "Data Analytics Manager",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/AAM%20100X40.webp?width=100&height=40&name=AAM%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/3_current_company_4b52aa51b6.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Home%20credit%20100X40.webp?width=80&height=32&name=Home%20credit%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/IBM%20100X40.webp?width=80&height=32&name=IBM%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/3_prev_company_1_9caf7ba8d0.jpg",
+      "https://strapi.odinschool.com/uploads/3_prev_company_2_bed86bd8e1.jpg"
     ]
   },
   {
     "id": 4,
     "name": "Rajeswaran V.",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Rajeswaran%20V%20.webp?width=140&height=140&name=Rajeswaran%20V%20.webp",
-    "designation": "Ex- Senior Director",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/Capgemini_100X40.webp?width=100&height=40&name=Capgemini_100X40.webp",
+    "photo": "https://strapi.odinschool.com/uploads/4_photo_9903fb15f1.jpg",
+    "designation": "Senior Director",
+    "currentCompany": "https://strapi.odinschool.com/uploads/4_current_company_de4b5362ff.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/IIT%20Madras%20100X40.webp?width=80&height=32&name=IIT%20Madras%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/v2/100_X_40/Cognizant_100X40%20(1).webp?width=80&height=32&name=Cognizant_100X40%20(1).webp"
+      "https://strapi.odinschool.com/uploads/4_prev_company_1_8b36ffbb52.jpg",
+      "https://strapi.odinschool.com/uploads/4_prev_company_2_31d3551cd7.jpg"
     ]
   },
   {
     "id": 5,
     "name": "Teja Gudluru",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Teja%20Gudluru%20.webp?width=140&height=140&name=Teja%20Gudluru%20.webp",
+    "photo": "https://strapi.odinschool.com/uploads/5_photo_b9c8fd785f.jpg",
     "designation": "Founder",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/UDO%20Now%20100X40.webp?width=100&height=40&name=UDO%20Now%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/5_current_company_df76b768c0.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/CommSure%20100X40.webp?width=80&height=32&name=CommSure%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/Caere%20100X40.webp?width=80&height=32&name=Caere%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/5_prev_company_1_6d4a4c8d91.jpg",
+      "https://strapi.odinschool.com/uploads/5_prev_company_2_4f789b6c58.jpg"
     ]
   },
   {
     "id": 6,
     "name": "S. Sai Subrath",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Subrath.webp?width=140&height=140&name=Subrath.webp",
+    "photo": "https://strapi.odinschool.com/uploads/6_photo_9a5f299227.jpg",
     "designation": "Senior Executive - HR",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/swiggy_100x40_indv.webp?width=100&height=40&name=swiggy_100x40_indv.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/6_current_company_9e1a7516fe.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Pikkol%20100X40.webp?width=80&height=32&name=Pikkol%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/Citius%20100X40.webp?width=80&height=32&name=Citius%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/6_prev_company_1_b1cb6b5a14.jpg",
+      "https://strapi.odinschool.com/uploads/6_prev_company_2_9e0c1c070f.jpg"
     ]
   },
   {
     "id": 7,
     "name": "Abhishek Kumar",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Abhishek.webp?width=140&height=140&name=Abhishek.webp",
+    "photo": "https://strapi.odinschool.com/uploads/7_photo_55d5b136cd.jpg",
     "designation": "Director - Data Science",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Publicis_Sapient_100X40_indv.webp?width=100&height=40&name=Publicis_Sapient_100X40_indv.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/7_current_company_ad8fd7aff4.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/NTPC%20100X40.webp?width=80&height=32&name=NTPC%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/7_prev_company_1_80be67eab9.jpg"
     ]
   },
   {
     "id": 8,
     "name": "Akhilesh Chander",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Akhilesh.webp?width=140&height=140&name=Akhilesh.webp",
+    "photo": "https://strapi.odinschool.com/uploads/8_photo_4259c47703.jpg",
     "designation": "Ex - Data Science Manager",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/v2/100_X_40/amazon%20100%20x40%20gird.png?width=100&height=40&name=amazon%20100%20x40%20gird.png",
+    "currentCompany": "https://strapi.odinschool.com/uploads/8_current_company_ab4b947ae4.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/flipkart_100X40.webp?width=80&height=32&name=flipkart_100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/ITC_100X40.webp?width=80&height=32&name=ITC_100X40.webp"
+      "https://strapi.odinschool.com/uploads/8_prev_company_1_7ce9cc7bd3.jpg",
+      "https://strapi.odinschool.com/uploads/8_prev_company_2_d5dbc6202f.jpg"
     ]
   },
   {
     "id": 9,
     "name": "Manish Kumar Singh",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Manish_Kumar.webp?width=140&height=140&name=Manish_Kumar.webp",
+    "photo": "https://strapi.odinschool.com/uploads/9_photo_1cb9ba94bd.jpg",
     "designation": "Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Walmart_INDIVIDUAL_100x40_1.webp?width=100&height=40&name=Walmart_INDIVIDUAL_100x40_1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/9_current_company_098f6f8bbb.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/ola_100X40_indv.webp?width=80&height=32&name=ola_100X40_indv.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/MU_sigma_100X40_indv.webp?width=80&height=32&name=MU_sigma_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/9_prev_company_1_8024c0fdec.jpg",
+      "https://strapi.odinschool.com/uploads/9_prev_company_2_43f1cf09d3.jpg"
     ]
   },
   {
     "id": 10,
     "name": "Krishna Chaitanya",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Krishna%20Chaitanya.webp?width=140&height=140&name=Krishna%20Chaitanya.webp",
+    "photo": "https://strapi.odinschool.com/uploads/10_photo_039cbd11d1.jpgp",
     "designation": "Senior Solutions Architect",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/Zensar%20100X40.webp?width=100&height=40&name=Zensar%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/10_current_company_8a04b46300.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Great%20learning%20100X40.webp?width=80&height=32&name=Great%20learning%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/accenture%20Individual%20100%20x40.webp?width=80&height=32&name=accenture%20Individual%20100%20x40.webp"
+      "https://strapi.odinschool.com/uploads/10_prev_company_1_a3824df331.jpg",
+      "https://strapi.odinschool.com/uploads/10_prev_company_2_9313b4dbde.jpg"
     ]
   },
   {
     "id": 11,
     "name": "Nagaraju Chikoti",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Nagaraju-Chikoti.webp?width=140&height=140&name=Nagaraju-Chikoti.webp",
+    "photo": "https://strapi.odinschool.com/uploads/11_photo_6b09a92baf.jpg",
     "designation": "Sr. Product Engineer",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Micron_technologies_100X40_indv.webp?width=100&height=40&name=Micron_technologies_100X40_indv.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/11_current_company_cd6f71ae3a.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Fedex_100X40_indv.webp?width=80&height=32&name=Fedex_100X40_indv.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Wipro_100X40_indv.webp?width=80&height=32&name=Wipro_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/11_prev_company_1_6d5ff3e394.jpg",
+      "https://strapi.odinschool.com/uploads/11_prev_company_2_60ee4fcf49.jpg"
     ]
   },
   {
     "id": 12,
     "name": "Roopak Prajapat",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Roopak%20Prajapat.webp?width=140&height=140&name=Roopak%20Prajapat.webp",
+    "photo": "https://strapi.odinschool.com/uploads/12_photo_ec992b514c.jpg",
     "designation": "Vice President",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/KonaAI%20Prime%20200X80.webp?width=100&height=40&name=KonaAI%20Prime%20200X80.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/12_current_company_ce75d82542.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Abinbev100X40%20Individual.webp?width=80&height=32&name=Abinbev100X40%20Individual.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/Intel%20100X40.webp?width=80&height=32&name=Intel%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/12_prev_company_1_5f4e71b300.jpg",
+      "https://strapi.odinschool.com/uploads/12_prev_company_2_616e398190.jpg"
     ]
   },
   {
     "id": 13,
     "name": "Aakash Kathuria",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Aakash%20Kathuria.webp?width=140&height=140&name=Aakash%20Kathuria.webp",
+    "photo": "https://strapi.odinschool.com/uploads/13_photo_f2c7db20c7.jpg",
     "designation": "General Manager",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/Lenskart%20200X80.webp?width=100&height=40&name=Lenskart%20200X80.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/13_current_company_556e07e474.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OWNDAYS%20100X40.webp?width=80&height=32&name=OWNDAYS%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/scjohnson%20100X40.webp?width=80&height=32&name=scjohnson%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/13_prev_company_1_bcdbe69cca.jpg",
+      "https://strapi.odinschool.com/uploads/13_prev_company_2_4167c7e124.jpg"
     ]
   },
   {
     "id": 14,
     "name": "Saurabh Ray",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Saurabh_Ray.webp?width=140&height=140&name=Saurabh_Ray.webp",
+    "photo": "https://strapi.odinschool.com/uploads/14_current_company_48b2f2d48c.jpg",
     "designation": "Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/IBM%20100X40.webp?width=100&height=40&name=IBM%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/14_current_company_48b2f2d48c.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/accenture_Individual_100_x40_1.webp?width=80&height=32&name=accenture_Individual_100_x40_1.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Digizura_100X40_indv.webp?width=80&height=32&name=Digizura_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/14_prev_company_1_e21c39b596.jpg",
+      "https://strapi.odinschool.com/uploads/14_prev_company_2_fcd69818c3.jpg"
     ]
   },
   {
     "id": 15,
     "name": "Dr. Chiranjiv Roy",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/instructors/Chiranjeev%20R.webp?width=140&height=140&name=Chiranjeev%20R.webp",
+    "photo": "https://strapi.odinschool.com/uploads/15_photo_db55dd2f9e.jpg",
     "designation": "VP, Data Science",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/white/100_X_40/Course5i%20100x40.webp?width=100&height=40&name=Course5i%20100x40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/15_current_company_3119027d72.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Mecedes-Benz%20100X40%20grid.webp?width=80&height=32&name=Mecedes-Benz%20100X40%20grid.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Forbes_technology_individual_100X40.webp?width=80&height=32&name=Forbes_technology_individual_100X40.webp"
+      "https://strapi.odinschool.com/uploads/15_prev_company_1_0697ec282c.jpg",
+      "https://strapi.odinschool.com/uploads/15_prev_company_2_7d34ba4560.jpg"
     ]
   },
   {
     "id": 16,
     "name": "Dr. Debojyoti Roy",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Dr._Debojyoti_Roy.webp?width=140&height=140&name=Dr._Debojyoti_Roy.webp",
+    "photo": "https://strapi.odinschool.com/uploads/16_photo_7232a8bd8d.jpg",
     "designation": "Chief Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Aureus_tech_systems_100X40_indv-1.webp?width=100&height=40&name=Aureus_tech_systems_100X40_indv-1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/16_current_company_c4bacca45a.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/RICE_Group_100X40_indv.webp?width=80&height=32&name=RICE_Group_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/16_prev_company_1_a0c376cbf7.jpg"
     ]
   },
   {
     "id": 17,
     "name": "Sarveshwaran Rajagopal",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Sarveshwaran-Rajagopal.webp?width=140&height=140&name=Sarveshwaran-Rajagopal.webp",
+    "photo": "https://strapi.odinschool.com/uploads/17_photo_e35410e0e6.jpg",
     "designation": "Sr. Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/LTIMindtree_1.webp?width=100&height=40&name=LTIMindtree_1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/17_current_company_88d8eb764e.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/infosys_100x40.webp?width=80&height=32&name=infosys_100x40.webp"
+      "https://strapi.odinschool.com/uploads/17_prev_company_1_f8d777bb51.jpg"
     ]
   },
   {
     "id": 18,
     "name": "Krishna Kumar",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Krishna%20Kumar.jpg?width=140&height=140&name=Krishna%20Kumar.jpg",
+    "photo": "https://strapi.odinschool.com/uploads/18_photo_4814c350ff.jpg",
     "designation": "Principal Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/NYSE_200X80%20(1).webp?width=100&height=40&name=NYSE_200X80%20(1).webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/18_current_company_269ac71e56.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/v2/100_X_40/Morgan%20Stanley%20Individual%20100%20x40.webp?width=80&height=32&name=Morgan%20Stanley%20Individual%20100%20x40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/JP%20Morgan%20100X40%20grid.webp?width=80&height=32&name=JP%20Morgan%20100X40%20grid.webp"
+      "https://strapi.odinschool.com/uploads/18_prev_company_1_158fadd778.jpg",
+      "https://strapi.odinschool.com/uploads/18_prev_company_2_c67226255a.jpg"
     ]
   },
   {
     "id": 19,
     "name": "Arka Prava",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Arka.webp?width=140&height=140&name=Arka.webp",
+    "photo": "https://strapi.odinschool.com/uploads/19_photo_622e3a1dd2.jpg",
     "designation": "Lead Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/Carelon%20100X40.webp?width=100&height=40&name=Carelon%20100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/19_current_company_c931af5298.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Capgemini%20100X40.webp?width=80&height=32&name=Capgemini%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/RR%20Donnelley%20100X40.webp?width=80&height=32&name=RR%20Donnelley%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/19_prev_company_1_52da3768cc.jpg",
+      "https://strapi.odinschool.com/uploads/19_prev_company_2_17b997648c.jpg"
     ]
   },
   {
     "id": 20,
     "name": "Vishal Jain",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Vishal_N%20(1).webp?width=140&height=140&name=Vishal_N%20(1).webp",
+    "photo": "https://strapi.odinschool.com/uploads/20_photo_c8fa0df27c.jpg",
     "designation": "PDM",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/Rohm_100_x40.webp?width=100&height=40&name=Rohm_100_x40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/20_current_company_2911fb0b75.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/IBM%20100X40%20grid.webp?width=80&height=32&name=IBM%20100X40%20grid.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/infosys_100x40_individual.webp?width=80&height=32&name=infosys_100x40_individual.webp"
+      "https://strapi.odinschool.com/uploads/20_prev_company_1_6196cd4614.jpg",
+      "https://strapi.odinschool.com/uploads/20_prev_company_2_8c76c93aac.jpg"
     ]
   },
   {
     "id": 21,
     "name": "Rahul Saha",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Rahul-Saha.webp?width=140&height=140&name=Rahul-Saha.webp",
+    "photo": "https://strapi.odinschool.com/uploads/21_photo_8c7f10a545.jpg",
     "designation": "Chief Data Scientist",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/TCS_100X40.webp?width=100&height=40&name=TCS_100X40.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/21_current_company_575f3fad4d.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/v2/100_X_40/Tech%20Mahindra100X40.webp?width=80&height=32&name=Tech%20Mahindra100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OS_Company_Logo/v2/100_X_40/Cognizant_100X40%20(1).webp?width=80&height=32&name=Cognizant_100X40%20(1).webp"
+      "https://strapi.odinschool.com/uploads/21_prev_company_1_40038fc28a.jpg",
+      "https://strapi.odinschool.com/uploads/21_prev_company_2_74542eab1f.jpg"
     ]
   },
   {
     "id": 22,
     "name": "Anand Narayanan",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Anand_Narayan.webp?width=140&height=140&name=Anand_Narayan.webp",
+    "photo": "https://strapi.odinschool.com/uploads/22_photo_9b820c6e1a.jpg",
     "designation": "Founder",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/aspecscire.png?width=100&height=40&name=aspecscire.png",
+    "currentCompany": "https://strapi.odinschool.com/uploads/22_current_company_5356c25209.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Goldman%20Sachs%20100X40%20grid.webp?width=80&height=32&name=Goldman%20Sachs%20100X40%20grid.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Bosch_100X40_indiidual.webp?width=80&height=32&name=Bosch_100X40_indiidual.webp"
+      "https://strapi.odinschool.com/uploads/22_prev_company_1_6c63771584.jpg",
+      "https://strapi.odinschool.com/uploads/22_prev_company_2_fbb5db821c.jpg"
     ]
   },
   {
     "id": 23,
     "name": "Murlidhar Bhekane",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Murlidhar-Bhekane.webp?width=140&height=140&name=Murlidhar-Bhekane.webp",
+    "photo": "https://strapi.odinschool.com/uploads/23_photo_f4e0c4dd26.jpg",
     "designation": "Staff Data Engineer",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Walmart_INDIVIDUAL_100x40_1.webp?width=100&height=40&name=Walmart_INDIVIDUAL_100x40_1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/23_current_company_07833f0b9d.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Intuit_India_100X40_indv.webp?width=80&height=32&name=Intuit_India_100X40_indv.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Hewlett-Packard_100X40_indv.webp?width=80&height=32&name=Hewlett-Packard_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/23_prev_company_1_6e118ae3b6.jpg",
+      "https://strapi.odinschool.com/uploads/23_prev_company_2_0b9213ce21.jpg"
     ]
   },
   {
     "id": 24,
     "name": "Avinash Mishra",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Avinash_Mishra.webp?width=140&height=140&name=Avinash_Mishra.webp",
+    "photo": "https://strapi.odinschool.com/uploads/24_photo_5c0f5dad54.jpg",
     "designation": "Data Science Manager",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/SBI_100X40_indv-1.webp?width=100&height=40&name=SBI_100X40_indv-1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/24_current_company_7ab38ffd57.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Rakuten_100X40_indv.webp?width=80&height=32&name=Rakuten_100X40_indv.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Catalina_Marketing_100X40_indv.webp?width=80&height=32&name=Catalina_Marketing_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/24_prev_company_1_80501f6f98.jpg",
+      "https://strapi.odinschool.com/uploads/24_prev_company_2_3546645872.jpg"
     ]
   },
   {
     "id": 25,
     "name": "Abidunnisa Begum",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Abidunnisa.webp?width=140&height=140&name=Abidunnisa.webp",
+    "photo": "https://strapi.odinschool.com/uploads/25_photo_0fc565c879.jpg",
     "designation": "Lead Instructor",
-    "currentCompany": "https://www.odinschool.com/hubfs/OdinSchool_V3/icons/Odinschool_v3_logo.svg",
+    "currentCompany": "https://strapi.odinschool.com/uploads/odinschool_logo_8a880e4c88.webp",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Derisk360%20100X40%20indv.webp?width=80&height=32&name=Derisk360%20100X40%20indv.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Quantumics.Ai%20100X40%20indv.webp?width=80&height=32&name=Quantumics.Ai%20100X40%20indv.webp"
+      "https://strapi.odinschool.com/uploads/25_prev_company_1_2d9246063b.jpg",
+      "https://strapi.odinschool.com/uploads/25_prev_company_2_fca5b0496a.jpg"
     ]
   },
   {
     "id": 26,
     "name": "Jyant Mahara",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/Jyant_Mahara.webp?width=140&height=140&name=Jyant_Mahara.webp",
+    "photo": "https://strapi.odinschool.com/uploads/26_photo_9aec7780aa.jpg",
     "designation": "Data Science Lead",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Zscaler_100x40_individual_1.webp?width=100&height=40&name=Zscaler_100x40_individual_1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/26_current_company_c6982ad690.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/accenture_Individual_100_x40_1.webp?width=80&height=32&name=accenture_Individual_100_x40_1.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/OdinSchool_V3/Mentors/mentor%20logos/Publicis_Sapient_100X40_indv.webp?width=80&height=32&name=Publicis_Sapient_100X40_indv.webp"
+      "https://strapi.odinschool.com/uploads/26_prev_company_1_848a8f56bd.jpg",
+      "https://strapi.odinschool.com/uploads/26_prev_company_2_2e858fe050.jpg"
     ]
   },
   {
     "id": 27,
     "name": "Sasha Kingsley",
-    "photo": "https://www.odinschool.com/hs-fs/hubfs/Sasha%20(1).webp?width=140&height=140&name=Sasha%20(1).webp",
+    "photo": "https://strapi.odinschool.com/uploads/27_photo_24f4b46131.jpg",
     "designation": "Analytics Manager",
-    "currentCompany": "https://www.odinschool.com/hs-fs/hubfs/Wayfair%20100X40%20(1)-1.webp?width=100&height=40&name=Wayfair%20100X40%20(1)-1.webp",
+    "currentCompany": "https://strapi.odinschool.com/uploads/27_current_company_9f77c3f127.jpg",
     "prevCompanies": [
-      "https://www.odinschool.com/hs-fs/hubfs/Nielseniq%20100X40.webp?width=80&height=32&name=Nielseniq%20100X40.webp",
-      "https://www.odinschool.com/hs-fs/hubfs/Oportun%20100X40.webp?width=80&height=32&name=Oportun%20100X40.webp"
+      "https://strapi.odinschool.com/uploads/27_prev_company_1_6980512dae.jpg",
+      "https://strapi.odinschool.com/uploads/27_prev_company_2_25dce2e11e.jpg"
     ]
   }
 ];

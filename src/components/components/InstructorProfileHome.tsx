@@ -8,14 +8,11 @@ import { Skeleton } from "@/components/components/ui/skeleton";
 
 
 interface InstructorProfileProps {
-  slug: string,
   sectionClass?: String,
   data: { id: number, name: string, photo: string, designation: string, currentCompany:string, prevCompanies: string[] }[]
 }
-const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) => {
+const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) => {
 
-
-  // const [mentors, setMentors] = useState<InstructorProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -39,7 +36,6 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
   );
 
 
-
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
@@ -51,7 +47,7 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
     return emblaApi.scrollSnapList().map((_, index) => index);
   }, [emblaApi, data]);
 
-  console.log('mentors data-------------', data);
+
   
 
   const LoadingSkeleton = () => (
@@ -194,4 +190,4 @@ const InstructorProfile = ({slug, sectionClass, data }: InstructorProfileProps) 
   );
 };
 
-export default InstructorProfile;
+export default InstructorProfileHome;

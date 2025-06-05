@@ -8,6 +8,9 @@ import { DsEliteCareerPathData } from '@/components/data/course-section/carrer-p
 import { GenAICareerPathData } from '@/components/data/course-section/carrer-path/GenAICareerPathData';
 import { GenAIIITGCareerPathData } from '@/components/data/course-section/carrer-path/GenAIIITGCareerPathData';
 
+import { DsMentorsData } from '@/components/data/course-section/mentors/DsMentorsData';
+import { DsEliteMentorsData } from '@/components/data/course-section/mentors/DsEliteMentorsData';
+import { GenAIMentorsData } from '@/components/data/course-section/mentors/GenAIMentorsData';
 import { GenAIIITGMentorsData } from '@/components/data/course-section/mentors/GenAIIITGMentorsData';
 
 
@@ -18,14 +21,14 @@ const getCourseData = (slug: string) => {
         faqs: dsFaqsData,
         jobs: [],
         careerPath: DsCareerPathData,
-        mentors: []
+        mentors: DsMentorsData
       };
     case 'generative-ai-bootcamp':
       return {
         faqs: genAiFaqsData,
         jobs: [],
         careerPath: GenAICareerPathData,
-        mentors: []
+        mentors: GenAIMentorsData
       };
     case 'generative-ai-course-iitg':
       return {
@@ -39,7 +42,7 @@ const getCourseData = (slug: string) => {
         faqs: dsEliteFaqsData,
         jobs: [],
         careerPath: DsEliteCareerPathData,
-        mentors: []
+        mentors: DsEliteMentorsData
       };
     default:
       return {
