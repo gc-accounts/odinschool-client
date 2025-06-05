@@ -129,7 +129,7 @@ const WhatsAppChat: React.FC = () => {
 
 
 <Link href="tel:9355011033">
-  <div className="group fixed bottom-20 right-5 z-50 flex items-center">
+  <div className="group fixed md:bottom-20 md:right-6 bottom-16 right-5 z-50 flex items-center">
     {/* Phone number visible only on desktop and on hover */}
     <span className="hidden lg:inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 mr-2 text-md font-medium text-white bg-primary-500 px-3 py-2 rounded-full shadow-lg">
       +91 9355 011033
