@@ -853,9 +853,9 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
                   <Link href={`/course-checkout/${course.url_slug}`}>
-                    <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
+                    <Button variant="link" className="w-full mt-2">Reserve your seat at ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Button>
                   </Link>
-                  <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
+                  <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs Available. 6,9,12 months EMI option available.</h3>
                 </div>
               </div>
             </div>
