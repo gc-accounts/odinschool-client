@@ -50,7 +50,6 @@ const SuccessStories = () => {
       ) : (<main className="min-h-screen bg-gray-50">
         <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-
             <div className="flex items-center justify-center md:mb-6 mb-4">
                           <div className="bg-white/10 rounded-full p-3">
                             <HelpCircle className="md:h-8 md:w-8 h-6 w-6" />

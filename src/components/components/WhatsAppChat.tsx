@@ -130,6 +130,7 @@ const WhatsAppChat: React.FC = () => {
       </Button>
 
 
+
       <Link href="tel:9355011033">
         <div className="group fixed md:bottom-[5rem] md:right-6 bottom-20 right-5 z-50 flex items-center">
           {/* Phone number visible only on desktop and on hover */}
@@ -146,6 +147,8 @@ const WhatsAppChat: React.FC = () => {
 
         </div>
       </Link>
+
+
 
 
       {isOpen && (

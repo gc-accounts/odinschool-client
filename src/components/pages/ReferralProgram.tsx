@@ -98,23 +98,23 @@ const ReferralProgram = () => {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <div className="py-12 bg-gradient-to-br bg-primary-600 text-white">
+
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-center mb-6">
-              <div className="bg-white/10 rounded-full p-3">
-                <Gift className="h-8 w-8" />
-              </div>
-            </div>
-            <h1 className="heading-xl font-bold text-center mb-4">Referral Program</h1>
-            <p className="text-lg font-light text-center max-w-6xl mx-auto mb-8">
-              It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
-            </p>
-            {/* <div className="flex justify-center">
-              <Button asChild size="lg" className="bg-white text-primary-700 hover:bg-gray-100">
-                <a href="#get-started">Flat ₹2000 for every admission</a>
-              </Button>
-            </div> */}
-          </div>
+          
+                      <div className="flex items-center justify-center md:mb-6 mb-4">
+                                    <div className="bg-white/10 rounded-full p-3">
+                                      <Gift className="md:h-8 md:w-8 h-6 w-6" />
+                                    </div>
+                                  </div>
+          
+                      <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Referral Program</h1>
+                      <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
+                        It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
+                      </p>
+                    </div>
+
+          
         </div>
 
         <div className="container mx-auto px-4 py-12">

@@ -77,8 +77,8 @@ const steps = [
 
 const EmployerTestimonials = () => {
   return (
-    <section className="w-full py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
+      <div className="container">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           What <span className="text-primary-600">Employers Say</span>
         </h2>
@@ -87,9 +87,9 @@ const EmployerTestimonials = () => {
         </p>
 
         {/* Top Row: 2 Centered Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-6">
           {testimonials.map((item, index) => (
-            <div key={index} className="w-full max-w-sm border rounded-xl p-6 shadow-sm bg-white">
+            <div key={index} className=" border rounded-xl p-6 shadow-sm bg-white">
               <div className="flex items-center gap-4 mb-4">
                 <img
                   src={item.avatar}
@@ -110,9 +110,9 @@ const EmployerTestimonials = () => {
         </div>
       </div>
     
-      <section className="py-12 bg-white">
-      <div className="max-w-5xl mx-auto px-4 border rounded-xl text-center">
-        <h2 className="text-2xl md:text-3xl mt-4 font-bold mb-8">
+      <section className="py-12">
+      <div className="container px-4 border rounded-xl text-center bg-white">
+        <h2 className="text-2xl md:text-3xl mt-6 font-bold mb-8">
           Quick, free, easy hiring process
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 mb-4 gap-8">

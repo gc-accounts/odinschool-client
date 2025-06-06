@@ -54,7 +54,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
               Ready to <span className="text-primary-600">Get Started?</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-md text-gray-600 max-w-2xl mx-auto">
               Request a callback from our team and begin your upskilling journey today.
             </p>
           </div>

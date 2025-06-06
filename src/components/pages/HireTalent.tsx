@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Check } from 'lucide-react';
+import { Check, UserRoundSearch } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
@@ -104,19 +104,29 @@ const HireTalent = () => {
     <>
       <Navbar />
       <main className="min-h-screen">
-        <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br bg-primary-600 text-white">
+
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Hire the right talent at zero cost</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
+
+            <div className="flex items-center justify-center md:mb-6 mb-4">
+                          <div className="bg-white/10 rounded-full p-3">
+                            <UserRoundSearch className="md:h-8 md:w-8 h-6 w-6" />
+                          </div>
+                        </div>
+
+            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Hire the right talent at zero cost</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
               Break away from the tradition of hunting for degrees. Onboard talents who have the right skill sets!
             </p>
           </div>
-        </div>
+
+
+        </section>
 
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
             <div>
-              <h2 className="text-4xl font-bold mb-4">Why should you hire from OdinSchool?</h2>
+              <h2 className="md:text-4xl text-2xl font-bold mb-4">Why should you hire from OdinSchool?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex">
@@ -172,10 +182,9 @@ const HireTalent = () => {
               </div>
             </div>
           </div>
-
-          <OrganizationLogos />
-          <EmployerTestimonials />
         </div>
+        <OrganizationLogos />
+          <EmployerTestimonials />
       </main>
       <CallbackForm />
       <Footer />

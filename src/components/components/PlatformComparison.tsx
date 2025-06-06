@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect } from 'react';
-import { Check, X, Trophy, ThumbsUp } from 'lucide-react';
+import { Check, X, Trophy, ThumbsUp, Star } from 'lucide-react';
 import { cn } from '@/components/lib/utils';
 import { Card, CardContent } from '@/components/components/ui/card';
 import {
@@ -127,18 +127,14 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
         </div>
 
         {/* Main comparison table - redesigned with better visuals */}
-        <div className="animate-on-scroll opacity-0" style={{ animationDelay: '300ms' }}>
+        <div className="animate-on-scroll opacity-0 max-w-5xl mx-auto" style={{ animationDelay: '300ms' }}>
           <Card className="overflow-hidden border shadow-lg">
             <CardContent className="p-0">
               {/* Table header */}
-              <div className="grid grid-cols-3 border-b">
+              <div className="grid grid-cols-3 border-b md:text-start text-center">
                 <div className="col-span-1 p-4 bg-gray-50 font-bold">Features</div>
-                <div className="col-span-1 p-4 bg-primary-50 font-bold text-primary-800">
-                  OdinSchool
-                </div>
-                <div className="col-span-1 p-4 font-medium text-gray-500">
-                  Others
-                </div>
+                <div className="col-span-1 p-4 bg-primary-50 font-bold text-primary-800">OdinSchool</div>
+                <div className="col-span-1 p-4 font-bold text-gray-500">Others</div>
               </div>
 
               {/* Table body */}
@@ -153,35 +149,45 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
                   >
                     <div className="col-span-1 p-4 flex items-center">
                       <span>
-                        <span className='font-semibold'>{feature.name}</span>
                         {feature.highlight && (
-                          <span className="ml-2 inline-block bg-primary-600 text-white text-xs px-2 py-0.5 rounded-full">
-                            Key Feature
+                          <>
+                          <span className="md:ml-2 md:hidden inline-block bg-primary-600 text-white text-xs px-2 py-0.5 rounded-full">
+                            <Star className="h-3 w-3 text-white" />
+                          </span>
+                          <br className='md:hidden' />
+                          </>
+                        )}
+                        <span className='font-semibold md:text-[0.9rem] text-sm'>{feature.name}</span>
+                        
+                        {feature.highlight && (
+                          <span className="md:ml-2 md:inline-block hidden bg-primary-600 text-white text-xs px-2 py-[0.8px] font-semibold rounded-full">
+                            <span className='leading-none'>Key Feature</span>
                           </span>
                         )}
+
                       </span>
                     </div>
-                    <div className="col-span-1 p-4 flex items-center">
+                    <div className="col-span-1 p-4 flex md:flex-nowrap flex-wrap items-center">
                       {feature.odinschool ?
-                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary-100 flex items-center justify-center">
+                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary-100 flex items-center justify-center md:mb-0 mb-1">
                           <Check className="h-5 w-5 text-primary-600" />
                         </div> :
-                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-100 flex items-center justify-center md:mb-0 mb-1">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
                       }
-                      <p className='ml-4 text-sm md:text-md'>{feature.odinschoolInfo}</p>
+                      <p className='md:ml-4 md:text-sm text-xs md:text-md'>{feature.odinschoolInfo}</p>
                     </div>
-                    <div className="col-span-1 p-4 flex items-center">
+                    <div className="col-span-1 p-4 flex md:flex-row flex-col flex-wrap md:items-center items-start">
                       {feature.others ?
-                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center md:mb-0 mb-1">
                           <Check className="h-5 w-5 text-gray-600" />
                         </div> :
-                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 flex-shrink-0 h-8 rounded-full bg-gray-100 flex items-center justify-center md:mb-0 mb-1">
                           <X className="h-5 w-5 text-gray-400" />
                         </div>
                       }
-                      <p className='ml-4'>{feature.othersInfo}</p>
+                      <p className='md:ml-4 md:text-sm text-xs md:text-md'>{feature.othersInfo}</p>
                     </div>
                   </div>
                 ))}

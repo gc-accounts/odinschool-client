@@ -68,14 +68,16 @@ const FreeResources = () => {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
-          <div className="container">
-            <div className="flex items-center justify-center mb-6">
-              <div className="bg-white/10 rounded-full p-3">
-                <Download className="h-8 w-8" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold text-center mb-4">Project Page</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto mb-8 text-slate-300">
+
+<div className="container mx-auto px-4">
+            <div className="flex items-center justify-center md:mb-6 mb-4">
+                          <div className="bg-white/10 rounded-full p-3">
+                            <Download className="md:h-8 md:w-8 h-6 w-6" />
+                          </div>
+                        </div>
+
+            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Project Page</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto mb-4">
               Beginner to advanced level projects with detailed explanation, for practicing and strengthening your skills in Data Science and Generative AI.
             </p>
             <div className="max-w-md mx-auto relative">
@@ -89,6 +91,8 @@ const FreeResources = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
           </div>
+
+
         </section>
         
         <section className='px-[20px] pt-[50px] md:px-[30px] md:pt-[70px]'>
