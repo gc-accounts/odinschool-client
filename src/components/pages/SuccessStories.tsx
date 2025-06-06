@@ -1,7 +1,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Star, Award, TrendingUp, Loader2 } from 'lucide-react';
+import { Star, Award, TrendingUp, Loader2, HelpCircle } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/components/ui/avatar';
@@ -50,8 +50,15 @@ const SuccessStories = () => {
       ) : (<main className="min-h-screen bg-gray-50">
         <div className="py-12 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Success Stories</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
+
+            <div className="flex items-center justify-center md:mb-6 mb-4">
+                          <div className="bg-white/10 rounded-full p-3">
+                            <HelpCircle className="md:h-8 md:w-8 h-6 w-6" />
+                          </div>
+                        </div>
+
+            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Success Stories</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
               Real students. Real results. Discover how OdinSchool has helped thousands of students transform their careers.
             </p>
           </div>

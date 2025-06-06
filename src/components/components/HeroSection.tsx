@@ -192,7 +192,7 @@ const HeroSection = () => {
                 <span className="text-xs font-medium">Master In-Demand Tech Skills. Get Job-Ready.</span>
               </div>
               <h1 className="heading-xl text-balance">
-                Upskill Now!
+                <span className='text-nowrap'>Upskill Now!</span><br/>
                 <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>

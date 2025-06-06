@@ -10,6 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/component
 import { getStories } from '@/components/utils/api/story';
 import { Dialog, DialogContent } from '@/components/components/ui/dialog';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 
 const transformationType = [
   { name: "All", key: "" },
@@ -24,6 +26,8 @@ interface TestimonialsProps {
   sectionClass?: String
 }
 const Testimonials = ({ sectionClass }: TestimonialsProps) => {
+
+  const pathname = usePathname();
 
   const [stories, setStories] = useState<any[]>([]);
   const [videoStories, setVideoStories] = useState<any[]>([]);
@@ -144,13 +148,17 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
 
             </div>
 
-            <div className="text-center mt-12">
-              <Link href='/success-stories'>
-              <Button variant="outline" className="hover:bg-primary-50">
-                View More Success Stories
-              </Button>
-              </Link>
-            </div>
+            {pathname !== '/success-stories' && (
+  <div className="text-center mt-12 successStoryButton">
+    <Link href="/success-stories">
+      <Button variant="outline" className="hover:bg-primary-50">
+        View More Success Stories
+      </Button>
+    </Link>
+  </div>
+)}
+
+
           </>)}
       </div>
     </section>

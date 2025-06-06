@@ -16,7 +16,7 @@ const News = () => {
     window.scrollTo(0, 0);
 
     // Set page title
-    document.title = "Tech News - CodeMaster";
+    document.title = "Tech News - OdinSchool";
   }, []);
 
   // Sample news data - in a real app this would come from an API

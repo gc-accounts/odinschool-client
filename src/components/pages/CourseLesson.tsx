@@ -35,7 +35,7 @@ const CourseLesson = () => {
 
     if (foundCourse) {
       setCourse(foundCourse);
-      document.title = `${foundCourse.title} - Lesson - CodeMaster`;
+      document.title = `${foundCourse.title} - Lesson - OdinSchool`;
 
       // If lessonId is provided, find the correct section and lesson
       if (lessonId) {

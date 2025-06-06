@@ -19,7 +19,7 @@ const Reviews = () => {
     window.scrollTo(0, 0);
     
     // Set page title
-    document.title = "Student Reviews - CodeMaster";
+    document.title = "Student Reviews - OdinSchool";
   }, []);
 
   // Sample reviews data

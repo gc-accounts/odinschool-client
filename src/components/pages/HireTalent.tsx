@@ -165,11 +165,11 @@ const HireTalent = () => {
                   })
                 }
               </div>
-              {/* <div className="mt-6 text-center">
-                <a href="#testimonials" className="text-primary-600 hover:text-primary-700 font-medium">
-                  See what employers say about our talent →
-                </a>
-              </div> */}
+              <div className="mt-6 text-center">
+                <h4 className="text-primary-600 font-semibold">
+                  and 600+
+                </h4>
+              </div>
             </div>
           </div>
 
