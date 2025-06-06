@@ -45,7 +45,7 @@ const ReferralProgram = () => {
     {
       name: "David Chen",
       image: "/placeholder.svg",
-      quote: "As a career coach, I recommend EduPlatform to all my clients. The referral program has been a nice bonus on top of seeing my clients succeed with their new skills.",
+      quote: "As a career coach, I recommend OdinSchool to all my clients. The referral program has been a nice bonus on top of seeing my clients succeed with their new skills.",
       earned: "$1,200",
     },
     {
@@ -121,7 +121,7 @@ const ReferralProgram = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">How It Works</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-              Our referral program is simple: share EduPlatform with friends, and get rewarded when they sign up and enroll in courses.
+              Our referral program is simple: share OdinSchool with friends, and get rewarded when they sign up and enroll in courses.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

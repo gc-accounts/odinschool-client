@@ -12,7 +12,7 @@ const NewsRoom = () => {
     window.scrollTo(0, 0);
   }, []);
   const featuredNews = {
-    title: "EduPlatform Raises $50M Series B to Expand Global Reach",
+    title: "OdinSchool Raises $50M Series B to Expand Global Reach",
     excerpt: "The funding will be used to develop new course offerings, enhance the platform's technology, and expand into new markets, with a focus on Asia and Europe.",
     date: "June 15, 2023",
     author: "Sarah Johnson",
@@ -22,7 +22,7 @@ const NewsRoom = () => {
 
   const newsItems = [
     {
-      title: "EduPlatform Partners with Google to Offer Cloud Certification Courses",
+      title: "OdinSchool Partners with Google to Offer Cloud Certification Courses",
       excerpt: "The partnership will provide students with access to Google Cloud certification courses and hands-on labs.",
       date: "May 10, 2023",
       author: "Michael Chen",
@@ -38,7 +38,7 @@ const NewsRoom = () => {
       image: "/placeholder.svg",
     },
     {
-      title: "EduPlatform Reaches 1 Million Student Milestone",
+      title: "OdinSchool Reaches 1 Million Student Milestone",
       excerpt: "The platform now serves students from over 150 countries, with a 92% course completion rate.",
       date: "March 15, 2023",
       author: "David Wilson",
@@ -46,7 +46,7 @@ const NewsRoom = () => {
       image: "/placeholder.svg",
     },
     {
-      title: "EduPlatform Named in Fast Company's Most Innovative Companies List",
+      title: "OdinSchool Named in Fast Company's Most Innovative Companies List",
       excerpt: "The recognition highlights the platform's innovative approach to online education and career development.",
       date: "February 28, 2023",
       author: "Emily Rodriguez",
@@ -55,14 +55,14 @@ const NewsRoom = () => {
     },
     {
       title: "Annual Education Technology Survey Shows Shift to Skills-Based Learning",
-      excerpt: "EduPlatform's focus on practical skills and industry-relevant projects aligns with the changing landscape of education.",
+      excerpt: "OdinSchool's focus on practical skills and industry-relevant projects aligns with the changing landscape of education.",
       date: "January 12, 2023",
       author: "Alex Johnson",
       category: "Industry News",
       image: "/placeholder.svg",
     },
     {
-      title: "EduPlatform Expands Mentor Network with Industry Leaders",
+      title: "OdinSchool Expands Mentor Network with Industry Leaders",
       excerpt: "Over 200 new mentors from companies like Amazon, Microsoft, and Adobe have joined the platform.",
       date: "December 5, 2022",
       author: "Sophia Williams",
@@ -73,22 +73,22 @@ const NewsRoom = () => {
 
   const pressReleases = [
     {
-      title: "EduPlatform Announces Expansion into European Market",
+      title: "OdinSchool Announces Expansion into European Market",
       date: "May 5, 2023",
       link: "#",
     },
     {
-      title: "EduPlatform Introduces New Enterprise Learning Solutions",
+      title: "OdinSchool Introduces New Enterprise Learning Solutions",
       date: "April 12, 2023",
       link: "#",
     },
     {
-      title: "EduPlatform Reports 200% Growth in Course Enrollments",
+      title: "OdinSchool Reports 200% Growth in Course Enrollments",
       date: "March 1, 2023",
       link: "#",
     },
     {
-      title: "EduPlatform Launches Scholarship Program for Underrepresented Groups",
+      title: "OdinSchool Launches Scholarship Program for Underrepresented Groups",
       date: "February 15, 2023",
       link: "#",
     },
@@ -98,13 +98,13 @@ const NewsRoom = () => {
     {
       name: "Jennifer Lee",
       title: "Head of Public Relations",
-      email: "jennifer.lee@eduplatform.com",
+      email: "jennifer.lee@OdinSchool.com",
       phone: "+1 (415) 555-1234",
     },
     {
       name: "Robert Clark",
       title: "Media Relations Manager",
-      email: "robert.clark@eduplatform.com",
+      email: "robert.clark@OdinSchool.com",
       phone: "+1 (415) 555-5678",
     },
   ];
@@ -122,7 +122,7 @@ const NewsRoom = () => {
             </div>
             <h1 className="text-4xl font-bold text-center mb-4">News Room</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
-              Stay updated with the latest news, announcements, and stories from EduPlatform
+              Stay updated with the latest news, announcements, and stories from OdinSchool
             </p>
           </div>
         </div>
@@ -388,7 +388,7 @@ const NewsRoom = () => {
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-              Get the latest news and updates from EduPlatform delivered straight to your inbox.
+              Get the latest news and updates from OdinSchool delivered straight to your inbox.
             </p>
             <div className="flex max-w-md mx-auto">
               <input
