@@ -25,7 +25,7 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
       <div className={`md:w-16 md:h-16 w-10 h-10 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
         <img src={icon} alt={name} />
       </div>
-      <h3 className="md:text-md text-xs font-semibold mb-2">{name}</h3>
+      <h3 className="md:text-lg text-xs font-semibold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
     </CardContent>
   </Card>
@@ -50,7 +50,7 @@ const ToolsSection = ({ sectionClass }: ToolsSectionProps) => {
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
             Tools You Will <span className="text-primary-600">Master</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-md text-gray-600 max-w-3xl mx-auto">
             Our comprehensive curriculum teaches you the most in-demand tools used by data professionals worldwide
           </p>
         </div>

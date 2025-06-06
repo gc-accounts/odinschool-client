@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { Calculator, FileText, Download, BookOpen, Video } from 'lucide-react';
+import { Calculator, FileText, Download, BookOpen, Video,Wrench } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Card, CardContent } from '@/components/components/ui/card';
 import FeaturedCourses from '@/components/components/FeaturedCourses';
 import CallbackForm from '@/components/components/CallbackForm';
 import OrganizationLogos from '@/components/components/OrganizationLogos';
-import InstructorProfile from '@/components/components/InstructorProfile';
 import Testimonials from '@/components/components/Testimonials';
+import InstructorProfileHome from '@/components/components/InstructorProfileHome';
+import { DsMentorsData } from '@/components/data/course-section/mentors/DsMentorsData';
 
 const Resources = () => {
   useEffect(() => {
@@ -57,12 +58,19 @@ const Resources = () => {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Resource Suite</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
-              Tools and resources to help you succeed in your tech career
-            </p>
-          </div>
+                      <div className="flex items-center justify-center md:mb-6 mb-4">
+                                    <div className="bg-white/10 rounded-full p-3">
+                                      <Wrench className="md:h-8 md:w-8 h-6 w-6" />
+                                    </div>
+                                  </div>
+          
+                      <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Resource Suite</h1>
+                      <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
+                        Tools and resources to help you succeed in your tech career
+                      </p>
+                    </div>
         </div>
 
         <div className="container mx-auto px-4 py-16">
@@ -90,7 +98,7 @@ const Resources = () => {
 
           <FeaturedCourses />
           <Testimonials />
-          <InstructorProfile />
+          <InstructorProfileHome data={DsMentorsData} />
           <CallbackForm />
           <OrganizationLogos />
 

@@ -80,9 +80,6 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
   };
 
 
-  console.log(stories, videoStories);
-
-
   return (
     <section ref={sectionRef} className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-white to-gray-50'}`}>
       <div className="container">
@@ -111,7 +108,7 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
             </div>
           )
           : (<>
-            <div className="border-b mb-8">
+            <div className="mb-8">
               <Tabs defaultValue="" onValueChange={(value) => setActiveTab(value)} value={activeTab} className="w-full">
                 <TabsList className="mb-4 w-full lg:justify-center justify-start overflow-x-auto h-max p-2">
                   {transformationType.map((type) => (
