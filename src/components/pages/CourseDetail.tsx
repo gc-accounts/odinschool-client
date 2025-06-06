@@ -64,6 +64,7 @@ import Mentorship from '@/components/components/Mentorship';
 import DsEliteSuccessStories from '@/components/components/DsEliteSuccessStories';
 import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
+import RequestCallback from '@/components/components/custom-component/RequestCallback';
 const formFields: FieldConfig[] = [
 
   {
@@ -837,13 +838,23 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   </div>
 
                   <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
-                  <Link href={`/course-checkout/${course.url_slug}`}>
-                    <Button className="w-full">
+                  <div>
+                    {/* <Button className="w-full">
                       Enroll Now
-                    </Button>
-                  </Link>
+                    </Button> */}
+                    <RequestCallback slug={
+                      course.slug === 'data-science-course' ? 'Data Science Course'
+                        : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+                          : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+                            : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+                              : course.slug
+                    } buttonText={'Enroll Now'} />
+                  </div>
 
-                  <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
+
+                  <Link href={`/course-checkout/${course.url_slug}`}>
+                    <Button variant="link" className="w-full mt-2">Reserve your seat at ₹5000 + GST</Button>
+                  </Link>
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs start at ₹7867 per month. 3,6,9,12 months EMI option available.</h3>
                 </div>
               </div>

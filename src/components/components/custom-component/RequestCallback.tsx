@@ -8,7 +8,8 @@ import { FieldConfig } from '../form/DynamicForm';
 import { useRouter } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 interface RequestCallbackProps {
-    slug: String
+    slug: String,
+    buttonText?: String,
 }
 
 
@@ -72,7 +73,7 @@ const formFields: FieldConfig[] = [
     { name: 'ga_client_id', type: 'hidden' },
 ];
 
-const RequestCallback = ({ slug }: RequestCallbackProps) => {
+const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
 
     const [formOpen, setFormOpen] = useState(false);
     const [utmData, setUtmData] = useState<Record<string, string>>({});
@@ -171,15 +172,15 @@ const RequestCallback = ({ slug }: RequestCallbackProps) => {
     return (
         <>
             <div className="text-center">
-                <Button onClick={() => setFormOpen(true)}>
-                    Request Callback
+                <Button className={`${buttonText === 'Enroll Now' ? 'w-full' : ''}`} onClick={() => setFormOpen(true)}>
+                    {buttonText ? buttonText : 'Request Callback'}
                 </Button>
             </div>
 
-            <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+            <Modal header_text={buttonText ? buttonText : 'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
                 <DynamicForm
                     fields={formFields}
-                    buttonText={'Request Callback'}
+                    buttonText={buttonText ? buttonText : 'Request Callback'}
                     initialValues={{
                         program: slug,
                         ga_client_id: '',
