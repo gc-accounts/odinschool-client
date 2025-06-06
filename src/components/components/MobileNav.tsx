@@ -38,8 +38,8 @@ const MobileNav = () => {
     <div className="md:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="text-2xl" />
+          <Button variant="ghost" size="icon" className="md:hidden bg-white">
+            <Menu className="text-2xl"/>
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>
