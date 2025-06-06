@@ -98,6 +98,10 @@ const CourseCheckout = () => {
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [isRazorpayLoaded, setIsRazorpayLoaded] = useState(false);
 
+  const [paymentType, setPaymentType] = useState<'partial' | 'full'>('partial');
+  const [couponChecked, setCouponChecked] = useState(false);
+  const [showCouponError, setShowCouponError] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -217,11 +221,19 @@ const CourseCheckout = () => {
     e.preventDefault();
     setSubmitting(true);
 
+    if (couponChecked && paymentType === 'partial') {
+      toast({
+        title: "Invalid Coupon Use",
+        description: "Coupon can only be applied with full payment option.",
+        variant: "destructive"
+      });
+      setSubmitting(false);
+      return;
+    }
+
     try {
-      // Step 1: Get fresh access token
       const accessToken = await getAccessToken();
 
-      // Step 2: Create contact in Zoho CRM
       const zohoFormData = new FormData();
       zohoFormData.append('accessToken', accessToken);
       zohoFormData.append('First Name', formData.firstName);
@@ -234,7 +246,7 @@ const CourseCheckout = () => {
             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
               : course.slug);
       zohoFormData.append('Year of Graduation', formData.year);
-      zohoFormData.append('Coupon Code', '');
+      zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
 
@@ -250,20 +262,16 @@ const CourseCheckout = () => {
 
       const contactData = await contactResponse.json();
 
-      // Step 3: Verify contact creation was successful
       if (contactData?.data?.[0]?.status === 'success') {
-        // Step 4: Show success message for contact creation
         toast({
           title: "Registration successful!",
           description: "Please complete the payment to secure your seat.",
         });
 
-        // Step 5: Initiate payment flow
         try {
           await handlePayment(formData);
         } catch (paymentError) {
           console.error('Payment initiation error:', paymentError);
-          // Even if payment fails, the contact is created
           toast({
             title: "Contact Created",
             description: "Your registration is complete. Please try the payment again or contact support.",
@@ -283,6 +291,7 @@ const CourseCheckout = () => {
       setSubmitting(false);
     }
   };
+
 
   // Load Razorpay script
   useEffect(() => {
@@ -320,20 +329,20 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      const payableAmount = add18Percent(price || 0);
+      const baseAmount = paymentType === 'partial'
+        ? 5000
+        : (couponChecked ? price - 10000 : price);
 
-      // Log the request we're about to make
-      console.log('Creating order with amount:', payableAmount);
+      const payableAmount = add18Percent(baseAmount);
 
-      // Create order using our proxy endpoint
       const orderResponse = await fetch('/api/payment/create-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          amount: Number(payableAmount), // Ensure it's a number
-          coupon: '' // Add coupon code if needed
+          amount: Number(payableAmount),
+          coupon: couponChecked ? 'EBO2025' : ''
         })
       });
 
@@ -344,12 +353,10 @@ const CourseCheckout = () => {
       }
 
       const { orderId } = await orderResponse.json();
-      console.log('Order created successfully:', orderId);
 
-      // Initialize Razorpay with the order ID
       const options = {
         key: "rzp_live_gxJ95DeVUwmpdc",
-        amount: Math.round(payableAmount * 100), // Convert to paise
+        amount: Math.round(payableAmount * 100),
         currency: "INR",
         name: `${course?.title} Seat Booking`,
         description: "OdinSchool Payment",
@@ -357,12 +364,9 @@ const CourseCheckout = () => {
         order_id: orderId,
         handler: async function (response: RazorpayResponse) {
           try {
-            // Verify payment using our proxy endpoint
             const verifyResponse = await fetch('/api/payment/verify', {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_order_id: response.razorpay_order_id,
@@ -372,8 +376,8 @@ const CourseCheckout = () => {
             });
 
             const verifyData = await verifyResponse.json();
+            const accessToken2: any = await getAccessTokenForPayment();
 
-            const accessToken2: any = await getAccessTokenForPayment()
             const zohoPaymentFormData = new FormData();
             zohoPaymentFormData.append('accessToken', accessToken2 || '');
             zohoPaymentFormData.append('Email', formData.email || '');
@@ -381,51 +385,25 @@ const CourseCheckout = () => {
               : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug,);
-            zohoPaymentFormData.append('Effective Bootcamp Fee', (price ?? '').toString());
+                    : course.slug);
+            zohoPaymentFormData.append('Effective Bootcamp Fee', price.toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
-            zohoPaymentFormData.append('Payable_Amount', payableAmount || '');
-            zohoPaymentFormData.append('Ga_client_id', '')
+            zohoPaymentFormData.append('Payable_Amount', payableAmount.toFixed(0));
+            zohoPaymentFormData.append('Coupon_Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
+            zohoPaymentFormData.append('Ga_client_id', '');
+            zohoPaymentFormData.append('Business Unit', 'Odinschool');
+            zohoPaymentFormData.append('Source_Domain', 'Checkout form');
 
-
-            // Submit success data using our proxy endpoint
             await fetch('/api/zoho/payment-status', {
               method: 'POST',
               body: zohoPaymentFormData
             });
 
-            // Track conversion
             const img = document.createElement('img');
             img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
             document.body.appendChild(img);
 
-            // Submit payment status form
-            const paymentStatusForm = document.createElement('form');
-            paymentStatusForm.method = 'POST';
-            paymentStatusForm.action = '/api/payment-status';
-
-            // const paymentFormData = new FormData();
-            // paymentFormData.append('email', formData.email);
-            // paymentFormData.append('payment_status', 'Paid');
-            // paymentFormData.append('payable_amount', payableAmount.toString());
-            // paymentFormData.append('paid_event_name', `${course?.title} Seat Booking`);
-            // paymentFormData.append('effective_bootcamp_fee', payableAmount.toString());
-
-            toast({
-              title: verifyData.response,
-            });
-
-            // Show success message and redirect
-            // toast({
-            //   title: "Payment Successful!",
-            //   description: "Thank you for your payment. Redirecting to confirmation page...",
-            // });
-
-            // setTimeout(() => {
-            //   window.location.href = '/thank-you';
-            // }, 2000);
-
-
+            toast({ title: verifyData.response });
           } catch (error) {
             console.error('Payment verification error:', error);
             toast({
@@ -440,12 +418,9 @@ const CourseCheckout = () => {
           email: formData.email,
           contact: formData.phone
         },
-        theme: {
-          color: "#3399cc"
-        }
+        theme: { color: "#3399cc" }
       };
 
-      // Open Razorpay payment window
       const razorpay = new window.Razorpay(options);
       razorpay.open();
 
@@ -466,6 +441,7 @@ const CourseCheckout = () => {
       });
     }
   };
+
 
   if (!course || loading) {
     return (
@@ -613,6 +589,69 @@ const CourseCheckout = () => {
                   <CardTitle>Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                  {/* Payment Type Selection */}
+                  <div className="border p-4 rounded space-y-2">
+                    <Label className="block font-medium">Choose Payment Option</Label>
+                    <RadioGroup
+                      value={paymentType}
+                      onValueChange={(val: 'partial' | 'full') => {
+                        setPaymentType(val);
+                        setCouponChecked(false); // reset coupon
+                        setShowCouponError(false);
+                      }}
+                      className="flex flex-col space-y-1"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="partial" id="partial" />
+                        <Label htmlFor="partial">Reserve your seat with ₹5000</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="full" id="full" />
+                        <Label htmlFor="full">Reserve your seat with <span>₹{price?.toFixed(2)}</span></Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  {/* Coupon Code Section */}
+                  {/* Coupon Code Section */}
+                  <div className="border p-4 rounded space-y-2 mt-4">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="coupon"
+                        checked={couponChecked}
+                        onChange={(e) => {
+                          const isChecked = e.target.checked;
+                          setCouponChecked(isChecked);
+
+                          if (isChecked && paymentType === 'partial') {
+                            setShowCouponError(true);
+                          } else {
+                            setShowCouponError(false);
+                          }
+                        }}
+                        disabled={paymentType === 'partial'} // 🔒 Disable checkbox if ₹5000 is selected
+                      />
+                      <Label htmlFor="coupon" className={paymentType === 'partial' ? 'text-gray-400 cursor-not-allowed' : ''}>
+                        Apply Coupon EBO2025
+                      </Label>
+                    </div>
+
+                    <Input
+                      value={couponChecked ? 'EBO2025' : ''}
+                      readOnly
+                      disabled={true}
+                      className="mt-2"
+                      placeholder="Enter coupon"
+                    />
+
+                    {paymentType === 'partial' && (
+                      <p className="text-sm text-red-500 mt-1">Coupon cannot be applied with ₹5000 seat reservation.</p>
+                    )}
+                  </div>
+
+
+
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
                       <img
@@ -627,6 +666,38 @@ const CourseCheckout = () => {
                     </div>
                   </div>
 
+                  {/* Order Summary */}
+                  <div className="border-t pt-4 space-y-2">
+                    <div className="flex justify-between">
+                      <span>Base Amount</span>
+                      <span>
+                        ₹{paymentType === 'partial'
+                          ? 5000
+                          : couponChecked ? price - 10000 : price}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>GST (9%)</span>
+                      <span>
+                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 0.09).toFixed(0)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>CST (9%)</span>
+                      <span>
+                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 0.09).toFixed(0)}
+                      </span>
+                    </div>
+                    <hr />
+                    <div className="flex justify-between font-bold">
+                      <span>Total</span>
+                      <span>
+                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 1.18).toFixed(0)}
+                      </span>
+                    </div>
+                  </div>
+
+
                   {/* <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-2" />
@@ -638,20 +709,20 @@ const CourseCheckout = () => {
                     </div>
                   </div> */}
 
-                  <div className="border-t pt-4">
+                  {/* <div className="border-t pt-4">
                     <div className="flex justify-between py-2">
                       <span>Price</span>
                       <span>₹{price?.toFixed(2)}</span>
-                    </div>
-                    {/* <div className="flex justify-between py-2">
+                    </div> */}
+                  {/* <div className="flex justify-between py-2">
                       <span>Certificate</span>
                       <span>Not Included</span>
                     </div> */}
-                    <div className="flex justify-between py-2 font-bold border-t">
+                  {/* <div className="flex justify-between py-2 font-bold border-t">
                       <span>Total</span>
                       <span>₹{price?.toFixed(2)}</span>
                     </div>
-                  </div>
+                  </div> */}
                   {/* {course.has_certificate && (
                     <Button
                       variant="outline"

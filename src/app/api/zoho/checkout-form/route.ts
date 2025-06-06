@@ -24,7 +24,7 @@ export async function POST(request: Request) {
         Business_Unit: formData.get('Business Unit'),
         Source_Domain: 'Checkout form',
         duplicate_check_fields: ['Email'],  // ✅ critical fix
-        Coupon_Code: 'EBO'
+        Coupon_Code: formData.get('Coupon Code')
       }],
       trigger: ['workflow']
     };
