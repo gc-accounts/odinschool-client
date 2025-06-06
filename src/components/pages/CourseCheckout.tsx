@@ -329,8 +329,12 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
+      // const baseAmount = paymentType === 'partial'
+      //   ? 5000
+      //   : (couponChecked ? price - 10000 : price);
+
       const baseAmount = paymentType === 'partial'
-        ? 5000
+        ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
         : (couponChecked ? price - 10000 : price);
 
       const payableAmount = add18Percent(baseAmount);
@@ -471,6 +475,13 @@ const CourseCheckout = () => {
     ? course.lessons.length
     : (typeof course.lessons === 'number' ? course.lessons : 0);
 
+  const baseAmount = paymentType === 'partial'
+    ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
+    : (couponChecked ? price - 10000 : price);
+
+  const gst = baseAmount * 0.09;
+  const cst = baseAmount * 0.09;
+  const total = baseAmount + gst + cst;
   return (
     <>
       <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
@@ -603,7 +614,7 @@ const CourseCheckout = () => {
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="partial" id="partial" />
-                        <Label htmlFor="partial">Reserve your seat with ₹5000</Label>
+                        <Label htmlFor="partial">Reserve your seat with ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="full" id="full" />
@@ -670,30 +681,20 @@ const CourseCheckout = () => {
                   <div className="border-t pt-4 space-y-2">
                     <div className="flex justify-between">
                       <span>Base Amount</span>
-                      <span>
-                        ₹{paymentType === 'partial'
-                          ? 5000
-                          : couponChecked ? price - 10000 : price}
-                      </span>
+                      <span>₹{baseAmount}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>GST (9%)</span>
-                      <span>
-                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 0.09).toFixed(0)}
-                      </span>
+                      <span>₹{gst.toFixed(0)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>CST (9%)</span>
-                      <span>
-                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 0.09).toFixed(0)}
-                      </span>
+                      <span>₹{cst.toFixed(0)}</span>
                     </div>
                     <hr />
                     <div className="flex justify-between font-bold">
                       <span>Total</span>
-                      <span>
-                        ₹{((paymentType === 'partial' ? 5000 : couponChecked ? price - 10000 : price) * 1.18).toFixed(0)}
-                      </span>
+                      <span>₹{total.toFixed(0)}</span>
                     </div>
                   </div>
 
