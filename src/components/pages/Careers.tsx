@@ -10,7 +10,7 @@ import CallbackForm from '@/components/components/CallbackForm';
 const Careers = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Careers at EduPlatform - Join Our Team";
+    document.title = "Careers at OdinSchool - Join Our Team";
   }, []);
 
   const perks = [
