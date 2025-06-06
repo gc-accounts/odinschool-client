@@ -5,6 +5,7 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
+  StyledNavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/components/ui/navigation-menu";
@@ -49,8 +50,47 @@ const MainNav = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
-          {/* Resources Section */}
+
           <NavigationMenuItem>
+  <StyledNavigationMenuLink href="/success-stories" className="h-9 px-4">
+    <Library className="mr-2 h-4 w-4" />
+    Success Stories
+  </StyledNavigationMenuLink>
+</NavigationMenuItem>
+
+<NavigationMenuItem>
+  <StyledNavigationMenuLink href="/about" className="h-9 px-4">
+    <Building2 className="mr-2 h-4 w-4" />
+    About Us
+  </StyledNavigationMenuLink>
+</NavigationMenuItem>
+
+
+{/* <NavigationMenuItem>
+  <NavigationMenuLink
+    href="/success-stories"
+    className="inline-flex h-9 items-center justify-center rounded-md bg-primary-50 px-4 text-sm font-medium transition-colors hover:bg-primary-100"
+  >
+    <GraduationCap className="mr-2 h-4 w-4" />
+    Success Stories
+  </NavigationMenuLink>
+</NavigationMenuItem>
+
+<NavigationMenuItem>
+  <NavigationMenuLink
+    href="/about"
+    className="inline-flex h-9 items-center justify-center rounded-md bg-primary-50 px-4 text-sm font-medium transition-colors hover:bg-primary-100"
+  >
+    <GraduationCap className="mr-2 h-4 w-4" />
+    About Us
+  </NavigationMenuLink>
+</NavigationMenuItem> */}
+
+
+
+
+          {/* Resources Section */}
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <Library className="mr-2 h-4 w-4" />
               Resources
@@ -68,7 +108,7 @@ const MainNav = () => {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
 
           {/* Tools Section */}
           {/* <NavigationMenuItem>
@@ -92,7 +132,7 @@ const MainNav = () => {
           </NavigationMenuItem> */}
 
           {/* Company Section */}
-          <NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="h-9 px-4">
               <Building2 className="mr-2 h-4 w-4" />
               Company
@@ -110,7 +150,7 @@ const MainNav = () => {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
         </NavigationMenuList>
       </NavigationMenu>
     </div>

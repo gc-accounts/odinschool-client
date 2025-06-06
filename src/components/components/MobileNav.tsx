@@ -105,8 +105,33 @@ const MobileNav = () => {
                 </AccordionContent>
               </AccordionItem>
 
+<div className="">
+  <Link
+    href="/success-stories"
+    className="flex items-center gap-2 py-4 text-base font-medium text-left w-full hover:underline"
+    onClick={closeSheet}
+  >
+    <Library className="h-5 w-5" />
+    Success Stories
+  </Link>
+</div>
+
+<div className="">
+  <Link
+    href="/about"
+    className="flex items-center gap-2 py-4 text-base font-medium text-left w-full hover:underline"
+    onClick={closeSheet}
+  >
+    <Building2 className="h-5 w-5" />
+    About Us
+  </Link>
+</div>
+
+
+
+
               {/* Resources Section */}
-              <AccordionItem value="resources">
+              {/* <AccordionItem value="resources">
                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
                   <span className="flex items-center gap-2">
                     <Library className="h-5 w-5" />
@@ -139,43 +164,12 @@ const MobileNav = () => {
                     </Link>
                   </div>
                 </AccordionContent>
-              </AccordionItem>
-
-              {/* Tools Section */}
-              {/* <AccordionItem value="tools">
-                <AccordionTrigger className="flex items-center gap-2 text-base font-medium">
-                  <Calculator className="h-5 w-5" />
-                  Tools
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="flex flex-col space-y-2 pl-7">
-                    <Link
-                      href="/salary-calculator"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Salary Calculator
-                    </Link>
-                    <Link
-                      href="/resume-builder"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Resume Builder
-                    </Link>
-                    <Link
-                      href="/virtual-interview"
-                      className="py-2 text-sm"
-                      onClick={closeSheet}
-                    >
-                      Virtual Interview
-                    </Link>
-                  </div>
-                </AccordionContent>
               </AccordionItem> */}
 
+              
+
               {/* Company Section */}
-              <AccordionItem value="company">
+              {/* <AccordionItem value="company">
                 <AccordionTrigger className="flex justify-between items-center text-base font-medium">
                   <span className="flex items-center gap-2">
                     <Building2 className="h-5 w-5" />
@@ -215,7 +209,7 @@ const MobileNav = () => {
                     </Link>
                   </div>
                 </AccordionContent>
-              </AccordionItem>
+              </AccordionItem> */}
             </Accordion>
 
 

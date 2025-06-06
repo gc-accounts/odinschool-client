@@ -45,7 +45,7 @@ const NewsSection = () => {
             OdinSchool in <span className="text-primary-600">Media</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Stay updated with the latest announcements and success stories from CodeMaster
+            Stay updated with the latest announcements and success stories from OdinSchool
           </p>
         </div>
 

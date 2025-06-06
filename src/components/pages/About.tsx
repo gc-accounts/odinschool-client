@@ -12,7 +12,7 @@ const About = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Us - CodeMaster";
+    document.title = "About Us - OdinSchool";
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -66,6 +66,40 @@ const About = () => {
     }
   ];
 
+ const team = [
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Deb_bc6a9c9aec.webp',
+    name: 'Debajyoti',
+    designation: 'CEO',
+  },
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Srinivas_3f5cb08d93.webp',
+    name: 'Srini',
+    designation: 'Product and Delivery',
+  },
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Shruti_8a032072a7.webp',
+    name: 'Shruti',
+    designation: 'Marketing and Corporate Relations',
+  },
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Anushri_cff54247af.webp',
+    name: 'Anushri',
+    designation: 'Counselling and Admissions',
+  },
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Avinash_944f8ef744.webp',
+    name: 'Avinash',
+    designation: 'Support',
+  },
+  {
+    photo: 'https://strapi.odinschool.com/uploads/Bingi_a3cda642a8.webp',
+    name: 'Balachandra',
+    designation: 'Placements',
+  },
+];
+
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -116,8 +150,8 @@ const About = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-primary-100 z-0"></div>
-                  <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-primary-100 z-0"></div>
+                  <div className="md:block hidden absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-primary-100 z-0"></div>
+                  <div className="md:block hidden absolute -top-6 -left-6 w-20 h-20 rounded-full bg-primary-100 z-0"></div>
                 </div>
               </div>
 
@@ -147,8 +181,42 @@ const About = () => {
           </div>
         </section>
 
+
+        {/* Meet the Team */}
+<section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
+  <div className="container">
+    <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
+      <h2 className="heading-lg mb-4">Meet the <span className='text-primary-600'>Team</span></h2>
+      <p className="body-md text-gray-600">
+        Our passionate and skilled team drives OdinSchool’s mission. With deep industry expertise, they ensure our learners succeed.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6 max-w-4xl mx-auto">
+      {team?.map((member, index) => (
+        <div
+          key={index}
+          ref={addToRefs}
+          className="bg-white hover:bg-primary-100 transition-all duration-300 rounded-xl hover:border-opacity-0 border shadow-sm p-6 text-center opacity-0"
+        >
+          <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden">
+            <img
+              src={member.photo}
+              alt={member.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <h3 className="text-lg text-primary-600 font-semibold mb-2">{member.name}</h3>
+          <p className="md:text-sm text-xs text-gray-700">{member.designation}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
         {/* Our Values */}
-        <section className="px-[20px] pb-[50px] md:px-[30px] md:pb-[70px] bg-gray-50">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
               <h2 className="heading-lg mb-4">
@@ -158,7 +226,7 @@ const About = () => {
                 The team of dynamic professionals that powers OdinSchool has extensive experience in managing educational programs globally in multiple variants. We invest in teaching resources and technology to make learning more outcome-oriented, engaging, interactive, and on par with the dynamically transforming industry.              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-8 gap-6">
               {values.map((value, index) => (
                 <div
                   key={index}

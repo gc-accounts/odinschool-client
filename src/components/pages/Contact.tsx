@@ -56,12 +56,22 @@ const Contact = () => {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         <div className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
+
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto">
+
+            <div className="flex items-center justify-center md:mb-6 mb-4">
+                          <div className="bg-white/10 rounded-full p-3">
+                            <Send className="md:h-8 md:w-8 h-6 w-6" />
+                          </div>
+                        </div>
+
+            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Contact Us</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
               We'd love to hear from you. Get in touch with our team.
             </p>
           </div>
+
+
         </div>
 
         <div className="container mx-auto px-4 py-12">

@@ -94,6 +94,22 @@ const NavigationMenuViewport = React.forwardRef<
     />
   </div>
 ))
+
+
+const StyledNavigationMenuLink = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Link>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Link
+    ref={ref}
+    className={cn(navigationMenuTriggerStyle(), className)}
+    {...props}
+  />
+))
+StyledNavigationMenuLink.displayName = "StyledNavigationMenuLink"
+
+
+
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName
 
@@ -123,6 +139,7 @@ export {
   NavigationMenuContent,
   NavigationMenuTrigger,
   NavigationMenuLink,
+  StyledNavigationMenuLink, // ✅ added
   NavigationMenuIndicator,
   NavigationMenuViewport,
 }
