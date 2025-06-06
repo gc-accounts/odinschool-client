@@ -802,26 +802,30 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 </div>
 
                 <div className="bg-white rounded-lg shadow-md p-6 mt-8">
-                  <h3 className="text-xl font-bold mb-4">Register Now</h3>
-                  {
-                    course?.cohortDates && <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
-                      <span className="font-medium text-sm">Upcoming Cohort:</span>
-                      <div className="flex gap-3">
-                        {
-                          course?.cohortDates?.cohort1 &&
-                          <div className="text-sm bg-primary-50 border rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort1)}</div>
-                        }
-                        {
-                          course?.cohortDates?.cohort2 &&
-                          <div className="text-sm border bg-primary-50 rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort2)}</div>
-                        }
+
+                  {/* upcoming cohort */}
+                  <div className='pt-3 pb-4 mb-2 border-b'>
+                    {
+                      course?.cohortDates &&
+                      <div>
+                        <span className="font-medium text-sm">Upcoming Cohort:</span>
+                        <div className="flex gap-3 mt-2">
+                          {
+                            course?.cohortDates?.cohort1 &&
+                            <div className="text-sm bg-primary-50 border rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort1)}</div>
+                          }
+                          {
+                            course?.cohortDates?.cohort2 &&
+                            <div className="text-sm border bg-primary-50 rounded-md px-2 py-1">{formatDateToReadable(course?.cohortDates?.cohort2)}</div>
+                          }
+                        </div>
                       </div>
-                    </div>
-                  }
+                    }
+                  </div>
 
-
+                  <h3 className="text-xl font-bold mb-4">Register Now</h3>
                   <div className="my-4">
-                    <span className="text-2xl font-bold">{formatCurrencyINR(course.price)}+ GST</span>
+                    <p className="text-2xl font-bold">{formatCurrencyINR(course.price)} <span className='font-normal text-xl'> + GST</span> </p>
                     {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
                   </div>
 
@@ -837,23 +841,23 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                     ))}
                   </div>
 
-                  <h3 className="text-xs text-gray-500 font-regular mb-4">By providing your contact details, you agree to our Privacy Policy</h3>
-                  <div>
-                    {/* <Button className="w-full">
+                  <h3 className="text-xs text-gray-500 font-regular mb-2">By providing your contact details, you agree to our Privacy Policy</h3>
+                  {/* <div> */}
+                  {/* <Button className="w-full">
                       Enroll Now
                     </Button> */}
-                    <RequestCallback slug={
+                  {/* <RequestCallback slug={
                       course.slug === 'data-science-course' ? 'Data Science Course'
                         : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                           : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
                               : course.slug
-                    } buttonText={'Enroll Now'} />
-                  </div>
+                    } buttonText={'Enroll Now'} /> */}
+                  {/* </div> */}
 
 
                   <Link href={`/course-checkout/${course.url_slug}`}>
-                    <Button variant="link" className="w-full mt-2">Reserve your seat at ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Button>
+                    <Button className="w-full mt-2">Reserve your seat at ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Button>
                   </Link>
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs Available. 6,9,12 months EMI option available.</h3>
                 </div>
