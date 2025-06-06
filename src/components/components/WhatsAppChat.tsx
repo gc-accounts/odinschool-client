@@ -43,9 +43,10 @@ const WhatsAppChat: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+
   const getAccessToken = async () => {
     try {
-      const response = await fetch('/api/auth/token', {
+      const response = await fetch('/api/auth/token-whatsapp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -80,6 +81,7 @@ const WhatsAppChat: React.FC = () => {
         method: 'POST',
         body: zohoFormData
       });
+
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -128,21 +130,24 @@ const WhatsAppChat: React.FC = () => {
       </Button>
 
 
-<Link href="tel:9355011033">
-  <div className="group fixed bottom-20 right-5 md:bottom-[5rem] md:right-6 z-50 flex items-center">
-    {/* Tooltip for desktop (optional) */}
-    <span className="hidden lg:inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 mr-2 text-md font-medium text-white bg-primary-500 px-3 py-2 rounded-full shadow-lg">
-      +91 9355 011033
-    </span>
 
-    <Button
-      className="rounded-full w-12 h-12 shadow-lg bg-primary-500 hover:bg-primary-600 transition-all"
-      aria-label="Call OdinSchool"
-    >
-      <MdCall className="h-6 w-6 text-white" />
-    </Button>
-  </div>
-</Link>
+      <Link href="tel:9355011033">
+        <div className="group fixed md:bottom-[5rem] md:right-6 bottom-20 right-5 z-50 flex items-center">
+          {/* Phone number visible only on desktop and on hover */}
+          <span className="hidden lg:inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 mr-2 text-md font-medium text-white bg-primary-500 px-3 py-2 rounded-full shadow-lg">
+            +91 9355 011033
+          </span>
+          <Button
+            className="rounded-full md:w-12 md:h-12 w-12 h-12 shadow-lg bg-primary-500 hover:bg-primary-600 transition-all"
+            aria-label="Call OdinSchool"
+          >
+            <MdCall className="h-6 w-6 text-white" />
+          </Button>
+
+
+        </div>
+      </Link>
+
 
 
 
