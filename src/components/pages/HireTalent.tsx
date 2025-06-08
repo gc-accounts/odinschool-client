@@ -109,10 +109,10 @@ const HireTalent = () => {
           <div className="container mx-auto px-4">
 
             <div className="flex items-center justify-center md:mb-6 mb-4">
-                          <div className="bg-white/10 rounded-full p-3">
-                            <UserRoundSearch className="md:h-8 md:w-8 h-6 w-6" />
-                          </div>
-                        </div>
+              <div className="bg-white/10 rounded-full p-3">
+                <UserRoundSearch className="md:h-8 md:w-8 h-6 w-6" />
+              </div>
+            </div>
 
             <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Hire the right talent at zero cost</h1>
             <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
@@ -167,7 +167,7 @@ const HireTalent = () => {
                           height={100}
                           objectFit='cover'
 
-
+                          loading="lazy"
                         />
 
                       </div>
@@ -184,7 +184,7 @@ const HireTalent = () => {
           </div>
         </div>
         <OrganizationLogos />
-          <EmployerTestimonials />
+        <EmployerTestimonials />
       </main>
       <CallbackForm />
       <Footer />

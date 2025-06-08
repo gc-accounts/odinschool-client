@@ -1,6 +1,7 @@
 import Button from '@/components/components/Button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 interface dsEliteProps {
@@ -9,37 +10,37 @@ interface dsEliteProps {
 const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
 
 
-const partnerLogos = [
-  {
-    id: 1,
-    name: 'Swiggy',
-    logo: 'https://strapi.odinschool.com/uploads/swiggy_20100_X40_20indv_6108c02a5c.webp',
-  },
-  {
-    id: 2,
-    name: 'PhonePe',
-    logo: 'https://strapi.odinschool.com/uploads/Phon_Pe_20150_X60_aed6af7fa4.webp',
-  },
-  {
-    id: 3,
-    name: 'NuvoRetail',
-    logo: 'https://strapi.odinschool.com/uploads/Nuvoretail_20150_X60_20_2_eb65cb4f84.webp',
-  },
-  {
-    id: 4,
-    name: '4Seer',
-    logo: 'https://strapi.odinschool.com/uploads/4_Seer_20150_X60_30ae825a01.webp',
-  },
-  {
-    id: 5,
-    name: 'Venanalytics',
-    logo: 'https://strapi.odinschool.com/uploads/Venanalytics_20150_X60_9ec2da4708.webp',
-  },
-];
+  const partnerLogos = [
+    {
+      id: 1,
+      name: 'Swiggy',
+      logo: 'https://strapi.odinschool.com/uploads/swiggy_20100_X40_20indv_6108c02a5c.webp',
+    },
+    {
+      id: 2,
+      name: 'PhonePe',
+      logo: 'https://strapi.odinschool.com/uploads/Phon_Pe_20150_X60_aed6af7fa4.webp',
+    },
+    {
+      id: 3,
+      name: 'NuvoRetail',
+      logo: 'https://strapi.odinschool.com/uploads/Nuvoretail_20150_X60_20_2_eb65cb4f84.webp',
+    },
+    {
+      id: 4,
+      name: '4Seer',
+      logo: 'https://strapi.odinschool.com/uploads/4_Seer_20150_X60_30ae825a01.webp',
+    },
+    {
+      id: 5,
+      name: 'Venanalytics',
+      logo: 'https://strapi.odinschool.com/uploads/Venanalytics_20150_X60_9ec2da4708.webp',
+    },
+  ];
 
 
   return (
-      <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
+    <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
       <div className="max-w-5xl mx-auto px-4">
         <p className="text-lg text-white">After the successful May launch, we’re thrilled to announce the</p>
         <h2 className="text-3xl md:text-4xl font-bold text-primary-600 mt-2">
@@ -48,23 +49,25 @@ const partnerLogos = [
         <p className="text-white font-semibold mt-2">
           the only Data Science Course in India backed by 5 fast growing companies!
         </p>
-{/* Logos */}
-<div className="flex flex-wrap justify-center mt-10">
-  {partnerLogos.map(({ id, name, logo }) => (
-    <div
-      key={id}
-      className="w-[40%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
-    >
-      <img
-        src={logo}
-        alt={`${name} logo`}
-        width={100}
-        height={40}
-        className="h-10 w-auto object-contain"
-      />
-    </div>
-  ))}
-</div>
+        {/* Logos */}
+        <div className="flex flex-wrap justify-center mt-10">
+          {partnerLogos.map(({ id, name, logo }) => (
+            <div
+              key={id}
+              className="w-[40%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
+            >
+              <Image
+                src={logo}
+                alt={`${name} logo`}
+                width={100}
+                height={40}
+                className="h-10 w-auto object-contain"
+
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
 
 
 
@@ -94,15 +97,15 @@ const partnerLogos = [
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
           <Link href='/data-science-elite-course'>
-              <Button
-                size="lg"
-                icon={<ArrowRight className='ml-1' size={18} />}
-                iconPosition="right"
-              >
-                Know More
-              </Button>
-              </Link>
-            </div>
+            <Button
+              size="lg"
+              icon={<ArrowRight className='ml-1' size={18} />}
+              iconPosition="right"
+            >
+              Know More
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );

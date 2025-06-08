@@ -2,7 +2,6 @@ import axiosApi, { backendUrl } from '../apiCall';
 import webinarSchema from './schema/webinars';
 
 const transformWebinarData = (webinar: any) => {
-    console.log(webinar);
     return {
         id: webinar.documentId || `web-${Math.random().toString(36).substr(2, 9)}`,
         title: webinar.title,
@@ -36,33 +35,33 @@ export const getWebinars = async ({
 }) => {
     let filterObj: any = {};
 
-    if(isFeatured != undefined){
+    if (isFeatured != undefined) {
         filterObj.is_featured = { eq: isFeatured };
     }
 
-    if(search != ''){
+    if (search != '') {
         filterObj.title = { containsi: search };
     }
-    if(isOdintalk != undefined){
-        if(isOdintalk == true){
+    if (isOdintalk != undefined) {
+        if (isOdintalk == true) {
             filterObj.is_odin_talk = { eq: true };
-        }else{
+        } else {
             filterObj.or = [
                 { "is_odin_talk": { "eq": false } },
                 { "is_odin_talk": { "null": true } }
-              ]
+            ]
         }
     }
-if(time != 'all'){
-    const currentDate = new Date();
-    const currentDateString = currentDate.toISOString().split('T')[0]; // Get only the date part
-    if(time == 'upcoming'){
-        filterObj.date = { gt: currentDateString };
-    }else if(time == 'past'){
-        filterObj.date = { lt: currentDateString };
+    if (time != 'all') {
+        const currentDate = new Date();
+        const currentDateString = currentDate.toISOString().split('T')[0]; // Get only the date part
+        if (time == 'upcoming') {
+            filterObj.date = { gt: currentDateString };
+        } else if (time == 'past') {
+            filterObj.date = { lt: currentDateString };
+        }
     }
-}
-    if(isPaid != undefined){
+    if (isPaid != undefined) {
         filterObj.price = isPaid ? { gt: 0 } : { eq: 0 };
     }
     const response = await axiosApi.post('', {
@@ -87,7 +86,7 @@ if(time != 'all'){
 
 export const getWebinar = async (id: string, url_slug: string = "") => {
     let webinarItem = null;
-    if(id != ""){
+    if (id != "") {
         const response = await axiosApi.post('', {
             query: `
                 query Webinar($documentId: ID!) {
@@ -96,10 +95,10 @@ export const getWebinar = async (id: string, url_slug: string = "") => {
                 }
             }
         `,
-        variables: { documentId: id }
+            variables: { documentId: id }
         });
         webinarItem = response.data.data.webinar;
-    }else{
+    } else {
         const response = await axiosApi.post('', {
             query: `
                 query Webinar($filters: WebinarFiltersInput) {
@@ -109,7 +108,7 @@ export const getWebinar = async (id: string, url_slug: string = "") => {
                 }
             `,
             variables: { filters: { slug: { eq: url_slug } } }
-        }); 
+        });
         webinarItem = response.data.data.webinars[0];
     }
 

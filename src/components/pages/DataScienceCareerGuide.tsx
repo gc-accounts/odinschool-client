@@ -10,6 +10,7 @@ import {
 } from "@/components/components/ui/accordion";
 import { Download, FileText, BookUp } from 'lucide-react';
 import { getDataScienceCareerGuide } from '@/components/utils/api/dataScienceCareerGuide';
+import Image from 'next/image';
 
 // Lazy load components
 const Markdown = lazy(() => import('@/components/components/Markdown'));
@@ -187,10 +188,14 @@ const DataScienceCareerGuide = () => {
                 <div className="sticky top-24">
                   <div className="bg-gray-50 rounded-xl p-6 mb-6">
                     <div className="flex justify-center mb-4">
-                      <img
+                      <Image
                         src={dataScienceCareerGuide?.poster}
                         alt="Data Science Career Guide Cover"
                         className="rounded-md shadow-md max-w-full h-auto"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
                       />
                     </div>
                     <Button onClick={() => {

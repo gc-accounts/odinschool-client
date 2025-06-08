@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const WhyLearnDataAI = () => {
   return (
@@ -46,10 +47,14 @@ const WhyLearnDataAI = () => {
 
           {/* Right: Image */}
           <div className="w-full lg:w-1/3 flex justify-center">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1606513545099-6c742f0cfcbd?auhref=format&fit=crop&w=400&q=80"
               alt="Student with notebook"
               className="rounded-xl w-64 md:w-80 object-cover"
+
+              loading="lazy"
+              width={500}
+              height={500}
             />
           </div>
         </div>

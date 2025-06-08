@@ -6,16 +6,20 @@ import Link from 'next/link';
 import { getCourses } from '@/components/utils/api/courses';
 
 const FeaturedCourses = ({
-  searchText = ''
+  searchText = '',
+  courses: coursesItems
 }) => {
-  const [courses, setCourses] = useState<CourseProps[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [courses, setCourses] = useState<CourseProps[]>(coursesItems || []);
+  const [loading, setLoading] = useState(!coursesItems);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    if (coursesItems) {
+      return;
+    }
     const fetchCourses = async () => {
       try {
         const data = await getCourses({ pageNumber: 1, city: '', isFeatured: true as boolean, search: searchText });
@@ -46,7 +50,7 @@ const FeaturedCourses = ({
     };
 
     fetchCourses();
-  }, [searchText]);
+  }, [searchText, coursesItems]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

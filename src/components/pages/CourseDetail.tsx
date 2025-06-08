@@ -56,6 +56,7 @@ import Mentorship from '@/components/components/Mentorship';
 import DsEliteSuccessStories from '@/components/components/DsEliteSuccessStories';
 import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
+import Image from 'next/image';
 
 const formFields: FieldConfig[] = [
 
@@ -615,11 +616,15 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                     <div className="flex items-center mt-2 gap-3">
                       {course.enrolled_avatars?.map((avatar: { url: string; name: string }, index: number) => (
-                        <img
+                        <Image
                           key={index}
                           src={avatar.url}
                           alt={avatar.name}
                           className={`h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 ${index === 0 ? 'ml-0' : '-ml-6'}`}
+
+                          loading="lazy"
+                          width={32}
+                          height={32}
                         />
                       ))}
                       {/* <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79" alt="Logo 1" className="h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1" />
@@ -649,10 +654,14 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
               </div>
               <div className="rounded-xl overflow-hidden ">
-                <img
+                <Image
                   src={course.image}
                   alt={course.title}
                   className="w-full h-auto object-cover"
+
+                  loading="lazy"
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -812,16 +821,26 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                         {/* <BarChart className="h-5 w-5 mr-2 text-gray-500" />
                     <span>Lessons: </span> */}
 
-                        <img
+                        <Image
                           src="https://strapi.odinschool.com/uploads/Google_20100x40_7ed0d4c3dc.webp"
-                          alt="google" className='w-20' />
+                          alt="google" className='w-20'
+
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                        />
                       </div>
                       {/* <span>{course.curriculum?.reduce((a: number, b: { lessons: number }) => a + b.lessons, 0)}</span> */}
                       <div>
                         <div className='flex items-center gap-2'>
                           <span className='text-xs font-light'>4.6</span>
-                          <img src="https://strapi.odinschool.com/uploads/4_7_Rating_d1c77dfdf8.svg"
-                            alt="rating-star" className='w-12' />
+                          <Image src="https://strapi.odinschool.com/uploads/4_7_Rating_d1c77dfdf8.svg"
+                            alt="rating-star" className='w-12'
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
+                          />
                           <span className='text-xs font-light'>1,484 Reviews</span>
 
 

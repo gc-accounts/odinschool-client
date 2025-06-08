@@ -2,8 +2,8 @@ import { CheckCircle2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { CourseCertificateData } from '@/components/data/CourseCertificateData'
 import { getDataByPage } from '@/components/utils/getDataByPage'
-import { useEffect } from 'react'
-import course from '@/components/utils/api/schema/course'
+
+import Image from 'next/image'
 const CourseCertificate = () => {
     const path = usePathname()
     const courseCertificateData = getDataByPage(CourseCertificateData, path)
@@ -41,10 +41,14 @@ const CourseCertificate = () => {
                             courseCertificateData?.certificate_img && courseCertificateData.certificate_img.map((img, index) => {
                                 return (
                                     <div className="relative aspect-[16/12] mb-4" key={index}>
-                                        <img
+                                        <Image
                                             src={img && img}
                                             alt="Certificate Sample"
                                             className="rounded-lg border-2 border-gray-200 shadow-lg max-h-[25rem] object-cover"
+
+                                            loading="lazy"
+                                            width={500}
+                                            height={500}
                                         />
                                     </div>
                                 )

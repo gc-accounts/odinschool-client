@@ -5,11 +5,12 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/components/ui/avatar";
 import { Card, CardContent } from "@/components/components/ui/card";
 import { Skeleton } from "@/components/components/ui/skeleton";
+import Image from "next/image";
 
 
 interface InstructorProfileProps {
   sectionClass?: String,
-  data: { id: number, name: string, photo: string, designation: string, currentCompany:string, prevCompanies: string[] }[]
+  data: { id: number, name: string, photo: string, designation: string, currentCompany: string, prevCompanies: string[] }[]
 }
 const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) => {
 
@@ -48,7 +49,7 @@ const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) =
   }, [emblaApi, data]);
 
 
-  
+
 
   const LoadingSkeleton = () => (
     <Card className="border border-gray-200 overflow-hidden">
@@ -103,70 +104,78 @@ const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) =
             {/* Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex min-w-0">
-                 {
-                  data.map((instructor)=>{
-                    return(
-                            <div
-                    key={instructor.id}
-                    className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]"
-                  >
-                    <Card className="mx-2 border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden h-full">
-                      <Link href={`/expert/${instructor.id}`}>
-                        <CardContent className="p-0">
-                          <div className="h-7 bg-primary-600"></div>
-                          <div className="p-6">
-                            <div className="flex flex-col items-center">
-                              <Avatar className="h-24 w-24 mb-4">
-                                <AvatarImage src={instructor.photo} alt={instructor.name} />
-                                <AvatarFallback>
-                                  {instructor.name.charAt(0)}
-                                </AvatarFallback>
-                              </Avatar>
-                              <h3 className="text-xl font-semibold mb-1">{instructor.name}</h3>
-                              <p className="text-sm text-gray-500 mb-0">{instructor.designation}</p>
-                              <p className="text-center text-gray-600 mb-4">{}</p>
-                            </div>
-                            <div className="flex flex-col items-center space-y-3 mb-0">
-                              <div
-                                className="mb-4 rounded-md overflow-hidden border-gray-200"
-                                title={instructor.currentCompany}
-                              >
-                                <img
-                                  src={instructor.currentCompany}
-                                  alt={instructor.name}
-                                  className="w-full h-full object-contain"
-                                />
-                              </div>
-                              {
-                                instructor.prevCompanies.length>0 && 
-                                 <div className="flex justify-between w-full border-t-2 pt-4">
-                                {instructor.prevCompanies.map((company, index) => (
+                {
+                  data.map((instructor) => {
+                    return (
+                      <div
+                        key={instructor.id}
+                        className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]"
+                      >
+                        <Card className="mx-2 border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden h-full">
+                          <Link href={`/expert/${instructor.id}`}>
+                            <CardContent className="p-0">
+                              <div className="h-7 bg-primary-600"></div>
+                              <div className="p-6">
+                                <div className="flex flex-col items-center">
+                                  <Avatar className="h-24 w-24 mb-4">
+                                    <AvatarImage src={instructor.photo} alt={instructor.name} />
+                                    <AvatarFallback>
+                                      {instructor.name.charAt(0)}
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <h3 className="text-xl font-semibold mb-1">{instructor.name}</h3>
+                                  <p className="text-sm text-gray-500 mb-0">{instructor.designation}</p>
+                                  <p className="text-center text-gray-600 mb-4">{ }</p>
+                                </div>
+                                <div className="flex flex-col items-center space-y-3 mb-0">
                                   <div
-                                    key={index}
-                                    className="rounded-md overflow-hidden border-gray-200"
-                                    title={company}
+                                    className="mb-4 rounded-md overflow-hidden border-gray-200"
+                                    title={instructor.currentCompany}
                                   >
-                                    <img
-                                      src={company}
-                                      alt={company}
+                                    <Image
+                                      src={instructor.currentCompany}
+                                      alt={instructor.name}
                                       className="w-full h-full object-contain"
+
+                                      loading="lazy"
+                                      width={500}
+                                      height={500}
                                     />
                                   </div>
-                                ))}
+                                  {
+                                    instructor.prevCompanies.length > 0 &&
+                                    <div className="flex justify-between w-full border-t-2 pt-4">
+                                      {instructor.prevCompanies.map((company, index) => (
+                                        <div
+                                          key={index}
+                                          className="rounded-md overflow-hidden border-gray-200"
+                                          title={company}
+                                        >
+                                          <Image
+                                            src={company}
+                                            alt={company}
+                                            className="w-full h-full object-contain"
+
+                                            loading="lazy"
+                                            width={500}
+                                            height={500}
+                                          />
+                                        </div>
+                                      ))}
+                                    </div>
+                                  }
+
+
+
+                                </div>
                               </div>
-                              }
-                             
-
-
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Link>
-                    </Card>
-                  </div>
+                            </CardContent>
+                          </Link>
+                        </Card>
+                      </div>
                     )
                   })
-                 }
+                }
               </div>
             </div>
 

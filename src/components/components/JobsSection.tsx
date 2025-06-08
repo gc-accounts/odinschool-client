@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/components/ui/card';
 import { Badge } from '@/components/components/ui/badge';
 import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
 import { dsJobsDrives } from '@/components/data/dsJobsDrives';
-import { Button } from '@/components/components/ui/button';
+import Image from 'next/image';
 
 interface JobsSectionProps {
   sectionClass?: string;
@@ -70,10 +70,14 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
                     <CardContent className="p-6">
                       <div className="mb-4">
                         <div className="relative mb-6 flex items-center">
-                          <img
+                          <Image
                             src={item.jobCompanyLogo}
                             alt={item.jobDesignation}
                             className="w-30 h-14 object-contain rounded-md shadow-sm border"
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>

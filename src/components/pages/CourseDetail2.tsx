@@ -4,13 +4,8 @@ import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import Markdown from '@/components/components/Markdown';
 import { Button } from '@/components/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
-import JobOpportunities from '@/components/components/JobOpportunities';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/components/ui/card';
 import {
-  ArrowLeft, Clock, BarChart, Award, CheckCircle2,
-  Download, FileText, Users, Zap, Gift, BookOpen,
-  Briefcase, Star, PlayCircle, MessageSquare, CheckCircle
+  ArrowLeft, BarChart, Award, CheckCircle2, Users, Star
 } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/components/ui/badge';
@@ -35,6 +30,7 @@ import CertificationSection1 from '@/components/components/CertificationSection1
 import { getCourse, getCourses } from '@/components/utils/api';
 import CareerOpportunities from '@/components/components/CareerOpportunities';
 import CareerServices2 from '@/components/components/CareerServices2';
+import Image from 'next/image';
 
 interface Course {
   id: string;
@@ -392,11 +388,15 @@ const CourseDetail = () => {
                 <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-10">
                   <div className="flex items-center mt-2 gap-3">
                     {course.enrolled_avatars?.map((avatar, index) => (
-                      <img
+                      <Image
                         key={index}
                         src={avatar.url}
                         alt={avatar.name}
                         className={`h-8 w-8 rounded-full object-cover bg-white/20 backdrop-blur-sm p-1 ${index === 0 ? 'ml-0' : '-ml-6'}`}
+                        width={500}
+                        height={500}
+
+                        loading="lazy"
                       />
                     ))}
                     <span className=" text-sm">Join 10K+ students</span>
@@ -420,10 +420,14 @@ const CourseDetail = () => {
               </div>
             </div>
             <div className="rounded-xl overflow-hidden ">
-              <img
+              <Image
                 src={course.image}
                 alt={course.title}
                 className="w-full h-auto object-cover"
+                width={500}
+                height={500}
+
+                loading="lazy"
               />
             </div>
           </div>
@@ -510,28 +514,40 @@ const CourseDetail = () => {
                 <h3 className="text-lg font-semibold mb-4">Technologies You'll Master</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
                       alt="Programming"
                       className="w-full h-40 object-cover rounded-md mb-3"
+                      width={500}
+                      height={500}
+
+                      loading="lazy"
                     />
                     <h4 className="font-medium">Modern Development</h4>
                     <p className="text-sm text-gray-600">Learn industry-standard tools and practices</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
                       alt="Code"
                       className="w-full h-40 object-cover rounded-md mb-3"
+                      width={500}
+                      height={500}
+
+                      loading="lazy"
                     />
                     <h4 className="font-medium">Clean Coding</h4>
                     <p className="text-sm text-gray-600">Write maintainable, efficient code</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
                       alt="Development"
                       className="w-full h-40 object-cover rounded-md mb-3"
+                      width={500}
+                      height={500}
+
+                      loading="lazy"
                     />
                     <h4 className="font-medium">Project-Based Learning</h4>
                     <p className="text-sm text-gray-600">Apply concepts to real-world scenarios</p>
@@ -569,17 +585,25 @@ const CourseDetail = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative aspect-[16/12] mb-4">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?crop=entropy&w=800"
                       alt="Certificate Sample"
                       className="rounded-lg border-2 border-gray-200 shadow-lg w-full h-full object-cover"
+                      width={500}
+                      height={500}
+
+                      loading="lazy"
                     />
                   </div>
                   <div className="relative aspect-[16/12] mb-4">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1574607383476-f517f260d30b?crop=entropy&w=800"
                       alt="Certificate Sample"
                       className="rounded-lg border-2 border-gray-200 shadow-lg w-full h-full object-cover"
+                      width={500}
+                      height={500}
+
+                      loading="lazy"
                     />
                   </div>
                 </div>

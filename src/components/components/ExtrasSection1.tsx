@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from "@/components/components/ui/button";
-import Link from 'next/link';
+import Image from 'next/image';
 
 const ExtrasSection1 = () => {
   const resources = [
@@ -51,10 +50,14 @@ const ExtrasSection1 = () => {
             {resources.map((resource) => (
               <div key={resource.id} className="flex flex-col items-center">
                 <div className="rounded-lg overflow-hidden shadow-md mb-4 w-full h-full">
-                  <img
+                  <Image
                     src={resource.image}
                     alt={resource.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
                 <h3 className="mb-2 font-semibold">{resource.title}</h3>

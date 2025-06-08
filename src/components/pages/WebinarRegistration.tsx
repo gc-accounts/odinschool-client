@@ -3,21 +3,24 @@ import { useParams, useRouter } from 'next/navigation';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { ChevronLeft, Loader2 } from 'lucide-react';
-import { Button } from '@/components/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/components/ui/form";
-import { Input } from '@/components/components/ui/input';
-import { Checkbox } from '@/components/components/ui/checkbox';
+import dynamic from 'next/dynamic';
 import { formatDate } from '@/components/utils/dateUtils';
 import { getWebinar } from '@/components/utils/api/webinars';
-import dynamic from 'next/dynamic';
+
+// Dynamically import UI components
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => mod.Button));
+const Input = dynamic(() => import('@/components/components/ui/input').then(mod => mod.Input));
+const Checkbox = dynamic(() => import('@/components/components/ui/checkbox').then(mod => mod.Checkbox));
+const Form = dynamic(() => import("@/components/components/ui/form").then(mod => mod.Form));
+const FormControl = dynamic(() => import("@/components/components/ui/form").then(mod => mod.FormControl));
+const FormField = dynamic(() => import("@/components/components/ui/form").then(mod => mod.FormField));
+const FormItem = dynamic(() => import("@/components/components/ui/form").then(mod => mod.FormItem));
+const FormLabel = dynamic(() => import("@/components/components/ui/form").then(mod => mod.FormLabel));
+const FormMessage = dynamic(() => import("@/components/components/ui/form").then(mod => mod.FormMessage));
+
+// Dynamically import icons
+const ChevronLeft = dynamic(() => import('lucide-react').then(mod => mod.ChevronLeft));
+const Loader2 = dynamic(() => import('lucide-react').then(mod => mod.Loader2));
 
 interface ApiWebinarResponse {
   id: string;
@@ -264,5 +267,5 @@ export default dynamic(() => Promise.resolve(WebinarRegistration), {
       <Loader2 className="w-10 h-10 animate-spin" />
     </div>
   ),
-  ssr: false // Disable server-side rendering for this component
+  ssr: false
 });

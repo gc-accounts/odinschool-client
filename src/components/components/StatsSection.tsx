@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const StatsSection = () => {
   return (
@@ -22,10 +23,14 @@ const StatsSection = () => {
 
         {/* Right: Image */}
         <div className="w-72 md:w-96">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1612831662123-e4c4d542b7f5?auhref=format&fit=crop&w=500&q=80"
             alt="Illustration of a person"
             className="w-full h-auto"
+
+            loading="lazy"
+            width={500}
+            height={500}
           />
         </div>
       </div>

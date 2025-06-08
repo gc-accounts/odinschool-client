@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Search, Tag, Calendar, Clock, BookOpenText, Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { getBlogs } from '@/components/utils/api/blog';
+import Image from 'next/image';
 
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
@@ -123,10 +124,14 @@ const BlogPage = () => {
             ) : posts.map(post => (
               <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={post.coverImage}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
                 <CardContent className="p-6">

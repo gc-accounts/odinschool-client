@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Clock, BookOpen, Users } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/components/lib/utils';
 
@@ -73,14 +73,17 @@ const CourseCard = ({
 
       <div className="relative overflow-hidden aspect-[16/9]">
         <div className="absolute inset-0 bg-gray-100 animate-pulse"></div>
-        <img
+        <Image
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
           onLoad={(e) => {
             (e.target as HTMLElement).parentElement?.querySelector('.animate-pulse')?.classList.add('hidden');
           }}
+
+          loading="lazy"
+          width={150}
+          height={150}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
       </div>

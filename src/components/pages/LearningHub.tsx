@@ -8,6 +8,7 @@ import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { getLearningHubCourses } from '@/components/utils/api/learning_hub';
 import PaginationComponent from '@/components/components/PaginationComponent';
+import Image from 'next/image';
 // Sample free courses data
 
 
@@ -63,10 +64,14 @@ const LearningHub = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {learningHub?.map((course: any) => (<Card key={course.id} className="overflow-hidden transition-all hover:shadow-lg">
                   <div className="aspect-video bg-gray-100 relative">
-                    <img
+                    <Image
                       src={course.image}
                       alt={course.title}
                       className="object-cover w-full h-full"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                     <div className="absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
                       {course.level}

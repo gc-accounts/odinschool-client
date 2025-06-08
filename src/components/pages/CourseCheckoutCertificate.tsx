@@ -11,6 +11,7 @@ import { Label } from "@/components/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/components/ui/radio-group";
 import { courses } from '@/components/data/courses';
 import { getCourse } from '@/components/utils/api/courses';
+import Image from 'next/image';
 
 const CERTIFICATE_PRICE = 29.99;
 
@@ -265,7 +266,14 @@ const CourseCheckoutCertificate = () => {
                       <RadioGroupItem value="paypal" id="paypal" />
                       <Label htmlFor="paypal" className="flex-1 cursor-pointer">
                         <div className="flex items-center">
-                          <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" className="h-5 mr-2" />
+                          <Image src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" className="h-5 mr-2"
+
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
+                          />
+
                           PayPal
                         </div>
                       </Label>
@@ -333,10 +341,14 @@ const CourseCheckoutCertificate = () => {
                 <CardContent className="space-y-6">
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
-                      <img
+                      <Image
                         src={course.image}
                         alt={course.title}
                         className="w-full h-full object-cover"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
                       />
                     </div>
                     <div>

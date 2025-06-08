@@ -3,18 +3,23 @@ import Link from 'next/link';
 import { Button } from '@/components/components/ui/button';
 import { Card } from '@/components/components/ui/card';
 import { getWebinars } from '@/components/utils/api/webinars';
+import Image from 'next/image';
 
 
 interface JobsSectionProps {
   sectionClass?: string;
+  odinTalks: any[]
 }
 
 
-const OdinTalks = ({ sectionClass }: JobsSectionProps) => {
-  const [webinars, setWebinars] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+const OdinTalks = ({ sectionClass, odinTalks }: JobsSectionProps) => {
+  const [webinars, setWebinars] = useState<any[]>(odinTalks || []);
+  const [loading, setLoading] = useState(!odinTalks);
 
   useEffect(() => {
+    if (odinTalks) {
+      return;
+    }
     const fetchWebinars = async () => {
       setLoading(true);
       const webinars = await getWebinars({
@@ -28,7 +33,7 @@ const OdinTalks = ({ sectionClass }: JobsSectionProps) => {
       setLoading(false);
     }
     fetchWebinars();
-  }, []);
+  }, [odinTalks]);
 
 
 
@@ -63,10 +68,14 @@ const OdinTalks = ({ sectionClass }: JobsSectionProps) => {
               <Link key={webinar.id} href={`/webinars/${webinar.id}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="aspect-[4/3] relative">
-                    <img
+                    <Image
                       src={webinar.image}
                       alt={webinar.title}
                       className="w-full h-full object-cover"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                       <h3 className="text-xl font-semibold text-white">{webinar.title}</h3>

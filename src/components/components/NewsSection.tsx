@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter } from "@/components/components/ui/card";
 import { Button } from "@/components/components/ui/button";
 import { newsMediaData } from "@/components/data/newsMediaData";
+import Image from "next/image";
 
 const NewsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -75,10 +76,14 @@ const NewsSection = () => {
                   <Link href={item.mediaLink} target="_blank" rel="noopener noreferrer">
                     <Card className="pt-6 h-full flex flex-col justify-between overflow-hidden hover:shadow-lg transition-shadow">
                       <div className="relative mb-6 flex justify-center items-center">
-                        <img
+                        <Image
                           src={item.mediaLogo}
                           alt={item.mediaTitle}
                           className="w-40 h-14 object-contain"
+
+                          loading="lazy"
+                          width={500}
+                          height={500}
                         />
                       </div>
                       <CardContent className="flex-grow">
@@ -104,14 +109,13 @@ const NewsSection = () => {
               <button
                 key={index}
                 onClick={() => scrollTo(index)}
-                className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] rounded-full transition-all duration-200 ${
-                  index === selectedIndex ? "bg-primary-600 md:w-[28px] w-[1.5rem] shadow" : "bg-gray-300"
-                }`}
+                className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] rounded-full transition-all duration-200 ${index === selectedIndex ? "bg-primary-600 md:w-[28px] w-[1.5rem] shadow" : "bg-gray-300"
+                  }`}
               />
             ))}
           </div>
         </div>
-        
+
       </div>
     </section>
   );

@@ -2,10 +2,7 @@
 import React, { useEffect } from 'react';
 import { Badge } from '@/components/components/ui/badge';
 import { Card, CardContent } from '@/components/components/ui/card';
-import {
-  Code, Database, Figma, Palette, LineChart, Globe,
-  PanelLeft, Calculator, Server, Cloud
-} from 'lucide-react';
+import Image from 'next/image';
 
 import { courseToolsData } from '@/components/data/course-section/tools/courseToolsData';
 import { getDataByPage } from '@/components/utils/getDataByPage';
@@ -23,7 +20,7 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
     style={{ animationDelay: `${delay}ms` }}>
     <CardContent className="p-5 flex flex-col items-center text-center">
       <div className={`md:w-16 md:h-16 w-10 h-10 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
-        <img src={icon} alt={name} />
+        <Image src={icon} alt={name} loading="lazy" width={500} height={500} />
       </div>
       <h3 className="md:text-lg text-xs font-semibold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm">{description}</p>

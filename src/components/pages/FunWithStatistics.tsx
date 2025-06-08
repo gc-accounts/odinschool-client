@@ -7,6 +7,7 @@ import { BarChart, BarChartHorizontal, Download } from 'lucide-react';
 import { getDsBook } from '@/components/utils/api/dsBook';
 import { useParams, useRouter } from 'next/navigation';
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import Image from 'next/image';
 
 const FunWithStatistics = () => {
   const [dsBook, setDsBook] = useState<any>(null);
@@ -144,10 +145,14 @@ const FunWithStatistics = () => {
               </Button>
             </div>
             <div className="relative">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auhref=format&fit=crop&w=800"
                 alt="Data visualization charts"
                 className="rounded-lg shadow-lg w-full h-auto"
+
+                loading="lazy"
+                width={500}
+                height={500}
               />
             </div>
           </div>

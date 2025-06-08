@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Share2, ChevronLeft, Calendar, User, Tag } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { blogPosts } from '@/components/data/blog';
+import Image from 'next/image';
 
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
@@ -146,10 +147,14 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="aspect-video w-full rounded-lg overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src={post.coverImage}
                   alt={post.title}
                   className="w-full h-full object-cover"
+
+                  loading="lazy"
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -188,10 +193,14 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
                 {relatedPosts.map(relatedPost => (
                   <Card key={relatedPost.id} className="hover:shadow-md transition-shadow">
                     <div className="aspect-video w-full overflow-hidden">
-                      <img
+                      <Image
                         src={relatedPost.coverImage}
                         alt={relatedPost.title}
                         className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
                       />
                     </div>
                     <CardHeader className="p-4">

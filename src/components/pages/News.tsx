@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/components/ui/tabs";
 import { Globe, ExternalLink, Star, Clock } from "lucide-react";
+import Image from 'next/image';
 
 const News = () => {
 
@@ -122,10 +123,14 @@ const News = () => {
                     {filteredNews.map(item => (
                       <Card key={item.id} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                         <div className="aspect-video w-full overflow-hidden rounded-t-lg">
-                          <img
+                          <Image
                             src={item.imageUrl}
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <CardHeader>
@@ -158,10 +163,14 @@ const News = () => {
                     {filteredNews.map(item => (
                       <Card key={item.id} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                         <div className="aspect-video w-full overflow-hidden rounded-t-lg">
-                          <img
+                          <Image
                             src={item.imageUrl}
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <CardHeader>
@@ -194,10 +203,14 @@ const News = () => {
                     {filteredNews.map(item => (
                       <Card key={item.id} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                         <div className="aspect-video w-full overflow-hidden rounded-t-lg">
-                          <img
+                          <Image
                             src={item.imageUrl}
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <CardHeader>
@@ -230,10 +243,14 @@ const News = () => {
                     {filteredNews.map(item => (
                       <Card key={item.id} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                         <div className="aspect-video w-full overflow-hidden rounded-t-lg">
-                          <img
+                          <Image
                             src={item.imageUrl}
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+
+                            loading="lazy"
+                            width={500}
+                            height={500}
                           />
                         </div>
                         <CardHeader>

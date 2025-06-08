@@ -2,20 +2,20 @@ import axiosApi, { backendUrl } from "../apiCall";
 import mentorSchema from "./schema/mentor";
 
 
-function modifyMentor(mentor:any) {
+function modifyMentor(mentor: any) {
     return {
         id: mentor.documentId,
         name: mentor.name,
         title: mentor.designation,
         bio: mentor.description,
         avatar: backendUrl + mentor.photo?.url,
-        companies: mentor.companies.map((company:any) => ({
+        companies: mentor?.companies?.map((company: any) => ({
             name: company.name,
             logo: backendUrl + company.logo.url
         })),
         featured: mentor.is_featured,
         expertise: mentor.tags?.split(',') || [],
-        education: mentor.education.map((education:any) => ({
+        education: mentor?.education?.map((education: any) => ({
             degree: education.degree,
             institution: education.school,
             year: education.graduating_year
@@ -24,7 +24,7 @@ function modifyMentor(mentor:any) {
     }
 }
 
-export const getMentors = async (pageSize:number = 10, pageNumber:number = 1) => {
+export const getMentors = async (pageSize: number = 10, pageNumber: number = 1) => {
     const response = await axiosApi.post('', {
         query: `
             query Mentors {
@@ -34,11 +34,11 @@ export const getMentors = async (pageSize:number = 10, pageNumber:number = 1) =>
             }
         `
     });
-    return response.data.data.mentors.map(modifyMentor);
+    return response.data.data.mentors?.map(modifyMentor) || [];
 };
 
 
-export const getMentorById = async (id:string) => {
+export const getMentorById = async (id: string) => {
     const response = await axiosApi.post('', {
         query: `
             query Mentor($documentId:ID!) {
@@ -51,6 +51,6 @@ export const getMentorById = async (id:string) => {
             documentId: id
         }
     });
-    return modifyMentor(response.data.data.mentor);
+    return modifyMentor(response.data.data.mentor) || null;
 };
 

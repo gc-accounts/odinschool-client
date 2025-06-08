@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import * as React from 'react';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
-import '@/styles/colors.css';
 import { siteConfig } from '@/constant/config';
 import Script from 'next/script';
 import { Toaster } from '@/components/components/ui/toaster';
@@ -13,7 +11,6 @@ import { ProgramProvider } from '@/context/ProgramContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
-// !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -67,16 +64,16 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <noscript>
-    <iframe
-      src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-      height="0"
-      width="0"
-      style={{ display: 'none', visibility: 'hidden' }}
-    ></iframe>
-  </noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
         <ProgramProvider>
           {children}
-        <WhatsAppChat />
+          <WhatsAppChat />
         </ProgramProvider>
         <Toaster />
       </body>

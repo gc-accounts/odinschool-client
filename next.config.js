@@ -16,12 +16,21 @@ const nextConfig = {
 
   // Uncoment to add domain whitelist
   images: {
+    //  ⬇️ common mobile/desktop breakpoints
+    deviceSizes: [640, 768, 1024, 1280, 1600],
+    // allow your S3 / CDN domains
+    domains: ['strapi.odinschool.com'],
+    // or use fine-grained patterns (v14+)
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'strapi.odinschool.com',
       },
-    ]
+    ],
+    // modern formats first
+    formats: ['image/avif', 'image/webp'],
+    // 24 h CDN cache
+    minimumCacheTTL: 60 * 60 * 24,
   },
 
   webpack(config) {

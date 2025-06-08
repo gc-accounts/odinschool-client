@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Users, GraduationCap, Building, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
@@ -168,10 +169,14 @@ const Careers = () => {
             {employeeView.map((emp, id) => (
               <div key={id} className="bg-gray-50 rounded-xl p-6 shadow-sm">
                 <div className="flex items-center gap-4 mb-4">
-                  <img
+                  <Image
                     src={emp.src}
                     alt={emp.name}
                     className="w-12 h-12 rounded-full object-cover"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                   <div>
                     <h4 className="text-lg font-semibold">{emp.name}</h4>
@@ -195,10 +200,14 @@ const Careers = () => {
             <div className="grid grid-cols-3 grid-rows-2 gap-6">
               {images.map((img, idx) => (
                 <div key={idx} className={`${img.className}`}>
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.alt}
                     className="w-full h-full object-cover rounded-xl shadow-md"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
               ))}
@@ -214,10 +223,14 @@ const Careers = () => {
           </div>
 
           <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-            <img
+            <Image
               src="https://strapi.odinschool.com/uploads/Diversity_Picture_2_11cd0ebabc.webp"
               alt="Team working together in an office"
               className="w-full h-[500px] object-cover object-center"
+
+              loading="lazy"
+              width={500}
+              height={500}
             />
           </div>
         </section>

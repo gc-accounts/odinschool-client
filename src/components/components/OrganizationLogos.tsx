@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/components/ui/card';
 import { getOrganisations } from '@/components/utils/api/organisation';
+import Image from 'next/image';
 
 interface organizationProps {
-  sectionClass?: String
+  sectionClass?: String;
+  organisations?: any[]
 }
-const OrganizationLogos = ({ sectionClass }: organizationProps) => {
+const OrganizationLogos = ({ sectionClass, organisations }: organizationProps) => {
   const [logos, setLogos] = useState<any[]>([]);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!organisations);
 
 
   useEffect(() => {
+    if (organisations) {
+      setLogos(organisations);
+      setLoading(false);
+    }
     const fetchLogos = async () => {
       setLoading(true);
       const logos = await getOrganisations();
@@ -19,7 +25,7 @@ const OrganizationLogos = ({ sectionClass }: organizationProps) => {
       setLoading(false);
     };
     fetchLogos();
-  }, []);
+  }, [organisations]);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
@@ -102,10 +108,14 @@ const OrganizationLogos = ({ sectionClass }: organizationProps) => {
                   className="border-0 shadow-sm hover:shadow-md transition-shadow w-[160px] h-[80px]"
                 >
                   <CardContent className="flex items-center justify-center p-3 h-full">
-                    <img
+                    <Image
                       src={logo.logo}
                       alt={`${logo.name} logo`}
                       className="max-h-12 max-w-full object-contain transition-all"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                   </CardContent>
                 </Card>

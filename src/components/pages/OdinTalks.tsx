@@ -8,6 +8,7 @@ import { getWebinars } from '@/components/utils/api/webinars';
 import PaginationComponent from '@/components/components/PaginationComponent';
 import mentor from '@/components/utils/api/schema/mentor';
 import { Loader2 } from 'lucide-react';
+import Image from 'next/image';
 // Define mentor data
 const mentorsData = [
   {
@@ -158,10 +159,14 @@ const OdinTalks = () => {
               <Link key={webinar.id} href={`/odintalks/${webinar.url_slug}`}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
-                    <img
+                    <Image
                       src={webinar.image}
                       alt={webinar.title}
                       className="w-full h-full object-cover"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
 
                     <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">

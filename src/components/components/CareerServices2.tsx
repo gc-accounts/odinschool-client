@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const CareerServices2 = () => {
   return (
@@ -17,10 +18,14 @@ const CareerServices2 = () => {
 
         {/* Right Image Block */}
         <div className="flex justify-center">
-          <img
+          <Image
             src="https://your-image-link.com/career-wheel.png" // Replace with your actual image URL
             alt="Career Services Graphic"
             className="max-w-xs md:max-w-md w-full"
+
+            loading="lazy"
+            width={500}
+            height={500}
           />
         </div>
       </div>

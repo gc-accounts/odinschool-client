@@ -11,6 +11,7 @@ import { getStories } from '@/components/utils/api/story';
 import { Dialog, DialogContent } from '@/components/components/ui/dialog';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 
 const transformationType = [
@@ -24,8 +25,9 @@ const transformationType = [
 
 interface TestimonialsProps {
   sectionClass?: String
+  testimonials: any[]
 }
-const Testimonials = ({ sectionClass }: TestimonialsProps) => {
+const Testimonials = ({ sectionClass, testimonials }: TestimonialsProps) => {
 
   const pathname = usePathname();
 
@@ -36,6 +38,14 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
+    if (testimonials) {
+      // @ts-ignore
+      setStories(testimonials.stories);
+      // @ts-ignore
+      setVideoStories(testimonials.videoStories);
+      setLoading(false);
+      return;
+    }
     const fetchStories = async () => {
       setLoading(true);
       const stories = await getStories({
@@ -49,7 +59,7 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
       setLoading(false);
     }
     fetchStories();
-  }, [activeTab]);
+  }, [activeTab, testimonials]);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -126,7 +136,7 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0"
                     style={{ animationDelay: '200ms' }}
                   >
-                    {stories.map((testimonial) => (
+                    {stories?.map((testimonial) => (
                       <CareerTransitionCard key={testimonial.documentId} testimonial={testimonial} categoryColors={categoryColors} />
                     ))}
                   </div>
@@ -146,14 +156,14 @@ const Testimonials = ({ sectionClass }: TestimonialsProps) => {
             </div>
 
             {pathname !== '/success-stories' && (
-  <div className="text-center mt-12 successStoryButton">
-    <Link href="/success-stories">
-      <Button variant="outline" className="hover:bg-primary-50">
-        View More Success Stories
-      </Button>
-    </Link>
-  </div>
-)}
+              <div className="text-center mt-12 successStoryButton">
+                <Link href="/success-stories">
+                  <Button variant="outline" className="hover:bg-primary-50">
+                    View More Success Stories
+                  </Button>
+                </Link>
+              </div>
+            )}
 
 
           </>)}
@@ -197,11 +207,14 @@ const CareerTransitionCard = ({ testimonial, categoryColors }: any) => {
           <div className="flex justify-between items-start mb-4">
             <div className="flex gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
-                <img
+                <Image
                   src={testimonial.avatar}
                   alt={testimonial.name}
                   className="w-full h-full object-cover"
                   loading="lazy"
+
+                  width={50}
+                  height={50}
                 />
               </div>
               <div>
@@ -216,10 +229,14 @@ const CareerTransitionCard = ({ testimonial, categoryColors }: any) => {
               </div>
             </div>
           </div>
-          <img
+          <Image
             src={testimonial.current_company_image}
             alt={testimonial.name}
             className="w-12 h-12 object-contain mb-2"
+
+            loading="lazy"
+            width={50}
+            height={50}
           />
 
           <p className="italic text-gray-500 text-sm ">"{testimonial.student_remark}"</p>
@@ -258,10 +275,14 @@ const VideoTestimonialCard = ({ testimonial, categoryColors }: any) => {
       <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
         <CardContent className="p-0">
           <div className="relative aspect-video overflow-hidden bg-gray-800">
-            <img
+            <Image
               src={testimonial.testimonial_video_thumbnail}
               alt="Video thumbnail"
               className="w-full h-full object-cover opacity-80"
+
+              loading="lazy"
+              width={500}
+              height={500}
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div
@@ -279,10 +300,14 @@ const VideoTestimonialCard = ({ testimonial, categoryColors }: any) => {
               <div className="flex items-center gap-1 text-xs">
                 <span>{testimonial.role} at</span>
                 <div className="bg-white rounded-full p-0.5 h-4 w-4 flex items-center justify-center">
-                  <img
+                  <Image
                     src={testimonial.companyLogo}
                     alt={testimonial.company}
                     className="w-3 h-3 object-contain"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
                 <span>{testimonial.company}</span>

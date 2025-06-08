@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Lazy load components
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
@@ -172,10 +173,14 @@ const About = () => {
               <div ref={addToRefs} className="opacity-0">
                 <div className="relative">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src="https://strapi.odinschool.com/uploads/Career_s_Hero_Image_ce20df1ae4.webp"
                       alt="Team collaboration"
                       className="w-full h-full object-cover"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <div className="md:block hidden absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-primary-100 z-0"></div>
@@ -228,10 +233,14 @@ const About = () => {
                   className="bg-white hover:bg-primary-100 transition-all duration-300 rounded-xl hover:border-opacity-0 border shadow-sm p-6 text-center opacity-0"
                 >
                   <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden">
-                    <img
+                    <Image
                       src={member.photo}
                       alt={member.name}
                       className="w-full h-full object-cover"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <h3 className="text-lg text-primary-600 font-semibold mb-2">{member.name}</h3>

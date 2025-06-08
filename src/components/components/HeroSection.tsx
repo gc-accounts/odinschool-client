@@ -10,6 +10,7 @@ import { useToast } from '@/components/hooks/use-toast';
 import { FieldConfig } from './form/DynamicForm';
 import { useRouter } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+import Image from 'next/image';
 const formFields: FieldConfig[] = [
   {
     name: 'firstName',
@@ -192,7 +193,7 @@ const HeroSection = () => {
                 <span className="text-xs font-medium">Master In-Demand Tech Skills. Get Job-Ready.</span>
               </div>
               <h1 className="heading-xl text-balance">
-                <span className='text-nowrap'>Upskill Now!</span><br/>
+                <span className='text-nowrap'>Upskill Now!</span><br />
                 <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>
@@ -259,29 +260,45 @@ const HeroSection = () => {
           <div ref={addToRefs} className="wrap opacity-0 delay-200">
             <div>
               <div className="flex gap-8 items-end justify-center flex-row ">
-                <img
+                <Image
                   src="https://strapi.odinschool.com/uploads/image1_5d9dce47c3.webp"
                   alt="Student 1"
                   className="rounded-full md:w-60 md:h-60 w-32 h:32 object-cover"
+
+                  loading="lazy"
+                  width={150}
+                  height={150}
                 />
 
-                <img
+                <Image
                   src="https://strapi.odinschool.com/uploads/img2_a118e82026.webp"
                   alt="Student 2"
                   className="rounded-3xl md:w-40 md:h-40 w-32 h:32 object-cover"
+
+                  loading="lazy"
+                  width={150}
+                  height={150}
                 />
               </div>
               <div className="flex gap-10 items-top justify-center flex-direction:row mt-8">
-                <img
-                   src="https://strapi.odinschool.com/uploads/img2_fc7fbb8c4e.png"
+                <Image
+                  src="https://strapi.odinschool.com/uploads/img2_fc7fbb8c4e.png"
                   alt="Student 3"
                   className="rounded-3xl md:w-40 md:h-40 w-32 h:32 object-cover"
+
+                  loading="lazy"
+                  width={150}
+                  height={150}
                 />
 
-                <img
-                 src="https://strapi.odinschool.com/uploads/img3_d2a7f5236c.png"
+                <Image
+                  src="https://strapi.odinschool.com/uploads/img3_d2a7f5236c.png"
                   alt="Student 4"
                   className="rounded-full md:w-60 md:h-60 w-32 h:32 object-cover"
+
+                  loading="lazy"
+                  width={150}
+                  height={150}
                 />
               </div>
             </div>

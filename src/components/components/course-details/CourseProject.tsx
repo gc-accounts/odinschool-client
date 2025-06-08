@@ -9,6 +9,7 @@ import { GenAIProjectsData } from '@/components/data/course-section/projects/Gen
 import { GenAIIITGProjectsData } from '@/components/data/course-section/projects/GenAIIITGProjectsData';
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 const CourseProject = () => {
   const path = usePathname()
   const projectData = path === '/data-science-course' ? getDataByPage(DsProjectsData, path) : path === '/generative-ai-bootcamp' ? getDataByPage(GenAIProjectsData, path) : path === '/generative-ai-course-iitg' ? getDataByPage(GenAIIITGProjectsData, path) : path === '/data-science-elite-course' ? getDataByPage(DsEliteProjectsData, path) : ''
@@ -56,10 +57,14 @@ const CourseProject = () => {
             return (
               <Card key={index} className="overflow-hidden">
                 <div className="h-30 overflow-hidden">
-                  <img
+                  <Image
                     src={project.project_img}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform hover:scale-105"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
                 <CardHeader className="pb-2">

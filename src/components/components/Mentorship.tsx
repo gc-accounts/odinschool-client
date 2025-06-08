@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/components/ui/card';
 import { Button } from '@/components/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 const mentorshipData = [
   {
@@ -30,7 +31,7 @@ const mentorshipData = [
     story: `Nikhil Gupta is a Lead Analyst at Swiggy with a strong passion for data analysis and business intelligence. With a sharp eye for detail and a data-driven approach, he specializes in SQL, Python, Power BI, and data visualization to drive impactful insights and improve business decisions.`,
   },
 
-   {
+  {
     id: 4,
     name: 'Jyotiprakash Dash',
     designation: 'Business Analyst',
@@ -68,11 +69,11 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
   return (
     <section className={`${sectionClass ?? 'py-16 md:py-24 bg-white'} relative`}>
       <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            Get Mentored by <span className="text-primary-600">the Ones Who Made It</span>
-          </h2>
-          <p className="text-md text-gray-600"></p>
-        </div>
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          Get Mentored by <span className="text-primary-600">the Ones Who Made It</span>
+        </h2>
+        <p className="text-md text-gray-600"></p>
+      </div>
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Description */}
         <div>
@@ -101,33 +102,41 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
               {mentorshipData.map((mentor) => (
                 <div key={mentor.id} className="flex-[0_0_100%] px-2 h-full">
                   <Card className="border border-blue-200 h-full flex flex-col min-h-[280px]">
-      <CardContent className="p-6 grid grid-cols-12 gap-4 items-start flex-grow">
-    
-    {/* Left: Image + Name (col-span-4 on md+) */}
-    <div className="col-span-12 md:col-span-3 text-center">
-      <img
-        src={mentor.image}
-        alt={mentor.name}
-        className="w-24 h-24 object-cover rounded-md mx-auto"
-      />
-      <p className="mt-3 text-primary-600 font-bold leading-tight">
-        {mentor.name.split(' ')[0]}<br />{mentor.name.split(' ')[1]}
-      </p>
-    </div>
+                    <CardContent className="p-6 grid grid-cols-12 gap-4 items-start flex-grow">
 
-    {/* Right: Designation + Logo + Story (col-span-8 on md+) */}
-    <div className="col-span-12 md:col-span-9">
-      <h3 className="text-md font-bold text-gray-800 mb-2">{mentor.designation}</h3>
-      <img
-        src={mentor.companyLogo}
-        alt={mentor.companyLogo}
-        className="w-30 h-12 object-contain mb-3 border shadow-sm rounded-md"
-      />
-      <p className="text-gray-600 text-sm">{mentor.story}</p>
-    </div>
+                      {/* Left: Image + Name (col-span-4 on md+) */}
+                      <div className="col-span-12 md:col-span-3 text-center">
+                        <Image
+                          src={mentor.image}
+                          alt={mentor.name}
+                          className="w-24 h-24 object-cover rounded-md mx-auto"
 
-  </CardContent>
-</Card>
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                        />
+                        <p className="mt-3 text-primary-600 font-bold leading-tight">
+                          {mentor.name.split(' ')[0]}<br />{mentor.name.split(' ')[1]}
+                        </p>
+                      </div>
+
+                      {/* Right: Designation + Logo + Story (col-span-8 on md+) */}
+                      <div className="col-span-12 md:col-span-9">
+                        <h3 className="text-md font-bold text-gray-800 mb-2">{mentor.designation}</h3>
+                        <Image
+                          src={mentor.companyLogo}
+                          alt={mentor.companyLogo}
+                          className="w-30 h-12 object-contain mb-3 border shadow-sm rounded-md"
+
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                        />
+                        <p className="text-gray-600 text-sm">{mentor.story}</p>
+                      </div>
+
+                    </CardContent>
+                  </Card>
 
                 </div>
               ))}
@@ -135,38 +144,37 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
           </div>
 
           {/* Navigation + Dots */}
-<div className="flex items-center justify-center mt-6 gap-6">
-  {/* Prev Arrow */}
-  <button
-    onClick={scrollPrev}
-    className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
-  >
-    <ChevronLeft className="w-5 h-5" />
-  </button>
+          <div className="flex items-center justify-center mt-6 gap-6">
+            {/* Prev Arrow */}
+            <button
+              onClick={scrollPrev}
+              className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
 
-  {/* Dots */}
-  <div className="flex items-center gap-2">
-    {dots.map((index) => (
-      <button
-        key={index}
-        onClick={() => scrollTo(index)}
-        className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] transition-all duration-300 rounded-full ${
-          index === selectedIndex
-            ? 'bg-[#1a6cf7] md:w-[28px] w-[1.5rem] shadow'
-            : 'bg-gray-300 w-2 h-2'
-        }`}
-      />
-    ))}
-  </div>
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {dots.map((index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] transition-all duration-300 rounded-full ${index === selectedIndex
+                    ? 'bg-[#1a6cf7] md:w-[28px] w-[1.5rem] shadow'
+                    : 'bg-gray-300 w-2 h-2'
+                    }`}
+                />
+              ))}
+            </div>
 
-  {/* Next Arrow */}
-  <button
-    onClick={scrollNext}
-    className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
-  >
-    <ChevronRight className="w-5 h-5" />
-  </button>
-</div>
+            {/* Next Arrow */}
+            <button
+              onClick={scrollNext}
+              className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
 
 
         </div>

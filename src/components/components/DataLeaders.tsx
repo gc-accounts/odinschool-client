@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/components/ui/card';
+import Image from 'next/image';
 
 const leaders = [
   {
@@ -70,20 +71,28 @@ export default function DataLeaders({ sectionClass }: { sectionClass?: string })
               >
                 <CardContent className="md:p-5 p-4 flex flex-col items-center text-center">
                   <div className="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img
+                    <Image
                       src={leader.image}
                       alt={leader.name}
                       className="w-full h-full object-cover rounded-full"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <h3 className="text-md font-semibold text-primary-600">{leader.name}</h3>
                   <p className="text-xs text-slate-700">{leader.designation}</p>
                 </CardContent>
                 <div className="py-2 border-t">
-                  <img
+                  <Image
                     src={leader.logo}
                     alt={leader.company}
                     className="h-8 mx-auto object-contain"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </Card>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Download, FileText, File, Clock, Tag } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/components/ui/card';
 import { Button } from '@/components/components/ui/button';
+import Image from 'next/image';
 
 interface ResourceCardProps {
   resource: {
@@ -30,23 +31,27 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, formatDate }) => 
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {isHovering && resource.video? (
-          <video 
-            src={resource.video} 
-            autoPlay 
-            muted 
-            loop 
+        {isHovering && resource.video ? (
+          <video
+            src={resource.video}
+            autoPlay
+            muted
+            loop
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (<>
-        <img 
-          src={resource.poster} 
-          alt={`${resource.title} thumbnail`} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        
+          <Image
+            src={resource.poster}
+            alt={`${resource.title} thumbnail`}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+
+            loading="lazy"
+            width={500}
+            height={500}
+          />
+
         </>)}
-        
+
       </div>
       <CardContent className="p-6">
         <div className="flex items-center gap-2 mb-3">
@@ -56,7 +61,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, formatDate }) => 
         </div>
         <h3 className="text-xl font-bold mb-2">{resource.title}</h3>
         <p className="text-gray-600 mb-4 line-clamp-3">{resource.description}</p>
-        
+
         <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mb-4">
           <div className="flex items-center">
             <FileText className="w-4 h-4 mr-1" />
@@ -75,7 +80,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ resource, formatDate }) => 
             <span>{resource.popularity?.toLocaleString()}</span>
           </div>
         </div>
-        
+
         <div className="flex flex-wrap gap-1 mb-4">
           {resource.tags?.slice(0, 3).map((tag: string) => (
             <span key={tag} className="inline-flex items-center bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded">

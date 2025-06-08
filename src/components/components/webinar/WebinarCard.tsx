@@ -6,6 +6,7 @@ import { Badge } from '@/components/components/ui/badge';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/components/ui/card';
 import { Webinar } from '@/components/data/webinars';
 import { formatDate } from '@/components/utils/dateUtils';
+import Image from 'next/image';
 
 interface WebinarCardProps {
   webinar: Webinar;
@@ -17,10 +18,14 @@ const WebinarCard = ({ webinar }: WebinarCardProps) => {
   return (
     <Card className={`h-full transition-all duration-300 hover:shadow-md ${isPast ? 'opacity-75' : ''}`}>
       <div className="relative h-48 overflow-hidden rounded-t-lg">
-        <img
+        <Image
           src={webinar.image}
           alt={webinar.title}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+
+          loading="lazy"
+          width={500}
+          height={500}
         />
         <div className="absolute top-0 right-0 m-2 space-x-2">
           {webinar.isPaid ? (

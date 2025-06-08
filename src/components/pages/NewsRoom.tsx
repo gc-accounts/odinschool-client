@@ -6,6 +6,7 @@ import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
+import Image from 'next/image';
 
 const NewsRoom = () => {
   useEffect(() => {
@@ -126,13 +127,18 @@ const NewsRoom = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="mb-16">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <img src={featuredNews.image} alt={featuredNews.title} className="w-full h-full object-cover" />
+                  <Image src={featuredNews.image} alt={featuredNews.title} className="w-full h-full object-cover"
+
+                    loading="lazy"
+                    width={500}
+                    height={500}
+                  />
                 </div>
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
                   <div className="mb-4">
@@ -158,7 +164,7 @@ const NewsRoom = () => {
               </div>
             </div>
           </div>
-          
+
           <Tabs defaultValue="all-news" className="w-full mb-16">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-3xl font-bold">Latest News</h2>
@@ -169,12 +175,17 @@ const NewsRoom = () => {
                 <TabsTrigger value="industry">Industry</TabsTrigger>
               </TabsList>
             </div>
-            
+
             <TabsContent value="all-news" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {newsItems.map((news, index) => (
                 <Card key={index} className="overflow-hidden">
                   <div className="h-48 overflow-hidden">
-                    <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                    <Image src={news.image} alt={news.title} className="w-full h-full object-cover"
+
+                      loading="lazy"
+                      width={500}
+                      height={500}
+                    />
                   </div>
                   <CardContent className="p-6">
                     <div className="mb-3">
@@ -202,13 +213,18 @@ const NewsRoom = () => {
                 </Card>
               ))}
             </TabsContent>
-            
+
             <TabsContent value="company">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {newsItems.filter(news => news.category === "Company News" || news.category === "Awards").map((news, index) => (
                   <Card key={index} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
-                      <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                      <Image src={news.image} alt={news.title} className="w-full h-full object-cover"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
+                      />
                     </div>
                     <CardContent className="p-6">
                       <div className="mb-3">
@@ -237,13 +253,18 @@ const NewsRoom = () => {
                 ))}
               </div>
             </TabsContent>
-            
+
             <TabsContent value="product">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {newsItems.filter(news => news.category === "Product Updates" || news.category === "Mentorship").map((news, index) => (
                   <Card key={index} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
-                      <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                      <Image src={news.image} alt={news.title} className="w-full h-full object-cover"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
+                      />
                     </div>
                     <CardContent className="p-6">
                       <div className="mb-3">
@@ -272,13 +293,18 @@ const NewsRoom = () => {
                 ))}
               </div>
             </TabsContent>
-            
+
             <TabsContent value="industry">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {newsItems.filter(news => news.category === "Industry News" || news.category === "Partnerships").map((news, index) => (
                   <Card key={index} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
-                      <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                      <Image src={news.image} alt={news.title} className="w-full h-full object-cover"
+
+                        loading="lazy"
+                        width={500}
+                        height={500}
+                      />
                     </div>
                     <CardContent className="p-6">
                       <div className="mb-3">
@@ -308,7 +334,7 @@ const NewsRoom = () => {
               </div>
             </TabsContent>
           </Tabs>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-2 bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6">Press Releases</h2>
@@ -333,7 +359,7 @@ const NewsRoom = () => {
                 <Button variant="outline">View All Press Releases</Button>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6">Media Contact</h2>
               <p className="text-gray-600 mb-6">
@@ -384,7 +410,7 @@ const NewsRoom = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-6">

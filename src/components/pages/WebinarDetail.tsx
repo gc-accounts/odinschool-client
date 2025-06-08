@@ -9,6 +9,7 @@ import { Badge } from '@/components/components/ui/badge';
 import { useToast } from '@/components/hooks/use-toast';
 import Markdown from '@/components/components/Markdown';
 import MetaTags from '@/components/components/MetaTags';
+import Image from 'next/image';
 
 interface Webinar {
   id: string;
@@ -117,10 +118,14 @@ const WebinarDetail = ({ webinar }: WebinarDetailProps) => {
               </div>
 
               <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
-                <img
+                <Image
                   src={webinar.image}
                   alt={webinar.title}
                   className="w-full h-full object-cover"
+
+                  loading="lazy"
+                  width={500}
+                  height={500}
                 />
               </div>
 
