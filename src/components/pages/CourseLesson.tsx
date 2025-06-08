@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/components/Navbar';
@@ -14,6 +14,22 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "@/components/components/ui/collapsible";
+
+// Lazy load the video player component
+const VideoPlayer = lazy(() => import('@/components/components/VideoPlayer'));
+
+// Loading fallback components
+const LoadingSpinner = () => (
+  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+);
+
+const ContentFallback = () => (
+  <div className="animate-pulse space-y-4">
+    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+    <div className="h-4 bg-gray-200 rounded"></div>
+    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+  </div>
+);
 
 const CourseLesson = () => {
   const params = useParams();
@@ -173,16 +189,11 @@ const CourseLesson = () => {
           {/* Main content area */}
           <div className="flex-1 overflow-y-auto">
             <div className="w-full">
-              {/* Video player */}
+              {/* Video player with lazy loading */}
               <div className="aspect-video bg-black">
-                <iframe
-                  src={lessonContent.video}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  title="Course Lesson"
-                ></iframe>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <VideoPlayer src={lessonContent.video} />
+                </Suspense>
               </div>
 
               {/* Lesson content */}
@@ -217,47 +228,49 @@ const CourseLesson = () => {
                     ))}
                   </TabsList>
 
-                  <TabsContent value="overview" className="mt-0">
-                    <div
-                      className="prose prose-gray max-w-none"
-                      dangerouslySetInnerHTML={{ __html: lessonContent.overview }}
-                    />
-                  </TabsContent>
+                  <Suspense fallback={<ContentFallback />}>
+                    <TabsContent value="overview" className="mt-0">
+                      <div
+                        className="prose prose-gray max-w-none"
+                        dangerouslySetInnerHTML={{ __html: lessonContent.overview }}
+                      />
+                    </TabsContent>
 
-                  <TabsContent value="transcript" className="mt-0">
-                    <div
-                      className="prose prose-gray max-w-none"
-                      dangerouslySetInnerHTML={{ __html: lessonContent.transcript }}
-                    />
-                  </TabsContent>
+                    <TabsContent value="transcript" className="mt-0">
+                      <div
+                        className="prose prose-gray max-w-none"
+                        dangerouslySetInnerHTML={{ __html: lessonContent.transcript }}
+                      />
+                    </TabsContent>
 
-                  <TabsContent value="resources" className="mt-0">
-                    <div className="space-y-4">
-                      <p className="mb-4">Download these resources to support your learning:</p>
+                    <TabsContent value="resources" className="mt-0">
+                      <div className="space-y-4">
+                        <p className="mb-4">Download these resources to support your learning:</p>
 
-                      <div className="space-y-2">
-                        {lessonContent.resources.map((resource: any, index: number) => (
-                          <div
-                            key={index}
-                            className="flex items-center border border-gray-200 rounded-md p-3 hover:bg-gray-50 transition-colors cursor-pointer"
-                          >
-                            <div className="mr-3 text-gray-500">
-                              <BookOpen size={18} />
-                            </div>
-                            <div className="flex-grow">
-                              <p className="font-medium text-sm">{resource.name}</p>
-                              <p className="text-xs text-gray-500">{resource.type} {resource.size && `• ${resource.size}`}</p>
-                            </div>
-                            <button
-                              className="text-primary-600 text-sm font-medium"
+                        <div className="space-y-2">
+                          {lessonContent.resources.map((resource: any, index: number) => (
+                            <div
+                              key={index}
+                              className="flex items-center border border-gray-200 rounded-md p-3 hover:bg-gray-50 transition-colors cursor-pointer"
                             >
-                              Download
-                            </button>
-                          </div>
-                        ))}
+                              <div className="mr-3 text-gray-500">
+                                <BookOpen size={18} />
+                              </div>
+                              <div className="flex-grow">
+                                <p className="font-medium text-sm">{resource.name}</p>
+                                <p className="text-xs text-gray-500">{resource.type} {resource.size && `• ${resource.size}`}</p>
+                              </div>
+                              <button
+                                className="text-primary-600 text-sm font-medium"
+                              >
+                                Download
+                              </button>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </TabsContent>
+                    </TabsContent>
+                  </Suspense>
                 </Tabs>
               </div>
             </div>

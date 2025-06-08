@@ -1,12 +1,38 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
-import CourseCard, { CourseProps } from '@/components/components/CourseCard';
 import Button from '@/components/components/Button';
-import { Loader2 } from 'lucide-react';
 import { getCourses } from '@/components/utils/api/courses';
-import PaginationComponent from '@/components/components/PaginationComponent';
+import type { CourseProps } from '@/components/components/CourseCard';
+
+// Lazy load components
+const CourseCard = lazy(() => import('@/components/components/CourseCard'));
+const PaginationComponent = lazy(() => import('@/components/components/PaginationComponent'));
+
+// Loading fallback components
+const CourseCardSkeleton = () => (
+  <div className="border rounded-lg overflow-hidden animate-pulse">
+    <div className="aspect-video bg-gray-200" />
+    <div className="p-4 space-y-3">
+      <div className="h-4 bg-gray-200 rounded w-3/4" />
+      <div className="h-4 bg-gray-200 rounded w-1/2" />
+      <div className="h-4 bg-gray-200 rounded w-2/3" />
+      <div className="flex justify-between items-center">
+        <div className="h-8 bg-gray-200 rounded w-24" />
+        <div className="h-8 bg-gray-200 rounded w-24" />
+      </div>
+    </div>
+  </div>
+);
+
+const PaginationSkeleton = () => (
+  <div className="flex justify-center items-center space-x-2 animate-pulse">
+    {[1, 2, 3].map((i) => (
+      <div key={i} className="h-8 w-8 bg-gray-200 rounded" />
+    ))}
+  </div>
+);
 
 const COURSES_PER_PAGE = 3;
 
@@ -62,18 +88,30 @@ const Courses = () => {
           </div>
 
           {loading ? (
-            <div className="grid place-items-center h-full">
-              <Loader2 className="w-10 h-10 animate-spin" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <CourseCardSkeleton key={i} />
+              ))}
             </div>
           ) : currentCourses.length > 0 ? (
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {currentCourses.map((course) => (
-                  <CourseCard key={course.id} {...course} />
-                ))}
+                <Suspense fallback={
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[1, 2, 3].map((i) => (
+                      <CourseCardSkeleton key={i} />
+                    ))}
+                  </div>
+                }>
+                  {currentCourses.map((course) => (
+                    <CourseCard key={course.id} {...course} />
+                  ))}
+                </Suspense>
               </div>
               <br />
-              <PaginationComponent currentPage={page} setCurrentPage={setPage1} totalPages={totalPages} />
+              <Suspense fallback={<PaginationSkeleton />}>
+                <PaginationComponent currentPage={page} setCurrentPage={setPage1} totalPages={totalPages} />
+              </Suspense>
             </div>
           ) : (
             <div className="text-center py-16">

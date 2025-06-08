@@ -1,28 +1,70 @@
 'use client'
 import React, { useEffect } from 'react';
-import HeroSection from '@/components/components/HeroSection';
-import FeaturedCourses from '@/components/components/FeaturedCourses';
-import InstructorProfile from '@/components/components/InstructorProfile';
-import Testimonials from '@/components/components/Testimonials';
-import Footer from '@/components/components/Footer';
-import Navbar from '@/components/components/Navbar';
-import CallbackForm from '@/components/components/CallbackForm';
-import OrganizationLogos from '@/components/components/OrganizationLogos';
-import NewsSection from '@/components/components/NewsSection';
-import PlatformComparison from '@/components/components/PlatformComparison';
-import JobsSection from '@/components/components/JobsSection';
-import CertificationSection from '@/components/components/CertificationSection';
-import FAQsection from '@/components/components/FAQsection';
-import CollegeSpotlight from '@/components/components/CollegeSpotlight';
-import OdinTalks from '@/components/components/OdinTalks';
-import { ChevronRight, Code, Brain, Rocket } from 'lucide-react';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent } from '@/components/components/ui/card';
-import ExtrasSection1 from '@/components/components/ExtrasSection1';
-import DsEliteFold from '@/components/components/DsEliteFold';
-import getCourseData from '@/components/utils/getCourseData';
-import InstructorProfileHome from '@/components/components/InstructorProfileHome';
 import { DsMentorsData } from '@/components/data/course-section/mentors/DsMentorsData';
+
+import dynamic from 'next/dynamic';
+
+
+
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+
+const HeroSection = dynamic(() => import('@/components/components/HeroSection'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+
+const FeaturedCourses = dynamic(() => import('@/components/components/FeaturedCourses'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+
+const Testimonials = dynamic(() => import('@/components/components/Testimonials'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const CallbackForm = dynamic(() => import('@/components/components/CallbackForm'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const OrganizationLogos = dynamic(() => import('@/components/components/OrganizationLogos'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const NewsSection = dynamic(() => import('@/components/components/NewsSection'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+
+
+const JobsSection = dynamic(() => import('@/components/components/JobsSection'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+
+
+const OdinTalks = dynamic(() => import('@/components/components/OdinTalks'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const ExtrasSection1 = dynamic(() => import('@/components/components/ExtrasSection1'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const DsEliteFold = dynamic(() => import('@/components/components/DsEliteFold'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
+
+const InstructorProfileHome = dynamic(() => import('@/components/components/InstructorProfileHome'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />
+});
 
 
 

@@ -1,15 +1,39 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, Suspense, lazy } from 'react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
 import { Input } from '@/components/components/ui/input';
-import { Button } from '@/components/components/ui/button';
 import { Search } from 'lucide-react';
-import CourseCard from '@/components/components/CourseCard';
 import { getCities } from '@/components/utils/api/city';
 import { getCourses } from '@/components/utils/api/courses';
-import { citySchema } from '@/components/utils/api/schema/cities';
-import PaginationComponent from '@/components/components/PaginationComponent';
+
+// Lazy load components
+const CourseCard = lazy(() => import('@/components/components/CourseCard'));
+const PaginationComponent = lazy(() => import('@/components/components/PaginationComponent'));
+
+// Loading fallback components
+const CourseCardSkeleton = () => (
+  <div className="border rounded-lg overflow-hidden animate-pulse">
+    <div className="aspect-video bg-gray-200" />
+    <div className="p-4 space-y-3">
+      <div className="h-4 bg-gray-200 rounded w-3/4" />
+      <div className="h-4 bg-gray-200 rounded w-1/2" />
+      <div className="h-4 bg-gray-200 rounded w-2/3" />
+      <div className="flex justify-between items-center">
+        <div className="h-8 bg-gray-200 rounded w-24" />
+        <div className="h-8 bg-gray-200 rounded w-24" />
+      </div>
+    </div>
+  </div>
+);
+
+const PaginationSkeleton = () => (
+  <div className="flex justify-center items-center space-x-2 animate-pulse">
+    {[1, 2, 3].map((i) => (
+      <div key={i} className="h-8 w-8 bg-gray-200 rounded" />
+    ))}
+  </div>
+);
 
 // Cities data
 const cities = [
@@ -35,7 +59,7 @@ const CoursesInCities = () => {
   useEffect(() => {
     const fetchCities = async () => {
       setLoading(true);
-      const cities = await getCities({isFeatured: true});
+      const cities = await getCities({ isFeatured: true });
       handleCityChange(cities[0].name);
       setCities([...cities]);
       setLoading(false);
@@ -60,7 +84,7 @@ const CoursesInCities = () => {
       }
       setCoursesLoading(false);
     };
-    if(activeCity != '' && !loading){
+    if (activeCity != '' && !loading) {
       fetchCourses();
     }
   }, [activeCity, searchTerm, loading]);
@@ -172,40 +196,46 @@ const CoursesInCities = () => {
                 {coursesLoading ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="animate-pulse">
-                        <div className="h-48 bg-gray-200 rounded-lg mb-4"></div>
-                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                      </div>
+                      <CourseCardSkeleton key={i} />
                     ))}
                   </div>
                 ) : courses.length > 0 ? (
                   <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {courses.map(course => (
-                        <CourseCard
-                          key={course.id}
-                          id={course.id}
-                          title={course.title}
-                          description={course.description}
-                          instructor={course.instructor}
-                          level={course.level as any}
-                          duration={course.duration}
-                          lessons={course.lessons}
-                          rating={course.rating}
-                          students={course.students}
-                          image={course.image}
-                          category={course.category}
-                          company={course.company}
-                          popular={parseInt(course.id) % 3 === 0}
-                          documentId={course.id}
-                          enrolled_avatars={[]}
-                          total_enrolled={course.students}
-                        />
-                      ))}
-                      <h2>Courses</h2>
+                      <Suspense fallback={
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {[1, 2, 3].map((i) => (
+                            <CourseCardSkeleton key={i} />
+                          ))}
+                        </div>
+                      }>
+                        {courses.map(course => (
+                          <CourseCard
+                            key={course.id}
+                            id={course.id}
+                            title={course.title}
+                            description={course.description}
+                            instructor={course.instructor}
+                            level={course.level as any}
+                            duration={course.duration}
+                            lessons={course.lessons}
+                            rating={course.rating}
+                            students={course.students}
+                            image={course.image}
+                            category={course.category}
+                            company={course.company}
+                            popular={parseInt(course.id) % 3 === 0}
+                            documentId={course.id}
+                            enrolled_avatars={[]}
+                            total_enrolled={course.students}
+                            url_slug={course.title.toLowerCase().replace(/\s+/g, '-')}
+                          />
+                        ))}
+                      </Suspense>
                     </div>
-                    <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
+                    <Suspense fallback={<PaginationSkeleton />}>
+                      <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
+                    </Suspense>
                   </div>
                 ) : (
                   <div className="text-center py-12">

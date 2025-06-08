@@ -1,15 +1,17 @@
-
 "use client"
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
-import { Input } from '@/components/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/components/ui/select';
-import WebinarCard from '@/components/components/webinar/WebinarCard';
-import { Webinar, getUpcomingWebinars, getPastWebinars, getFreeWebinars, getPaidWebinars } from '@/components/data/webinars';
-import { Loader2, Search } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { Webinar } from '@/components/data/webinars';
+import { Loader2 } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import { getWebinars } from '@/components/utils/api/webinars';
 
+const WebinarCard = dynamic(() => import('@/components/components/webinar/WebinarCard'), {
+  loading: () => (
+    <div className="h-[400px] w-full bg-gray-100 animate-pulse rounded-lg"></div>
+  )
+});
 
 const tabOptions = [
   {
@@ -121,9 +123,17 @@ const Webinars = () => {
                 <TabsContent value={tab}>
                   {webinars.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {webinars.map((webinar) => (
-                        <WebinarCard key={webinar.id} webinar={webinar} />
-                      ))}
+                      <Suspense fallback={
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {[...Array(6)].map((_, index) => (
+                            <div key={index} className="h-[400px] w-full bg-gray-100 animate-pulse rounded-lg"></div>
+                          ))}
+                        </div>
+                      }>
+                        {webinars.map((webinar) => (
+                          <WebinarCard key={webinar.id} webinar={webinar} />
+                        ))}
+                      </Suspense>
                     </div>
                   ) : (
                     <div className="text-center py-16">
@@ -131,8 +141,6 @@ const Webinars = () => {
                     </div>
                   )}
                 </TabsContent>
-
-
               </Tabs>
             </div>
           </div>

@@ -1,11 +1,37 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import Button from '@/components/components/Button';
-import { Award, BookOpen, Users, Check, ArrowRight, Heart, Lightbulb, FolderKanban, BriefcaseBusiness, Send, Clock } from 'lucide-react';
+import React, { useEffect, useRef, Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+
+// Lazy load components
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div className="h-16 bg-white"></div>,
+  ssr: false
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div className="h-64 bg-gray-100"></div>,
+  ssr: false
+});
+
+const Button = dynamic(() => import('@/components/components/Button'), {
+  loading: () => <div className="h-10 w-32 bg-gray-200 rounded animate-pulse"></div>,
+  ssr: false
+});
+
+// Lazy load Lucide icons
+const Award = dynamic(() => import('lucide-react').then(mod => mod.Award), { ssr: false });
+const BookOpen = dynamic(() => import('lucide-react').then(mod => mod.BookOpen), { ssr: false });
+const Users = dynamic(() => import('lucide-react').then(mod => mod.Users), { ssr: false });
+const Check = dynamic(() => import('lucide-react').then(mod => mod.Check), { ssr: false });
+const ArrowRight = dynamic(() => import('lucide-react').then(mod => mod.ArrowRight), { ssr: false });
+const Heart = dynamic(() => import('lucide-react').then(mod => mod.Heart), { ssr: false });
+const Lightbulb = dynamic(() => import('lucide-react').then(mod => mod.Lightbulb), { ssr: false });
+const FolderKanban = dynamic(() => import('lucide-react').then(mod => mod.FolderKanban), { ssr: false });
+const BriefcaseBusiness = dynamic(() => import('lucide-react').then(mod => mod.BriefcaseBusiness), { ssr: false });
+const Send = dynamic(() => import('lucide-react').then(mod => mod.Send), { ssr: false });
+const Clock = dynamic(() => import('lucide-react').then(mod => mod.Clock), { ssr: false });
 
 const About = () => {
   const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -66,43 +92,45 @@ const About = () => {
     }
   ];
 
- const team = [
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Deb_bc6a9c9aec.webp',
-    name: 'Debajyoti',
-    designation: 'CEO',
-  },
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Srinivas_3f5cb08d93.webp',
-    name: 'Srini',
-    designation: 'Product and Delivery',
-  },
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Shruti_8a032072a7.webp',
-    name: 'Shruti',
-    designation: 'Marketing and Corporate Relations',
-  },
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Anushri_cff54247af.webp',
-    name: 'Anushri',
-    designation: 'Counselling and Admissions',
-  },
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Avinash_944f8ef744.webp',
-    name: 'Avinash',
-    designation: 'Support',
-  },
-  {
-    photo: 'https://strapi.odinschool.com/uploads/Bingi_a3cda642a8.webp',
-    name: 'Balachandra',
-    designation: 'Placements',
-  },
-];
+  const team = [
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Deb_bc6a9c9aec.webp',
+      name: 'Debajyoti',
+      designation: 'CEO',
+    },
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Srinivas_3f5cb08d93.webp',
+      name: 'Srini',
+      designation: 'Product and Delivery',
+    },
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Shruti_8a032072a7.webp',
+      name: 'Shruti',
+      designation: 'Marketing and Corporate Relations',
+    },
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Anushri_cff54247af.webp',
+      name: 'Anushri',
+      designation: 'Counselling and Admissions',
+    },
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Avinash_944f8ef744.webp',
+      name: 'Avinash',
+      designation: 'Support',
+    },
+    {
+      photo: 'https://strapi.odinschool.com/uploads/Bingi_a3cda642a8.webp',
+      name: 'Balachandra',
+      designation: 'Placements',
+    },
+  ];
 
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Suspense fallback={<div className="h-16 bg-white"></div>}>
+        <Navbar />
+      </Suspense>
 
       <main className="flex-grow">
         {/* Hero Section */}
@@ -183,36 +211,36 @@ const About = () => {
 
 
         {/* Meet the Team */}
-<section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
-  <div className="container">
-    <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
-      <h2 className="heading-lg mb-4">Meet the <span className='text-primary-600'>Team</span></h2>
-      <p className="body-md text-gray-600">
-        Our passionate and skilled team drives OdinSchool’s mission. With deep industry expertise, they ensure our learners succeed.
-      </p>
-    </div>
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
+          <div className="container">
+            <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
+              <h2 className="heading-lg mb-4">Meet the <span className='text-primary-600'>Team</span></h2>
+              <p className="body-md text-gray-600">
+                Our passionate and skilled team drives OdinSchool's mission. With deep industry expertise, they ensure our learners succeed.
+              </p>
+            </div>
 
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6 max-w-4xl mx-auto">
-      {team?.map((member, index) => (
-        <div
-          key={index}
-          ref={addToRefs}
-          className="bg-white hover:bg-primary-100 transition-all duration-300 rounded-xl hover:border-opacity-0 border shadow-sm p-6 text-center opacity-0"
-        >
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden">
-            <img
-              src={member.photo}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6 max-w-4xl mx-auto">
+              {team?.map((member, index) => (
+                <div
+                  key={index}
+                  ref={addToRefs}
+                  className="bg-white hover:bg-primary-100 transition-all duration-300 rounded-xl hover:border-opacity-0 border shadow-sm p-6 text-center opacity-0"
+                >
+                  <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden">
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg text-primary-600 font-semibold mb-2">{member.name}</h3>
+                  <p className="md:text-sm text-xs text-gray-700">{member.designation}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <h3 className="text-lg text-primary-600 font-semibold mb-2">{member.name}</h3>
-          <p className="md:text-sm text-xs text-gray-700">{member.designation}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+        </section>
 
 
         {/* Our Values */}
@@ -247,7 +275,9 @@ const About = () => {
 
       </main>
 
-      <Footer />
+      <Suspense fallback={<div className="h-64 bg-gray-100"></div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

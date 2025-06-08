@@ -1,20 +1,94 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/components/ui/card';
-import { Separator } from '@/components/components/ui/separator';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import Testimonials from '@/components/components/Testimonials';
-import OrganizationLogos from '@/components/components/OrganizationLogos';
-import CallbackForm from '@/components/components/CallbackForm';
-import ExtrasSection1 from '@/components/components/ExtrasSection1';
-import NewsSection from '@/components/components/NewsSection';
-import WhyLearnDataAI from '@/components/components/WhyLearnDataAI';
+import dynamic from 'next/dynamic';
 
-import { BookOpen, GraduationCap, Clock, Laptop, Lightbulb, CreditCard, Medal, Users, Calendar, Sparkles, BookMarked, Star, Brain, Image, Circle, Triangle, Check, ChevronRight, Target, Trophy, BookOpenCheck } from 'lucide-react';
-import OdinTalks from '@/components/components/OdinTalks';
-import FeaturedCourses from '@/components/components/FeaturedCourses';
+
+
+
+
+import { Check } from 'lucide-react';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
+
+const CardDescription = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardDescription })), {
+  ssr: true
+});
+
+const CardFooter = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardFooter })), {
+  ssr: true
+});
+
+const CardHeader = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardHeader })), {
+  ssr: true
+});
+
+const CardTitle = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardTitle })), {
+  ssr: true
+});
+
+const Separator = dynamic(() => import('@/components/components/ui/separator').then(mod => ({ default: mod.Separator })), {
+  ssr: true
+});
+
+const Testimonials = dynamic(() => import('@/components/components/Testimonials'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const OrganizationLogos = dynamic(() => import('@/components/components/OrganizationLogos'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const CallbackForm = dynamic(() => import('@/components/components/CallbackForm'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const ExtrasSection1 = dynamic(() => import('@/components/components/ExtrasSection1'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const NewsSection = dynamic(() => import('@/components/components/NewsSection'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const WhyLearnDataAI = dynamic(() => import('@/components/components/WhyLearnDataAI'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const OdinTalks = dynamic(() => import('@/components/components/OdinTalks'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const FeaturedCourses = dynamic(() => import('@/components/components/FeaturedCourses'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
 
 const mentorsData = [
   {

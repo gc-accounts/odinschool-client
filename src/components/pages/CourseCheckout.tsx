@@ -1,19 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Check, CreditCard, ShieldCheck, ChevronLeft, Clock, User, BookOpen, Loader2 } from 'lucide-react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/components/ui/card';
-import { Input } from '@/components/components/ui/input';
-import { Label } from "@/components/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/components/ui/radio-group";
-import { courses } from '@/components/data/courses';
-import { getCourse } from '@/components/utils/api/courses';
-import { useToast } from '@/components/hooks/use-toast';
-import axios from 'axios';
+import { ShieldCheck, ChevronLeft, Loader2 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Script from 'next/script';
+import { useToast } from '@/components/hooks/use-toast';
+import { getCourse } from '@/components/utils/api/courses';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
+
+const CardHeader = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardHeader })), {
+  ssr: true
+});
+
+const CardTitle = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardTitle })), {
+  ssr: true
+});
+
+const Input = dynamic(() => import('@/components/components/ui/input').then(mod => ({ default: mod.Input })), {
+  ssr: true
+});
+
+const Label = dynamic(() => import('@/components/components/ui/label').then(mod => ({ default: mod.Label })), {
+  ssr: true
+});
+
+const RadioGroup = dynamic(() => import('@/components/components/ui/radio-group').then(mod => ({ default: mod.RadioGroup })), {
+  ssr: true
+});
+
+const RadioGroupItem = dynamic(() => import('@/components/components/ui/radio-group').then(mod => ({ default: mod.RadioGroupItem })), {
+  ssr: true
+});
 
 interface ApiCourseResponse {
   id: string;
@@ -623,7 +661,6 @@ const CourseCheckout = () => {
                     </RadioGroup>
                   </div>
 
-                  {/* Coupon Code Section */}
                   {/* Coupon Code Section */}
                   <div className="border p-4 rounded space-y-2 mt-4">
                     <div className="flex items-center space-x-2">

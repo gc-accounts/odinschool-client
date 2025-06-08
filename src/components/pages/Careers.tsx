@@ -1,11 +1,34 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent } from '@/components/components/ui/card';
+import dynamic from 'next/dynamic';
 import { Users, GraduationCap, Building, CheckCircle } from 'lucide-react';
-import CallbackForm from '@/components/components/CallbackForm';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
+
+const CallbackForm = dynamic(() => import('@/components/components/CallbackForm'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
 
 const Careers = () => {
   useEffect(() => {
@@ -80,7 +103,7 @@ const Careers = () => {
       id: 3,
       src: "https://strapi.odinschool.com/uploads/Maneesh_f0f1c3dbb7.webp",
       name: "Manish",
-      desc: "I am proud to be a part of OdinSchool and contribute to the meaningful work that we do here. This is more than just a job to me; it’s a very purposeful career that let’s me make a difference. My team has passionate, professional individuals who bring a very diverse set of perspectives to the table. I am constantly inspired!"
+      desc: "I am proud to be a part of OdinSchool and contribute to the meaningful work that we do here. This is more than just a job to me; it's a very purposeful career that let's me make a difference. My team has passionate, professional individuals who bring a very diverse set of perspectives to the table. I am constantly inspired!"
     },
 
   ];
@@ -97,7 +120,7 @@ const Careers = () => {
                 Careers at OdinSchool
               </h1>
               <p className="text-lg md:text-xl mb-8 text-white/90">
-                As an upskilling organization dedicated to transforming lives and careers, we understand the importance of having the right people on board. At OdinSchool, we have witnessed our graduates break free from the limitations that held them back and reach new heights in their professional lives. If you have what it takes to be the catalyst that ignites success in others’ careers, we welcome you onboard, heartily.
+                As an upskilling organization dedicated to transforming lives and careers, we understand the importance of having the right people on board. At OdinSchool, we have witnessed our graduates break free from the limitations that held them back and reach new heights in their professional lives. If you have what it takes to be the catalyst that ignites success in others' careers, we welcome you onboard, heartily.
               </p>
               <Link href="/contact">
                 <Button size="lg" variant="secondary" className="text-primary-700 font-medium">
@@ -155,7 +178,7 @@ const Careers = () => {
                   </div>
                 </div>
                 <p className="text-gray-600 italic text-sm">
-                  “{emp.desc}”
+                  "{emp.desc}"
                 </p>
               </div>
             ))}

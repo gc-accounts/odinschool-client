@@ -1,19 +1,14 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import MetaTags from '@/components/components/MetaTags';
 import Markdown from '@/components/components/Markdown';
 import { Button } from '@/components/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/components/ui/tabs';
-import JobOpportunities from '@/components/components/JobOpportunities';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/components/ui/card';
 import {
-  ArrowLeft, Clock, BarChart, Award, CheckCircle2,
-  Download, FileText, Users, Zap, Gift, BookOpen,
-  Briefcase, Star, PlayCircle, MessageSquare, CheckCircle,
-  Loader2
+  ArrowLeft, Star, Loader2
 } from 'lucide-react';
 import RichTextRenderer from '@/components/utils/RichTextRenderer';
 import Link from 'next/link';
@@ -29,7 +24,6 @@ import InstructorProfile from '@/components/components/InstructorProfile';
 import CollegeSpotlight from '@/components/components/CollegeSpotlight';
 import FAQsection from '@/components/components/FAQsection';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/components/ui/accordion";
-import CareerServices from '@/components/components/CareerServices';
 import StatsSection from '@/components/components/StatsSection';
 import ExtrasSection2 from '@/components/components/ExtrasSection2';
 import CareerServices1 from '@/components/components/CareerServices1';
@@ -46,12 +40,10 @@ import axios from 'axios';
 import { useToast } from '@/components/hooks/use-toast';
 import { FieldConfig } from '@/components/components/form/DynamicForm';
 import { courseHighlights } from '@/components/data/courseHighlights';
-import { usePathname } from 'next/navigation'
 import CourseCertificate from '@/components/components/course-details/CourseCertificate';
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { courseToolsData } from '@/components/data/course-section/tools/courseToolsData';
 import CourseProject from '@/components/components/course-details/CourseProject';
-import { useRouter } from 'next/navigation';
 
 import { useProgram } from '@/context/ProgramContext';
 import DsEliteFold from '@/components/components/DsEliteFold';
@@ -64,7 +56,7 @@ import Mentorship from '@/components/components/Mentorship';
 import DsEliteSuccessStories from '@/components/components/DsEliteSuccessStories';
 import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
-import RequestCallback from '@/components/components/custom-component/RequestCallback';
+
 const formFields: FieldConfig[] = [
 
   {
@@ -131,6 +123,7 @@ interface Course {
   title: string;
   description: string;
   fullDescription?: string;
+  longDescription?: string;
   level: string;
   on_sale: boolean;
   has_certificate: boolean;
@@ -162,6 +155,10 @@ interface Course {
   }>;
   price?: number;
   modules?: any[];
+  cohortDates?: {
+    cohort1?: string;
+    cohort2?: string;
+  };
 }
 
 interface CourseHighlight {
@@ -260,8 +257,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={'Data Science Elite Course'} data={getCourseData(course.slug).mentors} />,
+        () => <InstructorProfile
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={'Data Science Elite Course'}
+          data={getCourseData(course.slug).mentors}
+        />,
         () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'}
           data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Course'} />,
@@ -274,8 +274,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={'Generative AI Course'} data={getCourseData(course.slug).mentors} />,
+        () => <InstructorProfile
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={'Generative AI Course'}
+          data={getCourseData(course.slug).mentors}
+        />,
         () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
           data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
@@ -289,8 +292,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         // () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).mentors} />,
+        () => <InstructorProfile
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={'Certification Program in Applied Generative AI'}
+          data={getCourseData(course.slug).mentors}
+        />,
         () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Certification Program in Applied Generative AI'} />,
         () => <FAQsection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
@@ -306,8 +312,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
         () => <ToolsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-          slug={'Data Science Elite Course'} data={getCourseData(course.slug).mentors} />,
+        () => <InstructorProfile
+          sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          slug={'Data Science Elite Course'}
+          data={getCourseData(course.slug).mentors}
+        />,
         () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'}
           data={getCourseData(course.slug).careerPath} />,
         () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} />,
@@ -325,7 +334,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <JobsSection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <ToolsSection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
       () => <PlatformComparison sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-      () => <InstructorProfile sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
+      () => <InstructorProfile
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
+        data={getCourseData(course.slug).mentors}
+      />,
       () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} data={getCourseData(course.slug).careerPath} />,
       () => <CareerServices1
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
@@ -336,7 +349,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
     "2": [
       () => <CertificationSection />,
       () => <Testimonials />,
-      () => <InstructorProfile />,
+      () => <InstructorProfile
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
+        data={getCourseData(course.slug).mentors}
+      />,
       () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
     "3": [
@@ -345,7 +362,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <OrganizationLogos />,
       () => <CareerServices2 />,
       () => <CertificationSection1 />,
-      () => <InstructorProfile />,
+      () => <InstructorProfile
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
+        data={getCourseData(course.slug).mentors}
+      />,
       () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
     ],
     "4": [
@@ -354,7 +375,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <Testimonials />,
       () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
       () => <CollegeSpotlight />,
-      () => <InstructorProfile />,
+      () => <InstructorProfile
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
+        data={getCourseData(course.slug).mentors}
+      />,
       () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
     "5": [
@@ -363,7 +388,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <JobsSection />,
       () => <ExtrasSection2 />,
       () => <OrganizationLogos />,
-      () => <InstructorProfile />,
+      () => <InstructorProfile
+        sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
+        data={getCourseData(course.slug).mentors}
+      />,
       () => <FAQsection data={getCourseData(course.slug).faqs} />,
     ],
   };
@@ -546,7 +575,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
 
                 </div>
-                <div className="mt-4 text-lg text-gray-600">{<RichTextRenderer content={course?.longDescription} /> || course.description}</div>
+                <div className="mt-4 text-lg text-gray-600">
+                  {course?.longDescription ? (
+                    <RichTextRenderer content={course.longDescription} />
+                  ) : (
+                    course.description
+                  )}
+                </div>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
                     <Button size="lg" onClick={() => setFormOpen(true)}>
@@ -641,7 +676,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                       <div className="lg:col-span-2">
                         <h2 className="text-2xl font-bold mb-2">About This Course</h2>
                         <div className="prose max-w-none">
-                          <div>{<RichTextRenderer content={course?.longDescription} /> || course.fullDescription || course.description}</div>
+                          <div>
+                            {course?.longDescription ? (
+                              <RichTextRenderer content={course.longDescription} />
+                            ) : (
+                              course.fullDescription || course.description
+                            )}
+                          </div>
 
 
                           <div className='mt-6'>

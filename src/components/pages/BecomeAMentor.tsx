@@ -2,11 +2,29 @@
 
 import React, { useEffect } from 'react';
 import { Users, Award, Clock, DollarSign } from 'lucide-react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent } from '@/components/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/components/ui/avatar';
+import dynamic from 'next/dynamic';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
 
 const BecomeAMentor = () => {
 

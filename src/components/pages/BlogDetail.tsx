@@ -3,13 +3,47 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Share2, ChevronLeft, Calendar, User, Tag } from 'lucide-react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import MetaTags from '@/components/components/MetaTags';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/components/ui/card';
+import dynamic from 'next/dynamic';
 import { blogPosts } from '@/components/data/blog';
-import { Badge } from '@/components/components/ui/badge';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const MetaTags = dynamic(() => import('@/components/components/MetaTags'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
+
+const CardHeader = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardHeader })), {
+  ssr: true
+});
+
+const CardTitle = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardTitle })), {
+  ssr: true
+});
+
+const Badge = dynamic(() => import('@/components/components/ui/badge').then(mod => ({ default: mod.Badge })), {
+  ssr: true
+});
 
 interface BlogPost {
   id: string;

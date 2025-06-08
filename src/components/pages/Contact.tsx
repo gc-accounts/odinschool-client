@@ -1,13 +1,28 @@
-
 import React, { useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import contactFormFields from '@/components/data/contactFormFields';
-import DynamicForm from '@/components/components/form/DynamicForm';
-import { submitToZoho } from '@/components/utils/api/submitToZoho';
+import dynamic from 'next/dynamic';
 import { useToast } from '@/components/hooks/use-toast';
+import contactFormFields from '@/components/data/contactFormFields';
+import { submitToZoho } from '@/components/utils/api/submitToZoho';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const DynamicForm = dynamic(() => import('@/components/components/form/DynamicForm'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -60,10 +75,10 @@ const Contact = () => {
           <div className="container mx-auto px-4">
 
             <div className="flex items-center justify-center md:mb-6 mb-4">
-                          <div className="bg-white/10 rounded-full p-3">
-                            <Send className="md:h-8 md:w-8 h-6 w-6" />
-                          </div>
-                        </div>
+              <div className="bg-white/10 rounded-full p-3">
+                <Send className="md:h-8 md:w-8 h-6 w-6" />
+              </div>
+            </div>
 
             <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Contact Us</h1>
             <p className="md:text-lg text-md text-center max-w-2xl mx-auto">

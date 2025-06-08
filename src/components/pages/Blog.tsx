@@ -3,15 +3,45 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, Tag, Calendar, Clock, BookOpenText, Loader2 } from 'lucide-react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import { Input } from '@/components/components/ui/input';
-import { Card, CardContent, CardFooter } from '@/components/components/ui/card';
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/components/ui/pagination';
-import { blogPosts } from '@/components/data/blog';
+import dynamic from 'next/dynamic';
 import { getBlogs } from '@/components/utils/api/blog';
-import PaginationComponent from '@/components/components/PaginationComponent';
+
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
+
+const Button = dynamic(() => import('@/components/components/ui/button').then(mod => ({ default: mod.Button })), {
+  ssr: true
+});
+
+const Input = dynamic(() => import('@/components/components/ui/input').then(mod => ({ default: mod.Input })), {
+  ssr: true
+});
+
+const Card = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.Card })), {
+  ssr: true
+});
+
+const CardContent = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardContent })), {
+  ssr: true
+});
+
+const CardFooter = dynamic(() => import('@/components/components/ui/card').then(mod => ({ default: mod.CardFooter })), {
+  ssr: true
+});
+
+
+
+const PaginationComponent = dynamic(() => import('@/components/components/PaginationComponent'), {
+  loading: () => <div>Loading...</div>,
+  ssr: true
+});
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm1] = useState('');
@@ -57,17 +87,17 @@ const BlogPage = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
 
           <div className="container mx-auto px-4">
-                      <div className="flex items-center justify-center md:mb-6 mb-4">
-                                    <div className="bg-white/10 rounded-full p-3">
-                                      <BookOpenText className="md:h-8 md:w-8 h-6 w-6" />
-                                    </div>
-                                  </div>
-          
-                      <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Stay current with the latest insights on our Blog!</h1>
-                      <p className="md:text-lg text-md text-center max-w-2xl mx-auto mb-4">
-                        Explore insights on Data Science, Generative AI, career growth, and in-demand tech skills — all curated to help you stay ahead.
-                      </p>
-                      <div className="max-w-md mx-auto relative">
+            <div className="flex items-center justify-center md:mb-6 mb-4">
+              <div className="bg-white/10 rounded-full p-3">
+                <BookOpenText className="md:h-8 md:w-8 h-6 w-6" />
+              </div>
+            </div>
+
+            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Stay current with the latest insights on our Blog!</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto mb-4">
+              Explore insights on Data Science, Generative AI, career growth, and in-demand tech skills — all curated to help you stay ahead.
+            </p>
+            <div className="max-w-md mx-auto relative">
               <Input
                 type="text"
                 placeholder="Search articles..."
@@ -77,7 +107,7 @@ const BlogPage = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
-                    </div>
+          </div>
         </section>
 
         <div className="container mx-auto px-4 py-12">

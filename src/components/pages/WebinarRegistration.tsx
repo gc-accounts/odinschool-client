@@ -17,6 +17,7 @@ import { Input } from '@/components/components/ui/input';
 import { Checkbox } from '@/components/components/ui/checkbox';
 import { formatDate } from '@/components/utils/dateUtils';
 import { getWebinar } from '@/components/utils/api/webinars';
+import dynamic from 'next/dynamic';
 
 interface ApiWebinarResponse {
   id: string;
@@ -256,4 +257,12 @@ const WebinarRegistration = () => {
   );
 };
 
-export default WebinarRegistration;
+// Export the component with dynamic import
+export default dynamic(() => Promise.resolve(WebinarRegistration), {
+  loading: () => (
+    <div className="flex justify-center items-center h-screen">
+      <Loader2 className="w-10 h-10 animate-spin" />
+    </div>
+  ),
+  ssr: false // Disable server-side rendering for this component
+});
