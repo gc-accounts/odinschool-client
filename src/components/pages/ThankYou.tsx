@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react';
 import { CheckCircle, Home, BookOpen, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
