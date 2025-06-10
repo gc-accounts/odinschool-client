@@ -32,4 +32,13 @@ export const CourseCertificateData = [
         certificate_img: ['https://strapi.odinschool.com/uploads/DS_Elite_Course_Certificate_7ae53e8cea.webp']
     },
 
+     {
+        id: 5,
+        title: 'Investment Banking & Finance Operations Elite Course',
+        sub_title: "Showcase your certificate as a symbol of your Investment banking operations expertise.",
+        path: '/investment-banking-and-finance-operations-elite-course',
+        points: ['Official and Verified', 'Easily Sharable', 'Enhances Credibility'],
+        certificate_img: ['https://strapi.odinschool.com/uploads/IBFO_cert_2a7f595f4d.webp']
+    },
+
 ]

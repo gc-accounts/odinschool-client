@@ -31,4 +31,18 @@ export const courseHighlights = [
             'Complete Career Support: Don’t just “GET” opportunities”; get complete support to “CRACK” them too',
         ]
     },
+
+{
+    id: 5,
+    title: 'Investment Banking & Finance Operations Elite Course',
+    path: '/investment-banking-and-finance-operations-elite-course',
+    highlight: [
+        '<span class="font-semibold">10x industry exposure</span>: Weekly live sessions and simulations that mirror actual investment banking workflows — not just textbook theory.',
+        '<span class="font-semibold">10+ Hiring Sprints</span>: Exclusive placement drives focused on roles in trade support, settlements, compliance, and asset management.',
+        '<span class="font-semibold">Mentorship by Professionals</span>: Get guided by experienced professionals from financial services firms through interactive, mentor-led sessions.',
+        '<span class="font-semibold">Operate Like the Industry Does</span>: Learn by executing investment banking, trade lifecycle, NAV calculations, reconciliation, and regulatory checks.',
+        '<span class="font-semibold">Career-Ready from Day One</span>: Go beyond resumes — get trained to speak the language of finance recruiters and crack high-stakes interviews.'
+    ]
+},
+
 ]
