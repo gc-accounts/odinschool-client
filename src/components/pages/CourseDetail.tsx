@@ -326,17 +326,17 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ],
 
-       "5":
+    "5":
       [
-        () => <DataLeaders  slug={'Investment Banking & Finance Operations Elite Course'} data={getCourseData(course.slug).dataLeaders}  sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
+        () => <DataLeaders slug={'Investment Banking & Finance Operations Elite Course'} data={getCourseData(course.slug).dataLeaders} sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <SuccessStoriesIB sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
         () => <OrganizationLogos sectionClass={'bg-primary-50  py-[50px]  md:py-[70px]'} />,
         () => <PlatformComparison sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />,
-        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Investment Banking & Finance Operations Elite Course'}  data={getCourseData(course.slug).mentors} />,
-        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}  slug={'Investment Banking & Finance Operations Elite Course'}  data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}  slug={'Data Science Elite Course'} />,  
-        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} 
-        data={getCourseData(course.slug).faqs} />,
+        () => <InstructorProfile sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Investment Banking & Finance Operations Elite Course'} data={getCourseData(course.slug).mentors} />,
+        () => <CareerOpportunities sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Investment Banking & Finance Operations Elite Course'} data={getCourseData(course.slug).careerPath} />,
+        () => <CareerServices1 sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Data Science Elite Course'} />,
+        () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
+          data={getCourseData(course.slug).faqs} />,
       ],
   };
 
@@ -415,12 +415,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
 
-  const sectionsToRender = 
-  course.slug === 'data-science-course' ? sectionConfig["1"] : 
-  course.slug === 'generative-ai-bootcamp' ? sectionConfig["2"] : 
-  course.slug === 'generative-ai-course-iitg' ? sectionConfig["3"] : 
-  course.slug === 'data-science-elite-course' ? sectionConfig["4"] :
-  course.slug === 'investment-banking-and-finance-operations-elite-course' ? sectionConfig["5"] : '';
+  const sectionsToRender =
+    course.slug === 'data-science-course' ? sectionConfig["1"] :
+      course.slug === 'generative-ai-bootcamp' ? sectionConfig["2"] :
+        course.slug === 'generative-ai-course-iitg' ? sectionConfig["3"] :
+          course.slug === 'data-science-elite-course' ? sectionConfig["4"] :
+            course.slug === 'investment-banking-and-finance-operations-elite-course' ? sectionConfig["5"] : '';
 
 
 
@@ -488,7 +488,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       // ✅ Redirect to thank-you page with specific course route 
       const courseSlug = course.slug || '';
       setTimeout(() => {
-        router.push(`/thank-you-2?title=${courseSlug}`);
+        router.push(`/thank-you?title=${courseSlug}`);
       }, 1000);
 
 
@@ -717,13 +717,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                           <div className='mt-6'>
                             <p className='text-lg font-bold mb-2'>Course Highlights</p>
                             {courseHighlightData?.highlight?.map((point, index) => (
-  <li className="flex items-start" key={index}>
-    <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-    </svg>
-    <span dangerouslySetInnerHTML={{ __html: point }} />
-  </li>
-))}
+                              <li className="flex items-start" key={index}>
+                                <svg className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span dangerouslySetInnerHTML={{ __html: point }} />
+                              </li>
+                            ))}
 
 
                           </div>

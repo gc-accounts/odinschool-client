@@ -167,7 +167,7 @@ const HeroSection = () => {
 
 
       setTimeout(() => {
-        router.push(`/thank-you-2`);
+        router.push(`/thank-you`);
       }, 1000);
 
     } catch (err) {

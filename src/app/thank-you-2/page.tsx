@@ -1,8 +1,9 @@
 import React from 'react'
-import ThankYou2 from '@/components/pages/ThankYou2'
+import ThankYou from '@/components/pages/ThankYou';
+
 const page = () => {
   return (
-    <ThankYou2 />
+    <ThankYou />
   )
 }
 

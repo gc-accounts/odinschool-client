@@ -140,7 +140,7 @@ const CourseCheckoutCertificate = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // In a real app, you would process payment here
-    window.location.href = '/thank-you';
+    window.location.href = '/thank-you-2';
   };
 
   const handlePaymentMethodChange = (value: 'credit-card' | 'paypal') => {
