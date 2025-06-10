@@ -19,12 +19,16 @@ const nextConfig = {
     //  ⬇️ common mobile/desktop breakpoints
     deviceSizes: [640, 768, 1024, 1280, 1600],
     // allow your S3 / CDN domains
-    domains: ['strapi.odinschool.com'],
+    domains: ['strapi.odinschool.com', 'www.odinschool.com'],
     // or use fine-grained patterns (v14+)
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'strapi.odinschool.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.odinschool.com', // ✅ added this block
       },
     ],
     // modern formats first
