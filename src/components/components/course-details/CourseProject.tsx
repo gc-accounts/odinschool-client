@@ -3,16 +3,24 @@ import React, { useEffect } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Download } from 'lucide-react';
 import Button from '@/components/components/Button';
+
 import { DsProjectsData } from '@/components/data/course-section/projects/DsProjectsData';
 import { DsEliteProjectsData } from '@/components/data/course-section/projects/DsEliteProjectsData';
 import { GenAIProjectsData } from '@/components/data/course-section/projects/GenAIProjectsData';
 import { GenAIIITGProjectsData } from '@/components/data/course-section/projects/GenAIIITGProjectsData';
+import { IbProjectsData } from '@/components/data/course-section/projects/IbProjectsData';
+
 import { getDataByPage } from '@/components/utils/getDataByPage';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 const CourseProject = () => {
   const path = usePathname()
-  const projectData = path === '/data-science-course' ? getDataByPage(DsProjectsData, path) : path === '/generative-ai-bootcamp' ? getDataByPage(GenAIProjectsData, path) : path === '/generative-ai-course-iitg' ? getDataByPage(GenAIIITGProjectsData, path) : path === '/data-science-elite-course' ? getDataByPage(DsEliteProjectsData, path) : ''
+  const projectData = 
+  path === '/data-science-course' ? getDataByPage(DsProjectsData, path) : 
+  path === '/generative-ai-bootcamp' ? getDataByPage(GenAIProjectsData, path) : 
+  path === '/generative-ai-course-iitg' ? getDataByPage(GenAIIITGProjectsData, path) : 
+  path === '/data-science-elite-course' ? getDataByPage(DsEliteProjectsData, path) :
+  path === '/investment-banking-and-finance-operations-elite-course' ? getDataByPage(IbProjectsData, path) : ''
 
   useEffect(() => {
     console.log('----------projectData---', projectData);

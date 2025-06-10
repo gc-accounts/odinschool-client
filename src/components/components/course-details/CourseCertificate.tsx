@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { CourseCertificateData } from '@/components/data/CourseCertificateData'
@@ -7,6 +8,11 @@ import Image from 'next/image'
 const CourseCertificate = () => {
     const path = usePathname()
     const courseCertificateData = getDataByPage(CourseCertificateData, path)
+
+     useEffect(() => {
+        console.log('----------courseCertificateData---', courseCertificateData);
+    
+      })
 
 
     return (
