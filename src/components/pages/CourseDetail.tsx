@@ -58,6 +58,7 @@ import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
 import SuccessStoriesIB from '@/components/components/SuccessStoriesIB';
 import Image from 'next/image';
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 
 
 const formFields: FieldConfig[] = [
@@ -581,22 +582,22 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       />
       <div>
         <Navbar />
-        <section className="bg-gradient-to-r from-primary-50 to-primary-100 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+        <section className="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px] text-white">
           <div className="container">
             <div className="flex items-center ">
-              <Link href="/courses" className="text-primary-600 hover:underline flex items-center">
-                <ArrowLeft className="mr-2 h-5 w-5" />
+              <Link href="/courses" className="text-white hover:underline flex items-center">
+                <ArrowLeft className="mr-2 h-5 w-5 text-white" />
                 Back to Courses
               </Link>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">{course.title}</h1>
+                <h1 className="text-3xl font-bold text-white sm:text-5xl">{course.title}</h1>
                 <div className="flex items-center space-x-4 mt-4">
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
 
                 </div>
-                <div className="mt-4 text-lg text-gray-600">
+                <div className="mt-4 text-lg text-white">
                   {course?.longDescription ? (
                     <RichTextRenderer content={course.longDescription} />
                   ) : (
@@ -605,7 +606,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 </div>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
-                    <Button size="lg" onClick={() => setFormOpen(true)}>
+                    <Button size="lg" className='bg-yellow-500 hover:bg-yellow-500 text-black' onClick={() => setFormOpen(true)}>
                       Talk to an Expert
                     </Button>
                   </div>
@@ -674,7 +675,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
               </div>
               <div className="rounded-xl overflow-hidden ">
-                <Image
+                {/* <Image
                   src={course.image}
                   alt={course.title}
                   className="w-full h-auto object-cover"
@@ -682,7 +683,11 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   loading="lazy"
                   width={500}
                   height={500}
-                />
+                /> */}
+
+                <PrimaryForm slug={course.slug} />
+
+
               </div>
             </div>
           </div>

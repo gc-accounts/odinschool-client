@@ -75,7 +75,8 @@ const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) =
             Meet our <span className="text-primary-600">Mentors and Speakers!</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">
-            Our instructors are active professionals with years of real-world experience in their fields
+            Get the chance to interact with professionals from top companies, who bring years of real-world experience to the table.
+
           </p>
         </div>
 

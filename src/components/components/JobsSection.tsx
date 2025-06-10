@@ -42,7 +42,8 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
             Job Drives<span className="text-blue-600"> Every Month!</span>
           </h2>
           <p className="text-md text-gray-600">
-            Participate in company assessments, get shortlisted based on your skills—not your background—and attend at least three placement drives each month.
+            Participate in company assessments, get shortlisted based on your skills—not your background—and attend multiple placement drives every month.
+            {/* Participate in company assessments, get shortlisted based on your skills—not your background—and attend at least three placement drives each month. */}
           </p>
         </div>
 

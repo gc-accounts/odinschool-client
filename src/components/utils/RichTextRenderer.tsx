@@ -16,7 +16,7 @@ const RichTextRenderer: React.FC<Props> = ({ content }) => {
       {content?.map((block, index) => {
         if (block.type === 'paragraph') {
           return (
-            <p key={index} className="text-base leading-relaxed text-gray-800">
+            <p key={index} className="text-base leading-relaxed">
               {block.children?.map((child, idx) => {
                 if (child.type === 'text') {
                   return <span key={idx}>{child.text}</span>;

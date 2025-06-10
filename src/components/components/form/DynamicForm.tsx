@@ -1,15 +1,24 @@
+// DynamicForm.tsx
 'use client';
 
 import { useForm, useWatch } from 'react-hook-form';
 import { Button } from '@/components/components/ui/button';
 import { Input } from '@/components/components/ui/input';
 import {
-  Select, SelectTrigger, SelectContent, SelectItem, SelectValue
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
 } from '@/components/components/ui/select';
 import {
-  Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
 } from '@/components/components/ui/form';
-import { useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 export interface FieldConfig {
   name: string;
@@ -28,27 +37,33 @@ export interface FieldConfig {
 interface DynamicFormProps {
   fields: FieldConfig[];
   initialValues?: { [key: string]: any };
-  buttonText: String;
-  onSubmit: (data: any, reset: () => void) => void;
+  buttonText: string;
+  onSubmit: (data: any, reset: () => void) => Promise<void>;
 }
 
-const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: DynamicFormProps) => {
-  // Extend initialValues with all field names set to '' if missing
+const DynamicForm: React.FC<DynamicFormProps> = ({
+  fields,
+  initialValues = {},
+  buttonText,
+  onSubmit,
+}) => {
   const extendedDefaults = fields.reduce((acc, field) => {
     acc[field.name] = initialValues[field.name] ?? '';
     return acc;
   }, {} as Record<string, any>);
 
-  const form = useForm({
-    defaultValues: extendedDefaults,
-  });
+  const form = useForm({ defaultValues: extendedDefaults });
+  const {
+    reset,
+    control,
+    register,
+    handleSubmit,
+    setValue,
+    formState: { isSubmitting },
+  } = form;
 
-  const { reset, control, register, handleSubmit, setValue } = form;
-
-  const handleFormSubmit = (data: any) => {
-    onSubmit(data, () => {
-      reset(extendedDefaults);
-    });
+  const handleFormSubmit = async (data: any) => {
+    await onSubmit(data, () => reset(extendedDefaults));
   };
 
   return (
@@ -61,11 +76,14 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
               control={control}
               name={field.name}
               rules={field.rules}
-              render={({ field: formField }) => (
+              render={({ field: f }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-xs">{field.label}</FormLabel>
                   <FormControl>
-                    <Input {...formField} className="focus:outline-none focus:border-primary-500" />
+                    <Input
+                      {...f}
+                      placeholder={field.label}
+                      className="focus:outline-none focus:border-primary-500"
+                    />
                   </FormControl>
                   <FormMessage className="font-medium text-xs" />
                 </FormItem>
@@ -78,40 +96,39 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
           if (field.type === 'hidden') {
             return <input key={field.name} type="hidden" {...register(field.name)} />;
           }
-
           if (field.type === 'select') {
-            const selectedValue = useWatch({ control, name: field.name });
-
+            const value = useWatch({ control, name: field.name });
             return (
               <FormField
                 key={field.name}
                 control={control}
                 name={field.name}
                 rules={field.rules}
-                render={({ field: formField }) => (
+                render={() => (
                   <FormItem>
-                    <FormLabel className="text-xs">{field.label}</FormLabel>
-                    <Select value={selectedValue} onValueChange={(val) => setValue(field.name, val)}>
-                      <FormControl>
+                    <FormControl>
+                      <Select
+                        value={value}
+                        onValueChange={(val) => setValue(field.name, val)}
+                      >
                         <SelectTrigger className="focus:outline-none focus:border-primary-500">
-                          <SelectValue placeholder={`Select ${field.label}`} />
+                          <SelectValue placeholder={field.label ? `Select ${field.label}` : ''} />
                         </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {field.options?.map((option) => (
-                          <SelectItem key={option} value={option}>
-                            {option}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                        <SelectContent>
+                          {field.options?.map((opt) => (
+                            <SelectItem key={opt} value={opt}>
+                              {opt}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
                     <FormMessage className="font-medium text-xs" />
                   </FormItem>
                 )}
               />
             );
           }
-
           if (field.type === 'textarea') {
             return (
               <FormField
@@ -119,12 +136,12 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
                 control={control}
                 name={field.name}
                 rules={field.rules}
-                render={({ field: formField }) => (
+                render={({ field: f }) => (
                   <FormItem>
-                    <FormLabel className="text-xs">{field.label}</FormLabel>
                     <FormControl>
                       <textarea
-                        {...formField}
+                        {...f}
+                        placeholder={field.label}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary-500 text-sm"
                         rows={4}
                       />
@@ -135,18 +152,20 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
               />
             );
           }
-
           return (
             <FormField
               key={field.name}
               control={control}
               name={field.name}
               rules={field.rules}
-              render={({ field: formField }) => (
+              render={({ field: f }) => (
                 <FormItem>
-                  <FormLabel className="text-xs">{field.label}</FormLabel>
                   <FormControl>
-                    <Input {...formField} className="focus:outline-none focus:border-primary-500" />
+                    <Input
+                      {...f}
+                      placeholder={field.label}
+                      className="focus:outline-none focus:border-primary-500"
+                    />
                   </FormControl>
                   <FormMessage className="font-medium text-xs" />
                 </FormItem>
@@ -155,8 +174,13 @@ const DynamicForm = ({ fields, initialValues = {}, buttonText, onSubmit }: Dynam
           );
         })}
 
-        <Button type="submit" className="w-full mt-6">
-          {buttonText}
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full mt-6 flex items-center justify-center"
+        >
+          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isSubmitting ? 'Submitting...' : buttonText}
         </Button>
       </form>
     </Form>
