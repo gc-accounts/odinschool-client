@@ -146,9 +146,9 @@ const OdinTalks = () => {
       <main className="flex-grow pb-16">
         <div className="py-16 bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-4">Stay current with the latest insights on our Blog!</h1>
+            <h1 className="text-4xl font-bold text-center mb-4">OdinTalks: Learn for free from experts!</h1>
             <p className="text-xl text-center max-w-2xl mx-auto mb-8">
-              From the latest trends to best practices, read everything about Data Science, Web Development, Digital Marketing, and Power BI here.
+              Listen to subject matter experts, industry practitioners, and thought leaders talk about the latest trends, technologies, hiring processes, and more in our free OdinTalks sessions.
             </p>
           </div>
         </div>
