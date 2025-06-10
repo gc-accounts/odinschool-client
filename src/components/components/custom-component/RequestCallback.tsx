@@ -150,7 +150,7 @@ const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
             // ✅ Redirect to thank-you page with specific course route 
             const courseSlug = slug || '';
             setTimeout(() => {
-                router.push(`/thank-you-2?title=${courseSlug}`);
+                router.push(`/thank-you?title=${courseSlug}`);
             }, 1000);
 
 
