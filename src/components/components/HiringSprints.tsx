@@ -182,7 +182,7 @@ const HiringSprints = ({ sectionClass }: CardsProps) => {
           </div>
 
           <div className="lg:col-span-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {students.map((students, idx) => (
                           <div key={idx} className="rounded-lg overflow-hidden">
                             <div className="relative">

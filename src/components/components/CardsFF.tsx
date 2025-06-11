@@ -39,7 +39,7 @@ interface CardsProps {
             Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p>
         </div> */}
-    <div className='grid grid-cols-3 gap-5 text-center'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-5 text-center'>
       {
         cardData.map((data, index)=>{
           return(
