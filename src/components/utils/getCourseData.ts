@@ -19,6 +19,8 @@ import { DsEliteDataLeadersData } from '@/components/data/course-section/data-le
 import { IbDataLeadersData } from '@/components/data/course-section/data-leaders/IbDataLeadersData';
 
 
+
+
 const getCourseData = (slug: string) => {
   switch (slug) {
     case 'data-science-course':

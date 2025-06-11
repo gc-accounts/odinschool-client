@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/components/lib/utils';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  variant?: 'primary' | 'secondary' | 'yellow' | 'outline' | 'ghost' | 'link';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   icon?: React.ReactNode;
@@ -28,6 +28,7 @@ const Button = ({
     primary: "bg-primary-600 text-white hover:bg-primary-700 shadow-sm",
     secondary: "bg-white text-primary-700 border border-primary-200 hover:bg-primary-50",
     outline: "bg-transparent text-primary-700 border border-primary-200 hover:bg-primary-50",
+    yellow: 'bg-[#ffd90f] text-gray-900 hover:bg-[#ffc700]', // Using the exact color code
     ghost: "bg-transparent text-primary-700 hover:bg-primary-50",
     link: "bg-transparent text-primary-600 hover:text-primary-800 underline-offset-4 hover:underline p-0",
   };
