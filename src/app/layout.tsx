@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import * as React from 'react';
-import { Inter } from 'next/font/google';
+import { Inter, DM_Serif_Display } from 'next/font/google';
 import '@/styles/globals.css';
 import { siteConfig } from '@/constant/config';
 import Script from 'next/script';
@@ -10,6 +10,13 @@ import { gtmScript, GTM_ID } from '@/lib/gtm';
 import { ProgramProvider } from '@/context/ProgramContext';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: ['400'], // DM Serif Display supports only 400 (Regular)
+  variable: '--font-dm-serif'
+});
+
 
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
@@ -62,7 +69,7 @@ export default function RootLayout({
       <head>
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${dmSerifDisplay.variable}`}>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
