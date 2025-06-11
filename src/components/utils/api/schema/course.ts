@@ -70,6 +70,7 @@ export default `
                     updatedAt
                     publishedAt
                     price
+                    final_price
                     image_url_string
                     longDescription
                

@@ -368,13 +368,12 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      // const baseAmount = paymentType === 'partial'
-      //   ? 5000
-      //   : (couponChecked ? price - 10000 : price);
-
       const baseAmount = paymentType === 'partial'
         ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
-        : (couponChecked ? price - 10000 : price);
+        : (couponChecked
+          ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
+          : price);
+
 
       const payableAmount = add18Percent(baseAmount);
 
@@ -514,9 +513,15 @@ const CourseCheckout = () => {
     ? course.lessons.length
     : (typeof course.lessons === 'number' ? course.lessons : 0);
 
+  // const baseAmount = paymentType === 'partial'
+  //   ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
+  //   : (couponChecked ? price - 10000 : price);
   const baseAmount = paymentType === 'partial'
     ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
-    : (couponChecked ? price - 10000 : price);
+    : (couponChecked
+      ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
+      : price);
+
 
   const gst = baseAmount * 0.09;
   const cst = baseAmount * 0.09;
@@ -639,6 +644,7 @@ const CourseCheckout = () => {
                   <CardTitle>Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
+
                   {/* Payment Type Selection */}
                   <div className="border p-4 rounded space-y-2">
                     <Label className="block font-medium">Choose Payment Option</Label>
@@ -657,7 +663,7 @@ const CourseCheckout = () => {
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="full" id="full" />
-                        <Label htmlFor="full">Reserve your seat with <span>₹{price?.toFixed(2)}</span></Label>
+                        <Label htmlFor="full">Make full payment <span>₹{price?.toFixed(2)}</span></Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -738,7 +744,13 @@ const CourseCheckout = () => {
                       <span>Total</span>
                       <span>₹{total.toFixed(0)}</span>
                     </div>
+                    {couponChecked && paymentType === 'full' && (
+                      <div className="text-sm text-green-600 text-right font-medium">
+                        You saved ₹{course.slug === 'generative-ai-bootcamp' ? '10,000' : '15,000'} with coupon!
+                      </div>
+                    )}
                   </div>
+
 
 
                   {/* <div className="space-y-2">

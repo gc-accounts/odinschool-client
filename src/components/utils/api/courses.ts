@@ -167,6 +167,7 @@ export const getCourse = async (id: string, url_slug: string = "") => {
             total_rated: course.rating?.total_rated,
             curriculum: course.curriculum,
             price: course.price,
+            final_price: course.final_price,
             modules: modifyCourseModules(course.course_modules),
             longDescription: course.longDescription
         }
