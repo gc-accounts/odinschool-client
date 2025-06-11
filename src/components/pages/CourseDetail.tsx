@@ -158,6 +158,7 @@ interface Course {
     description?: string;
   }>;
   price?: number;
+  final_price?: number;
   modules?: any[];
   cohortDates?: {
     cohort1?: string;
@@ -912,8 +913,12 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                   <h3 className="text-xl font-bold mb-4">Register Now</h3>
                   <div className="my-4">
-                    <p className="text-2xl font-bold">{formatCurrencyINR(course.price)} <span className='font-normal text-xl'> + GST</span> </p>
-                    {course.sale && <span className="text-gray-500 line-through ml-2">${course.price}</span>}
+                    <p className="text-sm font-extrabold text-red-600 line-through opacity-100">
+                      {formatCurrencyINR(course.final_price)} <span className="font-medium text-sm text-gray-600">+ GST</span>
+                    </p>
+                    <p className="text-3xl font-bold text-green-600 mt-1 flex items-center gap-1">
+                      {formatCurrencyINR(course?.price)} <span className="font-medium text-xl text-gray-600">+ GST</span>
+                    </p>
                   </div>
 
                   <div className="flex flex-wrap gap-2 mt-2 mb-4">
@@ -944,8 +949,14 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
                   <Link href={`/course-checkout/${course.url_slug}`}>
-                    <Button className="w-full mt-2">Reserve your seat at ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Button>
+                    <Button className="w-full my-2 bg-yellow-500 hover:bg-yelow-500 text-white">Reserve your seat at <span className='font-medium'>₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST </span> </Button>
                   </Link>
+
+
+                  <Button className='w-full' onClick={() => setFormOpen(true)}>Request a callback</Button>
+                  <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+                    <PrimaryForm slug={course.slug} isModal={true} />
+                  </Modal>
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs Available. 6,9,12 months EMI option available.</h3>
                 </div>
               </div>
