@@ -1,18 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
 import { DsEliteDataLeadersData } from '@/components/data/course-section/data-leaders/DsEliteDataLeadersData';
-
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 interface CardsProps {
   sectionClass?: string,
 }
 
 const DataLeadersForm = ({ sectionClass }: CardsProps) => {
   return (
-    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}` }>
+    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}`}>
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
             Meet the Data Leaders Who Will <span className="text-primary-600">Shape Your Learning</span>
           </h2>
           <p className="text-gray-600">
@@ -55,8 +55,9 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
           <div className='lg:col-span-1'></div>
           {/* Right: Callback Form */}
           <div className="lg:col-span-4">
-            <div className="h-full border-2 border-primary-600 rounded-lg p-6 shadow-lg flex flex-col justify-between">
-              <form className="space-y-4 flex-1">
+            <div className="h-fit border-[3px] border-primary-600 rounded-lg">
+              <PrimaryForm slug={'data-science-elite-course'} isModal={false} />
+              {/* <form className="space-y-4 flex-1">
                 <div className="grid grid-cols-2 gap-4">
                   <input
                     type="text"
@@ -96,13 +97,13 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
                     Privacy Policy
                   </a>
                 </p>
-              </form>
-              <button
+              </form> */}
+              {/* <button
                 type="submit"
                 className="mt-4 w-full bg-primary-600 text-white rounded-lg py-3 font-medium hover:bg-primary-700 transition"
               >
                 Request a Callback
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

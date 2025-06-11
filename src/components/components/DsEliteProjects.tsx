@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/components/Button';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
+import Modal from '@/components/components/component-template/Modal';
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 
 interface DsEliteProjsctsProps {
   sectionClass?: string;
@@ -12,6 +14,7 @@ interface DsEliteProjsctsProps {
 
 const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
   const [playVideo, setPlayVideo] = useState(false);
+  const [formOpen, setFormOpen] = useState(false)
 
   const projects = [
     {
@@ -39,7 +42,7 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
         'This project explores the data to correct any quality issues, visualizes the data and identifies key insights and recommendations.',
       prerequisites: 'Python, Pandas, Matplotlib, Seaborn, Excel',
       tools: ['Python', 'Jupyter Notebook', 'Excel'],
-      ctaText: 'Download Project Files',
+      ctaText: 'Request a callback',
       ctaLink: '#',
       videoThumb: 'https://strapi.odinschool.com/uploads/Python_Analysis_on_Air_Bn_B_20_1_4183a90b2f.webp',
       videoUrl: 'https://20029733.fs1.hubspotusercontent-na1.net/hubfs/20029733/Python%20Analysis%20on%20AirBnB.mp4', // sample URL
@@ -104,19 +107,22 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
 
 
           {/* CTA */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
-                    <Link href='/'>
-                      <Button
-                        size="md"
-                        variant="yellow"
-                        icon={<ArrowDown className='ml-1' size={18} />}
-                        iconPosition="right"
-                        className='font-semibold'
-                      >
-                        {projects[3].ctaText}
-                      </Button>
-                    </Link>
-                  </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
+            <Button
+              size="md"
+              variant="yellow"
+              icon={<ArrowRight className='ml-1' size={18} />}
+              iconPosition="right"
+              className='font-semibold'
+              onClick={() => setFormOpen(true)}
+            >
+              {projects[3].ctaText}
+            </Button>
+
+            <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+              <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+            </Modal>
+          </div>
 
 
         </div>

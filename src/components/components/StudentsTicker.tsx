@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { studentsData } from '@/components/data/studentsData';
 
@@ -8,57 +10,62 @@ interface CardsProps {
 
 const StudentsTicker = ({ sectionClass }: CardsProps) => {
   const duplicatedStudents = [...studentsData, ...studentsData];
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
 
   return (
-    <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
-      {/* <div className="container mx-auto">
-        <div className="text-center max-w-4xl mx-auto mb-10">
-          <h2 className="text-3xl font-bold mb-2">
-            Hear from your peers who've <span className="text-primary-600">been successfully placed</span>
-          </h2>
-          <p className="text-gray-600">
-            Discover how learners like you transformed their careers through OdinSchool's bootcamps and got placed in top companies.
-          </p>
-        </div>
-      </div> */}
-
-      <div className="slider-cover">
-        <div className="slider">
-          <div className="slide-track">
-            {duplicatedStudents.map((student, index) => (
-              <div key={`${student.name}-${index}`} className="slide p-3 mx-2 rounded-3 placeCard text-center bg-primary-600">
-                <div className="">
-                  <Image
-                    src={student.student_image}
-                    alt={student.name}
-                    width={65}
-                    height={65}
-                    className="stdImg bg-primary-50 w-[65px] h-[65px] rounded-full mb-2 mx-auto object-cover"
-                    objectFit="cover"
-                    loading="eager"
-                    draggable="false"
-                  />
-                  <p className="text-white font-semibold mb-1">{student.name}</p>
-                  <div className="flex justify-center bg-primary-50 rounded-sm">
+    <div className={`${show ? 'block' : 'hidden'}`}>
+      <section
+        id="student-ticker"
+        className={`${sectionClass
+          ? sectionClass
+          : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'
+          } w-full overflow-x-hidden relative`}
+      >
+        <div className="slider-cover">
+          <div className="slider">
+            <div className="slide-track">
+              {duplicatedStudents.map((student, index) => (
+                <div
+                  key={`${student.name}-${index}`}
+                  className="slide p-3 mx-2 rounded-3 placeCard text-center bg-primary-600"
+                >
+                  <div>
                     <Image
-                      src={student.current_company_image}
-                      alt="Current Company"
-                      width={80}
-                      height={80}
-                      className="placeLogo px-2"
-                      loading="lazy"
+                      src={student.student_image}
+                      alt={student.name}
+                      width={65}
+                      height={65}
+                      className="stdImg bg-primary-50 w-[65px] h-[65px] rounded-full mb-2 mx-auto object-cover"
+                      objectFit="cover"
+                      loading="eager"
                       draggable="false"
-                      objectFit="contain"
+                      priority={index < 4}
                     />
+                    <p className="text-white font-semibold mb-1">{student.name}</p>
+                    <div className="flex justify-center bg-primary-50 rounded-sm">
+                      <Image
+                        src={student.current_company_image}
+                        alt="Current Company"
+                        width={80}
+                        height={80}
+                        className="placeLogo px-2"
+                        loading="lazy"
+                        draggable="false"
+                        objectFit="contain"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <style jsx>{`
+        <style jsx>{`
         .slider-cover {
           align-items: center;
           display: flex;
@@ -121,7 +128,8 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
           }
         }
       `}</style>
-    </section>
+      </section>
+    </div>
   );
 };
 

@@ -14,9 +14,9 @@ export default {
     container: {
       center: true,
       padding: {
-    DEFAULT: '0rem', // applies to all unless overridden
-    sm: '3rem',       // applies from `sm` breakpoint and up
-  },
+        DEFAULT: '0rem', // applies to all unless overridden
+        sm: '3rem',       // applies from `sm` breakpoint and up
+      },
       screens: {
         '2xl': '1350px',
       }
