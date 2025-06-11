@@ -433,79 +433,79 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
   // Handle Form Submit
-  const handleFormSubmit = async (data: any) => {
-    console.log('data------------------------', data);
+  // const handleFormSubmit = async (data: any) => {
+  //   console.log('data------------------------', data);
 
-    const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
+  //   const zohoEndpoint = "https://crm.zoho.in/crm/WebToContactForm";
 
-    const hiddenFields = {
-      xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
-      xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
-      actionType: "Q29udGFjdHM=",
-      returnURL: "null",
-    };
+  //   const hiddenFields = {
+  //     xnQsjsdp: "b3f43adc4710a41efc03cab70d04a5eee598f225642df4a1f565782c83a02d3a",
+  //     xmIwtLD: "a2deb9be306e58e854a1535496bd061b69e1d5dd0efc44a28ae5ee26dfe42b099e51cbb9f06e7317ab708b49c270667a",
+  //     actionType: "Q29udGFjdHM=",
+  //     returnURL: "null",
+  //   };
 
-    const formData = new FormData();
+  //   const formData = new FormData();
 
-    // Append hidden fields
-    Object.entries(hiddenFields).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+  //   // Append hidden fields
+  //   Object.entries(hiddenFields).forEach(([key, value]) => {
+  //     formData.append(key, value);
+  //   });
 
-    // Append visible form data
-    formData.append("First Name", data.firstName || '');
-    formData.append("Last Name", data.lastName || '');
-    formData.append("Email", data.email || '');
-    formData.append("Phone", data.phone || '');
-    formData.append("Year of Graduation", data.year || '');
-    formData.append("Work Experience Level", data.experience || '');
-    formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
-    formData.append("ga_client_id", '');
-    formData.append("Business Unit", 'OdinSchool');
-    formData.append("Source Domain", 'Odinschool Course')
-    formData.append('First Page Seen', utmData['First Page Seen'] || '');
-    formData.append('Original Traffic Source', utmData['Original Traffic Source'] || '');
-    formData.append('Original Traffic Source Drill-Down 1', utmData['Original Traffic Source Drill-Down 1'] || '');
-    formData.append('Original Traffic Source Drill-Down 2', utmData['Original Traffic Source Drill-Down 2'] || '');
-    formData.append('UTM Term-First Page Seen', utmData['UTM Term-First Page Seen'] || '');
-    formData.append('UTM Content-First Page Seen', utmData['UTM Content-First Page Seen'] || '');
+  //   // Append visible form data
+  //   formData.append("First Name", data.firstName || '');
+  //   formData.append("Last Name", data.lastName || '');
+  //   formData.append("Email", data.email || '');
+  //   formData.append("Phone", data.phone || '');
+  //   formData.append("Year of Graduation", data.year || '');
+  //   formData.append("Work Experience Level", data.experience || '');
+  //   formData.append("Program", course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug);
+  //   formData.append("ga_client_id", '');
+  //   formData.append("Business Unit", 'OdinSchool');
+  //   formData.append("Source Domain", 'Odinschool Course')
+  //   formData.append('First Page Seen', utmData['First Page Seen'] || '');
+  //   formData.append('Original Traffic Source', utmData['Original Traffic Source'] || '');
+  //   formData.append('Original Traffic Source Drill-Down 1', utmData['Original Traffic Source Drill-Down 1'] || '');
+  //   formData.append('Original Traffic Source Drill-Down 2', utmData['Original Traffic Source Drill-Down 2'] || '');
+  //   formData.append('UTM Term-First Page Seen', utmData['UTM Term-First Page Seen'] || '');
+  //   formData.append('UTM Content-First Page Seen', utmData['UTM Content-First Page Seen'] || '');
 
-    try {
-      const response = await axios.post(zohoEndpoint, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      // ✅ Store email and redirect
-      sessionStorage.setItem('submittedEmail', data.email);
-
-
-      toast({
-        title: "Form submitted successfully!",
-        description: "Thank you for your interest. Our team will contact you shortly.",
-      });
+  //   try {
+  //     const response = await axios.post(zohoEndpoint, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data'
+  //       }
+  //     });
+  //     // ✅ Store email and redirect
+  //     sessionStorage.setItem('submittedEmail', data.email);
 
 
-
-      // ✅ Redirect to thank-you page with specific course route 
-      const courseSlug = course.slug || '';
-      setTimeout(() => {
-        router.push(`/thank-you?title=${courseSlug}`);
-      }, 1000);
+  //     toast({
+  //       title: "Form submitted successfully!",
+  //       description: "Thank you for your interest. Our team will contact you shortly.",
+  //     });
 
 
-    } catch (err) {
-      console.error('Error submitting form:', err);
 
-      toast({
-        title: "Form submission failed!",
-        description: "Something went wrong. Please try again later.",
-        variant: "destructive"
-      });
-    }
+  //     // ✅ Redirect to thank-you page with specific course route 
+  //     const courseSlug = course.slug || '';
+  //     setTimeout(() => {
+  //       router.push(`/thank-you?title=${courseSlug}`);
+  //     }, 1000);
 
-    setFormOpen(false);
-  };
+
+  //   } catch (err) {
+  //     console.error('Error submitting form:', err);
+
+  //     toast({
+  //       title: "Form submission failed!",
+  //       description: "Something went wrong. Please try again later.",
+  //       variant: "destructive"
+  //     });
+  //   }
+
+  //   setFormOpen(false);
+  // };
 
 
   // Handle Brochure Form
@@ -607,7 +607,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                 </div>
                 <div>
                   <div className="mt-8 flex flex-wrap gap-4">
-                    <Button size="lg" className='bg-yellow-500 hover:bg-yellow-500 text-black' onClick={() => setFormOpen(true)}>
+                    <Button size="lg" className='bg-[#FFD600] hover:bg-[#FFD600] text-black' onClick={() => setFormOpen(true)}>
                       Talk to an Expert
                     </Button>
                   </div>
@@ -889,7 +889,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                 </div>
 
-                <div className="bg-white rounded-lg shadow-md p-6 mt-8">
+                <div className="bg-white rounded-lg shadow-md md:p-6 p-3 mt-8">
 
                   {/* upcoming cohort */}
                   <div className='pt-3 pb-4 mb-2 border-b'>
@@ -949,7 +949,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
 
                   <Link href={`/course-checkout/${course.url_slug}`}>
-                    <Button className="w-full my-2 bg-yellow-500 hover:bg-yelow-500 text-white">Reserve your seat at <span className='font-medium'>₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST </span> </Button>
+                    <Button className="w-full h-full my-2 bg-[#FFD600] hover:bg-[#FFD600] text-black">Reserve your seat at <span className='font-medium'>₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST </span> </Button>
                   </Link>
 
 

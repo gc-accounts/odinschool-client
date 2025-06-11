@@ -75,7 +75,7 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
   }
 
   return (
-    <div className='w-full flex gap-10 justify-center items-center'>
+    <div className='w-full flex md:flex-row flex-col md:gap-10 gap-4 justify-center items-center'>
       <Button
         className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black text-lg px-4 py-3 outline-none focus:outline-none'
         onClick={() => setFormOpen(true)}
