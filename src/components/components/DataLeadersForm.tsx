@@ -23,7 +23,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Leaders */}
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {DsEliteDataLeadersData.map((leader, idx) => (
                 <div key={idx} className="bg-white rounded-lg overflow-hidden">
                   <div className="relative">

@@ -45,11 +45,11 @@ interface CardsProps {
             Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p> */}
         </div>
-    <div className='grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white'>
+    <div className='grid grid-cols-2 md:grid-cols-4 md:gap-6 gap-4 text-center text-white'>
       {
         cardData.map((data, index)=>{
           return(
-            <div key={index} className='p-4'>
+            <div key={index} className='md:p-4 p-2 md:border-0 border border-primary-50 rounded-md'>
               <Image
                             src={data.icon}
                             alt={data.title}
@@ -59,8 +59,8 @@ interface CardsProps {
                             width={50}
                             height={50}
                           />
-              <h2 className='font-semibold text-lg mb-2 mt-4'>{data.title}</h2>
-              <p className='text-sm'>{data.description}</p>
+              <h2 className='font-semibold md:text-lg text-md mb-2 mt-4'>{data.title}</h2>
+              <p className='md:text-sm text-xs'>{data.description}</p>
             </div>
           )
         })

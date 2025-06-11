@@ -18,7 +18,7 @@ const ProgramCurriculum = ({ sectionClass, slug, data }: ProgramCurriculumProps)
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
-        <h2 className="text-3xl md:text-5xl font-display text-center font-bold mb-10 text-white">
+        <h2 className="text-3xl md:text-5xl font-display text-center mb-10 text-white">
           Program Curriculum
         </h2>
 
