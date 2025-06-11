@@ -1,13 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { CircleCheck, ArrowRight } from 'lucide-react';
 import Button from '@/components/components/Button';
 import Link from 'next/link';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/components/ui/tabs';
+import Modal from '@/components/components/component-template/Modal';
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 
-const Fee = () => {
+
+interface feeProps {
+  sectionClass: string
+}
+const Fee = ({ sectionClass }: feeProps) => {
   const data = [
     {
       id: '1',
@@ -32,7 +38,7 @@ const Fee = () => {
     },
     {
       id: '2',
-      cohortDate: '02 July 2025',
+      cohortDate: '26 July 2025',
       totalPrice: '₹1,00,000',
       price: '₹90,000',
       offer: "Limited Seats! Book Yours Before They're Gone.",
@@ -53,8 +59,9 @@ const Fee = () => {
     }
   ];
 
+  const [formOpen, setFormOpen] = useState(false)
   return (
-    <section className="px-5 py-12 md:px-10 bg-white">
+    <section className={sectionClass}>
       <div className="container">
         <div className="mb-4">
           <p className="text-sm font-medium text-gray-500 mb-2">Upcoming Cohort</p>
@@ -110,7 +117,9 @@ const Fee = () => {
 
                     <br />
 
-                    <Link href="/">
+
+
+                    <Link href="/course-checkout/data-science-elite-course">
                       <Button
                         size="md"
                         variant="outline"
@@ -122,17 +131,22 @@ const Fee = () => {
                       </Button>
                     </Link>
 
-                    <Link href="/">
-                      <Button
-                        size="md"
-                        variant="yellow"
-                        icon={<ArrowRight className="ml-1" size={18} />}
-                        iconPosition="right"
-                        className="font-semibold w-full"
-                      >
-                        Register Now
-                      </Button>
-                    </Link>
+
+
+                    <Button
+                      size="md"
+                      variant="yellow"
+                      icon={<ArrowRight className="ml-1" size={18} />}
+                      iconPosition="right"
+                      className="font-semibold w-full"
+                      onClick={() => setFormOpen(true)}
+                    >
+                      Register Now
+                    </Button>
+
+                    <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+                      <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+                    </Modal>
                   </div>
 
                   {/* EMI Note */}
