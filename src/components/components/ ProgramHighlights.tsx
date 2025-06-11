@@ -23,12 +23,12 @@ interface  ProgramHighlightsProps{
         data.map((data, index)=>{
           return(
             <div key={index} className='bg-primary-50 p-4 rounded-md grid grid-cols-12'>
-              <div className='col-span-2'>
+              <div className='md:col-span-2 col-span-12'>
                 <Image src={data.icon} alt={data.title} className="w-18 h-auto block mx-auto" loading="lazy" width={50} height={50}  />
               </div>
-              <div className='col-span-10'>
-              <h2 className='font-semibold text-lg mb-1'>{data.title}</h2>
-              <p className='text-sm'>{data.description}</p>
+              <div className='md:col-span-10 col-span-12 md:text-start text-center'>
+              <h2 className='font-semibold md:text-lg text-md mb-1'>{data.title}</h2>
+              <p className='md:text-sm text-xs'>{data.description}</p>
               </div>
             </div>
           )
