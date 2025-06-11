@@ -611,7 +611,8 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                     </Button>
                   </div>
                   <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                    <DynamicForm
+                    <PrimaryForm slug={course.slug} isModal={true} />
+                    {/* <DynamicForm
                       buttonText={'Request Callback'}
                       fields={formFields}
                       initialValues={{
@@ -623,7 +624,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                         handleFormSubmit(data)
                       }}
 
-                    />
+                    /> */}
                   </Modal>
 
 
@@ -685,7 +686,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   height={500}
                 /> */}
 
-                <PrimaryForm slug={course.slug} />
+                <PrimaryForm slug={course.slug} isModal={false} />
 
 
               </div>

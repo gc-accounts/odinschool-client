@@ -10,9 +10,10 @@ import { useRouter } from 'next/navigation';
 
 interface PrimaryFormProps {
   slug: string;
+  isModal: Boolean;
 }
 
-const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug }) => {
+const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
@@ -99,7 +100,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug }) => {
   if (!Object.keys(utm).length) return null;
 
   return (
-    <div className="w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg">
+    <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
       <DynamicForm
         fields={CoursePrimaryFormFields as FieldConfig[]}
         buttonText="Submit"
