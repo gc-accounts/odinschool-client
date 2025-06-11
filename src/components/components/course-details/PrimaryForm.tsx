@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 interface PrimaryFormProps {
   slug: string;
   isModal: Boolean;
+
 }
 
 const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal }) => {
