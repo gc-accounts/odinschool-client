@@ -1,15 +1,18 @@
+'use client'
 import Button from '@/components/components/Button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import Modal from '@/components/components/component-template/Modal';
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
+import { useState } from 'react';
 
 interface dsEliteProps {
   sectionClass?: String
 }
 const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
 
-
+  const [formOpen, setFormOpen] = useState(false)
   const partnerLogos = [
     {
       id: 1,
@@ -44,9 +47,9 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
       <div className="max-w-5xl mx-auto px-4">
         {/* <p className="text-lg ">After the successful May launch, we’re thrilled to announce the</p> */}
         <h2 className="text-3xl md:text-5xl font-display leading-tight">
-          India’s Only Data Science Program Backed by 5 Leading Companies - <br/><span className='text-primary-600'>Data Science Elite Course</span> 
+          India’s Only Data Science Program Backed by 5 Leading Companies - <br /><span className='text-primary-600'>Data Science Elite Course</span>
         </h2>
-        
+
         {/* Logos */}
         <div className="flex flex-wrap justify-center mt-10">
           {partnerLogos.map(({ id, name, logo }) => (
@@ -68,25 +71,30 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
         </div>
 
         <p className="mt-10">
-          A career accelerator designed with direct input from industry leaders, ensuring you gain skills that companies trust and value. Backed by five fast growing companies, this program provides not only solid knowledge but also real-world applicability. 
+          A career accelerator designed with direct input from industry leaders, ensuring you gain skills that companies trust and value. Backed by five fast growing companies, this program provides not only solid knowledge but also real-world applicability.
         </p>
         <p className='font-semibold px-3 py-2 mt-4 rounded-md bg-primary-50 border border-primary-600 inline-block'>Upcoming Cohort: 28 Jun 2025</p>
 
 
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
-          <Link href='/data-science-elite-course'>
+        <div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
             <Button
               size="lg"
               variant="yellow"
               icon={<ArrowRight className='ml-1' size={18} />}
               iconPosition="right"
               className='font-semibold'
+              onClick={() => setFormOpen(true)}
             >
               Enquire Now
             </Button>
-          </Link>
+          </div>
+          <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+            <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+          </Modal>
+
         </div>
       </div>
     </section>
