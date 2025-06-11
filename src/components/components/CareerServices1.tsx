@@ -6,14 +6,15 @@ import RequestCallback from './custom-component/RequestCallback';
 import { CourseCarrerServiceData } from '@/components/data/CourseCarrerServiceData';
 interface CareerServices1Props {
   slug: String,
-  sectionClass?: String
+  sectionClass?: String,
+  fontFamily?: String
 }
-const CareerServices = ({ slug, sectionClass }: CareerServices1Props) => {
+const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl':'font-bold md:text-4xl'} ${fontFamily}`}>
             <span className="text-primary-600">Career Services</span> Designed for Success
           </h2>
           <p className="text-md text-gray-600 max-w-2xl mx-auto">

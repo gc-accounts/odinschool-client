@@ -112,7 +112,7 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
 
         @media only screen and (max-width: 600px) {
           .slider .slide {
-            min-width: 140px;
+            min-width: 110px;
           }
           
           .placeCard {

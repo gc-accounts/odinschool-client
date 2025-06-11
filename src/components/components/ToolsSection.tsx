@@ -22,7 +22,8 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
       <div className={`md:w-16 md:h-16 w-10 h-10 rounded-full flex items-center justify-center mb-4 ${bgColor}`}>
         <Image src={icon} alt={name} loading="lazy" width={500} height={500} />
       </div>
-      <h3 className="md:text-lg text-xs font-semibold mb-2">{name}</h3>
+      {/* <h3 className="md:text-lg text-xs font-semibold mb-2">{name}</h3> */}
+      
       <p className="text-gray-600 text-sm">{description}</p>
     </CardContent>
   </Card>
@@ -30,9 +31,10 @@ const ToolCard = ({ name, description, icon, bgColor, delay }: ToolCardProps) =>
 
 
 interface ToolsSectionProps {
-  sectionClass?: String
+  sectionClass?: String;
+    fontFamily?: string;
 }
-const ToolsSection = ({ sectionClass }: ToolsSectionProps) => {
+const ToolsSection = ({ sectionClass, fontFamily }: ToolsSectionProps) => {
   const path = usePathname()
   const ToolsData = getDataByPage(courseToolsData, path)
 
@@ -44,7 +46,7 @@ const ToolsSection = ({ sectionClass }: ToolsSectionProps) => {
           <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm mb-4">
             Industry Tools
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl':'font-bold md:text-4xl'} ${fontFamily}`}>
             Tools You Will <span className="text-primary-600">Master</span>
           </h2>
           <p className="text-md text-gray-600 max-w-3xl mx-auto">

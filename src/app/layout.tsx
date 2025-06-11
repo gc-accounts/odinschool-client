@@ -69,7 +69,7 @@ export default function RootLayout({
       <head>
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
       </head>
-      <body className={`${inter.className} ${dmSerifDisplay.variable}`}>
+      <body className={`${inter.className}`}>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

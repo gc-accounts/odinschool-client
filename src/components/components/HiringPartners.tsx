@@ -67,7 +67,7 @@ const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {hiringPartnersData.map(({ id, thumbnail, videoId }) => (
-                <div key={id} className="embla__slide flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_50%] px-2 mt-2 mb-2">
+                <div key={id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_33.33%] lg:flex-[0_0_50%] px-2 mt-2 mb-2">
                   <Card className="border border-primary-600 hover:shadow-lg transition-all h-full overflow-hidden p-5">
                     <CardContent className="p-0 relative">
                       {playingId === id ? (
@@ -117,7 +117,7 @@ const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
+        <div className="flex flex-row gap-4 justify-center delay-200 mt-10">
           <Link href='https://jobs.odinschool.com/' target='_blank'>
             <Button
               size="lg"
