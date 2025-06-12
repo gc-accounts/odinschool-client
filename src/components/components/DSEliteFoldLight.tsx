@@ -44,7 +44,7 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto md:px-4">
         {/* <p className="text-lg ">After the successful May launch, we’re thrilled to announce the</p> */}
         <h2 className="text-3xl md:text-5xl font-display leading-tight">
           India’s Only Data Science Program Backed by <span className='block'>5 Leading Companies -</span> <span className='text-primary-600 block mt-3'>Data Science Elite Course</span>

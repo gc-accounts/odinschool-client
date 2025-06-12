@@ -172,7 +172,7 @@ const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
     return (
         <>
             <div className="text-center">
-                <Button className={`${buttonText === 'Enroll Now' ? 'w-full' : ''}`} onClick={() => setFormOpen(true)}>
+                <Button variant='yellow' className={`${buttonText === 'Enroll Now' ? 'w-full' : ''}`} onClick={() => setFormOpen(true)}>
                     {buttonText ? buttonText : 'Request Callback'}
                 </Button>
             </div>

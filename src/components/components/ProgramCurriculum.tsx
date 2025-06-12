@@ -26,10 +26,10 @@ const ProgramCurriculum = ({ sectionClass, slug, data }: ProgramCurriculumProps)
           {data.map((item, index) => (
             <div key={index} className="bg-white p-5 rounded-lg shadow h-full flex flex-col justify-between">
               <div className='h-[240px] overflow-auto'>
-                <h3 className="font-semibold text-xl mb-4 text-black">{item.program_title}</h3>
-                <ul className="text-base text-black space-y-2 mb-3">
+                <h3 className="font-semibold md:text-lg text-md mb-4 text-black">{item.program_title}</h3>
+                <ul className="md:text-md text-sm text-black space-y-2 mb-3">
                   {item.points.map((point, idx) => (
-                    <li key={idx} className='flex gap-1'><span><CiCircleCheck className='w-7 h-7 text-primary' /></span> <span>{point}</span></li>
+                    <li key={idx} className='flex gap-1'><span className='mr-2'><CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span> <span>{point}</span></li>
                   ))}
                 </ul>
               </div>
