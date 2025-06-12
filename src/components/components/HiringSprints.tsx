@@ -194,8 +194,8 @@ const HiringSprints = ({ sectionClass }: CardsProps) => {
             
                               />
                             </div>
-                            <div className="bg-primary-800 px-4 py-3 text-white text-center rounded-b-md">
-                              <h3 className="text-md font-semibold">{students.name}</h3>
+                            <div className="bg-primary-800 md:px-4 px-2 md:py-3 py-2 text-white text-center rounded-b-md">
+                              <h3 className="md:text-md text-sm font-semibold">{students.name}</h3>
                               <p className="text-xs mt-1">{students.designation}</p>
                             </div>
                             <div className="py-3 text-center">

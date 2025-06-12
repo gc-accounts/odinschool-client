@@ -75,7 +75,7 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
   }
 
   return (
-    <div className='w-full flex md:flex-row flex-col md:gap-10 gap-4 justify-center items-center'>
+    <div className='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center'>
       <Button
         className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black text-lg px-4 py-3 outline-none focus:outline-none'
         onClick={() => setFormOpen(true)}
@@ -88,7 +88,7 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
       </Modal>
 
       <Button
-        className='bg-transparent border border-[#219ebc] rounded-sm text-[#219ebc] text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
+        className='bg-transparent border border-[#1a6cf7] rounded-sm text-[#1a6cf7] text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
         onClick={() => setBrochureFormOpen(true)}
       >
         Download Brochure
