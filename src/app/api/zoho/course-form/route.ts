@@ -26,6 +26,8 @@ export async function POST(request: Request) {
         Ga_client_id: getField('Ga_client_id'),
         Business_Unit: getField('Business Unit'),
         Source_Domain: 'Course Form',
+        Coupon_Code: formData.get('Coupon Code'),
+
 
         // Using likely API field names - verify in your Zoho CRM
         First_Page_Seen: getField('First Page Seen'),

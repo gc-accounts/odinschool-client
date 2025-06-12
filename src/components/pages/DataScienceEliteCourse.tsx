@@ -73,6 +73,7 @@ import { DsEliteCurriculumData } from '@/components/data/curriculum/DsEliteCurri
 import { DsEliteProgramHighlightsData } from '@/components/data/course-section/program-highlights/DsEliteProgramHighlightsData';
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
+
 import HowApply from '@/components/components/HowApply';
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -88,6 +89,7 @@ const OrganizationLogos = dynamic(() => import('@/components/components/Organiza
 const DsEliteFoldLight = dynamic(() => import('@/components/components/DSEliteFoldLight'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 
 const StudentsTicker = dynamic(() => import('@/components/components/StudentsTicker'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
+const HelloBar = dynamic(() => import('@/components/components/HelloBar'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 
 const DataScienceEliteCourse = ({ organisations }) => {
   useEffect(() => {
@@ -96,8 +98,7 @@ const DataScienceEliteCourse = ({ organisations }) => {
 
   return (
     <>
-
-
+      <HelloBar isPrimaryForm={true} slug='data-science-elite-course' />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
