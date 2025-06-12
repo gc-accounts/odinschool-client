@@ -5,35 +5,19 @@ import React, { useEffect } from 'react';
 import { useToast } from '@/components/hooks/use-toast';
 import DynamicForm, { FieldConfig } from '@/components/components/form/DynamicForm';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
-import CoursePrimaryFormFields from '@/components/data/form-fields/CoursePrimaryFormFields';
 import { useRouter } from 'next/navigation';
-
+import CourseSecondaryFormFields from '@/components/data/form-fields/CourseSecondaryFormFields';
 interface PrimaryFormProps {
-  slug: string;
   isModal: Boolean;
-  isCoupon?: Boolean;
-
+  isCoupon: Boolean
 }
 
-const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, isCoupon }) => {
+const SecondaryForm: React.FC<PrimaryFormProps> = ({ isCoupon, isModal }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
 
-  const getSlug = (slug: string) => {
-    switch (slug) {
-      case 'data-science-course':
-        return 'Data Science Course';
-      case 'data-science-elite-course':
-        return 'Data Science Elite Course';
-      case 'generative-ai-bootcamp':
-        return 'Generative AI Course';
-      case 'generative-ai-course-iitg':
-        return 'Certification Program in Applied Generative AI';
-      default:
-        return '';
-    }
-  };
+
 
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
@@ -60,12 +44,11 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, isCoupon }) =>
       formData.append('Last Name', data.lastName);
       formData.append('Email', data.email);
       formData.append('Phone', data.phone);
-      formData.append('Program', getSlug(slug));
+      formData.append('Program', data.program);
       formData.append('Year of Graduation', data.year);
       formData.append('Ga_client_id', '');
       formData.append('Business Unit', 'Odinschool');
       isCoupon && formData.append('Coupon Code', 'EBO2025');
-
       formData.append('First Page Seen', utm['First Page Seen'] || '');
       formData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
       formData.append(
@@ -94,7 +77,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, isCoupon }) =>
       });
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
-      setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+      setTimeout(() => router.push(`/thank-you`), 1000);
     } catch (error: any) {
       console.error(error);
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
@@ -106,10 +89,9 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, isCoupon }) =>
   return (
     <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
       <DynamicForm
-        fields={CoursePrimaryFormFields as FieldConfig[]}
+        fields={CourseSecondaryFormFields as FieldConfig[]}
         buttonText="Submit"
         initialValues={{
-          program: getSlug(slug),
           ga_client_id: '',
           business_unit: 'Odinschool',
         }}
@@ -119,4 +101,4 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, isCoupon }) =>
   );
 };
 
-export default PrimaryForm;
+export default SecondaryForm;
