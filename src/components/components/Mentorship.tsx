@@ -105,7 +105,7 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
                     <CardContent className="p-6 grid grid-cols-12 gap-4 items-start flex-grow">
 
                       {/* Left: Image + Name (col-span-4 on md+) */}
-                      <div className="col-span-12 md:col-span-3 text-center">
+                      <div className="col-span-5 md:col-span-3 text-center">
                         <Image
                           src={mentor.image}
                           alt={mentor.name}
@@ -121,7 +121,7 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
                       </div>
 
                       {/* Right: Designation + Logo + Story (col-span-8 on md+) */}
-                      <div className="col-span-12 md:col-span-9">
+                      <div className="col-span-7 md:col-span-9">
                         <h3 className="text-md font-bold text-gray-800 mb-2">{mentor.designation}</h3>
                         <Image
                           src={mentor.companyLogo}
@@ -129,10 +129,14 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
                           className="w-30 h-12 object-contain mb-3 border shadow-sm rounded-md"
 
                           loading="lazy"
-                          width={500}
-                          height={500}
+                          width={100}
+                          height={40}
                         />
-                        <p className="text-gray-600 text-sm">{mentor.story}</p>
+                        <p className="text-gray-600 text-sm md:block hidden">{mentor.story}</p>
+                      </div>
+
+                      <div className="col-span-12 md:hidden">
+<p className="text-gray-600 text-sm">{mentor.story}</p>
                       </div>
 
                     </CardContent>

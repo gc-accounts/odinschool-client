@@ -35,8 +35,8 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
                       height={100}
                     />
                   </div>
-                  <div className="bg-primary-800 px-4 py-3 text-white text-center rounded-b-md">
-                    <h3 className="text-md font-semibold">{leader.name}</h3>
+                  <div className="bg-primary-800 md:px-4 px-2 md:py-3 py-2 text-white text-center rounded-b-md">
+                    <h3 className="md:text-md text-sm font-semibold">{leader.name}</h3>
                     <p className="text-xs mt-1">{leader.designation}</p>
                   </div>
                   <div className="py-3 text-center">
@@ -56,7 +56,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
           {/* Right: Callback Form */}
           <div className="lg:col-span-4">
             <div className="h-fit border-[3px] border-primary-600 rounded-lg">
-              <PrimaryForm slug={'data-science-elite-course'} isModal={false} />
+              <PrimaryForm slug={'data-science-elite-course'} isModal={false} buttonText={'Request a Callback'} />
               {/* <form className="space-y-4 flex-1">
                 <div className="grid grid-cols-2 gap-4">
                   <input

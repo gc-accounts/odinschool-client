@@ -1,4 +1,4 @@
-export const ProgramCurriculumData = [
+export const DsEliteCurriculumData = [
   {
     program_title: "Statistics & Exploratory Data Analysis",
     points: [

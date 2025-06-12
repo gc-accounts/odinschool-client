@@ -687,7 +687,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   height={500}
                 /> */}
 
-                <PrimaryForm slug={course.slug} isModal={false} />
+                <PrimaryForm slug={course.slug} isModal={false} buttonText='Request a Callback'/>
 
 
               </div>

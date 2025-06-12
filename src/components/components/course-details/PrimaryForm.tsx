@@ -11,10 +11,11 @@ import { useRouter } from 'next/navigation';
 interface PrimaryFormProps {
   slug: string;
   isModal: Boolean;
+  buttonText?: string
 
 }
 
-const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal }) => {
+const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
@@ -104,7 +105,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal }) => {
     <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
       <DynamicForm
         fields={CoursePrimaryFormFields as FieldConfig[]}
-        buttonText="Submit"
+        buttonText={buttonText? buttonText : 'Submit' }
         initialValues={{
           program: getSlug(slug),
           ga_client_id: '',

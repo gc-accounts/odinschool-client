@@ -174,8 +174,10 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
           );
         })}
 
+        <p className='text-xs text-gray-600 px-2'>By providing your contact details, you agree to our <a href='/privacy' className='text-primary-600' target='_blank'>Privacy Policy</a></p>
         <Button
           type="submit"
+          variant="yellow"
           disabled={isSubmitting}
           className="w-full mt-6 flex items-center justify-center"
         >

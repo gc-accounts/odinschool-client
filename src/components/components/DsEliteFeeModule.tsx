@@ -71,7 +71,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                 <TabsTrigger
                   key={item.id}
                   value={item.id}
-                  className="px-5 py-2 text-sm data-[state=active]:bg-primary-600 data-[state=active]:text-white"
+                  className="px-5 py-2 text-sm data-[state=active]:bg-primary-600 data-[state=active]:text-white border border-primary-500"
                 >
                   {item.cohortDate}
                 </TabsTrigger>
@@ -108,7 +108,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                       {selected.totalPrice}
                       <span className="font-medium text-sm text-gray-600">+ GST</span>
                     </p>
-                    <h3 className="text-3xl font-bold text-center">
+                    <h3 className="text-3xl font-bold text-center text-green-600">
                       {selected.price} <span className="text-base font-normal">+ GST</span>
                     </h3>
                     <div className="bg-blue-100 text-blue-900 text-sm px-3 py-2 mt-4 rounded-md text-center font-medium">
@@ -119,34 +119,35 @@ const Fee = ({ sectionClass }: feeProps) => {
 
 
 
-                    <Link href="/course-checkout/data-science-elite-course">
-                      <Button
-                        size="md"
-                        variant="outline"
-                        icon={<ArrowRight className="ml-1" size={18} />}
-                        iconPosition="right"
-                        className="font-semibold w-full my-3"
-                      >
-                        Enquire Now
-                      </Button>
-                    </Link>
-
-
-
+                   
                     <Button
                       size="md"
-                      variant="yellow"
+                      variant="outline"
                       icon={<ArrowRight className="ml-1" size={18} />}
                       iconPosition="right"
-                      className="font-semibold w-full"
+                      className="font-semibold w-full py-3"
                       onClick={() => setFormOpen(true)}
                     >
-                      Register Now
+                      Enquire Now
+                      
                     </Button>
-
                     <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
                       <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
                     </Modal>
+
+                     <Link href="/course-checkout/data-science-elite-course">
+                      <Button
+                        size="md"
+                        variant="yellow"
+                        icon={<ArrowRight className="ml-1" size={18} />}
+                        iconPosition="right"
+                        className="font-semibold w-full my-3 py-3"
+                      >
+                        Register Now
+                      </Button>
+                    </Link>
+
+                    
                   </div>
 
                   {/* EMI Note */}

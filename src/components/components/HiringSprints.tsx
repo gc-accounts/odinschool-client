@@ -91,7 +91,8 @@ const HiringSprints = ({ sectionClass }: CardsProps) => {
             Hiring <span className="text-primary-600">Sprints</span>
           </h2>
           <p className="text-gray-600">
-            Our Hiring Sprints give you the chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview.
+            Our Hiring Sprints give you the chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview. <br/><span className='font-semibold'>Many success stories have emerged from our Hiring Sprints. Here are a few!:</span>
+
           </p>
         </div>
         {/* Grid Layout */}
@@ -176,9 +177,7 @@ const HiringSprints = ({ sectionClass }: CardsProps) => {
             ))}
           </div>
         </div>
-<p className="text-gray-600 text-md mt-8 text-center">
-            Our Hiring Sprints give you the chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview.
-          </p>
+
           </div>
 
           <div className="lg:col-span-6">
