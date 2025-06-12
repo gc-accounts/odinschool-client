@@ -23,9 +23,10 @@ const Fee = ({ sectionClass }: feeProps) => {
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-        { label: 'Live Online Classes', description: '10+ tools & 6 months access' },
-        { label: 'Capstone Projects', description: 'Work on real-world projects' },
-        { label: 'Mentor Support', description: 'Live doubt sessions & mentoring' },
+        { label: 'Live Online Classes', description: '' },
+        { label: '10+ Hiring Sprints', description: '' },
+        { label: '10+ Projects', description: '' },
+        { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
       emiDescription: `At OdinSchool, we believe that quality education should be accessible to everyone.\nWe offer flexible EMI options and scholarships to support this vision. No cost EMIs available!`,
@@ -44,9 +45,10 @@ const Fee = ({ sectionClass }: feeProps) => {
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-        { label: 'Live Online Classes', description: '10+ tools & 6 months access' },
-        { label: 'Capstone Projects', description: 'Work on real-world projects' },
-        { label: 'Mentor Support', description: 'Live doubt sessions & mentoring' },
+       { label: 'Live Online Classes', description: '' },
+        { label: '10+ Hiring Sprints', description: '' },
+        { label: '10+ Projects', description: '' },
+        { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
       emiDescription: `At OdinSchool, we believe that quality education should be accessible to everyone.\nWe offer flexible EMI options and scholarships to support this vision. No cost EMIs available!`,
@@ -87,15 +89,15 @@ const Fee = ({ sectionClass }: feeProps) => {
                     <p className="text-lg font-medium text-gray-700 mb-4">{selected.includes}</p>
                     <hr className="border-gray mb-4" />
 
-                    <div className="space-y-5">
+                    <div className="space-y-3">
                       {selected.details.map((item, index) => (
-                        <div key={index} className="grid grid-cols-12 items-start gap-3">
+                        <div key={index} className="grid grid-cols-12 items-center gap-2">
                           <span className="col-span-1 bg-primary-50 rounded-full w-8 h-8 flex justify-center items-center">
-                            <CircleCheck className="text-primary-600 block mx-auto h-5 w-5" />
+                            <CircleCheck className="text-white bg-primary-600 block rounded-full mx-auto h-5 w-5" />
                           </span>
                           <div className="col-span-10">
-                            <p className="ml-2 font-semibold text-md text-gray-800 leading-tight mb-1">{item.label}</p>
-                            <p className="ml-2 text-sm text-gray-500 leading-snug">{item.description}</p>
+                            <p className="ml-1 font-semibold text-md text-gray-800 leading-tight ">{item.label}</p>
+                            {/* <p className="ml-2 text-sm text-gray-500 leading-snug">{item.description}</p> */}
                           </div>
                         </div>
                       ))}
@@ -132,7 +134,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                       
                     </Button>
                     <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                      <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-elite-course'} isModal={true} />
                     </Modal>
 
                      <Link href="/course-checkout/data-science-elite-course">

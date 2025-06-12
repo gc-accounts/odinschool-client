@@ -73,6 +73,7 @@ import { DsEliteCurriculumData } from '@/components/data/curriculum/DsEliteCurri
 import { DsEliteProgramHighlightsData } from '@/components/data/course-section/program-highlights/DsEliteProgramHighlightsData';
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
+import HowApply from '@/components/components/HowApply';
 
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
@@ -119,9 +120,9 @@ const DataScienceEliteCourse = ({ organisations }) => {
               <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
                 Careers You'll <span className="text-primary-600">Be Ready For</span>
               </h2>
-              <p className="text-gray-600">
+              {/* <p className="text-gray-600">
                 Grab the advantage of being a part of India's only Data Science course backed by top Indian companies
-              </p>
+              </p> */}
             </div>
             <ImageResponsive
               desktopSrc="https://strapi.odinschool.com/uploads/DS_Elite_infographic_20_4_897944f1db.webp"
@@ -146,6 +147,7 @@ const DataScienceEliteCourse = ({ organisations }) => {
           <CareerServices fontFamily={dmSerifDisplay.variable} slug="data-science-elite-course" sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <SuccessStoriesOD sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsEliteCertificateData} />
+          <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
           <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsEliteFaqsData} />

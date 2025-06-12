@@ -4,12 +4,21 @@ import { Network, UserRoundPen, Newspaper, Handshake, Podcast } from 'lucide-rea
 import { Button } from '@/components/components/ui/button';
 import RequestCallback from './custom-component/RequestCallback';
 import { CourseCarrerServiceData } from '@/components/data/CourseCarrerServiceData';
+
+import { usePathname } from 'next/navigation';
+
+
 interface CareerServices1Props {
   slug: String,
   sectionClass?: String,
   fontFamily?: String
 }
 const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props) => {
+
+  const pathname = usePathname();
+  const showDiv = pathname !== '/data-science-elite-course';
+
+
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 bg-white'}`}>
       <div className="container">
@@ -40,7 +49,11 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
         </div>
 
 
-        <RequestCallback slug={slug} />
+        
+
+        {showDiv && (
+          <>
+          <RequestCallback slug={slug} />
         <div className="mt-16 bg-white p-6 md:p-10 rounded-xl border border-gray-200 shadow-sm animate-on-scroll ">
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold mb-4">How do I enroll in this program?</h3>
@@ -68,6 +81,9 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
             ))}
           </div>
         </div>
+        </>
+        )}
+
       </div>
 
     </section>
