@@ -4,17 +4,26 @@ import { Network, UserRoundPen, Newspaper, Handshake, Podcast } from 'lucide-rea
 import { Button } from '@/components/components/ui/button';
 import RequestCallback from './custom-component/RequestCallback';
 import { CourseCarrerServiceData } from '@/components/data/CourseCarrerServiceData';
+
+import { usePathname } from 'next/navigation';
+
+
 interface CareerServices1Props {
   slug: String,
   sectionClass?: String,
   fontFamily?: String
 }
 const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props) => {
+
+  const pathname = usePathname();
+  const showDiv = pathname !== '/data-science-elite-course';
+
+
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl':'font-bold md:text-4xl'} ${fontFamily}`}>
+          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
             <span className="text-primary-600">Career Services</span> Designed for Success
           </h2>
           <p className="text-md text-gray-600 max-w-2xl mx-auto">
@@ -40,7 +49,11 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
         </div>
 
 
-        <RequestCallback slug={slug} />
+        
+
+        {showDiv && (
+          <>
+          <RequestCallback slug={slug} />
         <div className="mt-16 bg-white p-6 md:p-10 rounded-xl border border-gray-200 shadow-sm animate-on-scroll ">
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold mb-4">How do I enroll in this program?</h3>
@@ -68,6 +81,9 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
             ))}
           </div>
         </div>
+        </>
+        )}
+
       </div>
 
     </section>

@@ -1,13 +1,13 @@
 export const IbFaqsData = [
   {
     "id": 1,
-    "question": "Who is this program for?",
-    "answer": "This course is ideal for working professionals, career switchers, and fresh graduates who are serious about launching or accelerating a career in data science."
+    "question": "Who is this course meant for?",
+    "answer": "This course is designed for graduates from any academic background who want to build a career in investment banking operations, compliance, client onboarding, or trade support. No prior finance experience is required."
   },
   {
     "id": 2,
-    "question": "Do I need prior coding experience to join?",
-    "answer": "No, this program is beginner-friendly. We start from the basics and gradually build your expertise with full support."
+    "question": " What roles can I apply for after completing this course?",
+    "answer": "You’ll be prepared for roles such as Investment Banking Analyst, KYC Analyst, Trade Support Associate, Client Onboarding Executive, and other operations-focused roles in financial services."
   },
   {
     "id": 3,
@@ -16,27 +16,22 @@ export const IbFaqsData = [
   },
   {
     "id": 4,
-    "question": "What tools and technologies will I learn?",
-    "answer": "You will gain hands-on experience with Python, SQL, Power BI, Machine Learning, Generative AI tools, PySpark, and more."
+    "question": "Is this course beginner-friendly?",
+    "answer": "Yes. The course starts from foundational concepts and gradually builds toward real-world applications. It’s suitable for freshers as well as working professionals transitioning into finance operations."
   },
   {
     "id": 5,
-    "question": "What projects will I be working on?",
-    "answer": "In this Data Science Course, you will work on around 10+ projects across the core domains of Data Science. Projects are kept updated in line with industry trends; so expect variety."
+    "question": "Does the program include placement assistance?",
+    "answer": "Yes. You’ll get access to exclusive hiring sprints, mock interviews, resume guidance, and mentorship to help you confidently approach job opportunities. However, placement is not guaranteed."
   },
   {
     "id": 6,
-    "question": "What kind of placement support can I expect?",
-    "answer": "You’ll have access to 10+ structured hiring sprints, resume support, mock interviews, and direct opportunities to interview with companies associated with the program."
+    "question": "Will I receive a certificate upon completion?",
+    "answer": "Yes. You’ll earn an industry-backed Investment Banking and Financial Operations Elite Course certificate from OdinSchool."
   },
   {
     "id": 7,
-    "question": "Will I receive a certificate upon completion?",
-    "answer": "Yes. You’ll earn an industry-backed Data Science Elite Certification from OdinSchool."
-  },
-  {
-    "id": 8,
-    "question": "Is there a refund policy for this Data Science Elite Course?",
+    "question": "Is there a refund policy for this Investment Banking and Financial Operations Elite Course?",
     "answer": "As per our refund policy, fee amounts once paid are non-refundable."
   }
 ]

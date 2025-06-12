@@ -44,10 +44,10 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto md:px-4">
         {/* <p className="text-lg ">After the successful May launch, we’re thrilled to announce the</p> */}
         <h2 className="text-3xl md:text-5xl font-display leading-tight">
-          India’s Only Data Science Program Backed by 5 Leading Companies - <br /><span className='text-primary-600'>Data Science Elite Course</span>
+          India’s Only Data Science Program Backed by <span className='block'>5 Leading Companies -</span> <span className='text-primary-600 block mt-3'>Data Science Elite Course</span>
         </h2>
 
         {/* Logos */}
@@ -55,7 +55,7 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
           {partnerLogos.map(({ id, name, logo }) => (
             <div
               key={id}
-              className="w-[40%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 bg-primary-50 px-4 py-3 rounded-lg flex justify-center items-center"
+              className="w-[40%] sm:w-[20%] md:w-[15%] mx-2 md:mb-0 mb-3 px-4 py-3 rounded-lg flex justify-center items-center"
             >
               <Image
                 src={logo}
@@ -92,7 +92,7 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
             </Button>
           </div>
           <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-            <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+            <PrimaryForm buttonText='Request a Callback' slug={'data-science-elite-course'} isModal={true} />
           </Modal>
 
         </div>

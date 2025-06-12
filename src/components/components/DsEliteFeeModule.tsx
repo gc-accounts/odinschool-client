@@ -23,9 +23,10 @@ const Fee = ({ sectionClass }: feeProps) => {
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-        { label: 'Live Online Classes', description: '10+ tools & 6 months access' },
-        { label: 'Capstone Projects', description: 'Work on real-world projects' },
-        { label: 'Mentor Support', description: 'Live doubt sessions & mentoring' },
+        { label: 'Live Online Classes', description: '' },
+        { label: '10+ Hiring Sprints', description: '' },
+        { label: '10+ Projects', description: '' },
+        { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
       emiDescription: `At OdinSchool, we believe that quality education should be accessible to everyone.\nWe offer flexible EMI options and scholarships to support this vision. No cost EMIs available!`,
@@ -44,9 +45,10 @@ const Fee = ({ sectionClass }: feeProps) => {
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-        { label: 'Live Online Classes', description: '10+ tools & 6 months access' },
-        { label: 'Capstone Projects', description: 'Work on real-world projects' },
-        { label: 'Mentor Support', description: 'Live doubt sessions & mentoring' },
+       { label: 'Live Online Classes', description: '' },
+        { label: '10+ Hiring Sprints', description: '' },
+        { label: '10+ Projects', description: '' },
+        { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
       emiDescription: `At OdinSchool, we believe that quality education should be accessible to everyone.\nWe offer flexible EMI options and scholarships to support this vision. No cost EMIs available!`,
@@ -71,7 +73,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                 <TabsTrigger
                   key={item.id}
                   value={item.id}
-                  className="px-5 py-2 text-sm data-[state=active]:bg-primary-600 data-[state=active]:text-white"
+                  className="px-5 py-2 text-sm data-[state=active]:bg-primary-600 data-[state=active]:text-white border border-primary-500"
                 >
                   {item.cohortDate}
                 </TabsTrigger>
@@ -87,15 +89,15 @@ const Fee = ({ sectionClass }: feeProps) => {
                     <p className="text-lg font-medium text-gray-700 mb-4">{selected.includes}</p>
                     <hr className="border-gray mb-4" />
 
-                    <div className="space-y-5">
+                    <div className="space-y-3">
                       {selected.details.map((item, index) => (
-                        <div key={index} className="grid grid-cols-12 items-start gap-3">
+                        <div key={index} className="grid grid-cols-12 items-center gap-2">
                           <span className="col-span-1 bg-primary-50 rounded-full w-8 h-8 flex justify-center items-center">
-                            <CircleCheck className="text-primary-600 block mx-auto h-5 w-5" />
+                            <CircleCheck className="text-white bg-primary-600 block rounded-full mx-auto h-5 w-5" />
                           </span>
                           <div className="col-span-10">
-                            <p className="ml-2 font-semibold text-md text-gray-800 leading-tight mb-1">{item.label}</p>
-                            <p className="ml-2 text-sm text-gray-500 leading-snug">{item.description}</p>
+                            <p className="ml-1 font-semibold text-md text-gray-800 leading-tight ">{item.label}</p>
+                            {/* <p className="ml-2 text-sm text-gray-500 leading-snug">{item.description}</p> */}
                           </div>
                         </div>
                       ))}
@@ -108,7 +110,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                       {selected.totalPrice}
                       <span className="font-medium text-sm text-gray-600">+ GST</span>
                     </p>
-                    <h3 className="text-3xl font-bold text-center">
+                    <h3 className="text-3xl font-bold text-center text-green-600">
                       {selected.price} <span className="text-base font-normal">+ GST</span>
                     </h3>
                     <div className="bg-blue-100 text-blue-900 text-sm px-3 py-2 mt-4 rounded-md text-center font-medium">
@@ -119,34 +121,35 @@ const Fee = ({ sectionClass }: feeProps) => {
 
 
 
-                    <Link href="/course-checkout/data-science-elite-course">
+                   
+                    <Button
+                      size="md"
+                      variant="outline"
+                      icon={<ArrowRight className="ml-1" size={18} />}
+                      iconPosition="right"
+                      className="font-semibold w-full py-3"
+                      onClick={() => setFormOpen(true)}
+                    >
+                      Enquire Now
+                      
+                    </Button>
+                    <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-elite-course'} isModal={true} />
+                    </Modal>
+
+                     <Link href="/course-checkout/data-science-elite-course">
                       <Button
                         size="md"
-                        variant="outline"
+                        variant="yellow"
                         icon={<ArrowRight className="ml-1" size={18} />}
                         iconPosition="right"
-                        className="font-semibold w-full my-3"
+                        className="font-semibold w-full my-3 py-3"
                       >
-                        Enquire Now
+                        Register Now
                       </Button>
                     </Link>
 
-
-
-                    <Button
-                      size="md"
-                      variant="yellow"
-                      icon={<ArrowRight className="ml-1" size={18} />}
-                      iconPosition="right"
-                      className="font-semibold w-full"
-                      onClick={() => setFormOpen(true)}
-                    >
-                      Register Now
-                    </Button>
-
-                    <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                      <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
-                    </Modal>
+                    
                   </div>
 
                   {/* EMI Note */}

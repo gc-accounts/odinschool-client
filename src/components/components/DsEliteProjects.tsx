@@ -31,7 +31,7 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
     },
     {
       id: 3,
-      title: 'Corona Tracker Prediction',
+      title: 'Health Insurance Prediction',
       description: 'Build a predictive ML model to increase the accuracy of health insurance prediction',
       image: 'https://strapi.odinschool.com/uploads/Health_Insurance_Prediction_5037b70c78.webp',
     },
@@ -120,7 +120,7 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
             </Button>
 
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-              <PrimaryForm slug={'data-science-elite-course'} isModal={true} />
+              <PrimaryForm buttonText='Request a Callback' slug={'data-science-elite-course'} isModal={true} />
             </Modal>
           </div>
 

@@ -620,7 +620,7 @@ const CourseCheckout = () => {
                 </div>
 
                 <div className="pt-4 border-t">
-                  <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                  <Button type="submit" variant='yellow' size="lg" className="w-full" disabled={submitting}>
                     {submitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

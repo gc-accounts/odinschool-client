@@ -3,27 +3,79 @@ import React, { useEffect } from 'react';
 import { DM_Serif_Display } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
-import CardsFF from '@/components/components/CardsFF';
-import DataLeadersForm from '@/components/components/DataLeadersForm';
-import WhyJoin from '@/components/components/WhyJoin';
-import Mentorship from '@/components/components/Mentorship';
-import HiringSprints from '@/components/components/HiringSprints';
-import HiringPartners from '@/components/components/HiringPartners';
-import ProgramHighlights from '@/components/components/ ProgramHighlights';
-import ImageResponsive from '@/components/components/ImageResponsive';
-import ToolsSection from '@/components/components/ToolsSection';
-import DsEliteProjects from '@/components/components/DsEliteProjects';
-import CareerServices from '@/components/components/CareerServices1';
-import ProgramCurriculum from '@/components/components/ProgramCurriculum';
-import SuccessStoriesOD from '@/components/components/SuccessStoriesOD';
-import FAQsection from '@/components/components/FAQsection';
-import Certification from '@/components/components/Certification';
-import DsEliteFeeModule from '@/components/components/DsEliteFeeModule';
 
-import { ProgramCurriculumData } from '@/components/data/ds-elite-static-data/ProgramCurriculumData';
+const CardsFF = dynamic(() => import('@/components/components/CardsFF'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const DataLeadersForm = dynamic(() => import('@/components/components/DataLeadersForm'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const WhyJoin = dynamic(() => import('@/components/components/WhyJoin'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const Mentorship = dynamic(() => import('@/components/components/Mentorship'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const HiringSprints = dynamic(() => import('@/components/components/HiringSprints'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const HiringPartners = dynamic(() => import('@/components/components/HiringPartners'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const ProgramHighlights = dynamic(() => import('@/components/components/ProgramHighlights'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const ImageResponsive = dynamic(() => import('@/components/components/ImageResponsive'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const ToolsSection = dynamic(() => import('@/components/components/ToolsSection'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const DsEliteProjects = dynamic(() => import('@/components/components/DsEliteProjects'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const CareerServices = dynamic(() => import('@/components/components/CareerServices1'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const ProgramCurriculum = dynamic(() => import('@/components/components/ProgramCurriculum'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const SuccessStoriesOD = dynamic(() => import('@/components/components/SuccessStoriesOD'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const FAQsection = dynamic(() => import('@/components/components/FAQsection'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const Certification = dynamic(() => import('@/components/components/Certification'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const DsEliteFeeModule = dynamic(() => import('@/components/components/DsEliteFeeModule'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+
+import { DsEliteCurriculumData } from '@/components/data/curriculum/DsEliteCurriculumData';
 import { DsEliteProgramHighlightsData } from '@/components/data/course-section/program-highlights/DsEliteProgramHighlightsData';
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
+
+import HowApply from '@/components/components/HowApply';
+
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
   weight: ['400'],
@@ -69,9 +121,9 @@ const DataScienceEliteCourse = ({ organisations }) => {
               <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
                 Careers You'll <span className="text-primary-600">Be Ready For</span>
               </h2>
-              <p className="text-gray-600">
+              {/* <p className="text-gray-600">
                 Grab the advantage of being a part of India's only Data Science course backed by top Indian companies
-              </p>
+              </p> */}
             </div>
             <ImageResponsive
               desktopSrc="https://strapi.odinschool.com/uploads/DS_Elite_infographic_20_4_897944f1db.webp"
@@ -87,18 +139,19 @@ const DataScienceEliteCourse = ({ organisations }) => {
           </section>
 
           <ProgramCurriculum
-            data={ProgramCurriculumData}
+            data={DsEliteCurriculumData}
             sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
             slug="data-science-elite-course"
           />
-          <ToolsSection sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ToolsSection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteProjects sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices slug="data-science-elite-course" sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <CareerServices fontFamily={dmSerifDisplay.variable} slug="data-science-elite-course" sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <SuccessStoriesOD sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsEliteCertificateData} />
+          <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
-          <FAQsection sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsEliteFaqsData} />
+          <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsEliteFaqsData} />
         </main>
         <Footer />
       </div>
