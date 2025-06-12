@@ -15,9 +15,9 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
           <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
             Meet the Data Leaders Who Will <span className="text-primary-600">Shape Your Learning</span>
           </h2>
-          <p className="text-gray-600">
+          {/* <p className="text-gray-600">
             Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
-          </p>
+          </p> */}
         </div>
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
