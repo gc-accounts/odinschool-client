@@ -8,8 +8,8 @@ import Button from '@/components/components/Button'
 
 const hiringPartnersData = [
   { id: 1, thumbnail: 'https://strapi.odinschool.com/uploads/Flip_Kart_Preplacement_Talk_45de2b1844.webp', videoId: 'Tj1whD5zUOg' },
-  { id: 2, thumbnail: 'https://strapi.odinschool.com/uploads/Flip_Kart_Preplacement_Talk_a3d67eed07.webp', videoId: 'W7JQKYetLy0' },
-  { id: 3, thumbnail: 'https://strapi.odinschool.com/uploads/Ven_Analytics_Preplacement_20_Talk_fac5aaf3fb.webp', videoId: 'CMYMHqBDZi' },
+  { id: 2, thumbnail: 'https://strapi.odinschool.com/uploads/Pre_Placement_Talk_1_1c7c667c98.webp', videoId: 'W7JQKYetLy0' },
+  { id: 3, thumbnail: 'https://strapi.odinschool.com/uploads/Ven_Analytics_Preplacement_20_Talk_fac5aaf3fb.webp', videoId: 'CMYMHqBDZi0' },
   { id: 4, thumbnail: 'https://strapi.odinschool.com/uploads/Kriya_Nextewalth_900a7b8ed3.webp', videoId: 'A5_qkG18hH8' },
 ]
 
@@ -49,7 +49,7 @@ const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp
             Hiring Sprints - From <span className="text-primary-600">Our Partners</span>
           </h2>
           <p className="text-gray-600">
-            We have partnered with 500+ organisations and conduct multiple job drives every month.
+            We have partnered with 600+ organisations and conduct multiple job drives every month.
             Here's What Our Hiring Partners Have To Say
           </p>
         </div>

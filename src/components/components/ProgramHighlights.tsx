@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { MoveRight } from 'lucide-react';
 
 
 interface  ProgramHighlightsProps{
@@ -22,13 +23,18 @@ interface  ProgramHighlightsProps{
       {
         data.map((data, index)=>{
           return(
-            <div key={index} className='bg-primary-50 p-4 rounded-md grid grid-cols-12'>
-              <div className='md:col-span-2 col-span-12'>
-                <Image src={data.icon} alt={data.title} className="w-18 h-auto block mx-auto" loading="lazy" width={50} height={50}  />
+            <div key={index} className='bg-primary-50 p-4 rounded-md grid grid-cols-12 items-center'>
+              <div className='md:col-span-1 col-span-12 flex items-center'>
+                {/* <Image src={data.icon} alt={data.title} className="w-18 h-auto block mx-auto" loading="lazy" width={50} height={50}  /> */}
+                <div className='bg-primary-600 rounded-full w-10 h-10 flex justify-center items-center block mx-auto md:mb-0 mb-2'>
+                  <MoveRight className='text-white'/>
+                </div>
               </div>
               <div className='md:col-span-10 col-span-12 md:text-start text-center'>
+                <div className='md:ml-3'>
               <h2 className='font-semibold md:text-lg text-md mb-1'>{data.title}</h2>
               <p className='md:text-sm text-xs'>{data.description}</p>
+              </div>
               </div>
             </div>
           )
