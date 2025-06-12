@@ -23,7 +23,7 @@ export default function HelloBar({ isPrimaryForm, slug }: HellobarProps) {
         <span className='md:text-base text-xs'>🎉 Early Bird Offer! Save up to ₹12,000 for a Limited Time. Enroll Now & Elevate Your Career! 🚀</span>
         <button
           onClick={() => setFormOpen(true)}
-          className="bg-yellow-400 text-black font-semibold px-4 py-1 rounded-sm hover:bg-yellow-500 transition  md:text-base text-xs"
+          className="bg-yellow-400 text-black font-semibold px-4 py-1 rounded-sm hover:bg-yellow-500 transition  md:text-base text-xs whitespace-nowrap"
         >
           Claim Offer
         </button>
