@@ -612,7 +612,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                     </Button>
                   </div>
                   <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                    <PrimaryForm slug={course.slug} isModal={true} />
+                    <PrimaryForm slug={course.slug} isModal={true} sourceDomain='Course form' />
                     {/* <DynamicForm
                       buttonText={'Request Callback'}
                       fields={formFields}
@@ -687,7 +687,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
                   height={500}
                 /> */}
 
-                <PrimaryForm slug={course.slug} isModal={false} buttonText='Request a Callback'/>
+                <PrimaryForm slug={course.slug} isModal={false} buttonText='Request a Callback' sourceDomain='Course form' />
 
 
               </div>
@@ -955,7 +955,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                   <Button className='w-full' onClick={() => setFormOpen(true)}>Request a callback</Button>
                   <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                    <PrimaryForm slug={course.slug} isModal={true} />
+                    <PrimaryForm slug={course.slug} isModal={true} sourceDomain='Course form' />
                   </Modal>
                   <h3 className="text-xs text-gray-500 font-regular italic mb-4 mt-4 border border-gray-300 rounded-md p-1.5">No cost EMIs Available. 6,9,12 months EMI option available.</h3>
                 </div>

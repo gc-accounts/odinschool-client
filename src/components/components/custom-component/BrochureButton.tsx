@@ -84,7 +84,7 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
       </Button>
 
       <Modal header_text={'Request a callback'} open={formOpen} onOpenChange={setFormOpen}>
-        <PrimaryForm buttonText='Request a Callback' slug={slug} isModal={true} />
+        <PrimaryForm buttonText='Request a Callback' slug={slug} isModal={true} sourceDomain='Course form' />
       </Modal>
 
       <Button

@@ -25,7 +25,7 @@ export async function POST(request: Request) {
         Year_Of_Graduation: getField('Year of Graduation'),
         Ga_client_id: getField('Ga_client_id'),
         Business_Unit: getField('Business Unit'),
-        Source_Domain: 'Course Form',
+        Source_Domain: getField('Source_Domain'),
         Coupon_Code: formData.get('Coupon Code'),
 
 

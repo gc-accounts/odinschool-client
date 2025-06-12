@@ -45,7 +45,7 @@ const Fee = ({ sectionClass }: feeProps) => {
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-       { label: 'Live Online Classes', description: '' },
+        { label: 'Live Online Classes', description: '' },
         { label: '10+ Hiring Sprints', description: '' },
         { label: '10+ Projects', description: '' },
         { label: 'Career Services', description: '' },
@@ -121,7 +121,7 @@ const Fee = ({ sectionClass }: feeProps) => {
 
 
 
-                   
+
                     <Button
                       size="md"
                       variant="outline"
@@ -131,13 +131,13 @@ const Fee = ({ sectionClass }: feeProps) => {
                       onClick={() => setFormOpen(true)}
                     >
                       Enquire Now
-                      
+
                     </Button>
                     <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-elite-course'} isModal={true} />
+                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-elite-course'} isModal={true} sourceDomain='Course form' />
                     </Modal>
 
-                     <Link href="/course-checkout/data-science-elite-course">
+                    <Link href="/course-checkout/data-science-elite-course">
                       <Button
                         size="md"
                         variant="yellow"
@@ -149,7 +149,7 @@ const Fee = ({ sectionClass }: feeProps) => {
                       </Button>
                     </Link>
 
-                    
+
                   </div>
 
                   {/* EMI Note */}

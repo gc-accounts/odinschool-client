@@ -10,11 +10,12 @@ import CourseSecondaryFormFields from '@/components/data/form-fields/CourseSecon
 interface SecondaryFormProps {
   isModal: Boolean;
   isCoupon: Boolean;
-  buttonText?: string
+  buttonText?: string;
+  sourceDomain?: string;
 
 }
 
-const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, buttonText }) => {
+const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, buttonText, sourceDomain }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
@@ -50,6 +51,7 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
       formData.append('Year of Graduation', data.year);
       formData.append('Ga_client_id', '');
       formData.append('Business Unit', 'Odinschool');
+      formData.append('Source_Domain', sourceDomain ? sourceDomain : 'Course Form');
       isCoupon && formData.append('Coupon Code', 'EBO2025');
       formData.append('First Page Seen', utm['First Page Seen'] || '');
       formData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
