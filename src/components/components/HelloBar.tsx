@@ -23,7 +23,7 @@ export default function HelloBar({ isPrimaryForm, slug }: HellobarProps) {
         <span>🎉 Early Bird Offer! Save up to ₹12,000 for a Limited Time. Enroll Now & Elevate Your Career! 🚀</span>
         <button
           onClick={() => setFormOpen(true)}
-          className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-md hover:bg-yellow-500 transition"
+          className="bg-yellow-400 text-black font-semibold px-4 py-1 rounded-sm hover:bg-yellow-500 transition"
         >
           Claim Offer
         </button>
@@ -31,7 +31,7 @@ export default function HelloBar({ isPrimaryForm, slug }: HellobarProps) {
         <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
           {/* <se slug={'data-science-elite-course'} isModal={true} /> */}
           {
-            isPrimaryForm ? <PrimaryForm isModal={true} slug={slug} isCoupon={true} /> : <SecondaryForm isCoupon={true} isModal={true} />
+            isPrimaryForm ? <PrimaryForm buttonText='Request a Callback' isModal={true} slug={slug} isCoupon={true} /> : <SecondaryForm isCoupon={true} isModal={true} />
           }
 
         </Modal>
