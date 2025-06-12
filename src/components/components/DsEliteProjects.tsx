@@ -120,7 +120,7 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
             </Button>
 
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-              <PrimaryForm buttonText='Request a Callback' slug={'data-science-elite-course'} isModal={true} />
+              <PrimaryForm buttonText='Request a Callback' slug={'data-science-elite-course'} isModal={true} sourceDomain='Course form' />
             </Modal>
           </div>
 
