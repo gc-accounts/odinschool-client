@@ -4,6 +4,7 @@ import DynamicForm, { FieldConfig } from './form/DynamicForm';
 import { submitToZoho } from '@/components/utils/api/submitToZoho';
 import callbackFormFields from '@/components/data/callbackFormFields';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+import SecondaryForm from '@/components/components/course-details/SecondaryForm';
 
 const CallbackForm = () => {
   const { toast } = useToast();
@@ -56,7 +57,7 @@ const CallbackForm = () => {
     <div className="w-full max-w-lg mx-auto mt-12 glass-card rounded-xl p-6 md:p-8 shadow-lg">
       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Request a Callback</h3>
       <p className="text-gray-600 mb-6">Fill in your details and our team will get back to you</p>
-      <DynamicForm
+      {/* <DynamicForm
         fields={callbackFormFields}
         buttonText="Submit"
         initialValues={{
@@ -70,7 +71,8 @@ const CallbackForm = () => {
           UTM_Content_First_Page_Seen: utm['UTM Content-First Page Seen'],
         }}
         onSubmit={handleFormSubmit}
-      />
+      /> */}
+      <SecondaryForm isModal={false} isCoupon={false} buttonText='Request a Callback' />
     </div>
   );
 };

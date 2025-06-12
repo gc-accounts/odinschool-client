@@ -7,12 +7,14 @@ import DynamicForm, { FieldConfig } from '@/components/components/form/DynamicFo
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import { useRouter } from 'next/navigation';
 import CourseSecondaryFormFields from '@/components/data/form-fields/CourseSecondaryFormFields';
-interface PrimaryFormProps {
+interface SecondaryFormProps {
   isModal: Boolean;
-  isCoupon: Boolean
+  isCoupon: Boolean;
+  buttonText?: string
+
 }
 
-const SecondaryForm: React.FC<PrimaryFormProps> = ({ isCoupon, isModal }) => {
+const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, buttonText }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
@@ -87,10 +89,10 @@ const SecondaryForm: React.FC<PrimaryFormProps> = ({ isCoupon, isModal }) => {
   if (!Object.keys(utm).length) return null;
 
   return (
-    <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
+    <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8'}`}>
       <DynamicForm
         fields={CourseSecondaryFormFields as FieldConfig[]}
-        buttonText="Submit"
+        buttonText={buttonText ? buttonText : 'Submit'}
         initialValues={{
           ga_client_id: '',
           business_unit: 'Odinschool',

@@ -10,6 +10,7 @@ import { useToast } from '@/components/hooks/use-toast';
 import { FieldConfig } from './form/DynamicForm';
 import { useRouter } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+import SecondaryForm from '@/components/components/course-details/SecondaryForm';
 import Image from 'next/image';
 const formFields: FieldConfig[] = [
   {
@@ -213,20 +214,7 @@ const HeroSection = () => {
               </Button>
             </div>
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-              <DynamicForm
-                buttonText={'Request Callback'}
-                fields={formFields}
-                initialValues={{
-                  ga_client_id: 'auto-fetch-or-from-cookie',
-                  business_unit: 'Odinschool'
-                }}
-
-                onSubmit={(data) => {
-                  handleFormSubmit(data)
-
-                }}
-
-              />
+              <SecondaryForm isModal={true} isCoupon={false} buttonText='Request a Callback' />
 
             </Modal>
 
