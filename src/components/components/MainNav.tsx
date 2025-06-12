@@ -196,8 +196,8 @@ ListItem.displayName = "ListItem";
 
 const learningLinks = [
   {
-    title: "Data Science Course",
-    href: "/data-science-course",
+    title: "Data Science Elite Course",
+    href: "/data-science-elite-course",
     description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
   },
   {
