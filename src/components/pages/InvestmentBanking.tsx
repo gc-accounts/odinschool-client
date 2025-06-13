@@ -93,6 +93,7 @@ import { IbCurroculumData } from '@/components/data/curriculum/IbCurroculumData'
 import { DsEliteProgramHighlightsData } from '@/components/data/course-section/program-highlights/DsEliteProgramHighlightsData';
 import { IbProgramHighlightsData } from '@/components/data/course-section/program-highlights/IbProgramHighlightsData';
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
+import { IbFaqsData } from '@/components/data/course-section/faqs/IbFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
 import { IbCertificateData } from '@/components/data/course-section/certificate/IbCertificateData';
 
@@ -177,7 +178,7 @@ const InvestmentBanking = ({ organisations }) => {
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
-          <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsEliteFaqsData} />
+          <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbFaqsData} />
         </main>
         <Footer />
       </div>
