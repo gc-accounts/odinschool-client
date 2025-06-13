@@ -73,7 +73,7 @@ const MainNav = () => {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <StyledNavigationMenuLink href="/about" className="h-9 px-4">
+            <StyledNavigationMenuLink href="/about-us" className="h-9 px-4">
               <Building2 className="mr-2 h-4 w-4" />
               About Us
             </StyledNavigationMenuLink>
