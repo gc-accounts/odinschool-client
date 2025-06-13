@@ -4,15 +4,23 @@ import { DM_Serif_Display } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
 
+
+const InvestmentBankingHero = dynamic(() => import('@/components/components/InvestmentBankingHero'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
 const CardsFF = dynamic(() => import('@/components/components/CardsFF'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
-const DataLeadersForm = dynamic(() => import('@/components/components/DataLeadersForm'), {
+
+const DataLeadersFormIB = dynamic(() => import('@/components/components/DataLeadersFormIB'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
 const WhyJoin = dynamic(() => import('@/components/components/WhyJoin'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+const WhyJoinIB = dynamic(() => import('@/components/components/WhyJoinIB'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
@@ -21,6 +29,10 @@ const Mentorship = dynamic(() => import('@/components/components/Mentorship'), {
 });
 
 const HiringSprints = dynamic(() => import('@/components/components/HiringSprints'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const HiringSprintsIB = dynamic(() => import('@/components/components/HiringSprintsIB'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
@@ -44,11 +56,18 @@ const DsEliteProjects = dynamic(() => import('@/components/components/DsElitePro
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
+const IbProjects = dynamic(() => import('@/components/components/IbProjects'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
 const CareerServices = dynamic(() => import('@/components/components/CareerServices1'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
 const ProgramCurriculum = dynamic(() => import('@/components/components/ProgramCurriculum'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+const ProgramCurriculumIB = dynamic(() => import('@/components/components/ProgramCurriculumIB'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
@@ -70,9 +89,12 @@ const DsEliteFeeModule = dynamic(() => import('@/components/components/DsEliteFe
 
 
 import { DsEliteCurriculumData } from '@/components/data/curriculum/DsEliteCurriculumData';
+import { IbCurroculumData } from '@/components/data/curriculum/IbCurroculumData';
 import { DsEliteProgramHighlightsData } from '@/components/data/course-section/program-highlights/DsEliteProgramHighlightsData';
+import { IbProgramHighlightsData } from '@/components/data/course-section/program-highlights/IbProgramHighlightsData';
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
+import { IbCertificateData } from '@/components/data/course-section/certificate/IbCertificateData';
 
 import HowApply from '@/components/components/HowApply';
 
@@ -102,17 +124,19 @@ const InvestmentBanking = ({ organisations }) => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
-          <DsEliteFoldLight sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CardsFF sectionClass="bg-[#fff] px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
-          <DataLeadersForm sectionClass="bg-white px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
-          <WhyJoin sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Mentorship sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HiringSprints sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HiringPartners sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <StudentsTicker sectionClass="bg-white px-0 pb-[50px] md:px-0 md:pb-[70px]" />
+          {/* <DsEliteFoldLight sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" /> */}
+          <InvestmentBankingHero sectionClass="bg-[#0C1632] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <DataLeadersFormIB sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <WhyJoinIB sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <HiringSprintsIB sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          {/* <HiringPartners sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" /> */}
           <ProgramHighlights
             sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
-            data={DsEliteProgramHighlightsData}
+            data={IbProgramHighlightsData}
+            title='Course Highlights'
+            subTitle='Step into India’s only Investment Banking and Finance Operations course backed by leading companies.'
           />
 
           {/* Careers Section */}
@@ -126,8 +150,8 @@ const InvestmentBanking = ({ organisations }) => {
               </p> */}
             </div>
             <ImageResponsive
-              desktopSrc="https://strapi.odinschool.com/uploads/DS_Elite_infographic_20_4_897944f1db.webp"
-              mobileSrc="https://strapi.odinschool.com/uploads/DS_Elite_infographic_20_5_4276df33e1.webp"
+              desktopSrc="https://strapi.odinschool.com/uploads/IBFO_Infographic_057e6647e0.webp"
+              mobileSrc="https://strapi.odinschool.com/uploads/IBFO_Infographic_057e6647e0.webp"
               alt="Careers You’ll Be Ready For"
               width={1200}
               height={600}
@@ -137,17 +161,19 @@ const InvestmentBanking = ({ organisations }) => {
               fetchPriority="low"
             />
           </section>
+          <StudentsTicker sectionClass="bg-white px-0 pb-[50px] md:px-0 md:pb-[70px]" />
 
-          <ProgramCurriculum
-            data={DsEliteCurriculumData}
+
+          <ProgramCurriculumIB
+            data={IbCurroculumData}
             sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
             slug="data-science-elite-course"
           />
-          <ToolsSection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsEliteProjects sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices fontFamily={dmSerifDisplay.variable} slug="data-science-elite-course" sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <SuccessStoriesOD sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsEliteCertificateData} />
+
+          <IbProjects sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <CareerServices fontFamily={dmSerifDisplay.variable} slug="data-science-elite-course" sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
