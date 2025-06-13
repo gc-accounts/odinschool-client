@@ -207,6 +207,12 @@ const learningLinks = [
   },
 
   {
+    title: "Investment Banking and Finance Operations Elite Course",
+    href: "/investment-banking-course",
+    description: "Industry-backed program with live online training and multiple hiring sprints.",
+  },
+
+  {
     title: "Generative AI Course",
     href: "generative-ai-bootcamp",
     description: "Master cutting-edge skills in this industry-aligned Course.",

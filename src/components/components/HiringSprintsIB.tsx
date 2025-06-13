@@ -98,13 +98,12 @@ const HiringSprintsIB = ({ sectionClass }: CardsProps) => {
           <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
             Hiring <span className="text-primary-600">Sprints</span>
           </h2>
-          {/* <p className="text-gray-600">
-            Our Hiring Sprints give you the chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview. <br /><span className='font-semibold'>Many success stories have emerged from our Hiring Sprints. Here are a few!</span>
-
-          </p> */}
+          <p className="text-gray-600">
+            Hiring Sprints are recruitment drives that are run exclusively for OdinSchool learners by hiring companies
+          </p>
         </div>
         {/* Grid Layout */}
-        <div className="flex items-start gap-10">
+        <div className="flex md:flex-row flex-col  md:gap-10 gap-4">
           {/* Left: studentss */}
           <div>
             <div className="relative px-6">

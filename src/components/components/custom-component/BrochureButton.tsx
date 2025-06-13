@@ -83,7 +83,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       {
         isPrimaryButton &&
         <Button
-          className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black text-lg px-4 py-3 outline-none focus:outline-none'
+          className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black md:text-lg text-sm md:px-4 px-2 md:py-3 py-1 outline-none focus:outline-none'
           onClick={() => setFormOpen(true)}
         >
           {primaryButtonText}
@@ -96,7 +96,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       {
         isBrochureButton &&
         <Button
-          className='bg-transparent border border-white rounded-sm text-white text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
+          className='bg-transparent border border-white rounded-sm text-white md:text-lg text-sm md:px-4 px-2 md:py-3 py-1 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
           onClick={() => setBrochureFormOpen(true)}
         >
           Download Brochure
