@@ -14,11 +14,11 @@ export const DsEliteDataLeadersData = [
     logo: 'https://strapi.odinschool.com/uploads/swiggy_20100_X40_20indv_6108c02a5c.webp'
   },
   {
-    name: 'S Sai Subrath',
-    designation: 'Talent Acquisition Manager',
-    company: 'PhonePe',
-    image: 'https://strapi.odinschool.com/uploads/S_Sai_Subrath_3_74b49cfc6f.webp',
-    logo: 'https://strapi.odinschool.com/uploads/Phon_Pe_20150_X60_aed6af7fa4.webp'
+    name: 'Kalyan Ganjam',
+    designation: 'Digital Experience & Cloud Native Practice Leader',
+    company: 'Prolifics',
+    image: 'https://strapi.odinschool.com/uploads/Kalyan_Ganjam_827189bd44.webp',
+    logo: 'https://strapi.odinschool.com/uploads/prolifics_150_X60_6485f3721f.webp'
   },
   {
     name: 'Thomas Varheese',
@@ -28,11 +28,11 @@ export const DsEliteDataLeadersData = [
     logo: 'https://strapi.odinschool.com/uploads/4_Seer_20150_X60_30ae825a01.webp'
   },
   {
-    name: 'Rhishikesh Joshi',
+    name: 'Rahul Ranjan Srivastava',
     designation: 'Founder',
-    company: 'Venanalytics',
-    image: 'https://strapi.odinschool.com/uploads/Rhishikesh_Joshi_455d7620e8.png',
-    logo: 'https://strapi.odinschool.com/uploads/Venanalytics_20150_X60_9ec2da4708.webp'
+    company: 'Intellimark AI',
+    image: 'https://strapi.odinschool.com/uploads/Rahul_Ranjan_Srivastava_1_b2154946a1.webp',
+    logo: 'https://strapi.odinschool.com/uploads/Intellimart_AI_150_X60_1_0da6735f25.webp'
   },
   {
     name: 'Dr. Anand Fadte',
