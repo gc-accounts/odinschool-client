@@ -107,6 +107,17 @@ const MobileNav = () => {
                     >
                       Certification Program in Applied Generative AI - E&ICT Academy, IITG
                     </Link>
+
+
+                    <Link
+                      href="/investment-banking-course"
+                      className="py-2 text-sm"
+                      onClick={closeSheet}
+                    >
+                      Investment Banking and Finance Operations Elite Course
+                    </Link>
+
+
                     <Link
                       href="/generative-ai-bootcamp"
                       className="py-2 text-sm"

@@ -45,7 +45,7 @@ const WhyJoinIB = ({ sectionClass }: CardsProps) => {
             Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
           </p> */}
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-4 md:gap-6 gap-4 text-center text-white'>
+        <div className='grid grid-cols-1 md:grid-cols-4 md:gap-6 gap-4 text-center text-white'>
           {
             cardData.map((data, index) => {
               return (
