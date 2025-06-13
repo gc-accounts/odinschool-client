@@ -1,18 +1,18 @@
 export const IbDataLeadersData = [
   {
     id: 1,
-    name: 'Vishal Sharma',
-    designation: 'Founder & CEO',
-    company: 'NuvoRetail',
-    image: 'https://strapi.odinschool.com/uploads/Vishal_Sharma_20_1_a76178f51e.png',
-    logo: 'https://strapi.odinschool.com/uploads/Nuvoretail_20150_X60_20_2_eb65cb4f84.webp'
+    name: 'Sharat Konatham',
+    designation: 'CBO',
+    company: 'Feemonk',
+    image: 'https://strapi.odinschool.com/uploads/Sharat_Konatham_85b169d06e.webp',
+    logo: 'https://strapi.odinschool.com/uploads/Fee_Monk_High_Res_Logo_100_X_40_b460d38c45.webp'
   },
-   {
+  {
     id: 2,
-    name: 'Vishal Sharma',
-    designation: 'Founder & CEO',
-    company: 'NuvoRetail',
-    image: 'https://strapi.odinschool.com/uploads/Vishal_Sharma_20_1_a76178f51e.png',
-    logo: 'https://strapi.odinschool.com/uploads/Nuvoretail_20150_X60_20_2_eb65cb4f84.webp'
+    name: 'Gadavilli Babji',
+    designation: 'Associate Manager -Talent Acquisition',
+    company: 'Bradridge',
+    image: 'https://strapi.odinschool.com/uploads/Gadavilli_Babji_b051b381f3.webp ',
+    logo: 'https://strapi.odinschool.com/uploads/Broadridge100_X40_eabf6c8aa0.webp'
   },
 ];

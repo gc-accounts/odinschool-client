@@ -201,7 +201,7 @@ const SuccessStoriesOD = ({ sectionClass }: HiringPartnersProps) => {
           <Link href='https://jobs.odinschool.com/' target='_blank'>
             <Button
               size="lg"
-              variant="yellow" // Add this prop to use the yellow color
+              variant="primary" // Add this prop to use the yellow color
               icon={<ArrowRight className='ml-1' size={18} />}
               iconPosition="right"
               className='font-semibold'

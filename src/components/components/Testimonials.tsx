@@ -87,7 +87,7 @@ const Testimonials = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex flex-wrap justify-center gap-2 mb-8">
+          <TabsList className="flex lg:justify-center justify-start gap-2 mb-8 overflow-x-auto h-fit py-2">
             {transformationTypes.map((type) => (
               <TabsTrigger key={type.key} value={type.key}>
                 {type.name}

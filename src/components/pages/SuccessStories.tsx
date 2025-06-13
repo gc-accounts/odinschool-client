@@ -172,7 +172,7 @@ const SuccessStories = () => {
                 <a href="/courses">Browse Courses</a>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <a href="/contact">Speak to an Advisor</a>
+                <a href="/contact-us">Speak to an Advisor</a>
               </Button>
             </div>
           </div>

@@ -220,7 +220,7 @@ const DataScienceCareerGuide = () => {
                     <a href="/courses">Explore Courses</a>
                   </Button>
                   <Button variant="outline" asChild>
-                    <a href="/contact">Talk to an Advisor</a>
+                    <a href="/contact-us">Talk to an Advisor</a>
                   </Button>
                 </div>
               </div>

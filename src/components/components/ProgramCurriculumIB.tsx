@@ -10,11 +10,10 @@ interface ProgramCurriculumProps {
   data: {
     program_title: string;
     points: string[];
-    logo: string[];
   }[];
 }
 
-const ProgramCurriculum = ({ sectionClass, slug, data }: ProgramCurriculumProps) => {
+const ProgramCurriculumIB = ({ sectionClass, slug, data }: ProgramCurriculumProps) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
@@ -33,29 +32,15 @@ const ProgramCurriculum = ({ sectionClass, slug, data }: ProgramCurriculumProps)
                   ))}
                 </ul>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
-                {item.logo.map((logoUrl, logoIndex) => (
-                  <Image
-                    key={logoIndex}
-                    src={logoUrl}
-                    alt="tool"
-                    width={80}
-                    height={80}
-                    className="object-contain"
-                  />
-                ))}
-              </div>
             </div>
           ))}
         </div>
 
         <p className='text-white font-medium text-xl text-center  mt-10 mb-5'>The curriculum includes both Mini Capstone and Capstone projects, providing students with practical application of their learning.</p>
-
-        <BrochureButton slug={'data-science-elite-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
-
+        <BrochureButton slug={'investment-banking-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
       </div>
     </section >
   );
 };
 
-export default ProgramCurriculum;
+export default ProgramCurriculumIB;
