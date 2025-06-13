@@ -34,6 +34,9 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
         return 'Generative AI Course';
       case 'generative-ai-course-iitg':
         return 'Certification Program in Applied Generative AI';
+      case 'investment-banking-course':
+        return 'Investment Banking Course';
+
       default:
         return '';
     }
