@@ -30,7 +30,7 @@ const students = [
   },
   {
     id: 4,
-    name: 'Mahesh Mahaling',
+    name: 'M Mahesh',
     designation: 'Financial Analyst',
     image: 'https://strapi.odinschool.com/uploads/Mahesh_Mahaling_0bab6f5730.webp',
     logo: 'https://strapi.odinschool.com/uploads/Lowes_100_X40_8c51f875ec.webp'
@@ -98,10 +98,10 @@ const HiringSprintsIB = ({ sectionClass }: CardsProps) => {
           <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
             Hiring <span className="text-primary-600">Sprints</span>
           </h2>
-          <p className="text-gray-600">
+          {/* <p className="text-gray-600">
             Our Hiring Sprints give you the chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview. <br /><span className='font-semibold'>Many success stories have emerged from our Hiring Sprints. Here are a few!</span>
 
-          </p>
+          </p> */}
         </div>
         {/* Grid Layout */}
         <div className="flex items-start gap-10">
@@ -109,7 +109,7 @@ const HiringSprintsIB = ({ sectionClass }: CardsProps) => {
           <div>
             <div className="relative px-6">
 
-              <ul className='list-disc space-y-2 text-lg text-gray-900'>
+              <ul className='list-disc space-y-2 text-base text-gray-900'>
                 {
                   points.map((point) => {
                     return (
