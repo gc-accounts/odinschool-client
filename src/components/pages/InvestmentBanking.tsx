@@ -83,6 +83,10 @@ const Certification = dynamic(() => import('@/components/components/Certificatio
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
+const IbCertification = dynamic(() => import('@/components/components/IbCertification'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
 const DsEliteFeeModule = dynamic(() => import('@/components/components/DsEliteFeeModule'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
@@ -174,7 +178,7 @@ const InvestmentBanking = ({ organisations }) => {
           <IbProjects sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <CareerServices fontFamily={dmSerifDisplay.variable} slug="Investment Banking Course" sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
-          <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
+          <IbCertification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />

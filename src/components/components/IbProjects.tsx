@@ -65,7 +65,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
         {projects.slice(0, 3).map((project) => (
           <div
             key={project.id}
-            className="bg-white text-black rounded-xl p-4 col-span-12 md:col-span-4 flex flex-col justify-between"
+            className="bg-white border text-black rounded-xl p-4 col-span-12 md:col-span-4 flex flex-col justify-between"
           >
             <div className="relative w-full h-40 mb-3 rounded-md overflow-hidden">
               <Image
@@ -81,7 +81,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
         ))}
 
         {/* Large AirBnB project details */}
-        <div className="col-span-12 lg:col-span-6 bg-white text-black p-6 rounded-xl flex flex-col justify-between">
+        <div className="border col-span-12 lg:col-span-6 bg-white text-black p-6 rounded-xl flex flex-col justify-between">
           <h3 className="text-xl font-bold mb-2">{projects[3].title}</h3>
           <p className="text-sm text-gray-700 mb-4">{projects[3].description}</p>
 

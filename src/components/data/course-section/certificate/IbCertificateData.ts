@@ -1,5 +1,7 @@
 export const IbCertificateData = {
-  heading: `OdinSchool's Data Science Elite Course Certification `,
+  heading: `Investment Banking
+and Finance Operations
+Elite Course`,
   subheading: `Showcase your skills with a certificate that reflects your expertise, commitment, and readiness for roles in global finance operations.`,
   features: [
     {
