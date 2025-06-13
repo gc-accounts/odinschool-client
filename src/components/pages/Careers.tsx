@@ -123,7 +123,7 @@ const Careers = () => {
               <p className="text-lg md:text-xl mb-8 text-white/90">
                 As an upskilling organization dedicated to transforming lives and careers, we understand the importance of having the right people on board. At OdinSchool, we have witnessed our graduates break free from the limitations that held them back and reach new heights in their professional lives. If you have what it takes to be the catalyst that ignites success in others' careers, we welcome you onboard, heartily.
               </p>
-              <Link href="/contact">
+              <Link href="/contact-us">
                 <Button size="lg" variant="secondary" className="text-primary-700 font-medium">
                   Connect with us
                 </Button>
