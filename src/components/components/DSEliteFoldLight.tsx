@@ -21,8 +21,8 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
     },
     {
       id: 2,
-      name: 'PhonePe',
-      logo: 'https://strapi.odinschool.com/uploads/Phon_Pe_20150_X60_aed6af7fa4.webp',
+      name: 'Prolifics',
+      logo: 'https://strapi.odinschool.com/uploads/prolifics_150_X60_6485f3721f.webp',
     },
     {
       id: 3,
@@ -36,8 +36,8 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
     },
     {
       id: 5,
-      name: 'Venanalytics',
-      logo: 'https://strapi.odinschool.com/uploads/Venanalytics_20150_X60_9ec2da4708.webp',
+      name: 'Intellimark AI',
+      logo: 'https://strapi.odinschool.com/uploads/Intellimart_AI_150_X60_1_0da6735f25.webp',
     },
   ];
 

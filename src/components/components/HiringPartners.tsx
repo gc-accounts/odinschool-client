@@ -16,7 +16,7 @@ const hiringPartnersData = [
 interface HiringPartnersProps { sectionClass?: string }
 const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp'
 
-  const HiringPartners = ({ sectionClass }: HiringPartnersProps) => {
+const HiringPartners = ({ sectionClass }: HiringPartnersProps) => {
 
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', containScroll: 'trimSnaps' })
@@ -41,7 +41,7 @@ const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp
   const dots = useMemo(() => emblaApi ? emblaApi.scrollSnapList().map((_, i) => i) : [], [emblaApi])
 
   return (
-    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}` }>
+    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}`}>
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -121,7 +121,7 @@ const videoIcon = 'https://strapi.odinschool.com/uploads/youtube_8c0e38626b.webp
           <Link href='https://jobs.odinschool.com/' target='_blank'>
             <Button
               size="lg"
-              variant="yellow" // Add this prop to use the yellow color
+              variant="primary" // Add this prop to use the yellow color
               icon={<ArrowRight className='ml-1' size={18} />}
               iconPosition="right"
               className='font-semibold'
