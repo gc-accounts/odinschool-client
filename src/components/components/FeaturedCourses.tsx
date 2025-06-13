@@ -106,12 +106,12 @@ const FeaturedCourses = ({
             ))}
           </div>
         ) : (
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 md:gap-8">
             {courses.map((course, index) => (
               <div
                 key={course.id}
                 ref={(el) => addToCardRefs(el, index)}
-                className="w-full sm:w-[48%] lg:w-[30%] max-w-sm"
+              // className="w-full sm:w-[48%] lg:w-[30%] max-w-sm"
               >
                 <CourseCard {...course} />
               </div>
