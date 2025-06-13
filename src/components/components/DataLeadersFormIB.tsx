@@ -22,7 +22,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Leaders */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {IbDataLeadersData.map((leader, idx) => (
                 <div key={idx} className="bg-white rounded-lg overflow-hidden">
@@ -52,7 +52,6 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
               ))}
             </div>
           </div>
-          <div className='lg:col-span-1'></div>
           {/* Right: Callback Form */}
           <div className="lg:col-span-4">
             <div className="h-fit border-[3px] border-primary-600 rounded-lg">

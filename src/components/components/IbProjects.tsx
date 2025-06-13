@@ -34,19 +34,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
       title: 'Corporate Actions Management',
       description: 'Handle events like mergers and dividends while ensuring accurate communication and reconciliation.',
       image: 'https://strapi.odinschool.com/uploads/Corporate_Actions_Management_89ef815514.webp',
-    },
-    {
-      id: 4,
-      title: 'Coffee Shop Sales Analysis',
-      description:
-        'The objective of this project is to develop a comprehensive sales analysis dashboard that provides insights into sales trends, transaction patterns, and product performance',
-      prerequisites: 'Excel',
-      tools: [],
-      ctaText: 'Request a callback',
-      ctaLink: '#',
-      videoThumb: 'https://strapi.odinschool.com/uploads/Coffee_Shop_Sales_Analysis_b6184e36bb.webp',
-      videoUrl: 'https://strapi.odinschool.com/uploads/Coffee_Shop_Sales_Analysis_Dashboard_1_52ea2bd127.mp4', // sample URL
-    },
+    }
   ];
 
   return (
@@ -62,7 +50,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
 
       <div className="max-w-6xl mx-auto grid grid-cols-12 gap-6">
         {/* First 3 small project cards */}
-        {projects.slice(0, 3).map((project) => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className="bg-white border text-black rounded-xl p-4 col-span-12 md:col-span-4 flex flex-col justify-between"
@@ -80,71 +68,6 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
           </div>
         ))}
 
-        {/* Large AirBnB project details */}
-        <div className="border col-span-12 lg:col-span-6 bg-white text-black p-6 rounded-xl flex flex-col justify-between">
-          <h3 className="text-xl font-bold mb-2">{projects[3].title}</h3>
-          <p className="text-sm text-gray-700 mb-4">{projects[3].description}</p>
-
-          <div className="flex flex-col sm:flex-row justify-between text-sm mb-4 gap-4">
-            <div>
-              <p className="text-gray-500">Pre-requisite</p>
-              <p>{projects[3].prerequisites}</p>
-            </div>
-          </div>
-
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center delay-200 mt-10">
-            <Button
-              size="md"
-              variant="yellow"
-              icon={<ArrowRight className='ml-1' size={18} />}
-              iconPosition="right"
-              className='font-semibold'
-              onClick={() => setFormOpen(true)}
-            >
-              {projects[3].ctaText}
-            </Button>
-
-            <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-              <PrimaryForm buttonText='Request a Callback' slug={'investment-banking-course'} isModal={true} />
-            </Modal>
-          </div>
-
-
-        </div>
-
-        {/* AirBnB project video block */}
-        <div className="col-span-12 lg:col-span-6 rounded-xl overflow-hidden relative aspect-video border border-white">
-          {playVideo ? (
-            <iframe
-              className="w-full h-full rounded-xl"
-              src={projects[3].videoUrl}
-              title="Python Analysis on AirBnB"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            />
-          ) : (
-            <div
-              className="relative w-full h-full cursor-pointer"
-              onClick={() => setPlayVideo(true)}
-            >
-              <Image
-                src={projects[3].videoThumb}
-                alt="Python Analysis on AirBnB Video"
-                fill
-                className="rounded-xl object-cover"
-              />
-              <Image
-                src="https://strapi.odinschool.com/uploads/play_button_3a9c87c1ac.png"
-                alt="Play Button"
-                width={60}
-                height={60}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-              />
-            </div>
-          )}
-        </div>
       </div>
     </section>
   );

@@ -283,7 +283,7 @@ const CourseCheckout = () => {
         : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
           : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-              : course.slug);
+              : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '');
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
@@ -427,7 +427,7 @@ const CourseCheckout = () => {
               : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug);
+                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '');
             zohoPaymentFormData.append('Effective Bootcamp Fee', price.toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
             zohoPaymentFormData.append('Payable_Amount', payableAmount.toFixed(0));

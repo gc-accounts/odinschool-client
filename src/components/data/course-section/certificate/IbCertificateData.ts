@@ -1,7 +1,7 @@
 export const IbCertificateData = {
   heading: `Investment Banking
 and Finance Operations
-Elite Course`,
+Elite Course Certificate`,
   subheading: `Showcase your skills with a certificate that reflects your expertise, commitment, and readiness for roles in global finance operations.`,
   features: [
     {

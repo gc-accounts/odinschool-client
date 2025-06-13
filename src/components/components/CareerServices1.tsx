@@ -16,7 +16,8 @@ interface CareerServices1Props {
 const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props) => {
 
   const pathname = usePathname();
-  const showDiv = pathname !== '/data-science-elite-course';
+  // const showDiv = pathname !== '/data-science-elite-course' || '/investment-banking-course';
+  const showDiv = pathname == '/data-science-elite-course' ? false : pathname == '/investment-banking-course' ? false : true
 
 
   return (

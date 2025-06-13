@@ -96,7 +96,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       {
         isBrochureButton &&
         <Button
-          className='bg-transparent border border-[#1a6cf7] rounded-sm text-[#1a6cf7] text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
+          className='bg-transparent border border-white rounded-sm text-white text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
           onClick={() => setBrochureFormOpen(true)}
         >
           Download Brochure

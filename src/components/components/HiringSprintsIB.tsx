@@ -31,7 +31,7 @@ const students = [
   {
     id: 4,
     name: 'M Mahesh',
-    designation: 'Financial Analyst',
+    designation: 'Associate Analyst',
     image: 'https://strapi.odinschool.com/uploads/Mahesh_Mahaling_0bab6f5730.webp',
     logo: 'https://strapi.odinschool.com/uploads/Lowes_100_X40_8c51f875ec.webp'
   },

@@ -91,6 +91,9 @@ const DsEliteFeeModule = dynamic(() => import('@/components/components/DsEliteFe
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
+const IbFeeModule = dynamic(() => import('@/components/components/IbFeeModule'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
 
 import { DsEliteCurriculumData } from '@/components/data/curriculum/DsEliteCurriculumData';
 import { IbCurroculumData } from '@/components/data/curriculum/IbCurroculumData';
@@ -180,7 +183,7 @@ const InvestmentBanking = ({ organisations }) => {
 
           <IbCertification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <IbFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
           <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbFaqsData} />
         </main>
