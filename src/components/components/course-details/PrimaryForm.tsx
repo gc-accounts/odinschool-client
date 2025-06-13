@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 interface PrimaryFormProps {
   slug: string;
   isModal: Boolean;
-    buttonText?: string
+  buttonText?: string
   isCoupon?: Boolean;
 
 }
@@ -32,6 +32,9 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
         return 'Generative AI Course';
       case 'generative-ai-course-iitg':
         return 'Certification Program in Applied Generative AI';
+      case 'investment-banking-course':
+        return 'Investment Banking Course';
+
       default:
         return '';
     }
@@ -109,7 +112,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
     <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
       <DynamicForm
         fields={CoursePrimaryFormFields as FieldConfig[]}
-        buttonText={buttonText? buttonText : 'Submit' }
+        buttonText={buttonText ? buttonText : 'Submit'}
         initialValues={{
           program: getSlug(slug),
           ga_client_id: '',

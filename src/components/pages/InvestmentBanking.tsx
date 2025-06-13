@@ -120,7 +120,7 @@ const InvestmentBanking = ({ organisations }) => {
 
   return (
     <>
-      <HelloBar isPrimaryForm={true} slug='data-science-elite-course' />
+      <HelloBar isPrimaryForm={true} slug='investment-banking-course' />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>

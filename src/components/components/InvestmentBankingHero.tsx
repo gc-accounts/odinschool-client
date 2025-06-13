@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Button from '@/components/components/Button';
-
+import BrochureButton from '@/components/components/custom-component/BrochureButton';
 
 interface InvestmentBankingHeroProps {
   sectionClass: string;
@@ -37,14 +37,15 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
               />
             </div>
           </div>
-          <div className="flex flex-wrap gap-4 pt-6">
+          {/* <div className="flex flex-wrap gap-4 pt-6">
             <Button className="bg-yellow-400 text-black font-semibold hover:bg-yellow-500">
               Download brochure
             </Button>
             <Button variant="outline" className="bg-white text-black hover:bg-gray-100">
               Book a free call
             </Button>
-          </div>
+          </div> */}
+          <BrochureButton slug='investment-banking-course' isBrochureButton={true} isPrimaryButton={true} primaryButtonText='Book a free call' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2  items-center' />
         </div>
 
         {/* Right Side Model Image */}

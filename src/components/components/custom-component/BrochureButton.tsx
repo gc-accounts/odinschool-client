@@ -8,10 +8,14 @@ import brochureFormField from '@/components/data/brochureFormField'
 import { useToast } from '@/components/hooks/use-toast';
 
 interface BrochureButtonProps {
-  slug: string
+  slug: string;
+  isPrimaryButton: boolean;
+  isBrochureButton: boolean;
+  primaryButtonText: string;
+  parentClass: string;
 }
 
-const BrochureButton = ({ slug }: BrochureButtonProps) => {
+const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass }: BrochureButtonProps) => {
   const [formOpen, setFormOpen] = useState(false)
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const { toast } = useToast()
@@ -39,7 +43,7 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
               ? 'Generative AI Course'
               : slug === 'generative-ai-course-iitg'
                 ? 'Certification Program in Applied Generative AI'
-                : slug
+                : slug === 'investment-banking-course' ? 'Investment Banking Course' : ''
       )
       brochureFormData.append('Year of Graduation', data.year)
       brochureFormData.append('ga_client_id', '')
@@ -75,24 +79,30 @@ const BrochureButton = ({ slug }: BrochureButtonProps) => {
   }
 
   return (
-    <div className='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center'>
-      <Button
-        className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black text-lg px-4 py-3 outline-none focus:outline-none'
-        onClick={() => setFormOpen(true)}
-      >
-        Request a callback
-      </Button>
-
+    <div className={parentClass}>
+      {
+        isPrimaryButton &&
+        <Button
+          className='bg-[#FFD600] border border-transparent hover:bg-[#FFD600] rounded-sm text-black text-lg px-4 py-3 outline-none focus:outline-none'
+          onClick={() => setFormOpen(true)}
+        >
+          {primaryButtonText}
+        </Button>
+      }
       <Modal header_text={'Request a callback'} open={formOpen} onOpenChange={setFormOpen}>
         <PrimaryForm buttonText='Request a Callback' slug={slug} isModal={true} />
       </Modal>
 
-      <Button
-        className='bg-transparent border border-[#1a6cf7] rounded-sm text-[#1a6cf7] text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
-        onClick={() => setBrochureFormOpen(true)}
-      >
-        Download Brochure
-      </Button>
+      {
+        isBrochureButton &&
+        <Button
+          className='bg-transparent border border-[#1a6cf7] rounded-sm text-[#1a6cf7] text-lg px-4 py-3 hover:bg-[#FFD600] hover:text-black hover:border-transparent outline-none focus:outline-none'
+          onClick={() => setBrochureFormOpen(true)}
+        >
+          Download Brochure
+        </Button>
+      }
+
 
       <Modal
         header_text={'Download Brochure'}

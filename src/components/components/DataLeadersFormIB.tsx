@@ -56,7 +56,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
           {/* Right: Callback Form */}
           <div className="lg:col-span-4">
             <div className="h-fit border-[3px] border-primary-600 rounded-lg">
-              <PrimaryForm slug={'data-science-elite-course'} isModal={false} buttonText={'Request a Callback'} />
+              <PrimaryForm slug={'investment-banking-course'} isModal={false} buttonText={'Request a Callback'} />
             </div>
           </div>
         </div>
