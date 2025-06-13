@@ -156,7 +156,7 @@ const InvestmentBanking = ({ organisations }) => {
             </div>
             <ImageResponsive
               desktopSrc="https://strapi.odinschool.com/uploads/IBFO_Infographic_057e6647e0.webp"
-              mobileSrc="https://strapi.odinschool.com/uploads/IBFO_Infographic_057e6647e0.webp"
+              mobileSrc="https://strapi.odinschool.com/uploads/IBFO_Infographic350_X650_1_1dd3b8c038.webp"
               alt="Careers You’ll Be Ready For"
               width={1200}
               height={600}
