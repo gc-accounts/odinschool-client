@@ -123,6 +123,10 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' }
         },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -134,6 +138,7 @@ export default {
         'scale-in': 'scale-in 0.4s ease-out forwards',
         'blur-in': 'blur-in 0.5s ease-out forwards',
         'float': 'float 6s ease-in-out infinite',
+        'infinite-scroll': 'infinite-scroll 100s linear infinite',
       },
       backdropFilter: {
         'none': 'none',
