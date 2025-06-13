@@ -205,10 +205,12 @@ const HeroSection = () => {
 
             <div ref={addToRefs} className="flex flex-col sm:flex-row gap-4 opacity-0 delay-200">
               <Button
+                variant='yellow'
                 size="lg"
                 icon={<ArrowRight className='ml-1' size={18} />}
                 iconPosition="right"
                 onClick={() => setFormOpen(true)}
+
               >
                 Talk to an Expert
               </Button>
