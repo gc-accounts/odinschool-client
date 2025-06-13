@@ -37,7 +37,7 @@ const ProgramCurriculumIB = ({ sectionClass, slug, data }: ProgramCurriculumProp
         </div>
 
         <p className='text-white font-medium text-xl text-center  mt-10 mb-5'>The curriculum includes both Mini Capstone and Capstone projects, providing students with practical application of their learning.</p>
-        <BrochureButton slug={'data-science-elite-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Book a free call' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
+        <BrochureButton slug={'investment-banking-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
       </div>
     </section >
   );

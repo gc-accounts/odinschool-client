@@ -168,11 +168,11 @@ const InvestmentBanking = ({ organisations }) => {
           <ProgramCurriculumIB
             data={IbCurroculumData}
             sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
-            slug="data-science-elite-course"
+            slug="investment-banking-course"
           />
 
           <IbProjects sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices fontFamily={dmSerifDisplay.variable} slug="data-science-elite-course" sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <CareerServices fontFamily={dmSerifDisplay.variable} slug="Investment Banking Course" sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
           <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />

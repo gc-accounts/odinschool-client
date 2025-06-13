@@ -107,7 +107,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
             </Button>
 
             <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-              <PrimaryForm buttonText='Request a Callback' slug={'data-science-elite-course'} isModal={true} />
+              <PrimaryForm buttonText='Request a Callback' slug={'investment-banking-course'} isModal={true} />
             </Modal>
           </div>
 
