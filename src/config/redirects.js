@@ -1321,11 +1321,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: "/datascience-bootcamp/book-a-demo",
-    destination: "/events",
-    permanent: true
-  },
-  {
     source: "/software-engineering/react-web-development-course/book-a-demo",
     destination: "/events",
     permanent: true
