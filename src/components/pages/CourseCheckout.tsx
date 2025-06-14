@@ -727,16 +727,23 @@ const CourseCheckout = () => {
 
                   {/* Order Summary */}
                   <div className="border-t pt-4 space-y-2">
+                    
                     <div className="flex justify-between">
-                      <span>Base Amount</span>
+                      <p className='font-semibold'>Price Breakup</p>
+                    </div>
+
+
+
+                    <div className="flex justify-between">
+                      <span>Seat booking</span>
                       <span>₹{baseAmount}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>GST (9%)</span>
+                      <span>CGST (@ 9%)</span>
                       <span>₹{gst.toFixed(0)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>CST (9%)</span>
+                      <span>SCST (@ 9%)</span>
                       <span>₹{cst.toFixed(0)}</span>
                     </div>
                     <hr />
