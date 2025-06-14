@@ -1600,7 +1600,10 @@ const redirects = [
   { source: "/opecampus/data-analytics/finding-your-path-in-data-analytics", destination: "/", permanent: false },
   { source: "/blog/others/five-excellent-basic-formatting-tips-on-ms-excel", destination: "/", permanent: false },
   { source: "/blog/tag/digital-marketing", destination: "/", permanent: false },
-  { source: "/blog/data-science/artificial-neural-network-walkthrough", destination: "/", permanent: false }
+  { source: "/blog/data-science/artificial-neural-network-walkthrough", destination: "/", permanent: false },
+  { source: "/web-development-course/oldpage", destination: "/", permanent: false },
+  { source: "/events", destination: "/webinars", permanent: false },
+   { source: "/datascience-bootcamp/book-a-demo", destination: "/", permanent: false },
 ]
 
 module.exports = redirects; 
