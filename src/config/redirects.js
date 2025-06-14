@@ -1599,6 +1599,7 @@ const redirects = [
   { source: "/web-development-course/oldpage", destination: "/", permanent: false },
   { source: "/events", destination: "/webinars", permanent: false },
    { source: "/datascience-bootcamp/book-a-demo", destination: "/", permanent: false },
+   { source: "/training-solution", destination: "/", permanent: false },
 ]
 
 module.exports = redirects; 
