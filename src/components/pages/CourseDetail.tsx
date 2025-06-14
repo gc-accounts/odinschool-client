@@ -184,6 +184,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
   const [formOpen, setFormOpen] = useState(false);
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const [course, setCourse] = useState<Course | null>(initialCourse || null);
+  console.log("🚀 ~ course:", course)
   const [loading, setLoading] = useState(!initialCourse);
   const [utmData, setUtmData] = useState<Record<string, string>>({});
   const { id } = useParams<{ id: string }>();

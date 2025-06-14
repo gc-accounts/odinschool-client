@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Star,
     Award,
@@ -7,6 +8,8 @@ import {
     Loader2,
     HelpCircle,
     AwardIcon,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 import Navbar from "@/components/components/Navbar";
 import Footer from "@/components/components/Footer";
@@ -20,6 +23,7 @@ import { Button } from "@/components/components/ui/button";
 import { getSuccessMetrics } from "@/components/utils/api/successMetrics";
 import { successStoriesData } from "@/components/data/successStories";
 import { BsSuitcaseLg } from "react-icons/bs";
+import useEmblaCarousel from "embla-carousel-react";
 
 import Testimonials from "@/components/components/Testimonials";
 import { PlayCircleIcon } from "lucide-react";
@@ -27,8 +31,9 @@ import CourseCard, { CourseProps } from "@/components/components/CourseCard";
 import { Description } from "@radix-ui/react-toast";
 import SecondaryForm from "@/components/components/course-details/SecondaryForm";
 import Modal from "@/components/components/component-template/Modal";
+import StudentsTicker from "@/components/components/StudentsTicker";
 
-const arr = [
+export const arr = [
     {
         name: "Srinivasa",
         img2: "https://college.odinschool.com/hs-fs/hubfs/OS_Company_Logo/100_X_40/ThoughtClan%20100X40.webp?width=160&name=ThoughtClan%20100X40.webp",
@@ -280,6 +285,11 @@ const arr = [
         img: "https://college.odinschool.com/hs-fs/hubfs/Shashi.webp?width=240&height=240&name=Shashi.webp",
     },
 ];
+const data = [{
+                url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+              },{
+                url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+              }]
 
 const courses: any[] = [
     {
@@ -310,27 +320,54 @@ const courses: any[] = [
 
 const SuccessStories = () => {
     const [formOpen, setFormOpen] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        loop: false,
+        align: "start",
+        containScroll: "trimSnaps",
+    });
+    const dots = useMemo(() => {
+        if (!emblaApi) return [];
+        return emblaApi.scrollSnapList().map((_, index) => index);
+    }, [emblaApi, data]);
 
-    const VideoComp = (url) => {
-        const headRef = React.useRef();
+    const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+    const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
+ 
+    const VideoComp = ({url}) => {
+  const [playVideo, setPlayVideo] = useState(false);
         return (
-            <div className="p-auto relative flex grid items-center justify-center text-center">
-                <PlayCircleIcon
-                    size={60}
-                    className="text-primary-600 absolute"
-                    style={{
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                    }}
-                    // onClick={() => headRef?.current?.play()}
-                />
-                <video
-                    // ref={headRef}
-                    className="rounded-lg shadow-lg"
-                    controls
+        <div className="rounded-xl overflow-hidden relative aspect-video border border-white">
+                {playVideo ? (
+                    <iframe
+                    className="w-full h-full rounded-xl"
                     src={url}
-                />
+                    title="Python Analysis on AirBnB"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    />
+                ) : (
+                    <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => setPlayVideo(true)}
+                    >
+                    <Image
+                        src={"https://strapi.odinschool.com/uploads/Python_Analysis_on_Air_Bn_B_20_1_4183a90b2f.webp"}
+                        alt="Python Analysis on AirBnB Video"
+                        fill
+                        className="rounded-xl object-cover"
+                    />
+                    <Image
+                        src="https://strapi.odinschool.com/uploads/play_button_3a9c87c1ac.png"
+                        alt="Play Button"
+                        width={60}
+                        height={60}
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+                    />
+                    </div>
+                )}
             </div>
         );
     };
@@ -351,13 +388,13 @@ const SuccessStories = () => {
                             </h1>
                         </div>
 
-                        {VideoComp(
-                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                        )}
+                        <VideoComp
+                            url={"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
+                        />
                     </div>
                 </div>
 
-                <div className="bg-primary-50 inline-flex w-full flex-nowrap py-8">
+                {/* <div className="bg-primary-50 inline-flex w-full flex-nowrap py-8">
                     <ul className="animate-infinite-scroll flex items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-4">
                         {arr.map((item, index) => (
                             <li
@@ -423,7 +460,8 @@ const SuccessStories = () => {
                             </li>
                         ))}
                     </ul>
-                </div>
+                </div> */}
+                <StudentsTicker sectionClass="bg-primary-50 px-0 pb-[50px] md:px-0 md:pb-[70px]" />
 
                 <div className="container mx-auto px-4 py-12">
                     <div className="w-full text-center">
@@ -434,9 +472,9 @@ const SuccessStories = () => {
                         </h1>
                     </div>
                     <div className="mb-16 flex grid grid-cols-1 flex-col items-center gap-8 lg:grid-cols-2">
-                        {VideoComp(
-                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                        )}
+                        <VideoComp
+                            url={"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
+                        />
 
                         <p>
                             A unique opportunity to bring together the next
@@ -546,10 +584,58 @@ const SuccessStories = () => {
                             </h1>
                         </div>
 
-                        {VideoComp(
-                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                        )}
+<div className="relative px-2 md:px-6">
 
+
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {data.map((mentor) => (
+                <div key={mentor.id} className="flex-[0_0_100%] px-2 h-full">
+                                          <VideoComp
+                            url={"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
+                        />
+
+
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation + Dots */}
+          <div className="flex items-center justify-center mt-6 gap-6">
+            {/* Prev Arrow */}
+            <button
+              onClick={scrollPrev}
+              className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {dots.map((index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] transition-all duration-300 rounded-full ${index === selectedIndex
+                    ? 'bg-[#1a6cf7] md:w-[28px] w-[1.5rem] shadow'
+                    : 'bg-gray-300 w-2 h-2'
+                    }`}
+                />
+              ))}
+            </div>
+
+            {/* Next Arrow */}
+            <button
+              onClick={scrollNext}
+              className="w-10 h-10 rounded-ful flex items-center justify-center transition bg-white border shadow p-2 rounded-full hover:bg-primary-50 text-primary-600"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+
+        </div>
                         <div></div>
                     </div>
 
@@ -837,12 +923,12 @@ const SuccessStories = () => {
 
                 <div className="bg-primary-50 py-32">
                     <div className="container">
-                        <div className="mb-16 flex grid grid-cols-1 flex-col items-center gap-8 lg:grid-cols-2">
+                        <div className="mb-16 flex grid grid-cols-1 flex-col gap-8 lg:grid-cols-2">
                             <div
-                                /* ref={titleRef} */ className="mx-auto mb-12 max-w-3xl text-left md:mb-16"
+                                /* ref={titleRef} */ className="mx-auto mb-12 max-w-2xl text-left md:mb-16"
                             >
                                 <h2 className="heading-lg mb-4">
-                                    Take a leap into your dream career with our{" "}
+                                    Take a leap into your dream<br/> career with our{" "}
                                     <span className="text-primary-600">
                                         industry-aligned courses.
                                     </span>

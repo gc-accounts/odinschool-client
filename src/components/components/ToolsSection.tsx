@@ -34,8 +34,8 @@ interface ToolsSectionProps {
   sectionClass?: String;
     fontFamily?: string;
 }
-const ToolsSection = ({ sectionClass, fontFamily }: ToolsSectionProps) => {
-  const path = usePathname()
+const ToolsSection = ({ sectionClass, fontFamily, propPath }: ToolsSectionProps) => {
+  const path = propPath ?? usePathname()
   const ToolsData = getDataByPage(courseToolsData, path)
 
 
