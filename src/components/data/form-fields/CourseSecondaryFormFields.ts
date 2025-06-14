@@ -54,6 +54,13 @@ const CourseSecondaryFormFields: FieldConfig[] = [
     options: ['Data Science Course', 'Certification Program in Applied Generative AI', 'Generative AI Course', 'Data Science Elite Course'],
     rules: { required: 'Please select a program' },
   },
+  {
+    name: 'experience',
+    label: 'Work Experience Level',
+    type: 'select',
+    options: ['No Experience', '0-1 Years', '1-3 Years', '3+ Years'],
+    rules: { required: 'Please select your experience level' },
+  },
   { name: 'ga_client_id', type: 'hidden' },
   { name: 'business_unit', type: 'hidden' },
 ]

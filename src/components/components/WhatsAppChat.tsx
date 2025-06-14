@@ -14,6 +14,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { MdCall } from "react-icons/md";
 import Link from 'next/link';
 
+
 const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { program } = useProgram();
@@ -72,7 +73,7 @@ const WhatsAppChat: React.FC = () => {
       zohoFormData.append('Last Name', formData.lastName);
       zohoFormData.append('Email', formData.email);
       zohoFormData.append('Phone', formData.phone);
-      zohoFormData.append('Program', formData.program === 'data-science-course' ? 'Data Science Course' : formData.program === 'data-science-elite-course' ? 'Data Science Elite Course' : formData.program === 'generative-ai-bootcamp' ? 'Generative AI Course' : formData.program === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : formData.program);
+      zohoFormData.append('Program', formData.program === 'data-science-course' ? 'Data Science Course' : formData.program === 'data-science-elite-course' ? 'Data Science Elite Course' : formData.program === 'generative-ai-bootcamp' ? 'Generative AI Course' : formData.program === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : formData.program === 'investment-banking-course' ? 'investment-banking-course' : formData.program);
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
@@ -233,6 +234,9 @@ const WhatsAppChat: React.FC = () => {
                       <option value="">Select Program</option>
                       <option value="Data Science Course">Data Science Course</option>
                       <option value="Data Science Elite Course">Data Science Elite Course</option>
+                      <option value="Investment Banking Course">Investment Banking Course
+                      </option>
+
                       <option value="Certification Program in Applied Generative AI">Certification Program in Applied Generative AI</option>
                       <option value="Generative AI Course">Generative AI Course</option>
                     </select>
