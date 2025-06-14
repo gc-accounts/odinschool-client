@@ -743,7 +743,7 @@ const CourseCheckout = () => {
                       <span>₹{gst.toFixed(0)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>SCST (@ 9%)</span>
+                      <span>SGST (@ 9%)</span>
                       <span>₹{cst.toFixed(0)}</span>
                     </div>
                     <hr />
