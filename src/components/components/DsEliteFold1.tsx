@@ -41,7 +41,7 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <p className="text-lg text-white">After the successful May launch, we’re thrilled to announce the</p>
         <h2 className="text-3xl md:text-4xl font-bold text-primary-600 mt-2">
           <span className='text-white'>June 2025</span> Data Science Elite Course
@@ -107,7 +107,7 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
           </Link>
         </div>
 
-<div className='flex flex-row gap-6 mt-16'>
+<div className='flex flex-row align-center items-center justify-center flex-wrap gap-6 mt-16'>
   {[
     {
       text: "Be a part of the global data transformation wave by learning Data Science"
@@ -117,7 +117,7 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
       text: "Participate in JobDrives every month and open up a world of opportunities"
     }
     ].map(i => (
-  <div className='flex flex-col items-center justify-content bg-white shadow-lg rounded-lg p-8'>
+  <div className='flex flex-col items-center justify-content bg-white shadow-lg rounded-lg p-8 max-w-xs'>
 <p className="text-lg text-black">{i.text}</p>
   </div>
     ))}

@@ -3,14 +3,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/components/ui/card';
 import { Badge } from '@/components/components/ui/badge';
 import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
-// import { dsJobsDrives } from '@/components/data/dsJobsDrives';
+import { dsJobsDrives as dsJobsDrivesArr } from '@/components/data/dsJobsDrives';
 import Image from 'next/image';
 
 interface JobsSectionProps {
   sectionClass?: string;
 }
 
-const JobsSection = ({ sectionClass, dsJobsDrives }: JobsSectionProps) => {
+const JobsSection = ({ sectionClass, dsJobsDrives = dsJobsDrivesArr, carouselClassName }: JobsSectionProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', containScroll: 'trimSnaps' });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -55,20 +55,19 @@ const JobsSection = ({ sectionClass, dsJobsDrives }: JobsSectionProps) => {
             <div className="flex">
               {dsJobsDrives.map((item) => (
                 <div key={item.id}
-                        className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_50%] px-2"
+                        className={ carouselClassName?? "flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_50%] px-2" }
                 >
                   <Card className="border border-gray-200 hover:shadow-lg transition-all h-full">
                     <CardContent className="p-6">
                       <div className="mb-4">
                         <div className="relative mb-6 flex items-center">
-                          <Image
+                          <img
                             src={item.img}
                             alt={item.img}
                             className="w-30 h-14 object-contain rounded-md shadow-sm border"
-
                             loading="lazy"
-                            width={500}
-                            height={500}
+                            width={"auto"}
+                            height={"auto"}
                           />
                         </div>
                         <hr className='mb-2' />

@@ -11,13 +11,13 @@ import { Dialog, DialogContent } from '@/components/components/ui/dialog';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { testimonials } from '@/components/pages/dataScienceCourse/data';
 
 const transformationTypes = [
   { name: 'All', key: '' },
   { name: 'Career Transition', key: 'Career Transition' },
   { name: 'Career Gap', key: 'Career Gap' },
   { name: 'Career Upgrade', key: 'Career Upgrade' },
-  { name: 'Salary Hike', key: 'Salary Hike' },
   { name: 'Career Launch', key: 'Career Launch' },
 ];
 
@@ -26,7 +26,6 @@ const categoryColors: Record<string, string> = {
   'Career Upgrade': 'bg-green-100 text-green-800 border-green-200',
   'Career Relaunch': 'bg-purple-100 text-purple-800 border-purple-200',
   'Career Gap': 'bg-amber-100 text-amber-800 border-amber-200',
-  'Salary Hike': 'bg-red-100 text-red-800 border-red-200',
 };
 
 const Testimonials = () => {
@@ -43,12 +42,7 @@ const Testimonials = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const data = await getStories({
-        pageNumber: 1,
-        pageSize: 3,
-        isFeatured: true,
-        remarks: activeTab || undefined,
-      });
+      const data = testimonials[activeTab || 'All'];
       setStories(data.stories || []);
       setVideoStories(data.videoStories || []);
       setLoading(false);
