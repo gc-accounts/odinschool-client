@@ -23,6 +23,8 @@ export async function POST(request: Request) {
         Phone: getField('Phone'),
         Program: getField('Program'),
         Year_Of_Graduation: getField('Year of Graduation'),
+        Work_Experience_Level: getField('Work Experience Level'),
+
         Ga_client_id: getField('Ga_client_id'),
         Business_Unit: getField('Business Unit'),
         Source_Domain: getField('Source_Domain'),
