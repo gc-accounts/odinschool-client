@@ -8,8 +8,9 @@ interface CardsProps {
   sectionClass?: string;
 }
 
-const StudentsTicker = ({ sectionClass }: CardsProps) => {
-  const duplicatedStudents = [...studentsData, ...studentsData];
+const StudentsTicker = ({ sectionClass, data }: CardsProps) => {
+  const duplicatedStudents = data ? [...data, ...data] : [...studentsData, ...studentsData];
+  const IMG = data ? 'img' : Image
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
                   className="slide p-3 mx-2 rounded-3 placeCard text-center bg-primary-600"
                 >
                   <div>
-                    <Image
+                    <IMG
                       src={student.student_image}
                       alt={student.name}
                       width={65}
@@ -47,7 +48,7 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
                     />
                     <p className="text-white font-semibold mb-1">{student.name}</p>
                     <div className="flex justify-center bg-primary-50 rounded-sm">
-                      <Image
+                      <IMG
                         src={student.current_company_image}
                         alt="Current Company"
                         width={80}

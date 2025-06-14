@@ -45,7 +45,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import BrochureButton from "@/components/components/custom-component/BrochureButton";
 import { CiCircleCheck } from "react-icons/ci";
 import Fee from "@/components/components/DsEliteFeeModule";
-import { arr } from "@/components/pages/SuccessStoriesNew";
 import SecondaryForm from "@/components/components/course-details/SecondaryForm";
 import CertificationSection from "@/components/components/CertificationSection";
 import Certification from "@/components/components/Certification";

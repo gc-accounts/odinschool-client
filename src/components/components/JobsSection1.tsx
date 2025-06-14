@@ -3,14 +3,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/components/ui/card';
 import { Badge } from '@/components/components/ui/badge';
 import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
-import { dsJobsDrives } from '@/components/data/dsJobsDrives';
+// import { dsJobsDrives } from '@/components/data/dsJobsDrives';
 import Image from 'next/image';
 
 interface JobsSectionProps {
   sectionClass?: string;
 }
 
-const JobsSection = ({ sectionClass }: JobsSectionProps) => {
+const JobsSection = ({ sectionClass, dsJobsDrives }: JobsSectionProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', containScroll: 'trimSnaps' });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -54,14 +54,16 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {dsJobsDrives.map((item) => (
-                <div key={item.id} className="flex-[0_0_50%] sm:flex-[0_0_25%] lg:flex-[0_0_50%] px-2">
+                <div key={item.id}
+                        className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_50%] px-2"
+                >
                   <Card className="border border-gray-200 hover:shadow-lg transition-all h-full">
                     <CardContent className="p-6">
                       <div className="mb-4">
                         <div className="relative mb-6 flex items-center">
                           <Image
-                            src={item.jobCompanyLogo}
-                            alt={item.jobDesignation}
+                            src={item.img}
+                            alt={item.img}
                             className="w-30 h-14 object-contain rounded-md shadow-sm border"
 
                             loading="lazy"
@@ -69,21 +71,24 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
                             height={500}
                           />
                         </div>
-                        <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
+                        <hr className='mb-2' />
+                        <h3 className="font-bold text-md mb-1 text-gray-500">{item.company}</h3>
+                        <h3 className="font-bold text-md mb-1 text-gray-900 my-4">{item.jobDesignation}</h3>
                       </div>
 
-                      <div className="mb-4 space-y-2 text-sm text-gray-600">
-                        <div className="flex items-center">
-                          <MapPin size={16} className="mr-2" />
-                          {item.jobLocation}
-                        </div>
-                        <div className="flex items-center">
-                          <Building size={16} className="mr-2" />
-                          Full-time
-                        </div>
+                      <div className="flex flex-row justify-between mb-4 space-y-2 text-sm text-gray-600">
                         <div className="flex items-center">
                           <BriefcaseBusiness size={16} className="mr-2" />
                           {item.jobExp}
+                        </div>
+                        <div className="flex items-center">
+                          <img
+                            src={item.jobCompanyLogo}
+                            alt={item.jobCompanyLogo}
+                            className="w-30 h-14 object-contain rounded-md shadow-sm border"
+                            loading="lazy"
+                            width={"auto"}
+                          />
                         </div>
                       </div>
 
@@ -94,6 +99,8 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
                           </Badge>
                         ))}
                       </div>
+                      <hr className='my-2' />
+                      <h3 className="font-bold text-md mb-1 text-gray-900">{item.desc}</h3>
                     </CardContent>
                   </Card>
                 </div>

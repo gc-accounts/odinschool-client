@@ -1,5 +1,5 @@
 "use client";
-import SuccessStories from "@/components/pages/SuccessStoriesNew";
+import SuccessStories from "@/components/pages/successStories/SuccessStoriesNew";
 
 
 export default function SuccessStoriesPage() {
