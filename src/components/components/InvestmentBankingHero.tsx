@@ -53,7 +53,7 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
             </Button>
           </div> */}
           <div className='flex justify-center'>
-            <BrochureButton slug='investment-banking-course' isBrochureButton={true} isPrimaryButton={true} primaryButtonText='Book a free call' parentClass='w-fit flex  md:gap-6 gap-2  items-center' />
+            <BrochureButton slug='investment-banking-course' isBrochureButton={true} isPrimaryButton={true} primaryButtonText='Enquire Now' parentClass='w-fit flex  md:gap-6 gap-2  items-center' />
           </div>
         </div>
 
