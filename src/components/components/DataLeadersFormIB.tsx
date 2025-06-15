@@ -13,7 +13,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
-            Meet the Data Leaders Who Will <span className="text-primary-600">Shape Your Learning</span>
+            Meet the  Leaders Who Will <span className="text-primary-600">Shape Your Learning</span>
           </h2>
         </div>
 

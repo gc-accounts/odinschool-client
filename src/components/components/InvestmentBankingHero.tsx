@@ -19,7 +19,7 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
           </h1>
 
           <div className='flex md:flex-row flex-col md:gap-8 gap-0 items-center justify-center w-full'>
-            <p className="md:text-2xl text-xl mt-4 mb-2 text-white font-medium font-display">Backed by</p>
+            <p className="md:text-2xl text-xl text-white font-medium font-display mt-[10px]">Backed by</p>
             <div className="flex items-start gap-4">
 
               <div className="w-[80px] md:w-[180px] relative aspect-[13/10]">
@@ -31,9 +31,8 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
                   sizes="(max-width: 768px) 80px 180px"
                 />
               </div>
-              {/* https://strapi.odinschool.com/uploads/Broadridge400_X160_c0ac988115.webp */}
 
-              <div className="w-[80px] md:w-[180px] relative aspect-[13/10]">
+              <div className="md:h-[150px] h-[66px] w-[80px] md:w-[180px] relative aspect-[13/10]">
                 <Image
                   src="https://strapi.odinschool.com/uploads/Broadridge400_X160_c0ac988115.webp"
                   alt="Broadridge"
