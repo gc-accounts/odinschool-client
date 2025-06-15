@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { CiCircleCheck } from 'react-icons/ci';
-import LimitedSeatButton from '@/components/components/custom-component/LimitedSeatButton';
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
+import Modal from '@/components/components/component-template/Modal';
 
 interface dsEliteProps {
   sectionClass?: String
@@ -29,7 +29,27 @@ const GenAIIITGFF = ({ sectionClass }: dsEliteProps) => {
             <li className='flex gap-1'><span className='mr-2'><CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span> <span>Get certified by E&ICT Academy, IIT Guwahati </span></li>
             <li className='flex gap-1'><span className='mr-2'><CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span> <span>A visit to the prestigious IIT Guwahati Campus (for successful learners only)  </span></li>
            </ul>
-           <LimitedSeatButton slug='generative-ai-course-iitg' isBrochureButton={true} isPrimaryButton={true} primaryButtonText='Enquire Now' parentClass='w-fit flex  md:gap-6 gap-2  items-center' />
+
+            {/* CTA */}
+        <div>
+          <div className="flex flex-col sm:flex-row gap-4 delay-200 mt-10">
+            <Button
+              size="lg"
+              variant="yellow"
+              icon={<ArrowRight className='ml-1' size={18} />}
+              iconPosition="right"
+              className='font-semibold'
+              onClick={() => setFormOpen(true)}
+            >
+              Enquire Now
+            </Button>
+          </div>
+          <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
+            <PrimaryForm buttonText='Enquire Now' slug={'generative-ai-course-iitg'} isModal={true} sourceDomain='Course form' />
+          </Modal>
+
+        </div>
+
         </div>
         <div className='md:col-span-6'>
            <div className="flex flex-col md:flex-row items-center justify-center bg-white md:rounded-3xl overflow-hidden max-w-5xl mx-auto md:mt-0 mt-4">
