@@ -10,9 +10,10 @@ import Image from "next/image";
 
 interface InstructorProfileProps {
   sectionClass?: String,
+   fontFamily?: String,
   data: { id: number, name: string, photo: string, designation: string, currentCompany: string, prevCompanies: string[] }[]
 }
-const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) => {
+const InstructorProfileHome = ({ sectionClass, data, fontFamily }: InstructorProfileProps) => {
 
   const [loading, setLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -71,7 +72,7 @@ const InstructorProfileHome = ({ sectionClass, data }: InstructorProfileProps) =
     <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+            <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
             Meet our <span className="text-primary-600">Mentors and Speakers!</span>
           </h2>
           <p className="body-md text-gray-600 max-w-2xl mx-auto">

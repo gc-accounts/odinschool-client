@@ -114,7 +114,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
   if (!Object.keys(utm).length) return null;
 
   return (
-    <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg'}`}>
+    <div className={`${isModal ? '' : 'w-full max-w-lg mx-auto bg-white text-black rounded-xl p-6 md:p-8 shadow-lg primaryFormCustom'}`}>
       <DynamicForm
         fields={CoursePrimaryFormFields as FieldConfig[]}
         buttonText={buttonText ? buttonText : 'Submit'}

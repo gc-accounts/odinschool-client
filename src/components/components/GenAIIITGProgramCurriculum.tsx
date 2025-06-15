@@ -4,7 +4,7 @@ import { CircleCheck } from 'lucide-react';
 import { CiCircleCheck } from "react-icons/ci";
 import { Button } from '@/components/components/ui/button';
 import BrochureButton from '@/components/components/custom-component/BrochureButton';
-interface ProgramCurriculumProps {
+interface GenAIIITGProgramCurriculumProps {
   sectionClass?: String;
   slug?: String;
   title?: String;
@@ -16,7 +16,7 @@ interface ProgramCurriculumProps {
   }[];
 }
 
-const ProgramCurriculum = ({ sectionClass, slug, data, title, subText }: ProgramCurriculumProps) => {
+const GenAIIITGProgramCurriculum = ({ sectionClass, slug, data, title, subText }: GenAIIITGProgramCurriculumProps) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
@@ -56,11 +56,11 @@ const ProgramCurriculum = ({ sectionClass, slug, data, title, subText }: Program
 
         <p className='text-white font-medium text-xl text-center  mt-10 mb-5'>The curriculum includes both Mini Capstone and Capstone projects, providing students with practical application of their learning.</p>
 
-        <BrochureButton slug={'data-science-elite-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
+        <BrochureButton slug={'generative-ai-course-iitg'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
 
       </div>
     </section >
   );
 };
 
-export default ProgramCurriculum;
+export default GenAIIITGProgramCurriculum;

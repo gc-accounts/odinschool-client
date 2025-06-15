@@ -22,7 +22,7 @@ const ProgramHighlights = ({ sectionClass, data, title, subTitle }: ProgramHighl
             {subTitle ? subTitle : "Grab the advantage of being a part of India's only Data Science course backed by top Indian companies"}
           </p>
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-4'>
+        <div className='grid grid-cols-2 md:grid-cols-2 justify-center md:gap-5 gap-4'>
           {
             data.map((data, index) => {
               return (
