@@ -17,7 +17,13 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
 
   const pathname = usePathname();
   // const showDiv = pathname !== '/data-science-elite-course' || '/investment-banking-course';
-  const showDiv = pathname == '/data-science-elite-course' ? false : pathname == '/investment-banking-course' ? false : true
+  const showDiv =
+  pathname === '/data-science-elite-course' ||
+  pathname === '/investment-banking-course' ||
+  pathname === '/generative-ai-course-iitg'
+    ? false
+    : true;
+
 
 
   return (

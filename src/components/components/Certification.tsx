@@ -17,7 +17,7 @@ const Certification = ({ sectionClass, data }: CertificateProps) => {
           <div className="md:col-span-6 col-span-1">
             <h2 className="text-3xl md:text-5xl font-display leading-tight mb-4 text-gray-900">
               {data.heading.split('Data Science')[0]}
-              <span className="text-primary-600">Data Science</span>
+              {/* <span className="text-primary-600">Data Science</span> */}
               {data.heading.split('Data Science')[1]}
             </h2>
             <p className="text-gray-600 mb-6">{data.subheading}</p>
@@ -26,7 +26,7 @@ const Certification = ({ sectionClass, data }: CertificateProps) => {
               {data.features.map(({ id, iconLabel, title, description }) => (
                 <li
                   key={id}
-                  className="flex items-start gap-4"
+                  className="flex items-center gap-4"
                 >
                   <div className="flex-shrink-0 bg-primary-50 rounded-md p-2">
                     <Image
