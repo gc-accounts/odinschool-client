@@ -52,7 +52,7 @@ const GenAIIITGFF = ({ sectionClass }: dsEliteProps) => {
 
         </div>
         <div className='md:col-span-6'>
-           <div className="flex flex-col md:flex-row items-center justify-center bg-white md:rounded-3xl overflow-hidden max-w-5xl mx-auto md:mt-0 mt-4">
+           <div className="flex flex-col md:flex-row items-center justify-center bg-white overflow-hidden max-w-5xl mx-auto md:mt-0 mt-4">
             <div className="bg-primary-600 text-white px-3 py-3 w-full md:w-1/2 text-center flex flex-col justify-center items-center md:rounded-s-md rounded-s-none rounded-t-xs md:mb-0 mb-4">
         <img
           src="https://strapi.odinschool.com/uploads/Group_5394_34e14bafe4.webp"
