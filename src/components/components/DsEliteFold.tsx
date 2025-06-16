@@ -5,9 +5,10 @@ import Image from 'next/image';
 
 
 interface dsEliteProps {
-  sectionClass?: String
+  sectionClass?: String,
+  fontFamily?: String
 }
-const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
+const DsEliteFold = ({ sectionClass, fontFamily }: dsEliteProps) => {
 
 
   const partnerLogos = [
@@ -18,8 +19,8 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
     },
     {
       id: 2,
-      name: 'PhonePe',
-      logo: 'https://strapi.odinschool.com/uploads/Phon_Pe_20150_X60_aed6af7fa4.webp',
+      name: 'Prolifics',
+      logo: 'https://strapi.odinschool.com/uploads/prolifics_150_X60_6485f3721f.webp',
     },
     {
       id: 3,
@@ -33,8 +34,8 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
     },
     {
       id: 5,
-      name: 'Venanalytics',
-      logo: 'https://strapi.odinschool.com/uploads/Venanalytics_20150_X60_9ec2da4708.webp',
+      name: 'Intellimark',
+      logo: 'https://strapi.odinschool.com/uploads/Intellimart_AI_150_X60_1_0da6735f25.webp',
     },
   ];
 
@@ -43,7 +44,9 @@ const DsEliteFold = ({ sectionClass }: dsEliteProps) => {
     <section className={`${sectionClass ? sectionClass : ' pb-[50px] md:pb-[70px] bg-white'} overflow-hidden relative text-center`}>
       <div className="max-w-5xl mx-auto px-4">
         <p className="text-lg text-white">After the successful May launch, we’re thrilled to announce the</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-primary-600 mt-2">
+
+        <h2 className={`text-3xl md:text-4xl text-primary-600 mt-2 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
+
           <span className='text-white'>June 2025</span> Data Science Elite Course
         </h2>
         <p className="text-white font-semibold mt-2">

@@ -74,6 +74,7 @@ import { GenAIIITGProgramHighlightsData } from '@/components/data/course-section
 import { genAiiitgFaqsData } from '@/components/data/course-section/faqs/genAiiitgFaqsData';
 import { GenAIIITGCertificateData } from '@/components/data/course-section/certificate/GenAIIITGCertificateData';
 import { GenAIIITGMentorsData } from '@/components/data/course-section/mentors/GenAIIITGMentorsData';
+import { GenAIIITGMoreJobsData } from '@/components/data/course-section/more-jobs/GenAIIITGMoreJobsData';
 
 import HowApply from '@/components/components/HowApply';
 import GenAIIITGFF from '@/components/components/GenAIIITGFF';
@@ -130,7 +131,12 @@ const AppliedGenerativeAICourseIITG = ({ organisations }) => {
             sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
             data={GenAIIITGProgramHighlightsData}
           />
-          <MoreJobs sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <MoreJobs 
+          title='AI Engineer and More Jobs!'
+          subText='The continuous need for skilled professionals shows no signs of slowing down in the Generative AI field. Upskill yourself to grab the best jobs!' 
+          headerColor='text-black' 
+          data={GenAIIITGMoreJobsData} 
+          sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <GenAIIITGProgramCurriculum 
           title='A curriculum designed for outcomes'
           subText='Elevate your skills by learning a cutting-edge Generative AI curriculum designed by E&ICT Academy, IIT Guwahati.'   

@@ -13,19 +13,19 @@ import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 interface feeProps {
   sectionClass: string
 }
-const Fee = ({ sectionClass }: feeProps) => {
+const DsFeeModule = ({ sectionClass }: feeProps) => {
   const data = [
     {
       id: '1',
       cohortDate: '28 Jun 2025',
       totalPrice: '₹1,00,000',
-      price: '₹90,000',
+      price: '₹85,000',
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
         { label: 'Live Online Classes', description: '' },
-        { label: '10+ Hiring Sprints', description: '' },
-        { label: '10+ Projects', description: '' },
+        { label: 'Hands-on Learning', description: '' },
+        { label: 'Projects', description: '' },
         { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
@@ -40,13 +40,13 @@ const Fee = ({ sectionClass }: feeProps) => {
       id: '2',
       cohortDate: '26 July 2025',
       totalPrice: '₹1,00,000',
-      price: '₹90,000',
+      price: '₹85,000',
       offer: "Limited Seats! Book Yours Before They're Gone.",
       includes: 'Live Online Learning + Certificate',
       details: [
-        { label: 'Live Online Classes', description: '' },
-        { label: '10+ Hiring Sprints', description: '' },
-        { label: '10+ Projects', description: '' },
+         { label: 'Live Online Classes', description: '' },
+        { label: 'Hands-on Learning', description: '' },
+        { label: 'Projects', description: '' },
         { label: 'Career Services', description: '' },
       ],
       emiNote: 'Scholarships & EMI Options Available!',
@@ -132,10 +132,10 @@ const Fee = ({ sectionClass }: feeProps) => {
 
                     </Button>
                     <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-elite-course'} isModal={true} sourceDomain='Course form' />
+                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-course'} isModal={true} sourceDomain='Course form' />
                     </Modal>
 
-                    <Link href="/course-checkout/data-science-elite-course">
+                    <Link href="/course-checkout/data-science-course">
                       <Button
                         size="md"
                         variant="yellow"
@@ -152,7 +152,7 @@ const Fee = ({ sectionClass }: feeProps) => {
 
                   {/* EMI Note */}
                   <div className="col-span-12 md:col-span-4 bg-green-100 p-6 rounded-xl">
-                    <span className="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-md inline-block mb-3">
+                    <span className="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-block mb-3">
                       {selected.emiNote}
                     </span>
                     <p className="text-sm text-gray-800 whitespace-pre-line mb-4">{selected.emiDescription}</p>
@@ -181,4 +181,4 @@ const Fee = ({ sectionClass }: feeProps) => {
   );
 };
 
-export default Fee;
+export default DsFeeModule;

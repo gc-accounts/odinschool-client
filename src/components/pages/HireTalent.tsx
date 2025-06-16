@@ -140,11 +140,11 @@ const HireTalent = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg">
                   <a href="#post-job">Request a Callback</a>
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h3 className="text-xl font-bold mb-6">Companies That Hire Our Graduates</h3>
