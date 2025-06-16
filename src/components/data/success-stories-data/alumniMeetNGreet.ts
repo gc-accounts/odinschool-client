@@ -7,7 +7,7 @@ export const alumniMeetNGreet = {
 export const odinGradOfTheMonth = {
   url: "https://odinschool-20029733.hs-sites.com/hubfs/ADA%20200X80%20indv%20(2).svg",
   certificateImage:
-    "https://strapi.odinschool.com/uploads/DS_Elite_Course_Certificate_7ae53e8cea.webp",
+    "https://strapi.odinschool.com/uploads/Untitled_design_30_fb4af742cb.webp",
 }
 
 export const odinGradsSuccessStories = [{

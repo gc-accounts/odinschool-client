@@ -48,13 +48,13 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
     <div>
       {/* OdinGrad of the Month */}
       <div className={sectionClass}>
-        <div className="grid grid-cols-1 flex-col items-center gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 flex-col items-center justify-between gap-8 md:grid-cols-2">
           <div className="col-span-1 flex flex-col justify-start">
             <h1 className="heading-lg mb-6 font-display leading-tight font-medium">OdinGrad of the Month</h1>
             <span className="text-primary-600 text-lg">Priya Pandey</span>
             <span className="text-sm">Data Scientist</span>
 
-            <img src={odinGradOfTheMonth.url} alt="Priya Pandey" />
+            <img src={odinGradOfTheMonth.url} alt="Priya Pandey" className="w-[200px] h-[80px]" />
 
             <div className="border-primary-900 relative mb-4 mt-3 rounded-lg border p-4" style={{ maxWidth: "500px" }}>
               {/* Quote bubble top */}
