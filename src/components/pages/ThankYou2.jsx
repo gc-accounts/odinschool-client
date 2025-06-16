@@ -31,10 +31,10 @@ const ThankYouForm = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'leadSubmitted' });
-  }, []);
+  // useEffect(() => {
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({ event: 'leadSubmitted' });
+  // }, []);
 
   useEffect(() => {
     const fetchContactData = async () => {
