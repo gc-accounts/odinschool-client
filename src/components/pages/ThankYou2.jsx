@@ -32,12 +32,17 @@ const ThankYouForm = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'leadSubmitted' });
+  }, []);
+
+  useEffect(() => {
     const fetchContactData = async () => {
       const email = sessionStorage.getItem('submittedEmail');
-      if (!email) {
-        router.push('/');
-        return;
-      }
+      // if (!email) {
+      //   router.push('/');
+      //   return;
+      // }
 
       try {
         const res = await fetch(`/api/zoho/get-contact-by-email?email=${encodeURIComponent(email)}`);
