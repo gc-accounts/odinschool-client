@@ -523,9 +523,8 @@ const CourseCheckout = () => {
       : price);
 
 
-  const gst = baseAmount * 0.09;
-  const cst = baseAmount * 0.09;
-  const total = baseAmount + gst + cst;
+  const igst = baseAmount * 0.18;
+  const total = baseAmount + igst;
   return (
     <>
       <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
@@ -727,7 +726,7 @@ const CourseCheckout = () => {
 
                   {/* Order Summary */}
                   <div className="border-t pt-4 space-y-2">
-                    
+
                     <div className="flex justify-between">
                       <p className='font-semibold'>Price Breakup</p>
                     </div>
@@ -739,12 +738,8 @@ const CourseCheckout = () => {
                       <span>₹{baseAmount}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>CGST (@ 9%)</span>
-                      <span>₹{gst.toFixed(0)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>SGST (@ 9%)</span>
-                      <span>₹{cst.toFixed(0)}</span>
+                      <span>IGST (@ 18%)</span>
+                      <span>₹{igst.toFixed(0)}</span>
                     </div>
                     <hr />
                     <div className="flex justify-between font-bold">
