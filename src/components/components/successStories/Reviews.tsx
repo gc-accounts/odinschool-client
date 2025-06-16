@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/components/ui/button";
 import SecondaryForm from "@/components/components/course-details/SecondaryForm";
 import Modal from "@/components/components/component-template/Modal";
+import { Progress } from "@/components/components/ui/progress";
 
 const Reviews = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -25,9 +26,9 @@ const Reviews = () => {
         <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2">
           <div className="my-2">
             <div className="h-100 bg-primary-50 border-gray rounded border-2 px-6 py-2 text-center">
-              <div className="flex flex-row text-center">
+              <div className="flex flex-row items-center text-center">
                 <img
-                  src="https://www.odinschool.com/hubfs/OS_Company_Logo/100_X_40/Google%20100x40.webp"
+                  src="https://strapi.odinschool.com/uploads/Google_20100x40_81eff1308c.webp"
                   alt="Reviews"
                   loading="lazy"
                   width="100"
@@ -44,7 +45,7 @@ const Reviews = () => {
                 &nbsp;
                 <div className="">
                   <img
-                    src="https://www.odinschool.com/hubfs/OdinSchool_V3/icons/4.7_Rating.svg"
+                    src="https://strapi.odinschool.com/uploads/4_7_Rating_d5c622e406.svg"
                     alt="Reviews"
                     loading="lazy"
                     width="82"
@@ -99,7 +100,10 @@ const Reviews = () => {
                     <div
                       className="progress-bar bg-success progress-bar-striped"
                       role="progressbar"
-                    ></div>
+                    >
+                      <Progress value={90.4} className="w-20 h-3" />
+
+                    </div>
                   </div>
                 </div>
                 <div className="text-xs">
