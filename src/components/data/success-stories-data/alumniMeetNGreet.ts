@@ -1,5 +1,7 @@
 export const alumniMeetNGreet = {
-  url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  url: "https://strapi.odinschool.com/uploads/Meet_and_Greet_Video_4_1_1_504a80e71d.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Your_paragraph_text_6_36ba258a2a.webp"
+
 }
 
 export const odinGradOfTheMonth = {
@@ -9,10 +11,38 @@ export const odinGradOfTheMonth = {
 }
 
 export const odinGradsSuccessStories = [{
-  url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-}, {
-  url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-}].map((i, ii) => ({ ...i, id: ii + 1 }))
+  url: "https://strapi.odinschool.com/uploads/Success_story_Panchatapa_Purkayastha_1_8354f60fcb.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Purkayastha_4d7268f77f.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Vaishnavi_Pote_3674997c7b.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Vaishnavi_Pote_defa006bce.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Success_20story_20_20_Aryan_20_Mullick_e1aed72a84.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Aryan_20_Mullick_11f8c3400c.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/student_testimonial_1_1_9d536b38d7.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Aboli_Zagade_fe6090e5dc.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Success_20story_20_20_20_Raunak_20_Kumar_7e259d7cf0.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Raunak_20_Kumar_1_61471a3de6.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Success_20story_20_20_20_Aryan_20_Singh_20_Tomar_fd0b21d278.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Aryan_20_Singh_9c5391fcfd.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Success_20story_20_20_20_Satya_20_Supraja_afcf487b23.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Satya_20_Supraja_81c295c121.webp"
+},
+{
+  url: "https://strapi.odinschool.com/uploads/Success_story_Vivekananda_8a94df6c8f.mp4",
+  thumbnail: "https://strapi.odinschool.com/uploads/Vivekananda_1_e6bfdf8107.webp"
+}
+].map((i, ii) => ({ ...i, id: ii + 1 }))
 
 export const arr = [
   {

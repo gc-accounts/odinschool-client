@@ -3,7 +3,7 @@ import { alumniMeetNGreet } from '@/components/data/success-stories-data/alumniM
 const AlumniMeetNGreet = (props) => {
   return (<div className="container mx-auto px-4 py-12">
     <div className="w-full text-center">
-      <h1 className="heading-xl mb-6">
+      <h1 className="heading-xl mb-6 font-display leading-tight font-medium">
         <span className="text-primary-600">
           Alumni Meet & Greet
         </span>{" "}
@@ -12,6 +12,7 @@ const AlumniMeetNGreet = (props) => {
     <div className="mb-16 flex grid grid-cols-1 flex-col items-center gap-8 lg:grid-cols-2">
       <VideoComp
         url={alumniMeetNGreet.url}
+        thumbnail={alumniMeetNGreet.thumbnail}
       />
 
       <p>
