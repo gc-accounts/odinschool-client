@@ -1,4 +1,4 @@
-
+'use client'
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Star, Award, TrendingUp, Loader2, HelpCircle, AwardIcon } from 'lucide-react';
