@@ -4,18 +4,21 @@ import SecondaryForm from "@/components/components/course-details/SecondaryForm"
 import Modal from "@/components/components/component-template/Modal";
 import { Progress } from "@/components/components/ui/progress";
 
-const Reviews = () => {
+
+interface ReviewsProps {
+  sectionClass: string;
+}
+const Reviews = ({ sectionClass }: ReviewsProps) => {
   const [formOpen, setFormOpen] = useState(false);
 
   return (<section
-    className={`${"bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"} relative`}
+    className={sectionClass}
   >
 
     <div className="container">
-      <div
-                            /* ref={titleRef} */ className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center md:mb-16"
+      <div className="mx-auto  flex max-w-3xl flex-col items-center text-center "
       >
-        <h2 className="heading-lg mb-4">
+        <h2 className="heading-lg mb-4 font-medium font-display leading-tight">
           Student reviews and industry recognitions
         </h2>
         <p className="body-md mx-auto max-w-2xl text-gray-600">
@@ -157,7 +160,7 @@ const Reviews = () => {
             isModal={true}
             isCoupon={false}
             buttonText="Request a Callback"
-            sourceDomain="Home Page"
+            sourceDomain="Success Stories page"
           />
         </Modal>
         <Button

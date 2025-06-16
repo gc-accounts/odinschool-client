@@ -33,10 +33,10 @@ const SuccessStoriesNew = () => {
     <>
       <Navbar />
       {/* ${dmSerifDisplay.variable} */}
-      <main className={`min-h-screen bg-gray-50 ${dmSerifDisplay.variable}`}>
-        <div className="container mx-auto px-4 py-12">
-          <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="m-auto">
+      <main className={`min-h-screen  ${dmSerifDisplay.variable}`}>
+        <div className="container mx-auto bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+          <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div className="my-auto">
               <h1 className="text-5xl mb-6 font-display leading-tight font-medium">
                 Celebrating{" "}
                 <span className="text-primary-600">
@@ -50,14 +50,14 @@ const SuccessStoriesNew = () => {
           </div>
         </div>
 
-        <StudentsTicker sectionClass="bg-primary-50 px-0 pb-[50px] md:px-0 md:pb-[70px]"
+        <StudentsTicker sectionClass="px-0 pb-[50px] md:px-0 md:pb-[70px]"
         />
 
-        <AlumniMeetNGreet />
-        <OdinGrad />
-        <Transforming />
-        <Reviews />
-        <SectionLeap />
+        <AlumniMeetNGreet sectionClass='bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <OdinGrad sectionClass='bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <Transforming sectionClass='bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <Reviews sectionClass='bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <SectionLeap sectionClass='bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
       </main>
 
       <Footer />

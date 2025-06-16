@@ -1,16 +1,21 @@
 import CourseCard from "@/components/components/CourseCard";
 import { courses } from '@/components/data/success-stories-data/alumniMeetNGreet'
 
-const Transforming = (props) => {
+
+
+interface TransformingProps {
+  sectionClass: string;
+}
+const Transforming = ({ sectionClass }: TransformingProps) => {
   return (
     <section
-      className={`${"bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]"} relative`}
-    > <div className="bg-primary-50 py-32">
+      className={sectionClass}
+    > <div>
         <div className="container">
           <div
                             /* ref={titleRef} */ className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
           >
-            <h2 className="heading-lg mb-4">
+            <h2 className="heading-lg mb-4 font-display leading-tight font-medium">
               <span className="text-primary-600">
                 Transforming lives and careers{" "}
               </span>

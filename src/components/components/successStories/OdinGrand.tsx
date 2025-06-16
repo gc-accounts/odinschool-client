@@ -8,8 +8,13 @@ import {
   odinGradOfTheMonth,
   odinGradsSuccessStories,
 } from "@/components/data/success-stories-data/alumniMeetNGreet";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
-const OdinGrad = () => {
+
+interface OdinGrandProps {
+  sectionClass?: string;
+}
+const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
@@ -38,52 +43,57 @@ const OdinGrad = () => {
     return () => emblaApi.off("select", onSelect);
   }, [emblaApi]);
 
+
   return (
-    <div className="container mx-auto px-4 py-12 lg:px-12">
+    <div>
       {/* OdinGrad of the Month */}
-      <div className="mb-16 grid grid-cols-1 flex-col items-center gap-8 md:grid-cols-2">
-        <div className="col-span-1 flex flex-col justify-start">
-          <h1 className="heading-lg mb-6">OdinGrad of the Month</h1>
-          <span className="text-primary-600 text-lg">Priya Pandey</span>
-          <span className="text-sm">Data Scientist</span>
+      <div className={sectionClass}>
+        <div className="grid grid-cols-1 flex-col items-center gap-8 md:grid-cols-2">
+          <div className="col-span-1 flex flex-col justify-start">
+            <h1 className="heading-lg mb-6 font-display leading-tight font-medium">OdinGrad of the Month</h1>
+            <span className="text-primary-600 text-lg">Priya Pandey</span>
+            <span className="text-sm">Data Scientist</span>
 
-          <img src={odinGradOfTheMonth.url} alt="Priya Pandey" />
+            <img src={odinGradOfTheMonth.url} alt="Priya Pandey" />
 
-          <div className="border-primary-900 relative mb-4 mt-3 rounded-lg border p-4" style={{ maxWidth: "500px" }}>
-            {/* Quote bubble top */}
-            <span className="absolute h-8 w-8 rounded bg-white p-2" style={{ top: "-20%" }}>
-              {/* Quote SVG */}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="..." /></svg>
-            </span>
+            <div className="border-primary-900 relative mb-4 mt-3 rounded-lg border p-4" style={{ maxWidth: "500px" }}>
+              {/* Quote bubble top */}
+              <span className="absolute h-8 w-8 rounded bg-white p-2 md:top-[-20%] top-[-13%] ">
+                {/* Quote SVG */}
+                <FaQuoteLeft className="text-black" />
+              </span>
 
-            <p className="mb-0">OdinSchool empowered me with practical skills to transition seamlessly from academia to industry!</p>
+              <p className="mb-0">OdinSchool empowered me with practical skills to transition seamlessly from academia to industry!</p>
 
-            {/* Quote bubble bottom */}
-            <span className="absolute h-8 w-8 rounded bg-white p-2" style={{ bottom: "-20%", right: "10%" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="..." /></svg>
-            </span>
+              {/* Quote bubble bottom */}
+              <span className="absolute h-8 w-8 rounded bg-white p-2 md:bottom-[-20%] bottom-[-13%]  right-[10%]" >
+                <FaQuoteRight className="text-black" />
+
+              </span>
+            </div>
+
+            <p className="text-sm">
+              Once a lecturer with very limited exposure to real-world challenges, Priya is a thriving Data Scientist today,
+              proving that the right skills can make all the difference!
+            </p>
           </div>
 
-          <p className="text-sm">
-            Once a lecturer with very limited exposure to real-world challenges, Priya is a thriving Data Scientist today,
-            proving that the right skills can make all the difference!
-          </p>
-        </div>
-
-        <div className="col-span-1">
-          <Image
-            src={odinGradOfTheMonth.certificateImage}
-            alt="OdinSchool Data Science Certificate"
-            width={400}
-            height={300}
-            className="h-auto w-full max-w-xs md:max-w-lg"
-          />
+          <div className="col-span-1">
+            <Image
+              src={odinGradOfTheMonth.certificateImage}
+              alt="OdinSchool Data Science Certificate"
+              width={400}
+              height={300}
+              className="h-auto w-full max-w-xs md:max-w-lg"
+            />
+          </div>
         </div>
       </div>
 
       {/* Carousel Section */}
-      <div className="container mx-auto py-4">
-        <div className="flex flex-col items-center py-12">
+
+      <div className="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+        <div className="flex flex-col items-center">
           <h1 className="heading-lg mb-6 font-display leading-tight font-medium">
             OdinGrads tell their{" "}
             <span className="text-primary-600">Career Success Stories</span>
@@ -128,12 +138,12 @@ const OdinGrad = () => {
       </div>
 
       {/* Where are OdinGrads now */}
-      <div className="container md:px-8 mx-auto py-4">
-        <div className="flex flex-col items-center py-12">
-          <h1 className="heading-lg mb-6">Where are OdinGrads now?</h1>
+      <div className="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+        <div className="flex flex-col items-center">
+          <h1 className="heading-lg mb-6 font-display leading-tight font-medium">Where are OdinGrads now?</h1>
         </div>
 
-        <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {odinGradNow.map((item, index) => (
             <div key={index} className="border-primary-400 relative mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4">
               <div className="border-primary-400 absolute top-[-15px] rounded-lg border-2 bg-white px-4 text-center">
@@ -144,8 +154,8 @@ const OdinGrad = () => {
                 <div className="mb-4 grid grid-cols-2 gap-4">
                   <img className="bg-primary-100 rounded-lg" width={"100%"} src={item.img} alt={item.name} />
                   <div className="flex flex-col">
-                    <h2 className="text-xl font-semibold">{item.name}</h2>
-                    {item.img2 && (
+                    <h2 className="text-xl font-semibold  break-words text-wrap">{item.name}</h2>
+                    {item.logo && (
                       <img className="mt-2" width={80} src={item.logo} alt={`${item.name} company logo`} />
                     )}
                   </div>
