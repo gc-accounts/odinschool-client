@@ -1,5 +1,5 @@
-import { alumniMeetNGreet } from './data'
 import VideoComp from '@/components/components/successStories/VideoComp';
+import { alumniMeetNGreet } from '@/components/data/success-stories-data/alumniMeetNGreet';
 const AlumniMeetNGreet = (props) => {
   return (<div className="container mx-auto px-4 py-12">
     <div className="w-full text-center">

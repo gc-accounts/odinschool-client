@@ -1,27 +1,33 @@
-
 import React from "react";
 import Image from "next/image";
 
-const VideoComp = ({ url }) => {
+
+interface VideoCompProps {
+  url: string;
+  thumbnail: string
+}
+const VideoComp = ({ url, thumbnail }: VideoCompProps) => {
   const [playVideo, setPlayVideo] = React.useState(false);
+
   return (
     <div className="rounded-xl overflow-hidden relative aspect-video border border-white">
       {playVideo ? (
-        <iframe
+        <video
+          controls
+          autoPlay
           className="w-full h-full rounded-xl"
-          src={url}
-          title="Python Analysis on AirBnB"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+        >
+          <source src={url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       ) : (
         <div
           className="relative w-full h-full cursor-pointer"
           onClick={() => setPlayVideo(true)}
         >
           <Image
-            src={"https://strapi.odinschool.com/uploads/Python_Analysis_on_Air_Bn_B_20_1_4183a90b2f.webp"}
-            alt="Python Analysis on AirBnB Video"
+            src={thumbnail}
+            alt="Video Thumbnail"
             fill
             className="rounded-xl object-cover"
           />
@@ -37,4 +43,5 @@ const VideoComp = ({ url }) => {
     </div>
   );
 };
-export default VideoComp
+
+export default VideoComp;
