@@ -91,7 +91,7 @@ const Index = ({
           <OrganizationLogos organisations={organisations} />
           <DsEliteFold sectionClass={'bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
           <FeaturedCourses courses={featuredCourses} />
-          <Testimonials testimonials={testimonials} />
+          <Testimonials title='Hear from your peers who’ve been successfully placed' subText='Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies' sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
           <InstructorProfileHome data={DsMentorsData} />
           <JobsSection sectionClass={'px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />
           <OdinTalks odinTalks={odinTalks} sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} />

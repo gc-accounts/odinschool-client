@@ -21,9 +21,10 @@ interface ComparisonFeature {
 }
 
 interface PlatformComparison {
-  sectionClass?: String
+  sectionClass?: String;
+  fontFamily?: String;
 }
-const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
+const PlatformComparison = ({ sectionClass, fontFamily }: PlatformComparison) => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const features: ComparisonFeature[] = [
@@ -114,10 +115,10 @@ const PlatformComparison = ({ sectionClass }: PlatformComparison) => {
 
 
   return (
-    <section id="comparison" className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-gradient-to-b from-white to-gray-50'}`}>
+    <section id="comparison" className={`${sectionClass ? sectionClass : ''}`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll opacity-0">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
             Why OdinSchool is your gateway to a <span className="text-primary-600">successful career</span>
           </h2>
 

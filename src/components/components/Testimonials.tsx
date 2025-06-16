@@ -29,7 +29,16 @@ const categoryColors: Record<string, string> = {
   'Salary Hike': 'bg-red-100 text-red-800 border-red-200',
 };
 
-const Testimonials = () => {
+
+interface Props {
+sectionClass: string;
+title: String;
+subText: String;
+}
+
+    const Testimonials = ({ sectionClass,title, subText }: Props) => {
+
+
   const [stories, setStories] = useState<any[]>([]);
   const [videoStories, setVideoStories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -75,14 +84,16 @@ const Testimonials = () => {
   }, [loading]);
 
   return (
-    <section ref={sectionRef} className="px-6 py-12 bg-gradient-to-b from-white to-gray-50">
+      <section ref={sectionRef} className={`${sectionClass ?? 'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}`}>
       <div className="container mx-auto">
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-10 opacity-0">
-          <h2 className="text-3xl font-bold mb-2">
-            Hear from your peers who’ve <span className="text-primary-600">been successfully placed</span>
+
+           <h2 className="mb-2 text-3xl md:text-5xl font-display leading-tight">
+            {title}
           </h2>
+
           <p className="text-gray-600">
-            Discover how learners like you transformed their careers through OdinSchool’s bootcamps and got placed in top companies.
+            {subText}
           </p>
         </div>
 

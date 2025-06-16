@@ -15,7 +15,7 @@ interface BrochureButtonProps {
   parentClass: string;
 }
 
-const LimitedSeatButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass }: BrochureButtonProps) => {
+const SuccessButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass }: BrochureButtonProps) => {
   const [formOpen, setFormOpen] = useState(false)
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const { toast } = useToast()
@@ -128,4 +128,4 @@ const LimitedSeatButton = ({ slug, isPrimaryButton, isBrochureButton, primaryBut
   )
 }
 
-export default LimitedSeatButton
+export default SuccessButton
