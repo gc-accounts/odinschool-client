@@ -16,50 +16,67 @@ async function refreshAccessToken() {
   });
 
   const data = await res.json();
-  if (!data.access_token) throw new Error('Failed to refresh access token');
+
+  if (!data.access_token) {
+    console.error('❌ Failed to refresh access token:', data);
+    throw new Error('Failed to refresh access token');
+  }
+
   accessToken = data.access_token;
+  console.log('✅ Refreshed Zoho access token');
   return accessToken;
 }
 
 async function getContactByEmail(email) {
   const url = `https://www.zohoapis.in/crm/v2/Contacts/search?criteria=(Email:equals:${email})`;
 
-  const res = await fetch(url, {
+  let res = await fetch(url, {
     method: 'GET',
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
-  // Retry if unauthorized
+  // Retry once if unauthorized (token expired)
   if (res.status === 401) {
-    await refreshAccessToken();
-    return getContactByEmail(email); // Retry with new token
+    console.warn('⚠️ Access token expired. Refreshing...');
+    const newToken = await refreshAccessToken();
+
+    res = await fetch(url, {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${newToken}` },
+    });
   }
 
   const text = await res.text();
 
   try {
-    return JSON.parse(text);
+    const json = JSON.parse(text);
+    return json;
   } catch (err) {
-    console.error('Zoho response was not valid JSON:', text);
+    console.error('❌ Zoho response was not valid JSON:', text);
     throw new Error('Zoho returned invalid response');
   }
 }
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get('email');
-  if (!email) {
-    return new Response(JSON.stringify({ error: 'Missing email param' }), { status: 400 });
-  }
-
   try {
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get('email');
+
+    if (!email) {
+      return new Response(JSON.stringify({ error: 'Missing email param' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     const data = await getContactByEmail(email);
+
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Failed to fetch contact:', error.message);
+    console.error('🚨 Error in Zoho GET handler:', error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
