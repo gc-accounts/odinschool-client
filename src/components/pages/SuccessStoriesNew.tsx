@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback, useMemo, useState } from "react";
 import Navbar from "@/components/components/Navbar";
 import Footer from "@/components/components/Footer";
@@ -7,7 +8,7 @@ import CourseCard from "@/components/components/CourseCard";
 import SecondaryForm from "@/components/components/course-details/SecondaryForm";
 import Modal from "@/components/components/component-template/Modal";
 import StudentsTicker from "@/components/components/StudentsTicker";
-import VideoComp from "@/components/pages/successStories/VideoComp";
+import VideoComp from "@/components/components/successStories/VideoComp";
 import AlumniMeetNGreet from "@/components/pages/successStories/AlumniMeetNGreet";
 import { arr } from "@/components/pages/successStories/data";
 import OdinGrad from "@/components/pages/successStories/OdinGrad";
