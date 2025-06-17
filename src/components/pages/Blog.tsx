@@ -165,7 +165,7 @@ const BlogPage = () => {
             </div>
           )}
 
-          <PaginationComponent currentPage={page} setCurrentPage={setPage} totalPages={undefined} />
+          <PaginationComponent currentPage={page} setCurrentPage={setPage} totalPages={posts?.length} />
         </div>
       </main>
       <Footer />
