@@ -53,7 +53,7 @@ export  const AlumniCardsData=
     {
         "name": "Sourav ",
         "last_name": "Lala",
-        "img": "hhttps://strapi.odinschool.com/uploads/Sourav_20_Lala_aecf8c6323.webp",
+        "img": "https://strapi.odinschool.com/uploads/Sourav_20_Lala_aecf8c6323.webp",
         "from": "Delivery Software Engineer",
         "to": "MIS Executive",
         "logo": "https://strapi.odinschool.com/uploads/Indicold_100_X40_f5b305f034.webp",
@@ -106,7 +106,7 @@ export  const AlumniCardsData=
         "img": "https://strapi.odinschool.com/uploads/Rohit_20_Raut_c30639c485.webp",
         "from": "Civil Engineer",
         "to": "WMS Operator - Analytics",
-        "logo": "hhttps://strapi.odinschool.com/uploads/Indicold_100_X40_3868a055b5.webp",
+        "logo": "https://strapi.odinschool.com/uploads/Indicold_100_X40_3868a055b5.webp",
         "status": "Career Transition",
         "student_linkedin_link": ""
     },
@@ -183,7 +183,7 @@ export  const AlumniCardsData=
     {
         "name": "Subham ",
         "last_name": "Singh",
-        "img": "hhttps://strapi.odinschool.com/uploads/Subham_20_Singh_05ff6d50d6.webp",
+        "img": "https://strapi.odinschool.com/uploads/Subham_20_Singh_05ff6d50d6.webp",
         "from": "Analyst",
         "to": "Executive",
         "logo": "https://strapi.odinschool.com/uploads/Flipkart_100_X40_5fbe626a5e.webp",
@@ -496,7 +496,7 @@ export  const AlumniCardsData=
         "img": "https://strapi.odinschool.com/uploads/Vaishnavi_20_Ranjithkumar_269be8b066.webp",
         "from": "Fresher",
         "to": "Assoc. Analyst",
-        "logo": "hhttps://strapi.odinschool.com/uploads/Lowes_100_X40_31d7abce49.webp",
+        "logo": "https://strapi.odinschool.com/uploads/Lowes_100_X40_31d7abce49.webp",
         "status": "15-Year Gap",
         "student_linkedin_link": ""
     },
