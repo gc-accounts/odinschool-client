@@ -50,7 +50,7 @@ const page = () => {
             }
         `}
       </style>
-       <DataScienceCourse organisations={[]}
+       <DataScienceCourse 
     />
     </>
    

@@ -13,9 +13,10 @@ interface BrochureButtonProps {
   isBrochureButton: boolean;
   primaryButtonText: string;
   parentClass: string;
+  primaryFormSourceDomain?: string;
 }
 
-const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass }: BrochureButtonProps) => {
+const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass, primaryFormSourceDomain }: BrochureButtonProps) => {
   const [formOpen, setFormOpen] = useState(false)
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const { toast } = useToast()
@@ -90,7 +91,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
         </Button>
       }
       <Modal header_text={'Request a callback'} open={formOpen} onOpenChange={setFormOpen}>
-        <PrimaryForm buttonText='Request a Callback' slug={slug} isModal={true} sourceDomain='Course form' />
+        <PrimaryForm buttonText='Request a Callback' slug={slug} isModal={true} sourceDomain={primaryFormSourceDomain ? primaryFormSourceDomain : 'Course form'} />
       </Modal>
 
       {

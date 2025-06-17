@@ -1295,11 +1295,7 @@ const redirects = [
     destination: "/data-science-course/chennai",
     permanent: true
   },
-  {
-    source: "/datascience-bootcamp/mumbai",
-    destination: "/data-science-course/mumbai",
-    permanent: true
-  },
+
   {
     source: "/datascience-bootcamp/bangalore",
     destination: "/data-science-course/bangalore",
@@ -1565,7 +1561,6 @@ const redirects = [
   { source: "/blog/data-science/types-of-hypothesis-testing", destination: "/", permanent: false },
   { source: "/blog/big-data/top-differences-between-hadoop-1-0-and-hadoop-2-0", destination: "/", permanent: false },
   { source: "/full-stack-java-developer-bootcamp/scholarship/application", destination: "/", permanent: false },
-  { source: "/data-science-course/bangalore", destination: "/", permanent: false },
   { source: "/blog/author/alex-carruthers", destination: "/", permanent: false },
   { source: "/blog/author/divya-gandotra", destination: "/", permanent: false },
   { source: "/scholarships/women-in-tech/application", destination: "/", permanent: false },
@@ -1582,7 +1577,6 @@ const redirects = [
   { source: "/blog/author/siddhartha-mathur", destination: "/", permanent: false },
   { source: "/blog/tag/data-science/page/14", destination: "/", permanent: false },
   { source: "/blog/programming/top-3-agile-software-development-methods", destination: "/", permanent: false },
-  { source: "/data-science-course/chennai", destination: "/", permanent: false },
   { source: "/blog/programming/itil-interview-questions", destination: "/", permanent: false },
   { source: "/web-development-course", destination: "/", permanent: false },
   { source: "/blog/data-science/interview-questions-and-answers-informatica-powercenter", destination: "/", permanent: false },
@@ -1591,7 +1585,6 @@ const redirects = [
   { source: "/blog/data-science/linear-regression-with-python-scikit-learn", destination: "/", permanent: false },
   { source: "/data-science/salary-calculator", destination: "/", permanent: false },
   { source: "/hubfs/OdinSchool_Affiliate_Partner_Agreement.pdf", destination: "/", permanent: false },
-  { source: "/data-science-course/mumbai", destination: "/", permanent: false },
   { source: "/opecampus/data-analytics/finding-your-path-in-data-analytics", destination: "/", permanent: false },
   { source: "/blog/others/five-excellent-basic-formatting-tips-on-ms-excel", destination: "/", permanent: false },
   { source: "/blog/tag/digital-marketing", destination: "/", permanent: false },

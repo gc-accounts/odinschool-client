@@ -357,4 +357,392 @@ export const courseToolsData = [
 
         ]
     },
+    
+      {
+        id: 5,
+        title: 'Data Science Course',
+        path: '/data-science-course/mumbai',
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
+                name: 'Python',
+                description: "",
+
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp',
+                name: 'MySQL',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp',
+                name: 'NumPy',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp',
+                name: 'Pandas',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp',
+                name: 'Matplotlib',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp',
+                name: 'Seaborn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp',
+                name: 'Scikit-learn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/P_1_0618f08d1d.webp',
+                name: 'Apache Spark',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Tensorflow_1_3b6b218c49.webp',
+                name: 'TensorFlow',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/keras_3448b958e9.webp',
+                name: 'Keras',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp',
+                name: 'Plotly',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pytorch_addec53588.webp',
+                name: 'PyTorch',
+                description: "",
+            },
+
+        ]
+    },
+        {
+        id: 6,
+        title: 'Data Science Course',
+        path: '/data-science-course/chennai',
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
+                name: 'Python',
+                description: "",
+
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp',
+                name: 'MySQL',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp',
+                name: 'NumPy',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp',
+                name: 'Pandas',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp',
+                name: 'Matplotlib',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp',
+                name: 'Seaborn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp',
+                name: 'Scikit-learn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/P_1_0618f08d1d.webp',
+                name: 'Apache Spark',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Tensorflow_1_3b6b218c49.webp',
+                name: 'TensorFlow',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/keras_3448b958e9.webp',
+                name: 'Keras',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp',
+                name: 'Plotly',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pytorch_addec53588.webp',
+                name: 'PyTorch',
+                description: "",
+            },
+
+        ]
+    },
+
+      {
+        id: 7,
+        title: 'Data Science Course',
+        path: '/data-science-course/hyderabad',
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
+                name: 'Python',
+                description: "",
+
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp',
+                name: 'MySQL',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp',
+                name: 'NumPy',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp',
+                name: 'Pandas',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp',
+                name: 'Matplotlib',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp',
+                name: 'Seaborn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp',
+                name: 'Scikit-learn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/P_1_0618f08d1d.webp',
+                name: 'Apache Spark',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Tensorflow_1_3b6b218c49.webp',
+                name: 'TensorFlow',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/keras_3448b958e9.webp',
+                name: 'Keras',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp',
+                name: 'Plotly',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pytorch_addec53588.webp',
+                name: 'PyTorch',
+                description: "",
+            },
+
+        ]
+    },
+      {
+        id: 8,
+        title: 'Data Science Course',
+        path: '/data-science-course/bangalore',
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
+                name: 'Python',
+                description: "",
+
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp',
+                name: 'MySQL',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp',
+                name: 'NumPy',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp',
+                name: 'Pandas',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp',
+                name: 'Matplotlib',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp',
+                name: 'Seaborn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp',
+                name: 'Scikit-learn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/P_1_0618f08d1d.webp',
+                name: 'Apache Spark',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Tensorflow_1_3b6b218c49.webp',
+                name: 'TensorFlow',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/keras_3448b958e9.webp',
+                name: 'Keras',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp',
+                name: 'Plotly',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pytorch_addec53588.webp',
+                name: 'PyTorch',
+                description: "",
+            },
+
+        ]
+    },
+
+       {
+        id: 9,
+        title: 'Data Science Course',
+        path: '/data-science-course/pune',
+        tools: [
+            {
+                path: 'https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp',
+                name: 'Python',
+                description: "",
+
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp',
+                name: 'MySQL',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp',
+                name: 'NumPy',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp',
+                name: 'Pandas',
+                description: "",
+            },
+            {
+                path: 'https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp',
+                name: 'Matplotlib',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp',
+                name: 'Seaborn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp',
+                name: 'Scikit-learn',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/P_1_0618f08d1d.webp',
+                name: 'Apache Spark',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Tensorflow_1_3b6b218c49.webp',
+                name: 'TensorFlow',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/keras_3448b958e9.webp',
+                name: 'Keras',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp',
+                name: 'Plotly',
+                description: "",
+            },
+
+            {
+                path: 'https://strapi.odinschool.com/uploads/Pytorch_addec53588.webp',
+                name: 'PyTorch',
+                description: "",
+            },
+
+        ]
+    },
 ]

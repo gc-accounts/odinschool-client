@@ -3,9 +3,10 @@ import Image from 'next/image'
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 interface CardsProps {
   sectionClass?: string,
+  sourceDomain?:string
 }
 
-const DsTitleForm = ({ sectionClass }: CardsProps) => {
+const DsTitleForm = ({ sectionClass , sourceDomain}: CardsProps) => {
   return (
     <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}`}>
       <div className="container mx-auto">
@@ -25,7 +26,7 @@ const DsTitleForm = ({ sectionClass }: CardsProps) => {
           {/* Right: Callback Form */}
           <div className="lg:col-span-5">
             <div className="h-fit border-primary-600 rounded-lg">
-              <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain='Course form' />
+              <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain={sourceDomain ? sourceDomain : 'Course form'} />
   
             </div>
           </div>
