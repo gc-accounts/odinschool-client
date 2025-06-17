@@ -77,10 +77,19 @@ const Footer = () => {
     },
   ];
 
+  const secondaryFooterLinks=[
+        { name: 'Data Science Course', href: '/data-science-course' },
+        { name: 'Data Science Course Hyderabad', href: '/data-science-course/hyderabad' },
+        { name: 'Data Science Course Mumbai', href: '/data-science-course/mumbai' },
+        { name: 'Data Science Course Bangalore', href: '/data-science-course/bangalore' },
+        { name: 'Data Science Course Pune', href: '/data-science-course/pune' },
+        { name: 'Data Science Course Chennai', href: '/data-science-course/chennai' },
+  ]
+
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:grid-cols-5">
+      <div className="container mx-auto  pt-16 pb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:grid-cols-5 px-4">
           {footerLinks.map((column) => (
             <div key={column.title}>
               <h3 className="text-white font-medium mb-4">{column.title}</h3>
@@ -100,7 +109,30 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-gray-800 pt-8">
+
+        <div className='mt-12 border-t border-gray-800 px-8 py-8 bg-gray-800 flex justify-center items-center'>
+
+          <ul className='list-none flex flex-wrap items-center gap-4 text-sm'>
+          {
+            secondaryFooterLinks.map((link,index)=>{
+              return (
+                <li key={link.name}>
+                    <SafeLink
+                      to={link.href}
+                      className={`text-gray-400 hover:underline hover:text-gray-200 transition-colors pr-4 ${secondaryFooterLinks.length-1 !== index && 'sm:border-r'}`}
+                    >
+                      {link.name}
+                    </SafeLink>
+                  </li>
+              )
+            })
+          }
+          </ul>
+        </div>
+
+
+
+        <div className="border-t border-gray-800 pt-8 px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <SafeLink to="/" className="text-xl font-bold text-white">

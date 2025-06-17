@@ -305,7 +305,7 @@ export const courses = [
       "  From confusing Python, the programming language, with the reptile giant, to landing a job at Prolifcs, a leader in digital transformation, data, analytics, and DevOps, Nidhi's career trajectory has been exceptional. Read her illustrious career transformation story here.   ",
     url_slug:
       "/blog/this-is-how-nidhi-kulkarni-a-dietician-became-a-data-science-professional",
-    img: "https://strapi.odinschool.com/uploads/Nidhi_20_Kulkarni_20_Sucess_20sotre_8a232f90fc.png"
+    image: "https://strapi.odinschool.com/uploads/Nidhi_20_Kulkarni_20_Sucess_20sotre_8a232f90fc.png"
   },
   {
     id: "2",
@@ -314,7 +314,7 @@ export const courses = [
       "  Naga Lakshmi had an 11-year career gap when she discovered the demand for Data Science professionals in India. With just 7 months of experience as a Junior Software Engineer, this mother of two became a Senior Analyst at PepsiCo! Read her inspiring story here.  ",
     url_slug:
       "/blog/naga-lakshmis-journey-to-pepsico-the-data-science-career-relaunch-story-you-need-to-read",
-    img: "https://strapi.odinschool.com/uploads/naga_20_Lakshmi_20sucess_20store_6f23971ad2.png"
+    image: "https://strapi.odinschool.com/uploads/naga_20_Lakshmi_20sucess_20store_6f23971ad2.png"
   },
   {
     id: "3",
@@ -323,7 +323,7 @@ export const courses = [
       '  "As a full-time mother, it didn\'t occur to me that I could have a sense of purpose outside my household. Though it was fulfilling to nurture my child and see him grow up, I did not work for 6 years." Read her story to find out how she relaunched her career after a 6-year break.  ',
     url_slug:
       "/blog/visweswaris-success-journey-how-this-full-time-mother-relaunched-her-career",
-    img: "https://strapi.odinschool.com/uploads/Visweswari_20pitchika_20sucess_20store_0d64b9002b.png"
+    image: "https://strapi.odinschool.com/uploads/Visweswari_20pitchika_20sucess_20store_0d64b9002b.png"
   },
 ];
 
