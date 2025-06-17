@@ -75,6 +75,13 @@ const Certification = dynamic(() => import('@/components/components/Certificatio
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
+const AboutCity= dynamic(() => import('@/components/components/AboutCity'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
+
+const CitySecondaryForm=dynamic(() => import('@/components/components/city-page/CitySecondaryForm'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+});
 
 
 import { dsFaqsData } from '@/components/data/course-section/faqs/dsFaqsData';
@@ -91,8 +98,10 @@ const dmSerifDisplay = DM_Serif_Display({
   variable: '--font-dm-serif',
 });
 
-
-const DataScienceCourse = ({ organisations }) => {
+interface DataScienceCourseProps{
+  slug?:string;
+}
+const DataScienceCourse = ({slug}:DataScienceCourseProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -103,11 +112,11 @@ const DataScienceCourse = ({ organisations }) => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
-          <DsFF sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DsFF sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsEliteFold fontFamily={dmSerifDisplay.variable} sectionClass={'bg-[#021331] px-[20px] pt-[50px] pb-[50px] md:pb-[140px] md:px-[30px] md:pt-[70px]'} />
           <DsCards sectionClass="px-[20px] pt-[50px] pb-[0px] md:px-[30px] md:pb-[0px] md:pt-[0px]" />
           <ProgramHighlights2 sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:pt-[0px] md:pb-[70px]" data={DaProgramHighlightsData} centerImage={centerImage} />
-          <OrganizationLogos sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
+          <OrganizationLogos sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]"/>
           <DsOverview sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <Testimonials title='Data Science Career Transitions!' subText='' sectionClass={'bg-white px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]'} />
           <MoreJobs 
@@ -116,19 +125,29 @@ const DataScienceCourse = ({ organisations }) => {
           headerColor='text-white' 
           data={DsMoreJobsData} 
           sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsCareerServices sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DsCareerServices sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <MultipleJobDrives title='Multiple Job Drives Every Month' subText='' headerColor='text-white' sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsCurriculum sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DsCurriculum sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <ToolsSection fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsProjects sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <PlatformComparison fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
            <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-           <DsFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+           <DsFeeModule  sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
       <InstructorProfileHome fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsMentorsData} />
       <Certification sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsCertificateData} />
-      <DsTitleForm sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+      <DsTitleForm sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
       <StudentsTicker sectionClass="bg-white px-0 pb-[50px] md:px-0 md:pb-[70px]" />
       <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsFaqsData} />
+
+
+      {slug && 
+      <AboutCity slug={slug} sectionClass='bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'/>
+      
+      }
+
+      {
+        slug && <CitySecondaryForm slug={slug} sectionClass='bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'/>
+      }
           
         
         </main>

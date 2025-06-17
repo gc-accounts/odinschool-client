@@ -15,10 +15,11 @@ import BrochureButton from '@/components/components/custom-component/BrochureBut
 
 interface Props {
   sectionClass?: string;
+  sourceDomain?:string;
 }
 
 
-const DsCurriculum = ({ sectionClass }: Props) => {
+const DsCurriculum = ({ sectionClass,sourceDomain }: Props) => {
 
   return (
     <section className={`bg-primary-50 py-12 px-4 sm:px-6 lg:px-8 ${sectionClass}`}>
@@ -119,7 +120,7 @@ const DsCurriculum = ({ sectionClass }: Props) => {
         </div>
 
         <div>
-          <BrochureButton slug={'data-science-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
+          <BrochureButton slug={'data-science-course'} isPrimaryButton={true} isBrochureButton={true} primaryButtonText='Request a Callback' primaryFormSourceDomain={sourceDomain ? sourceDomain : 'Course form'} parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center' />
         </div>
 
        

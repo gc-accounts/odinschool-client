@@ -11,9 +11,10 @@ import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 
 
 interface feeProps {
-  sectionClass: string
+  sectionClass: string;
+  sourceDomain?:string;
 }
-const DsFeeModule = ({ sectionClass }: feeProps) => {
+const DsFeeModule = ({ sectionClass, sourceDomain }: feeProps) => {
   const data = [
     {
       id: '1',
@@ -116,10 +117,6 @@ const DsFeeModule = ({ sectionClass }: feeProps) => {
                     </div>
 
                     <br />
-
-
-
-
                     <Button
                       size="md"
                       variant="outline"
@@ -129,10 +126,9 @@ const DsFeeModule = ({ sectionClass }: feeProps) => {
                       onClick={() => setFormOpen(true)}
                     >
                       Enquire Now
-
                     </Button>
                     <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-course'} isModal={true} sourceDomain='Course form' />
+                      <PrimaryForm buttonText='Enquire Now' slug={'data-science-course'} isModal={true} sourceDomain={sourceDomain ? sourceDomain : 'Course form'} />
                     </Modal>
 
                     <Link href="/course-checkout/data-science-course">

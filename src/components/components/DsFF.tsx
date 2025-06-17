@@ -9,9 +9,10 @@ import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 import Modal from '@/components/components/component-template/Modal';
 
 interface dsEliteProps {
-  sectionClass?: String
+  sectionClass?: String;
+  sourceDomain?:string;
 }
-const DsFF = ({ sectionClass }: dsEliteProps) => {
+const DsFF = ({ sectionClass, sourceDomain }: dsEliteProps) => {
 
   const [formOpen, setFormOpen] = useState(false)
 
@@ -62,7 +63,7 @@ const DsFF = ({ sectionClass }: dsEliteProps) => {
         <p className="text-base md:text-sm">Upcoming Cohort</p>
         <p className="text-lg font-semibold mt-1">28 Jun 2025</p>
       </div>
-            <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain='Course form' />
+            <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain={sourceDomain ? sourceDomain : 'Course form'} />
           </div>
         </div>
       </div>
