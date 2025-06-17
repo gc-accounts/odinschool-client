@@ -148,7 +148,7 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {AlumniCardsData.map((item, index) => (
-            <div key={index} className="border-primary-400 relative mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4">
+            <div key={index} className="border-primary-400 mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4 relative">
               <div className="border-primary-400 absolute top-[-15px] rounded-lg border-2 bg-white px-4 text-center">
                 {item.status}
               </div>
@@ -185,11 +185,12 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
                 </div>
               </div>
 
-                 {
-                  item.student_linkedin_link.length > 0 &&              <div>
+        {
+                  item.student_linkedin_link.length > 0 && 
+                  <div className="absolute bottom-0 ">
                 <Link href={item.student_linkedin_link} passHref target="_blank">
-                  <Button className="bg-blue-700 hover:bg-blue-600 w-24 h-10 rounded-full flex- items-center justify-center">
-                   <FaLinkedin className="text-white w-10 h-10"/>
+                  <Button className="bg-blue-700 hover:bg-blue-600 w-24 h-10 rounded-t-3xl rounded-b-none flex- items-center justify-center">
+                   <FaLinkedin className="text-white text-5xl"/>
                    </Button>
                    </Link>
               </div>
