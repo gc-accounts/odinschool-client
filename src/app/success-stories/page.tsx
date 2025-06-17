@@ -1,5 +1,5 @@
 import React from 'react'
-// import SuccessStoriesNew from '@/components/pages/SuccessStoriesNew'
+import SuccessStoriesNew from '@/components/pages/SuccessStoriesNew'
 import SuccessStoriesComp from "@/components/pages/SuccessStories"
 import { Metadata } from 'next';
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 const page = () => {
 
   return (
-    <SuccessStoriesComp />
+    <SuccessStoriesNew />
   )
 }
 

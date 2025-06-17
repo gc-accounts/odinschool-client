@@ -9,8 +9,10 @@ import {
   odinGradsSuccessStories,
 } from "@/components/data/success-stories-data/alumniMeetNGreet";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-
-
+import { AlumniCardsData } from "@/components/data/success-stories-data/AlumniCardsData";
+import { FaLinkedin } from "react-icons/fa";
+import { Button } from "@/components/components/ui/button";
+import Link from "next/link";
 interface OdinGrandProps {
   sectionClass?: string;
 }
@@ -91,7 +93,6 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
       </div>
 
       {/* Carousel Section */}
-
       <div className="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
         <div className="flex flex-col items-center">
           <h1 className="heading-lg mb-6 font-display leading-tight font-medium">
@@ -104,8 +105,10 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {odinGradsSuccessStories.map((mentor) => (
-                <div key={mentor.id} className="h-full flex-[0_0_100%] px-2">
+                <div key={mentor.id} className="h-full lg:flex-[0_0_33.333333333%] md:flex-[0_0_50%] flex-[0_0_100%]  px-2">
+                  <div className="shadow">
                   <VideoComp url={mentor.url} thumbnail={mentor.thumbnail} />
+                  </div>
                 </div>
               ))}
             </div>
@@ -144,7 +147,7 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {odinGradNow.map((item, index) => (
+          {AlumniCardsData.map((item, index) => (
             <div key={index} className="border-primary-400 relative mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4">
               <div className="border-primary-400 absolute top-[-15px] rounded-lg border-2 bg-white px-4 text-center">
                 {item.status}
@@ -154,7 +157,7 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
                 <div className="mb-4 grid grid-cols-2 gap-4">
                   <img className="bg-primary-100 rounded-lg" width={"100%"} src={item.img} alt={item.name} />
                   <div className="flex flex-col">
-                    <h2 className="text-xl font-semibold  break-words text-wrap">{item.name}</h2>
+                    <h2 className="text-xl font-semibold  break-words text-wrap">{item.name} {item.last_name}</h2>
                     {item.logo && (
                       <img className="mt-2" width={80} src={item.logo} alt={`${item.name} company logo`} />
                     )}
@@ -181,6 +184,17 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
                   <span className="text-end text-sm font-bold">{item.to}</span>
                 </div>
               </div>
+
+                 {
+                  item.student_linkedin_link.length > 0 &&              <div>
+                <Link href={item.student_linkedin_link} passHref target="_blank">
+                  <Button className="bg-blue-700 hover:bg-blue-600 w-24 h-10 rounded-full flex- items-center justify-center">
+                   <FaLinkedin className="text-white w-10 h-10"/>
+                   </Button>
+                   </Link>
+              </div>
+                 }
+
             </div>
           ))}
         </div>
