@@ -16,9 +16,20 @@ const Page = () => {
   }
 
   return (
-    <div>
+    <>
+        <style>
+        {`
+          .primaryFormCustom {
+            border: 3px solid #1a6cf7;
+          }
+            .downloadBtn{
+            color: #000;
+            border-color: #000;
+            }
+        `}
+      </style>
       <DataScienceCourse slug={slug!} />
-    </div>
+    </>
   )
 }
 
