@@ -13,7 +13,7 @@ export interface CourseProps {
   lessons: number;
   rating: number;
   students: number;
-  img: string;
+  image: string;
   category: string;
   company?: string; // Add optional company property
   popular?: boolean;
@@ -37,7 +37,7 @@ const CourseCard = ({
   lessons,
   rating,
   students,
-  img,
+  image,
   category,
   company, // Add company to destructured props
   popular = false,
@@ -74,7 +74,7 @@ const CourseCard = ({
       <div className="relative overflow-hidden aspect-[16/9]">
         <div className="absolute inset-0 bg-gray-100 animate-pulse"></div>
         <Image
-          src={img}
+          src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           onLoad={(e) => {
