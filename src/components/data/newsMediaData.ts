@@ -190,6 +190,12 @@ export const newsMediaData = [
     "mediaLogo": "https://strapi.odinschool.com/uploads/I_Tv_Logo_100_X40_e3d060776b.webp",
     "mediaTitle": "Destiny Redefined: Kriti’s Rise from Byju's Mass Layoff to BI Developer!",
     "mediaLink": "https://www.indiantelevision.com/mam/pr-communication/destiny-redefined%3A-kriti%E2%80%99s-rise-from-byju's-mass-layoff-to-bi-developer!-240628"
+  },
+   {
+    "id": 33,
+    "mediaLogo": "https://strapi.odinschool.com/uploads/Zee_News_100_X40_ea5b77c910.webp",
+    "mediaTitle": "Bridging the Skills Gap: How India’s Youth Are Overcoming the Disturbing Underemployment Problem.",
+    "mediaLink": "https://zeenews.india.com/brand-desk/bridging-the-skills-gap-how-india-s-youth-are-overcoming-disturbing-underemployment-problem-2886818.html"
   }
 ];
 

@@ -25,7 +25,14 @@ export const dsFaqsData = [
   },
   {
     "question": "How can I be eligible for placement assistance?",
-    "answer": "You will be eligible for the placement assistance if you: Successfully complete the Capstone project within the stipulated time period Successfully clear all the Placement Readiness tests Submit and get all the documents required for placements verified Attend all the interview processes, including the test, technical interviews and other related processes Not reject more than ONE formal company job offer letter Disclose all important information required for standard background checks"
+    "answer": `You will be eligible for the placement assistance if you:
+    <ul class="list-disc list-inside mt-2 space-y-1 mb-6">
+    <li>Successfully complete the Capstone project within the stipulated time period Successfully clear all the Placement Readiness tests</li>
+    <li>Submit and get all the documents required for placements verified</li>
+    <li>Attend all the interview processes, including the test, technical interviews and other related processes</li>
+    <li>Not reject more than ONE formal company job offer letter Disclose all important information required for standard background checks</li>
+    </ul>
+    `
   },
   {
     "question": "Do you offer a job guarantee?",

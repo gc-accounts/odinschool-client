@@ -1,5 +1,9 @@
 export const DsEliteCurriculumData = [
   {
+    id: 1,
+    module: '',
+    subModules: [
+      {
     program_title: "Statistics & Exploratory Data Analysis",
     points: [
       "Foundations of Data Science",
@@ -82,41 +86,52 @@ export const DsEliteCurriculumData = [
       "https://strapi.odinschool.com/uploads/Hugging_20_Face_20100_X40_20efc02ae2.svg"
     ]
   },
-  // {
-  //   program_title: "Advanced Excel",
-  //   points: [
-  //     "Introduction to Excel",
-  //     "Data manipulation, cleaning, and formatting",
-  //     "Formulas and functions, Pivot tables and Charts",
-  //     "Data analysis using Excel"
-  //   ],
-  //   logo: [
-  //     "https://strapi.odinschool.com/uploads/Excel_74543af3ba.webp"
-  //   ]
-  // },
-  // {
-  //   program_title: "Tableau",
-  //   points: [
-  //     "Creating and Working with Different Chart Types",
-  //     "Data Visualizations with Filters, Hierarchies, and Drilldowns",
-  //     "Creating Dashboards and Stories",
-  //     "Advanced Functions: Parameters, Forecasting, and Relationships"
-  //   ],
-  //   logo: [
-  //     "https://strapi.odinschool.com/uploads/Tableau_20100_X40_dc2f10a715.webp"
-  //   ]
-  // },
-  // {
-  //   program_title: "Azure",
-  //   points: [
-  //     "Basics of Cloud Computing and Azure Fundamentals",
-  //     "Introduction to Azure SQL Database and Data Factory",
-  //     "Working with Azure Databricks for big data processing",
-  //     "Integration with Delta Lake and Azure Synapse Analytics"
-  //   ],
-  //   logo: [
-  //     "https://strapi.odinschool.com/uploads/Azure_bc82e74007.webp",
-  //     "https://strapi.odinschool.com/uploads/My_SQL_100_X40_9476ebdaf1.webp"
-  //   ]
-  // }
-];
+    ]
+  },
+
+
+  {
+    id: 2,
+    module: 'Bonus Modules',
+    subModules: [
+      {
+    program_title: "Advanced Excel",
+    points: [
+      "Introduction to Excel",
+      "Data manipulation, cleaning, and formatting",
+      "Formulas and functions, Pivot tables and Charts",
+      "Data analysis using Excel"
+    ],
+    logo: [
+      "https://strapi.odinschool.com/uploads/Excel_74543af3ba.webp"
+    ]
+  },
+  {
+    program_title: "Tableau",
+    points: [
+      "Creating and Working with Different Chart Types",
+      "Data Visualizations with Filters, Hierarchies, and Drilldowns",
+      "Creating Dashboards and Stories",
+      "Advanced Functions: Parameters, Forecasting, and Relationships"
+    ],
+    logo: [
+      "https://strapi.odinschool.com/uploads/Tableau_20100_X40_dc2f10a715.webp"
+    ]
+  },
+  {
+    program_title: "Azure",
+    points: [
+      "Basics of Cloud Computing and Azure Fundamentals",
+      "Introduction to Azure SQL Database and Data Factory",
+      "Working with Azure Databricks for big data processing",
+      "Integration with Delta Lake and Azure Synapse Analytics"
+    ],
+    logo: [
+      "https://strapi.odinschool.com/uploads/Azure_bc82e74007.webp",
+      "https://strapi.odinschool.com/uploads/My_SQL_100_X40_9476ebdaf1.webp"
+    ]
+  }
+    ]
+  },
+
+]

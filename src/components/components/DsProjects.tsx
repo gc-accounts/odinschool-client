@@ -13,24 +13,24 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
   const [formOpen, setFormOpen] = useState(false);
 
   const projects = [
-    {
-      id: 1,
-      title: 'COVID - 19 Prediction',
-      description: 'Develop a predictive model that can accurately identify the likelihood of COVID-19 infection',
-      image: 'https://strapi.odinschool.com/uploads/COVID_19_Prediction_6cc6a9e792.webp',
-    },
-    {
-      id: 2,
-      title: 'Credit Card Approval',
-      description: 'Help banks find potential customers to give out credit cards to by building an ML model',
-      image: 'https://strapi.odinschool.com/uploads/Credit_Card_Approval_e0351d05f9.webp',
-    },
-    {
-      id: 3,
-      title: 'Health Insurance Prediction',
-      description: 'Build a predictive ML model to increase the accuracy of health insurance prediction',
-      image: 'https://strapi.odinschool.com/uploads/Health_Insurance_Prediction_34f74cd5fc.webp',
-    },
+    // {
+    //   id: 1,
+    //   title: 'COVID - 19 Prediction',
+    //   description: 'Develop a predictive model that can accurately identify the likelihood of COVID-19 infection',
+    //   image: 'https://strapi.odinschool.com/uploads/COVID_19_Prediction_6cc6a9e792.webp',
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Credit Card Approval',
+    //   description: 'Help banks find potential customers to give out credit cards to by building an ML model',
+    //   image: 'https://strapi.odinschool.com/uploads/Credit_Card_Approval_e0351d05f9.webp',
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Health Insurance Prediction',
+    //   description: 'Build a predictive ML model to increase the accuracy of health insurance prediction',
+    //   image: 'https://strapi.odinschool.com/uploads/Health_Insurance_Prediction_34f74cd5fc.webp',
+    // },
     {
       id: 4,
       title: 'Bank Term Deposit',
@@ -56,7 +56,7 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
       prerequisites: 'SQL',
       tools: ['MySQL Workbench'],
       ctaText: 'Download Project Files',
-      videoThumb: 'https://strapi.odinschool.com/uploads/cinemalytics_1670a58504.webp',
+      videoThumb: 'https://strapi.odinschool.com/uploads/cinemalytics_2_281184f345.webp',
       videoUrl: 'https://strapi.odinschool.com/uploads/Project_Cinemalytics_1_af21008f9d.mp4',
     },
     {
@@ -81,7 +81,7 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-12 gap-6">
-          {projects.slice(0, 6).map((project) => (
+          {projects.slice(0, 3).map((project) => (
             <div key={project.id} className="bg-white text-black rounded-xl p-4 col-span-12 md:col-span-4 flex flex-col justify-between">
               <div className="relative w-full h-40 mb-3 rounded-md overflow-hidden">
                 <Image src={project.image} alt={project.title} fill className="object-cover" />
@@ -93,18 +93,18 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
 
           {/* Cinemalytics Text Block */}
           <div className="col-span-12 lg:col-span-6 bg-white text-black p-6 rounded-xl flex flex-col justify-between">
-            <h3 className="text-xl font-bold mb-2">{projects[6].title}</h3>
-            <p className="text-sm text-gray-700 mb-4">{projects[6].description}</p>
+            <h3 className="text-xl font-bold mb-2">{projects[3].title}</h3>
+            <p className="text-sm text-gray-700 mb-4">{projects[3].description}</p>
 
             <div className="flex flex-col sm:flex-row justify-between text-sm mb-4 gap-4">
               <div>
                 <p className="text-gray-500">Pre-requisite</p>
-                <p>{projects[6].prerequisites}</p>
+                <p>{projects[3].prerequisites}</p>
               </div>
               <div>
                 <p className="text-gray-500">Tools Required</p>
                 <div className="flex flex-wrap gap-2 mt-1">
-                  {projects[6].tools.map((tool) => (
+                  {projects[3].tools.map((tool) => (
                     <span key={tool} className="px-2 py-1 text-xs rounded-full border border-blue-500 text-blue-600">
                       {tool}
                     </span>
@@ -118,21 +118,21 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
 
           {/* Cinemalytics Video */}
           <div className="col-span-12 lg:col-span-6 rounded-xl overflow-hidden relative aspect-video border border-white">
-  {activeVideoId === projects[6].id ? (
+  {activeVideoId === projects[3].id ? (
     <video
       className="w-full h-full object-cover rounded-xl"
-      src={projects[6].videoUrl}
+      src={projects[3].videoUrl}
       controls
       autoPlay
       playsInline
-      poster={projects[6].videoThumb}
+      poster={projects[3].videoThumb}
     />
   ) : (
     <div
       className="relative w-full h-full cursor-pointer"
-      onClick={() => setActiveVideoId(projects[6].id)}
+      onClick={() => setActiveVideoId(projects[3].id)}
     >
-      <Image src={projects[6].videoThumb} alt="Video thumbnail" fill className="rounded-xl object-cover" />
+      <Image src={projects[3].videoThumb} alt="Video thumbnail" fill className="rounded-xl object-cover" />
       <Image
         src="https://strapi.odinschool.com/uploads/play_button_3a9c87c1ac.png"
         alt="Play Button"
@@ -147,18 +147,18 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
 
           {/* AirBnB Text Block */}
           <div className="col-span-12 lg:col-span-6 bg-white text-black p-6 rounded-xl flex flex-col justify-between">
-            <h3 className="text-xl font-bold mb-2">{projects[7].title}</h3>
-            <p className="text-sm text-gray-700 mb-4">{projects[7].description}</p>
+            <h3 className="text-xl font-bold mb-2">{projects[4].title}</h3>
+            <p className="text-sm text-gray-700 mb-4">{projects[4].description}</p>
 
             <div className="flex flex-col sm:flex-row justify-between text-sm mb-4 gap-4">
               <div>
                 <p className="text-gray-500">Pre-requisite</p>
-                <p>{projects[7].prerequisites}</p>
+                <p>{projects[4].prerequisites}</p>
               </div>
               <div>
                 <p className="text-gray-500">Tools Required</p>
                 <div className="flex flex-wrap gap-2 mt-1">
-                  {projects[7].tools.map((tool) => (
+                  {projects[4].tools.map((tool) => (
                     <span key={tool} className="px-2 py-1 text-xs rounded-full border border-blue-500 text-blue-600">
                       {tool}
                     </span>
@@ -176,7 +176,7 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
                 className="font-semibold"
                 onClick={() => setFormOpen(true)}
               >
-                {projects[7].ctaText}
+                {projects[4].ctaText}
               </Button>
 
               <Modal header_text={'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
@@ -188,21 +188,21 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
 
           {/* AirBnB Video */}
           <div className="col-span-12 lg:col-span-6 rounded-xl overflow-hidden relative aspect-video border border-white">
-  {activeVideoId === projects[7].id ? (
+  {activeVideoId === projects[4].id ? (
     <video
       className="w-full h-full object-cover rounded-xl"
-      src={projects[7].videoUrl}
+      src={projects[4].videoUrl}
       controls
       autoPlay
       playsInline
-      poster={projects[7].videoThumb}
+      poster={projects[4].videoThumb}
     />
   ) : (
     <div
       className="relative w-full h-full cursor-pointer"
-      onClick={() => setActiveVideoId(projects[7].id)}
+      onClick={() => setActiveVideoId(projects[4].id)}
     >
-      <Image src={projects[7].videoThumb} alt="Video thumbnail" fill className="rounded-xl object-cover" />
+      <Image src={projects[4].videoThumb} alt="Video thumbnail" fill className="rounded-xl object-cover" />
       <Image
         src="https://strapi.odinschool.com/uploads/play_button_3a9c87c1ac.png"
         alt="Play Button"

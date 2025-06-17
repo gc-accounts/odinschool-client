@@ -68,7 +68,7 @@ const NewsSection = () => {
           {/* Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex min-w-0">
-              {newsMediaData.map((item) => (
+              {newsMediaData.slice().reverse().map((item) => (
                 <div
                   key={item.id}
                   className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] px-2"
