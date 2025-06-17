@@ -40,5 +40,11 @@ export const GenAIIITGProgramHighlightsData = [
     icon: 'https://strapi.odinschool.com/uploads/Hands_on_learning_bd60fc5b29.webp',
     title: 'Learn technologies and tools to build and deploy GenAI models',
     description: ''
+  },
+   {
+    id: 8,
+    icon: 'https://strapi.odinschool.com/uploads/Hands_on_learning_bd60fc5b29.webp',
+    title: 'Earn exclusive “Alumni” status from E&ICT Academy, IIT Guwahati',
+    description: ''
   }
 ];

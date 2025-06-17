@@ -24,7 +24,9 @@ const FAQsection = ({ sectionClass, data, fontFamily }: FAQsectionProps) => {
             {data.map((faq, index) => (
               <AccordionItem key={index} value={`faq-${index}`}>
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
+                <AccordionContent>
+                                          <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                                        </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

@@ -198,24 +198,24 @@ const learningLinks = [
   {
     title: "Data Science Elite Course",
     href: "/data-science-elite-course",
-    description: "Master cutting-edge Data Science skills in this industry-aligned Bootcamp.",
+    description: "Accelerate your data science career with hands-on projects and exclusive hiring sprints.",
   },
   {
     title: "Certification Program in Applied Generative AI - E&ICT Academy, IITG",
     href: "/generative-ai-course-iitg",
-    description: "Join live and on-demand educational webinars.",
+    description: "Gain in-demand skills in Generative AI to innovate and solve real-world challenges.",
   },
 
   {
     title: "Investment Banking and Finance Operations Elite Course",
     href: "/investment-banking-course",
-    description: "Industry-backed program with live online training and multiple hiring sprints.",
+    description: "Prepare for finance roles in BFSI with expert-led training and exclusive hiring sprints.",
   },
 
   {
     title: "Generative AI Course",
     href: "generative-ai-bootcamp",
-    description: "Master cutting-edge skills in this industry-aligned Course.",
+    description: "Master Generative AI and unlock opportunities in cutting-edge AI applications.",
   },
 
 
