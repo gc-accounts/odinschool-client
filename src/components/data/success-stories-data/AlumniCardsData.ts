@@ -1553,7 +1553,7 @@ export  const AlumniCardsData=
     {
         "name": "Vinay",
         "last_name": "Kumar",
-        "img": "https://strapi.odinschool.com/uploads/Vinay_Kumar_Reddy_2bc6a17d0a.webp",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202096_82a9dd66c8.webp",
         "from": "Support Associate",
         "to": "Associate Software Engineer - Trainee",
         "logo": "https://strapi.odinschool.com/uploads/Fission_Labs_100_X40_95043cd151.webp",
