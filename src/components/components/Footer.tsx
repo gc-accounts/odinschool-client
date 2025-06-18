@@ -33,7 +33,7 @@ const Footer = () => {
       links: [
         { name: 'Home', href: '/' },
         // { name: 'Courses', href: '/courses' },
-        { name: 'Webinars', href: '/webinars' },
+        { name: 'Events', href: '/events' },
         { name: 'Success Stories', href: '/success-stories' },
       ],
     },
