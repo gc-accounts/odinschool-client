@@ -57,7 +57,7 @@ const EventDetails = () => {
         {event?.poster_url && event?.poster_url[0] && (
           <img
             className="w-full h-96 object-cover rounded-md"
-            src={`https://www.odinschool.com${event.poster_url[0].url}`}
+            src={`https://strapi.odinschool.com/${event.poster_url[0].url}`}
             alt={event.title}
           />
         )}
