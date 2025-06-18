@@ -140,7 +140,7 @@ const Events = () => {
                     <div className="relative w-full h-48">
                       {event.poster_url && event.poster_url[0] && (
                         <Image
-                          src={`http://localhost:1337${event.poster_url[0].url}`}
+                          src={`https://www.odinschool.com${event.poster_url[0].url}`}
                           alt={event.title}
                           layout="fill"
                           objectFit="cover"
