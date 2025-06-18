@@ -93,7 +93,7 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
         }
 
         .slider .slide-track {
-          animation: scroll 150s linear infinite;
+          animation: scroll 300s linear infinite;
           display: flex;
           align-items: center;
           width: calc(180px * ${duplicatedStudents.length});
