@@ -108,8 +108,8 @@ const TermsOfUse = () => {
                 If you have any questions about these Terms, please contact us at:
               </p>
               <p>
-                Email: legal@OdinSchool.com<br />
-                Address: 123 Education Lane, Suite 200, San Francisco, CA 94105
+                Email: hello@odinschool.com<br />
+                Address: OdinSchool, Aikya Vihar, Plot 218, Kavuri Hills Phase 2 Rd, B-Block, Doctor’s Colony, Madhapur, Hyderabad, Telangana 500033
               </p>
             </div>
           </div>
