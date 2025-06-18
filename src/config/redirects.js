@@ -1590,7 +1590,7 @@ const redirects = [
   { source: "/blog/tag/digital-marketing", destination: "/", permanent: false },
   { source: "/blog/data-science/artificial-neural-network-walkthrough", destination: "/", permanent: false },
   { source: "/web-development-course/oldpage", destination: "/", permanent: false },
-  { source: "/events", destination: "/webinars", permanent: false },
+  // { source: "/events", destination: "/webinars", permanent: false },
    { source: "/datascience-bootcamp/book-a-demo", destination: "/", permanent: false },
    { source: "/training-solution", destination: "/", permanent: false },
 ]
