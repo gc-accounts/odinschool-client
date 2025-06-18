@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
 
 
-        <div className='mt-12 border-t border-gray-800 px-8 py-8 bg-gray-800 flex justify-center items-center'>
+        {/* <div className='mt-12 border-t border-gray-800 px-8 py-8 bg-gray-800 flex justify-center items-center'>
 
           <ul className='list-none flex flex-wrap items-center gap-4 text-sm'>
           {
@@ -128,7 +128,7 @@ const Footer = () => {
             })
           }
           </ul>
-        </div>
+        </div> */}
 
 
 
