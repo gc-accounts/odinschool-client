@@ -1,7 +1,6 @@
-import React from 'react'
-import SuccessStoriesNew from '@/components/pages/SuccessStoriesNew'
-import SuccessStoriesComp from "@/components/pages/SuccessStories"
 import { Metadata } from 'next';
+import SuccessStoriesNew from '@/components/pages/SuccessStoriesNew';
+
 export const metadata: Metadata = {
   title: 'Success Stories ',
   description:
@@ -38,11 +37,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'OdinSchool' }],
   metadataBase: new URL('https://odinschool.com'),
 };
-const page = () => {
 
+const Page = () => {
   return (
-    <SuccessStoriesNew />
-  )
-}
+    <>
+      <SuccessStoriesNew />
+    </>
+  );
+};
 
-export default page
+export default Page;

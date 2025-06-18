@@ -141,65 +141,81 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
       </div>
 
       {/* Where are OdinGrads now */}
-      <div className="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
-        <div className="flex flex-col items-center">
-          <h1 className="heading-lg mb-6 font-display leading-tight font-medium">Where are OdinGrads now?</h1>
+<div className="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
+  <div className="flex flex-col items-center">
+    <h1 className="heading-lg mb-6 font-display leading-tight font-medium">Where are OdinGrads now?</h1>
+  </div>
+
+  <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+    {AlumniCardsData.map((item, index) => (
+      <div key={index} className="border-primary-400 mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4 relative">
+        <div className="border-primary-400 absolute top-[-15px] rounded-lg border-2 bg-white px-4 text-center">
+          {item.status}
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {AlumniCardsData.map((item, index) => (
-            <div key={index} className="border-primary-400 mb-8 flex flex-col items-center justify-center rounded-lg border-2 p-4 relative">
-              <div className="border-primary-400 absolute top-[-15px] rounded-lg border-2 bg-white px-4 text-center">
-                {item.status}
-              </div>
-
-              <div className="my-8 w-full">
-                <div className="mb-4 grid grid-cols-2 gap-4">
-                  <img className="bg-primary-100 rounded-lg" width={"100%"} src={item.img} alt={item.name} />
-                  <div className="flex flex-col">
-                    <h2 className="text-xl font-semibold  break-words text-wrap">{item.name} {item.last_name}</h2>
-                    {item.logo && (
-                      <img className="mt-2" width={80} src={item.logo} alt={`${item.name} company logo`} />
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex w-full items-center justify-between py-2">
-                  <span className="bg-primary-100 rounded-sm px-4 text-xs text-gray-600">From</span>
-                  <div className="relative flex w-full items-center justify-center px-2">
-                    <hr className="border-primary-400 w-full border-2 border-dotted" />
-                    <div className="absolute">
-                      <svg width="32" height="32" viewBox="0 0 32 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.44 7.79..." fill="#68aaff" />
-                        <path d="M30.46 7.79..." fill="#68aaff" />
-                        <path d="M22.61 7.79..." fill="#68aaff" />
-                      </svg>
-                    </div>
-                  </div>
-                  <span className="bg-primary-100 rounded-sm px-4 text-xs text-gray-600">To</span>
-                </div>
-
-                <div className="flex w-full justify-between">
-                  <span className="text-sm">{item.from}</span>
-                  <span className="text-end text-sm font-bold">{item.to}</span>
-                </div>
-              </div>
-
-        {
-                  item.student_linkedin_link.length > 0 && 
-                  <div className="absolute bottom-0 ">
-                <Link href={item.student_linkedin_link} passHref target="_blank">
-                  <Button className="bg-blue-700 hover:bg-blue-600 w-24 h-10 rounded-t-3xl rounded-b-none flex- items-center justify-center">
-                   <FaLinkedin className="text-white text-5xl"/>
-                   </Button>
-                   </Link>
-              </div>
-                 }
-
+        <div className="my-8 w-full">
+          <div className="mb-4 grid grid-cols-2 gap-4">
+            {/* Replace img with Image component for lazy loading */}
+            <div className="relative w-full h-full">
+              <Image
+                className="bg-primary-100 rounded-lg"
+                src={item.img}
+                alt={item.name}
+                layout="responsive" // Automatically adjusts image size
+                width={500} // Set a width based on your design
+                height={500} // Set a height based on your design
+                loading="lazy" // Lazy load the image (optional, Image component does this by default)
+              />
             </div>
-          ))}
+            <div className="flex flex-col">
+              <h2 className="text-xl font-semibold break-words text-wrap">{item.name} {item.last_name}</h2>
+              {item.logo && (
+                <div className="mt-2">
+                  <Image
+                    src={item.logo}
+                    alt={`${item.name} company logo`}
+                    width={80}
+                    height={80}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex w-full items-center justify-between py-2">
+            <span className="bg-primary-100 rounded-sm px-4 text-xs text-gray-600">From</span>
+            <div className="relative flex w-full items-center justify-center px-2">
+              <hr className="border-primary-400 w-full border-2 border-dotted" />
+              <div className="absolute">
+                <svg width="32" height="32" viewBox="0 0 32 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.44 7.79..." fill="#68aaff" />
+                  <path d="M30.46 7.79..." fill="#68aaff" />
+                  <path d="M22.61 7.79..." fill="#68aaff" />
+                </svg>
+              </div>
+            </div>
+            <span className="bg-primary-100 rounded-sm px-4 text-xs text-gray-600">To</span>
+          </div>
+
+          <div className="flex w-full justify-between">
+            <span className="text-sm">{item.from}</span>
+            <span className="text-end text-sm font-bold">{item.to}</span>
+          </div>
         </div>
+
+        {item.student_linkedin_link.length > 0 && (
+          <div className="absolute bottom-0 ">
+            <Link href={item.student_linkedin_link} passHref target="_blank">
+              <Button className="bg-blue-700 hover:bg-blue-600 w-24 h-10 rounded-t-3xl rounded-b-none flex- items-center justify-center">
+                <FaLinkedin className="text-white text-5xl" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
+    ))}
+  </div>
+</div>
     </div>
   );
 };
