@@ -139,12 +139,10 @@ const Events = () => {
                   <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div className="relative w-full h-48">
                       {event.poster_url && event.poster_url[0] && (
-                        <Image
+                        <img
                           src={`https://strapi.odinschool.com${event.poster_url[0].url}`}
                           alt={event.title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="rounded-t-xl"
+                          className="rounded-t-xl w-full"
                           onError={(e) => { e.currentTarget.src = '/placeholder-event.png'; }}
                         />
                       )}
