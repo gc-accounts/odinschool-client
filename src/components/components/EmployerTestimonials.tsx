@@ -71,7 +71,7 @@ const steps = [
   },
   {
     number: 3,
-    text: "Review YouInterview Our Graduates And Onboard Themr Eligibility",
+    text: "Interview Our Graduates And Onboard Them",
   },
 ];
 

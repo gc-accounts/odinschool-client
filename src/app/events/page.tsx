@@ -66,7 +66,7 @@ const Events = () => {
     const fetchEvents = async () => {
       try {
         setLoading(true); // Set loading to true before fetch
-        const res = await fetch('http://localhost:1337/api/events?populate=*');
+        const res = await fetch('https://strapi.odinschool.com/api/events?populate=*');
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
