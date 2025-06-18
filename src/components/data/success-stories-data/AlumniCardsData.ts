@@ -38,7 +38,7 @@ export  const AlumniCardsData=
         "to": "Senior Executive-Data Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Flipkart_100_X40_5fbe626a5e.webp",
         "status": "Career Upgrade",
-        "student_linkedin_link": "https://www.linkedin.com/in/vijaya-rani-44b53377/"
+        "student_linkedin_link": ""
     },
     {
         "name": "Pragyan ",
@@ -663,7 +663,7 @@ export  const AlumniCardsData=
     {
         "name": "Nandana.S",
         "last_name": "",
-        "img": "https://strapi.odinschool.com/uploads/Nulldana_S_d10ea8cf5e.webp",
+        "img": "https://strapi.odinschool.com/uploads/Nandana_S_d10ea8cf5e.webp",
         "from": "Trainee Decision Scientist",
         "to": "Data Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Fibe_100_X40_d116c12789.webp",
@@ -723,7 +723,7 @@ export  const AlumniCardsData=
     {
         "name": "Satya",
         "last_name": "Supraja",
-        "img": "https://strapi.odinschool.com/uploads/Satya_Supraja_round_ed00204525.png",
+        "img": "https://strapi.odinschool.com/uploads/Satya_Supraja_1_1_e1c7b8a73b.webp",
         "from": "Fresher",
         "to": "Associate BI",
         "logo": "https://strapi.odinschool.com/uploads/celebal_100_X40_Individual_c25591fcc2.webp",
@@ -1013,7 +1013,7 @@ export  const AlumniCardsData=
     {
         "name": "Mahender",
         "last_name": "Kore",
-        "img": "https://strapi.odinschool.com/uploads/Mahender_Kore_1_bf4497479b.webp",
+        "img": "https://strapi.odinschool.com/uploads/Mahender_Kore_d918e2686c.webp",
         "from": "Research fellow",
         "to": "MIS Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Cotivity100_X40_Individual_0365ee381a.webp",
@@ -1603,7 +1603,7 @@ export  const AlumniCardsData=
     {
         "name": "Sai",
         "last_name": "Krishna",
-        "img": "https://strapi.odinschool.com/uploads/Sai_Krishna_Alishala_d925d567fc.webp",
+        "img": "https://strapi.odinschool.com/uploads/Sai_Krishna_Chunduri_f54e0a5556.webp",
         "from": "Infrastructure Team Lead",
         "to": "Data Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Indegene100_X40_Individual_65a5c228fd.webp",
@@ -1688,7 +1688,7 @@ export  const AlumniCardsData=
         "to": "Implementation Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Zero_Code_100_X40_Individual_f92d88688b.webp",
         "status": "Career Launch",
-        "student_linkedin_link": "https://www.linkedin.com/in/dhanasree-s-b02a7b201/"
+        "student_linkedin_link": ""
     },
     {
         "name": "Preeti",
@@ -1703,7 +1703,7 @@ export  const AlumniCardsData=
     {
         "name": "Visweswari",
         "last_name": "Pitchika",
-        "img": "https://strapi.odinschool.com/uploads/Visweswari_20pitchika_20sucess_20store_0d64b9002b.png",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202066_ec80c1eca4.webp",
         "from": "Single Window Operator",
         "to": "Senior Analyst / A5",
         "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
@@ -1723,7 +1723,7 @@ export  const AlumniCardsData=
     {
         "name": "Amman",
         "last_name": "Khan",
-        "img": "https://strapi.odinschool.com/uploads/Amman_20_Verma_1_5430e6111c.webp",
+        "img": "https://strapi.odinschool.com/uploads/Aman_Khan_daa0f82444.webp",
         "from": "Program Analyst",
         "to": "Datastage Developer",
         "logo": "https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_f9c241b072.webp",
@@ -1808,7 +1808,7 @@ export  const AlumniCardsData=
         "to": "Analyst - Global Transport Operations",
         "logo": "https://strapi.odinschool.com/uploads/molex_100_X40_indv_4cb69164c5.webp",
         "status": "Career Transition",
-        "student_linkedin_link": "https://www.linkedin.com/in/karthik-kumar-raju-a02331152/"
+        "student_linkedin_link": ""
     },
     {
         "name": "Akhil",
@@ -1848,7 +1848,7 @@ export  const AlumniCardsData=
         "to": "Analyst",
         "logo": "https://strapi.odinschool.com/uploads/Solutionec100_X40_Individual_7676c02099.webp",
         "status": "88% Salary Hike",
-        "student_linkedin_link": "https://www.linkedin.com/in/amulya-k-a781391b1/"
+        "student_linkedin_link": ""
     },
     {
         "name": "Rashmi",
@@ -1978,7 +1978,7 @@ export  const AlumniCardsData=
         "to": "Junior Associate",
         "logo": "https://strapi.odinschool.com/uploads/celebal_100_X40_Individual_0d54957231.webp",
         "status": "Career Launch",
-        "student_linkedin_link": "https://www.linkedin.com/in/soumya-gour-1824aa22a/"
+        "student_linkedin_link": ""
     },
     {
         "name": "Anamika",
@@ -2023,7 +2023,7 @@ export  const AlumniCardsData=
     {
         "name": "Usurupati",
         "last_name": "Raghava",
-        "img": "https://strapi.odinschool.com/uploads/Usurupati_20_Raghava_20_1_d085d7222f.webp",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202068_84c2b5d4c1.webp",
         "from": "Senior Associate Engineer",
         "to": "Software Engineer",
         "logo": "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_06531dedd6.webp",
@@ -2113,7 +2113,7 @@ export  const AlumniCardsData=
     {
         "name": "Faviana",
         "last_name": "Noronha",
-        "img": "https://strapi.odinschool.com/uploads/Faviana_20_Noronha_20_1_9811555649.webp",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202064_e3a78d8e6b.webp",
         "from": "Fresher",
         "to": "ML Ops engineer - Operations",
         "logo": "https://strapi.odinschool.com/uploads/Cotivity100_X40_Individual_8347771379.webp",
@@ -2173,7 +2173,7 @@ export  const AlumniCardsData=
     {
         "name": "Shailesh R",
         "last_name": "",
-        "img": "https://strapi.odinschool.com/uploads/Shailesh_R_982450e8b2.webp",
+        "img": "https://strapi.odinschool.com/uploads/Shailesh_21497c86a0.webp",
         "from": "Intern - IT",
         "to": "Data - Engineer I",
         "logo": "https://strapi.odinschool.com/uploads/Thermo_Fisher_100_X40_Individual_27adaf004f.webp",
@@ -2198,6 +2198,797 @@ export  const AlumniCardsData=
         "to": "Trainee Data Scientist",
         "logo": "https://strapi.odinschool.com/uploads/adq100_X40_c7664e0a84.webp",
         "status": "Career Launch",
-        "student_linkedin_link": "https://www.linkedin.com/in/mohitg0swami/"
+        "student_linkedin_link": ""
+    
+    },
+     {
+        "name": "Kiran",
+        "last_name": "Teja",
+        "img": "https://strapi.odinschool.com/uploads/Kiran_Teja_c794ddc55a.webp",
+        "from": "Fresher",
+        "to": "Software Engineer - Trainee",
+        "logo": "https://strapi.odinschool.com/uploads/datafactz100_X40_Individual_113714f712.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Harsha PR",
+        "last_name": "",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202080_c02a1ccebc.webp",
+        "from": "Fresher",
+        "to": "IND Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/harsha-pr-262730214/"
+    },
+    {
+        "name": "Md Farooq",
+        "last_name": "",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202070_c8f0ebab26.webp",
+        "from": "Fresher",
+        "to": "IND Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/j-md-farooq-51a3a1244/"
+    },
+    {
+        "name": "Akshata",
+        "last_name": "Nikhare",
+        "img": "https://strapi.odinschool.com/uploads/Akshata_Nikhare_5a6aed081f.webp",
+        "from": "Customer Relations Advisor",
+        "to": "Associate - Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/T_Ekfriday_100x40_individual_c2a5196dea.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/akshata-nikhare-695a9783/"
+    },
+    {
+        "name": "Jitendra Kumar",
+        "last_name": "Pandit",
+        "img": "https://strapi.odinschool.com/uploads/Jitendra_20_Kumar_20_Pandit_dcfaff314e.webp",
+        "from": "Software Engineer",
+        "to": "Java Developer",
+        "logo": "https://strapi.odinschool.com/uploads/People_Tech_Group_100_X40_1bb23ed596.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "C.Raja",
+        "last_name": "",
+        "img": "https://strapi.odinschool.com/uploads/C_Raja_690d585d5b.webp",
+        "from": "Fresher",
+        "to": "Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Dhruv_100_X40_a36dc20c73.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Naga",
+        "last_name": "Lakshmi",
+        "img": "https://strapi.odinschool.com/uploads/Nagalakshmi_31db865e32.webp",
+        "from": "Jr. Software Engineer",
+        "to": "Associate Manager",
+        "logo": "https://strapi.odinschool.com/uploads/Pepsico100_X40_Individual_8193a842d9.webp",
+        "status": "11-Year Gap",
+        "student_linkedin_link": "https://www.linkedin.com/in/nagalakshmip/"
+    },
+    {
+        "name": "Ram",
+        "last_name": "Reddy",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202074_6424592c03.webp",
+        "from": "Production Chemist",
+        "to": "Senior Business Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/IKS_100_X40_Individual_5a49b54f1c.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/sai-ram-reddy-durgempudi-908011244/"
+    },
+    {
+        "name": "Aniket",
+        "last_name": "Mohite",
+        "img": "https://strapi.odinschool.com/uploads/Aniket_7765648081.webp",
+        "from": "Network Engineer",
+        "to": "Analyst - Grade C",
+        "logo": "https://strapi.odinschool.com/uploads/Marsh_100x_40_Individual_d3ed985f4c.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/aniket-mohite-b3184a18a/"
+    },
+    {
+        "name": "Harshith",
+        "last_name": "Gowda",
+        "img": "https://strapi.odinschool.com/uploads/Harshith_Gowda_5bebb53c66.webp",
+        "from": "Technical Operations Executive",
+        "to": "Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/T_Ekfriday_100x40_individual_c2a5196dea.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/harshith-gowda-d-27656610a/"
+    },
+    {
+        "name": "Pratyush",
+        "last_name": "Poddar",
+        "img": "https://strapi.odinschool.com/uploads/Pratyush_Poddar_20_20updated_9354a03ac0.webp",
+        "from": "Fresher",
+        "to": "Database Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Teleperformance_100x40_ee686b45c5.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/pratyush-poddar-59947b183/"
+    },
+    {
+        "name": "Jagadeesh",
+        "last_name": "Bommana",
+        "img": "https://strapi.odinschool.com/uploads/Jagadeesh_Bommana_556e0164c5.webp",
+        "from": "Fresher",
+        "to": "Associate Business Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Cotiviti_Individual_100_x40_e67a8bc0ef.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/jagadeesh-bommana-545a9a261/"
+    },
+    {
+        "name": "Nidhi",
+        "last_name": "Kulkarni",
+        "img": "https://strapi.odinschool.com/uploads/Nidhi_Kulkarni_246dabc91d.webp",
+        "from": "GUS",
+        "to": "Software Engineer E2",
+        "logo": "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_06531dedd6.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/nidhiklkrn/?originalSubdomain=in"
+    },
+    {
+        "name": "Akansha",
+        "last_name": "Singh",
+        "img": "https://strapi.odinschool.com/uploads/Akansha_24ed5445cf.webp",
+        "from": "Fresher",
+        "to": "Management Trainee",
+        "logo": "https://strapi.odinschool.com/uploads/T_Ekfriday_100x40_individual_c2a5196dea.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Yasodha",
+        "last_name": "Krishna",
+        "img": "https://strapi.odinschool.com/uploads/Krishna_Yashoda_1633c4ecfd.webp",
+        "from": "Fresher",
+        "to": "Data Specialist and QA Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/4crisk_ai_100_X40_individual_74db71ac8a.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/krishnavelama25/"
+    },
+    {
+        "name": "Smiley",
+        "last_name": "Susanna",
+        "img": "https://strapi.odinschool.com/uploads/Smiley_Sussanna_36f36b5abb.webp",
+        "from": "Fresher",
+        "to": "Consultant - Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/WYZMINDZ_200x80_individual_de072fcc8b.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Arun",
+        "last_name": "Salimath",
+        "img": "https://strapi.odinschool.com/uploads/Arun_Salimath_30c8557dac.webp",
+        "from": "Fresher",
+        "to": "Consultant - Trainee Software Developer",
+        "logo": "https://strapi.odinschool.com/uploads/WYZMINDZ_200x80_individual_de072fcc8b.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/arun-salimath-9a4844171/"
+    },
+    {
+        "name": "Reddy",
+        "last_name": "Nagadurga",
+        "img": "https://strapi.odinschool.com/uploads/Reddy_Nagadurga_42dba18e0f.webp",
+        "from": "Fresher",
+        "to": "Software Engineer - Trainee",
+        "logo": "https://strapi.odinschool.com/uploads/datafactz100_X40_Individual_113714f712.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/nagadurga-r-26ba49161"
+    },
+    {
+        "name": "Nipun",
+        "last_name": "Gupta",
+        "img": "https://strapi.odinschool.com/uploads/Nipun_20_Gupta_3016d1d45a.webp",
+        "from": "Professor",
+        "to": "Associate Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/Abinbev100_X40_Individual_329f1c6ddc.webp",
+        "status": "career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/nipun-gupta-13336643/"
+    },
+    {
+        "name": "Thodupunuri",
+        "last_name": "Bharath",
+        "img": "https://strapi.odinschool.com/uploads/Bharath_db0811cdee.webp",
+        "from": "Quality Analyst",
+        "to": "Lead - Data Analytics",
+        "logo": "https://strapi.odinschool.com/uploads/sutherland100_X40_Individual_f33ec34268.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Raj",
+        "last_name": "Kulhade",
+        "img": "https://strapi.odinschool.com/uploads/Raj_Kulhade_20_1_fafc88e7a6.webp",
+        "from": "Fresher",
+        "to": "Business Analyst Intern",
+        "logo": "https://strapi.odinschool.com/uploads/3i_Infotech_100_X40_1a822fc069.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Chirayu",
+        "last_name": "Gupta",
+        "img": "https://strapi.odinschool.com/uploads/Chirayu_20_Gupta_7463727ba5.webp",
+        "from": "Fresher",
+        "to": "Machine Learning Intern",
+        "logo": "https://strapi.odinschool.com/uploads/4_Seer_20150_X60_30ae825a01.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Shashank",
+        "last_name": "Pandey",
+        "img": "https://strapi.odinschool.com/uploads/Shashank_Pandey_68211fe136.webp",
+        "from": "Fresher",
+        "to": "Associate Software Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_06531dedd6.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Rohit",
+        "last_name": "Padhy",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202100_50163f7622.webp",
+        "from": "Fresher",
+        "to": "Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Byte_IQ_100_X40_Individual_db97618333.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "http://www.linkedin.com/in/rohit-padhy-37a464244"
+    },
+    {
+        "name": "Piyush",
+        "last_name": "Ghungrud",
+        "img": "https://strapi.odinschool.com/uploads/Piyush_Gungrud_7e1f12d8a9.webp",
+        "from": "Fresher",
+        "to": "Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Solutionec100_X40_Individual_7676c02099.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Swetha",
+        "last_name": "Guggal",
+        "img": "https://strapi.odinschool.com/uploads/Swetha_Guggal_20_1_b8d48b65d4.webp",
+        "from": "Fresher",
+        "to": "AI/ML Intern",
+        "logo": "https://strapi.odinschool.com/uploads/Smartbridge_logo_100_X40_e2d62d1947.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sanepalli",
+        "last_name": "Ramanaiah",
+        "img": "https://strapi.odinschool.com/uploads/Sanepalli_Ramanaiah_20_9cd4fae202.webp",
+        "from": "Fresher",
+        "to": "Business Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Medplus_100_X40_Individual_742d87230c.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Mahesh",
+        "last_name": "Garrepelly",
+        "img": "https://strapi.odinschool.com/uploads/Mahesh_Garrepally_20_561ed7e8a1.webp",
+        "from": "Fresher",
+        "to": "Java Full Stack Developer",
+        "logo": "https://strapi.odinschool.com/uploads/Altair100_X40_Individual_3f8a2ebebd.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Gopi",
+        "last_name": "Mahesh",
+        "img": "https://strapi.odinschool.com/uploads/Gopi_Mahesh_20_f46764ef8e.webp",
+        "from": "Fresher",
+        "to": "Busniess analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Medplus_100_X40_Individual_742d87230c.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Pranay",
+        "last_name": "Bedse",
+        "img": "https://strapi.odinschool.com/uploads/Pranay_Bedse_207005cc70.webp",
+        "from": "Fresher",
+        "to": "Senior Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sairam",
+        "last_name": "Mekala",
+        "img": "https://strapi.odinschool.com/uploads/Mekala_Sairam_20_f6e34e7ede.webp",
+        "from": "Fresher",
+        "to": "Senior Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sumanth",
+        "last_name": "Narra",
+        "img": "https://strapi.odinschool.com/uploads/Narra_Sumanth_20_ecf180bb07.webp",
+        "from": "Transaction Risk Investigator, Amazon",
+        "to": "Senior Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Omkar",
+        "last_name": "Jadhav",
+        "img": "https://strapi.odinschool.com/uploads/Omkar_Jadhav_20_9fa2abcfe9.webp",
+        "from": "Fresher",
+        "to": "Associate Business Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Cotiviti_Individual_100_x40_ecb494f8f7.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Akash",
+        "last_name": "Visaria",
+        "img": "https://strapi.odinschool.com/uploads/Akash_Visaria_7362ce27e2.webp",
+        "from": "Fresher",
+        "to": "Graduate Trainee Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Kellogg_s_100_X40_Individual_b79e33bbe9.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Reshma",
+        "last_name": "Billu",
+        "img": "https://strapi.odinschool.com/uploads/Reshma_20_Billu_10002f337f.webp",
+        "from": "Fresher",
+        "to": "Sales Executive.",
+        "logo": "https://strapi.odinschool.com/uploads/Investosure_100_X40_d31a078541.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Mayur",
+        "last_name": "Pol",
+        "img": "https://strapi.odinschool.com/uploads/Mayur_Pol_e687960611.webp",
+        "from": "Supply Chain Engineer",
+        "to": "Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Gallagher_100x40_individual_03fe881ae3.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/mayur-pol/"
+    },
+    {
+        "name": "Rajat",
+        "last_name": "Parashar",
+        "img": "https://strapi.odinschool.com/uploads/Rajat_Parashar_1_67dda39e53.webp",
+        "from": "Fresher",
+        "to": "Software Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Tech_Mahindra100_X40_Individual_926dafcd98.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Abhinay",
+        "last_name": "Dangeti",
+        "img": "https://strapi.odinschool.com/uploads/Abhinay_20_Dangeti_20_297053049a.webp",
+        "from": "Fresher",
+        "to": "Associate",
+        "logo": "https://strapi.odinschool.com/uploads/Celebal_20_Logo_09cb6854b9.svg",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Chandan Kumar",
+        "last_name": "Patra",
+        "img": "https://strapi.odinschool.com/uploads/Chandan_20_Kumar_20_Patra_1_32ca6640c7.webp",
+        "from": "Engineer",
+        "to": "Business Intelligence",
+        "logo": "https://strapi.odinschool.com/uploads/IKS_100_X40_Individual_5a49b54f1c.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Amman",
+        "last_name": "Verma",
+        "img": "https://strapi.odinschool.com/uploads/Amman_20_Verma_1_5430e6111c.webp",
+        "from": "Freelance Tutor",
+        "to": "Engineer - Data Analytics",
+        "logo": "https://strapi.odinschool.com/uploads/Ctrl_S_100_X40_Individual_e6c8544474.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Chinmay",
+        "last_name": "Majumdar",
+        "img": "https://strapi.odinschool.com/uploads/Chinmay_20_Majumdar_20_201_355ee6c491.webp",
+        "from": "Sales Consultant",
+        "to": "Business Intelligence Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/ison100_X40_Individual_8eadb6a886.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Chinmaya",
+        "last_name": "Bhatta",
+        "img": "https://strapi.odinschool.com/uploads/Chinmaya_20_Bhatta_1_7c2fe90c32.webp",
+        "from": "Fresher",
+        "to": "Database Administrator",
+        "logo": "https://strapi.odinschool.com/uploads/Ind_Innovation_Private_Limited_100_X40_5875f5cff8.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Naveen",
+        "last_name": "Goru",
+        "img": "https://strapi.odinschool.com/uploads/Goru_20_Naveen_1_b2b1154924.webp",
+        "from": "Fresher",
+        "to": "Associate Software Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Cura_100_X40_6e432638fb.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Rajitha",
+        "last_name": "Ramineni",
+        "img": "https://strapi.odinschool.com/uploads/Rajitha_20_Ramineni_1_5d4796bed8.webp",
+        "from": "Fresher",
+        "to": "Python Developer",
+        "logo": "https://strapi.odinschool.com/uploads/Qurinom_solutions_1_6e7e077e30.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Jakkula",
+        "last_name": "Ashish Kumar",
+        "img": "https://strapi.odinschool.com/uploads/Jakkula_20_Ashish_20_Kumar_1_70a6b66445.webp",
+        "from": "Fresher",
+        "to": "Associate Software Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Cura_100_X40_6e432638fb.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sreenivas",
+        "last_name": "M",
+        "img": "https://strapi.odinschool.com/uploads/Sreenivas_20_M_1_7486797bca.webp",
+        "from": "Fresher",
+        "to": "Consultant-Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/WYZMINDZ_200x80_individual_de072fcc8b.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sourav",
+        "last_name": "Karmakar",
+        "img": "https://strapi.odinschool.com/uploads/Sourav_20_Karmakar_1_75dcae4951.webp",
+        "from": "Mainframe Developer",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/Favicon_Tiger_Analytics_100_X40_c1fec6e94e.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Suman",
+        "last_name": "D R",
+        "img": "https://strapi.odinschool.com/uploads/Suman_20_DR_20_1_3a310e965f.webp",
+        "from": "Freelancing",
+        "to": "Mern Stack Intern",
+        "logo": "https://strapi.odinschool.com/uploads/xcrino_100_X40_2e341ddcc1.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Naveen",
+        "last_name": "Cheedi",
+        "img": "https://strapi.odinschool.com/uploads/Naveen_20cheedi_28f99db9ab.webp",
+        "from": "Sr. Reliability Analyst",
+        "to": "Integration Implementation Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Thermo_Fisher_100_X40_Individual_59fd296c74.webp",
+        "status": "140% Salary Hike",
+        "student_linkedin_link": "https://www.linkedin.com/in/naveen-cheedi-a1b9a41a2/?originalSubdomain=in"
+    },
+    {
+        "name": "Hrushikesh",
+        "last_name": "Nayak",
+        "img": "https://strapi.odinschool.com/uploads/Hrushikesh_20_Nayak_1_faeb04eb9c.webp",
+        "from": "Fresher",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/xcrino_100_X40_2e341ddcc1.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Mohd Ishtiyaque",
+        "last_name": "Gokak",
+        "img": "https://strapi.odinschool.com/uploads/Mohd_20_Ishtiyaque_20_Gokak_1_519d9f7ac0.webp",
+        "from": "Data Analyst",
+        "to": "Sr. Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/EY_100_X40_Individual_4eb508ac6d.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Prins",
+        "last_name": "Kumar",
+        "img": "https://strapi.odinschool.com/uploads/Prins_Kumar_a44e2be1e7.webp",
+        "from": "Data Analyst Intern",
+        "to": "Software Engineer E2",
+        "logo": "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_06531dedd6.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": "https://www.linkedin.com/in/prins-kumar-334518166/?originalSubdomain=in"
+    },
+    {
+        "name": "Ambreesh",
+        "last_name": "Kumar",
+        "img": "https://strapi.odinschool.com/uploads/Ambreesh_Kumar_20_1_ad182df025.webp",
+        "from": "Freelancer",
+        "to": "Front-End Developer",
+        "logo": "https://strapi.odinschool.com/uploads/Inspira_200_X80_1_2d4837b74e.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Naresh",
+        "last_name": "Babu",
+        "img": "https://strapi.odinschool.com/uploads/Naresh_20babu_7444c06de0.webp",
+        "from": "Fresher",
+        "to": "Senior Analyst / A5",
+        "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
+        "status": "4-Year Gap",
+        "student_linkedin_link": "https://www.linkedin.com/in/naresh-babu-79a32a225/"
+    },
+    {
+        "name": "Yatish Kumar",
+        "last_name": "Patil",
+        "img": "https://strapi.odinschool.com/uploads/Yatish_20_Kumar_20_Patil_20_1_1bae3e9f22.webp",
+        "from": "Power BI Developer Intern",
+        "to": "Junior Associate \u9225 CAPI Analytics",
+        "logo": "https://strapi.odinschool.com/uploads/Dhruv_100_X40_a36dc20c73.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Swapnil S",
+        "last_name": "Sandhan",
+        "img": "https://strapi.odinschool.com/uploads/Swapnil_20_a708b2d535.webp",
+        "from": "Data Analyst -Intern",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Amiya Kumar",
+        "last_name": "Sahu",
+        "img": "https://strapi.odinschool.com/uploads/Amiya_20_Kumar_20_Sahu_20_a8e162ca87.webp",
+        "from": "Senior System Engineer",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Jayesh",
+        "last_name": "Wangar",
+        "img": "https://strapi.odinschool.com/uploads/Jayesh_20wangar_20_c762cc04d8.webp",
+        "from": "Engine Production Planning",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Rishiraj",
+        "last_name": "Bhattacharjee",
+        "img": "https://strapi.odinschool.com/uploads/Rishi_20_Raj_20_4b0abb96be.webp",
+        "from": "MIS Executive",
+        "to": "Business Intelligence Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/IT_Profound_200_X80_5130ac3949.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Lokesh",
+        "last_name": "Srinivas",
+        "img": "https://strapi.odinschool.com/uploads/Lokesh_20_Srinivas_20_619d374e1c.webp",
+        "from": "Associate",
+        "to": "Business Intelligence Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/IT_Profound_200_X80_5130ac3949.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sandeep",
+        "last_name": "Atmakuru",
+        "img": "https://strapi.odinschool.com/uploads/Sandeep_20_Atmakuru_20_217225b693.webp",
+        "from": "Fresher",
+        "to": "Data Scientist - Intern",
+        "logo": "https://strapi.odinschool.com/uploads/xcrino_100_X40_69d8a7c25f.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Subramanian",
+        "last_name": "Ayyappan",
+        "img": "https://strapi.odinschool.com/uploads/Subramanian_20_Ayyappan_e57d00e32d.webp",
+        "from": "BI Analyst/Project Lead",
+        "to": "Procurement Associate Manager",
+        "logo": "https://strapi.odinschool.com/uploads/DXC_100_X40_694ac39495.webp",
+        "status": "Career Relaunch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Haswanth",
+        "last_name": "Thummaluru",
+        "img": "https://strapi.odinschool.com/uploads/Haswanth_20_082011427c.webp",
+        "from": "Graduate Engineer Trainee",
+        "to": "Data Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Data_Grokr_individual_100x40_292b6e710d.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Shubham",
+        "last_name": "Patwa",
+        "img": "https://strapi.odinschool.com/uploads/Shubham_Patwa_f3aab9280a.webp",
+        "from": "Shree Ji Building - Architect planner",
+        "to": "Sr. Assoc-Data Analytics",
+        "logo": "https://strapi.odinschool.com/uploads/sutherland100_X40_Individual_34e1d4fd0d.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/shubham-patwa-9625aa137/"
+    },
+    {
+        "name": "Sandeep",
+        "last_name": "Akula",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202102_4eb4c0de3f.webp",
+        "from": "Noise & Vibration Analyst",
+        "to": "Engineer - Data Analytics",
+        "logo": "https://strapi.odinschool.com/uploads/Ctrl_S_100_X40_Individual_e6c8544474.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": "https://www.linkedin.com/in/sandeep-akula-ds/"
+    },
+    {
+        "name": "Shivani",
+        "last_name": "Saluja",
+        "img": "https://strapi.odinschool.com/uploads/Shivani_20_Saluja_20_cb57a53082.webp",
+        "from": "Programmer Analyst",
+        "to": "Data Analyst Lead",
+        "logo": "https://strapi.odinschool.com/uploads/Logicboot_100_X40_827d66e2d2.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Utkarsh",
+        "last_name": "Anil Panchbhai",
+        "img": "https://strapi.odinschool.com/uploads/Utkarsh_20_Anil_20_Panchbhai_20_32d720f53c.webp",
+        "from": "Data Engineer",
+        "to": "Data Engineer Grade T3",
+        "logo": "https://strapi.odinschool.com/uploads/Medi_Assist_cb224768ba.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Anchal",
+        "last_name": "Tamrakar",
+        "img": "https://strapi.odinschool.com/uploads/Anchal_20_8ed339413d.webp",
+        "from": "Intern",
+        "to": "Data Science Trainee",
+        "logo": "https://strapi.odinschool.com/uploads/Medi_Assist_cb224768ba.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Harshita",
+        "last_name": "Kshetri",
+        "img": "https://strapi.odinschool.com/uploads/Harshita_20_4bd1c4f4a0.webp",
+        "from": "Assistant System Engineer",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Waquar",
+        "last_name": "Ahmed",
+        "img": "https://strapi.odinschool.com/uploads/Waquar_20_Ahmed_20_ccadb688d2.webp",
+        "from": "Senior Business Development Associate",
+        "to": "Senior Data Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Sony_5f1d58d939.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Alen",
+        "last_name": "Johnson",
+        "img": "https://strapi.odinschool.com/uploads/Alen_20_Jhonson_20_00af399f08.webp",
+        "from": "Intern",
+        "to": "Analyst",
+        "logo": "https://strapi.odinschool.com/uploads/Goldman_sach_100_X40_individual_7c16841890.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sai",
+        "last_name": "Vara Prasad",
+        "img": "https://strapi.odinschool.com/uploads/Vara_20_Prasad_20_a6d8d602fb.webp",
+        "from": "Fresher",
+        "to": "Data Analysis Executive",
+        "logo": "https://strapi.odinschool.com/uploads/Konnect_Diagnostics_200_X80_3fcdb8fef6.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Kriti",
+        "last_name": "Gupta",
+        "img": "https://strapi.odinschool.com/uploads/Kriti_Gupta_837de63adb.webp",
+        "from": "Content Manager",
+        "to": "Business Intelligence Developer",
+        "logo": "https://strapi.odinschool.com/uploads/Skillsoft_100_X40_56c691ec34.webp",
+        "status": "Career Transition",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Alan",
+        "last_name": "K Biju",
+        "img": "https://strapi.odinschool.com/uploads/Alan_20_K_20_Biju_97cb9732e3.webp",
+        "from": "Fresher",
+        "to": "MIS Executive",
+        "logo": "https://strapi.odinschool.com/uploads/swiggy_100_X40_indv_4b6a190c0b.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sumit Kumar",
+        "last_name": "Deshpande",
+        "img": "https://strapi.odinschool.com/uploads/sumit_20kumar_20deshpande_20_707340ec4c.webp",
+        "from": "Associate - Technology",
+        "to": "Software Developer",
+        "logo": "https://strapi.odinschool.com/uploads/IT_Profound_200_X80_5130ac3949.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Rakesh",
+        "last_name": "R",
+        "img": "https://strapi.odinschool.com/uploads/Rectangle_202056_c6cc978ed3.webp",
+        "from": "Technical Advisor",
+        "to": "Data Engineer",
+        "logo": "https://strapi.odinschool.com/uploads/Capgemini_100_X40_Individual_2e02ab08f3.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": "https://www.linkedin.com/in/rangaswamyrakesh/"
+    },
+    {
+        "name": "Drishti",
+        "last_name": "Rawat",
+        "img": "https://strapi.odinschool.com/uploads/dristi_20rawat_ad69b20d94.webp",
+        "from": "Associate Customer support",
+        "to": "Executive - Category",
+        "logo": "https://strapi.odinschool.com/uploads/Supr_Daily_100_X40_5d83de186f.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Dibyajith",
+        "last_name": "",
+        "img": "https://strapi.odinschool.com/uploads/Dibyajit_3ce8961794.webp",
+        "from": "Fresher",
+        "to": "Data Scientist",
+        "logo": "https://strapi.odinschool.com/uploads/ADA_20200_X80_20indv_299ede7cd2.webp",
+        "status": "Career Launch",
+        "student_linkedin_link": ""
+    },
+    {
+        "name": "Sharad",
+        "last_name": "Bajpai",
+        "img": "https://strapi.odinschool.com/uploads/Sharad_Bajpai_79160769b6.webp",
+        "from": "Software Engineer",
+        "to": "Software Engineer I",
+        "logo": "https://strapi.odinschool.com/uploads/Dun_and_Bradstreet_wordmark_svg_1_d46347210b.webp",
+        "status": "Career Upgrade",
+        "student_linkedin_link": ""
     }
 ]
