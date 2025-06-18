@@ -15,7 +15,8 @@ const EventDetails = () => {
   useEffect(() => {
     if (slug) {
       const fetchEventDetails = async () => {
-        const res = await fetch(`https://strapi.odinschool.com/api/events?populate=*`);
+        // const res = await fetch(`https://strapi.odinschool.com/api/events?populate=*`);
+                  const res = await fetch(`https://strapi.odinschool.com/api/events?filters[slug][$eq]=${slug}&populate=*`);
         const data = await res.json();
         if (data.data && data.data.length > 0) {
           setEvent(data.data[0]); // Assuming the response contains the event object

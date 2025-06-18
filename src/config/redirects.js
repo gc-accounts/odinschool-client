@@ -1581,7 +1581,7 @@ const redirects = [
   { source: "/web-development-course", destination: "/", permanent: false },
   { source: "/blog/data-science/interview-questions-and-answers-informatica-powercenter", destination: "/", permanent: false },
   { source: "/blog/data-science/5-ways-to-gain-hands-on-experience-in-data-science", destination: "/", permanent: false },
-  { source: "/events/mastering-interviews-with-generative-ai", destination: "/", permanent: false },
+  // { source: "/events/mastering-interviews-with-generative-ai", destination: "/", permanent: false },
   { source: "/blog/data-science/linear-regression-with-python-scikit-learn", destination: "/", permanent: false },
   { source: "/data-science/salary-calculator", destination: "/", permanent: false },
   { source: "/hubfs/OdinSchool_Affiliate_Partner_Agreement.pdf", destination: "/", permanent: false },
