@@ -44,8 +44,7 @@ const contactFormFields: FieldConfig[] = [
       'Certification Program in Applied Generative AI',
       'Generative AI Course',
       'Data Analyst',
-      'AI Analyst',
-    ],
+        ],
     rules: { required: 'Please select a program' },
   },
   {
