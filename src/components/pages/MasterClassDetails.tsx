@@ -7,22 +7,22 @@ import Link from 'next/link';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 
-const EventDetails = () => {
+const MasterClassDetails = () => {
   const [event, setEvent] = useState<any>(null);
   const { slug } = useParams();
 
   useEffect(() => {
     if (slug) {
-      const fetchEventDetails = async () => {
+      const fetchMasterClassDetails = async () => {
         const res = await fetch(
-          `https://strapi.odinschool.com/api/events?filters[slug][$eq]=${slug}&populate=*`
+          `https://strapi.odinschool.com/api/master-classes?filters[slug][$eq]=${slug}&populate=*`
         );
         const data = await res.json();
         if (data.data?.length > 0) {
           setEvent(data.data[0]);
         }
       };
-      fetchEventDetails();
+      fetchMasterClassDetails();
     }
   }, [slug]);
 
@@ -91,4 +91,4 @@ const EventDetails = () => {
   );
 };
 
-export default EventDetails;
+export default MasterClassDetails;
