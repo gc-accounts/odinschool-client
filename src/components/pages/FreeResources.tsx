@@ -135,7 +135,7 @@ const FreeResources = () => {
         </div>
         </section>
       <section className='px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]'>
-        <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={undefined} />
+        <PaginationComponent currentPage={pageNumber} setCurrentPage={setPageNumber} totalPages={projects?.length} />
         </section>
       </main>
       <Footer />

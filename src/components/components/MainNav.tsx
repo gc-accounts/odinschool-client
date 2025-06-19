@@ -240,7 +240,7 @@ const resourceLinks = [
   },
   {
     title: "Free Project",
-    href: "/free-resources",
+    href: "/projects-page",
     description: "Access complimentary learning materials.",
   },
   {

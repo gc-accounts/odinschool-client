@@ -34,7 +34,7 @@ const Resources = () => {
       title: 'Free Resources',
       description: 'Download free templates, code snippets, and learning materials to accelerate your development journey.',
       icon: <Download className="h-12 w-12 text-primary-600" />,
-      path: '/free-resources',
+      path: '/projects-page',
       cta: 'Browse Resources'
     },
     {
