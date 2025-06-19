@@ -181,7 +181,7 @@ const MobileNav = () => {
                       Blog
                     </Link>
                     <Link
-                      href="/free-resources"
+                      href="/projects-page"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >

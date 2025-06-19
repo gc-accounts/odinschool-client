@@ -52,7 +52,7 @@ const Footer = () => {
       links: [
         { name: "All Resources", href: "/resources" },
         { name: "Blog", href: "/blog" },
-        { name: "Free Project", href: "/free-resources" },
+        { name: "Free Project", href: "/projects-page" },
         { name: "Fun With Statistics", href: "/fun-with-statistics" },
         { name: "Data Science Career Guide", href: "/data-science-career-guide" },
       ],

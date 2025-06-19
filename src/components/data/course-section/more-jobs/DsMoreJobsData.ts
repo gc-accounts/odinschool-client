@@ -1,6 +1,29 @@
 export const DsMoreJobsData = [
+
 {
     id: 1,
+    thumbnail: 'https://strapi.odinschool.com/uploads/Swiggy_2559d7d724.webp',
+    videoId: 'c7vKn55WOTw',
+    name: 'Swiggy',
+    designation: 'Business Analyst',
+    highlight: 'Requires 2 - 3 years of experience in any field',
+    companyLogo: 'https://strapi.odinschool.com/uploads/swiggy_100x40_indv_4a990b6e20.webp',
+    tags: ['Power BI ', 'SQL', 'Statistics'],
+    salary: 'Offered Salary upto INR 10 - 12 LPA'
+  },
+  {
+    id: 2,
+    thumbnail: 'https://strapi.odinschool.com/uploads/Gallagher_40829422af.webp',
+    videoId: '36grsRjiTWY?si',
+    name: 'Gallagher',
+    designation: 'Data Scientist',
+    highlight: 'Requires 2 - 4 years of experience in any field',
+    companyLogo: 'https://strapi.odinschool.com/uploads/Gallagher_100x40_individual_03fe881ae3.webp',
+    tags: ['SQL', 'Python', 'Machine Learning frameworks'],
+    salary: 'Offered Salary upto INR 11 - 12 LPA'
+  },
+  {
+    id: 3,
     thumbnail: 'https://strapi.odinschool.com/uploads/Blinkit_1_e6ce2f2a5a.webp',
     videoId: 'dHEZ6TcxP3NY',
     name: 'Blinkit',
@@ -11,7 +34,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 10 LPA'
   },
   {
-    id: 2,
+    id: 4,
     thumbnail: 'https://strapi.odinschool.com/uploads/Celebal_Technolgies_2178dd2bd2.webp',
     videoId: 'NsoFbmjF5lg',
     name: 'Celebal Technologies',
@@ -22,7 +45,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 15 LPA'
   },
   {
-    id: 3,
+    id: 5,
     thumbnail: 'https://strapi.odinschool.com/uploads/Cardekho_1_090c212836.webp',
     videoId: 'P9Fdcvagxvw',
     name: 'CarDekho',
@@ -33,7 +56,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 15 LPA'
   },
   {
-    id: 4,
+    id: 6,
     thumbnail: 'https://strapi.odinschool.com/uploads/Swiggy_2_16900f930a.webp',
     videoId: 'wQLc92rFFfY',
     name: 'Swiggy',
@@ -44,7 +67,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 13 LPA'
   },
   {
-    id: 5,
+    id: 7,
     thumbnail: 'https://strapi.odinschool.com/uploads/Website_Explainer_videos_1_025c8e87bd.png',
     videoId: 'URLJ56LDYC8',
     name: 'redBus',
@@ -55,7 +78,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 10 LPA'
   },
   {
-    id: 6,
+    id: 8,
     thumbnail: 'https://strapi.odinschool.com/uploads/Website_Explainer_videos_2_314f92e171.png',
     videoId: 'ySrYGRumxao',
     name: 'Jaguar Land Rover',
@@ -66,7 +89,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 4-5 LPA'
   },
  {
-    id: 7,
+    id: 9,
     thumbnail: 'https://strapi.odinschool.com/uploads/Website_Explainer_videos_4_01a2c423fc.png',
     videoId: 'bDSiiKPlDfI',
     name: 'Winfort',
@@ -77,7 +100,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 8-10 LPA'
   },
 {
-    id: 8,
+    id: 10,
     thumbnail: 'https://strapi.odinschool.com/uploads/Website_Explainer_videos_3_47b7764177.png',
     videoId: 'OVEpRD69Tj0',
     name: 'MoveinSync',
@@ -88,7 +111,7 @@ export const DsMoreJobsData = [
     salary: 'Offered Salary upto INR 10 LPA'
   },
 {
-    id: 9,
+    id: 11,
     thumbnail: 'https://strapi.odinschool.com/uploads/Gallagher_40829422af.webp',
     videoId: '36grsRjiTWY?si',
     name: 'Gallagher',
@@ -97,6 +120,6 @@ export const DsMoreJobsData = [
     companyLogo: 'https://strapi.odinschool.com/uploads/Gallagher_100x40_individual_03fe881ae3.webp',
     tags: ['SQL', 'Python', 'Machine Learning frameworks'],
     salary: 'Offered Salary upto INR 11 - 12 LPA'
-  },
+  }
 
 ];
