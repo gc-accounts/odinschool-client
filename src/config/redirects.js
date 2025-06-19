@@ -795,11 +795,11 @@ const redirects = [
     destination: "/datascience-bootcamp",
     permanent: true
   },
-  {
-    source: "/masterclass",
-    destination: "/events",
-    permanent: true
-  },
+  // {
+  //   source: "/masterclass",
+  //   destination: "/events",
+  //   permanent: true
+  // },
   {
     source: "/full-stack-software-development-bootcamp/application/thank-you/not-eligible/v3",
     destination: "/full-stack-software-development-bootcamp/application/thank-you/not-eligible",
