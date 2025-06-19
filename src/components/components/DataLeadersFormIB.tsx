@@ -22,9 +22,9 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
         <div className="flex flex-col lg:flex-row justify-between gap-8">
           {/* Left: Leaders */}
           <div className="w-full lg:w-1/2">
-            <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
               {IbDataLeadersData.map((leader, idx) => (
-                <div key={idx} className="bg-white rounded-lg overflow-hidden">
+                <div key={idx} className="bg-white rounded-lg overflow-hidden border">
                   <div className="relative">
                     <Image
                       src={leader.image}
@@ -32,6 +32,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
                       className="w-full"
                       width={100}
                       height={100}
+                      loading='lazy'
                     />
                   </div>
                   <div className="bg-primary-800 md:px-4 px-2 md:py-3 py-2 text-white text-center rounded-b-md">
@@ -42,9 +43,10 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
                     <Image
                       src={leader.logo}
                       alt={leader.company}
-                      width={80}
-                      height={40}
+                      width={120}
+                      height={120}
                       className="mx-auto"
+                      loading='lazy'
                     />
                   </div>
                 </div>

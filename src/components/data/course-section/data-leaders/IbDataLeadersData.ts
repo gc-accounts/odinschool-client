@@ -15,4 +15,12 @@ export const IbDataLeadersData = [
     image: 'https://strapi.odinschool.com/uploads/Gadavilli_Babji_b051b381f3.webp ',
     logo: 'https://strapi.odinschool.com/uploads/Broadridge100_X40_eabf6c8aa0.webp'
   },
+   {
+    id: 3,
+    name: 'KNV Subramanyam',
+    designation: 'Faculty',
+    company: 'Bradridge',
+    image: 'https://strapi.odinschool.com/uploads/KNV_Subramanyam_dd05ff3ecd.webp',
+    logo: 'https://strapi.odinschool.com/uploads/Group_4872_1_9c0a68b673.webp '
+  },
 ];
