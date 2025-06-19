@@ -133,9 +133,9 @@ const InvestmentBanking = ({ organisations }) => {
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
           {/* <DsEliteFoldLight sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" /> */}
-          <InvestmentBankingHero sectionClass="bg-[#0C1632] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <InvestmentBankingHero sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
-          <DataLeadersFormIB sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DataLeadersFormIB sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
           <WhyJoinIB sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <HiringSprintsIB sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
