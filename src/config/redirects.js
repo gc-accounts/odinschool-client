@@ -186,11 +186,6 @@ const redirects = [
     permanent: true
   },
   {
-    source: "/blog/data-science/beautifulsoup-a-step-by-step-guide-to-data-scraping-with-python",
-    destination: "https:/www.greycampus.com/blog/data-science/beautifulsoup-a-step-by-step-guide-to-data-scraping-with-python",
-    permanent: true
-  },
-  {
     source: "/business-analytics/application",
     destination: "/datascience-application",
     permanent: true
@@ -1193,11 +1188,6 @@ const redirects = [
   {
     source: "/blog/13-most-in-demand-data-science-skills-in-2023",
     destination: "/blog/13-most-in-demand-data-science-skills",
-    permanent: true
-  },
-  {
-    source: "/blog/reshaping-destiny-soniyas-inspiring-journey-from-hr-to-data-science",
-    destination: "/blog/tag/success-story",
     permanent: true
   },
   {
