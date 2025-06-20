@@ -9,31 +9,45 @@ if (!BACKEND_URL || !BACKEND_TOKEN) {
 }
 
 const axiosApi = axios.create({
-  baseURL: `${BACKEND_URL}/graphql`,
+  baseURL: `${BACKEND_URL}/graphql`, // This base URL is for GraphQL queries
   headers: {
     'Authorization': `Bearer ${BACKEND_TOKEN}`
   }
 });
 
-// Fetch Blogs
+// Fetch Blogs using direct REST API call with pagination traversal
 async function fetchBlogs() {
-  try {
-    const response = await axiosApi.post('', {
-      query: `
-        query Blogs($pagination: PaginationArg) {
-          blogs(pagination: $pagination) {
-            url_slug
-            publishedAt
-            updatedAt
-          }
-        }
-      `,
-      variables: { pagination: { pageSize: 1000, page: 1 } }
-    });
+  const allBlogs: any[] = [];
+  let currentPage = 1;
+  let totalPages = 1; // Initialize to 1 to enter the loop at least once
+  const perPage = 100; // This is likely your server's default max page size for this endpoint
 
-    return response.data?.data?.blogs || [];
+  try {
+    do {
+      const blogApiUrl = `https://strapi.odinschool.com/api/odinschool-blogs?pagination[page]=${currentPage}&pagination[pageSize]=${perPage}`;
+
+      const response = await axios.get(blogApiUrl, {
+        headers: {
+          'Authorization': `Bearer ${BACKEND_TOKEN}`
+        }
+      });
+
+      const blogsOnPage = response.data?.data || [];
+      allBlogs.push(...blogsOnPage.map((item: any) => ({
+        postUrl: item.postUrl,
+        publishedAt: item.publishDate,
+        updatedAt: item.lastModifiedDate,
+      })));
+
+      // Update totalPages from the meta object in the response
+      totalPages = response.data?.meta?.pagination?.pageCount || 1;
+
+      currentPage++;
+    } while (currentPage <= totalPages);
+
+    return allBlogs;
   } catch (error) {
-    console.error('Error fetching blogs:', error);
+    console.error('Error fetching blogs from REST API:', error);
     return [];
   }
 }
@@ -143,12 +157,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     fetchMasterclasses()
   ]);
 
-  const blogPaths = blogs.map(blog => ({
-    url: `${baseUrl}/blog/${blog.url_slug}`,
-    lastModified: blog.updatedAt || blog.publishedAt || new Date().toISOString(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  const blogPaths = blogs.map(blog => {
+    // Modify postUrl: replace the original domain with https://www.odinschool.com/blog/
+    const modifiedUrl = blog.postUrl ?
+      blog.postUrl.replace(/^(http|https):\/\/[^/]+(\/blog\/.*)$/, `${baseUrl}$2`) :
+      '';
+
+    if (!modifiedUrl && blog.postUrl) {
+      const slugMatch = blog.postUrl.match(/\/([^/]+)$/);
+      if (slugMatch && slugMatch[1]) {
+        return {
+          url: `${baseUrl}/blog/${slugMatch[1]}`,
+          lastModified: blog.updatedAt || blog.publishedAt || new Date().toISOString(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.7,
+        };
+      }
+    }
+
+    return {
+      url: modifiedUrl,
+      lastModified: blog.updatedAt || blog.publishedAt || new Date().toISOString(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    };
+  }).filter(blog => blog.url !== '');
 
   const coursePaths = courses.map(course => ({
     url: `${baseUrl}/${course.is_learning_hub ? 'learning-hub/' : ''}${course.url_slug}`,
@@ -191,7 +224,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/terms-of-use',
     '/privacy-policy',
     '/faqs',
-
   ].map(path => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date().toISOString(),
