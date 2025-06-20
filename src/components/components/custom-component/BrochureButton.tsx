@@ -6,6 +6,7 @@ import PrimaryForm from '@/components/components/course-details/PrimaryForm'
 import DynamicForm from '@/components/components/form/DynamicForm'
 import brochureFormField from '@/components/data/brochureFormField'
 import { useToast } from '@/components/hooks/use-toast';
+import { pushToDataLayer } from '@/lib/gtm'; // <--- IMPORT THE GTM HELPER
 
 interface BrochureButtonProps {
   slug: string;
@@ -34,20 +35,32 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       brochureFormData.append('Last Name', data.lastName)
       brochureFormData.append('Email', data.email)
       brochureFormData.append('Phone', data.phone)
-      brochureFormData.append(
-        'Program',
-        slug === 'data-science-course'
-          ? 'Data Science Course'
-          : slug === 'data-science-elite-course'
-            ? 'Data Science Elite Course'
-            : slug === 'generative-ai-bootcamp'
-              ? 'Generative AI Course'
-              : slug === 'generative-ai-course-iitg'
-                ? 'Certification Program in Applied Generative AI'
-                : slug === 'investment-banking-course' ? 'Investment Banking Course' : ''
-      )
+
+      // Determine program name based on slug (existing logic)
+      let programName = '';
+      switch (slug) {
+        case 'data-science-course':
+          programName = 'Data Science Course';
+          break;
+        case 'data-science-elite-course':
+          programName = 'Data Science Elite Course';
+          break;
+        case 'generative-ai-bootcamp':
+          programName = 'Generative AI Course';
+          break;
+        case 'generative-ai-course-iitg':
+          programName = 'Certification Program in Applied Generative AI';
+          break;
+        case 'investment-banking-course':
+          programName = 'Investment Banking Course';
+          break;
+        default:
+          programName = slug; // Fallback to slug if no match
+      }
+
+      brochureFormData.append('Program', programName)
       brochureFormData.append('Year of Graduation', data.year)
-      brochureFormData.append('ga_client_id', '')
+      brochureFormData.append('ga_client_id', '') // Assuming this is handled elsewhere or populated later
       brochureFormData.append('Business Unit', 'Odinschool')
       brochureFormData.append('Source_Domain', 'Brochure Form')
 
@@ -65,6 +78,14 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
         title: 'Brochure requested successfully!',
         description: 'Check your email shortly for the brochure.'
       })
+
+      // --- START: Add GTM Data Layer Push Here ---
+      pushToDataLayer('brochure_download_success', {
+        eventName: 'brochure_download_modal',
+        program_name: programName, 
+        user_email: data.email,
+      });
+      // --- END: Add GTM Data Layer Push Here ---
 
       reset() // ✅ Clear form fields
       setBrochureFormOpen(false)
