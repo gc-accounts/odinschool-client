@@ -45,7 +45,7 @@ const DsEliteProjects = ({ sectionClass }: DsEliteProjsctsProps) => {
       ctaText: 'Request a callback',
       ctaLink: '#',
       videoThumb: 'https://strapi.odinschool.com/uploads/Python_Analysis_on_Air_Bn_B_20_1_4183a90b2f.webp',
-      videoUrl: 'https://20029733.fs1.hubspotusercontent-na1.net/hubfs/20029733/Python%20Analysis%20on%20AirBnB.mp4', // sample URL
+      videoUrl: 'https://strapi.odinschool.com/uploads/Python_Analysis_on_Air_Bn_B_1_7d41ad9fad.mp4', // sample URL
     },
   ];
 

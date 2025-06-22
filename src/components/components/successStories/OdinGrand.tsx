@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import VideoComp from "@/components/components/successStories/VideoComp";
 import {
-  odinGradNow,
   odinGradOfTheMonth,
   odinGradsSuccessStories,
 } from "@/components/data/success-stories-data/alumniMeetNGreet";
