@@ -402,7 +402,7 @@ const CourseCheckout = () => {
         currency: "INR",
         name: `${course?.title} Seat Booking`,
         description: "OdinSchool Payment",
-        image: "https://www.odinschool.com/hubfs/OdinSchool%20M22/icons/fevicon.svg",
+        image: "https://strapi.odinschool.com/uploads/fevicon_1568ac4ef0.svg",
         order_id: orderId,
         handler: async function (response: RazorpayResponse) {
           try {

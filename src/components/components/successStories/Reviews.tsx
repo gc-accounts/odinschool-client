@@ -125,7 +125,7 @@ const Reviews = ({ sectionClass }: ReviewsProps) => {
           <div className="mb-2 px-2">
             <a href="https://hysea.in/existing-members/">
               <img
-                src="https://20029733.fs1.hubspotusercontent-na1.net/hub/20029733/hubfs/OdinSchool_V3/accreditations/hysea_rc.webp?width=118&amp;height=46&amp;name=hysea_rc.webp"
+                src="https://strapi.odinschool.com/uploads/hysea_rc_0524f25ec1.webp"
                 alt="HYSEA"
                 width="118"
                 height="46"
@@ -136,7 +136,7 @@ const Reviews = ({ sectionClass }: ReviewsProps) => {
           </div>
           <div className="mb-md-0 mb-2 px-2">
             <img
-              src="https://20029733.fs1.hubspotusercontent-na1.net/hub/20029733/hubfs/OdinSchool_V3/accreditations/shrm_rc.webp?width=118&amp;height=46&amp;name=shrm_rc.webp"
+              src="https://strapi.odinschool.com/uploads/shrm_rc_2a25feb8d1.webp"
               alt="SHRM"
               width="118"
               height="46"

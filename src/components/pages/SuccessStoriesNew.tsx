@@ -10,7 +10,6 @@ import Modal from "@/components/components/component-template/Modal";
 import StudentsTicker from "@/components/components/StudentsTicker";
 import VideoComp from "@/components/components/successStories/VideoComp";
 import AlumniMeetNGreet from "@/components/components/successStories/AlumniMeetNGreet";
-// import { arr } from "@/components/pages/successStories/data";
 import OdinGrad from "@/components/components/successStories/OdinGrand";
 import Reviews from "@/components/components/successStories/Reviews";
 import SectionLeap from "@/components/components/successStories/SectionLeap";
