@@ -736,7 +736,7 @@ const CourseCheckout = () => {
 
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
-                      {/* <Image
+                      <Image
                         src={course.image}
                         alt={course.title}
                         className="w-full h-full object-cover"
@@ -744,7 +744,7 @@ const CourseCheckout = () => {
                         loading="lazy"
                         width={500}
                         height={500}
-                      /> */}
+                      />
                     </div>
                     <div>
                       <h3 className="font-medium">{course.title}</h3>
