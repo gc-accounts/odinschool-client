@@ -10,9 +10,9 @@ import ResourceCard from '@/components/components/ResourceCard';
 
 const API_ENDPOINT = 'https://strapi.odinschool.com/api/projects';
 
-
 interface Project {
   id: string;
+  attributes?: {
     title: string;
     description: string;
     category: string | null;
@@ -21,8 +21,34 @@ interface Project {
     publishedAt: string;
     poster_url: string | null;
     video_url: string | null;
-    file_url: string | null;
+    file: {
+      data: {
+        attributes: {
+          url: string;
+          name: string;
+          ext: string;
+          size: number;
+        } | null;
+      } | null;
+    };
     documentId: string;
+  };
+  title?: string;
+  description?: string;
+  category?: string | null;
+  tags?: string;
+  downloads?: number | null;
+  publishedAt?: string;
+  poster_url?: string | null;
+  video_url?: string | null;
+  file?: {
+    url: string;
+    name: string;
+    ext: string;
+    size: number;
+  };
+  file_url?: string | null;
+  documentId?: string;
 }
 
 const FreeResources = () => {
@@ -50,7 +76,6 @@ const FreeResources = () => {
       try {
         setLoading(true);
         
-        // Build filters
         const filters: Record<string, any> = {};
         if (searchTerm) {
           filters.$or = [
@@ -62,31 +87,27 @@ const FreeResources = () => {
           filters.category = { $eq: selectedCategory };
         }
 
-        // Make API request
         const response = await axios.get(API_ENDPOINT, {
           params: {
-            'populate': '*',
+            'populate[0]': 'poster',
+            'populate[1]': 'video',
+            'populate[2]': 'file',
             'pagination[page]': pageNumber,
             'pagination[pageSize]': pageSize,
             'filters': filters
           }
         });
 
-        console.log('response-------------------', response);
-        
-
-        // Transform response data
-        const projects = response.data.data;
-        const pagination = response.data.meta?.pagination || {
-          page: 1,
-          pageSize: 10,
-          pageCount: 1,
-          total: 0
-        };
+        console.log('API Response:', response.data);
 
         setData({
-          projects,
-          pagination
+          projects: response.data.data,
+          pagination: response.data.meta?.pagination || {
+            page: 1,
+            pageSize: 10,
+            pageCount: 1,
+            total: 0
+          }
         });
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -104,20 +125,61 @@ const FreeResources = () => {
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
-  // Transform project data for ResourceCard
-  const transformProject = (project: Project) => ({
-    id: project.id,
-    documentId: project.documentId,
-    title: project.title,
-    description: project.description,
-    category: project.category,
-    tags: project.tags?.split(',').map(tag => tag.trim()) || [],
-    downloads: project.downloads,
-    createdAt: project.publishedAt,
-    poster_url: project.poster_url,
-    video_url: project.video_url,
-    file_url: project.file_url
-  });
+  const transformProject = (project: Project) => {
+    // Extract file URL from both possible locations in the response
+    const fileUrl = project.file?.url 
+      ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'https://strapi.odinschool.com'}${project.file.url}`
+      : project.attributes?.file?.data?.attributes?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'https://strapi.odinschool.com'}${project.attributes.file.data.attributes.url}`
+        : null;
+
+    // Extract file size and format it
+    const fileSize = project.file?.size 
+      ? `${(project.file.size / 1024).toFixed(2)} KB`
+      : project.attributes?.file?.data?.attributes?.size
+        ? `${(project.attributes.file.data.attributes.size / 1024).toFixed(2)} KB`
+        : 'N/A';
+
+    return {
+      id: project.id,
+      documentId: project.documentId || project.attributes?.documentId,
+      title: project.title || project.attributes?.title || '',
+      description: project.description || project.attributes?.description || '',
+      category: project.category || project.attributes?.category || 'Uncategorized',
+      tags: (project.tags || project.attributes?.tags || '').split(',').map(tag => tag.trim()) || [],
+      downloads: project.downloads || project.attributes?.downloads || 0,
+      createdAt: project.publishedAt || project.attributes?.publishedAt || '',
+      poster: isImageUrl(project.poster_url || project.attributes?.poster_url) 
+        ? project.poster_url || project.attributes?.poster_url 
+        : null,
+      video: isVideoUrl(project.video_url || project.attributes?.video_url) 
+        ? project.video_url || project.attributes?.video_url 
+        : null,
+      downloadUrl: fileUrl,
+      fileFormat: getFileFormat(fileUrl),
+      fileSize: fileSize,
+      popularity: project.downloads || project.attributes?.downloads || 0
+    };
+  };
+
+  // Helper function to check if URL is an image
+  const isImageUrl = (url: string | null) => {
+    if (!url) return false;
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/i.test(url);
+  };
+
+  // Helper function to check if URL is a video
+  const isVideoUrl = (url: string | null) => {
+    if (!url) return false;
+    return /\.(mp4|webm|ogg)$/i.test(url);
+  };
+
+  // Helper function to extract file format from URL
+  const getFileFormat = (url: string | null) => {
+    if (!url) return 'Unknown';
+    const extension = url.split('.').pop()?.toUpperCase();
+    return extension || 'Unknown';
+  };
 
   return (
     <>
