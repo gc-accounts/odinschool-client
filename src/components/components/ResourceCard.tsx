@@ -24,7 +24,7 @@ interface ResourceCardProps {
 
 const ResourceCard: React.FC<ResourceCardProps> = ({ resource, formatDate }) => {
   const [isHovering, setIsHovering] = useState(false);
-  console.log("resource.video", resource.video);
+  // console.log("resource.video", resource.video);
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="aspect-video overflow-hidden bg-gray-100 relative group"
