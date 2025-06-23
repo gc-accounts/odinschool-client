@@ -93,11 +93,11 @@ const MobileNav = () => {
                 <AccordionContent>
                   <div className="flex flex-col space-y-2 pl-7">
                     <Link
-                      href="/data-science-elite-course"
+                      href="/data-science-course"
                       className="py-2 text-sm"
                       onClick={closeSheet}
                     >
-                      Data Science Elite Course
+                      Data Science Course
                     </Link>
 
                     <Link
