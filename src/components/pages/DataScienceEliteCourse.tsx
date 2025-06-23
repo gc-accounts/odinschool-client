@@ -74,6 +74,7 @@ import { DsEliteProgramHighlightsData } from '@/components/data/course-section/p
 import { dsEliteFaqsData } from '@/components/data/course-section/faqs/dsEliteFaqsData';
 import { DsEliteCertificateData } from '@/components/data/course-section/certificate/DsEliteCertificateData';
 import { DsMoreJobsData } from '@/components/data/course-section/more-jobs/DsMoreJobsData';
+import { DsEliteCardsData } from '@/components/data/course-section/cards-ff/DsEliteCardsData';
 import HowApply from '@/components/components/HowApply';
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -106,7 +107,7 @@ const DataScienceEliteCourse = ({ organisations }) => {
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
           <DsEliteFoldLight sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CardsFF sectionClass="bg-[#fff] px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
+          <CardsFF data={DsEliteCardsData} sectionClass="bg-[#fff] px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
           <DataLeadersForm sectionClass="bg-white px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
           <WhyJoin sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <Mentorship sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />

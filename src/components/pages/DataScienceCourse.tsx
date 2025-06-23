@@ -127,7 +127,7 @@ const DataScienceCourse = ({slug}:DataScienceCourseProps) => {
           sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsCareerServices sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <MultipleJobDrives title='Multiple Job Drives Every Month' subText='' headerColor='text-white' sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsCurriculum sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DsCurriculum title='Data Science Course Syllabus' description='An industry-aligned curriculum that will make you productive from day one. The curriculum is updated every month so you learn the skills that recruiters love. ' sourceDomain={slug ? `${slug} City page` : 'Course form'} sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <ToolsSection fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsProjects sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <PlatformComparison fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />

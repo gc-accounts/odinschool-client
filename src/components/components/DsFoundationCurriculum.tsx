@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/components/ui/accordion";
-import { DsCurriculumData } from '@/components/data/curriculum/DsCurriculumData';
+import { DsFoundationCurriculumData } from '@/components/data/curriculum/DsFoundationCurriculumData';
 import { CiCircleCheck } from 'react-icons/ci';
 import { Rocket } from 'lucide-react';
 import BrochureButton from '@/components/components/custom-component/BrochureButton';
@@ -22,7 +22,7 @@ interface Props {
 }
 
 
-const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) => {
+const DsFoundationCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) => {
   const pathname = usePathname(); // Correct
 
   return (
@@ -33,17 +33,21 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
           <h2 className="text-3xl md:text-5xl font-display mb-4 text-gray-900">
             {title}
           </h2>
-          <p className="text-md text-gray-600">
-            {description}</p>
+          {/* <p className="text-md text-gray-600">
+            {description}</p> */}
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8'>
-          <div className='md:col-span-8 w-full'>
+
+
+
+        <div className='max-w-4xl mx-auto'>
+<div className=''>
+          <div className=''>
 
          <div className="">
-      {DsCurriculumData.map((module) => (
+      {DsFoundationCurriculumData.map((module) => (
         <div key={module.id} className="mb-4 md:mb-6 bg-white w-full p-5 rounded-md border border-primary-600">
-          <h2 className="font-semibold mb-4 text-sm bg-primary-100 text-primary-700 px-3 py-1 rounded-full w-fit">{module.module}</h2>
+          {/* <h2 className="font-semibold mb-4 text-sm bg-primary-100 text-primary-700 px-3 py-1 rounded-full w-fit">{module.module}</h2> */}
 
           <Accordion type="single" className="w-full" collapsible>
             {module.submodules.map((sub, idx) => (
@@ -67,7 +71,7 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
     </div>
 
           </div>
-          <div className='md:col-span-4 w-full'>
+          {/* <div className='md:col-span-4 w-full'>
             <div className="mb-6 bg-primary-100 w-full p-5 rounded-md">
               <h2 className="flex items-center font-semibold mb-4 text-sm border border-primary-500 bg-primary-100 text-primary-700 px-3 py-1 rounded-full w-fit">
                 <span className='mr-2'><Rocket className='md:w-6 md:h-6 w-5 h-5' /></span> <span>Accelerate your career growth!</span></h2>
@@ -121,14 +125,14 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
 
                </ul>
             </div>
-          </div>
+          </div> */}
         </div>
 
+        </div>
+        
 
-         {pathname === '/data-science-course' && (
+         {/* {pathname === '/data-science-course' && (
         <div>
-          {/* Ensure BrochureButton is correctly imported and its props match its definition */}
-          {/* If BrochureButton is part of a larger component, ensure it's imported at the top level */}
           <BrochureButton
             slug={'data-science-course'}
             isPrimaryButton={true}
@@ -138,7 +142,7 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
             parentClass='w-full flex md:flex-row flex-col md:gap-6 gap-2 justify-center items-center'
           />
         </div>
-      )}
+      )} */}
 
        
       </div>
@@ -147,4 +151,4 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
 }
 
 
-export default DsCurriculum;
+export default DsFoundationCurriculum;
