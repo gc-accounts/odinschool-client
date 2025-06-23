@@ -9,6 +9,7 @@ import { getCourse } from '@/components/utils/api/courses';
 import Image from 'next/image';
 import { pushToDataLayer } from '@/lib/gtm';
 import { useRouter } from 'next/navigation';
+
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
   ssr: true
@@ -141,11 +142,19 @@ const CourseCheckout = () => {
   const [paymentType, setPaymentType] = useState<'partial' | 'full'>('partial');
   const [couponChecked, setCouponChecked] = useState(false);
   const [showCouponError, setShowCouponError] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+
+  const isFoundationCourse = course?.slug === 'data-science-foundation-course';
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (isFoundationCourse) {
+      setPaymentType('full');
+    }
+  }, [isFoundationCourse]);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -155,13 +164,13 @@ const CourseCheckout = () => {
         const courseData = await getCourse("", id);
         if (courseData && courseData[0]) {
           const apiCourse = courseData[0] as ApiCourseResponse;
-          // Transform the API response to match our Course interface
           const transformedCourse: Course = {
             id: apiCourse.id || '',
             title: apiCourse.title || '',
             description: apiCourse.description || '',
             instructor: apiCourse.instructor || 'Instructor Name',
-            price: Number(apiCourse.price) || 0,
+            // Set price to 999 for foundation course, otherwise use API price
+            price: apiCourse.slug === 'data-science-foundation-course' ? 999 : Number(apiCourse.price) || 0,
             duration: apiCourse.duration || '0 hours',
             students: Number(apiCourse.students) || 0,
             image: apiCourse.image || '',
@@ -178,7 +187,7 @@ const CourseCheckout = () => {
             modules: apiCourse.modules || [],
           };
           setCourse(transformedCourse);
-          setPrice(Number(apiCourse.price) || 0);
+          setPrice(transformedCourse.price); // Use the transformed price
         }
       } catch (error) {
         console.error('Error fetching course:', error);
@@ -204,7 +213,6 @@ const CourseCheckout = () => {
 
   const getAccessToken = async () => {
     try {
-      // Use our backend endpoint instead of calling Zoho directly
       const response = await fetch('/api/auth/token-checkout', {
         method: 'POST',
         headers: {
@@ -230,7 +238,6 @@ const CourseCheckout = () => {
 
   const getAccessTokenForPayment = async () => {
     try {
-      // Use our backend endpoint instead of calling Zoho directly
       const response = await fetch('/api/auth/token-payment-status', {
         method: 'POST',
         headers: {
@@ -285,9 +292,11 @@ const CourseCheckout = () => {
         : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
           : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-              : course.slug === 'investment-banking-course' ? 'Investment Banking Course' :course.slug === 'test-payment-course' ? 'test-payment-course' : '');
+              : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
+              : course.slug === 'test-payment-course' ? 'test-payment-course'
+              : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '');
       zohoFormData.append('Year of Graduation', formData.year);
-      zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
+      zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
 
@@ -333,8 +342,6 @@ const CourseCheckout = () => {
     }
   };
 
-
-  // Load Razorpay script
   useEffect(() => {
     const loadRazorpay = () => {
       return new Promise((resolve, reject) => {
@@ -370,12 +377,13 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      const baseAmount = paymentType === 'partial'
-        ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
-        : (couponChecked
-          ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
-          : price);
-
+      const baseAmount = isFoundationCourse 
+        ? 999 
+        : paymentType === 'partial' 
+          ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
+          : (couponChecked
+            ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
+            : price);
 
       const payableAmount = add18Percent(baseAmount);
 
@@ -386,11 +394,9 @@ const CourseCheckout = () => {
         },
         body: JSON.stringify({
           amount: Number(payableAmount),
-          coupon: couponChecked ? 'EBO2025' : ''
+          coupon: couponChecked && !isFoundationCourse ? 'EBO2025' : ''
         })
       });
-
-
 
       if (!orderResponse.ok) {
         const errorData = await orderResponse.json();
@@ -431,14 +437,16 @@ const CourseCheckout = () => {
               : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : course.slug === 'test-payment-course' ? 'test-payment-course' : '');
+                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
+                    : course.slug === 'test-payment-course' ? 'test-payment-course'
+                    : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '');
             zohoPaymentFormData.append('Effective Bootcamp Fee', price.toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
             zohoPaymentFormData.append('Payable_Amount', payableAmount.toFixed(0));
-            zohoPaymentFormData.append('Coupon_Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
+            zohoPaymentFormData.append('Coupon_Code', (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '');
             zohoPaymentFormData.append('Ga_client_id', '');
             zohoPaymentFormData.append('Business Unit', 'Odinschool');
-            zohoPaymentFormData.append('Source_Domain', 'Checkout form');
+            zohoPaymentFormData.append('Source_Domain', course.slug == 'data-science-foundation-course' ? 'New Product' :  'Razorpay status form');
 
             await fetch('/api/zoho/payment-status', {
               method: 'POST',
@@ -449,28 +457,27 @@ const CourseCheckout = () => {
             img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
             document.body.appendChild(img);
 
-                  // --- START: Add GTM Data Layer Push Here ---
-                  pushToDataLayer('checkout_form_submission', {
-                  eventName: 'checkout_form_submission',
-                 user_firstName: formData.firstName, // User's first name
-                user_lastName: formData.lastName,   // User's last name
-                user_email: formData.email,         // User's email
-                program_name:course.slug === 'data-science-course' ? 'Data Science Course'
-              : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
-                : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
-                  : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : course.slug === 'test-payment-course' ? 'test-payment-course' : '' , // Program name
-                payment_id: response.razorpay_payment_id, // Razorpay Payment ID
-                // You can add other relevant details too:
-                payment_status: verifyData.response, // e.g., "Success" or "Failure"
-                payable_amount: payableAmount.toFixed(2), // The exact amount paid
-                coupon_code: (couponChecked && paymentType === 'full') ? 'EBO2025' : '', // Coupon used
-                payment_type: paymentType // "full" or "partial"
-                  });
-                  // --- END: Add GTM Data Layer Push Here ---
+            pushToDataLayer('checkout_form_submission', {
+              eventName: 'checkout_form_submission',
+              user_firstName: formData.firstName,
+              user_lastName: formData.lastName,
+              user_email: formData.email,
+              program_name: course.slug === 'data-science-course' ? 'Data Science Course'
+                : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+                  : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+                    : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+                      : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
+                      : course.slug === 'test-payment-course' ? 'test-payment-course'
+                      : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '',
+              payment_id: response.razorpay_payment_id,
+              payment_status: verifyData.response,
+              payable_amount: payableAmount.toFixed(2),
+              coupon_code: (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '',
+              payment_type: paymentType
+            });
 
             toast({ title: verifyData.response });
-            router.push('/thank-you-2')
+            router.push('/thank-you-2');
             
           } catch (error) {
             console.error('Payment verification error:', error);
@@ -499,8 +506,6 @@ const CourseCheckout = () => {
           description: "Your payment could not be processed. Please try again.",
           variant: "destructive"
         });
-        
-        
       });
     } catch (error) {
       console.error('Payment error:', error);
@@ -511,7 +516,6 @@ const CourseCheckout = () => {
       });
     }
   };
-
 
   if (!course || loading) {
     return (
@@ -541,18 +545,17 @@ const CourseCheckout = () => {
     ? course.lessons.length
     : (typeof course.lessons === 'number' ? course.lessons : 0);
 
-  // const baseAmount = paymentType === 'partial'
-  //   ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
-  //   : (couponChecked ? price - 10000 : price);
-  const baseAmount = paymentType === 'partial'
-    ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
-    : (couponChecked
-      ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
-      : price);
-
+  const baseAmount = isFoundationCourse 
+    ? 999 
+    : paymentType === 'partial' 
+      ? (course.slug === 'generative-ai-course-iitg' ? 10000 : 5000)
+      : (couponChecked
+        ? price - (course.slug === 'generative-ai-bootcamp' ? 10000 : 15000)
+        : price);
 
   const igst = baseAmount * 0.18;
   const total = baseAmount + igst;
+
   return (
     <>
       <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
@@ -671,68 +674,71 @@ const CourseCheckout = () => {
                   <CardTitle>Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-
                   {/* Payment Type Selection */}
                   <div className="border p-4 rounded space-y-2">
                     <Label className="block font-medium">Choose Payment Option</Label>
                     <RadioGroup
                       value={paymentType}
                       onValueChange={(val: 'partial' | 'full') => {
-                        setPaymentType(val);
-                        setCouponChecked(false); // reset coupon
-                        setShowCouponError(false);
+                        if (!isFoundationCourse) {
+                          setPaymentType(val);
+                          setCouponChecked(false);
+                          setShowCouponError(false);
+                        }
                       }}
                       className="flex flex-col space-y-1"
                     >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="partial" id="partial" />
-                        <Label htmlFor="partial">Reserve your seat with ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Label>
-                      </div>
+                      {!isFoundationCourse && (
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="partial" id="partial" />
+                          <Label htmlFor="partial">Reserve your seat with ₹{course.slug === 'generative-ai-course-iitg' ? '10000' : '5000'} + GST</Label>
+                        </div>
+                      )}
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="full" id="full" />
-                        <Label htmlFor="full">Make full payment <span>₹{price?.toFixed(2)}</span></Label>
+                        <Label htmlFor="full">Make full payment <span>₹{isFoundationCourse ? '999' : price?.toFixed(2)}</span></Label>
                       </div>
                     </RadioGroup>
                   </div>
 
-                  {/* Coupon Code Section */}
-                  <div className="border p-4 rounded space-y-2 mt-4">
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="checkbox"
-                        id="coupon"
-                        checked={couponChecked}
-                        onChange={(e) => {
-                          const isChecked = e.target.checked;
-                          setCouponChecked(isChecked);
+                  {/* Coupon Code Section - Only show if not foundation course */}
+                  {!isFoundationCourse && (
+                    <div className="border p-4 rounded space-y-2 mt-4">
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="coupon"
+                          checked={couponChecked}
+                          onChange={(e) => {
+                            const isChecked = e.target.checked;
+                            setCouponChecked(isChecked);
 
-                          if (isChecked && paymentType === 'partial') {
-                            setShowCouponError(true);
-                          } else {
-                            setShowCouponError(false);
-                          }
-                        }}
-                        disabled={paymentType === 'partial'} // 🔒 Disable checkbox if ₹5000 is selected
+                            if (isChecked && paymentType === 'partial') {
+                              setShowCouponError(true);
+                            } else {
+                              setShowCouponError(false);
+                            }
+                          }}
+                          disabled={paymentType === 'partial'}
+                        />
+                        <Label htmlFor="coupon" className={paymentType === 'partial' ? 'text-gray-400 cursor-not-allowed' : ''}>
+                          Apply Coupon EBO2025
+                        </Label>
+                      </div>
+
+                      <Input
+                        value={couponChecked ? 'EBO2025' : ''}
+                        readOnly
+                        disabled={true}
+                        className="mt-2"
+                        placeholder="Enter coupon"
                       />
-                      <Label htmlFor="coupon" className={paymentType === 'partial' ? 'text-gray-400 cursor-not-allowed' : ''}>
-                        Apply Coupon EBO2025
-                      </Label>
+
+                      {paymentType === 'partial' && (
+                        <p className="text-sm text-red-500 mt-1">Coupon cannot be applied with ₹5000 seat reservation.</p>
+                      )}
                     </div>
-
-                    <Input
-                      value={couponChecked ? 'EBO2025' : ''}
-                      readOnly
-                      disabled={true}
-                      className="mt-2"
-                      placeholder="Enter coupon"
-                    />
-
-                    {paymentType === 'partial' && (
-                      <p className="text-sm text-red-500 mt-1">Coupon cannot be applied with ₹5000 seat reservation.</p>
-                    )}
-                  </div>
-
-
+                  )}
 
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
@@ -740,7 +746,6 @@ const CourseCheckout = () => {
                         src={course.image}
                         alt={course.title}
                         className="w-full h-full object-cover"
-
                         loading="lazy"
                         width={500}
                         height={500}
@@ -748,18 +753,13 @@ const CourseCheckout = () => {
                     </div>
                     <div>
                       <h3 className="font-medium">{course.title}</h3>
-                      {/* <div className="text-sm text-gray-500">{course.instructor}</div> */}
                     </div>
                   </div>
 
-                  {/* Order Summary */}
                   <div className="border-t pt-4 space-y-2">
-
                     <div className="flex justify-between">
                       <p className='font-semibold'>Price Breakup</p>
                     </div>
-
-
 
                     <div className="flex justify-between">
                       <span>Seat booking</span>
@@ -774,57 +774,12 @@ const CourseCheckout = () => {
                       <span>Total</span>
                       <span>₹{total.toFixed(0)}</span>
                     </div>
-                    {couponChecked && paymentType === 'full' && (
+                    {couponChecked && paymentType === 'full' && !isFoundationCourse && (
                       <div className="text-sm text-green-600 text-right font-medium">
                         You saved ₹{course.slug === 'generative-ai-bootcamp' ? '10,000' : '15,000'} with coupon!
                       </div>
                     )}
                   </div>
-
-
-
-                  {/* <div className="space-y-2">
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Clock className="h-4 w-4 mr-2" />
-                      {course.duration}
-                    </div>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <User className="h-4 w-4 mr-2" />
-                      {course.students?.toLocaleString()} students
-                    </div>
-                  </div> */}
-
-                  {/* <div className="border-t pt-4">
-                    <div className="flex justify-between py-2">
-                      <span>Price</span>
-                      <span>₹{price?.toFixed(2)}</span>
-                    </div> */}
-                  {/* <div className="flex justify-between py-2">
-                      <span>Certificate</span>
-                      <span>Not Included</span>
-                    </div> */}
-                  {/* <div className="flex justify-between py-2 font-bold border-t">
-                      <span>Total</span>
-                      <span>₹{price?.toFixed(2)}</span>
-                    </div>
-                  </div> */}
-                  {/* {course.has_certificate && (
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        if (certificateButtonState) {
-                          setPrice(price + 29.99);
-                          setCertificateButtonState(false);
-                        } else {
-                          setPrice(price - 29.99);
-                          setCertificateButtonState(true);
-                        }
-                      }}
-                      className="w-full"
-                    >
-                      {certificateButtonState ? "Add Certificate (+ $29.99)" : "Remove Certificate (- $29.99)"}
-                    </Button>
-                  )} */}
                 </CardContent>
               </Card>
             </div>
