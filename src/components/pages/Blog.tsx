@@ -164,13 +164,15 @@ const BlogPage = () => {
                     <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.postTitle}</h3>
                     <p className="text-gray-600 line-clamp-3">{post.metaDescription}</p>
                   </CardContent>
-                  <CardFooter className="px-6 pb-6 pt-0 flex items-center justify-between w-full">
-                    <div className="flex items-center text-sm text-gray-500">
+                  <CardFooter className="px-6 pb-6 pt-0 flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start w-full gap-4">
+                    <div className="w-full flex md:flex-col md:items-start items-center md:justify-center justify-between text-sm text-gray-500">
                       <span className="font-medium text-gray-900 mr-2">{post.author || 'Odin Author'}</span>
+                      <div className='flex gap-1 mt-1'>
                       <Calendar className="w-4 h-4 mr-1" />
                       <span>{formatDate(post.publishDate)}</span>
+                      </div>
                     </div>
-                    <Button asChild>
+                    <Button asChild className='md:w-fit w-full'>
                       <Link href={`/blog${extractSlugFromUrl(post.postUrl)}`}>Read More</Link>
                     </Button>
                   </CardFooter>

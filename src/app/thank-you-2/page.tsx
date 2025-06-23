@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ThankYou from '@/components/pages/ThankYou';
 
-const page = () => {
+const Page = () => {
   return (
-    <ThankYou />
+    <Suspense fallback={<div>Loading...</div>}>
+      <ThankYou />
+    </Suspense>
   )
 }
 
-export default page
+export default Page
