@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         Effective_Bootcamp_Fee: formData.get('Effective Bootcamp Fee'),
         Ga_client_id: formData.get('Ga_client_id'),
         Business_Unit: formData.get('Business Unit'),
-        Source_Domain: 'Razorpay status form',
+        Source_Domain: formData.get('Source_Domain'),
         duplicate_check_fields: ['Email'],  // ✅ critical fix
         Coupon_Code: formData.get('coupon_code')
       }],
