@@ -7,6 +7,7 @@ import Script from 'next/script';
 import { useToast } from '@/components/hooks/use-toast';
 import { getCourse } from '@/components/utils/api/courses';
 import Image from 'next/image';
+import { pushToDataLayer } from '@/lib/gtm';
 
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
@@ -388,6 +389,8 @@ const CourseCheckout = () => {
         })
       });
 
+
+
       if (!orderResponse.ok) {
         const errorData = await orderResponse.json();
         console.error('Order creation failed:', errorData);
@@ -444,8 +447,28 @@ const CourseCheckout = () => {
             const img = document.createElement('img');
             img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
             document.body.appendChild(img);
+                  // --- START: Add GTM Data Layer Push Here ---
+                  pushToDataLayer('checkout_form_submission', {
+                  eventName: 'checkout_form_submission',
+                 user_firstName: formData.firstName, // User's first name
+                user_lastName: formData.lastName,   // User's last name
+                user_email: formData.email,         // User's email
+                program_name:course.slug === 'data-science-course' ? 'Data Science Course'
+              : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
+                : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
+                  : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
+                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '' , // Program name
+                payment_id: response.razorpay_payment_id, // Razorpay Payment ID
+                // You can add other relevant details too:
+                payment_status: verifyData.response, // e.g., "Success" or "Failure"
+                payable_amount: payableAmount.toFixed(2), // The exact amount paid
+                coupon_code: (couponChecked && paymentType === 'full') ? 'EBO2025' : '', // Coupon used
+                payment_type: paymentType // "full" or "partial"
+                  });
+                  // --- END: Add GTM Data Layer Push Here ---
 
             toast({ title: verifyData.response });
+            
           } catch (error) {
             console.error('Payment verification error:', error);
             toast({
@@ -473,6 +496,8 @@ const CourseCheckout = () => {
           description: "Your payment could not be processed. Please try again.",
           variant: "destructive"
         });
+        
+        
       });
     } catch (error) {
       console.error('Payment error:', error);
