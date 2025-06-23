@@ -7,7 +7,7 @@ export default `
                     on_sale
                     has_certificate
 
-                    course_modules {
+                    course_modules(pagination: { limit: 100 }) {
       description
       display_order
       documentId
