@@ -284,7 +284,7 @@ const CourseCheckout = () => {
         : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
           : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-              : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '');
+              : course.slug === 'investment-banking-course' ? 'Investment Banking Course' :course.slug === 'test-payment-course' ? 'test-payment-course' : '');
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full') ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
@@ -430,7 +430,7 @@ const CourseCheckout = () => {
               : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '');
+                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : course.slug === 'test-payment-course' ? 'test-payment-course' : '');
             zohoPaymentFormData.append('Effective Bootcamp Fee', price.toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
             zohoPaymentFormData.append('Payable_Amount', payableAmount.toFixed(0));
@@ -457,7 +457,7 @@ const CourseCheckout = () => {
               : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course'
                 : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course'
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
-                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : '' , // Program name
+                    : course.slug === 'investment-banking-course' ? 'Investment Banking Course' : course.slug === 'test-payment-course' ? 'test-payment-course' : '' , // Program name
                 payment_id: response.razorpay_payment_id, // Razorpay Payment ID
                 // You can add other relevant details too:
                 payment_status: verifyData.response, // e.g., "Success" or "Failure"
@@ -733,7 +733,7 @@ const CourseCheckout = () => {
 
                   <div className="flex space-x-4">
                     <div className="flex-shrink-0 rounded-md overflow-hidden w-20 h-20">
-                      <Image
+                      {/* <Image
                         src={course.image}
                         alt={course.title}
                         className="w-full h-full object-cover"
@@ -741,7 +741,7 @@ const CourseCheckout = () => {
                         loading="lazy"
                         width={500}
                         height={500}
-                      />
+                      /> */}
                     </div>
                     <div>
                       <h3 className="font-medium">{course.title}</h3>
