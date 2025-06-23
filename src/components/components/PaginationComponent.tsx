@@ -62,41 +62,44 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
   const paginationRange = getPageNumbers(totalPages, currentPage);
 
   return (
-    <Pagination className="mt-12">
-      <PaginationContent>
-        {/* Previous Button */}
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-            className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-          />
-        </PaginationItem>
-
-        {/* Page Numbers & Dots */}
-        {paginationRange.map((page, index) => (
-          <PaginationItem key={index}>
-            {page === DOTS ? (
-              <span className="px-3 py-1 text-gray-500">...</span>
-            ) : (
-              <PaginationLink
-                onClick={() => setCurrentPage(Number(page))}
-                isActive={page === currentPage}
-              >
-                {page}
-              </PaginationLink>
-            )}
+    <div className="w-full overflow-x-auto">
+      <Pagination className="mt-12 w-fit mx-auto">
+        <PaginationContent className="flex-wrap gap-1">
+          {/* Previous Button */}
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+              className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+            />
           </PaginationItem>
-        ))}
 
-        {/* Next Button */}
-        <PaginationItem>
-          <PaginationNext
-            onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
-            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-          />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+          {/* Page Numbers & Dots */}
+          {paginationRange.map((page, index) => (
+            <PaginationItem key={index}>
+              {page === DOTS ? (
+                <span className="px-3 py-1 text-gray-500 flex items-center">...</span>
+              ) : (
+                <PaginationLink
+                  onClick={() => setCurrentPage(Number(page))}
+                  isActive={page === currentPage}
+                  className="min-w-[40px] justify-center"
+                >
+                  {page}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          ))}
+
+          {/* Next Button */}
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+              className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </div>
   );
 };
 

@@ -2,141 +2,89 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
-import { Card, CardContent } from '@/components/components/ui/card';
-import { Webinar } from '@/components/data/webinars';
-import { getWebinars } from '@/components/utils/api/webinars';
+import { Card } from '@/components/components/ui/card';
+import { Webinar } from '@/components/data/webinars'; // Assuming Webinar type is defined here
 import PaginationComponent from '@/components/components/PaginationComponent';
-import mentor from '@/components/utils/api/schema/mentor';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
-// Define mentor data
-const mentorsData = [
-  {
-    id: "mentor-1",
-    name: "Dr. Sarah Johnson",
-    role: "AI Research Scientist",
-    companyLogo: "Google DeepMind",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auhref=format&fit=crop&w=256",
-    expertise: ["Machine Learning", "Natural Language Processing", "Neural Networks"],
-    bio: "Dr. Sarah Johnson is a leading researcher in artificial intelligence with over 15 years of experience. She has published numerous papers on deep learning applications.",
-    education: "Ph.D. in Computer Science, Stanford University",
-    accomplishments: [
-      "Led team that developed breakthrough NLP model",
-      "Author of 'Deep Learning: The Next Frontier'",
-      "Recipient of the ACM Computing Innovation Fellowship"
-    ]
-  },
-  {
-    id: "mentor-2",
-    name: "Michael Chen",
-    role: "Senior Software Engineer",
-    companyLogo: "Microsoft",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?auhref=format&fit=crop&w=256",
-    expertise: ["Cloud Architecture", "DevOps", "Microservices"],
-    bio: "Michael Chen specializes in cloud-native applications and infrastructure automation. He has helped numerous organizations modernize their tech stacks.",
-    education: "M.S. in Computer Engineering, UC Berkeley",
-    accomplishments: [
-      "Microsoft Certified Azure Solutions Architect",
-      "Creator of popular open-source deployment tool",
-      "Speaker at KubeCon and CloudNativeCon"
-    ]
-  },
-  {
-    id: "mentor-3",
-    name: "Priya Patel",
-    role: "Data Science Director",
-    companyLogo: "Netflix",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auhref=format&fit=crop&w=256",
-    expertise: ["Big Data Analytics", "Recommendation Systems", "Statistical Modeling"],
-    bio: "Priya leads data science initiatives focused on improving content recommendations and user experience through advanced analytics.",
-    education: "Ph.D. in Statistics, MIT",
-    accomplishments: [
-      "Developed Netflix's content classification algorithm",
-      "Published research on personalization at scale",
-      "Adjunct Professor at UCLA"
-    ]
-  },
-  {
-    id: "mentor-4",
-    name: "James Wilson",
-    role: "Cybersecurity Expert",
-    companyLogo: "CyberShield Inc.",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auhref=format&fit=crop&w=256",
-    expertise: ["Network Security", "Penetration Testing", "Security Architecture"],
-    bio: "James specializes in identifying vulnerabilities in systems and developing robust security protocols to prevent cyber attacks.",
-    education: "B.S. in Computer Science, Georgia Tech",
-    accomplishments: [
-      "CISSP and CEH certified",
-      "Former security consultant for Fortune 500 companies",
-      "Regular contributor to security conferences"
-    ]
-  },
-  {
-    id: "mentor-5",
-    name: "Elena Rodriguez",
-    role: "Frontend Engineering Lead",
-    companyLogo: "Airbnb",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auhref=format&fit=crop&w=256",
-    expertise: ["React", "UI/UX Design", "Performance Optimization"],
-    bio: "Elena leads frontend development teams creating beautiful, accessible, and high-performance web applications.",
-    education: "M.S. in Human-Computer Interaction, Carnegie Mellon",
-    accomplishments: [
-      "Redesigned Airbnb's booking experience",
-      "Open source contributor to major frontend frameworks",
-      "Mentor for Women Who Code"
-    ]
-  },
-  {
-    id: "mentor-6",
-    name: "David Kim",
-    role: "Product Manager",
-    companyLogo: "Spotify",
-    company: "Spotify",
-    image: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auhref=format&fit=crop&w=256",
-    expertise: ["Product Strategy", "User Research", "Agile Methodologies"],
-    bio: "David specializes in building digital products that users love. He has a background in both engineering and design.",
-    education: "MBA, Harvard Business School",
-    accomplishments: [
-      "Launched Spotify's podcast discovery features",
-      "Former startup founder (acquired by Spotify)",
-      "Author of 'Product Management in the Age of AI'"
-    ]
+import axios from 'axios'; // Import Axios
+
+// You might want to move this `getWebinars` function to a separate utility file (e.g., `src/utils/api.ts`)
+// for better organization in a larger project.
+const getWebinars = async ({ pageNumber, pageSize, isOdintalk }: { pageNumber: number; pageSize: number; isOdintalk: boolean; }) => {
+  try {
+    const response = await axios.get('https://strapi.odinschool.com/api/webinars', {
+      params: {
+        'pagination[page]': pageNumber,
+        'pagination[pageSize]': pageSize,
+        'filters[is_odin_talk][$eq]': isOdintalk,
+      },
+    });
+
+    const webinarsData = response.data.data.map((item: any) => ({
+      id: item.id,
+      title: item.title,
+      slug: item.slug,
+      description: item.description,
+      about_instructor: item.about_instructor,
+      instructor: item.Instructor, // Note the capitalization from your API response
+      date: item.date,
+      time: item.time,
+      price: item.price,
+      duration: item.duration,
+      tags: item.tags,
+      createdAt: item.createdAt,
+      updatedAt: item.updatedAt,
+      publishedAt: item.publishedAt,
+      image: item.image_url, // Assuming image_url from API maps to 'image' in Webinar type
+      is_featured: item.is_featured,
+      is_odin_talk: item.is_odin_talk,
+      is_html: item.is_html,
+      url_slug: item.slug, // Using 'slug' for 'url_slug' for navigation
+    })) as Webinar[];
+
+    const totalPages = response.data.meta.pagination.pageCount; // Extract total pages from meta
+
+    return { webinars: webinarsData, totalPages }; // Return an object with both
+  } catch (error) {
+    console.error('Error fetching webinars:', error);
+    return { webinars: [], totalPages: 0 }; // Return empty data and 0 total pages on error
   }
-];
+};
 
 const OdinTalks = () => {
   const [webinars, setWebinars] = useState<Webinar[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
-
+  const [totalPages, setTotalPages] = useState(0); // New state to store total pages
 
   useEffect(() => {
-    const fetchWebinars = async () => {
-      const webinars = await getWebinars({
+    const fetchWebinarData = async () => {
+      setLoading(true);
+      const { webinars: fetchedWebinars, totalPages: fetchedTotalPages } = await getWebinars({
         pageNumber: pageNumber,
         pageSize: 10,
         isOdintalk: true,
       });
-      setWebinars(webinars);
+      setWebinars(fetchedWebinars);
+      setTotalPages(fetchedTotalPages); // Update totalPages state
       setLoading(false);
     };
-    fetchWebinars();
-  }, [pageNumber]);
+    fetchWebinarData();
+  }, [pageNumber]); // Re-fetch when pageNumber changes
 
   useEffect(() => {
+    // Scroll to top and set document title on initial load
     window.scrollTo(0, 0);
-    document.title = "OdinTalks - Meet Our Mentors";
+    document.title = "OdinTalks - Learn from Experts"; // Updated title to be more relevant
   }, []);
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">
-      <Loader2 className="w-10 h-10 animate-spin" />
-    </div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="w-10 h-10 animate-spin text-primary-500" /> {/* Added color */}
+      </div>
+    );
   }
 
   return (
@@ -154,42 +102,44 @@ const OdinTalks = () => {
         </div>
 
         <div className="container mx-auto py-12 px-4 md:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {webinars.map((webinar) => (
-              <Link key={webinar.id} href={`/odintalks/${webinar.url_slug}`}>
-                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
-                    <Image
-                      src={webinar.image}
-                      alt={webinar.title}
-                      className="w-full h-full object-cover"
-
-                      loading="lazy"
-                      width={500}
-                      height={500}
-                    />
-
-                    <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
-                      <div>
-                        <h3 className=" font-semibold text-black">{webinar.title}</h3>
-                        <h3 className="text-gray-700">{webinar.instructor}</h3>
+          {webinars.length === 0 ? (
+            <p className="text-center text-xl text-gray-600">No OdinTalks found at the moment. Please check back later!</p>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {webinars.map((webinar) => (
+                  <Link key={webinar.id} href={`/odintalks/${webinar.url_slug}`} passHref>
+                    <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"> {/* Added cursor-pointer */}
+                      <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
+                        <Image
+                          src={webinar.image}
+                          alt={webinar.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
+                          <div>
+                            <h3 className="font-semibold text-black">{webinar.title}</h3>
+                            <h3 className="text-gray-700">{webinar.instructor}</h3>
+                          </div>
+                        </div>
                       </div>
-                      {/* <img
-                        src={webinar.companyLogo}
-                        alt={`${webinar.company} logo`}
-                        className="h-10 w-auto object-contain"
-                      /> */}
-                    </div>
-                  </div>
-
-                </Card>
-              </Link>
-            ))}
-          </div>
-          <PaginationComponent
-            currentPage={pageNumber}
-            setCurrentPage={setPageNumber}
-          />
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              {/* Only show pagination if there are webinars and more than 1 page */}
+              {totalPages > 1 && (
+                <PaginationComponent
+                  currentPage={pageNumber}
+                  setCurrentPage={setPageNumber}
+                  totalPages={totalPages}
+                />
+              )}
+            </>
+          )}
         </div>
       </main>
 
