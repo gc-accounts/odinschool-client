@@ -475,9 +475,9 @@ const CourseCheckout = () => {
               coupon_code: (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '',
               payment_type: paymentType
             });
-
+            
             toast({ title: verifyData.response });
-            router.push('/thank-you-2');
+            course.slug === 'data-science-foundation-course' ?  router.push('/thank-you-2?title=data-science-foundation-course') :  router.push('/thank-you-2');
             
           } catch (error) {
             console.error('Payment verification error:', error);

@@ -5,11 +5,16 @@ import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const ThankYou = () => {
+  const searchParams = useSearchParams();
+  const courseTitle = searchParams.get('title');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <Navbar />
@@ -22,10 +27,20 @@ const ThankYou = () => {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
-            <p className="text-gray-600 text-lg mb-8">
-              Your submission has been received successfully. We appreciate your interest and will be in touch soon.
-            </p>
+            {courseTitle ? (
+              <>
+                <h1 className="text-3xl font-bold mb-4">Thank you for registering!</h1>
+                <p className="text-gray-600 text-lg mb-8">
+                  We will send the login credentials with course access within next 24 hours
+                </p>
+              </>
+            ) : (
+              <>
+                <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
+                <p className="text-gray-600 text-lg mb-8">
+                  Your submission has been received successfully. We appreciate your interest and will be in touch soon.
+                </p>
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-gray-50 rounded-lg p-6">
@@ -71,6 +86,8 @@ const ThankYou = () => {
                 </Link>
               </Button>
             </div>
+              </>
+            )}
           </div>
         </div>
       </main>
