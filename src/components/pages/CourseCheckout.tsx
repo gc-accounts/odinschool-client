@@ -8,7 +8,7 @@ import { useToast } from '@/components/hooks/use-toast';
 import { getCourse } from '@/components/utils/api/courses';
 import Image from 'next/image';
 import { pushToDataLayer } from '@/lib/gtm';
-
+import { useRouter } from 'next/navigation';
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
   ssr: true
@@ -141,6 +141,7 @@ const CourseCheckout = () => {
   const [paymentType, setPaymentType] = useState<'partial' | 'full'>('partial');
   const [couponChecked, setCouponChecked] = useState(false);
   const [showCouponError, setShowCouponError] = useState(false);
+  const router = useRouter()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -447,6 +448,7 @@ const CourseCheckout = () => {
             const img = document.createElement('img');
             img.src = `https://shareasale.com/sale.cfm?amount=${payableAmount}&tracking=${response.razorpay_order_id}&merchantID=123856&transtype=sale&currency=INR`;
             document.body.appendChild(img);
+
                   // --- START: Add GTM Data Layer Push Here ---
                   pushToDataLayer('checkout_form_submission', {
                   eventName: 'checkout_form_submission',
@@ -468,6 +470,7 @@ const CourseCheckout = () => {
                   // --- END: Add GTM Data Layer Push Here ---
 
             toast({ title: verifyData.response });
+            router.push('/thank-you-2')
             
           } catch (error) {
             console.error('Payment verification error:', error);
