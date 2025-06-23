@@ -7,7 +7,7 @@ import DynamicForm, { FieldConfig } from '@/components/components/form/DynamicFo
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import CoursePrimaryFormFields from '@/components/data/form-fields/CoursePrimaryFormFields';
 import { useRouter } from 'next/navigation';
-
+import { pushToDataLayer } from '@/lib/gtm';
 interface PrimaryFormProps {
   slug: string;
   isModal: Boolean;
@@ -102,6 +102,15 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
         title: 'Success!',
         description: "Your information has been submitted successfully. We'll contact you soon.",
       });
+
+      // --- START: Add GTM Data Layer Push Here ---
+      pushToDataLayer('form_submission', {
+      eventName: 'form_submission',
+      program_name: getSlug(slug), 
+      user_email: data.email,
+      });
+      // --- END: Add GTM Data Layer Push Here ---
+
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
       setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
