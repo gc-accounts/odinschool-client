@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
 
         // Using likely API field names - verify in your Zoho CRM
-        First_Page_Seen: getField('First Page Seen'),
+        first_page_seen1: getField('First Page Seen'),
         Original_Traffic_Source: getField('Original Traffic Source'),
         Original_Traffic_Source_Drill_Down_1: getField('Original Traffic Source Drill-Down 1'),
         Original_Traffic_Source_Drill_Down_2: getField('Original Traffic Source Drill-Down 2'),
