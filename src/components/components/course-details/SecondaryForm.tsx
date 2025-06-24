@@ -93,7 +93,7 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
       reset();
        if ((data.program === 'Data Science Course' || data.program === 'Data Science Elite Course') && 
     (data.year === '2025' || data.year === 'After 2025')) {
-    router.push('/data-science-foundation-course');
+    router.push('/data-science-bridge-course');
 } else {
  setTimeout(() => router.push(`/thank-you`), 1000);
 }

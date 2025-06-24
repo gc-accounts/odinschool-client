@@ -8,7 +8,7 @@ interface CardsProps {
 const data = [
   {
     id: 1,
-    title: 'Join the foundation course',
+    title: `Join the <br/>Bridge course`,
     description: ""
   },
   {
@@ -18,7 +18,7 @@ const data = [
   },
   {
     id: 3,
-    title: 'Get eligible for the Elite course*',
+    title: 'Get eligible for the Data Science Elite course*',
     description: ''
   },
 ];
@@ -30,7 +30,7 @@ const Eligibility = ({ sectionClass }: CardsProps) => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
-            Let’s Strengthen Your <span className="text-primary-600">Eligibility</span>
+            Level Up for the <span className="text-primary-600">Elite Course</span>
           </h2>
         </div>
 
@@ -39,7 +39,7 @@ const Eligibility = ({ sectionClass }: CardsProps) => {
             <>
               <div className='relative bg-blue-600 p-8 rounded-lg text-white flex items-center justify-center text-center w-60 h-40 shadow-lg flex-shrink-0'> {/* Adjust padding and width/height as needed */}
                 <div>
-                <p className='font-semibold text-md leading-tight mb-2'>{item.title}</p>
+                <p className='font-semibold text-md leading-tight mb-2'><div dangerouslySetInnerHTML={{ __html: item.title }} /></p>
                 <p className='text-sm'>{item.description}</p>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const Eligibility = ({ sectionClass }: CardsProps) => {
             </>
           ))}
         </div>
-        <p className='text-sm text-gray-600 text-center mt-6 italic'>*Your fast-pass to the Elite program. Nail the foundation → unlock ₹2000 off + show you're ready for the real grind.</p>
+        <p className='text-sm text-gray-600 text-center mt-6 italic'>*Your fast-pass to the Data Science Elite program. Prove you're ready. Get rewarded.</p>
       </div>
     </section>
   );

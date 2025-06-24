@@ -144,7 +144,7 @@ const CourseCheckout = () => {
   const [showCouponError, setShowCouponError] = useState(false);
   const router = useRouter();
 
-  const isFoundationCourse = course?.slug === 'data-science-foundation-course';
+  const isFoundationCourse = course?.slug === 'data-science-bridge-course';
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -170,7 +170,7 @@ const CourseCheckout = () => {
             description: apiCourse.description || '',
             instructor: apiCourse.instructor || 'Instructor Name',
             // Set price to 999 for foundation course, otherwise use API price
-            price: apiCourse.slug === 'data-science-foundation-course' ? 999 : Number(apiCourse.price) || 0,
+            price: apiCourse.slug === 'data-science-bridge-course' ? 999 : Number(apiCourse.price) || 0,
             duration: apiCourse.duration || '0 hours',
             students: Number(apiCourse.students) || 0,
             image: apiCourse.image || '',
@@ -294,7 +294,7 @@ const CourseCheckout = () => {
             : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
               : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
               : course.slug === 'test-payment-course' ? 'test-payment-course'
-              : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '');
+              : course.slug === 'data-science-bridge-course' ? 'Data Science Bridge Course' : '');
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
@@ -439,14 +439,14 @@ const CourseCheckout = () => {
                   : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
                     : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
                     : course.slug === 'test-payment-course' ? 'test-payment-course'
-                    : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '');
+                    : course.slug === 'data-science-bridge-course' ? 'Data Science Bridge Course' : '');
             zohoPaymentFormData.append('Effective Bootcamp Fee', price.toString());
             zohoPaymentFormData.append('Payment_Status', verifyData.response || '');
             zohoPaymentFormData.append('Payable_Amount', payableAmount.toFixed(0));
             zohoPaymentFormData.append('Coupon_Code', (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '');
             zohoPaymentFormData.append('Ga_client_id', '');
             zohoPaymentFormData.append('Business Unit', 'Odinschool');
-            zohoPaymentFormData.append('Source_Domain', course.slug == 'data-science-foundation-course' ? 'New Product' :  'Razorpay status form');
+            zohoPaymentFormData.append('Source_Domain', course.slug == 'data-science-bridge-course' ? 'New Product' :  'Razorpay status form');
 
             await fetch('/api/zoho/payment-status', {
               method: 'POST',
@@ -468,7 +468,7 @@ const CourseCheckout = () => {
                     : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI'
                       : course.slug === 'investment-banking-course' ? 'Investment Banking Course' 
                       : course.slug === 'test-payment-course' ? 'test-payment-course'
-                      : course.slug === 'data-science-foundation-course' ? 'Data Science Foundation Course' : '',
+                      : course.slug === 'data-science-bridge-course' ? 'Data Science Bridge Course' : '',
               payment_id: response.razorpay_payment_id,
               payment_status: verifyData.response,
               payable_amount: payableAmount.toFixed(2),
@@ -477,7 +477,7 @@ const CourseCheckout = () => {
             });
             
             toast({ title: verifyData.response });
-            course.slug === 'data-science-foundation-course' ?  router.push('/thank-you-2?title=data-science-foundation-course') :  router.push('/thank-you-2');
+            course.slug === 'data-science-bridge-course' ?  router.push('/thank-you-2?title=data-science-bridge-course') :  router.push('/thank-you-2');
             
           } catch (error) {
             console.error('Payment verification error:', error);

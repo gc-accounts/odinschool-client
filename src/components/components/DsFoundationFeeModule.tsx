@@ -60,13 +60,13 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
 
           <div className="bg-gray-50 p-6 flex flex-col justify-center text-center">
             <p className="font-semibold mb-2">
-              <span className='text-lg text-primary-600'>Get 100% Cashback</span> <br /><span className='text-md'>on successfull completion of Foundational Course and get a discount of <span className='text-primary-600'>₹2,000</span> for the Data Science Elite Course.</span>
+              <span className='text-lg text-primary-600'>Get 100% Cashback</span> <br /><span className='text-md'>on successful completion of the Bridge Course and get a discount of <span className='text-primary-600'>₹2,000</span> for the Data Science Elite Course.</span>
             </p>
             {/* <p className="text-gray-700 text-sm">Limited seats!! Apply now to secure your spot!</p> */}
 
              {/* CTA */}
           <div className="flex flex-col justify-center sm:flex-row gap-4 mt-6">
-            <Link href='/course-checkout/data-science-foundation-course'>
+            <Link href='/course-checkout/data-science-bridge-course'>
             <Button
               size="lg"
               variant="yellow"
