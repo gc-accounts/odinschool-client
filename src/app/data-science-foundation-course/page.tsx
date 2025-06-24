@@ -43,9 +43,7 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <DataScienceFoundationCourse
-      organisations={[]}
-    />
+    <DataScienceFoundationCourse/>
   );
 };
 
