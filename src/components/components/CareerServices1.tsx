@@ -20,6 +20,7 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
   const showDiv =
   pathname === '/data-science-elite-course' ||
   pathname === '/investment-banking-course' ||
+  pathname === '/web-development-course' ||
   pathname === '/generative-ai-course-iitg'
     ? false
     : true;
