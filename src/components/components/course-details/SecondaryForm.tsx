@@ -91,7 +91,13 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
             // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
-      setTimeout(() => router.push(`/thank-you`), 1000);
+       if ((data.program === 'Data Science Course' || data.program === 'Data Science Elite Course') && 
+    (data.year === '2025' || data.year === 'After 2025')) {
+    router.push('/data-science-foundation-course');
+} else {
+ setTimeout(() => router.push(`/thank-you`), 1000);
+}
+     
     } catch (error: any) {
       console.error(error);
       toast({ title: 'Error', description: error.message, variant: 'destructive' });

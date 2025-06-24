@@ -110,10 +110,16 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
       user_email: data.email,
       });
       // --- END: Add GTM Data Layer Push Here ---
-
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
-      setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+
+     if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
+    (data.year === '2025' || data.year === 'After 2025')) {
+    router.push('/data-science-foundation-course');
+} else {
+    setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+}
+
     } catch (error: any) {
       console.error(error);
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
