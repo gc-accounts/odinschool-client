@@ -5,20 +5,18 @@ import '@/styles/globals.css';
 import { siteConfig } from '@/constant/config';
 import Script from 'next/script';
 import { Toaster } from '@/components/components/ui/toaster';
-import WhatsAppChat from '@/components/components/WhatsAppChat';
 import { gtmScript, GTM_ID } from '@/lib/gtm';
 import { ProgramProvider } from '@/context/ProgramContext';
+import ClientLayoutWrapper from '@/components/components/ClientLayoutWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
-  weight: ['400'], // DM Serif Display supports only 400 (Regular)
-  variable: '--font-dm-serif'
+  weight: ['400'],
+  variable: '--font-dm-serif',
 });
 
-
-// !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -27,8 +25,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   robots: { index: true, follow: true },
-  // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-  // ! copy to /favicon folder
   icons: {
     icon: '/favicon/favicon.ico',
     shortcut: '/favicon/favicon-16x16.png',
@@ -49,17 +45,10 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: [`${siteConfig.url}/images/og.jpg`],
-    // creator: '@th_clarence',
   },
   alternates: {
-        canonical: './',
-    }
-  // authors: [
-  //   {
-  //     name: 'Theodorus Clarence',
-  //     url: 'https://theodorusclarence.com',
-  //   },
-  // ],
+    canonical: './',
+  },
 };
 
 export default function RootLayout({
@@ -70,7 +59,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
+        <Script
+          id="gtm"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{ __html: gtmScript }}
+        />
       </head>
       <body className={`${inter.className}`}>
         <noscript>
@@ -82,8 +75,9 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <ProgramProvider>
-          {children}
-          <WhatsAppChat />
+          <ClientLayoutWrapper>
+            {children}
+          </ClientLayoutWrapper>
         </ProgramProvider>
         <Toaster />
       </body>
