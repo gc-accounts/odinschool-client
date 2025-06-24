@@ -58,6 +58,15 @@ const page = () => {
             color: #000;
             border-color: #000;
             }
+
+            .ib-program-curriculum .downloadBtn{
+            color: #fff !important;
+            border-color: #fff !important;
+            }
+            .ib-program-curriculum .downloadBtn:hover{
+               color: #000 !important;
+                border-color: #000 !important;
+            }
         `}
       </style>
 
