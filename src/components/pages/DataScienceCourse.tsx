@@ -108,7 +108,7 @@ const DataScienceCourse = ({slug}:DataScienceCourseProps) => {
 
   return (
     <>
-      <HelloBar isPrimaryForm={true} slug='data-science-elite-course' />
+      <HelloBar isPrimaryForm={true} slug='data-science-course' />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
