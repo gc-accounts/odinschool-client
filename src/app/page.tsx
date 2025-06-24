@@ -5,6 +5,7 @@ import { getOrganisations } from '@/components/utils/api/organisation';
 import { getCourses } from '@/components/utils/api/courses';
 import { getStories } from '@/components/utils/api/story';
 import { getWebinars } from '@/components/utils/api/webinars';
+import HelloBar from '@/components/components/HelloBar';
 
 export const metadata: Metadata = {
   title: 'OdinSchool - Boost Your Career with Industry-Aligned Courses',
@@ -60,6 +61,9 @@ export default async function HomePage() {
   const data = await getStaticData();
 
   return (
+    <>
+          <HelloBar isPrimaryForm={false} />
+
     <main>
       <div className='layout min-h-screen'>
         <Home
@@ -70,5 +74,7 @@ export default async function HomePage() {
         />
       </div>
     </main>
+        </>
+
   );
 }
