@@ -115,7 +115,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
 
      if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
     (data.year === '2025' || data.year === 'After 2025')) {
-    router.push('/data-science-foundation-course');
+    router.push('/data-science-bridge-course');
 } else {
     setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
 }

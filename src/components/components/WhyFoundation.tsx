@@ -22,19 +22,21 @@ const [formOpen, setFormOpen] = useState(false)
       <div className='grid md:grid-cols-12'>
         <div className='md:col-span-12'>
           <div className='pb-20'>
-           <h2 className="text-3xl md:text-5xl font-display leading-tight mb-6">Why <span className='text-primary-600'>Foundational Course</span>?</h2>
+           <h2 className="text-3xl md:text-5xl font-display leading-tight mb-10">Why Take the <span className='text-primary-600'>Bridge Course</span>?</h2>
            
 
            <ul className="text-black  grid md:grid-cols-2 gap-6">
-                       <li className='flex gap-1 mb-4'>
-                        <span className='mr-2'> <CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span>
+                       <li className='flex gap-1'>
+                        <span className='mr-2'> 
+                          <CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' />
+                          </span>
                         <p>
                         <span className='font-semibold'>E-learning Course</span> 
                         <br />This is a self-paced, beginner-level course built to prep you up before you step into the real action.
                         </p>
                         </li>
 
-                        <li className='flex gap-1 mb-4'>
+                        <li className='flex gap-1'>
                         <span className='mr-2'> <CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span>
                         <p>
                         <span className='font-semibold'>Everything You Need to Start Your Data Science Journey</span> 

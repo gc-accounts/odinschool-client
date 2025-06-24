@@ -6,7 +6,7 @@ import WhatsAppChat from '@/components/components/WhatsAppChat';
 
 export default function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideOnPaths = ['/data-science-foundation-course', '/web-development-course'];
+  const hideOnPaths = ['/data-science-bridge-course', '/web-development-course'];
 
   return (
     <>

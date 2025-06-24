@@ -2,19 +2,19 @@ export const DsFoundationCardsData = [
   {
     id: 1,
     icon: '',
-    title: 'Try Before You Dive',
-    description: 'Not sure about tech? This foundation course gives you clarity.'
+    title: 'Test the Waters, the Smart Way',
+    description: 'Not sure about tech? This bridge course gives you clarity.'
   },
   {
     id: 2,
     icon: '',
-    title: 'Power-Up Before the Main Game',
+    title: 'Bridge the gap, and become eligible ',
     description: 'Think of this as your warm-up round. Nail the basics, then slay the Data Science Elite Course.'
   },
   {
     id: 3,
     icon: '',
-    title: '₹2000 Off? Say Less',
+    title: 'Unlock ₹2000 Off for the Elite Course',
     description: 'Complete this and boom — you unlock ₹2K off the Elite program. Worth it.'
   }
 ]

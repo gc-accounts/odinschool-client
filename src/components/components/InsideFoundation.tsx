@@ -37,7 +37,7 @@ const InsideFoundation = ({ sectionClass }: Props) => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display leading-tight text-gray-800">
-            What's Inside the <span className='text-primary-600'>Foundational Course</span>?
+            What’s Inside the <span className='text-primary-600'>Bridge Course</span>?
           </h2>
         </div>
 
@@ -47,15 +47,15 @@ const InsideFoundation = ({ sectionClass }: Props) => {
             <p className='mb-2'>
               This course is your launchpad.
             </p>
-            <p className='mb-2'>You might not master data science overnight — but you can start right.</p>
-            <p>This course is designed to help you grasp the core building blocks so that when it’s time for the Data Science Elite Course, you walk in with clarity and confidence.</p>
+            <p className='mb-2'>You might not master data science overnight — but you’ll start the right way.</p>
+            <p>Grasp the essentials now, so when you hit the Elite Course, you’re already warmed up and way more confident.</p>
 
              <ul className="text-black space-y-2 my-6">
                                    <li className='flex gap-1 mb-4'>
                                     <span className='mr-2'> <CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span>
                                     <p>
                                     <span className='font-semibold'>Python Basics</span> 
-                                    <br />Python is the force behind data, AI, and automation — and it’s in high demand. Whether to clean data, prep it for analysis or run the analytics, Python is your tool and companion.
+                                    <br />From automation to AI — Python does it all. You’ll learn the syntax, logic, and the basics that power data science. Your go-to tool for wrangling data.
                                     </p>
                                     </li>
 
@@ -63,7 +63,7 @@ const InsideFoundation = ({ sectionClass }: Props) => {
                                     <span className='mr-2'> <CiCircleCheck className='md:w-6 md:h-6 w-5 h-5 rounded-full text-white bg-primary-600' /></span>
                                     <p>
                                     <span className='font-semibold'>SQL for Data</span> 
-                                    <br />SQL is the language of databases. It’s how professionals access, shape, and use real data every day — across almost every industry.
+                                    <br />Databases make the world run. SQL lets you talk to them. Learn how to extract, clean, and query real-world data — skills every data pro uses daily.
                                     </p>
                                     </li>
 
