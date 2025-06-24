@@ -39,7 +39,7 @@ const Eligibility = ({ sectionClass }: CardsProps) => {
             <>
               <div className='relative bg-blue-600 p-8 rounded-lg text-white flex items-center justify-center text-center w-60 h-40 shadow-lg flex-shrink-0'> {/* Adjust padding and width/height as needed */}
                 <div>
-                <p className='font-semibold text-md leading-tight mb-2'><div dangerouslySetInnerHTML={{ __html: item.title }} /></p>
+                <p className='font-semibold text-md leading-tight mb-2'><span dangerouslySetInnerHTML={{ __html: item.title }} /></p>
                 <p className='text-sm'>{item.description}</p>
                 </div>
               </div>
