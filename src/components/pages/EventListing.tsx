@@ -129,12 +129,12 @@ const EventListing = () => {
                     key={event.id}
                     className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200"
                   >
-                    <div className="relative w-full h-48">
+                    <div className="relative w-full h-auto">
                       {event.poster_url && event.poster_url[0] && (
                         <img
                           src={`https://strapi.odinschool.com${event.poster_url[0].url}`}
                           alt={event.title}
-                          className="rounded-t-xl w-full h-48 object-cover"
+                          className="rounded-t-xl w-full h-auto object-cover"
                           onError={(e) => {
                             e.currentTarget.src = '/placeholder-event.png';
                           }}

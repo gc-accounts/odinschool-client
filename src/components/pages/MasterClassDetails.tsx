@@ -39,10 +39,10 @@ const MasterClassDetails = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
             <Link
-              href="/events"
+              href="/masterclass"
               className="inline-flex underline items-center mb-4 text-sm font-semibold text-white/60 transition duration-300"
             >
-              <ChevronLeft className="text-sm mr-1" /> Back to Events
+              <ChevronLeft className="text-sm mr-1" /> Back to Masterclasses
             </Link>
             <h1 className="md:text-4xl text-2xl font-bold md:mb-4 mb-2">{event.title}</h1>
           </div>
@@ -55,7 +55,7 @@ const MasterClassDetails = () => {
               <div className="col-span-12 lg:col-span-8">
                 {event.poster_url?.[0]?.url && (
                   <img
-                    className="w-full h-96 rounded-md"
+                    className="w-full h-auto rounded-md"
                     src={`https://strapi.odinschool.com${event.poster_url[0].url}`}
                     alt={event.title}
                   />
@@ -63,7 +63,7 @@ const MasterClassDetails = () => {
                 <p className="text-gray-800 mt-4">{event.description}</p>
               </div>
               <div className="col-span-12 lg:col-span-4">
-                <div className="p-4 rounded-md border border-primary-600 bg-primary-50 sticky top-28">
+                <div className="sticky top-28 border rounded-lg p-6 shadow-sm">
                   <p className="text-gray-500">Instructor: <span className='text-black'>{event.instructor}</span></p>
                   <p className="text-gray-500 mt-2">Date: <span className='text-black'>{event.date}</span></p>
                   <p className="text-gray-500 mt-2">Time: <span className='text-black'>{event.time}</span></p>
