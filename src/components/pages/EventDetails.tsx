@@ -55,7 +55,7 @@ const EventDetails = () => {
               <div className="col-span-12 lg:col-span-8">
                 {event.poster_url?.[0]?.url && (
                   <img
-                    className="w-full h-96 rounded-md"
+                    className="w-full h-auto rounded-md"
                     src={`https://strapi.odinschool.com${event.poster_url[0].url}`}
                     alt={event.title}
                   />
@@ -63,7 +63,7 @@ const EventDetails = () => {
                 <p className="text-gray-800 mt-4">{event.description}</p>
               </div>
               <div className="col-span-12 lg:col-span-4">
-                <div className="p-4 rounded-md border border-primary-600 bg-primary-50 sticky top-28">
+                <div className="sticky top-28 border rounded-lg p-6 shadow-sm">
                   <p className="text-gray-500">Instructor: <span className='text-black'>{event.instructor}</span></p>
                   <p className="text-gray-500 mt-2">Date: <span className='text-black'>{event.date}</span></p>
                   <p className="text-gray-500 mt-2">Time: <span className='text-black'>{event.time}</span></p>

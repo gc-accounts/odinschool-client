@@ -114,7 +114,7 @@ const OdinTalks = () => {
                         <Image
                           src={webinar.image}
                           alt={webinar.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-auto"
                           loading="lazy"
                           width={500}
                           height={500}

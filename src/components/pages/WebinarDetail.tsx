@@ -10,6 +10,8 @@ import { useToast } from '@/components/hooks/use-toast';
 import Markdown from '@/components/components/Markdown';
 import MetaTags from '@/components/components/MetaTags';
 import Image from 'next/image';
+import Navbar from '@/components/components/Navbar';
+import Footer from '@/components/components/Footer';
 
 interface Webinar {
   id: string;
@@ -60,22 +62,28 @@ const WebinarDetail = ({ webinar }: WebinarDetailProps) => {
   const isPast = webinar.status === 'past';
 
   return (
+
+
     <>
       <MetaTags
         title={webinar.title}
         description={webinar.description.substring(0, 160)}
         image={webinar.image}
-        url={`/webinars/${webinar.id}`}
+        url={`/odintalks/${webinar.id}`}
         type="article"
         keywords={webinar.tags}
       />
-      <div className="container mx-auto px-4 py-16">
+
+      <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow pb-16">
+  <div className="container mx-auto px-4 py-16">
         <button
-          onClick={() => router.push('/webinars')}
+          onClick={() => router.push('/odintalks')}
           className="inline-flex items-center text-primary hover:underline mb-8"
         >
           <ChevronLeft size={20} className="mr-1" />
-          Back to Webinars
+          Back to Odintalks
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -231,6 +239,12 @@ const WebinarDetail = ({ webinar }: WebinarDetailProps) => {
           </div>
         </div>
       </div>
+            </main>
+            <Footer />
+            </div>
+
+
+    
     </>
   );
 };
