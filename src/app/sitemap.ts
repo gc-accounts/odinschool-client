@@ -52,6 +52,44 @@ async function fetchBlogs() {
   }
 }
 
+// Fetch Lessons using axios
+  // https://strapi.odinschool.com/api/course-modules?filters[course][$notNull]=true&populate=*
+  async function fetchLessons() {
+  const allLessons: any[] = [];
+  let currentPage = 1;
+  let totalPages = 1; // Initialize to 1 to ensure the loop runs at least once
+  const pageSize = 25; // As observed from your meta.pagination.pageSize
+
+  try {
+    do {
+      const apiUrl = `https://strapi.odinschool.com/api/course-modules?filters[course][$notNull]=true&populate=*&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}`;
+
+      const response = await axios.get(apiUrl, {
+        // If you need authorization, uncomment and provide the token
+        headers: {
+          'Authorization': `Bearer ${BACKEND_TOKEN}`
+        }
+      });
+
+      const lessonsOnPage = response.data?.data || [];
+      allLessons.push(...lessonsOnPage);
+
+      // Update totalPages from the meta object in the response
+      totalPages = response.data?.meta?.pagination?.pageCount || 1;
+      currentPage++;
+
+    } while (currentPage <= totalPages);
+
+    console.log(`Successfully fetched ${allLessons.length} lessons.`);
+    return allLessons;
+  } catch (error) {
+    console.error('Error fetching lessons:', error);
+    return []; // Return an empty array in case of an error
+  }
+}
+
+
+
 // Fetch Courses
 async function fetchCourses() {
   try {
@@ -149,13 +187,21 @@ async function fetchMasterclasses() {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.odinschool.com';
 
-  const [blogs, courses, webinars, events, masterclasses] = await Promise.all([
+  const [blogs, courses, webinars, events, masterclasses, lessons] = await Promise.all([
     fetchBlogs(),
     fetchCourses(),
     fetchWebinars(),
     fetchEvents(),
-    fetchMasterclasses()
+    fetchMasterclasses(),
+    fetchLessons()
   ]);
+
+  const lessonPaths = lessons.map(lesson => ({
+    url: `${baseUrl}/learning-hub/${lesson.course.url_slug}/${lesson.slug}`,
+    lastModified: lesson.updatedAt || lesson.publishedAt || new Date().toISOString(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
 
   const blogPaths = blogs.map(blog => {
     // Modify postUrl: replace the original domain with https://www.odinschool.com/blog/
@@ -239,6 +285,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...eventPaths,
     ...masterclassPaths,
     ...redirectPaths,
+    ...lessonPaths
   ];
 
   console.log('Generated sitemap summary:', {
@@ -249,7 +296,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     eventUrls: eventPaths.length,
     masterclassUrls: masterclassPaths.length,
     redirectUrls: redirectPaths.length,
+    lessonUrls: lessonPaths.length
   });
+
+  
 
   return allPaths;
 }
