@@ -85,7 +85,7 @@ const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
     useEffect(() => {
         const trackingData = getUTMTrackingData();
         setUtmData(trackingData);
-        sessionStorage.setItem('utmTracking', JSON.stringify(trackingData));
+        localStorage.setItem('utmTracking', JSON.stringify(trackingData));
 
     }, []);
 

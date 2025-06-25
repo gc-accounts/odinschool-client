@@ -36,7 +36,7 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
   useEffect(() => {
     const data = getUTMTrackingData();
     setUtm(data);
-    sessionStorage.setItem('utmTracking', JSON.stringify(data));
+    localStorage.setItem('utmTracking', JSON.stringify(data));
   }, []);
 
   const handleFormSubmit = async (data: any, reset: () => void) => {

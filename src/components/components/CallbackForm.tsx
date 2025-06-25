@@ -13,7 +13,7 @@ const CallbackForm = () => {
   useEffect(() => {
     const data = getUTMTrackingData();
     setUtm(data);
-    sessionStorage.setItem('utmTracking', JSON.stringify(data));
+    localStorage.setItem('utmTracking', JSON.stringify(data));
   }, []);
 
   // ✅ Hidden fields for Zoho

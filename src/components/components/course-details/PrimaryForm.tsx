@@ -8,16 +8,14 @@ import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import CoursePrimaryFormFields from '@/components/data/form-fields/CoursePrimaryFormFields';
 import { useRouter } from 'next/navigation';
 import { pushToDataLayer } from '@/lib/gtm';
+
 interface PrimaryFormProps {
   slug: string;
   isModal: Boolean;
   buttonText?: string
   isCoupon?: Boolean;
   sourceDomain?: string;
-
-
 }
-
 
 const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, isCoupon, sourceDomain }) => {
   const { toast } = useToast();
@@ -55,7 +53,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
   useEffect(() => {
     const data = getUTMTrackingData();
     setUtm(data);
-    sessionStorage.setItem('utmTracking', JSON.stringify(data));
+    localStorage.setItem('utmTracking', JSON.stringify(data)); // Changed to localStorage
   }, []);
 
   const handleFormSubmit = async (data: any, reset: () => void) => {
@@ -105,20 +103,20 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
 
       // --- START: Add GTM Data Layer Push Here ---
       pushToDataLayer('form_submission', {
-      eventName: 'form_submission',
-      program_name: getSlug(slug), 
-      user_email: data.email,
+        eventName: 'form_submission',
+        program_name: getSlug(slug), 
+        user_email: data.email,
       });
       // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
 
-     if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
-    (data.year === '2025' || data.year === 'After 2025')) {
-    router.push('/data-science-bridge-course');
-} else {
-    setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
-}
+      if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
+        (data.year === '2025' || data.year === 'After 2025')) {
+        router.push('/data-science-bridge-course');
+      } else {
+        setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+      }
 
     } catch (error: any) {
       console.error(error);
