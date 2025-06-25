@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@/components/components/Button'
 import Modal from '@/components/components/component-template/Modal'
 import PrimaryForm from '@/components/components/course-details/PrimaryForm'
@@ -7,6 +7,7 @@ import DynamicForm from '@/components/components/form/DynamicForm'
 import brochureFormField from '@/components/data/brochureFormField'
 import { useToast } from '@/components/hooks/use-toast';
 import { pushToDataLayer } from '@/lib/gtm'; // <--- IMPORT THE GTM HELPER
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData'
 
 interface BrochureButtonProps {
   slug: string;
@@ -17,9 +18,12 @@ interface BrochureButtonProps {
   primaryFormSourceDomain?: string;
 }
 
+
 const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButtonText, parentClass, primaryFormSourceDomain }: BrochureButtonProps) => {
   const [formOpen, setFormOpen] = useState(false)
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
+  const [utm, setUtm] = React.useState<Record<string, string>>({});
+  
   const { toast } = useToast()
 
   // ✅ Handle Brochure Form Submission
@@ -64,6 +68,20 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       brochureFormData.append('Business Unit', 'Odinschool')
       brochureFormData.append('Source_Domain', 'Brochure Form')
 
+      // utm appending
+      brochureFormData.append('First Page Seen', utm['First Page Seen'] || '');
+      brochureFormData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
+      brochureFormData.append(
+        'Original Traffic Source Drill-Down 1',
+        utm['Original Traffic Source Drill-Down 1'] || ''
+      );
+      brochureFormData.append(
+        'Original Traffic Source Drill-Down 2',
+        utm['Original Traffic Source Drill-Down 2'] || ''
+      );
+      brochureFormData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] || '');
+      brochureFormData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] || '');
+
       const response = await fetch('/api/zoho/brochure', {
         method: 'POST',
         body: brochureFormData
@@ -99,6 +117,14 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       })
     }
   }
+
+  // UTM
+
+ useEffect(() => {
+    const data = getUTMTrackingData();
+    setUtm(data);
+    sessionStorage.setItem('utmTracking', JSON.stringify(data));
+  }, []);
 
   return (
     <div className={parentClass}>

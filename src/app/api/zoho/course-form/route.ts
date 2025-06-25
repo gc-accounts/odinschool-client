@@ -31,7 +31,7 @@ export async function POST(request: Request) {
         Coupon_Code: formData.get('Coupon Code'),
 
 
-        // Using likely API field names - verify in your Zoho CRM
+        // utm tracking details
         first_page_seen1: getField('First Page Seen'),
         Original_Traffic_Source: getField('Original Traffic Source'),
         Original_Traffic_Source_Drill_Down_1: getField('Original Traffic Source Drill-Down 1'),
