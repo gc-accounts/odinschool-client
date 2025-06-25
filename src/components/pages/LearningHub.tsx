@@ -136,17 +136,17 @@ const LearningHub = () => {
 
                     {/* Courses Section */}
                     {learningHub.length > 0 ? (
-                        <section className="py-16 bg-white">
+                        <section className="pb-16 bg-white">
                             <div className="container">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                                     {learningHub.map((course) => (
                                         <Card key={course.documentId} className="overflow-hidden transition-all hover:shadow-lg">
-                                            <div className="aspect-video bg-gray-100 relative">
+                                            <div className="p-10 flex justify-center items-center bg-gray-100 relative">
                                                 {course.image_url_string && (
                                                     <Image
                                                         src={course.image_url_string}
                                                         alt={course.title}
-                                                        className="object-cover w-full h-full"
+                                                        className="w-40 h-auto"
                                                         loading="lazy"
                                                         width={500}
                                                         height={500}

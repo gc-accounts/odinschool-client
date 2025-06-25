@@ -48,7 +48,7 @@ const Resources = () => {
       title: 'Virtual Interview Practice',
       description: 'Practice your interview skills with our AI-powered virtual interviewer and receive instant feedback.',
       icon: <Video className="h-12 w-12 text-primary-600" />,
-      path: '/virtual-interview',
+      path: '/data-science-interview',
       cta: 'Practice Now'
     }
   ];

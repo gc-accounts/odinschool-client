@@ -42,7 +42,8 @@ const Footer = () => {
       links: [
         { name: 'Salary Calculator', href: '/data-science/salary-calculator' },
         { name: 'Resume Builder', href: '/resume-builder' },
-        { name: 'Hire Talent', href: '/hire-talent' },
+        { name: 'Training Solution', href: '/training-solution' },
+        { name: 'Talent Solution', href: '/talent-solution' },
         { name: 'Become a Mentor', href: '/become-a-mentor' },
         { name: 'Referral Program', href: '/referral-program' },
       ],
@@ -54,14 +55,14 @@ const Footer = () => {
         { name: "Blog", href: "/blog" },
         { name: "Free Project", href: "/projects-page" },
         { name: "Fun With Statistics", href: "/fun-with-statistics" },
-        { name: "Data Science Career Guide", href: "/data-science-career-guide" },
+        { name: "Data Science Career Guide", href: "/data-science-guide-pdf" },
       ],
     },
     {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/about-us' },
-        { name: 'News Room', href: '/news' },
+        { name: 'News Room', href: '/news-room' },
         { name: 'Careers', href: '/careers' },
         { name: 'Contact', href: '/contact-us' },
         { name: 'FAQ', href: '/faq' },

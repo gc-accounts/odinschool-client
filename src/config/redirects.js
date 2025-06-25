@@ -190,11 +190,11 @@ const redirects = [
     destination: "/datascience-application",
     permanent: true
   },
-  {
-    source: "/data-science-interview",
-    destination: "/data-science-interview/live",
-    permanent: true
-  },
+  // {
+  //   source: "/data-science-interview",
+  //   destination: "/data-science-interview/live",
+  //   permanent: true
+  // },
   {
     source: "/data-science-interview/start",
     destination: "/data-science-interview",
@@ -835,11 +835,11 @@ const redirects = [
     destination: "/faqs",
     permanent: true
   },
-  {
-    source: "/sitemap",
-    destination: "/m22/sitemap",
-    permanent: true
-  },
+  // {
+  //   source: "/sitemap",
+  //   destination: "/m22/sitemap",
+  //   permanent: true
+  // },
   {
     source: "/sitemap-v3",
     destination: "/sitemap",
@@ -1524,10 +1524,10 @@ const redirects = [
   // { source: "/masterclass/digital-marketing-for-entrepreneurs", destination: "/", permanent: false },
   // { source: "/learning-hub/web-design-using-html5/html5-exploring-features-and-semantic-element", destination: "/", permanent: false },
   { source: "/hello", destination: "/", permanent: false },
-  { source: "/for-corporate", destination: "/hire-talent", permanent: false },
-  { source: "/hire-odin-grads", destination: "/hire-talent", permanent: false },
+  { source: "/for-corporate", destination: "/talent-solution", permanent: false },
+  { source: "/hire-odin-grads", destination: "/talent-solution", permanent: false },
   { source: "/checkout", destination: "/", permanent: false },
-  { source: "/talent-solution", destination: "/hire-talent", permanent: false },
+
 
   // { source: "/learning-hub/data-science-with-python/web-scraping", destination: "/", permanent: false },
   // { source: "/learning-hub/make-money-on-instagram/instagram-posts", destination: "/", permanent: false },
@@ -1539,7 +1539,7 @@ const redirects = [
   // { source: "/learning-hub/ruby/decision-making", destination: "/", permanent: false },
   // { source: "/learning-hub/php/datatypes", destination: "/", permanent: false },
   { source: "/business-analytics/application", destination: "/courses", permanent: false },
-  { source: "/datascience-application", destination: "/data-science-course", permanent: false },
+  { source: "/datascience-application", destination: "/data-science-course", permanent: true },
   { source: "/webinars/img2znztybunhiysutbl191i", destination: "/webinars", permanent: true },
   { source: "/webinars/poufesft2u08c1je4nwm9ykx", destination: "/webinars", permanent: true },
   { source: "/webinars/zw5dc2iwqfm0thouef6ntdpo", destination: "/webinars", permanent: true },
@@ -1547,6 +1547,7 @@ const redirects = [
   // { source: "/masterclass/data-drift-detection-and-model-monitoring", destination: "/", permanent: false },
   { source: "/data-science/career-opportunities", destination: "/careers", permanent: true },
   { source: "/full-stack-java-developer-bootcamp/scholarship/application", destination: "/web-development-course", permanent: true },
+  { source: "/full-stack-java-developer-bootcamp/application", destination: "/web-development-course", permanent: true },
   { source: "/blog/author/alex-carruthers", destination: "/blog", permanent: true },
   { source: "/blog/author/divya-gandotra", destination: "/blog", permanent: true },
   { source: "/scholarships/women-in-tech/application", destination: "/", permanent: true },
@@ -1569,7 +1570,29 @@ const redirects = [
   { source: "/web-development-course/oldpage", destination: "/web-development-course", permanent: false },
   // { source: "/events", destination: "/webinars", permanent: false },
    { source: "/datascience-bootcamp/book-a-demo", destination: "/data-science-course", permanent: false },
-   { source: "/training-solution", destination: "/", permanent: false },
+  //  { source: "/training-solution", destination: "/", permanent: false },
+
+
+
+   { source: "/job-fair/student-details", destination: "/", permanent: true },
+   { source: "/online-mba-course-pune", destination: "/", permanent: true },
+   { source: "/mca-courses", destination: "/courses", permanent: true },
+   { source: "/mba-courses", destination: "/courses", permanent: true },
+   { source: "/online-mba-course-mumbai", destination: "/", permanent: true },
+   {
+    source: "/corporate/blogs/for-corporate/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide",
+    destination: "/blog/the-ultimate-excel-formulas-cheat-sheet-unlocking-the-power-of-data-analysis",
+    permanent: true
+  },
+  { source: "/corporate/blogs", destination: "/blog", permanent: true },
+  { source: "/college/one-on-one-interview-for-high-paying-jobs", destination: "/talent-solution", permanent: true },
+  { source: "/request-thank-you", destination: "/thank-you-2", permanent: true },
+  { source: "/applied-generative-ai-online-course", destination: "/generative-ai-course-iitg", permanent: true },
+  { source: "/sitemap", destination: "/sitemap.xml", permanent: true },
+  { source: "/get-your-free-resource", destination: "/resources", permanent: true },
+  { source: "/career/roadmap-to-success", destination: "/careers", permanent: true },
+
+  
 ]
 
 module.exports = redirects; 

@@ -250,7 +250,7 @@ const resourceLinks = [
   },
   {
     title: "Data Science Career Guide",
-    href: "/data-science-career-guide",
+    href: "/data-science-guide-pdf",
     description: "Complete guide to building a successful data science career.",
   },
   {
@@ -273,7 +273,7 @@ const toolLinks = [
   },
   {
     title: "Virtual Interview",
-    href: "/virtual-interview",
+    href: "/data-science-interview",
     description: "Practice your interview skills with AI-powered feedback.",
   },
 ];
