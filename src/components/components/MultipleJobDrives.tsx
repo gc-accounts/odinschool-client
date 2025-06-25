@@ -91,8 +91,8 @@ const MultipleJobDrives = ({ sectionClass, title, subText, headerColor }: CardsP
                             height={500}
                           />
                         </div>
-                        <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
-                      </div>
+                        <h3 className="font-bold text-md mb-1 text-primary-600">{item.jobDesignation}</h3>
+                      </div>  
 
                       <div className="mb-4 space-y-2 text-sm text-gray-600">
                         <div className="flex items-center">
@@ -111,9 +111,9 @@ const MultipleJobDrives = ({ sectionClass, title, subText, headerColor }: CardsP
 
                       <div className="flex flex-wrap gap-2 mb-4">
                         {item.jobSkills.map((skill: string, idx: number) => (
-                          <Badge key={idx} variant="outline" className="bg-primary-50">
+                          <span key={idx} className="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
                             {skill}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                     </CardContent>

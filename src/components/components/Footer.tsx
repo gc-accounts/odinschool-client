@@ -40,7 +40,7 @@ const Footer = () => {
     {
       title: 'Tools',
       links: [
-        { name: 'Salary Calculator', href: '/salary-calculator' },
+        { name: 'Salary Calculator', href: '/data-science/salary-calculator' },
         { name: 'Resume Builder', href: '/resume-builder' },
         { name: 'Hire Talent', href: '/hire-talent' },
         { name: 'Become a Mentor', href: '/become-a-mentor' },

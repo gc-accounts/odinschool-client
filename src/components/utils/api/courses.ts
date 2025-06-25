@@ -1,7 +1,6 @@
 import axiosApi, { backendUrl } from '../apiCall';
 import courseSchema from './schema/course'; // ✅ must be on top
 
-
 function modifyCourseModules(courseModules: any) {
     return courseModules?.map((module: any) => {
         return {
@@ -34,47 +33,59 @@ export const getCourses = async ({
         page: pageNumber
     };
 
+    const andConditions: any[] = [];
+
+    // Filter for non-learning-hub
+    andConditions.push({
+        or: [
+            { is_learning_hub: { eq: false } },
+            { is_learning_hub: { null: true } }
+        ]
+    });
+
+    // Filter only course listings
+    andConditions.push({ isCourseListing: { eq: true } });
+
+    // Add city filter
     if (city !== "") {
-        filterObj.city = { name: { eq: city } };
+        andConditions.push({ city: { name: { eq: city } } });
     }
 
-    filterObj.or = [
-        { "is_learning_hub": { "eq": false } },
-        { "is_learning_hub": { "null": true } }
-    ]
-
-    if (isFeatured != undefined) {
-        filterObj.is_featured = { eq: isFeatured }
+    // Add featured filter
+    if (isFeatured !== undefined) {
+        andConditions.push({ is_featured: { eq: isFeatured } });
     }
 
+    // Add search filter (overrides other filters using OR)
     if (search !== "") {
         filterObj.or = [
             { title: { containsi: search } },
             { description: { containsi: search } }
         ];
+    } else {
+        filterObj.and = andConditions;
     }
 
+    // Add level filter
     if (level !== "") {
-        filterObj.level = { eq: level };
+        if (!filterObj.and) filterObj.and = [];
+        filterObj.and.push({ level: { eq: level } });
     }
-
-    filterObj.is_learning_hub = { eq: false };
 
     const response = await axiosApi.post('', {
         query: `
-    query Courses($filters: CourseFiltersInput, $pagination: PaginationArg, $sort: [String]) {
-      courses(filters: $filters, pagination: $pagination, sort: $sort) {
-        ${courseSchema}
-      }
-    }
-  `,
+            query Courses($filters: CourseFiltersInput, $pagination: PaginationArg, $sort: [String]) {
+                courses(filters: $filters, pagination: $pagination, sort: $sort) {
+                    ${courseSchema}
+                }
+            }
+        `,
         variables: {
             filters: filterObj,
             pagination: paginationObj,
             sort: ["order:asc"]
         }
     });
-
 
     const data = response.data.data.courses.map((course: any) => ({
         documentId: course.documentId,
@@ -98,22 +109,20 @@ export const getCourses = async ({
     }));
 
     return data;
-}
-
+};
 
 export const getCourse = async (id: string, url_slug: string = "") => {
-
     let courseItem = null;
-    if (url_slug === "") {
 
+    if (url_slug === "") {
         const response = await axiosApi.post('', {
             query: `
-            query Course($documentId: ID!) {
-                course(documentId: $documentId) {
-                    ${courseSchema}
+                query Course($documentId: ID!) {
+                    course(documentId: $documentId) {
+                        ${courseSchema}
+                    }
                 }
-            }
-        `,
+            `,
             variables: {
                 documentId: id
             }
@@ -121,13 +130,19 @@ export const getCourse = async (id: string, url_slug: string = "") => {
         courseItem = response.data?.data?.course;
     } else {
         const filterObj: any = {
-            url_slug: { eq: url_slug }
-        }
+            url_slug: { eq: url_slug },
+            isCourseListing: { eq: true },
+            or: [
+                { is_learning_hub: { eq: false } },
+                { is_learning_hub: { null: true } }
+            ]
+        };
+
         const response = await axiosApi.post('', {
             query: `
                 query Courses($filters: CourseFiltersInput) {
                     courses(filters: $filters) {
-                            ${courseSchema}
+                        ${courseSchema}
                     }
                 }
             `,
@@ -135,9 +150,9 @@ export const getCourse = async (id: string, url_slug: string = "") => {
                 filters: filterObj
             }
         });
+
         courseItem = response.data?.data?.courses[0];
     }
-    console.log(courseItem);
 
     const data = [courseItem].map((course: any) => {
         return {
@@ -172,6 +187,6 @@ export const getCourse = async (id: string, url_slug: string = "") => {
             longDescription: course.longDescription
         }
     });
-    return data;
-}
 
+    return data;
+};

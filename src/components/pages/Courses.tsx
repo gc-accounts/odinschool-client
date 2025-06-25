@@ -34,7 +34,7 @@ const PaginationSkeleton = () => (
   </div>
 );
 
-const COURSES_PER_PAGE = 3;
+const COURSES_PER_PAGE = 8;
 
 const Courses = () => {
   const [searchTerm, setSearchTerm1] = useState('');
@@ -88,17 +88,17 @@ const Courses = () => {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
                 <CourseCardSkeleton key={i} />
               ))}
             </div>
           ) : currentCourses.length > 0 ? (
             <div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <Suspense fallback={
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[1, 2, 3].map((i) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    {[1, 2, 3, 4].map((i) => (
                       <CourseCardSkeleton key={i} />
                     ))}
                   </div>
