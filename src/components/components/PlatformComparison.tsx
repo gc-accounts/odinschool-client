@@ -32,29 +32,29 @@ const PlatformComparison = ({ sectionClass, fontFamily }: PlatformComparison) =>
       name: 'Live Online Classes',
       odinschool: true,
       odinschoolInfo: 'Live online classes led by instructors',
-      others: false,
-      othersInfo: '',
+      others: true,
+      othersInfo: 'Recorded Lectures',
       highlight: true
     },
     {
       name: 'Course Fee',
       odinschool: true,
       odinschoolInfo: 'Very high value for money ',
-      others: false,
+      others: true,
       othersInfo: 'Expensive',
     },
     {
       name: 'Curriculum',
       odinschool: true,
       odinschoolInfo: ' Updated every month as per industry requirements ',
-      others: true,
+      others: false,
       othersInfo: 'Not up-to-date',
     },
      {
       name: 'Job Drives',
       odinschool: true,
       odinschoolInfo: 'Attend at least 3 Job Drives every month',
-      others: false,
+      others: true,
       othersInfo: 'Limited opportunities',
       highlight: true,
     },
@@ -71,21 +71,21 @@ const PlatformComparison = ({ sectionClass, fontFamily }: PlatformComparison) =>
       odinschool: true,
       odinschoolInfo: 'With a dedicated team of experts',
       others: false,
-      othersInfo: '',
+      othersInfo: 'No Expert Team',
     },
     {
       name: 'Career Services',
       odinschool: true,
       odinschoolInfo: 'Extensive services, including resume-building and behavioral skills workshops',
-      others: false,
-      othersInfo: '',
+      others: true,
+      othersInfo: 'Minimal Support',
     },
     {
       name: 'Support',
       odinschool: true,
       odinschoolInfo: 'A dedicated support team',
       others: false,
-      othersInfo: '',
+      othersInfo: 'No Dedicated Team',
       highlight: true
     },
     {
@@ -93,7 +93,7 @@ const PlatformComparison = ({ sectionClass, fontFamily }: PlatformComparison) =>
       odinschool: true,
       odinschoolInfo: 'For higher salaries',
       others: false,
-      othersInfo: '',
+      othersInfo: 'No Focus on Negotiation Skills',
     }
   ];
 
