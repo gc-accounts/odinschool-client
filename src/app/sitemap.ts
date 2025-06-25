@@ -306,6 +306,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 '/blog',
 '/data-science/career-opportunities',
 '/faqs',
+'/investment-banking-course',
+'/data-science-course',
+'/data-science-elite-course',
+'/generative-ai-course-iitg',
+'/generative-ai-bootcamp',
+'/data-science-bridge-course',
 
   
   ].map(path => ({
