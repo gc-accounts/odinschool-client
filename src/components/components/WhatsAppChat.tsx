@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdCall } from "react-icons/md";
 import Link from 'next/link';
-
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 
 const WhatsAppChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +32,16 @@ const WhatsAppChat: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [utm, setUtm] = React.useState<Record<string, string>>({});
+
+
+
+    useEffect(() => {
+      const data = getUTMTrackingData();
+      setUtm(data);
+      sessionStorage.setItem('utmTracking', JSON.stringify(data));
+    }, []);
+
 
   useEffect(() => {
     if (program) {
@@ -77,6 +87,21 @@ const WhatsAppChat: React.FC = () => {
       zohoFormData.append('Year of Graduation', formData.year);
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
+
+      // UTM Tracking details Appending
+      zohoFormData.append('First Page Seen', utm['First Page Seen'] || '');
+      zohoFormData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
+      zohoFormData.append(
+        'Original Traffic Source Drill-Down 1',
+        utm['Original Traffic Source Drill-Down 1'] || ''
+      );
+      zohoFormData.append(
+        'Original Traffic Source Drill-Down 2',
+        utm['Original Traffic Source Drill-Down 2'] || ''
+      );
+      zohoFormData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] || '');
+      zohoFormData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] || '');
+
 
       const response = await fetch('/api/zoho/contact', {
         method: 'POST',
