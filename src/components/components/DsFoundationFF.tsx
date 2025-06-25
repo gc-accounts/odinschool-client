@@ -23,9 +23,9 @@ const DsFoundationFF = ({ sectionClass }: dsEliteProps) => {
           Graduating in 2025 or later? 
         </h2>
         <h2 className="text-3xl md:text-5xl font-display mb-10 " style={{lineHeight: 1.2}}>
-          This is for you if you're aiming for a career in <span className='text-primary-600'>Data Science and Analytics </span>
+          Take the mandatory Bridge Course to be eligible for the <br/><span className='text-primary-600'>Data Science Elite Course</span>
         </h2>
-        <p className="text-md md:leading-2">Complete the Bridge Course and become eligible for the Data Science Elite Course </p>
+        <p className="text-md md:leading-2"> </p>
          {/* <p className="md:text-3xl text-lg font-semibold md:leading-10">Boost your eligibility with our <br /><span className='text-red-600 font-normal line-through'>₹1599</span> <span className='text-green-600'>₹999</span> Foundation Course</p> */}
 
 

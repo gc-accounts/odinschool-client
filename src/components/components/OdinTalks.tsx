@@ -65,26 +65,26 @@ const OdinTalks = ({ sectionClass, odinTalks }: JobsSectionProps) => {
             </div>
           ) : (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {webinars.map((webinar) => (
-              <Link key={webinar.id} href={`/webinars/${webinar.id}`}>
-                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-[4/3] relative">
-                    <Image
-                      src={webinar.image}
-                      alt={webinar.title}
-                      className="w-full h-full object-cover"
-
-                      loading="lazy"
-                      width={500}
-                      height={500}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                      <h3 className="text-xl font-semibold text-white">{webinar.title}</h3>
-                      <p className="text-white/90">{webinar.instructor}</p>
-                      <p className="text-gray-600">{webinar.category}</p>
-                    </div>
-                  </div>
-                </Card>
-              </Link>
+              <Link key={webinar.id} href={`/odintalks/${webinar.url_slug}`} passHref>
+                    <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"> {/* Added cursor-pointer */}
+                      <div className="aspect-[4/3] relative rounded overflow-hidden shadow">
+                        <Image
+                          src={webinar.image}
+                          alt={webinar.title}
+                          className="w-full h-auto"
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-white p-4 flex items-center justify-between">
+                          <div>
+                            <h3 className="font-semibold text-black">{webinar.title}</h3>
+                            <h3 className="text-gray-700">{webinar.instructor}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
             ))}
           </div>)}
         </div>
