@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 interface ReferralData {
     First_Name: string;
+    Last_Name:string;
     Email: string;
     Phone: string;
     Business_Unit: string;
@@ -36,8 +37,8 @@ export async function POST(request: Request) {
 
         const referralData = {
             data: [{
-                First_Name: formData.get('Referral_Name') as string,
-                Last_Name:'testing',
+                First_Name: formData.get('Referral_First_Name') as string,
+                Last_Name:formData.get('Referral_Last_Name') as string,
                 Email: formData.get('Referral_Email') as string,
                 Phone: formData.get('Referral_Phone') as string,
                 Business_Unit: formData.get('Business_Unit') as string,

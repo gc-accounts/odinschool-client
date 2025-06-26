@@ -9,7 +9,7 @@ const ReferrerFormFields: FieldConfig[] = [
     required: true,
     rules: { required: 'Name is required' },
   },
-  {
+ {
     name: 'email',
     label: 'Email',
     type: 'text',
@@ -20,6 +20,8 @@ const ReferrerFormFields: FieldConfig[] = [
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         message: 'Invalid email format',
       },
+      validate: (value: string) => 
+        !value.includes('+') && !value.includes('-') || 'Email cannot contain + or - signs',
     },
   },
   {

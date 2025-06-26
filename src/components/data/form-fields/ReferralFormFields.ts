@@ -3,11 +3,18 @@ import { FieldConfig } from '@/components/components/form/DynamicForm';
 
 const ReferralFormFields: FieldConfig[] = [
   {
-    name: 'name',
-    label: 'Referral Name*',
+    name: 'first_name',
+    label: 'Referral First Name*',
     type: 'text',
     required: true,
-    rules: { required: 'Referral Name is required' },
+    rules: { required: 'Referral First Name is required' },
+  },
+  {
+    name: 'last_name',
+    label: 'Referral Last Name*',
+    type: 'text',
+    required: true,
+    rules: { required: 'Referral Last Name is required' },
   },
   {
     name: 'email',
@@ -20,6 +27,8 @@ const ReferralFormFields: FieldConfig[] = [
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         message: 'Invalid email format',
       },
+      validate: (value: string) => 
+        !value.includes('+') && !value.includes('-') || 'Email cannot contain + or - signs',
     },
   },
   {
