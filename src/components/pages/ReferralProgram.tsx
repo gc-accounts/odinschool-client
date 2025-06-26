@@ -134,7 +134,8 @@ const ReferralProgram = () => {
       formData.append('Business_Unit', 'Odinschool');
       
       // Add referral data
-      formData.append('Referral_Name', data.name);
+      formData.append('Referral_First_Name', data.first_name);
+       formData.append('Referral_Last_Name', data.last_name);
       formData.append('Referral_Email', data.email);
       formData.append('Referral_Phone', data.phone);
       formData.append('Program', data.program);
