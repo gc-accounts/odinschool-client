@@ -9,6 +9,7 @@ import { getCourse } from '@/components/utils/api/courses';
 import Image from 'next/image';
 import { pushToDataLayer } from '@/lib/gtm';
 import { useRouter } from 'next/navigation';
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
@@ -142,12 +143,16 @@ const CourseCheckout = () => {
   const [paymentType, setPaymentType] = useState<'partial' | 'full'>('partial');
   const [couponChecked, setCouponChecked] = useState(false);
   const [showCouponError, setShowCouponError] = useState(false);
+    const [utm, setUtm] = React.useState<Record<string, string>>({});
+  
   const router = useRouter();
 
   const isFoundationCourse = course?.slug === 'data-science-bridge-course';
 
   useEffect(() => {
     window.scrollTo(0, 0);
+        const data = getUTMTrackingData();
+        setUtm(data);
   }, []);
 
   useEffect(() => {
@@ -299,6 +304,22 @@ const CourseCheckout = () => {
       zohoFormData.append('Coupon Code', (couponChecked && paymentType === 'full' && !isFoundationCourse) ? 'EBO2025' : '');
       zohoFormData.append('Ga_client_id', '');
       zohoFormData.append('Business Unit', 'Odinschool');
+
+       // Use the UTM data from state
+      zohoFormData.append('First Page Seen', utm['First Page Seen'] || '');
+      zohoFormData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
+      zohoFormData.append(
+        'Original Traffic Source Drill-Down 1',
+        utm['Original Traffic Source Drill-Down 1'] || ''
+      );
+      zohoFormData.append(
+        'Original Traffic Source Drill-Down 2',
+        utm['Original Traffic Source Drill-Down 2'] || ''
+      );
+      zohoFormData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] || '');
+      zohoFormData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] || '');
+
+
 
       const contactResponse = await fetch('/api/zoho/checkout-form', {
         method: 'POST',
