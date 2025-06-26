@@ -37,6 +37,7 @@ export async function POST(request: Request) {
         const referralData = {
             data: [{
                 First_Name: formData.get('First_Name') as string,
+                Last_Name:'testing',
                 Email: formData.get('Email') as string,
                 Phone: formData.get('Phone') as string,
                 Business_Unit: formData.get('Business_Unit') as string,
