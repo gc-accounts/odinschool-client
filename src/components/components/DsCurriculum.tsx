@@ -30,7 +30,7 @@ const DsCurriculum = ({ sectionClass,sourceDomain, title, description }: Props) 
       <div className="container">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl font-display mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-gray-900">
             {title}
           </h2>
           <p className="text-md text-gray-600">

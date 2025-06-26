@@ -84,7 +84,7 @@ const BecomeAMentor = () => {
       <main className="min-h-screen">
         <div className="pt-16 pb-16 md:pt-20 md:pb-4 bg-gradient-to-b from-primary-100 to-white">
           <div className="container mx-auto px-4">
-            <h1 className="heading-xl font-bold text-center mb-4">Become a Mentor</h1>
+            <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3] text-center mb-4">Become a Mentor</h1>
             <p className="text-xl text-center max-w-2xl mx-auto">
               Share your expertise, inspire the next generation, and grow your professional network
             </p>

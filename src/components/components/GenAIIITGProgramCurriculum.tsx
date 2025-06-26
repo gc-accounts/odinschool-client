@@ -21,7 +21,7 @@ const GenAIIITGProgramCurriculum = ({ sectionClass, slug, data, title, subText }
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'}`}>
       <div className="container">
         <div className='mb-10'>
-        <h2 className="text-3xl md:text-5xl font-display text-center text-white mb-3">
+        <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-center text-white">
           {title}
         </h2>
         <p className='text-md text-center text-white'>{subText}</p>

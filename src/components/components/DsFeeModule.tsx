@@ -84,7 +84,7 @@ const DsFeeModule = ({ sectionClass, sourceDomain }: feeProps) => {
                 <div className="grid grid-cols-12 gap-6 items-center">
                   {/* Left Block */}
                   <div className="col-span-12 md:col-span-4">
-                    <h2 className="text-3xl md:text-5xl font-display leading-tight mb-4">Fee Structure</h2>
+                    <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">Fee Structure</h2>
                     <p className="text-lg font-medium text-gray-700 mb-4">{selected.includes}</p>
                     <hr className="border-gray mb-4" />
 

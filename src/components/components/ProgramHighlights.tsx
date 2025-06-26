@@ -15,7 +15,7 @@ const ProgramHighlights = ({ sectionClass, data, title, subTitle }: ProgramHighl
     <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
       <div className="container mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight text-white">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-white">
             {title ? title : 'Program Highlights'}
           </h2>
           <p className="text-white">
@@ -35,7 +35,7 @@ const ProgramHighlights = ({ sectionClass, data, title, subTitle }: ProgramHighl
                   </div>
                   <div className='md:col-span-10 col-span-12 md:text-start text-center'>
                     <div className='md:ml-3'>
-                      <h2 className='font-semibold md:text-lg text-md mb-1'>{data.title}</h2>
+                      <h3 className='font-semibold md:text-lg text-md mb-1'>{data.title}</h3>
                       <p className='md:text-sm text-xs'>{data.description}</p>
                     </div>
                   </div>

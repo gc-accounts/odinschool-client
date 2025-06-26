@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';

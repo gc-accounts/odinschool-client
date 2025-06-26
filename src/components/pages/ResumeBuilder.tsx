@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { FileText, Download, Save } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
@@ -25,30 +27,30 @@ const options = {
   // resolution: Resolution.HIGH,
   scale: 1.2,
   page: {
-     // margin is in MM, default is Margin.NONE = 0
-     margin: Margin.SMALL,
-     // default is 'A4'
-     format: 'A4',
-     // default is 'portrait'
+    // margin is in MM, default is Margin.NONE = 0
+    margin: Margin.SMALL,
+    // default is 'A4'
+    format: 'A4',
+    // default is 'portrait'
     //  orientation: 'landscape',
   },
   canvas: {
-     // default is 'image/jpeg' for better size performance
-     mimeType: 'image/png',
-     qualityRatio: 1
+    // default is 'image/jpeg' for better size performance
+    mimeType: 'image/png',
+    qualityRatio: 1
   },
   // Customize any value passed to the jsPDF instance and html2canvas
   // function. You probably will not need this and things can break, 
   // so use with caution.
   overrides: {
-     // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
-     pdf: {
-        // compress: true
-     },
-     // see https://html2canvas.hertzen.com/configuration for more options
-     canvas: {
-        useCORS: true
-     }
+    // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
+    pdf: {
+      // compress: true
+    },
+    // see https://html2canvas.hertzen.com/configuration for more options
+    canvas: {
+      useCORS: true
+    }
   },
 };
 
@@ -111,7 +113,7 @@ const ResumeBuilder = () => {
   return (
     <>
 
-      
+
 
       <Navbar />
       <main className="min-h-screen bg-slate-100">

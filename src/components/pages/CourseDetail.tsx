@@ -593,7 +593,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h1 className="text-3xl font-bold text-white sm:text-5xl">{course.title}</h1>
+                <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3] text-white ">{course.title}</h1>
                 <div className="flex items-center space-x-4 mt-4">
                   <Badge variant="secondary" className='text-white bg-green-600 hover:bg-green-600 hover:text-white'>{course.level}</Badge>
 

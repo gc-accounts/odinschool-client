@@ -11,7 +11,7 @@ interface CareerOpportunitiesProps {
 const CareerOpportunities = ({ slug, sectionClass, data }: CareerOpportunitiesProps) => {
   return (
     <section className={`${sectionClass ? sectionClass : 'py-12 px-4 md:px-8'}`}>
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+      <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6 text-center">
         Career Paths <span className="text-primary-600">After This Course</span>
       </h2>
 

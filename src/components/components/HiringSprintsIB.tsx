@@ -95,7 +95,7 @@ const HiringSprintsIB = ({ sectionClass }: CardsProps) => {
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
             Hiring <span className="text-primary-600">Sprints</span>
           </h2>
           <p className="text-gray-600">

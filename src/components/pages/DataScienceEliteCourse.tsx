@@ -128,7 +128,7 @@ const DataScienceEliteCourse = ({ organisations }) => {
           {/* Careers Section */}
           <section className="bg-primary-50 px-0 py-[50px] md:px-0 md:py-[70px]">
             <div className="container mx-auto text-center max-w-4xl mb-10">
-              <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+              <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
                 Careers You'll <span className="text-primary-600">Be Ready For</span>
               </h2>
               {/* <p className="text-gray-600">

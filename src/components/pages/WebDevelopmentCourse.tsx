@@ -73,7 +73,7 @@ const WebDevelopmentCourse = ({slug}:Props) => {
             <span className="text-xs">4.6/5 | 1,539 Reviews</span>
             </Link>
           </div>
-           <h2 className="text-3xl md:text-5xl font-display leading-tight md:my-8 my-4">React Web Development Course</h2>
+           <h2 className="text-3xl md:text-5xl  md:my-8 my-4">React Web Development Course</h2>
 
           {/* Course Description */}
           <p className="text-md text-gray-700 mt-4 max-w-md">
@@ -137,7 +137,7 @@ const WebDevelopmentCourse = ({slug}:Props) => {
 
     <section className="bg-white px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]">
       <div className="container text-center">
-        <h2 className="text-3xl md:text-5xl font-display leading-tight md:my-8 my-4">Course Overview</h2>
+        <h2 className="text-3xl md:text-5xl  md:my-8 my-4">Course Overview</h2>
         <p className="text-md text-gray-700 mt-4">
            This program offers a holistic learning experience, delving into crucial areas such as application programming interfaces (APIs), user experience design, and the creation and deployment of modern web applications. Whether you are embarking on a new career path, transitioning to a different role, or seeking to enhance your existing skill set, our personalized support and abundant resources ensure a rewarding learning journey. Combining theoretical knowledge with hands-on practice, you will develop the ability to craft visually captivating and interactive user interfaces for web applications.
           </p>
@@ -151,7 +151,7 @@ const WebDevelopmentCourse = ({slug}:Props) => {
     <section className="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
       <div className="container text-center">
 
-        <h2 className="text-3xl md:text-5xl font-display leading-tight md:my-8 my-4 text-center">What's in it for you?</h2>
+        <h2 className="text-3xl md:text-5xl  md:my-8 my-4 text-center">What's in it for you?</h2>
         <p className="text-md text-gray-700 mt-4 text-center">
            Embark on a transformative journey in front-end web development with our comprehensive course, designed to empower your career.
           </p>

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,17 +44,17 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  * {
-    @apply border-border;
+  html {
+    @apply scroll-smooth;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans leading-relaxed;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
-  html {
-    @apply scroll-smooth;
+  h1, h2 {
+    @apply font-display;
   }
 }
 
@@ -148,16 +146,13 @@
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
@@ -173,25 +168,20 @@
   opacity: 0;
   transform: translateY(10px);
 }
-
 .page-transition-enter-active {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 300ms, transform 300ms;
 }
-
 .page-transition-exit {
   opacity: 1;
   transform: translateY(0);
 }
-
 .page-transition-exit-active {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 300ms, transform 300ms;
 }
-
-
 
 /* reset-post-content.css */
 .reset-post-content h1 {
@@ -199,65 +189,54 @@
   font-weight: 700;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content h2 {
   font-size: 1.5rem !important;
   font-weight: 600;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content h3 {
   font-size: 1.25rem !important;
   font-weight: 600;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content h4 {
   font-size: 1.125rem !important;
   font-weight: 600;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content h5 {
   font-size: 1rem !important;
   font-weight: 600;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content h6 {
   font-size: 0.875rem !important;
   font-weight: 600;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content p,
 .reset-post-content li,
 .reset-post-content span {
   font-size: 1rem !important;
   line-height: 1.75;
 }
-
 .reset-post-content a {
   font-size: 1rem !important;
   text-decoration: underline;
   color: blue;
 }
-
 .reset-post-content blockquote {
   font-style: italic;
   font-size: 1.125rem !important;
   border-left: 4px solid #ccc;
   padding-left: 1rem;
 }
-
 .reset-post-content strong {
   font-weight: 700;
 }
-
 .reset-post-content em {
   font-style: italic;
 }
-
 .reset-post-content pre,
 .reset-post-content code {
   font-family: monospace;
@@ -266,39 +245,32 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
 }
-
 .reset-post-content ul,
 .reset-post-content ol {
   margin-left: 1.25rem !important;
   list-style: initial;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content table {
   border-collapse: collapse;
   margin-bottom: 1rem !important;
 }
-
 .reset-post-content th,
 .reset-post-content td {
   border: 1px solid #ccc;
   padding: 0.5rem;
   text-align: left;
 }
-
 .reset-post-content .d-flex {
   display: flex;
 }
-
 .reset-post-content .justify-content-between {
   justify-content: space-between;
 }
-
 .reset-post-content .h5p-button {
   display: inline-block;
   margin: 1rem 0;
 }
-
 .reset-post-content .button-h5p {
   display: flex;
   align-items: center;
@@ -309,26 +281,19 @@
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
 .reset-post-content .button-h5p:hover {
   background-color: #0056b3;
 }
-
 .reset-post-content .button-h5p svg {
   margin-right: 0.5rem;
   fill: currentColor;
 }
-
 .reset-post-content .button-h5p span {
   padding-left: 0.5rem;
 }
-
 .reset-post-content .widget-type-cell h2 span {
-
   font-size: 1.8rem !important;
-
 }
-
 .reset-post-content .widget-type-cell h2 {
   margin-top: 2rem;
 }

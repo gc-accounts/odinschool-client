@@ -75,7 +75,7 @@ const DsProjects = ({ sectionClass }: { sectionClass?: string }) => {
     <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}`}>
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight text-white">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-white">
             20+ Hands-on <span className="text-primary-600">Projects</span>
           </h2>
         </div>

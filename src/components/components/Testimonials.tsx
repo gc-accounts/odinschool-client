@@ -88,7 +88,7 @@ subText: String;
       <div className="container mx-auto">
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-10 opacity-0">
 
-           <h2 className="mb-2 text-3xl md:text-5xl font-display leading-tight">
+           <h2 className="mb-2 text-3xl md:text-4xl md:leading-[1.2] leading-[1.3]">
             {title}
           </h2>
 

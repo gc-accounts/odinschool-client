@@ -9,8 +9,14 @@ import { gtmScript, GTM_ID } from '@/lib/gtm';
 import { ProgramProvider } from '@/context/ProgramContext';
 import ClientLayoutWrapper from '@/components/components/ClientLayoutWrapper';
 
-const inter = Inter({ subsets: ['latin'] });
+// Load Inter for all text
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+});
 
+// Load DM Serif Display for headings
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
   weight: ['400'],
@@ -57,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${dmSerifDisplay.variable}`}>
       <head>
         <Script
           id="gtm"
@@ -65,7 +71,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: gtmScript }}
         />
       </head>
-      <body className={`${inter.className}`}>
+      <body className="font-sans">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

@@ -14,7 +14,7 @@ sectionClass: string;
 
          <div className="container">
         <div className="animate-on-scroll ">
-          <h2 className="mb-5 text-3xl md:text-5xl font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
             Data Science Course <span className="text-primary-600">Overview</span>
           </h2>
           <p className="text-md text-gray-600 mb-3">

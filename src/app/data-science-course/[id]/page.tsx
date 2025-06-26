@@ -1,6 +1,6 @@
 // In the `app/data-science-course/[id]/page.tsx` file
 import React from 'react'
-import {notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import DataScienceCourse from '@/components/pages/DataScienceCourse'
 import Head from 'next/head'
 
@@ -109,7 +109,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   // Handle invalid slug
   if (!slug || !metadataMapping[slug]) {
-    notFound() // Trigger Next.js 404 page
+    notFound()
   }
 
   // Using Head for client-side metadata rendering

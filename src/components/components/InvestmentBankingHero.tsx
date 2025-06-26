@@ -13,13 +13,13 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
     <section className={sectionClass}>
       <div className="container mx-auto">
         <div className='w-full'>
-          <h1 className="text-3xl md:text-5xl  font-display leading-normal text-center">
+          <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3] text-center">
             Investment Banking and Finance Operations <br /> Elite Course
             {/* <span className="text-white">Elite Course</span> */}
           </h1>
 
           <div className='flex flex-col items-center w-full gap-4 md:my-6 my-0'>
-            <p className="md:text-2xl text-xl font-medium font-display leading-tight mt-[10px]">Supported by</p>
+            <p className="md:text-2xl text-xl font-medium  mt-[10px]">Supported by</p>
             <div className="flex items-start gap-4">
 
               <div className="h-[60px] w-[80px] md:w-[180px] relative aspect-[13/10]">
@@ -45,7 +45,7 @@ export default function InvestmentBankingHero({ sectionClass }: InvestmentBankin
               </div>
             </div>
 
-             <p className="md:text-2xl text-xl font-medium font-display leading-tight mt-[10px]">And 600+ hiring companies</p>
+             <p className="md:text-2xl text-xl font-medium  mt-[10px]">And 600+ hiring companies</p>
           </div>
          
           <div className='flex justify-center mt-8'>

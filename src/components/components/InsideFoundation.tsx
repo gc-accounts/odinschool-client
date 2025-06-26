@@ -36,7 +36,7 @@ const InsideFoundation = ({ sectionClass }: Props) => {
       <div className="container"> {/* Ensure content is above the pattern */}
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-display leading-tight text-gray-800">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6  text-gray-800">
             What’s Inside the <span className='text-primary-600'>Bridge Course</span>?
           </h2>
         </div>

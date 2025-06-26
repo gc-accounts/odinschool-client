@@ -1,4 +1,6 @@
 
+'use client'
+
 import React, { useEffect } from 'react';
 import { Newspaper, Calendar, User, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';

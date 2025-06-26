@@ -23,8 +23,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['var(--font-dm-serif)', 'Inter', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-dm-serif)', 'var(--font-inter)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'], 'dm-serif': ['var(--font-dm-serif)', 'serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

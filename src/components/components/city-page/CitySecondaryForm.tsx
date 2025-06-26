@@ -14,7 +14,7 @@ const CitySecondaryForm = ({sectionClass, slug}:CitySecondaryFormProps) => {
       <div className="grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-10">
         {/* Left Section - Contact Details */}
         <div className="space-y-6">
-          <h2 className="text-3xl  text-blue-600 font-display leading-tight font-medium" >Contact Details</h2>
+          <h2 className="text-3xl  text-blue-600  font-medium" >Contact Details</h2>
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <MapPinPlusInside className="w-10 h-10"/>

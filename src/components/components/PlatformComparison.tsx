@@ -118,7 +118,7 @@ const PlatformComparison = ({ sectionClass, fontFamily }: PlatformComparison) =>
     <section id="comparison" className={`${sectionClass ? sectionClass : ''}`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll opacity-0">
-          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
+          <h2 className='text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2'>
             Why OdinSchool is your gateway to a <span className="text-primary-600">successful career</span>
           </h2>
 

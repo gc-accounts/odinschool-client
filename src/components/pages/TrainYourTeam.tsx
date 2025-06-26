@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { BookOpen, Users, Briefcase, Award, Calendar, CheckCircle, Clock, Video, Server, Layout } from 'lucide-react';

@@ -72,10 +72,10 @@ const InstructorProfileHome = ({ sectionClass, data, fontFamily }: InstructorPro
     <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
+            <h2 className='text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2'>
             Meet our <span className="text-primary-600">Mentors and Speakers!</span>
           </h2>
-          <p className="body-md text-gray-600 max-w-2xl mx-auto">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
             Get the chance to interact with professionals from top companies, who bring years of real-world experience to the table.
 
           </p>

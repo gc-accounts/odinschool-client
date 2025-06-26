@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Download, Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
@@ -75,7 +77,7 @@ const FreeResources = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        
+
         const filters: Record<string, any> = {};
         if (searchTerm) {
           filters.$or = [
@@ -127,14 +129,14 @@ const FreeResources = () => {
 
   const transformProject = (project: Project) => {
     // Extract file URL from both possible locations in the response
-    const fileUrl = project.file?.url 
+    const fileUrl = project.file?.url
       ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'https://strapi.odinschool.com'}${project.file.url}`
       : project.attributes?.file?.data?.attributes?.url
         ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'https://strapi.odinschool.com'}${project.attributes.file.data.attributes.url}`
         : null;
 
     // Extract file size and format it
-    const fileSize = project.file?.size 
+    const fileSize = project.file?.size
       ? `${(project.file.size / 1024).toFixed(2)} KB`
       : project.attributes?.file?.data?.attributes?.size
         ? `${(project.attributes.file.data.attributes.size / 1024).toFixed(2)} KB`
@@ -149,11 +151,11 @@ const FreeResources = () => {
       tags: (project.tags || project.attributes?.tags || '').split(',').map(tag => tag.trim()) || [],
       downloads: project.downloads || project.attributes?.downloads || 0,
       createdAt: project.publishedAt || project.attributes?.publishedAt || '',
-      poster: isImageUrl(project.poster_url || project.attributes?.poster_url) 
-        ? project.poster_url || project.attributes?.poster_url 
+      poster: isImageUrl(project.poster_url || project.attributes?.poster_url)
+        ? project.poster_url || project.attributes?.poster_url
         : null,
-      video: isVideoUrl(project.video_url || project.attributes?.video_url) 
-        ? project.video_url || project.attributes?.video_url 
+      video: isVideoUrl(project.video_url || project.attributes?.video_url)
+        ? project.video_url || project.attributes?.video_url
         : null,
       downloadUrl: fileUrl,
       fileFormat: getFileFormat(fileUrl),
@@ -209,7 +211,7 @@ const FreeResources = () => {
             </div>
           </div>
         </section>
-        
+
         <section className='px-[20px] pt-[50px] md:px-[30px] md:pt-[70px]'>
           <div className="container">
             {loading ? (
@@ -220,26 +222,26 @@ const FreeResources = () => {
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {data.projects.map(project => (
-                    <ResourceCard 
+                    <ResourceCard
                       key={project.id}
                       resource={transformProject(project)}
                       formatDate={formatDate}
                     />
                   ))}
                 </div>
-                
+
                 {data.pagination.pageCount > 1 && (
                   <div className='mt-12'>
-                    <PaginationComponent 
-                      currentPage={pageNumber} 
-                      setCurrentPage={setPageNumber} 
-                      totalPages={data.pagination.pageCount} 
+                    <PaginationComponent
+                      currentPage={pageNumber}
+                      setCurrentPage={setPageNumber}
+                      totalPages={data.pagination.pageCount}
                     />
                   </div>
                 )}
               </>
             )}
-            
+
             {!loading && data.projects.length === 0 && (
               <div className="text-center py-12">
                 <h3 className="text-2xl font-semibold mb-2">No resources found</h3>

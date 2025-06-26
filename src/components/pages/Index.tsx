@@ -101,7 +101,7 @@ const Index = ({
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gray-50">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+              <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-gray-900">
                 Ready to <span className="text-primary-600">Get Started?</span>
               </h2>
               <p className="text-md text-gray-600 max-w-2xl mx-auto">

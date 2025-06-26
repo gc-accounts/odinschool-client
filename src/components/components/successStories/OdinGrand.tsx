@@ -48,10 +48,11 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
   return (
     <div>
       {/* OdinGrad of the Month */}
-      <div className={sectionClass}>
+      <section className={sectionClass}>
+        <div className="container">
         <div className="grid grid-cols-1 flex-col items-center justify-between gap-8 md:grid-cols-2">
           <div className="col-span-1 flex flex-col justify-start">
-            <h1 className="heading-lg mb-6 font-display leading-tight font-medium">OdinGrad of the Month</h1>
+            <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">OdinGrad of the Month</h2>
             <span className="text-primary-600 text-lg">Priya Pandey</span>
             <span className="text-sm">Data Scientist</span>
 
@@ -89,12 +90,13 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
             />
           </div>
         </div>
-      </div>
+        </div>
+      </section>
 
       {/* Carousel Section */}
       <div className="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
         <div className="flex flex-col items-center">
-          <h1 className="heading-lg mb-6 font-display leading-tight font-medium">
+          <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-4">
             OdinGrads tell their{" "}
             <span className="text-primary-600">Career Success Stories</span>
           </h1>
@@ -142,7 +144,7 @@ const OdinGrad = ({ sectionClass }: OdinGrandProps) => {
       {/* Where are OdinGrads now */}
 <div className="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
   <div className="flex flex-col items-center">
-    <h1 className="heading-lg mb-6 font-display leading-tight font-medium">Where are OdinGrads now?</h1>
+    <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-8">Where are OdinGrads now?</h1>
   </div>
 
   <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

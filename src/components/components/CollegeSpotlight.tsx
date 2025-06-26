@@ -89,7 +89,7 @@ const CollegeSpotlight = () => {
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16 opacity-0">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl  mb-4 text-gray-900">
             Why learn at  <span className="text-primary-600">E&ICT Academy, IIT Guhawati</span>
           </h2>
         </div>

@@ -18,10 +18,10 @@ const Reviews = ({ sectionClass }: ReviewsProps) => {
     <div className="container">
       <div className="mx-auto  flex max-w-3xl flex-col items-center text-center "
       >
-        <h2 className="heading-lg mb-4 font-medium font-display leading-tight">
+        <h2 className="heading-lg mb-4 font-medium ">
           Student reviews and industry recognitions
         </h2>
-        <p className="body-md mx-auto max-w-2xl text-gray-600">
+        <p className="text-md mx-auto max-w-2xl text-gray-600">
           Don’t just take our word for it. Check out our
           reviews and recognitions.
         </p>

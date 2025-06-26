@@ -6,11 +6,11 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Data Science Bridge Course | OdinSchool',
   description:
-    'Industry-backed program with multiple hiring sprints. Learn Data Science through live training, real-world projects, and career support — backed by Swiggy, PhonePe, Nuvoretail, 4Seer Technologies, and VenAnalytics.',
+    '',
   openGraph: {
     title: 'Data Science Bridge Course | OdinSchool',
     description:
-      'Learn Data Science through live training, real-world projects, and career support — backed by Swiggy, PhonePe, Nuvoretail, 4Seer Technologies, and VenAnalytics.',
+      '',
     type: 'website',
     url: 'https://odinschool.com/courses/data-science-elite-course',
     images: [
@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   },
   keywords: [
     'Data Science Bridge Course',
-    'Industry backed',
     'Data Science certification',
     'online course',
     'real-world projects',
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <DataScienceFoundationCourse/>
+    <DataScienceFoundationCourse />
   );
 };
 

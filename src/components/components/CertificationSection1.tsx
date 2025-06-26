@@ -49,7 +49,7 @@ const CertificationSection1 = () => {
           <div className="space-y-6 animate-on-scroll ">
 
 
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl md:text-4xl  mb-6 text-gray-900">
               Secure your career with E&ICT Academy'sCertification Program in <span className="text-primary-600">Data Science & Machine Learning</span>
             </h2>
 

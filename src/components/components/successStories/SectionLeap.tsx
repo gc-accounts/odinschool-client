@@ -18,7 +18,7 @@ const SectionLeap = ({ sectionClass }: SectionLeapProps) => {
                   industry-aligned courses.
                 </span>
               </h2>
-              <p className="body-md mx-auto max-w-2xl text-gray-600">
+              <p className="text-md mx-auto max-w-2xl text-gray-600">
                 Start your journey towards a rewarding
                 career today!
               </p>

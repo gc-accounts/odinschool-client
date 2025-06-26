@@ -53,8 +53,8 @@ async function fetchBlogs() {
 }
 
 // Fetch Lessons using axios
-  // https://strapi.odinschool.com/api/course-modules?filters[course][$notNull]=true&populate=*
-  async function fetchLessons() {
+// https://strapi.odinschool.com/api/course-modules?filters[course][$notNull]=true&populate=*
+async function fetchLessons() {
   const allLessons: any[] = [];
   let currentPage = 1;
   let totalPages = 1; // Initialize to 1 to ensure the loop runs at least once
@@ -270,55 +270,55 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/terms-of-use',
     '/privacy-policy',
     '/learning-hub',
-'/become-a-mentor',
-'/job-fair/student-details',
-'/data-science-guide-pdf',
-'/university-programs',
-'/news-room',
-'/data-science-interview',
-'/events',
-'/resources',
-'/success-stories',
-'/online-mba-course-pune',
-'/full-stack-java-developer-bootcamp/application',
-'/mca-courses',
-'/mba-courses',
-'/courses',
-'/web-development-course',
-'/online-mba-course-mumbai',
-'/corporate/blogs',
-'/careers',
-'/odintalks',
-'/resume-builder',
-'/training-solution',
-'/college/one-on-one-interview-for-high-paying-jobs',
-'/corporate/blogs/for-corporate/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide',
-'/request-thank-you',
-'/datascience-application',
-'/applied-generative-ai-online-course',
-'/datascience-bootcamp/data-science-course',
-'/webinars',
-'/full-stack-java-developer-bootcamp/scholarship/application',
-'/sitemap',
-'/get-your-free-resource',
-'/career/roadmap-to-success',
-'/reviews',
-'/blog',
-'/data-science/career-opportunities',
-'/faqs',
-'/investment-banking-course',
-'/data-science-course',
-'/data-science-course/hyderabad',
-'/data-science-course/pune',
-'/data-science-course/bangalore',
-'/data-science-course/mumbai',
-'/data-science-course/chennai',
-'/data-science-elite-course',
-'/generative-ai-course-iitg',
-'/generative-ai-bootcamp',
-'/data-science-bridge-course',
+    '/become-a-mentor',
+    '/job-fair/student-details',
+    '/data-science-guide-pdf',
+    '/university-programs',
+    '/news-room',
+    '/data-science-interview',
+    '/events',
+    '/resources',
+    '/success-stories',
+    '/online-mba-course-pune',
+    '/full-stack-java-developer-bootcamp/application',
+    '/mca-courses',
+    '/mba-courses',
+    '/courses',
+    '/web-development-course',
+    '/online-mba-course-mumbai',
+    '/corporate/blogs',
+    '/careers',
+    '/odintalks',
+    '/resume-builder',
+    '/training-solution',
+    '/college/one-on-one-interview-for-high-paying-jobs',
+    '/corporate/blogs/for-corporate/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide',
+    '/request-thank-you',
+    '/datascience-application',
+    '/applied-generative-ai-online-course',
+    '/datascience-bootcamp/data-science-course',
+    '/webinars',
+    '/full-stack-java-developer-bootcamp/scholarship/application',
+    '/sitemap',
+    '/get-your-free-resource',
+    '/career/roadmap-to-success',
+    '/reviews',
+    '/blog',
+    '/data-science/career-opportunities',
+    '/faqs',
+    '/investment-banking-course',
+    '/data-science-course',
+    '/data-science-course/hyderabad',
+    '/data-science-course/pune',
+    '/data-science-course/bangalore',
+    '/data-science-course/mumbai',
+    '/data-science-course/chennai',
+    '/data-science-elite-course',
+    '/generative-ai-course-iitg',
+    '/generative-ai-bootcamp',
+    '/data-science-bridge-course',
 
-  
+
   ].map(path => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date().toISOString(),
@@ -348,7 +348,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lessonUrls: lessonPaths.length
   });
 
-  
+
 
   return allPaths;
 }

@@ -12,7 +12,7 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
             Meet the Data Leaders Who Will <span className="text-primary-600">Shape Your Learning</span>
           </h2>
           {/* <p className="text-gray-600">
@@ -30,9 +30,10 @@ const DataLeadersForm = ({ sectionClass }: CardsProps) => {
                     <Image
                       src={leader.image}
                       alt={leader.name}
-                      className='w-full'
-                      width={100}
-                      height={100}
+                       width={300}
+    height={300}
+    className="w-full h-auto object-cover"
+    quality={100}
                     />
                   </div>
                   <div className="bg-primary-800 md:px-4 px-2 md:py-3 py-2 text-white text-center rounded-b-md">

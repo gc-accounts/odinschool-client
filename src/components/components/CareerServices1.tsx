@@ -31,7 +31,7 @@ const CareerServices = ({ slug, sectionClass, fontFamily }: CareerServices1Props
     <section className={`${sectionClass ? sectionClass : 'py-16 bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily ? 'md:text-5xl font-display leading-tight' : 'font-bold md:text-4xl'} ${fontFamily}`}>
+          <h2 className='text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6'>
             <span className="text-primary-600">Career Services</span> Designed for Success
           </h2>
           <p className="text-md text-gray-600 max-w-2xl mx-auto">

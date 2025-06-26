@@ -113,7 +113,7 @@ const FreeCourseDetail = ({
                 <ChevronRight className="h-4 w-4 mx-1 text-gray-400" />
                 <span className="text-gray-600">{course.title}</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-display font-bold mb-3 text-gray-900">
+              <h1 className="text-3xl md:text-4xl  mb-3 text-gray-900">
                 {course.title}
               </h1>
               <p className="text-lg text-gray-600 max-w-3xl">

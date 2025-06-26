@@ -46,7 +46,7 @@ const AboutCity = ({ slug, sectionClass }: AboutCityProps) => {
     <section className={sectionClass}>
       <div className="flex md:flex-row flex-col items-center gap-8">
         <div className="flex-1">
-          <h2 className="text-4xl mb-4 font-display leading-tight font-medium">
+          <h2 className="text-4xl mb-4  font-medium">
             {cityData.heading}
           </h2>
           <p className="mb-6">{cityData.para1}</p>

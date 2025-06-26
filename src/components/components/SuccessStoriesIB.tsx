@@ -98,7 +98,7 @@ const SuccessStoriesIB = ({ sectionClass }: Props) => {
     <section className={`${sectionClass ?? "px-6 py-12 bg-white"}`}>
       <div className="container mx-auto">
         <div className="text-center mb-12 animate-on-scroll ">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl  mb-4 text-gray-900">
             Success <span className="text-primary-600">Stories</span>
           </h2>
           <p className="text-md text-gray-600 max-w-3xl mx-auto">

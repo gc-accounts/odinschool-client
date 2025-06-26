@@ -82,7 +82,7 @@ const Courses = () => {
             <h1 className="heading-lg mb-4">
               Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
             </h1>
-            <p className="body-md text-gray-600 max-w-3xl">
+            <p className="text-md text-gray-600 max-w-3xl">
               Designed to help you crack great jobs in emerging technologies and in-demand areas.
             </p>
           </div>

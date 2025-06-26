@@ -85,7 +85,7 @@ const HiringPartners = () => {
         {/* Right Side: Heading + Thumbnail Nav */}
         <div className="flex flex-col items-center text-center">
           {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-display leading-tight mb-8">
+          <h2 className="text-3xl md:text-4xl  mb-8">
             Here's why companies <br />
             <span className="text-cyan-700">love hiring OdinGrads</span>
           </h2>

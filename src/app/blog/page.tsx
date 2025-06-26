@@ -7,11 +7,11 @@ export async function generateMetadata(
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   return {
-    title: 'Blogs',
-    description: 'Blogs',
+    title: 'Blog | OdinSchool',
+    description: 'A dedicated blog for all career aspirants looking to launch, grow and revamp their careers in Data Science and Generative AI',
     openGraph: {
-      title: 'Blogs',
-      description: 'Blogs',
+      title: 'Blog | OdinSchool',
+      description: 'A dedicated blog for all career aspirants looking to launch, grow and revamp their careers in Data Science and Generative AI',
       type: 'website',
       url: '/blog',
     },

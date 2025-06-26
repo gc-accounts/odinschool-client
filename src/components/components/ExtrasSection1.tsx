@@ -38,10 +38,10 @@ const ExtrasSection1 = () => {
 
 
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-              Everything you need to take your <span className="text-primary-600">career to the next level</span>
+            <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-gray-900">
+              Everything you need to take your <br/><span className="text-primary-600">career to the next level</span>
             </h2>
-            <p className="body-md text-gray-600 max-w-2xl mx-auto">
+            <p className="text-md text-gray-600 max-w-2xl mx-auto">
               There's no time like the present to upskill your career. Start your upskilling journey now to grab the best opportunities in the market.
             </p>
           </div>

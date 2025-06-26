@@ -38,7 +38,7 @@ const WhyJoinIB = ({ sectionClass }: CardsProps) => {
     <section className={`${sectionClass ? sectionClass : 'px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50'} relative`}>
       <div className="container mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-5xl text-white mb-3 font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6 text-white">
             Why Join this <span className="text-white">Program?</span>
           </h2>
           {/* <p className="text-gray-600">
