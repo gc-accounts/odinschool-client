@@ -31,6 +31,7 @@ export interface FieldConfig {
     minLength?: { value: number; message: string };
     maxLength?: { value: number; message: string };
     pattern?: { value: RegExp; message: string };
+    validate?: (value: string) => boolean | string; // Add this line
   };
 }
 

@@ -20,6 +20,8 @@ const ReferralFormFields: FieldConfig[] = [
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         message: 'Invalid email format',
       },
+      validate: (value: string) => 
+        !value.includes('+') && !value.includes('-') || 'Email cannot contain + or - signs',
     },
   },
   {
