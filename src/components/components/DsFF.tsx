@@ -57,6 +57,9 @@ const DsFF = ({ sectionClass, sourceDomain }: dsEliteProps) => {
                   src="https://strapi.odinschool.com/uploads/Group_5394_34e14bafe4.webp"
                   alt="Woman in Business Attire"
                   className="w-40 h-40 object-cover rounded-full mb-6"
+                  loading='eager'
+                  width={100}
+                  height={100}
                 />
                 <h3 className="text-sm md:text-md font-semibold">Upgrade your skill set & unlock new opportunities!</h3>
                 <hr className="border-white border-opacity-30 my-4 w-2/3" />
