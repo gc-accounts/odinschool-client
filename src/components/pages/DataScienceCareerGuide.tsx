@@ -129,7 +129,7 @@ const DataScienceCareerGuide = () => {
                 </div>
               </div>
 
-              <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">{dataScienceCareerGuide?.title}</h1>
+              <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-center">{dataScienceCareerGuide?.title}</h1>
               <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
                 This guide covers everything you need to know to build a successful data science career. This guide is your ultimate resource for navigating the data science landscape with clarity and confidence.
               </p>

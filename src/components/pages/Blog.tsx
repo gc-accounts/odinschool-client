@@ -107,10 +107,10 @@ const BlogPage = () => {
               </div>
             </div>
 
-            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">
+            <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-center">
               Stay current with the latest insights on our Blog!
             </h1>
-            <p className="md:text-lg text-md text-center max-w-2xl mx-auto mb-4">
+            <p className="text-md text-center max-w-2xl mx-auto mb-4">
               Explore insights on Data Science, Generative AI, career growth, and in-demand tech skills — all curated to help you stay ahead.
             </p>
 
@@ -150,19 +150,19 @@ const BlogPage = () => {
             ) : posts.length > 0 ? (
               posts.map(post => (
                 <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="aspect-video overflow-hidden">
+                  <div className="overflow-hidden">
                     <Image
                       src={post.featuredImageUrl || '/fallback.jpg'}
                       alt={post.postTitle || 'Blog Image'}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-auto duration-500"
                       loading="lazy"
                       width={500}
                       height={500}
                     />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.postTitle}</h3>
-                    <p className="text-gray-600 line-clamp-3">{post.metaDescription}</p>
+                    <h3 className="text-md font-semibold mb-2 line-clamp-2">{post.postTitle}</h3>
+                    <p className="text-gray-600 line-clamp-2 text-sm">{post.metaDescription}</p>
                   </CardContent>
                   <CardFooter className="px-6 pb-6 pt-0 flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start w-full gap-4">
                     <div className="w-full flex md:flex-col md:items-start items-center md:justify-center justify-between text-sm text-gray-500">

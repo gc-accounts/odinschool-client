@@ -115,7 +115,7 @@ const HireTalent = () => {
               </div>
             </div>
 
-            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Hire the right talent at zero cost</h1>
+            <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-center">Hire the right talent at zero cost</h1>
             <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
               Break away from the tradition of hunting for degrees. Onboard talents who have the right skill sets!
             </p>
@@ -127,7 +127,7 @@ const HireTalent = () => {
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
             <div>
-              <h2 className="md:text-4xl text-2xl font-bold mb-4">Why should you hire from OdinSchool?</h2>
+              <h2 className="md:text-4xl text-2xl mb-4">Why should you hire from OdinSchool?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex">

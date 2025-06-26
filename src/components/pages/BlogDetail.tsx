@@ -95,12 +95,12 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
         <div className="relative bg-gradient-to-br from-primary-800 to-primary-700 text-white py-20">
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
-              <Button variant="outline" className="mb-6 bg-primary-600 border-white hover:text-white hover:bg-white/10" asChild>
-                <Link href="/blog" className="flex items-center">
+              
+                <Link href="/blog" className="flex items-center font-semibold underline mb-6 text-sm text-white/60">
                   <ChevronLeft className="mr-2 h-4 w-4" />
                   Back to Blog
                 </Link>
-              </Button>
+
               <div className="space-y-4">
                 <div className="flex items-center gap-4 text-sm text-gray-300">
                   <div className="flex items-center">
@@ -112,12 +112,12 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
                     {post.author.name}
                   </div>
                   {post.category && (
-                    <Badge variant="secondary" className="bg-white/10 hover:bg-white/20">
+                    <Badge variant="secondary" className="text-whtie bg-white/10 hover:bg-white/20">
                       {post.category}
                     </Badge>
                   )}
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">{post.title}</h1>
+                <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">{post.title}</h1>
                 {post.tags && post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
@@ -140,7 +140,7 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
                 <Image
                   src={post.coverImage || '/fallback.jpg'}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                   width={1200}
                   height={630}
                   priority
@@ -168,21 +168,21 @@ const BlogDetail = ({ post }: BlogDetailProps) => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedPosts.map(relatedPost => (
                   <Card key={relatedPost.id} className="hover:shadow-md transition-shadow">
-                    <div className="aspect-video w-full overflow-hidden">
+                    <div className="w-full overflow-hidden">
                       <Image
                         src={relatedPost.featuredImageUrl || '/fallback.jpg'}
                         alt={relatedPost.postTitle}
-                        className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                        className="w-full h-auto transition-transform"
                         width={500}
                         height={281}
                         loading="lazy"
                       />
                     </div>
                     <CardHeader className="p-4">
-                      <CardTitle className="text-lg line-clamp-2">{relatedPost.postTitle}</CardTitle>
+                      <CardTitle className="text-md line-clamp-2">{relatedPost.postTitle}</CardTitle>
                     </CardHeader>
                     <CardContent className="p-4 pt-0">
-                      <p className="text-gray-600 line-clamp-2 mb-4">{relatedPost.metaDescription}</p>
+                      <p className="text-gray-600 line-clamp-2 mb-4 text-sm">{relatedPost.metaDescription}</p>
                       <Button asChild>
                         <Link href={`/blog/${relatedPost.postUrl.split('/blog/')[1]}`}>Read Article</Link>
                       </Button>
