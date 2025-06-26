@@ -22,7 +22,7 @@ const [formOpen, setFormOpen] = useState(false)
       <div className='grid md:grid-cols-12'>
         <div className='md:col-span-12'>
           <div className='pb-20'>
-           <h2 className="text-3xl md:text-5xl font-display leading-tight mb-10">Why Take the <span className='text-primary-600'>Bridge Course</span>?</h2>
+           <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6">Why Take the <span className='text-primary-600'>Bridge Course</span>?</h2>
            
 
            <ul className="text-black  grid md:grid-cols-2 gap-6">

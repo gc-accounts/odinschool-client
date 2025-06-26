@@ -1,3 +1,5 @@
+
+'use client'
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -117,7 +119,7 @@ const Careers = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-r from-primary-600 to-primary-700 text-white">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl  mb-6">
                 Careers at OdinSchool
               </h1>
               <p className="text-lg md:text-xl mb-8 text-white/90">
@@ -136,7 +138,7 @@ const Careers = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+              <h2 className="text-3xl md:text-4xl  mb-4 text-gray-900">
                 We live by <span className="text-primary-600">our values</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -194,7 +196,7 @@ const Careers = () => {
         {/* Image Grid Section */}
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-gray-900">
+            <h2 className="text-3xl md:text-4xl  mb-12 text-gray-900">
               Life at <span className="text-primary-600 ">Odinschool</span>
             </h2>
             <div className="grid grid-cols-3 grid-rows-2 gap-6">
@@ -217,7 +219,7 @@ const Careers = () => {
 
         <section className="pt-[50px] md:pt-[70px] bg-gray-50">
           <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-gray-900">
+            <h2 className="text-3xl md:text-4xl  mb-12 text-gray-900">
               We come from  <span className="text-primary-600 ">everywhere</span>
             </h2>
           </div>

@@ -83,7 +83,7 @@ interface Props{
     <section className={`${sectionClass ?? ''}` }>
       <div className="container mx-auto">
 
-          <h2 className="text-3xl md:text-5xl mb-8 font-display leading-tight text-center">
+          <h2 className="text-3xl md:text-5xl mb-8  text-center">
             Hear from your peers who’ve been successfully placed.
           </h2>
 

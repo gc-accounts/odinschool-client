@@ -8,7 +8,7 @@ const ExtrasSection2 = () => {
     <section className="py-16 bg-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl  mb-4 text-gray-900">
             <span className="text-primary-600">What Roles Can A </span> Data Analytics Professional Pursue
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">

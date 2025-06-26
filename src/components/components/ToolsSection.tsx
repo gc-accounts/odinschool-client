@@ -46,7 +46,7 @@ const ToolsSection = ({ sectionClass, fontFamily }: ToolsSectionProps) => {
           <Badge className="bg-primary-100 text-primary-800 hover:bg-primary-200 px-3 py-1 text-sm mb-4">
             Industry Tools
           </Badge>
-          <h2 className={`text-3xl mb-4 text-gray-900 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
+          <h2 className='text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2'>
             Tools You Will <span className="text-primary-600">Master</span>
           </h2>
           <p className="text-md text-gray-600 max-w-3xl mx-auto">

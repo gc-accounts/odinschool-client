@@ -45,8 +45,7 @@ const DsEliteFold = ({ sectionClass, fontFamily }: dsEliteProps) => {
       <div className="max-w-5xl mx-auto px-4">
         <p className="text-lg text-white">After the successful May launch, we’re thrilled to announce the</p>
 
-        <h2 className={`text-3xl md:text-4xl text-primary-600 mt-2 ${fontFamily?'md:text-5xl font-display leading-tight':'font-bold md:text-4xl'} ${fontFamily}`}>
-
+        <h2 className='text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] text-primary-600 mt-2'>
           <span className='text-white'>June 2025</span> Data Science Elite Course
         </h2>
         <p className="text-white font-semibold mt-2">
@@ -77,16 +76,17 @@ const DsEliteFold = ({ sectionClass, fontFamily }: dsEliteProps) => {
         {/* What's special */}
         <div className="mt-12">
           <h3 className="text-2xl font-bold text-white">What’s special?</h3>
-          <div className="flex flex-col md:flex-row justify-center items-start gap-12 mt-6 text-left text-white">
+          
+          <div className="flex flex-col md:flex-row justify-center items-start md:gap-12 gap-6 mt-6 text-left text-white">
             <div className="max-w-sm text-center">
               <p className="text-primary-600 font-semibold text-lg">10+ Hiring sprints</p>
-              <p className="mt-1">
+              <p className="mt-1 md:text-md text-sm">
                 Fast Track your placement journey with more than 10 placement drive opportunities.
               </p>
             </div>
             <div className="max-w-sm text-center">
               <p className="text-primary-600 font-semibold text-lg">Alumni Mentorship</p>
-              <p className="mt-1">
+              <p className="mt-1 md:text-md text-sm">
                 Interact with the alumni, learn the tricks of the trade and craft your own big Success Story.
               </p>
             </div>

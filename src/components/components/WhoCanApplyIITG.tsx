@@ -22,7 +22,7 @@ const [formOpen, setFormOpen] = useState(false)
       <div className='grid md:grid-cols-12 items-end'>
         <div className='md:col-span-6'>
           <div className='pb-20'>
-           <h2 className="text-3xl md:text-5xl font-display leading-tight mb-4">Who can <span className='text-primary-600'>apply</span>?</h2>
+           <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">Who can <span className='text-primary-600'>apply</span>?</h2>
            <p className='text-md'>Join this Certification Program in Applied Generative AI if you fulfill the following pre-requisites:</p>
 
            <ul className="md:text-md text-sm text-black space-y-2 my-6">

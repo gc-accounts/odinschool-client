@@ -68,7 +68,7 @@ const WdProjects = ({ sectionClass }: Props) => {
     <section className={`${sectionClass ?? ''}`}>
       <div className="container mx-auto">
 
-        <h2 className="text-3xl mb-4 md:text-5xl font-display leading-tight text-center">
+        <h2 className="text-3xl mb-4 md:text-5xl  text-center">
          What’s a great curriculum without project-based learning?
         </h2>
         <p className='text-center mb-8'>Engage in 15+ react web developer projects and work with instructors to master the art of project presentation.</p>

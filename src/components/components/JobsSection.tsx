@@ -38,7 +38,7 @@ const JobsSection = ({ sectionClass }: JobsSectionProps) => {
     <section className={`${sectionClass ? sectionClass : 'py-16 md:py-24 bg-white'} relative`}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
             Job Drives<span className="text-blue-600"> Every Month!</span>
           </h2>
           <p className="text-md text-gray-600">

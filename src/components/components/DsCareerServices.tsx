@@ -47,7 +47,7 @@ const [formOpen, setFormOpen] = useState(false)
       <div className='grid md:grid-cols-12 items-center'>
         <div className='md:col-span-6'>
           <div className='md:pb-0 pb-6'>
-           <h2 className="text-3xl md:text-5xl font-display leading-tight mb-4">Career Services in a <span className='text-primary-600'>nutshell</span>?</h2>
+           <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">Career Services in a <span className='text-primary-600'>nutshell</span>?</h2>
            <p className='text-md'>Get ready for your dream job! Attend comprehensive industry readiness training with Career Services. </p>
 
            <ul className="md:text-md text-sm text-black space-y-2 my-6">

@@ -138,7 +138,7 @@ const About = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-b from-primary-100 to-white">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto opacity-0">
-              <h1 className="heading-xl mb-6">
+              <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3] mb-6">
                 Empowering Learners. <span className="text-primary-600">Transforming Careers.</span> Fueling Industry.
               </h1>
             </div>
@@ -154,7 +154,7 @@ const About = () => {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 mb-4">
                     {stat.icon}
                   </div>
-                  <div className="text-lg md:text-xl font-display font-bold text-gray-800 mb-1">
+                  <div className="text-lg md:text-xl font-semibold  text-gray-800 mb-1">
                     {stat.value}
                   </div>
                   {/* <div className="text-sm text-gray-600">
@@ -189,10 +189,10 @@ const About = () => {
               </div>
 
               <div ref={addToRefs} className="opacity-0">
-                <h2 className="heading-lg mb-6">
+                <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6">
                   We are <span className="text-primary-600">OdinSchool</span>
                 </h2>
-                <p className="body-md text-gray-700 mb-4">OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry. </p>
+                <p className="text-md text-gray-700 mb-4">OdinSchool is an upskilling platform that helps people launch, transform, and propel their careers in high-growth domains. We focus on effectively mobilizing skills, resources, and knowledge to produce candidates who can stand out in the hyper-competitive tech sector. We are also committed to becoming a trusted source of skilled talent for the Indian industry. </p>
                 <ul className="space-y-3 mb-6">
                   {['Industry-experienced instructors', 'Project-based curriculum', 'Career Services', 'Placement Assistance'].map((item, index) => (
                     <li key={index} className="flex items-start">
@@ -219,8 +219,8 @@ const About = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
-              <h2 className="heading-lg mb-4">Meet the <span className='text-primary-600'>Team</span></h2>
-              <p className="body-md text-gray-600">
+              <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">Meet the <span className='text-primary-600'>Team</span></h2>
+              <p className="text-md text-gray-600">
                 Our passionate and skilled team drives OdinSchool's mission. With deep industry expertise, they ensure our learners succeed.
               </p>
             </div>
@@ -256,7 +256,7 @@ const About = () => {
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
           <div className="container">
             <div ref={addToRefs} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
-              <h2 className="heading-lg mb-4">
+              <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
                 Who we are
               </h2>
               <p className=" body-md text-gray-600">
@@ -274,7 +274,7 @@ const About = () => {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 text-primary-700 mb-4">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-display font-semibold mb-3">{value.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
                   <p className="text-gray-600">{value.description}</p>
                 </div>
               ))}

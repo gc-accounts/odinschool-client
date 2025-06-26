@@ -87,7 +87,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   if (!blogData) {
     return notFound();
   }
-  
+
   // CORRECTED: The data from Strapi v4 is nested under `attributes`
   const blog = blogData;
 

@@ -41,10 +41,10 @@ const OdinTalks = ({ sectionClass, odinTalks }: JobsSectionProps) => {
     <section className={`${sectionClass ? sectionClass : 'px-[20px] pt-[50px] md:px-[30px] md:pt-[70px] bg-white'}`}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-primary-600">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-primary-600">
             OdinTalks
           </h2>
-          <p className="body-md text-gray-600 max-w-3xl mx-auto">
+          <p className="text-md text-gray-600 max-w-3xl mx-auto">
             Listen to subject matter experts, industry practitioners, and thought leaders talk about the latest trends, technologies, hiring processes, and more in our free OdinTalks sessions.
           </p>
         </div>

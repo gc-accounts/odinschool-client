@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/components/Navbar';
@@ -13,11 +14,11 @@ const Reviews = () => {
     window.scrollTo(0, 0);
   }, []);
   const [activeTab, setActiveTab] = useState("all");
-  
+
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
-    
+
     // Set page title
     document.title = "Student Reviews - OdinSchool";
   }, []);
@@ -135,24 +136,24 @@ const Reviews = () => {
   ];
 
   // Filter reviews based on active tab
-  const filteredReviews = activeTab === "all" 
-    ? reviews 
+  const filteredReviews = activeTab === "all"
+    ? reviews
     : reviews.filter(review => review.source === activeTab);
 
   // Function to render stars based on rating
   const renderStars = (rating: number) => {
     return Array(5).fill(0).map((_, index) => (
-      <Star 
-        key={index} 
-        size={16} 
-        className={index < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"} 
+      <Star
+        key={index}
+        size={16}
+        className={index < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}
       />
     ));
   };
 
   // Function to get source badge color
   const getSourceColor = (source: string) => {
-    switch(source) {
+    switch (source) {
       case 'google': return 'bg-blue-100 text-blue-800';
       case 'facebook': return 'bg-indigo-100 text-indigo-800';
       case 'trustpilot': return 'bg-green-100 text-green-800';
@@ -201,7 +202,7 @@ const Reviews = () => {
                     <TabsTrigger value="coursereport">Course Report</TabsTrigger>
                   </TabsList>
                 </div>
-                
+
                 <TabsContent value="all" className="mt-0">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {filteredReviews.map(review => (
@@ -244,7 +245,7 @@ const Reviews = () => {
                     ))}
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="google" className="mt-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {filteredReviews.map(review => (
@@ -287,7 +288,7 @@ const Reviews = () => {
                     ))}
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="facebook" className="mt-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {filteredReviews.map(review => (
@@ -330,7 +331,7 @@ const Reviews = () => {
                     ))}
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="trustpilot" className="mt-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {filteredReviews.map(review => (
@@ -373,7 +374,7 @@ const Reviews = () => {
                     ))}
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="coursereport" className="mt-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {filteredReviews.map(review => (
@@ -418,7 +419,7 @@ const Reviews = () => {
                 </TabsContent>
               </Tabs>
             </div>
-            
+
           </div>
         </section>
       </main>

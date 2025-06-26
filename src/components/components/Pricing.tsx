@@ -91,7 +91,7 @@ const Pricing = () => {
           <h2 className="heading-lg mb-4">
             Simple, <span className="text-primary-600">Transparent Pricing</span>
           </h2>
-          <p className="body-md text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto mb-8">
             Choose the plan that fits your learning goals and take the next step in your coding journey.
           </p>
           
@@ -147,13 +147,13 @@ const Pricing = () => {
               
               <div className="p-6 md:p-8 flex-grow">
                 <div className="mb-5">
-                  <h3 className="text-xl font-display font-bold mb-2">{tier.title}</h3>
+                  <h3 className="text-xl  mb-2">{tier.title}</h3>
                   <p className="text-gray-600 text-sm">{tier.description}</p>
                 </div>
                 
                 <div className="mb-8">
                   <div className="flex items-baseline">
-                    <span className="text-4xl font-display font-bold">
+                    <span className="text-4xl ">
                       ${period === 'yearly' ? (tier.price * 0.8 * 12).toFixed(0) : tier.price}
                     </span>
                     <span className="text-gray-600 ml-2">

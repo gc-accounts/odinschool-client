@@ -16,7 +16,7 @@ const DsTitleForm = ({ sectionClass , sourceDomain}: CardsProps) => {
           {/* Left: Leaders */}
           <div className="lg:col-span-6">
             <div>
-               <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+               <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
             Take a leap into your dream career with our <span className="text-primary-600">industry-aligned Course</span>
           </h2>
           <p className='text-md'>Start your journey towards a rewarding career today! </p>

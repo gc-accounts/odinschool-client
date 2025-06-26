@@ -42,7 +42,7 @@ const IbProjects = ({ sectionClass }: IbProjectsProps) => {
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight text-gray-900">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-gray-900">
             10+ Hands-on <span className="text-primary-600">Projects</span>
           </h2>
         </div>

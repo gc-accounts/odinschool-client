@@ -38,7 +38,7 @@ const CertificationSection = () => {
               Microsoft Certification
             </Badge>
 
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl md:text-4xl  mb-6 text-gray-900">
               Empower yourself with <span className="text-primary-600">PL-300 Certified</span>
             </h2>
 
@@ -120,7 +120,7 @@ const CertificationSection = () => {
               Microsoft Certification
             </Badge>
 
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl md:text-4xl  mb-6 text-gray-900">
               Empower yourself with <span className="text-primary-600">PL-300 Certified</span>
             </h2>
 

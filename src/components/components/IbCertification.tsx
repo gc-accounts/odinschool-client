@@ -15,7 +15,7 @@ const IbCertification = ({ sectionClass, data }: CertificateProps) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           {/* Left Text Block */}
           <div className="md:col-span-6 col-span-1">
-            <h2 className="text-3xl md:text-5xl font-display leading-tight mb-8 text-gray-900">
+            <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-6 text-gray-900">
               {data.heading}
               {/* {data.heading.split('Data Science')[0]}
               <span className="text-primary-600">Data Science</span>

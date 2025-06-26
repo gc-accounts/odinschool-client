@@ -84,10 +84,10 @@ const FeaturedCourses = ({
     <section ref={sectionRef} className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-primary-50">
       <div className="container">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0">
-          <h2 className="heading-lg mb-4">
-            Explore OdinSchool's <span className="text-primary-600">Diverse Learning Programs</span>
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-4">
+            Explore OdinSchool's <br/><span className="text-primary-600">Diverse Learning Programs</span>
           </h2>
-          <p className="body-md text-gray-600 max-w-2xl mx-auto">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
             Designed to help you crack great jobs in emerging technologies and in-demand areas.
           </p>
         </div>

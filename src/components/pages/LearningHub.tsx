@@ -124,7 +124,7 @@ const LearningHub = () => {
                     <section className="bg-gradient-to-b from-primary-50 to-white py-16 md:py-16">
                         <div className="container">
                             <div className="text-center max-w-3xl mx-auto">
-                                <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 text-gray-900">
+                                <h1 className="text-3xl md:text-5xl  mb-4 text-gray-900">
                                     Learning Hub
                                 </h1>
                                 <p className="text-lg md:text-xl text-gray-600">

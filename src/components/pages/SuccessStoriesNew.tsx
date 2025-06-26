@@ -36,7 +36,7 @@ const SuccessStoriesNew = () => {
         <div className="container mx-auto bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
           <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div className="my-auto">
-              <h1 className="text-5xl mb-6 font-display leading-tight font-medium">
+              <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3]">
                 Celebrating{" "}
                 <span className="text-primary-600">
                   Success  <br />Stories

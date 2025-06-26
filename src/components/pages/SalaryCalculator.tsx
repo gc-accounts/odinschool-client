@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { Calculator } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
@@ -22,7 +24,7 @@ const SalaryCalculator = () => {
   const handleCalculate = (values: SalaryFormValues) => {
     setIsCalculating(true);
     setFormData(values);
-    
+
     // Simulate API call with a timeout
     setTimeout(() => {
       try {
@@ -32,7 +34,7 @@ const SalaryCalculator = () => {
           values.educationLevel,
           values.location
         );
-        
+
         setResult(calculatedResult);
         setShowResults(true);
         toast({
@@ -63,10 +65,10 @@ const SalaryCalculator = () => {
           <div className="container mx-auto px-4">
 
             <div className="flex items-center justify-center md:mb-6 mb-4">
-                          <div className="bg-white/10 rounded-full p-3">
-                            <Calculator className="md:h-8 md:w-8 h-6 w-6" />
-                          </div>
-                        </div>
+              <div className="bg-white/10 rounded-full p-3">
+                <Calculator className="md:h-8 md:w-8 h-6 w-6" />
+              </div>
+            </div>
 
             <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Salary Calculator</h1>
             <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
@@ -76,7 +78,7 @@ const SalaryCalculator = () => {
 
 
         </section>
-        
+
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
             {!showResults ? (
@@ -91,8 +93,8 @@ const SalaryCalculator = () => {
               </>
             ) : (
               formData && result && (
-                <SalaryResult 
-                  formData={formData} 
+                <SalaryResult
+                  formData={formData}
                   result={result}
                   onRecalculate={handleRecalculate}
                 />

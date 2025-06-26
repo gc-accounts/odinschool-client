@@ -54,7 +54,7 @@ export default function DsEliteSuccessStories({ sectionClass }: { sectionClass?:
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl  mb-4 text-gray-900">
             Success <span className="text-primary-600">Stories</span>
           </h2>
           <p className="text-md text-gray-600">Many success stories have emerged from our Hiring Sprints. Here are a few! </p>

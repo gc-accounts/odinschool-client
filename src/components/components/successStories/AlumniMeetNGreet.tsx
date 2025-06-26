@@ -6,9 +6,10 @@ interface AlumniMeetNGreetProps {
 }
 const AlumniMeetNGreet = ({ sectionClass }: AlumniMeetNGreetProps) => {
   return (
-    <div className={sectionClass}>
+    <section className={sectionClass}>
+      <div className="container">
       <div className="w-full text-center">
-        <h1 className="heading-xl mb-6 font-display leading-tight font-medium">
+        <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
           <span className="text-primary-600">
             Alumni Meet & Greet
           </span>{" "}
@@ -37,7 +38,8 @@ const AlumniMeetNGreet = ({ sectionClass }: AlumniMeetNGreetProps) => {
           mentorship, and inspiration!
         </p>
       </div>
-    </div>);
+      </div>
+    </section>);
 }
 
 export default AlumniMeetNGreet;

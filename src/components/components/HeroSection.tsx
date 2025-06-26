@@ -193,13 +193,13 @@ const HeroSection = () => {
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 text-primary-700 mb-6">
                 <span className="text-xs font-medium">Master In-Demand Tech Skills. Get Job-Ready.</span>
               </div>
-              <h1 className="heading-xl text-balance">
+              <h1 className="text-3xl md:text-5xl md:leading-[1.2] leading-[1.3]">
                 <span className='text-nowrap'>Upskill Now!</span><br />
                 <span className="text-primary-600">Accelerate Your Career</span>
               </h1>
             </div>
 
-            <p ref={addToRefs} className="text-gray-600 opacity-0 delay-100 max-w-xl">
+            <p ref={addToRefs} className="text-gray-800 opacity-0 delay-100 max-w-xl">
               Learn job-ready tech skills through expert-led online bootcamps. OdinSchool empowers you to upskill, build projects, and unlock top career opportunities.
             </p>
 

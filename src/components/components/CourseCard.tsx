@@ -101,7 +101,7 @@ const CourseCard = ({
           <span className="text-xs text-gray-500">{category}</span>
         </div>
 
-        <h3 className="text-lg font-display font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+        <h3 className="text-md font-semibold mb-2 group-hover:text-primary-600 transition-colors">
           {title}
         </h3>
 

@@ -69,7 +69,7 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
   return (
     <section className={`${sectionClass ?? 'py-16 md:py-24 bg-white'} relative`}>
       <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl mb-3 font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2">
           Get Mentored by <span className="text-primary-600">the Ones Who Made It</span>
         </h2>
         <p className="text-md text-gray-600"></p>

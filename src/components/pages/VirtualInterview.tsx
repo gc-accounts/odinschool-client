@@ -1,17 +1,19 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
 import { Input } from '@/components/components/ui/input';
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardFooter, 
-  CardHeader, 
-  CardTitle 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
 } from '@/components/components/ui/card';
-import { 
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -35,10 +37,10 @@ const VirtualInterview = () => {
     "How do you stay updated with the latest educational trends and technologies?",
     "Where do you see yourself in 5 years in your career?",
     "Why should we hire you?",
-"Tell me about a time you failed. What did you learn?",
-"What do you know about our company and why do you want to work here?",
-"What are your short-term and long-term career goals?",
-"Have you ever missed a deadline? What did you do?"
+    "Tell me about a time you failed. What did you learn?",
+    "What do you know about our company and why do you want to work here?",
+    "What are your short-term and long-term career goals?",
+    "Have you ever missed a deadline? What did you do?"
 
   ];
 
@@ -261,9 +263,9 @@ const VirtualInterview = () => {
                     </CardContent>
                     <CardFooter>
                       <Link href="https://jobs.odinschool.com/" target="blank">
-                      <Button variant="outline" className="w-full">
-                        View All Open Positions
-                      </Button>
+                        <Button variant="outline" className="w-full">
+                          View All Open Positions
+                        </Button>
                       </Link>
                     </CardFooter>
                   </Card>
