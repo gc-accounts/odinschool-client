@@ -36,14 +36,14 @@ export async function POST(request: Request) {
 
         const referralData = {
             data: [{
-                First_Name: formData.get('First_Name') as string,
+                First_Name: formData.get('Referral_Name') as string,
                 Last_Name:'testing',
-                Email: formData.get('Email') as string,
-                Phone: formData.get('Phone') as string,
+                Email: formData.get('Referral_Email') as string,
+                Phone: formData.get('Referral_Phone') as string,
                 Business_Unit: formData.get('Business_Unit') as string,
-                Referral_Name: formData.get('Referral_Name') as string,
-                Referral_Email: formData.get('Referral_Email') as string,
-                Referral_Phone: formData.get('Referral_Phone') as string,
+                Referral_Name: formData.get('First_Name') as string,
+                Referral_Email: formData.get('Email') as string,
+                Referral_Phone: formData.get('Phone') as string,
                 Program: formData.get('Program') as string,
                 Referral_URL: referralUrl, // Use the validated URL
                 Source_Domain: 'Referral Form'
