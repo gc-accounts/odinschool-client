@@ -59,7 +59,7 @@ interface CardsProps {
                             width={50}
                             height={50}
                           />
-              <h2 className='font-semibold md:text-lg text-md mb-2 mt-4'>{data.title}</h2>
+              <h3 className='font-semibold md:text-lg text-md mb-2 mt-4'>{data.title}</h3>
               <p className='md:text-sm text-xs'>{data.description}</p>
             </div>
           )

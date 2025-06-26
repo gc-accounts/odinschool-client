@@ -98,7 +98,7 @@ const BecomeAMentor = () => {
 
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Why Become a Mentor?</h2>
+            <h2 className="text-3xl  mb-4">Why Become a Mentor?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-10">
               Join our community of industry experts who are passionate about education and making a difference in students' careers.
             </p>
@@ -120,7 +120,7 @@ const BecomeAMentor = () => {
 
 
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
+            <h2 className="text-3xl text-center mb-4">How It Works</h2>
             <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
               Becoming a mentor is a straightforward process. Here's what you can expect:
             </p>
@@ -139,7 +139,7 @@ const BecomeAMentor = () => {
           </div>
 
           <div id="apply" className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-center mb-4">Apply to Become a Mentor</h2>
+            <h2 className="text-2xl text-center mb-4">Apply to Become a Mentor</h2>
             <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
               Fill out the form below to start your application process. Our team will review your submission and get back to you within 5 business days.
             </p>

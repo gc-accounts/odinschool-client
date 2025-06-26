@@ -77,9 +77,9 @@ export default function Mentorship({ sectionClass }: { sectionClass?: string }) 
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Description */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+          <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
             What is <span className="text-primary-600">Mentorship?</span>
-          </h2>
+          </h3>
           <p className="text-gray-700 mb-4">
             Nobody can understand you better than someone who has been in your shoes. Here is an opportunity for you
             to get guided by those who’ve been there, done that.

@@ -70,7 +70,7 @@ const TrainYourTeam = () => {
         <section className="bg-gradient-to-r from-primary-900 to-primary-700 text-white py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-1xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Outcome-driven training solutions that help you develop your most valuable asset - Your People!</h1>
+              <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3]">Outcome-driven training solutions that help you develop your most valuable asset - Your People!</h1>
               <div className="mt-10">
                 <Button size="lg"
                   onClick={() => document.getElementById('train')?.scrollIntoView({ behavior: 'smooth' })}

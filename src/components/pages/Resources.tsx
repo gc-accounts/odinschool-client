@@ -68,7 +68,7 @@ const Resources = () => {
               </div>
             </div>
 
-            <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Resource Suite</h1>
+            <h1 className="text-3xl md:text-4xl md:leading-[1.2] leading-[1.3] mb-2 text-center">Resource Suite</h1>
             <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
               Tools and resources to help you succeed in your tech career
             </p>
