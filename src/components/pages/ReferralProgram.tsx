@@ -1,17 +1,32 @@
+'use client';
 
-import React, { useEffect } from 'react';
-import { Gift, Users, DollarSign, Award, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Gift, Users, DollarSign, Award, Plus } from 'lucide-react';
 import Navbar from '@/components/components/Navbar';
 import Footer from '@/components/components/Footer';
 import { Button } from '@/components/components/ui/button';
 import { Card, CardContent } from '@/components/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/components/ui/avatar';
+import ReferrerFormFields from '@/components/data/form-fields/ReferrerFormFields';
+import ReferralFormFields from '@/components/data/form-fields/ReferralFormFields';
+import DynamicForm from '@/components/components/form/DynamicForm';
+import { useToast } from '@/components/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 const ReferralProgram = () => {
+  const [referrals, setReferrals] = useState([{ id: 1 }]);
+  const [referrerSubmitted, setReferrerSubmitted] = useState(false);
+  const [referrerData, setReferrerData] = useState<any>(null);
+  const { toast } = useToast();
+  const router = useRouter();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const addReferral = () => {
+    setReferrals([...referrals, { id: referrals.length + 1 }]);
+  };
+
   const rewards = [
     {
       title: "Cash Rewards",
@@ -35,43 +50,22 @@ const ReferralProgram = () => {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Emily Johnson",
-      image: "/placeholder.svg",
-      quote: "I shared my referral link with my team at work, and five of them signed up! Not only did I earn rewards, but now we're all learning together, which has created a great collaborative atmosphere.",
-      earned: "$500",
-    },
-    {
-      name: "David Chen",
-      image: "/placeholder.svg",
-      quote: "As a career coach, I recommend OdinSchool to all my clients. The referral program has been a nice bonus on top of seeing my clients succeed with their new skills.",
-      earned: "$1,200",
-    },
-    {
-      name: "Sarah Williams",
-      image: "/placeholder.svg",
-      quote: "I posted my referral link on my blog where I write about career development. It's been great to earn rewards while helping my readers find quality educational resources.",
-      earned: "$750",
-    },
-  ];
-
   const steps = [
     {
       title: "Join the movement",
-      description: "",
+      description: "Sign up for our referral program to get your unique link",
     },
     {
       title: "Share the opportunity",
-      description: "",
+      description: "Share your link with friends via email, social media, or messaging",
     },
     {
       title: "Make an impact",
-      description: "",
+      description: "Your friends enroll in courses using your referral link",
     },
     {
-      title: "Earn ₹2000",
-      description: "",
+      title: "Earn rewards",
+      description: "Get rewarded when your referrals complete their enrollment",
     },
   ];
 
@@ -94,43 +88,109 @@ const ReferralProgram = () => {
     },
   ];
 
+  const getAccessToken = async () => {
+    try {
+      const res = await fetch('/api/auth/referral-form-token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (!res.ok) throw new Error('Failed to get access token');
+      const data = await res.json();
+      return data.access_token;
+    } catch (error) {
+      console.error('Error getting access token:', error);
+      throw error;
+    }
+  };
+
+  const handleReferrerSubmit = async (data: any, reset: () => void) => {
+    try {
+      setReferrerData(data);
+      setReferrerSubmitted(true);
+      toast({
+        title: 'Success!',
+        description: 'Your details have been saved. Now you can add referrals.',
+      });
+    } catch (error: any) {
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+    }
+  };
+
+  const handleReferralSubmit = async (data: any, reset: () => void) => {
+    try {
+      if (!referrerData) {
+        throw new Error('Please complete your details first');
+      }
+
+
+      const token = await getAccessToken();
+      const formData = new FormData();
+      
+      // Add referrer data
+      formData.append('accessToken', token);
+      formData.append('First_Name', referrerData.name);
+      formData.append('Email', referrerData.email);
+      formData.append('Phone', referrerData.phone);
+      formData.append('Business_Unit', 'Odinschool');
+      
+      // Add referral data
+      formData.append('Referral_Name', data.name);
+      formData.append('Referral_Email', data.email);
+      formData.append('Referral_Phone', data.phone);
+      formData.append('Program', data.program);
+      formData.append('Referral_URL', window.location.href);
+
+      const res = await fetch('/api/zoho/referral-form', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Failed to submit referral');
+      }
+
+      toast({
+        title: 'Success!',
+        description: 'Referral submitted successfully. Thank you!',
+      });
+
+      reset();
+    } catch (error: any) {
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+    }
+  };
+
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <div className="py-12 bg-gradient-to-br bg-primary-600 text-white">
-
-          <div className="container mx-auto px-4">
-          
-                      <div className="flex items-center justify-center md:mb-6 mb-4">
-                                    <div className="bg-white/10 rounded-full p-3">
-                                      <Gift className="md:h-8 md:w-8 h-6 w-6" />
-                                    </div>
-                                  </div>
-          
-                      <h1 className="md:text-4xl text-2xl font-bold text-center md:mb-4 mb-2">Referral Program</h1>
-                      <p className="md:text-lg text-md text-center max-w-2xl mx-auto">
-                        It's time to pay it forward. By participating in our Referral program, you have the power to make a difference in the lives of your friends and acquaintances. Help them discover new career opportunities, gain valuable skills, and achieve their career goals. You can also earn rewards along the way and be part of a community that's dedicated to making a positive impact.
-                      </p>
-                    </div>
-
-          
+        {/* Hero Section */}
+        <div className="py-16 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <div className="flex justify-center mb-6">
+              <div className="bg-white/20 rounded-full p-4">
+                <Gift className="h-10 w-10" />
+              </div>
+            </div>
+            <h1 className="text-4xl font-bold mb-4">Referral Program</h1>
+            <p className="text-xl max-w-3xl mx-auto">
+              Share OdinSchool with your network and earn rewards when they enroll in our programs.
+            </p>
+          </div>
         </div>
 
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-              Our referral program is simple: share OdinSchool with friends, and get rewarded when they sign up and enroll in courses.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* How It Works Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {steps.map((step, index) => (
-                <Card key={index} className="relative">
-                  <div className="absolute top-0 left-0 w-10 h-10 bg-primary-600 text-white flex items-center justify-center rounded-tl-lg rounded-br-lg font-bold">
-                    {index + 1}
-                  </div>
-                  <CardContent className="p-6 pt-12">
+                <Card key={index} className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8">
+                    <div className="bg-primary-100 text-primary-600 w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">
+                      {index + 1}
+                    </div>
                     <h3 className="text-xl font-bold mb-2">{step.title}</h3>
                     <p className="text-gray-600">{step.description}</p>
                   </CardContent>
@@ -138,45 +198,117 @@ const ReferralProgram = () => {
               ))}
             </div>
           </div>
+        </section>
 
-          <div className="mb-16">
+        {/* Referral Form Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="p-8">
+                <h2 className="text-3xl font-bold text-center mb-2 text-primary-600">Submit Referrals</h2>
+                <p className="text-center text-gray-600 mb-8">Help your friends discover OdinSchool and earn rewards</p>
+
+                {/* Referrer Details */}
+                <div className="mb-10">
+                  <h3 className="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Your Details</h3>
+                  {!referrerSubmitted ? (
+                    <DynamicForm
+                      fields={ReferrerFormFields}
+                      buttonText="Submit Your Details"
+                      onSubmit={handleReferrerSubmit}
+                    />
+                  ) : (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                      <p className="text-green-700">✓ Your details have been submitted</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Referral Details */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Referral Details</h3>
+                  
+                  {!referrerSubmitted ? (
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
+                      <p className="text-gray-600">Please submit your details above before adding referrals</p>
+                    </div>
+                  ) : (
+                    <>
+                      {referrals.map((referral, index) => (
+                        <div key={referral.id} className="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                          <h4 className="font-medium text-gray-700 mb-4">Referral #{index + 1}</h4>
+                          <DynamicForm
+                            fields={ReferralFormFields}
+                            buttonText="Submit Referral"
+                            onSubmit={handleReferralSubmit}
+                            disabled={!referrerSubmitted}
+                          />
+                          {index > 0 && (
+                            <button
+                              type="button"
+                              className="mt-4 text-sm text-red-600 hover:text-red-800"
+                              onClick={() => setReferrals(referrals.filter((_, i) => i !== index))}
+                            >
+                              Remove this referral
+                            </button>
+                          )}
+                        </div>
+                      ))}
+
+                      <button
+                        type="button"
+                        onClick={addReferral}
+                        className="flex items-center justify-center gap-2 text-primary-600 hover:text-primary-800 font-medium mt-4"
+                      >
+                        <Plus className="h-5 w-5" />
+                        <span>Add Another Referral</span>
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rewards Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-4">Earn Amazing Rewards</h2>
-            <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
-              The more friends you refer, the more rewards you unlock. Choose how you want to be rewarded.
+            <p className="text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12">
+              The more friends you refer, the more rewards you can earn
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {rewards.map((reward, index) => (
-                <Card key={index} className="h-full">
-                  <CardContent className="p-6 text-center">
-                    <div className="bg-primary-50 rounded-full p-4 inline-flex mb-4">
+                <Card key={index} className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8 text-center">
+                    <div className="bg-primary-100 rounded-full p-5 inline-flex mb-6">
                       {reward.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{reward.title}</h3>
+                    <h3 className="text-xl font-bold mb-3">{reward.title}</h3>
                     <p className="text-gray-600">{reward.description}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
-
-
           </div>
+        </section>
 
-
-
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div className="max-w-4xl mx-auto space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-lg font-bold mb-2">{faq.question}</h3>
+                <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-lg font-bold mb-2 text-primary-600">{faq.question}</h3>
                   <p className="text-gray-600">{faq.answer}</p>
                 </div>
               ))}
             </div>
           </div>
-
-        </div>
+        </section>
       </main>
       <Footer />
     </>
