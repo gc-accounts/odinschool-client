@@ -39,7 +39,6 @@ const WhatsAppChat: React.FC = () => {
     useEffect(() => {
       const data = getUTMTrackingData();
       setUtm(data);
-      sessionStorage.setItem('utmTracking', JSON.stringify(data));
     }, []);
 
 

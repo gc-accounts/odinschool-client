@@ -11,16 +11,22 @@ import ReferralFormFields from '@/components/data/form-fields/ReferralFormFields
 import DynamicForm from '@/components/components/form/DynamicForm';
 import { useToast } from '@/components/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 const ReferralProgram = () => {
   const [referrals, setReferrals] = useState([{ id: 1 }]);
   const [referrerSubmitted, setReferrerSubmitted] = useState(false);
   const [referrerData, setReferrerData] = useState<any>(null);
+  const [utm, setUtm] = React.useState<Record<string, string>>({});
+  
   const { toast } = useToast();
   const router = useRouter();
 
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
+     const data = getUTMTrackingData();
+      setUtm(data);
   }, []);
 
   const addReferral = () => {
@@ -140,6 +146,21 @@ const ReferralProgram = () => {
       formData.append('Referral_Phone', data.phone);
       formData.append('Program', data.program);
       formData.append('Referral_URL', window.location.href);
+
+
+       // Use the UTM data from state
+      formData.append('First Page Seen', utm['First Page Seen'] || '');
+      formData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
+      formData.append(
+        'Original Traffic Source Drill-Down 1',
+        utm['Original Traffic Source Drill-Down 1'] || ''
+      );
+      formData.append(
+        'Original Traffic Source Drill-Down 2',
+        utm['Original Traffic Source Drill-Down 2'] || ''
+      );
+      formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] || '');
+      formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] || '');
 
       const res = await fetch('/api/zoho/referral-form', {
         method: 'POST',

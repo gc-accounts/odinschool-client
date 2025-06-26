@@ -123,7 +123,6 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
  useEffect(() => {
     const data = getUTMTrackingData();
     setUtm(data);
-    sessionStorage.setItem('utmTracking', JSON.stringify(data));
   }, []);
 
   return (
