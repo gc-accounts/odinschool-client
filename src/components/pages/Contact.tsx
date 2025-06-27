@@ -6,7 +6,9 @@ import dynamic from 'next/dynamic';
 import { useToast } from '@/components/hooks/use-toast';
 import contactFormFields from '@/components/data/contactFormFields';
 import { submitToZoho } from '@/components/utils/api/submitToZoho';
-
+import { FieldConfig } from '@/components/components/form/DynamicForm';
+import { pushToDataLayer } from '@/lib/gtm';
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
   ssr: true
@@ -28,44 +30,86 @@ const DynamicForm = dynamic(() => import('@/components/components/form/DynamicFo
 
 const Contact = () => {
   const { toast } = useToast();
+    const [utm, setUtm] = React.useState<Record<string, string>>({});
+  
 
-  const hiddenFields = {
-    xnQsjsdp: '0ee5fe53d8fdab0c50e05b6711b8646e52af804ecad070c5c2048cd027b0ef61',
-    xmIwtLD: '43b71e08f2fd49b38ef635e57723ad06c199ca8b29ea5fa48b314181e575842418b919d303f74b11878d665b6cb5c787',
-    actionType: 'Q29udGFjdHM=',
-    returnURL: 'null',
-  };
 
-  const fieldMap = {
-    name: 'First Name',
-    lastName: 'Last Name',
-    email: 'Email',
-    phone: 'Phone',
-    program: 'Program',
-    description: 'Description',
-    ga_client_id: 'ga_client_id',
-    business_unit: 'Business Unit',
-    source_domain: 'Source Domain'
-  };
 
-  const handleFormSubmit = async (data: any, reset: () => void) => {
-    const [firstName, ...rest] = data.name?.split(' ') || [];
-    const lastName = rest.join(' ') || 'NA';
-
-    await submitToZoho({
-      data: { ...data, name: firstName, lastName },
-      fieldMap,
-      hiddenFields,
-      toast,
-      onSuccess: reset,
+  const getAccessToken = async () => {
+    const res = await fetch('/api/auth/contact-form-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
     });
+    if (!res.ok) throw new Error('Failed to get access token');
+    const data = await res.json();
+    return data.access_token;
   };
-
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const data = getUTMTrackingData();
+    setUtm(data);
   }, []);
 
+  const handleFormSubmit = async (data: any, reset: () => void) => {
+    try {
+      const token = await getAccessToken();
+      const formData = new FormData();
+      formData.append('accessToken', token);
+      
+  formData.append('First Name', data.firstName);
+      formData.append('Last Name', data.lastName);
+      formData.append('Email', data.email);
+      formData.append('Phone', data.phone);
+      formData.append('Program', data.program);
+      formData.append('Description',data.description);
+      formData.append('Ga_client_id', '');
+      formData.append('Business Unit', 'Odinschool');
+      formData.append('Source_Domain', 'Contact Us form');
+
+      // UTM Data
+      formData.append('First Page Seen', utm['First Page Seen'] || '');
+      formData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
+      formData.append(
+        'Original Traffic Source Drill-Down 1',
+        utm['Original Traffic Source Drill-Down 1'] || ''
+      );
+      formData.append(
+        'Original Traffic Source Drill-Down 2',
+        utm['Original Traffic Source Drill-Down 2'] || ''
+      );
+      formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] || '');
+      formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] || '');
+
+      const res = await fetch('/api/zoho/contactus-form', {
+        method: 'POST',
+        body: formData,
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Form submission failed');
+      }
+
+      toast({
+        title: 'Success!',
+        description: "Your information has been submitted successfully. We'll contact you soon.",
+      });
+       // --- START: Add GTM Data Layer Push Here ---
+            pushToDataLayer('form_submission', {
+            eventName: 'form_submission',
+            program_name: data.program, 
+            user_email: data.email,
+            });
+            // --- END: Add GTM Data Layer Push Here ---
+      sessionStorage.setItem('submittedEmail', data.email);
+      reset();
+     
+    } catch (error: any) {
+      console.error(error);
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+    }
+  };
+
+  if (!Object.keys(utm).length) return null;
 
 
   return (
@@ -95,12 +139,15 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="bg-white rounded-lg shadow-lg p-8 h-fit">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <DynamicForm
-                fields={contactFormFields}
-                buttonText="Submit"
-                initialValues={{ ga_client_id: '', business_unit: 'OdinSchool', source_domain: 'Odinschool contact-us form' }}
-                onSubmit={(data, reset) => handleFormSubmit(data, reset)}
-              />
+          <DynamicForm
+                  fields={contactFormFields as FieldConfig[]}
+                  buttonText={'Submit'}
+                  initialValues={{
+                    ga_client_id: '',
+                    business_unit: 'Odinschool',
+                  }}
+                  onSubmit={handleFormSubmit}
+                />
 
             </div>
 

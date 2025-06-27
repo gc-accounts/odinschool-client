@@ -1,12 +1,19 @@
 import { FieldConfig } from '@/components/components/form/DynamicForm';
 
 const contactFormFields: FieldConfig[] = [
-  {
-    name: 'name',
-    label: 'Name*',
+   {
+    name: 'firstName',
+    label: 'First Name',
     type: 'text',
     required: true,
-    rules: { required: 'Name is required' },
+    rules: { required: 'First Name is required' },
+  },
+   {
+    name: 'lastName',
+    label: 'Last Name',
+    type: 'text',
+    required: true,
+    rules: { required: 'Last Name is required' },
   },
   {
     name: 'email',
