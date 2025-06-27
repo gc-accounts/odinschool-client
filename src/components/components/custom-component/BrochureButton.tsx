@@ -23,7 +23,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
   const [formOpen, setFormOpen] = useState(false)
   const [brochureFormOpen, setBrochureFormOpen] = useState(false)
   const [utm, setUtm] = React.useState<Record<string, string>>({});
-  
+
   const { toast } = useToast()
 
   // ✅ Handle Brochure Form Submission
@@ -38,7 +38,13 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       brochureFormData.append('First Name', data.firstName)
       brochureFormData.append('Last Name', data.lastName)
       brochureFormData.append('Email', data.email)
-      brochureFormData.append('Phone', data.phone)
+
+      // --- START: MODIFIED PHONE NUMBER LOGIC ---
+      const countryCodePrefix = data.countryCode ? data.countryCode.split(' ')[0] : '';
+      const fullPhoneNumber = countryCodePrefix + data.phone;
+      
+      brochureFormData.append('Phone', fullPhoneNumber);
+      // --- END: MODIFIED PHONE NUMBER LOGIC ---
 
       // Determine program name based on slug (existing logic)
       let programName = '';
@@ -100,7 +106,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
       // --- START: Add GTM Data Layer Push Here ---
       pushToDataLayer('brochure_download_success', {
         eventName: 'brochure_download_modal',
-        program_name: programName, 
+        program_name: programName,
         user_email: data.email,
       });
       // --- END: Add GTM Data Layer Push Here ---
@@ -119,8 +125,7 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
   }
 
   // UTM
-
- useEffect(() => {
+  useEffect(() => {
     const data = getUTMTrackingData();
     setUtm(data);
   }, []);
@@ -149,7 +154,6 @@ const BrochureButton = ({ slug, isPrimaryButton, isBrochureButton, primaryButton
           Download Brochure
         </Button>
       }
-
 
       <Modal
         header_text={'Download Brochure'}

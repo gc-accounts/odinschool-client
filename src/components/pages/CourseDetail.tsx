@@ -282,9 +282,9 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
           slug={'Generative AI Course'}
           data={getCourseData(course.slug).mentors}
         />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'generative-ai-bootcamp'}
           data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
+        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'generative-ai-bootcamp'} />,
         () => <FAQsection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
     ,
@@ -358,7 +358,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} data={getCourseData(course.slug).careerPath} />,
       () => <CareerServices1
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
       />,
       () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
     ],
@@ -383,13 +383,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
         data={getCourseData(course.slug).mentors}
       />,
-      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
+      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
     ],
     "4": [
       () => <WhyLearnAI />,
       () => <WhoCanApply />,
       () => <Testimonials />,
-      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
       () => <CollegeSpotlight />,
       () => <InstructorProfile
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}

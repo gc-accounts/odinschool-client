@@ -2,7 +2,7 @@ import React from "react";
 import RequestCallback from "./custom-component/RequestCallback";
 
 interface CareerOpportunitiesProps {
-  slug: String,
+  slug: string,
   sectionClass?: String,
   data: { id: number, title: String, description: String }[]
 }

@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 
 
 interface CareerServices1Props {
-  slug: String,
+  slug: string,
   sectionClass?: String,
   fontFamily?: String
 }

@@ -5,10 +5,11 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useToast } from '@/components/hooks/use-toast';
 import contactFormFields from '@/components/data/contactFormFields';
-import { submitToZoho } from '@/components/utils/api/submitToZoho';
+import { submitToZoho } from '@/components/utils/api/submitToZoho'; // Note: submitToZoho is imported but not used directly in handleFormSubmit
 import { FieldConfig } from '@/components/components/form/DynamicForm';
 import { pushToDataLayer } from '@/lib/gtm';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+
 const Navbar = dynamic(() => import('@/components/components/Navbar'), {
   loading: () => <div>Loading...</div>,
   ssr: true
@@ -30,10 +31,7 @@ const DynamicForm = dynamic(() => import('@/components/components/form/DynamicFo
 
 const Contact = () => {
   const { toast } = useToast();
-    const [utm, setUtm] = React.useState<Record<string, string>>({});
-  
-
-
+  const [utm, setUtm] = React.useState<Record<string, string>>({});
 
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/contact-form-token', {
@@ -55,13 +53,19 @@ const Contact = () => {
       const token = await getAccessToken();
       const formData = new FormData();
       formData.append('accessToken', token);
-      
-  formData.append('First Name', data.firstName);
+
+      formData.append('First Name', data.firstName);
       formData.append('Last Name', data.lastName);
       formData.append('Email', data.email);
-      formData.append('Phone', data.phone);
+
+      // --- START: Add Country Code to Phone Number ---
+      const countryCodePrefix = data.countryCode ? data.countryCode.split(' ')[0] : '';
+      const fullPhoneNumber = countryCodePrefix + data.phone;
+      formData.append('Phone', fullPhoneNumber);
+      // --- END: Add Country Code to Phone Number ---
+
       formData.append('Program', data.program);
-      formData.append('Description',data.description);
+      formData.append('Description', data.description);
       formData.append('Ga_client_id', '');
       formData.append('Business Unit', 'Odinschool');
       formData.append('Source_Domain', 'Contact Us form');
@@ -93,16 +97,16 @@ const Contact = () => {
         title: 'Success!',
         description: "Your information has been submitted successfully. We'll contact you soon.",
       });
-       // --- START: Add GTM Data Layer Push Here ---
-            pushToDataLayer('form_submission', {
-            eventName: 'form_submission',
-            program_name: data.program, 
-            user_email: data.email,
-            });
-            // --- END: Add GTM Data Layer Push Here ---
+      // --- START: Add GTM Data Layer Push Here ---
+      pushToDataLayer('form_submission', {
+        eventName: 'form_submission',
+        program_name: data.program,
+        user_email: data.email,
+      });
+      // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
-     
+
     } catch (error: any) {
       console.error(error);
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
@@ -131,24 +135,21 @@ const Contact = () => {
               We'd love to hear from you. Get in touch with our team.
             </p>
           </div>
-
-
         </div>
 
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="bg-white rounded-lg shadow-lg p-8 h-fit">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-          <DynamicForm
-                  fields={contactFormFields as FieldConfig[]}
-                  buttonText={'Submit'}
-                  initialValues={{
-                    ga_client_id: '',
-                    business_unit: 'Odinschool',
-                  }}
-                  onSubmit={handleFormSubmit}
-                />
-
+              <DynamicForm
+                fields={contactFormFields as FieldConfig[]}
+                buttonText={'Submit'}
+                initialValues={{
+                  ga_client_id: '',
+                  business_unit: 'Odinschool',
+                }}
+                onSubmit={handleFormSubmit}
+              />
             </div>
 
             <div>

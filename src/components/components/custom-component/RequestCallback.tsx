@@ -7,9 +7,10 @@ import { useToast } from '@/components/hooks/use-toast';
 import { FieldConfig } from '../form/DynamicForm';
 import { useRouter } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 interface RequestCallbackProps {
-    slug: String,
-    buttonText?: String,
+    slug: string,
+    buttonText?: string,
 }
 
 
@@ -177,7 +178,7 @@ const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
             </div>
 
             <Modal header_text={buttonText ? buttonText : 'Enquire Now'} open={formOpen} onOpenChange={setFormOpen}>
-                <DynamicForm
+                {/* <DynamicForm
                     fields={formFields}
                     buttonText={buttonText ? buttonText : 'Request Callback'}
                     initialValues={{
@@ -189,7 +190,13 @@ const RequestCallback = ({ slug, buttonText }: RequestCallbackProps) => {
                         handleFormSubmit(data)
                     }}
 
-                />
+                /> */}
+                 <PrimaryForm
+                    slug={slug}
+                    isModal={true}
+                    buttonText={buttonText ? buttonText : 'Request Callback'}
+
+                              />
             </Modal>
         </>
     )

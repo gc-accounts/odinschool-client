@@ -60,11 +60,16 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
     try {
       const token = await getAccessToken();
       const formData = new FormData();
+
+      // Extract country code (e.g., '+91 (India)' -> '+91')
+      const countryCode = data.countryCode.split(' ')[0];
+      const fullPhoneNumber = countryCode + data.phone; // Concatenate country code and phone number
+
       formData.append('accessToken', token);
       formData.append('First Name', data.firstName);
       formData.append('Last Name', data.lastName);
       formData.append('Email', data.email);
-      formData.append('Phone', data.phone);
+      formData.append('Phone', fullPhoneNumber); // Send the concatenated phone number
       formData.append('Program', getSlug(slug));
       formData.append('Year of Graduation', data.year);
       formData.append('Work Experience Level', data.experience);
@@ -105,39 +110,31 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
       // --- START: Add GTM Data Layer Push Here ---
       pushToDataLayer('form_submission', {
         eventName: 'form_submission',
-        program_name: getSlug(slug), 
+        program_name: getSlug(slug),
         user_email: data.email,
       });
       // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
 
-      // if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
-      //    (data.year === '2025' || data.year === 'After 2025')) {
-      //   router.push('/data-science-bridge-course');
-      // } else {
-      //   setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
-      // }
-
-
       if ((slug === 'data-science-course' || slug === 'data-science-elite-course') &&
-    (data.year === '2025' || data.year === 'After 2025')) {
-  // If isCustomRedirect exists and has a value, use it for redirection
-  if (isCustomRedirect) {
-    router.push(isCustomRedirect);
-  } else {
-    // Otherwise, use the default redirection for these slugs
-    router.push('/data-science-bridge-course');
-  }
-} else {
-  // For all other cases, check for isCustomRedirect first
-  if (isCustomRedirect) {
-    setTimeout(() => router.push(isCustomRedirect), 1000);
-  } else {
-    // If no custom redirect, use the default thank-you page
-    setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
-  }
-}
+        (data.year === '2025' || data.year === 'After 2025')) {
+        // If isCustomRedirect exists and has a value, use it for redirection
+        if (isCustomRedirect) {
+          router.push(isCustomRedirect);
+        } else {
+          // Otherwise, use the default redirection for these slugs
+          router.push('/data-science-bridge-course');
+        }
+      } else {
+        // For all other cases, check for isCustomRedirect first
+        if (isCustomRedirect) {
+          setTimeout(() => router.push(isCustomRedirect), 1000);
+        } else {
+          // If no custom redirect, use the default thank-you page
+          setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+        }
+      }
 
     } catch (error: any) {
       console.error(error);
