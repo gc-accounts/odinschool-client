@@ -65,7 +65,7 @@ const Footer = () => {
         { name: 'News Room', href: '/news-room' },
         { name: 'Careers', href: '/careers' },
         { name: 'Contact', href: '/contact-us' },
-        { name: 'FAQ', href: '/faq' },
+        { name: 'FAQ', href: '/faqs' },
       ],
     },
     {

@@ -1,166 +1,228 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Navbar from '@/components/components/Navbar';
-import Footer from '@/components/components/Footer';
-import { Button } from '@/components/components/ui/button';
-import { Card, CardContent } from '@/components/components/ui/card';
-import { BarChart, BarChartHorizontal, Download } from 'lucide-react';
-import { getDsBook } from '@/components/utils/api/dsBook';
+import dynamic from 'next/dynamic';
 import { useParams, useRouter } from 'next/navigation';
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
-import Image from 'next/image';
+
+// Importing UI components
+import { Card, CardContent } from '@/components/components/ui/card';
+import { Tabs, TabsList, TabsTrigger } from "@/components/components/ui/tabs";
+import { Skeleton } from "@/components/components/ui/skeleton";
+
+// Import Accordion components for mobile view
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/components/ui/accordion"; // Ensure this import path is correct for your shadcn setup
+
+// Importing API utility
+import { getDsBook } from '@/components/utils/api/dsBook'; // Ensure this path is correct
+
+// Dynamic imports for Navbar and Footer with skeletons for better perceived performance
+const Navbar = dynamic(() => import('@/components/components/Navbar'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+  ssr: false
+});
+const Footer = dynamic(() => import('@/components/components/Footer'), {
+  loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
+  ssr: false
+});
 
 const FunWithStatistics = () => {
   const [dsBook, setDsBook] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingDsBook, setIsLoadingDsBook] = useState(true);
   const [currentChapter, setCurrentChapter] = useState<any>(null);
+  const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
+  
+  const [accordionOpenItem, setAccordionOpenItem] = useState<string>(''); 
 
   const params = useParams();
   const router = useRouter();
   const currentChapterId = params?.id as string;
-  console.log("currentChapterId", currentChapterId, params);
 
+  // Effect to fetch the entire book
   useEffect(() => {
-    const fetchDsBook = async () => {
-      setIsLoading(true);
-      const data = await getDsBook();
-      setDsBook(data);
-      setIsLoading(false);
-    }
-    fetchDsBook();
-  }, [])
-
-  useEffect(() => {
-    if (dsBook) {
-      console.log("chapter updated", currentChapterId);
-      const chapter = dsBook.chapers.find((chapter: any) => chapter.url_slug.split('/')[1] === currentChapterId);
-      setCurrentChapter(chapter);
-    }
-  }, [dsBook, currentChapterId]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    const fetchDsBookData = async () => {
+      setIsLoadingDsBook(true);
+      try {
+        const data = await getDsBook();
+        setDsBook(data);
+      } catch (error) {
+        console.error("Failed to fetch DS Book data:", error);
+      } finally {
+        setIsLoadingDsBook(false);
+        setIsInitialLoadComplete(true);
+      }
+    };
+    fetchDsBookData();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // Effect to determine and set the current chapter
+  useEffect(() => {
+    if (dsBook && isInitialLoadComplete) {
+      let chapterToSet = null;
+
+      if (currentChapterId) {
+        chapterToSet = dsBook.chapers.find((chapter: any) =>
+          chapter.url_slug.split('/')[1] === currentChapterId
+        );
+      } else if (dsBook.chapers.length > 0) {
+        const firstChapter = dsBook.chapers[0];
+        if (window.location.pathname !== `/fun-with-statistics/${firstChapter.url_slug}`) {
+            router.replace(`/fun-with-statistics/${firstChapter.url_slug}`);
+        }
+        chapterToSet = firstChapter;
+      }
+      setCurrentChapter(chapterToSet);
+
+      if (chapterToSet) {
+        setAccordionOpenItem('chapters-list'); // Keep the main accordion item open on chapter change
+      }
+    }
+  }, [dsBook, currentChapterId, isInitialLoadComplete, router]);
+
+  // Effect to scroll to the top of the page
+  useEffect(() => {
+    if (currentChapter) {
+      window.scrollTo(0, 0);
+    }
+  }, [currentChapter]);
+
+  // Derive the active chapter title for the accordion trigger
+  const activeChapterTitle = currentChapter?.title || "Chapters";
+
+  // Skeletons remain the same
+  const SidebarSkeleton = () => (
+    <div className="md:sticky md:top-24 overflow-y-auto overflow-x-hidden h-auto md:h-[calc(100vh-200px)] mb-4 md:mb-10 mt-2 bg-white p-4 rounded-md border">
+      <Skeleton className="h-8 w-3/4 mb-4" />
+      <Skeleton className="h-8 w-full mb-2" />
+      <Skeleton className="h-8 w-[90%] mb-2" />
+      <Skeleton className="h-8 w-[80%] mb-2" />
+      <Skeleton className="h-8 w-[85%] mb-2" />
+      <Skeleton className="h-8 w-[70%] mb-2" />
+      <Skeleton className="h-8 w-full mb-2" />
+      <Skeleton className="h-8 w-[95%] mb-2" />
+      <Skeleton className="h-8 w-3/4 mb-2" />
+    </div>
+  );
+
+  const ContentSkeleton = () => (
+    <Card className='p-5'>
+      <CardContent>
+        <Skeleton className="h-10 w-3/4 mb-6" />
+        <Skeleton className="h-4 w-full mb-2" />
+        <Skeleton className="h-4 w-[95%] mb-2" />
+        <Skeleton className="h-4 w-[90%] mb-2" />
+        <Skeleton className="h-4 w-full mb-2" />
+        <Skeleton className="h-4 w-[80%] mb-2" />
+        <Skeleton className="h-4 w-[98%] mb-2" />
+        <Skeleton className="h-4 w-full mb-2" />
+      </CardContent>
+    </Card>
+  );
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
-      <br />
-      <div className="grid"
-        style={{
-          gridTemplateColumns: '250px 1fr'
-        }}
-      >
-        <div className="sticky top-24 overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)] mb-10 mt-2 bg-white">
-          <NavigationMenuPrimitive.Root orientation='vertical'
-            className='relative z-10 flex max-h-max flex-1 items-center justify-left'
-            value={currentChapterId}
-          >
-            <NavigationMenuPrimitive.List className='mb-10 w-full'>
-              {dsBook?.chapers.map((chapter: any) => (
-                <NavigationMenuPrimitive.Item key={chapter.id} value={chapter?.url_slug?.split('/')[1]}>
-                  <NavigationMenuPrimitive.Trigger
-                    onClick={() => {
-                      router.push(`/${chapter.url_slug}`);
-                    }}
-                    style={{
-                      backgroundColor: chapter?.url_slug?.split('/')[1] === currentChapterId ? '#4D8EF6' : 'transparent'
-                    }}
-                    className='group inline-flex h-10 w-full max-w-[240px] items-left justify-left rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
-                  >
-                    <span className='text-left max-w-[220px] truncate'>{chapter.title}</span>
-                  </NavigationMenuPrimitive.Trigger>
-                  {chapter.children && chapter.children.length > 0 && (
-                    <NavigationMenuPrimitive.Content>
-                      <NavigationMenuPrimitive.List className='ml-4 '>
-                        {chapter.children.map((child: any) => (
-                          <NavigationMenuPrimitive.Item key={child.id} value={child.url_slug} className='bg-red'>
-                            <NavigationMenuPrimitive.Trigger
-                              onClick={() => {
-                                router.push(`/${child.url_slug}`);
-                              }}
-                              style={{
-                                backgroundColor: '#A6C8FF',
-                                margin: '5px 0 0 0'
-                              }}
-                              className='group inline-flex h-8 w-full max-w-[220px] items-left justify-left rounded-md bg-background px-3 py-1 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50'
-                            >
-                              <span className='text-left max-w-[200px] truncate'>{child.title}</span>
-                            </NavigationMenuPrimitive.Trigger>
-                          </NavigationMenuPrimitive.Item>
-                        ))}
-                      </NavigationMenuPrimitive.List>
-                    </NavigationMenuPrimitive.Content>
-                  )}
-                </NavigationMenuPrimitive.Item>
-              ))}
-            </NavigationMenuPrimitive.List>
-          </NavigationMenuPrimitive.Root>
-        </div>
-        <div className="p-2">
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : currentChapter ? (
-            <Card>
-              <CardContent className='p-5'>
-                <h2 className="text-2xl font-bold mb-4">{currentChapter.title}</h2>
-                {currentChapter.is_html ? (
-                  <div className="reset-post-content" dangerouslySetInnerHTML={{ __html: currentChapter.content }} />
-                ) : (
-                  <p>{currentChapter.content}</p>
-                )}
-              </CardContent>
-            </Card>
-          ) : (
-            <p>Select a chapter to view its content.</p>
-          )}
-        </div>
-      </div>
-
-      <main className="flex-grow pt-24 pb-16">
+      <section className='px-[20px] py-[50px] md:px-[30px] md:py-[70px] flex-grow'>
         <div className="container">
-          <div className="mb-12 max-w-3xl">
-            <h1 className="text-4xl font-bold mb-4">The Little Book of Statistics</h1>
-            <p className="text-lg text-gray-600 italic">
-              "From ancient times to modern marvels, statistics has helped us understand our world better. In this book, we'll explore the basics of statistics in simple terms.<br />
-              Think of it as a journey—a journey where we'll discover how statistics can unravel mysteries, solve problems, and even predict the future. We'll learn about counting, patterns, and how to make sense of data.<br />
-              But more than that, this book is a celebration! It's a celebration of the people who've dedicated their lives to statistics—the pioneers, the scholars, and the everyday folks who use statistics to make informed decisions."           </p>
-          </div>
+          <div className="grid grid-cols-12 gap-4">
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">Author - Srinivas Vedantam</h2>
-              <p className="text-gray-600 mb-4 italic">
-                "Product development is a passion that I have given my everything to. I enjoy working on solutions that apply the advancement in technology in areas like learning, and marketing."              </p>
-              <p className="text-gray-600 mb-6">
-                Together, we'll unlock the secrets of statistics and see how it shapes our world in remarkable ways.
-                Let's dive in!              </p>
-              <Button className="flex items-center gap-2 px-12">
-                <Download className="h-4 w-4" />
-                Read More
-              </Button>
-            </div>
-            <div className="relative">
-              <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auhref=format&fit=crop&w=800"
-                alt="Data visualization charts"
-                className="rounded-lg shadow-lg w-full h-auto"
+            {/* Left Sidebar - Navigation (Tabs for Desktop, Accordion for Mobile) */}
+            <div className='col-span-12 md:col-span-3'>
+              {isLoadingDsBook ? (
+                <SidebarSkeleton />
+              ) : (
+                <>
+                  {/* Desktop Tabs View */}
+                  <div className="hidden md:block md:sticky md:top-24 overflow-y-auto overflow-x-hidden h-auto md:h-[calc(100vh-200px)] mb-4 md:mb-10 mt-2 bg-white p-4 rounded-md border">
+                    <Tabs
+                      orientation="vertical"
+                      value={currentChapterId || (dsBook?.chapers[0]?.url_slug.split('/')[1] || '')}
+                      onValueChange={(value) => {
+                        router.push(`/fun-with-statistics/${value}`);
+                      }}
+                      className="flex flex-col w-full"
+                    >
+                      <TabsList className="flex justify-start items-start flex-wrap md:flex-col h-auto w-full p-0 mb-4 md:mb-0 bg-white">
+                        {dsBook?.chapers.map((chapter: any) => (
+                          <TabsTrigger
+                            key={chapter.id}
+                            value={chapter.url_slug.split('/')[1]}
+                            className="w-full flex justify-start text-left px-4 py-2 my-1 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-primary-50 bg-primary-50"
+                          >
+                            {chapter.title.length > 35 ? chapter.title.substring(0, 32) + '...' : chapter.title}
+                          </TabsTrigger>
+                        ))}
+                      </TabsList>
+                    </Tabs>
+                  </div>
 
-                loading="lazy"
-                width={500}
-                height={500}
-              />
+                  {/* Mobile Accordion View */}
+                  <div className="block md:hidden mb-4 mt-2 bg-white p-4 rounded-md border max-h-[400px] overflow-y-scroll">
+                    <Accordion
+                      type="single"
+                      collapsible
+                      value={accordionOpenItem}
+                      onValueChange={setAccordionOpenItem}
+                    >
+                      <AccordionItem value="chapters-list">
+                         <AccordionTrigger className="w-full flex justify-between text-left px-4 py-2 my-1 bg-gray-100 font-semibold  rounded-md">
+                            {activeChapterTitle} {/* Displays the active chapter title or "Chapters" */}
+                        </AccordionTrigger>
+                        <AccordionContent className="p-0">
+                            {dsBook?.chapers.map((chapter: any) => {
+                                const chapterSlug = chapter.url_slug.split('/')[1];
+                                return (
+                                    <button
+                                        key={chapter.id}
+                                        onClick={() => {
+                                            router.push(`/fun-with-statistics/${chapterSlug}`);
+                                            // Close the accordion after navigation for better mobile UX
+                                            setAccordionOpenItem(''); 
+                                        }}
+                                        className={`w-full flex justify-start text-md font-semibold text-left px-4 py-2 my-1
+                                            ${currentChapterId === chapterSlug 
+                                                ? 'bg-primary-100 rounded-md font-semibold' // Active chapter styling
+                                                : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+                                    >
+                                        {chapter.title}
+                                    </button>
+                                );
+                            })}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </>
+              )}
             </div>
+
+            {/* Right Content Area (Chapter Content) */}
+            <div className='col-span-12 md:col-span-9'>
+              <div className="">
+                {isLoadingDsBook || !currentChapter ? (
+                  <ContentSkeleton />
+                ) : (
+                  <Card>
+                    <CardContent className='p-5'>
+                      <h1 className="text-3xl mb-4">{currentChapter.title}</h1>
+                      {currentChapter.is_html ? (
+                        <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: currentChapter.content }} />
+                      ) : (
+                        <p className="text-gray-700">{currentChapter.content}</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
+
           </div>
         </div>
-      </main>
-
+      </section>
       <Footer />
     </div>
   );
