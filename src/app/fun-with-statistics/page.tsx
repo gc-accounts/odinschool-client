@@ -1,4 +1,5 @@
 import FunWithStatisticsComp from "@/components/pages/FunWithStatistics";
+import FunWithStatisticsHome from "@/components/components/FunWithStatisticsHome";
 import { Metadata, ResolvingMetadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 
 export default function FunWithStatisticsPage() {
   return (
-    <FunWithStatisticsComp />
+    <>
+      <FunWithStatisticsHome sourceDomain ='Fun With Statistics'/>
+      </>
+    
   );
 }

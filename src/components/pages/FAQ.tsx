@@ -131,13 +131,13 @@ The program covers practical tools, real-world use cases, and hands-on projects 
       <main className="min-h-screen bg-gray-50">
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-primary-800 to-primary-700 text-white">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-center mb-6">
+            <div className="flex items-center justify-center md:mb-6 mb-3">
               <div className="bg-white/10 rounded-full p-3">
-                <HelpCircle className="h-8 w-8" />
+                <HelpCircle className="md:h-8 md:w-8 w-6 h-6" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-center mb-4">Frequently Asked Questions</h1>
-            <p className="text-xl text-center max-w-2xl mx-auto text-slate-300">
+            <h1 className="md:text-4xl text-3xl text-center mb-4">Frequently Asked Questions</h1>
+            <p className="md:text-lg text-md text-center max-w-2xl mx-auto text-slate-300">
               Find answers to common questions about our platform, courses, and services
             </p>
           </div>
@@ -148,7 +148,7 @@ The program covers practical tools, real-world use cases, and hands-on projects 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {faqCategories.map((category, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-                  <h2 className="text-2xl font-bold mb-6 text-primary-700">{category.title}</h2>
+                  <h3 className="md:text-2xl text-lg font-semibold mb-6 text-primary-700">{category.title}</h3>
                   <Accordion type="single" collapsible className="w-full">
                     {category.questions.map((faq, faqIndex) => (
                       <AccordionItem key={faqIndex} value={`item-${index}-${faqIndex}`}>

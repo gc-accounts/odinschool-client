@@ -15,9 +15,10 @@ interface PrimaryFormProps {
   buttonText?: string;
   isCoupon?: Boolean;
   sourceDomain?: string;
+  isCustomRedirect?: string;
 }
 
-const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, isCoupon, sourceDomain }) => {
+const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, isCoupon, sourceDomain, isCustomRedirect }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
@@ -111,12 +112,32 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
       sessionStorage.setItem('submittedEmail', data.email);
       reset();
 
-      if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
-         (data.year === '2025' || data.year === 'After 2025')) {
-        router.push('/data-science-bridge-course');
-      } else {
-        setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
-      }
+      // if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
+      //    (data.year === '2025' || data.year === 'After 2025')) {
+      //   router.push('/data-science-bridge-course');
+      // } else {
+      //   setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+      // }
+
+
+      if ((slug === 'data-science-course' || slug === 'data-science-elite-course') &&
+    (data.year === '2025' || data.year === 'After 2025')) {
+  // If isCustomRedirect exists and has a value, use it for redirection
+  if (isCustomRedirect) {
+    router.push(isCustomRedirect);
+  } else {
+    // Otherwise, use the default redirection for these slugs
+    router.push('/data-science-bridge-course');
+  }
+} else {
+  // For all other cases, check for isCustomRedirect first
+  if (isCustomRedirect) {
+    setTimeout(() => router.push(isCustomRedirect), 1000);
+  } else {
+    // If no custom redirect, use the default thank-you page
+    setTimeout(() => router.push(`/thank-you?title=${slug}`), 1000);
+  }
+}
 
     } catch (error: any) {
       console.error(error);

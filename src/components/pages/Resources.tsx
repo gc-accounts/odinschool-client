@@ -22,7 +22,7 @@ const Resources = () => {
       title: 'Salary Calculator',
       description: 'Estimate your market value based on your job role, experience, education, and location.',
       icon: <Calculator className="h-12 w-12 text-primary-600" />,
-      path: '/salary-calculator',
+      path: '/data-science/salary-calculator',
       cta: 'Calculate Salary'
     },
     {
