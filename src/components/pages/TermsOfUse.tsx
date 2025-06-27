@@ -317,10 +317,10 @@ const TermsOfUse = () => {
         <div className="container py-10 space-y-6">
           {termsData.map((section, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-              {/* <h2 className="text-lg font-semibold text-black mb-4 bg-gray-100 rounded-full inline-block py-1 px-3"> */}
-                <h2 className="text-lg font-semibold text-black mb-4 bg-gray-100 underline rounded-sm inline-block py-1 px-3">
+              {/* <h3 className="text-lg font-semibold text-black mb-4 bg-gray-100 rounded-full inline-block py-1 px-3"> */}
+                <h3 className="text-lg text-black mb-4 font-semibold bg-gray-100 underline rounded-sm inline-block py-1 px-3">
                 {section.heading}
-              </h2>
+              </h3>
               {section.paragraphs?.map((para, idx) => (
                 <p key={idx} className="text-gray-800 mb-4 text-md">
                   {para}
