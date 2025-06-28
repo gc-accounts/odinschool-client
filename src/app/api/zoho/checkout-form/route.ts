@@ -27,10 +27,10 @@ export async function POST(request: Request) {
         Coupon_Code: formData.get('Coupon Code'),
 
         // utm tracking details
-         first_page_seen1: formData.get('First Page Seen'),
-         Original_Traffic_Source: formData.get('Original Traffic Source'),
-         Original_Traffic_Source_Drill_Down_1: formData.get('Original Traffic Source Drill-Down 1'),
-         Original_Traffic_Source_Drill_Down_2: formData.get('Original Traffic Source Drill-Down 2'),
+         Latest_Page_Seen: formData.get('First Page Seen'),
+         Latest_Traffic_Source: formData.get('Original Traffic Source'),
+         Latest_Traffic_Source_Drill_Down_1: formData.get('Original Traffic Source Drill-Down 1'),
+         Latest_Traffic_Source_Drill_Down_2: formData.get('Original Traffic Source Drill-Down 2'),
          UTM_Term_First_Page_Seen: formData.get('UTM Term-First Page Seen'),
          UTM_Content_First_Page_Seen: formData.get('UTM Content-First Page Seen'),
       }],
