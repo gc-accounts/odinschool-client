@@ -157,6 +157,9 @@ const HeroSection = () => {
       });
 
       sessionStorage.setItem('submittedEmail', data.email);
+      sessionStorage.setItem('first_name', data.firstName);
+      sessionStorage.setItem('last_name', data.lastName);
+      sessionStorage.setItem('phone', data.phone);
 
 
       toast({

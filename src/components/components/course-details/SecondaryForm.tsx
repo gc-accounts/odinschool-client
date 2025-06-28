@@ -89,6 +89,9 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
             });
             // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
+      sessionStorage.setItem('first_name', data.firstName);
+      sessionStorage.setItem('last_name', data.lastName);
+      sessionStorage.setItem('phone', data.phone);
       reset();
        if ((data.program === 'Data Science Course' || data.program === 'Data Science Elite Course') && 
     (data.year === '2025' || data.year === 'After 2025')) {

@@ -110,6 +110,12 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({ slug, isModal, buttonText, is
       });
       // --- END: Add GTM Data Layer Push Here ---
       sessionStorage.setItem('submittedEmail', data.email);
+      sessionStorage.setItem('first_name', data.firstName);
+      sessionStorage.setItem('last_name', data.lastName);
+      sessionStorage.setItem('phone', data.phone);
+
+
+
       reset();
 
       // if ((slug === 'data-science-course' || slug === 'data-science-elite-course') && 
