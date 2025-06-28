@@ -1,20 +1,79 @@
+// src/components/components/course-details/DsFF.tsx
+
 'use client'
-import Button from '@/components/components/Button';
-import { ArrowRight } from 'lucide-react';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
+import dynamic from 'next/dynamic';
+
+// Keep the dynamic import for code splitting benefits, but it won't render the skeleton now.
+// The skeleton will be rendered directly in the JSX.
+const PrimaryForm = dynamic(() => import('@/components/components/course-details/PrimaryForm'), { 
+  ssr: false // Ensure it's client-side rendered if it relies on browser APIs
+});
+
 import { CiCircleCheck } from 'react-icons/ci';
-import PrimaryForm from '@/components/components/course-details/PrimaryForm';
-import Modal from '@/components/components/component-template/Modal';
+import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 
 interface dsEliteProps {
   sectionClass?: String;
   sourceDomain?: string;
+  cohortDates?: { 
+    cohort1?: string;
+    cohort2?: string;
+  };
 }
-const DsFF = ({ sectionClass, sourceDomain }: dsEliteProps) => {
 
-  const [formOpen, setFormOpen] = useState(false)
+const DsFF = ({ sectionClass, sourceDomain, cohortDates }: dsEliteProps) => {
+  const [formLoaded, setFormLoaded] = useState(false); // State to track if the form component is loaded and ready
+
+
+  useEffect(() => {
+    setFormLoaded(true); 
+  }, []);
+
+
+  // Define the skeleton component directly within DsFF for easier placement
+  const FormSkeleton = () => (
+     <div className="bg-white p-6 rounded-md shadow-md border-2 border-primary-600 flex flex-col items-center justify-center min-h-[400px] w-full">
+      {/* First Name / Last Name Row */}
+      <div className="w-full mb-3 grid grid-cols-2 gap-4">
+        <div>
+          <div className="h-4 bg-gray-200 rounded w-2/3 mb-2 animate-pulse"></div> {/* Label */}
+          <div className="h-10 bg-gray-200 rounded w-full animate-pulse"></div> {/* Input field */}
+        </div>
+        <div>
+          <div className="h-4 bg-gray-200 rounded w-2/3 mb-2 animate-pulse"></div> {/* Label */}
+          <div className="h-10 bg-gray-200 rounded w-full animate-pulse"></div> {/* Input field */}
+        </div>
+      </div>
+
+      {/* Email */}
+      <div className="w-full mb-3">
+        <div className="h-4 bg-gray-200 rounded w-1/4 mb-2 animate-pulse"></div> {/* Label */}
+        <div className="h-10 bg-gray-200 rounded w-full animate-pulse"></div> {/* Input field */}
+      </div>
+
+      {/* Phone */}
+      <div className="w-full mb-3">
+        <div className="h-4 bg-gray-200 rounded w-1/4 mb-2 animate-pulse"></div> {/* Label */}
+        <div className="h-10 bg-gray-200 rounded w-full animate-pulse"></div> {/* Input field */}
+      </div>
+
+      {/* Select Work Experience Level Dropdown */}
+      <div className="w-full mb-3">
+        <div className="h-4 bg-gray-200 rounded w-1/3 mb-2 animate-pulse"></div> {/* Label */}
+        <div className="h-10 bg-gray-200 rounded w-full animate-pulse"></div> {/* Dropdown */}
+      </div>
+
+      {/* Privacy Policy Text */}
+      <div className="h-2 bg-gray-200 rounded w-2/3 mb-6 animate-pulse"></div>
+
+      {/* Request a Callback Button */}
+      <div className="h-10 w-full bg-yellow-500 rounded animate-pulse"></div> {/* Changed to yellow-500 for better visual match */}
+    </div>
+  );
 
 
   return (
@@ -50,6 +109,7 @@ const DsFF = ({ sectionClass, sourceDomain }: dsEliteProps) => {
 
           </div>
           <div className='md:col-span-1'></div>
+
           <div className='md:col-span-6'>
             <div className="flex flex-col md:flex-row items-center justify-center bg-white overflow-hidden max-w-5xl mx-auto md:mt-0 mt-4">
               <div className="bg-primary-600 text-white px-3 py-3 mx-auto w-10/12 md:w-1/2 text-center flex flex-col justify-center items-center rounded-t-md md:rounded-t-none md:rounded-tl-md md:rounded-bl-md">
@@ -64,20 +124,29 @@ const DsFF = ({ sectionClass, sourceDomain }: dsEliteProps) => {
                 <h3 className="text-sm md:text-md font-semibold">Upgrade your skill set & unlock new opportunities!</h3>
                 <hr className="border-white border-opacity-30 my-4 w-2/3" />
                 <p className="text-base md:text-sm">Upcoming Cohort</p>
-                <p className="text-lg font-semibold mt-1">28 Jun 2025</p>
+                
+
+                   {
+                   cohortDates?.cohort1 &&
+                   <p className="text-lg font-semibold mt-1">{formatDateToReadable(cohortDates?.cohort1)}</p>
+                     }
+
+               
               </div>
-              <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain={sourceDomain ? sourceDomain : 'Course form'} />
+              
+              {/* Conditional rendering of either the skeleton or the actual form */}
+              {formLoaded ? (
+                <PrimaryForm slug={'data-science-course'} isModal={false} buttonText={'Request a Callback'} sourceDomain={sourceDomain ? sourceDomain : 'Course form'} />
+              ) : (
+                <FormSkeleton />
+              )}
+
             </div>
           </div>
         </div>
       </div>
-
-
-
-
     </section>
   );
 }
-
 
 export default DsFF;

@@ -4,6 +4,9 @@ import { DM_Serif_Display } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
 
+// Import the Course interface (just for type checking the prop)
+import { Course } from '@/components/hooks/useCourseDetails';
+
 const CardsFF = dynamic(() => import('@/components/components/CardsFF'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
@@ -101,18 +104,25 @@ const OrganizationLogos = dynamic(() => import('@/components/components/Organiza
 const StudentsTicker = dynamic(() => import('@/components/components/StudentsTicker'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 const HelloBar = dynamic(() => import('@/components/components/HelloBar'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 
-const AppliedGenerativeAICourseIITG = ({ organisations }) => {
+
+interface Props{
+  initialCourse: Course; // Now required: the course data is passed from the server
+}
+
+const AppliedGenerativeAICourseIITG = ({initialCourse}:Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // The 'course' object is now directly available via initialCourse prop
+  const course = initialCourse;
   return (
     <>
       <HelloBar isPrimaryForm={true} slug='generative-ai-course-iitg' />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
-          <GenAIIITGFF sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <GenAIIITGFF cohortDates={course.cohortDates} sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
            <section className="">
             <ImageResponsive
               desktopSrc="https://strapi.odinschool.com/uploads/iit_G_building_20_1_9695a67d89.webp"
@@ -151,7 +161,7 @@ const AppliedGenerativeAICourseIITG = ({ organisations }) => {
            <Certification sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={GenAIIITGCertificateData} />
            <InstructorProfileHome fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={GenAIIITGMentorsData} />
            <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-           <GenAIIITGFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+           <GenAIIITGFeeModule cohortDates={course.cohortDates} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
            <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={genAiiitgFaqsData} />
 
         </main>

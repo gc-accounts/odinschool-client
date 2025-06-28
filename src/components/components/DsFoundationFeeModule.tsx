@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Button from './Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CircleCheck } from 'lucide-react';
 import Modal from './component-template/Modal';
 import PrimaryForm from './course-details/PrimaryForm';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
  const [formOpen, setFormOpen] = useState(false);
 
   const data = {
-    cohorts: ['28 Jun 2025', '26 Jul 2025'],
+    cohorts: ['26 July 2025', '30 August 2025'],
     fee: '₹999',
     partners: [
       { id: 1, name: 'Feemonk', logo: 'https://strapi.odinschool.com/uploads/Fee_Monk_High_Res_Logo_100_X_40_b460d38c45.webp' },
@@ -23,7 +23,14 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
       { id: 3, name: 'Avanse', logo: 'https://strapi.odinschool.com/uploads/Avanse_20100_X40_1_25e232dc78.svg' },
       { id: 4, name: 'Liquiloans', logo: 'https://strapi.odinschool.com/uploads/Liquiloans_20_INDIVIDUAL_20100_20_X40_bb1ef5dcdd.webp' },
     ],
+     details: [
+        { label: 'Complete the Bridge Course', description: '' },
+        { label: 'Become eligible for the Data Science Elite Course', description: '' },
+        { label: 'Get a refund of ₹999 and a discount of ₹2,000 on admission into the Data Science Elite Course', description: '' },
+      ],
   };
+
+  
 
   return (
      <section className={`${sectionClass ? sectionClass : ''} relative`}>
@@ -38,7 +45,7 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
         </div>
 
 
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-7xl mx-auto space-y-6">
         {/* Cohort Dates */}
         {/* <div className="border border-gray-300 rounded-lg px-6 py-3 flex flex-wrap gap-4 justify-start items-center text-sm md:text-base">
           <span className="font-medium text-primary-600">Upcoming Cohort</span>
@@ -50,7 +57,26 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
         </div> */}
 
         {/* Fee and EMI Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden border border-gray-300">
+
+        <div className='grid grid-cols-12'>
+          <div className='col-span-4'>
+            <div className="space-y-3">
+                                  {data.details.map((item, index) => (
+                                    <div key={index} className="grid grid-cols-12 items-center gap-2">
+                                      <span className="col-span-1 bg-primary-50 rounded-full w-8 h-8 flex justify-center items-center">
+                                        <CircleCheck className="text-white bg-primary-600 block rounded-full mx-auto h-5 w-5" />
+                                      </span>
+                                      <div className="col-span-10">
+                                        <p className="ml-1 font-semibold text-md text-gray-800 leading-tight ">{item.label}</p>
+                                        {/* <p className="ml-2 text-sm text-gray-500 leading-snug">{item.description}</p> */}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+          </div>
+          <div className='col-span-8'>
+ <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden border border-gray-300">
+
           <div className="bg-primary-600 flex items-center justify-center px-6 py-10 text-white text-center">
             <div className="bg-white text-primary-800 py-4 px-6 rounded-md shadow-md">
               <p className="text-sm font-medium">Affordable Program Fee</p>
@@ -91,6 +117,10 @@ const DsFoundationFeeModule = ({ sectionClass }: Props) => {
           </Modal> */}
           </div>
         </div>
+          </div>
+        </div>
+
+       
 
         {/* Financing Partners */}
         {/* <div className="text-center">

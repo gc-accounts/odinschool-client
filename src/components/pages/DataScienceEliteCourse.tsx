@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { DM_Serif_Display } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
+// Import the Course interface (just for type checking the prop)
+import { Course } from '@/components/hooks/useCourseDetails';
 
 const CardsFF = dynamic(() => import('@/components/components/CardsFF'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
@@ -95,10 +97,20 @@ const MoreJobs = dynamic(() => import('@/components/components/MoreJobs'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
 });
 
-const DataScienceEliteCourse = ({ organisations }) => {
+
+
+
+interface DataScienceEliteCourseProps{
+  initialCourse: Course; // Now required: the course data is passed from the server
+}
+
+const DataScienceEliteCourse = ({initialCourse}:DataScienceEliteCourseProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // The 'course' object is now directly available via initialCourse prop
+  const course = initialCourse;
 
   return (
     <>
@@ -106,7 +118,7 @@ const DataScienceEliteCourse = ({ organisations }) => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className={`flex-grow ${dmSerifDisplay.variable}`}>
-          <DsEliteFoldLight sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DsEliteFoldLight cohortDates={course.cohortDates} sectionClass="bg-[#fff] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <CardsFF data={DsEliteCardsData} sectionClass="bg-[#fff] px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
           <DataLeadersForm sectionClass="bg-white px-[20px] pb-[50px] md:px-[30px] md:pb-[70px]" />
           <WhyJoin sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
@@ -162,8 +174,8 @@ const DataScienceEliteCourse = ({ organisations }) => {
           <SuccessStoriesOD sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DsEliteCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DsEliteFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
+          <DsEliteFeeModule cohortDates={course.cohortDates}  sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"  />
           <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={dsEliteFaqsData} />
         </main>
         <Footer />

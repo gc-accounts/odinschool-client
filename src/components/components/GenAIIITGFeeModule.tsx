@@ -8,16 +8,21 @@ import Link from 'next/link';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/components/ui/tabs';
 import Modal from '@/components/components/component-template/Modal';
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
+import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 
 
 interface feeProps {
-  sectionClass: string
+  sectionClass: string;
+  cohortDates?: { 
+    cohort1?: string;
+    cohort2?: string;
+  };
 }
-const GenAIIITGFeeModule = ({ sectionClass }: feeProps) => {
+const GenAIIITGFeeModule = ({ sectionClass, cohortDates }: feeProps) => {
   const data = [
     {
       id: '1',
-      cohortDate: '28 Jun 2025',
+      cohortDate: formatDateToReadable(cohortDates?.cohort1),
       totalPrice: '₹1,50,000',
       price: '₹1,25,000',
       offer: "Limited Seats! Book Yours Before They're Gone.",
@@ -38,7 +43,7 @@ const GenAIIITGFeeModule = ({ sectionClass }: feeProps) => {
     },
     {
       id: '2',
-      cohortDate: '26 July 2025',
+      cohortDate: formatDateToReadable(cohortDates?.cohort2),
      totalPrice: '₹1,50,000',
       price: '₹1,25,000',
       offer: "Limited Seats! Book Yours Before They're Gone.",
