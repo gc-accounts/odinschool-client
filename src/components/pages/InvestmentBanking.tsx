@@ -3,7 +3,8 @@ import React, { useEffect } from 'react';
 import { DM_Serif_Display } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
-
+// Import the Course interface (just for type checking the prop)
+import { Course } from '@/components/hooks/useCourseDetails';
 
 const InvestmentBankingHero = dynamic(() => import('@/components/components/InvestmentBankingHero'), {
   loading: () => <div className="h-16 bg-gray-100 animate-pulse" />,
@@ -121,10 +122,18 @@ const DsEliteFoldLight = dynamic(() => import('@/components/components/DSEliteFo
 const StudentsTicker = dynamic(() => import('@/components/components/StudentsTicker'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 const HelloBar = dynamic(() => import('@/components/components/HelloBar'), { loading: () => <div className="h-16 bg-gray-100 animate-pulse" /> });
 
-const InvestmentBanking = ({ organisations }) => {
+interface Props{
+  initialCourse: Course; // Now required: the course data is passed from the server
+  citSlug?: string;
+}
+const InvestmentBanking = ({initialCourse, citSlug}:Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // The 'course' object is now directly available via initialCourse prop
+  const course = initialCourse;
+
 
   return (
     <>
@@ -183,8 +192,8 @@ const InvestmentBanking = ({ organisations }) => {
 
           <IbCertification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbCertificateData} />
           <HowApply sectionClass="bg-[#021331] px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <IbFeeModule sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" organisations={organisations} />
+          <IbFeeModule cohortDates={course.cohortDates} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <OrganizationLogos sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"  />
           <FAQsection fontFamily={dmSerifDisplay.variable} sectionClass="bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IbFaqsData} />
         </main>
         <Footer />

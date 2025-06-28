@@ -6,11 +6,16 @@ import Image from 'next/image';
 import Modal from '@/components/components/component-template/Modal';
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
 import { useState } from 'react';
+import { formatDateToReadable } from '@/components/utils/formatDateToReadable';
 
 interface dsEliteProps {
-  sectionClass?: String
+  sectionClass?: String;
+  cohortDates?: { 
+    cohort1?: string;
+    cohort2?: string;
+  };
 }
-const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
+const DsEliteFoldLight = ({ sectionClass, cohortDates }: dsEliteProps) => {
 
   const [formOpen, setFormOpen] = useState(false)
   const partnerLogos = [
@@ -73,7 +78,12 @@ const DsEliteFoldLight = ({ sectionClass }: dsEliteProps) => {
         <p className="mt-10">
           A career accelerator designed with direct input from industry leaders, ensuring you gain skills that companies trust and value. Backed by five fast growing companies, this program provides not only solid knowledge but also real-world applicability.
         </p>
-        <p className='font-semibold px-3 py-2 mt-4 rounded-md bg-primary-50 border border-primary-600 inline-block'>Upcoming Cohort: 28 Jun 2025</p>
+
+         {
+                           cohortDates?.cohort1 &&
+                           <p className='font-semibold px-3 py-2 mt-4 rounded-md bg-primary-50 border border-primary-600 inline-block'>Upcoming Cohort: {formatDateToReadable(cohortDates?.cohort1)}</p>
+                             }
+        
 
 
 

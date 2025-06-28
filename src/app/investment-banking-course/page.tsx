@@ -1,35 +1,53 @@
-import React from 'react'
-import InvestmentBanking from '@/components/pages/InvestmentBanking'
-import { Metadata } from 'next'
+import React from 'react';
+import InvestmentBanking from '@/components/pages/InvestmentBanking'; // Corrected path based on your import
+import { Metadata } from 'next';
+import { getCourse } from '@/components/utils/api'; // Your API utility
+import { Course } from '@/components/hooks/useCourseDetails'; // Import the Course interface
 
-export const metadata: Metadata = {
-  title: 'Investment Banking & Finance Operations Elite Course | OdinSchool',
-  description:
-    'Industry-backed Investment Banking & Finance Operations course with live classes, hands-on projects, hiring sprints, career services, and mentor support — backed by Feemonk, Broadridge, FeeMonk and major finance partners.',
-  openGraph: {
-    title: 'Investment Banking & Finance Operations Elite Course | OdinSchool',
-    description:
-      'Master investment banking workflows, trade lifecycle, KYC/AML, NAV calculations and more through live sessions, case projects and hiring sprints — backed by Feemonk, Broadridge.',
-    type: 'website',
-    url: 'https://www.odinschool.com/investment-banking-course',
-    images: [
-      {
-        url: 'https://www.odinschool.com/static/ib_ops_og_image.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Investment Banking & Finance Operations Elite Course',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Investment Banking & Finance Operations Elite Course | OdinSchool',
-    description:
-      'Live, hands-on Investment Banking & Finance Ops course: real-world projects, hiring sprints, and career support backed by industry leaders.',
-    images: ['https://www.odinschool.com/static/ib_ops_og_image.webp'],
-  },
-  keywords: [
-    'Investment Banking course',
+// Define metadata for SEO dynamically
+export async function generateMetadata(): Promise<Metadata> {
+  const courseSlug = 'investment-banking-course'; // The slug for this specific page
+  const response = await getCourse("", courseSlug);
+  const course: Course | null = response && response[0] ? response[0] : null;
+
+  if (!course) {
+    // Fallback metadata if course is not found
+    return {
+      title: 'Course Not Found ',
+      description: 'The requested course could not be found.',
+      robots: 'noindex, nofollow', // Prevent indexing if the page content isn't valid
+    };
+  }
+
+  return {
+    title: 'Investment Banking & Finance Operations Elite Course',
+    description: 'Industry-backed Investment Banking & Finance Operations course with live classes, hands-on projects, hiring sprints, career services, and mentor support — backed by Feemonk, Broadridge, FeeMonk and major finance partners.',
+    openGraph: {
+      title: 'Investment Banking & Finance Operations Elite Course',
+      description: 'Industry-backed Investment Banking & Finance Operations course with live classes, hands-on projects, hiring sprints, career services, and mentor support — backed by Feemonk, Broadridge, FeeMonk and major finance partners.',
+      type: 'website',
+      url: `https://odinschool.com/courses/${course.url_slug || course.slug}`,
+      images: [
+        {
+          url: course.image || 'https://strapi.odinschool.com/uploads/default_course_image.webp', // Fallback image
+          width: 1200,
+          height: 630,
+          alt: course.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Investment Banking & Finance Operations Elite Course',
+      description: 'Industry-backed Investment Banking & Finance Operations course with live classes, hands-on projects, hiring sprints, career services, and mentor support — backed by Feemonk, Broadridge, FeeMonk and major finance partners.',
+      images: [course.image || 'https://strapi.odinschool.com/uploads/default_course_image.webp'], // Fallback image
+    },
+    keywords: [
+      course.title,
+      course.level || '',
+      ...(course.skills || []),
+      ...(course.tags || []),
+       'Investment Banking course',
     'Finance Operations training',
     'OdinSchool elite course',
     'live finance classes',
@@ -39,17 +57,32 @@ export const metadata: Metadata = {
     'KYC AML course',
     'NAV reconciliation training',
     'finance career support',
-  ],
-  authors: [{ name: 'OdinSchool' }],
-  metadataBase: new URL('https://www.odinschool.com'),
-};
+    ],
+    authors: [{ name: 'OdinSchool' }],
+    metadataBase: new URL('https://odinschool.com'),
+  };
+}
 
+// Main page component - NOW AN ASYNC SERVER COMPONENT
+const Page = async () => {
+  const courseSlug = 'data-science-course'; // The specific slug for this page
 
+  const response = await getCourse("", courseSlug);
+  const course: Course | null = response && response[0] ? response[0] : null;
 
-const page = () => {
+  if (!course) {
+    // Handle case where course data is not found
+    return (
+      <div className="flex flex-col min-h-screen items-center justify-center text-center py-16">
+        <h1 className="text-4xl font-bold text-red-600">Course Not Found</h1>
+        <p className="text-lg mt-4">We could not find the details for the Data Science course. Please try again later or contact support.</p>
+      </div>
+    );
+  }
+
   return (
     <>
-     <style>
+      <style>
         {`
           .primaryFormCustom {
             border: 3px solid #1a6cf7;
@@ -69,12 +102,11 @@ const page = () => {
             }
         `}
       </style>
+      <InvestmentBanking
+        initialCourse={course}
+      />
+    </>
+  );
+};
 
-    <InvestmentBanking organisations={[]} />
-
-        </>
-
-  )
-}
-
-export default page
+export default Page;

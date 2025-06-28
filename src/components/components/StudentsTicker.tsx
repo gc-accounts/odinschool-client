@@ -48,15 +48,14 @@ const StudentsTicker = ({ sectionClass }: CardsProps) => {
                     <p className="text-white font-semibold mb-1">{student.name}</p>
                     <div className="flex justify-center bg-primary-50 rounded-sm">
                       <Image
-                        src={student.current_company_image}
-                        alt="Current Company"
-                        width={80}
-                        height={80}
-                        className="placeLogo px-2"
-                        loading="lazy"
-                        draggable="false"
-                        objectFit="contain"
-                      />
+  src={student.current_company_image}
+  alt="Current Company"
+  width={80}
+  height={80}
+  className="placeLogo px-2 object-contain"
+  loading="lazy"
+  draggable="false"
+/>
                     </div>
                   </div>
                 </div>
