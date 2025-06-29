@@ -59,6 +59,7 @@ import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
 import SuccessStoriesIB from '@/components/components/SuccessStoriesIB';
 import Image from 'next/image';
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
+import BrochureButton from '@/components/components/custom-component/BrochureButton';
 
 
 const formFields: FieldConfig[] = [
@@ -741,26 +742,10 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                   <TabsContent value="curriculum" className='px-2'>
 
-                    <div className='flex justify-between items-center mb-6'>
+                    <div className='flex justify-between items-center mb-6 coursedetalis-dynamic'>
                       <h2 className="text-2xl font-bold">Program Curriculum</h2>
-                      <Button onClick={() => setBrochureFormOpen(true)}>Download Brochure</Button>
-                      <Modal header_text={'Download Brochure'} open={brochureFormOpen} onOpenChange={setBrochureFormOpen}>
-                        <DynamicForm
-                          buttonText={'Download Brochure'}
-                          fields={brochureFormField}
-                          initialValues={{
-                            program: course.slug,
-                            ga_client_id: '',
-                            business_unit: 'Odinschool',
-                            Source_Domain: 'Brochure Form'
 
-                          }}
-                          onSubmit={(data) => {
-                            handleBrochureFormSubmit(data)
-                          }}
-
-                        />
-                      </Modal>
+                         <BrochureButton slug={'generative-ai-bootcamp'} isPrimaryButton={false} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='' />
                     </div>
 
                     <div className="space-y-4">
