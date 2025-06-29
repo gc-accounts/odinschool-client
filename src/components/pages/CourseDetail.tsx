@@ -59,6 +59,7 @@ import { formatCurrencyINR } from '@/components/utils/formatCurrencyINR';
 import SuccessStoriesIB from '@/components/components/SuccessStoriesIB';
 import Image from 'next/image';
 import PrimaryForm from '@/components/components/course-details/PrimaryForm';
+import BrochureButton from '@/components/components/custom-component/BrochureButton';
 
 
 const formFields: FieldConfig[] = [
@@ -282,9 +283,9 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
           slug={'Generative AI Course'}
           data={getCourseData(course.slug).mentors}
         />,
-        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'}
+        () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'generative-ai-bootcamp'}
           data={getCourseData(course.slug).careerPath} />,
-        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'Generative AI Course'} />,
+        () => <CareerServices1 sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={'generative-ai-bootcamp'} />,
         () => <FAQsection sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
       ]
     ,
@@ -358,7 +359,7 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
       () => <CareerOpportunities sectionClass={'bg-primary-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} slug={course.slug == 'data-science-course' ? 'Data Science Course' : course.slug} data={getCourseData(course.slug).careerPath} />,
       () => <CareerServices1
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
-        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
+        slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug}
       />,
       () => <FAQsection sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'} data={getCourseData(course.slug).faqs} />,
     ],
@@ -383,13 +384,13 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
         slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug}
         data={getCourseData(course.slug).mentors}
       />,
-      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
+      () => <CareerOpportunities slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} data={getCourseData(course.slug).careerPath} />,
     ],
     "4": [
       () => <WhyLearnAI />,
       () => <WhoCanApply />,
       () => <Testimonials />,
-      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'Generative AI Course' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
+      () => <CareerServices1 slug={course.slug === 'data-science-course' ? 'Data Science Course' : course.slug === 'data-science-elite-course' ? 'Data Science Elite Course' : course.slug === 'generative-ai-bootcamp' ? 'generative-ai-bootcamp' : course.slug === 'generative-ai-course-iitg' ? 'Certification Program in Applied Generative AI' : course.slug} />,
       () => <CollegeSpotlight />,
       () => <InstructorProfile
         sectionClass={'bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]'}
@@ -741,26 +742,10 @@ const CourseDetail = ({ courseId, initialCourse }: CourseDetailProps) => {
 
                   <TabsContent value="curriculum" className='px-2'>
 
-                    <div className='flex justify-between items-center mb-6'>
+                    <div className='flex justify-between items-center mb-6 coursedetalis-dynamic'>
                       <h2 className="text-2xl font-bold">Program Curriculum</h2>
-                      <Button onClick={() => setBrochureFormOpen(true)}>Download Brochure</Button>
-                      <Modal header_text={'Download Brochure'} open={brochureFormOpen} onOpenChange={setBrochureFormOpen}>
-                        <DynamicForm
-                          buttonText={'Download Brochure'}
-                          fields={brochureFormField}
-                          initialValues={{
-                            program: course.slug,
-                            ga_client_id: '',
-                            business_unit: 'Odinschool',
-                            Source_Domain: 'Brochure Form'
 
-                          }}
-                          onSubmit={(data) => {
-                            handleBrochureFormSubmit(data)
-                          }}
-
-                        />
-                      </Modal>
+                         <BrochureButton slug={'generative-ai-bootcamp'} isPrimaryButton={false} isBrochureButton={true} primaryButtonText='Request a Callback' parentClass='' />
                     </div>
 
                     <div className="space-y-4">

@@ -46,8 +46,23 @@ export default async function CourseDetailPage({ params }: Props) {
   }
 
   return (
-    <div>
+    <>
+    <style>
+        {`
+
+            .coursedetalis-dynamic .downloadBtn{
+            color: #000;
+            border-color: #000;
+            }
+            .coursedetalis-dynamic .downloadBtn:hover{
+                border-color: #fff !important;
+            }
+        `}
+      </style>
+          <div>
       <CourseDetail courseId={courseId} initialCourse={course} />
     </div>
+    </>
+
   )
 }

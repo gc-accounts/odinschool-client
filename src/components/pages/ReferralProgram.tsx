@@ -12,21 +12,20 @@ import DynamicForm from '@/components/components/form/DynamicForm';
 import { useToast } from '@/components/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+
 const ReferralProgram = () => {
   const [referrals, setReferrals] = useState([{ id: 1 }]);
   const [referrerSubmitted, setReferrerSubmitted] = useState(false);
   const [referrerData, setReferrerData] = useState<any>(null);
   const [utm, setUtm] = React.useState<Record<string, string>>({});
-  
+
   const { toast } = useToast();
   const router = useRouter();
 
-
-
   useEffect(() => {
     window.scrollTo(0, 0);
-     const data = getUTMTrackingData();
-      setUtm(data);
+    const data = getUTMTrackingData();
+    setUtm(data);
   }, []);
 
   const addReferral = () => {
@@ -110,16 +109,17 @@ const ReferralProgram = () => {
   };
 
   const handleReferrerSubmit = async (data: any, reset: () => void) => {
-    try {
-      setReferrerData(data);
-      setReferrerSubmitted(true);
-      toast({
-        title: 'Success!',
-        description: 'Your details have been saved. Now you can add referrals.',
-      });
-    } catch (error: any) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
-    }
+    // For referrer, we save the full data including countryCode and phone as separate fields
+    // as it's just being stored in local state for later use.
+    // The phone field in `data` will already be the local number only.
+    // The countryCode is also present in `data`.
+    setReferrerData(data);
+    setReferrerSubmitted(true);
+    toast({
+      title: 'Success!',
+      description: 'Your details have been saved. Now you can add referrals.',
+    });
+    // No API call here, so no phone concatenation needed for submission.
   };
 
   const handleReferralSubmit = async (data: any, reset: () => void) => {
@@ -128,27 +128,37 @@ const ReferralProgram = () => {
         throw new Error('Please complete your details first');
       }
 
-
       const token = await getAccessToken();
       const formData = new FormData();
-      
-      // Add referrer data
+
+      // Add referrer data (combine phone number here)
       formData.append('accessToken', token);
       formData.append('First_Name', referrerData.name);
       formData.append('Email', referrerData.email);
-      formData.append('Phone', referrerData.phone);
+
+      // --- START: Combine referrer's phone with country code ---
+      const referrerCountryCodePrefix = referrerData.countryCode ? referrerData.countryCode.split(' ')[0] : '';
+      const fullReferrerPhoneNumber = referrerCountryCodePrefix + referrerData.phone;
+      formData.append('Phone', fullReferrerPhoneNumber);
+      // --- END: Combine referrer's phone with country code ---
+
       formData.append('Business_Unit', 'Odinschool');
-      
-      // Add referral data
+
+      // Add referral data (combine phone number here)
       formData.append('Referral_First_Name', data.first_name);
-       formData.append('Referral_Last_Name', data.last_name);
+      formData.append('Referral_Last_Name', data.last_name);
       formData.append('Referral_Email', data.email);
-      formData.append('Referral_Phone', data.phone);
+
+      // --- START: Combine referral's phone with country code ---
+      const referralCountryCodePrefix = data.countryCode ? data.countryCode.split(' ')[0] : '';
+      const fullReferralPhoneNumber = referralCountryCodePrefix + data.phone;
+      formData.append('Referral_Phone', fullReferralPhoneNumber);
+      // --- END: Combine referral's phone with country code ---
+
       formData.append('Program', data.program);
       formData.append('Referral_URL', window.location.href);
 
-
-       // Use the UTM data from state
+      // Use the UTM data from state
       formData.append('First Page Seen', utm['First Page Seen'] || '');
       formData.append('Original Traffic Source', utm['Original Traffic Source'] || '');
       formData.append(
@@ -249,7 +259,7 @@ const ReferralProgram = () => {
                 {/* Referral Details */}
                 <div>
                   <h3 className="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Referral Details</h3>
-                  
+
                   {!referrerSubmitted ? (
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
                       <p className="text-gray-600">Please submit your details above before adding referrals</p>

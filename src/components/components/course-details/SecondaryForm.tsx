@@ -1,4 +1,4 @@
-// PrimaryForm.tsx
+// PrimaryForm.tsx (This file is likely named SecondaryForm.tsx based on content, keeping your naming for consistency)
 'use client';
 
 import React, { useEffect } from 'react';
@@ -8,20 +8,18 @@ import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import { useRouter } from 'next/navigation';
 import CourseSecondaryFormFields from '@/components/data/form-fields/CourseSecondaryFormFields';
 import { pushToDataLayer } from '@/lib/gtm';
+
 interface SecondaryFormProps {
   isModal: Boolean;
   isCoupon: Boolean;
   buttonText?: string;
   sourceDomain?: string;
-
 }
 
 const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, buttonText, sourceDomain }) => {
   const { toast } = useToast();
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const router = useRouter();
-
-
 
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
@@ -46,7 +44,13 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
       formData.append('First Name', data.firstName);
       formData.append('Last Name', data.lastName);
       formData.append('Email', data.email);
-      formData.append('Phone', data.phone);
+
+      // --- START: Add Country Code to Phone Number ---
+      const countryCodePrefix = data.countryCode ? data.countryCode.split(' ')[0] : '';
+      const fullPhoneNumber = countryCodePrefix + data.phone;
+      formData.append('Phone', fullPhoneNumber);
+      // --- END: Add Country Code to Phone Number ---
+
       formData.append('Program', data.program);
       formData.append('Year of Graduation', data.year);
       formData.append('Work Experience Level', data.experience);
@@ -81,25 +85,27 @@ const SecondaryForm: React.FC<SecondaryFormProps> = ({ isCoupon, isModal, button
         title: 'Success!',
         description: "Your information has been submitted successfully. We'll contact you soon.",
       });
-       // --- START: Add GTM Data Layer Push Here ---
-            pushToDataLayer('form_submission', {
-            eventName: 'form_submission',
-            program_name: data.program, 
-            user_email: data.email,
-            });
-            // --- END: Add GTM Data Layer Push Here ---
+
+      // --- START: Add GTM Data Layer Push Here ---
+      pushToDataLayer('form_submission', {
+        eventName: 'form_submission',
+        program_name: data.program,
+        user_email: data.email,
+      });
+      // --- END: Add GTM Data Layer Push Here ---
+
       sessionStorage.setItem('submittedEmail', data.email);
       sessionStorage.setItem('first_name', data.firstName);
       sessionStorage.setItem('last_name', data.lastName);
       sessionStorage.setItem('phone', data.phone);
       reset();
-       if ((data.program === 'Data Science Course' || data.program === 'Data Science Elite Course') && 
-    (data.year === '2025' || data.year === 'After 2025')) {
-    router.push('/data-science-bridge-course');
-} else {
- setTimeout(() => router.push(`/thank-you`), 1000);
-}
-     
+      if ((data.program === 'Data Science Course' || data.program === 'Data Science Elite Course') &&
+        (data.year === '2025' || data.year === 'After 2025')) {
+        router.push('/data-science-bridge-course');
+      } else {
+        setTimeout(() => router.push(`/thank-you`), 1000);
+      }
+
     } catch (error: any) {
       console.error(error);
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
